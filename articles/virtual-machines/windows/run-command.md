@@ -1,6 +1,6 @@
 ---
 title: Ausführen von PowerShell-Skripts in einer Windows-VM unter Azure
-description: In diesem Thema wird beschrieben, wie PowerShell-Skripts auf einem virtuellen Azure Windows-Computer mithilfe von „Befehl ausführen“ ausgeführt werden
+description: In diesem Thema wird beschrieben, wie PowerShell-Skripts auf einem virtuellen Azure Windows-Computer mithilfe des Features „Befehl ausführen“ ausgeführt werden.
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -8,36 +8,36 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0a9a5e465e160da34a21f66fd7176a8fea5d1aac
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376244"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749230"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“
+# <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mithilfe von „Befehl ausführen“
 
-Der Befehl „Run“ verwendet den VM-Agent, um PowerShell-Skripts innerhalb einer Azure Windows-VM auszuführen. Diese Skripts können für die allgemeine Verwaltung von Computern oder Anwendungen sowie für die schnelle Diagnose und Korrektur von Zugriffs- und Netzwerkproblemen in VMs verwendet werden und allgemein, um die VM wieder in einen guten Zustand zu bringen.
+Das Feature „Befehl ausführen“ verwendet den VM-Agent, um PowerShell-Skripts innerhalb einer Azure Windows-VM auszuführen. Sie können diese Skripts für die allgemeine Computer-oder Anwendungsverwaltung verwenden. Mit ihrer Hilfe können Sie VM-Zugriffs- und Netzwerkprobleme schnell diagnostizieren und beheben und die VM wieder in einen funktionierenden Zustand versetzen.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="benefits"></a>Vorteile
 
-Es können mehrere Optionen für den Zugriff auf Ihre virtuellen Computer verwendet werden. „Befehl ausführen“ kann Skripts mithilfe des VM-Agents remote auf Ihren virtuellen Computern ausführen. „Befehl ausführen“ kann für Windows-VMs über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) verwendet werden.
+Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. „Befehl ausführen“ kann Skripts mithilfe des VM-Agents remote auf Ihren virtuellen Computern ausführen. „Befehl ausführen“ kann für Windows-VMs über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) verwendet werden.
 
-Diese Möglichkeit ist in allen Szenarien nützlich, in denen Sie ein Skript auf einem virtuellen Computer ausführen möchten, und stellt eine der wenigen Möglichkeiten zur Problembehandlung und Wartung von virtuellen Computern dar, deren RDP- oder SSH-Port aufgrund einer nicht ordnungsgemäßen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
+Diese Funktion ist in allen Szenarien sinnvoll, in denen Sie ein Skript innerhalb eines virtuellen Computers ausführen möchten. Es ist eine der wenigen Möglichkeiten, Fehler auf einem virtuellen Computer zu beheben, bei dem der RDP- oder SSH-Port aufgrund einer falschen Netzwerk- oder Administratorkonfiguration geschlossen sind.
 
 ## <a name="restrictions"></a>Einschränkungen
 
 Die Verwendung von „Befehl ausführen“ unterliegt den folgenden Einschränkungen:
 
-* Die Ausgabe ist auf die letzten 4096 Bytes beschränkt
-* Der Mindestzeitraum für die Ausführung eines Skripts liegt bei etwa 20 Sekunden
-* Skripts werden unter Windows als „System“ ausgeführt
-* Es kann zu jeder Zeit jeweils nur ein Skript ausgeführt werden
+* Die Ausgabe ist auf die letzten 4.096 Bytes beschränkt.
+* Der Mindestzeitraum für die Ausführung eines Skripts liegt bei etwa 20 Sekunden.
+* Skripts werden unter Windows als „System“ ausgeführt.
+* Es kann Zeit jeweils nur ein Skript gleichzeitig ausgeführt werden.
 * Skripts, die Informationen anfordern (interaktiver Modus), werden nicht unterstützt.
-* Die Ausführung von Skripts kann nicht abgebrochen werden
-* Der Maximalzeitraum beim Ausführen von Skripts ist auf 90 Minuten beschränkt, danach tritt ein Timeout auf
+* Die Ausführung von Skripts kann nicht abgebrochen werden.
+* Ein Skript kann bis zu maximal 90 Minuten ausgeführt werden. Danach tritt ein Timeout auf.
 * Um die Ergebnisse des Skripts zurückzugeben, ist eine ausgehende Konnektivität des virtuellen Computers erforderlich.
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Die Verwendung von „Befehl ausführen“ unterliegt den folgenden Einschränku
 
 ## <a name="available-commands"></a>Verfügbare Befehle
 
-Diese Tabelle enthält die Liste der für virtuelle Windows-Computer verfügbaren Befehle. Der Befehl **RunPowerShellScript** kann für die Ausführung jedes beliebigen benutzerdefinierten Skripts verwendet werden. Wenn Sie einen Befehl mithilfe der Azure-Befehlszeilenschnittstelle oder über PowerShell ausführen, muss für den Parameter `--command-id` oder `-CommandId` einer der Werte aus der folgenden Liste angegeben werden. Wenn Sie einen Wert angeben, bei dem es sich nicht um einen verfügbaren Befehl handelt, tritt ein Fehler auf.
+Diese Tabelle enthält die Liste der für virtuelle Windows-Computer verfügbaren Befehle. Mit dem Befehl **RunPowerShellScript** können Sie jedes beliebige benutzerdefinierte Skript ausführen. Wenn Sie einen Befehl mithilfe der Azure-Befehlszeilenschnittstelle oder über PowerShell ausführen, muss für den Parameter `--command-id` oder `-CommandId` einer der Werte aus der folgenden Liste angegeben werden. Wenn Sie einen Wert angeben, bei dem es sich nicht um einen verfügbaren Befehl handelt, tritt dieser Fehler auf:
 
 ```error
 The entity was not found in this Azure location
@@ -53,13 +53,13 @@ The entity was not found in this Azure location
 
 |**Name**|**Beschreibung**|
 |---|---|
-|**RunPowerShellScript**|Führt ein PowerShell-Skript aus|
+|**RunPowerShellScript**|Führt ein PowerShell-Skript aus.|
 |**EnableRemotePS**|Konfiguriert den Computer für die Aktivierung von remote-PowerShell.|
 |**EnableAdminAccount**|Überprüft, ob das lokale Administratorkonto deaktiviert ist, und aktiviert es, wenn das der Fall ist.|
 |**IPConfig**| Zeigt detaillierte Informationen für die IP-Adresse, die Subnetzmaske und das Standardgateway für jeden an TCP/IP gebundenen Adapter an.|
 |**RDPSettings**|Überprüft Registrierungseinstellungen und Domänen-Richtlinieneinstellungen. Schlägt Richtlinienaktionen vor, wenn der Computer Teil einer Domäne ist, oder ändert die Einstellungen in Standardwerte.|
 |**ResetRDPCert**|Entfernt das SSL-Zertifikat, das an den RDP-Listener gebunden ist, und stellt die Standardwerte für die Sicherheit des RDP-Listeners wieder her. Verwenden Sie dieses Skript, wenn irgendwelche Probleme in Verbindung mit dem Zertifikat auftreten.|
-|**SetRDPPort**|Legt die standardmäßige oder vom Benutzer angegebene Portnummer für Remote Desktop-Verbindungen fest. Aktiviert die Firewallregel für eingehenden Zugriff auf den Port.|
+|**SetRDPPort**|Legt die standardmäßige oder vom Benutzer angegebene Portnummer für Remote Desktop-Verbindungen fest. Aktiviert die Firewallregeln für eingehenden Zugriff auf den Port.|
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -79,16 +79,16 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie in [Azure](https://portal.azure.com) zu einer VM, und wählen Sie unter **VORGÄNGE** **Befehl ausführen** aus. Es wird eine Liste mit den für die Ausführung auf der VM verfügbaren Befehlen angezeigt.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer VM, und wählen Sie unter **VORGÄNGE** **Befehl ausführen** aus. Es wird eine Liste mit den für die Ausführung auf der VM verfügbaren Befehlen angezeigt.
 
-![Ausführen-Befehlsliste](./media/run-command/run-command-list.png)
+![Befehlsliste](./media/run-command/run-command-list.png)
 
 Wählen Sie einen auszuführenden Befehl aus. Einige der Befehle weisen möglicherweise optionale oder erforderliche Eingabeparameter auf. Bei diesen Befehlen werden Ihnen die Parameter in Form von Textfeldern angezeigt, für die Sie die Eingabewerte bereitstellen müssen. Für jeden Befehl können Sie das ausgeführte Skript anzeigen, indem Sie **Skript anzeigen** aufklappen. **RunPowerShellScript** unterscheidet sich insofern von den anderen Befehlen, als es Ihnen die Angabe eines eigenen, benutzerdefinierten Skripts ermöglicht.
 
 > [!NOTE]
 > Die integrierten Befehle können nicht bearbeitet werden.
 
-Nachdem Sie den Befehl ausgewählt haben, klicken Sie auf **Ausführen**, um das Skript auszuführen. Das Skript wird ausgeführt und gibt nach dem Abschluss die Ausgabe und eventuelle Fehler im Ausgabefenster zurück. Der folgende Screenshot zeigt eine Beispielausgabe für die Ausführung des **RDPSettings**-Befehls.
+Nachdem Sie den Befehl ausgewählt haben, wählen Sie **Ausführen** aus, um das Skript auszuführen. Wenn das Skript abgeschlossen ist, gibt es die Ausgabe und eventuelle Fehler im Ausgabefenster zurück. Der folgende Screenshot zeigt eine Beispielausgabe für die Ausführung des **RDPSettings**-Befehls.
 
 ![Skriptausgabe von „Befehl ausführen“](./media/run-command/run-command-script-output.png)
 
@@ -102,12 +102,12 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Einschränken des Zugriffs auf „Befehl ausführen“
 
-Das Auflisten der ausführbaren Befehle oder das Anzeigen der Details zu einem Befehl erfordert die Berechtigung `Microsoft.Compute/locations/runCommands/read` auf Abonnementebene, über die die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) und höhere Rollen verfügen.
+Das Auflisten der ausführbaren Befehle oder das Anzeigen der Details zu einem Befehl erfordert die Berechtigung `Microsoft.Compute/locations/runCommands/read` auf Abonnementebene. Die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) und höhere Rollen verfügen über diese Berechtigung.
 
-Für das Ausführen eines Befehls ist die Berechtigung `Microsoft.Compute/virtualMachines/runCommand/action` auf Abonnementebene erforderlich, über die die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und höhere Rollen verfügen.
+Zum Ausführen eines Befehls ist die `Microsoft.Compute/virtualMachines/runCommand/action`-Berechtigung auf der Abonnementebene erforderlich. Die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und höhere Rollen verfügen über diese Berechtigung.
 
 Um „Befehl ausführen“ zu verwenden, können Sie eine der [integrierten](../../role-based-access-control/built-in-roles.md) Rollen verwenden oder eine [benutzerdefinierte](../../role-based-access-control/custom-roles.md) Rolle erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu anderen Möglichkeiten für die Remoteausführung von Skripts und Befehlen finden Sie unter [Ausführen von Skripts in Ihrer Windows-VM](run-scripts-in-vm.md).
+Informationen zu anderen Möglichkeiten für die Remoteausführung von Skripts und Befehlen in Ihrer VM finden Sie unter [Ausführen von Skripts in Ihrer Windows-VM](run-scripts-in-vm.md).

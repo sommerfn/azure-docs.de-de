@@ -1,88 +1,89 @@
 ---
-title: SaaS Fulfillment APIs – FAQ | Azure Marketplace
-description: Auffindbarkeit und Kauferlebnis von Kunden eines SaaS-Angebots im Azure Marketplace.
+title: SaaS-Fulfillment-APIs – FAQ | Azure Marketplace
+description: Auffindbarkeit und Kauferlebnis für Kunden eines SaaS-Angebots im Azure Marketplace.
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: b324d3b9dca710dca6f5f99ad50ce4d973a42d2a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869333"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822870"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>SaaS-Fulfillment-APIs – Häufig gestellte Fragen
 
-Die Integrationsanforderungen an den Azure Marketplace, damit Azure-Kunden das SaaS-Angebot abonnieren können, sind aufgeführt.
+Nachfolgend werden die Integrationsanforderungen für den Azure Marketplace aufgeführt, um Azure-Kunden das Abonnieren eines SaaS-Angebots zu ermöglichen.
 
 ## <a name="discovery-experience"></a>Auffindbarkeit
 
-Sobald das Angebot veröffentlicht ist, können Azure-Anwender das SaaS-Angebot im Azure Marketplace entdecken. Ihre Kunden können Angebote nach Produkttyp (SaaS) filtern und die SaaS-Services entdecken, die sie interessieren.
+Nach der Veröffentlichung des SaaS-Angebots steht dieses für Azure-Benutzer im Azure Marketplace zur Verfügung. Ihre Kunden können Angebote nach Produkttyp (SaaS) filtern und nach für sie relevanten SaaS-Angeboten suchen.
 
-## <a name="purchase-experience"></a>Kauferfahrung
+## <a name="purchase-experience"></a>Kauferlebnis
 
-Sobald sich ein Benutzer für einen bestimmten SaaS-Service interessiert, kann er ihn über den Azure Marketplace abonnieren.
+Wenn sich ein Benutzer für ein bestimmtes SaaS-Angebot interessiert, kann er es über den Azure Marketplace abonnieren.
 
-### <a name="what-does-it-mean-for-an-azure-user-to-subscribe-to-a-saas-offer-in-azure-marketplace"></a>Was bedeutet es für einen Azure-Nutzer, ein SaaS-Angebot auf dem Azure Marketplace zu abonnieren?
+### <a name="what-does-it-mean-for-an-azure-user-to-subscribe-to-a-saas-offer-in-azure-marketplace"></a>Was bedeutet es für einen Azure-Benutzer, ein SaaS-Angebot im Azure Marketplace zu abonnieren?
 
-Das bedeutet, dass ein Benutzer die mit dem SaaS-Service verbundenen Nutzungsbedingungen und Datenschutzerklärungen einsehen und sich bereit erklären kann, sie gemäß den von Ihnen, dem Herausgeber des SaaS-Angebots, festgelegten Abrechnungsbedingungen über Microsoft zu erwerben. Benutzer können ihr bestehendes Zahlungsprofil in Azure verwenden, um den SaaS-Service zu bezahlen.
+Es bedeutet, dass der Benutzer die für das SaaS-Angebot geltenden Nutzungsbedingungen und Datenschutzbestimmungen einsehen und den von Ihnen als Herausgeber des SaaS-Angebots festgelegten Abrechnungskonditionen zustimmen kann, um es über Microsoft zu erwerben. Benutzer können ihr vorhandenes Zahlungsprofil in Azure verwenden, um für die Nutzung des SaaS-Angebots zu zahlen.
 
-Dies ist aus vielen Gründen von Vorteil. Kunden können nun mit der Microsoft Cloud Platform als vertrauenswürdige Quelle an einem Ort alle Dienste entdecken und abonnieren, ohne jede ISV-Software untersuchen zu müssen, die sie verwenden wollen. Außerdem können Kunden ihr bestehendes Zahlungsprofil nutzen, ohne jede ISV-Software explizit selbst bezahlen zu müssen.
+Dies ist aus vielen Gründen von Vorteil. Kunden können nun mit der Microsoft Cloud Platform als vertrauenswürdige Quelle zentral Dienste entdecken und abonnieren, ohne jede ISV-Software untersuchen zu müssen, die sie verwenden möchten. Außerdem können Kunden ihr vorhandenes Zahlungsprofil nutzen und müssen auf diese Weise nicht jede ISV-Software separat zahlen.
 
-### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>Wird dem Benutzer bei der Anmeldung für das Angebot automatisch eine Gebühr berechnet?
+### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>Werden dem Benutzer bei der Anmeldung für das Angebot automatisch Gebühren berechnet?
 
-Mit dem Abonnement des SaaS-Angebots hat sich der Nutzer bereit erklärt, die Nutzung des SaaS-Service über die Microsoft-Plattform zu bezahlen. Die Gebühren beginnen jedoch erst mit dem Einsatz des Angebots. Der Benutzer muss Ihr SaaS-Angebot aufrufen und die Account-Erstellung bestätigen, um mit der Nutzung des Angebots zu beginnen. Sie benachrichtigen Microsoft dann, dass die Abrechnung für dieses Kunden-SaaS-Abonnement beginnt.
+Mit dem Abonnement des SaaS-Angebots hat der Benutzer zugestimmt, die Nutzung des SaaS-Angebots über die Microsoft-Plattform zu bezahlen. Die Gebührenabrechnung beginnt jedoch erst mit der Nutzung des Angebots. Der Benutzer muss Ihr SaaS-Angebot aufrufen und die Kontoerstellung bestätigen, um mit der Nutzung des Angebots zu beginnen. Sie benachrichtigen in diesem Fall Microsoft, dass die Abrechnung für dieses SaaS-Kundenabonnement beginnt.
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Wie werden Sie benachrichtigt, wenn ein Benutzer Ihr SaaS-Angebot abonniert?
 
-Nachdem er ein Angebot abonniert hat, kann der Azure-Benutzer alle seine Angebote in Azure entdecken und verwalten. Standardmäßig lautet der Status eines neu abonnierten SaaS-Angebots **„Bereitstellung, Erfüllung ausstehend“** . In diesem Zustand wird der Azure-Benutzer mit der Aktion **„Konto konfigurieren“** aufgefordert, um im Azure-Portal zu seiner SaaS-Abonnementverwaltung zu gelangen.
+Nachdem ein Benutzer ein Angebot abonniert hat, kann er die erworbenen Angebote in Azure ausfindig machen und verwalten. Standardmäßig lautet der Status eines neu abonnierten SaaS-Angebots **Bereitstellung, Erfüllung ausstehend**. In diesem Zustand wird dem Azure-Benutzer die Aktion **Konto konfigurieren** angeboten, um zur SaaS-Abonnementverwaltung im Azure-Portal zu wechseln.
 
-Wenn der Benutzer auf **„Konto konfigurieren“** klickt, wird er auf die SaaS-Service-Website weitergeleitet. Die URL, die er dabei aufruft, wird vom Herausgeber zum Zeitpunkt der Veröffentlichung des Angebots festgelegt. Diese Seite wird als Landing Page des Herausgebers bezeichnet. Azure-Benutzer sollten sich auf der SaaS-Landing Page anmelden können, basierend auf ihren bestehenden AAD-Anmeldeinformationen in Azure.
+Wenn der Benutzer auf **Konto konfigurieren** klickt, wird er an die SaaS-Angebotswebsite weitergeleitet. Die hierbei verwendete Ziel-URL wird zum Zeitpunkt der Angebotsveröffentlichung durch den Herausgeber festgelegt. Diese Seite wird als Landing Page des Herausgebers bezeichnet. Azure-Benutzer sollten sich basierend auf ihren AAD-Anmeldeinformationen in Azure auf der SaaS-Landing Page anmelden können.
 
-Wenn der Azure-Benutzer auf die Landing Page umgeleitet wird, wird der Such-URL ein Token hinzugefügt. Dieser Token ist temporär und gilt für eine Zeitdauer von 24 Stunden. Sie können dann die Existenz dieses Token erkennen und die Microsoft-API aufrufen, um mehr Kontext mit dem Token zu erhalten.
+Wenn der Azure-Benutzer auf die Landing Page umgeleitet wird, wird der Abfrage-URL ein Token hinzugefügt. Es handelt sich hierbei um ein kurzlebiges Token mit einer Gültigkeitsdauer von 24 Stunden. Sie können anschließend das Vorhandensein dieses Tokens ermitteln und die Microsoft-API aufrufen, um weitere mit dem Token verknüpfte Kontextinformationen abzurufen.
 
-![Ablauf des Kundenabonnements](media/saas-metering-service-integration-flow-a.png)
+![Ablauf für Kundenabonnement](media/saas-metering-service-integration-flow-a.png)
 
-Weitere Informationen zur Abwicklung von Transaktionsszenarien im Lebenszyklus eines SaaS-Angebots finden Sie im Dokument [„SaaS-Fulfillment-API“](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Weitere Informationen zur Abwicklung von Transaktionen im Lebenszyklus eines SaaS-Angebots finden Sie im Dokument [SaaS-Fulfillment-API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Woher wissen Sie, welches SaaS-Angebot der Benutzer in Azure abonniert?
 
-Die Antwort auf die `Resolve` API enthält Informationen über das Angebot und den Plan, die zum SaaS-Abonnement gehören.
+Die Antwort der `Resolve`-API enthält die Angebots- und Planinformationen, die dem SaaS-Abonnement zugeordnet sind.
 
-### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Wie kann der Azure-Benutzer den mit diesem Azure-Abonnement verbundenen Plan ändern?
+### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Wie kann der Azure-Benutzer den Plan ändern, der diesem Azure-Abonnement zugeordnet ist?
 
-* Der Azure-Benutzer kann den mit dem SaaS-Abonnement verbundenen Plan direkt in der SaaS-Darstellung selber oder über die Microsoft-Plattform ändern.
+* Der Azure-Benutzer kann den mit dem SaaS-Abonnement verbundenen Plan direkt in der SaaS-Benutzeroberfläche selbst oder über die Microsoft-Plattform ändern.
 
-* Die Konvertierung kann jederzeit im Abrechnungszeitraum durchgeführt werden. Sie müssen jede Konvertierung anerkennen, die mit der Bestätigung wirksam wird.
+* Konvertierungen können zu einem beliebigen Zeitpunkt im Abrechnungszeitraum durchgeführt werden. Sie müssen jede Konvertierung bestätigen, damit diese wirksam wird.
 
-* Im Voraus bezahlte Plan (**monatlich** oder **jährlich**) wird anteilig berechnet. Alle bis zum Zeitpunkt der Konvertierung emittierten Überschüsse werden bei der nächsten Rechnung in Rechnung gestellt. Auf der Grundlage des neuen Plans werden neue Überschüsse emittiert.
+* Ein Plan mit Vorauszahlung (**monatlich** oder **jährlich**) wird anteilig berechnet. Alle bis zum Zeitpunkt der Konvertierung ermittelten Überschreitungen werden in der nächsten Rechnung abgerechnet. Neue Überschreitungen werden auf Grundlage des neuen Plans in Rechnung gestellt.
 
 >[!Note]
->Sie können Herabstufungen blockieren, wenn Sie bestimmte Konvertierungspfade nicht unterstützen möchten.
+>Sie können Downgrades blockieren, wenn Sie bestimmte Konvertierungspfade nicht unterstützen möchten.
 
-Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde seinen Plan im SaaS-Bereich ändert:
+Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Kunde den Plan in der SaaS-Benutzeroberfläche ändert:
 
-![Änderungsablauf Kundenplan](media/saas-metering-service-integration-flow-b.png)
+![Ablauf einer Planänderung durch den Kunden](media/saas-metering-service-integration-flow-b.png)
 
-Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde seinen Plan über Microsoft ändert
+Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Kunde seinen Plan über die Storefront von Microsoft ändert:
 
-![Änderungsablauf durch den Kunden über die Storefront](media/saas-metering-service-integration-flow-c.png)
+![Ablauf einer Planänderung über die Storefront](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Wie kann der Azure-Benutzer den mit dem Azure-Abonnement verbundenen Plan kündigen?
 
-Ein Azure-Benutzer kann sich von einem gekauften SaaS-Angebot entweder direkt in der SaaS-Darstellung oder über die Microsoft-Plattform abmelden. Sobald sich der Benutzer abmeldet, wird ihm der nächste Abrechnungszeitraum nicht mehr in Rechnung gestellt.
+Ein Azure-Benutzer kann das erworbene SaaS-Angebotsabonnement entweder direkt in der SaaS-Benutzeroberfläche oder über die Microsoft-Plattform kündigen. Sobald der Benutzer das Abonnement kündigt, fallen ab dem nächsten Abrechnungszyklus keine Gebühren mehr an.
 
-Die folgende Sequenz erfasst den Ablauf, wenn ein Azure-Kunde das SaaS-Angebot in der SaaS-Darstellung storniert:
+Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde das SaaS-Angebot in der SaaS-Benutzeroberfläche kündigt:
 
-![Kunde kündigt Abonnement im Rahmen der SaaS-Darstellung](media/saas-metering-service-integration-flow-d.png)
+![Kündigung des Abonnements über die SaaS-Benutzeroberfläche](media/saas-metering-service-integration-flow-d.png)
 
-Die folgende Sequenz zeigt den Ablauf, wenn sich der Azure-Benutzer das Abonnement in der Microsoft-Storefront storniert:
+Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Benutzer das Abonnement über die Storefront von Microsoft kündigt:
 
-![Der Kunde kündigt sein Abonnement in der Microsoft-Storefront](media/saas-metering-service-integration-flow-e.png)
+![Kündigung des Abonnements über die Storefront von Microsoft](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Marketplace metering service APIs](./marketplace-metering-service-apis.md) (Marketplace-Messungsdienst-APIs, in englischer Sprache).
+- Weitere Informationen finden Sie unter [Marketplace-Messungsdienst-APIs](./marketplace-metering-service-apis.md).

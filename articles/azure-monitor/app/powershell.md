@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621932"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928518"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
@@ -595,7 +595,7 @@ Die Ressourcen sollten in Azure in strikter Reihenfolge eingerichtet werden. Um 
 ## <a name="next-steps"></a>Nächste Schritte
 Andere Artikel zu Automation:
 
-* [Erstellen einer Application Insights-Ressource](powershell-script-create-resource.md) : Schnellverfahren ohne Verwendung einer Vorlage.
+* [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) : Schnellverfahren ohne Verwendung einer Vorlage.
 * [Einrichten von Warnungen](powershell-alerts.md)
 * [Erstellen von Webtests](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Senden von Azure-Diagnosedaten an Application Insights](powershell-azure-diagnostics.md)

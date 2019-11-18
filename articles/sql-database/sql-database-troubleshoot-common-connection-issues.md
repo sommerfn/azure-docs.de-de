@@ -11,17 +11,17 @@ author: dalechen
 manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
-ms.date: 01/25/2019
-ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: ffbe52bfcef3f32a12e97d37c39a2199cefe72ce
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822475"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082463"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
 
-Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-persistent-errors) bereitgestellt. 
+Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-persistent-errors) bereitgestellt.
 
 Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -56,8 +56,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 
 > [!NOTE]
 > Diese ist eine in der Regel vorübergehende (kurzlebige) Fehlermeldung.
-> 
-> 
 
 Dieser Fehler tritt auf, wenn die Datenbank verschoben (oder neu konfiguriert) wird und Ihre Anwendung die Verbindung zur Datenbank verliert. Ereignisse bei der Neukonfiguration von Datenbanken werden durch geplante Ereignisse (z.B. Softwareupgrades) oder ungeplante Ereignisse (z.B. einen Prozessabsturz oder einen Lastenausgleich) hervorgerufen. Die meisten bei einer Neukonfiguration auftretenden Ereignisse sind normalerweise kurzlebig und sollten innerhalb von höchstens 60 Sekunden beendet werden. Trotzdem kann das Beenden dieser Ereignisse beizeiten länger dauern, so z.B., wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
 
@@ -69,6 +67,7 @@ Dieser Fehler tritt auf, wenn die Datenbank verschoben (oder neu konfiguriert) w
 4. Wenn Verbindungsprobleme weiterhin bestehen, die Fehlerdauer 60 Sekunden überschreitet oder der Fehler an einem Tag mehrfach auftritt, schicken Sie eine Azure-Supportanfrage, indem Sie auf der **Azure-Support** -Website [Support erhalten](https://azure.microsoft.com/support/options) auswählen.
 
 ## <a name="troubleshoot-persistent-errors"></a>Problembehandlung bei dauerhaften Fehlern
+
 Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
 * Firewall-Konfiguration Die Firewall von Azure SQL-Datenbank oder eine clientseitige Firewall blockiert Verbindungen mit Azure SQL-Datenbank.
@@ -76,17 +75,14 @@ Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herste
 * Benutzerfehler: z.B. falsch geschriebene Verbindungsparameter wie der Servername in der Verbindungszeichenfolge.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
-1. Richten Sie [Firewallregeln](sql-database-configure-firewall-settings.md) so ein, dass die IP-Adresse des Clients zugelassen wird. Richten Sie zu Testzwecken vorübergehend eine Firewallregel mit 0.0.0.0 als Beginn des IP-Adressbereichs und 255.255.255.255 als Ende des IP-Adressbereichs fest. Dadurch wird der Server für alle IP-Adressen geöffnet. Wird Ihr Konnektivitätsproblem dadurch behoben, entfernen Sie die Regel, und erstellen Sie eine Firewallregel für eine entsprechend eingeschränkte IP-Adresse bzw. einen entsprechend eingeschränkten IP-Adressbereich. 
+
+1. Richten Sie [Firewallregeln](sql-database-configure-firewall-settings.md) so ein, dass die IP-Adresse des Clients zugelassen wird. Richten Sie zu Testzwecken vorübergehend eine Firewallregel mit 0.0.0.0 als Beginn des IP-Adressbereichs und 255.255.255.255 als Ende des IP-Adressbereichs fest. Dadurch wird der Server für alle IP-Adressen geöffnet. Wird Ihr Konnektivitätsproblem dadurch behoben, entfernen Sie die Regel, und erstellen Sie eine Firewallregel für eine entsprechend eingeschränkte IP-Adresse bzw. einen entsprechend eingeschränkten IP-Adressbereich.
 2. Stellen Sie für alle Firewalls zwischen Client und Internet sicher, dass Port 1433 für ausgehende Verbindungen geöffnet ist. Zusätzliche Anhaltspunkte zu weiteren Ports, die für die Azure Active Directory-Authentifizierung geöffnet werden müssen, finden Sie unter [Konfigurieren der Windows-Firewall, um SQL Server-Zugriff zuzulassen](https://msdn.microsoft.com/library/cc646023.aspx) und [Erforderliche Ports und Protokolle für die Hybrid-Identität](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports).
 3. Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen. Siehe im Thema [Verbindungsprobleme](sql-database-connectivity-issues.md#connections-to-sql-database)den Abschnitt „Verbindungszeichenfolge“.
 4. Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie glauben, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) Schritte zum Wiederherstellen in einer neuen Region.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Durchsuchen der Dokumentation zu Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [Anzeigen der neuesten Updates zum Azure SQL-Datenbank-Dienst](https://azure.microsoft.com/updates/?service=sql-database)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 * [Allgemeiner Leitfaden zur Behandlung vorübergehender Fehler](../best-practices-retry-general.md)
 * [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
-

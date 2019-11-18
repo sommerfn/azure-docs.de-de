@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 691907d1c221283f99ba59f0937cfbaf673f427a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324392"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584137"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -36,6 +36,9 @@ In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese 
 4. Wählen Sie **Speichern** aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 
 
     ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
+
+    > [!NOTE]
+    > Nach der Registrierung für das Lab werden die Namen von Benutzern in der Liste angezeigt. Der in der Liste angezeigte Name wird aus Vor- und Nachnamen des Benutzers im Azure Active Directory zusammengesetzt. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Hinzufügen von Benutzern durch Hochladen einer CSV-Datei
 Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen.
@@ -60,15 +63,16 @@ Um den Registrierungslink an Kursteilnehmer zu senden, verwenden Sie eine der fo
 Wenn die **Zugriffsbeschränkung** für das Lab aktiviert ist, können sich nur Benutzer in der Liste der Benutzer über den Registrierungslink beim Lab registrieren. Diese Option ist standardmäßig aktiviert. 
 
 ### <a name="invite-all-users"></a>Einladen aller Benutzer
+1. Wechseln Sie zur Ansicht **Benutzer**, falls Sie sich nicht bereits auf der Seite befinden, und wählen Sie in der Symbolleiste die Option **Invite all** (Alle einladen) aus. 
 
-1. Wechseln Sie zur Seite **Benutzer** des Labs. 
-2. Wählen Sie auf der Symbolleiste **Invite all** (Alle einladen) aus. 
-3. Geben Sie eine **Nachricht** an die Benutzer ein. Dieser Schritt ist optional.
-4. Wählen Sie dann **Senden** aus.
+    ![Auswählen von Kursteilnehmern](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    ![Einladen aller Benutzer](../media/how-to-configure-student-usage/invite-all.png)
+1. Geben Sie auf der Seite **Send invitation by email** (Einladung per E-Mail senden) eine optionale Nachricht ein, und wählen Sie anschließend die Option **Senden** aus. Die E-Mail enthält automatisch den Registrierungslink. Sie erhalten diesen Registrierungslink, indem Sie in der Symbolleiste die Option **...** (Auslassungszeichen) und dann **Registrierungslink** auswählen. 
 
-    Der Status dieses Vorgangs wird in der Liste **Benutzer** in der Spalte **Einladung** angezeigt. Die Einladungs-E-Mail enthält den Registrierungslink, über den sich Benutzer beim Lab registrieren können. 
+    ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Der Status der **Einladung** wird in der Liste **Benutzer** angezeigt. Der Status sollte sich in **Wird gesendet** und dann in **Gesendet am \<Datum>** ändern. 
+
+    Weitere Informationen zum Hinzufügen von Kursteilnehmern zu einer Klasse sowie zum Verwalten der Verwendung des Labs finden Sie unter [Hinzufügen und Verwalten von Labbenutzern](how-to-configure-student-usage.md).
 
 ### <a name="invite-selected-users"></a>Einladen ausgewählter Benutzer
 
@@ -107,11 +111,11 @@ Wählen Sie **Benutzer** im linken Menü, um die Liste der Benutzer anzuzeigen, 
 Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen: 
 
 1. Wählen Sie im linken Menü **Benutzer** aus, wenn die Seite noch nicht aktiv ist. 
-2. Wählen Sie auf der Symbolleiste die Option **Kontingent pro Benutzer: &lt;Anzahl&gt; Stunden** aus. 
+2. Wählen Sie auf der Symbolleiste die Option **Kontingent pro Benutzer:\< Anzahl > Stunden** aus. 
 3. Geben Sie auf der Seite **Kontingent pro Benutzer** die Anzahl der Stunden an, die Sie jedem Benutzer (Kursteilnehmer) außerhalb der planmäßigen Kursstunden zuteilen möchten, und wählen Sie dann **Speichern** aus.
 
     ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;** . 
+5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: \<Anzahl der Stunden>** . 
 
     ![Kontingent pro Benutzer: nach der Änderung](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
@@ -119,7 +123,9 @@ Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen:
     > Die geplante Ausführungszeit von virtuellen Computern wird nicht mit dem [Kontingent eines Benutzers](how-to-create-schedules.md) verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt. 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>Festlegen eines zusätzlichen Kontingents für einen bestimmten Benutzer
-Sie können für einen Benutzer ein separates Kontingent festlegen. Gehen Sie dazu folgendermaßen vor:
+Sie können für einen Benutzer ein zusätzliches Kontingent angeben. Dieses Kontingent gilt zusätzlich zu dem im vorherigen Abschnitt für alle Benutzer festgelegten gemeinsamen Kontingent. Wenn Sie beispielsweise (als Dozent) das Kontingent für alle Benutzer auf 10 Stunden und ein zusätzliches Kontingent von 5 Stunden für einen bestimmten Benutzer festlegen, erhält dieser Benutzer ein Kontingent von 15 (10 + 5) Stunden. Wenn Sie das gemeinsame Kontingent später auf z. B. 15 ändern, dann erhält der Benutzer ein Kontingent von 20 (15 + 5) Stunden. Beachten Sie, dass dieses Gesamtkontingent außerhalb der planmäßigen Kursstunden liegt. Die Zeit, die der Kursteilnehmer während der planmäßigen Kursstunden an einer Lab-VM verbringt, wird nicht auf dieses Kontingent angerechnet. 
+
+Gehen Sie dazu folgendermaßen vor:
 
 1. Wählen Sie auf der Seite **Benutzer** in der Liste der Benutzer einen Benutzer (Kursteilnehmer) aus.
 2. Wählen Sie dann auf der Symbolleiste **Adjust quota** (Kontingent anpassen) aus. 
@@ -132,6 +138,38 @@ Sie können für einen Benutzer ein separates Kontingent festlegen. Gehen Sie da
 
     ![Neue Nutzung für den Benutzer](../media/how-to-configure-student-usage/new-usage-hours.png)
 
+## <a name="student-accounts"></a>Konten für Kursteilnehmer
+Zum Hinzufügen von Kursteilnehmern zu einem Classroom-Lab verwenden Sie deren E-Mail-Konten. Die folgenden Arten von E-Mail-Konten können verwendet werden:
+
+- Ein E-Mail-Konto für Kursteilnehmer, das vom Office 365-Azure Active Directory (AAD) Ihrer Universität bereitgestellt wird 
+- Ein Microsoft-E-Mail-Konto, z. B. `@outlook.com`, `@hotmail.com`, `@msn.com` oder `@live.com`
+- Ein Microsoft-fremdes E-Mail-Konto, z. B. ein von Yahoo oder Google bereitgestelltes. Diese Kontotypen müssen jedoch mit einem Microsoft-Konto verknüpft werden.
+- Ein GitHub-Konto. Dieses Konto muss mit einem Microsoft-Konto verknüpft werden.
+
+### <a name="using-a-non-microsoft-email-account"></a>Verwenden eines Microsoft-fremden E-Mail-Kontos
+Kursteilnehmer können Microsoft-fremde E-Mail-Konten verwenden, um sich für ein Classroom-Lab zu registrieren und sich bei diesem anzumelden.  Die Registrierung erfordert jedoch, dass die Kursteilnehmer zunächst ein Microsoft-Konto erstellen, das mit ihrer Microsoft-fremden E-Mail-Adresse verknüpft ist.
+
+Viele Kursteilnehmer verfügen möglicherweise bereits über ein Microsoft-Konto, das mit ihren Microsoft-fremden E-Mail-Adressen verknüpft ist. Beispielsweise verfügen Kursteilnehmer bereits über ein Microsoft-Konto, wenn sie ihre E-Mail-Adresse mit anderen Microsoft-Produkten oder -Diensten wie Office, Skype, OneDrive oder Windows verwendet haben.  
+
+Wenn ein Kursteilnehmer auf die Registrierungs-URL klickt, um sich für einen Classroom zu registrieren, wird er nach seiner E-Mail-Adresse und seinem Kennwort gefragt. Wenn der Kursteilnehmer versucht, sich mit einem Microsoft-fremden Konto anzumelden, das nicht mit einem Microsoft-Konto verknüpft ist, erhält er die folgende Fehlermeldung: 
+
+![Fehlermeldung](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Um sich für ein Microsoft-Konto anzumelden, sollten Kursteilnehmer [http://signup.live.com](http://signup.live.com) besuchen.  
+
+> [!IMPORTANT]
+> Wenn sich Kursteilnehmer bei einem Classroom-Lab anmelden, können sie kein Microsoft-Konto erstellen. Daher empfehlen wir Ihnen, diesen Anmelde-Link in die Registrierungs-E-Mail für das Classroom-Lab einzufügen, die Sie an Kursteilnehmer senden, die Microsoft-fremde Konten verwenden.
+
+### <a name="using-a-github-account"></a>Verwenden eines GitHub-Kontos
+Kursteilnehmer können auch ein vorhandenes GitHub-Konto verwenden, um sich für ein Classroom-Lab zu registrieren und bei diesem anzumelden. Wenn der Kursteilnehmer bereits über ein Microsoft-Konto verfügt, das mit seinem GitHub-Konto verknüpft ist, kann er sich anmelden und sein Kennwort angeben, wie im vorherigen Abschnitt gezeigt. Wenn er sein GitHub-Konto noch nicht mit einem Microsoft-Konto verknüpft hat, sollte er **Anmeldeoptionen** auswählen:
+
+![Link „Anmeldeoptionen“](../media/how-to-configure-student-usage/signin-options.png)
+
+Auf der Seite **Anmeldeoptionen** wählt er die Option **Mit GitHub anmelden** aus.
+
+![Link „Mit GitHub anmelden“](../media/how-to-configure-student-usage/signin-github.png)
+
+Schließlich wird er aufgefordert, ein Microsoft-Konto zu erstellen, das mit seinem GitHub-Konto verknüpft ist. Dies geschieht automatisch, wenn der Kursteilnehmer **Weiter** auswählt.  Anschließend wird der Kursteilnehmer sofort angemeldet und mit dem Classroom-Lab verbunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen finden Sie in den folgenden Artikeln:

@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686670"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132006"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Dieser Code ruft die [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) und [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-)-Funktionen von ContainerURL auf, ohne eine [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter)-Instanz zu verwenden. Um diesen Schnellstart zu vereinfachen, wird in diesem Code davon ausgegangen, dass Ihr Speicherkonto erstellt wurde und aktiviert ist. Verwenden Sie im Produktionscode eine Aborter-Instanz, um die Timeoutfunktionalität hinzuzufügen.
+Dieser Code ruft die [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) und [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-)-Funktionen von ContainerURL auf, ohne eine [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter)-Instanz zu verwenden. Um diesen Schnellstart zu vereinfachen, wird in diesem Code davon ausgegangen, dass Ihr Speicherkonto erstellt wurde und aktiviert ist. Verwenden Sie im Produktionscode eine Aborter-Instanz, um die Timeoutfunktionalität hinzuzufügen.
 
 ### <a name="list-blobs"></a>Auflisten von Blobs
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Dieser Code ruft die [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-)-Funktion in einer Schleife auf, um sicherzustellen, dass alle Segmente abgerufen werden. Für jedes Segment durchläuft diese Funktion die Liste der enthaltenen Blobelemente und aktualisiert die Liste **Files** (Dateien).
+Dieser Code ruft die [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-)-Funktion in einer Schleife auf, um sicherzustellen, dass alle Segmente abgerufen werden. Für jedes Segment durchläuft diese Funktion die Liste der enthaltenen Blobelemente und aktualisiert die Liste **Files** (Dateien).
 
 ### <a name="upload-blobs"></a>Hochladen von Blobs
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Dieser Code verbindet die Schaltfläche **Select and upload files** (Dateien auswählen und hochladen) mit dem ausgeblendeten `file-input`-Element. Auf diese Weise löst das Schaltflächen-`click`-Ereignis das Dateieingabe-`click`-Ereignis aus und zeigt die Dateiauswahl an. Nachdem Sie Dateien ausgewählt und das Dialogfeld geschlossen haben, tritt das `input`-Ereignis auf, und die `uploadFiles`-Funktion wird aufgerufen. Diese Funktion ruft die nur im Browser verfügbare Funktion [UploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) für jede Datei auf, die Sie ausgewählt haben. Jeder Aufruf gibt eine Zusicherung (Promise) zurück, die einer Liste hinzugefügt wird. So ist für alle gleichzeitig ein await-Vorgang möglich, sodass die Dateien parallel hochgeladen werden.
+Dieser Code verbindet die Schaltfläche **Select and upload files** (Dateien auswählen und hochladen) mit dem ausgeblendeten `file-input`-Element. Auf diese Weise löst das Schaltflächen-`click`-Ereignis das Dateieingabe-`click`-Ereignis aus und zeigt die Dateiauswahl an. Nachdem Sie Dateien ausgewählt und das Dialogfeld geschlossen haben, tritt das `input`-Ereignis auf, und die `uploadFiles`-Funktion wird aufgerufen. Diese Funktion ruft die nur im Browser verfügbare Funktion [UploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) für jede Datei auf, die Sie ausgewählt haben. Jeder Aufruf gibt eine Zusicherung (Promise) zurück, die einer Liste hinzugefügt wird. So ist für alle gleichzeitig ein await-Vorgang möglich, sodass die Dateien parallel hochgeladen werden.
 
 ### <a name="delete-blobs"></a>Löschen von Blobs
 

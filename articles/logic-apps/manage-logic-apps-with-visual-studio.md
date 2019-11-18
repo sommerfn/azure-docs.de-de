@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
-ms.date: 05/07/2019
-ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 10/29/2019
+ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212603"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796553"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -44,7 +44,7 @@ Sie können Logik-Apps zwar im [Azure-Portal](https://portal.azure.com) erstelle
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * Azure Logic Apps-Tools für die gewünschte Visual Studio-Version:
+  * Die neuesten Azure Logic Apps-Tools für die Visual Studio-Erweiterung der gewünschten Version:
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -112,7 +112,7 @@ Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunter
 
 1. Wählen Sie auf der Symbolleiste des Designers **Herunterladen** aus.
 
-   ![Auswählen von „Herunterladen“](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
+   ![Herunterladen der Logik-App aus dem Azure-Portal](./media/manage-logic-apps-with-visual-studio/download-logic-app-from-portal.png)
 
 1. Wenn Sie aufgefordert werden, einen Speicherort einzugeben, navigieren Sie zu diesem Speicherort, und speichern Sie die Resource Manager-Vorlage für die Definition der Logik-App im JSON-Dateiformat (.json).
 
@@ -131,19 +131,69 @@ Zum Erstellen von Logik-Apps für B2B-Unternehmensintegrationsszenarien (Busines
    ![Öffnen der JSON-Datei der Logik-App mit dem Logik-App-Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
    > [!TIP]
-   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
+   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio und die Azure Logic Apps-Tools-Erweiterung verfügen.
 
-1. Um sicherzustellen, dass der Logik-App-Designer den Fokus besitzt, wählen Sie die Registerkarte oder Oberfläche des Designers aus, damit der Bereich „Eigenschaften“ die Eigenschaft **Integrationskonto** für Ihre Logik-App anzeigt.
+1. Stellen Sie sicher, dass der Logik-App-Designer den Fokus besitzt, indem Sie die Registerkarte oder Oberfläche des Designers auswählen, sodass das Eigenschaftenfenster die Eigenschaft **Integrationskonto** für Ihre Logik-App anzeigt.
 
-   ![Der Bereich „Eigenschaften“ zeigt die Eigenschaft „Integrationskonto“ an](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+   ![Eigenschaftenfenster – Eigenschaft „Integrationskonto“](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-integration-account.png)
 
-1. Öffnen Sie die Liste **Integrationskonto**, und wählen Sie das Integrationskonto aus, das Sie mit Ihrer Logik-App verknüpfen möchten. Beispiel:
+   > [!TIP]
+   > Falls das Eigenschaftenfenster nicht bereits geöffnet ist, klicken Sie im Menü **Ansicht** auf **Eigenschaftenfenster**. (Tastatur: F4)
+
+1. Öffnen Sie die Eigenschaftenliste **Integrationskonto**, und wählen Sie das Integrationskonto aus, das Sie mit Ihrer Logik-App verknüpfen möchten. Beispiel:
 
    ![Öffnen der Eigenschaftenliste „Integrationskonto“](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
 
 1. Wenn Sie fertig sind, speichern Sie Ihre Visual Studio-Projektmappe.
 
 Wenn Sie die Eigenschaft **Integrationskonto** in Visual Studio festlegen und ihre Logik-App als Azure Resource Manager-Vorlage speichern, enthält diese Vorlage auch eine Parameterdeklaration für das ausgewählte Integrationskonto. Weitere Informationen zu Vorlagenparametern und Logik-Apps finden Sie unter [Übersicht: Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters).
+
+<a name="change-location"></a>
+
+## <a name="change-deployment-location"></a>Ändern des Bereitstellungsstandorts
+
+Wenn Ihre Logik-App in Visual Studio als JSON-Datei in einem [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vorliegt, das Sie zur Automatisierung der Bereitstellung verwenden, wird für diese Logik-App ein Standorttyp und ein bestimmter Standort festgelegt. Dieser Standort ist entweder eine Azure-Region oder eine vorhandene [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment.md).
+
+Um den Standorttyp oder den Standort für Ihre Logik-App zu ändern, müssen Sie die Workflowdefinitionsdatei (JSON) Ihrer Logik-App aus dem Projektmappen-Explorer öffnen, indem Sie den Logik-App-Designer verwenden. Sie können diese Eigenschaften nicht über den Cloud-Explorer ändern.
+
+> [!IMPORTANT]
+> Die Änderung des Standorttyps von **Region** in [**Integrationsdienstumgebung**](connect-virtual-network-vnet-isolated-environment-overview.md) wirkt sich auf das [Preismodell](logic-apps-pricing.md#fixed-pricing) Ihrer Logik-App aus, das für Abrechnung, [Limits](logic-apps-limits-and-config.md#integration-account-limits), [Integrationskontounterstützung](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus) usw. herangezogen wird. Stellen Sie vor der Auswahl eines anderen Standorttyps sicher, dass Sie die Auswirkungen auf Ihre Logik-App verstehen.
+
+1. Öffnen Sie in Visual Studio das Azure Resource Group-Projekt, das Ihre Logik-App enthält.
+
+1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü der Datei `<logic-app-name>.json`, und wählen Sie **Mit Logik-App-Designer öffnen** aus. (Tastatur: STRG+L)
+
+   ![Öffnen der JSON-Datei der Logik-App mit dem Logik-App-Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio und die Azure Logic Apps-Tools-Erweiterung verfügen.
+
+1. Stellen Sie sicher, dass der Logik-App-Designer den Fokus besitzt, indem Sie die Registerkarte oder Oberfläche des Designers auswählen, sodass das Eigenschaftenfenster die Eigenschaften **Standorttyp auswählen** und **Standort** für Ihre Logik-App anzeigt. Der Standorttyp der App ist entweder auf **Region** oder **Integrationsdienstumgebung** festgelegt.
+
+   ![Eigenschaftenfenster – Eigenschaften „Standorttyp auswählen“ und „Standort“](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-location.png)
+
+   > [!TIP]
+   > Falls das Eigenschaftenfenster nicht bereits geöffnet ist, klicken Sie im Menü **Ansicht** auf **Eigenschaftenfenster**. (Tastatur: F4)
+
+1. Um den Standorttyp zu ändern, öffnen Sie die Eigenschaftenliste **Standorttyp auswählen** und wählen den gewünschten Standorttyp aus.
+
+   Wenn der Standorttyp beispielsweise **Integrationsdienstumgebung** lautet, können Sie **Region** auswählen.
+
+   ![Eigenschaft „Standorttyp auswählen“ – Ändern des Standorttyps](./media/manage-logic-apps-with-visual-studio/change-location-type.png)
+
+1. Um den Standorttyp zu ändern, öffnen Sie die Eigenschaftenliste **Standort**. Wählen Sie basierend auf dem Standorttyp den gewünschten Standorttyp aus, z. B.:
+
+   * Auswählen einer anderen Azure-Region:
+
+     ![Öffnen der Eigenschaftenliste „Standort“, Auswählen einer anderen Region](./media/manage-logic-apps-with-visual-studio/change-azure-resource-group-region.png)
+
+   * Auswählen einer anderen Integrationsdienstumgebung:
+
+     ![Öffnen der Eigenschaftenliste „Standort“, Auswählen einer anderen Integrationsdienstumgebung](./media/manage-logic-apps-with-visual-studio/change-integration-service-environment.png)
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Visual Studio-Projektmappe.
+
+Wenn Sie den Standorttyp oder den Standort in Visual Studio ändern und Ihre Logik-App als Azure Resource Manager-Vorlage speichern, enthält diese Vorlage auch Parameterdeklarationen für diesen Standorttyp und Standort. Weitere Informationen zu Vorlagenparametern und Logik-Apps finden Sie unter [Übersicht: Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters).
 
 <a name="refresh"></a>
 
@@ -157,19 +207,19 @@ Wenn Sie Ihre Logik-App im Azure-Portal bearbeiten und die Änderungen beibehalt
 
 * Öffnen Sie im Cloud-Explorer von Visual Studio das Kontextmenü Ihrer Logik-App, und wählen Sie **Aktualisieren** aus.
 
-![Logik-App mit Updates aktualisieren](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
+![Logik-App mit Updates aktualisieren](./media/manage-logic-apps-with-visual-studio/refresh-logic-app-with-updates-from-portal.png)
 
 ## <a name="publish-logic-app-updates"></a>Veröffentlichen von Logik-App-Updates
 
 Wenn Sie bereit sind, Ihre Logik-App-Updates von Visual Studio aus in Azure bereitzustellen, wählen Sie auf der Logik-App-Designer-Symbolleiste **Veröffentlichen** aus.
 
-![Aktualisierte Logik-App veröffentlichen](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
+![Veröffentlichen einer aktualisierte Logik-App im Azure-Portal](./media/manage-logic-apps-with-visual-studio/publish-logic-app-to-azure-portal.png)
 
 ## <a name="manually-run-your-logic-app"></a>Manuelles Ausführen Ihrer Logik-App
 
 Sie können eine von Visual Studio aus in Azure bereitgestellte Logik-App manuell auslösen. Wählen Sie auf der Symbolleiste des Logik-App-Designers **Trigger ausführen** aus.
 
-![Logik-App manuell ausführen](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
+![Manueller Ausführungstrigger für Ihre Logik-App](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
 
 ## <a name="review-run-history"></a>Überprüfen des Ausführungsverlaufs
 
@@ -177,37 +227,37 @@ Um den Status zu überprüfen und Probleme mit Logik-App-Ausführungen zu diagno
 
 1. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Ausführungsverlauf öffnen** aus.
 
-   ![„Ausführungsverlauf öffnen“](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
+   ![Öffnen des Ausführungsverlaufs für Ihre Logik-App](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
 1. Um die Details für eine bestimmte Ausführung anzuzeigen, doppelklicken Sie auf eine Ausführung. Beispiel:
 
-   ![Detaillierter Ausführungsverlauf](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
+   ![Anzeigen von Informationen zu einer bestimmten Ausführung](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
    > Wählen Sie zum Sortieren der Tabelle nach Eigenschaft die Spaltenüberschrift für diese Eigenschaft aus.
 
 1. Erweitern Sie die Schritte, deren Eingaben und Ausgaben Sie überprüfen möchten. Beispiel:
 
-   ![Eingaben und Ausgaben für jeden Schritt anzeigen](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
+   ![Eingaben und Ausgaben für jeden Schritt anzeigen](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>Deaktivieren oder Aktivieren der Logik-App
 
 Ohne Ihre Logik-App zu löschen, können Sie verhindern, dass der Trigger ausgelöst wird, wenn die Auslöserbedingung das nächste Mal erfüllt ist. Das Deaktivieren Ihrer Logik-App verhindert, dass das Logic Apps-Modul zukünftige Workflowinstanzen für Ihre Logik-App erstellt und ausführt. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Deaktivieren** aus.
 
-![Ihre Logik-App deaktivieren](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
+![Deaktivieren Ihrer Logik-App im Cloud-Explorer](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
 > [!NOTE]
 > Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann.
 
 Um Ihre Logik-App erneut zu aktivieren, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie dann **Aktivieren** aus.
 
-![Ihre Logik-App aktivieren](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
+![Deaktivieren der Logik-App im Cloud-Explorer](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
 ## <a name="delete-your-logic-app"></a>Löschen Ihrer Logik-App
 
 Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Löschen** aus.
 
-![Löschen Ihrer Logik-App](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
+![Löschen Ihrer Logik-App aus dem Azure-Portal](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
 > Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen. 
