@@ -11,22 +11,22 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825784"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132296"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Allgemeine Anweisungen zum Arbeiten mit den Wingtip-Tickets-Beispielanwendungen für SaaS
 
-Dieser Artikel enthält allgemeine Anweisungen zum Ausführen der Wingtip-Tickets-SaaS-Beispielanwendungen, die Azure SQL-Datenbank verwenden. 
+Dieser Artikel enthält allgemeine Anweisungen zum Ausführen der Wingtip-Tickets-SaaS-Beispielanwendungen, die Azure SQL-Datenbank verwenden.
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Herunterladen und Entsperren der Wingtip-Tickets-SaaS-Skripts
 
 Ausführbare Inhalte (Skripts, DLLs) können durch Windows blockiert werden, wenn ZIP-Dateien aus einer externen Quelle heruntergeladen und extrahiert werden. Führen Sie bei der Extraktion der Skripts aus einer ZIP-Datei **die nachfolgenden Schritte durch, um die Blockierung der ZIP-Datei vor der Extraktion aufzuheben**. Hierdurch wird sichergestellt, dass die Skripts ausgeführt werden dürfen.
 
-1. Navigieren Sie zum Wingtip-Tickets-SaaS-GitHub-Repository für das Datenbank-Mandantenmuster, das Sie kennenlernen möchten: 
+1. Navigieren Sie zum Wingtip-Tickets-SaaS-GitHub-Repository für das Datenbank-Mandantenmuster, das Sie kennenlernen möchten:
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
@@ -42,13 +42,13 @@ Skripts befinden sich im Ordner *..\\Learning Modules* (Lernmodule).
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Arbeiten mit den Wingtip-Tickets-PowerShell-Skripts
 
-Um das Beispiel optimal nutzen zu können, müssen Sie sich mit den bereitgestellten Skripts auseinandersetzen. Verwenden Sie Haltepunkte, gehen Sie die Skripts schrittweise ausführend durch, und untersuchen Sie die Implementierung der verschiedenen SaaS-Muster. Um mühelos die bereitgestellten Skripts und Module durchzugehen und auf diese Weise bestmöglich zu verstehen, wird die Verwendung der [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise) empfohlen.
+Um das Beispiel optimal nutzen zu können, müssen Sie sich mit den bereitgestellten Skripts auseinandersetzen. Verwenden Sie Haltepunkte, gehen Sie die Skripts schrittweise ausführend durch, und untersuchen Sie die Implementierung der verschiedenen SaaS-Muster. Um mühelos die bereitgestellten Skripts und Module durchzugehen und auf diese Weise bestmöglich zu verstehen, wird die Verwendung der [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise) empfohlen.
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>Aktualisieren der Konfigurationsdatei für Ihre Bereitstellung
 
 Bearbeiten Sie die Datei **UserConfig.psm1** mit dem Ressourcengruppen- und Benutzerwert, den Sie bei der Bereitstellung festlegen:
 
-1. Öffnen Sie die *PowerShell ISE*, und laden Sie ...\\Learning Modules\\*UserConfig.psm1*. 
+1. Öffnen Sie die *PowerShell ISE*, und laden Sie ...\\Learning Modules\\*UserConfig.psm1*.
 2. Aktualisieren Sie *ResourceGroupName* und *Name* mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
 3. Speichern Sie die Änderungen.
 
@@ -76,7 +76,7 @@ Tipps zum Prüfen und schrittweisen Ausführen der PowerShell-Skripts:
 
 Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), um eine Verbindung mit den Anwendungsservern und -datenbanken herzustellen und diese zu durchsuchen.
 
-Die Bereitstellung verfügt anfänglich über Mandanten und SQL-Datenbank-Katalogserver, mit denen sie Verbindungen herstellen kann. Die Benennung der Server hängt vom Mandantenmuster der Datenbank ab (Einzelheiten nachfolgend). 
+Die Bereitstellung verfügt anfänglich über Mandanten und SQL-Datenbank-Katalogserver, mit denen sie Verbindungen herstellen kann. Die Benennung der Server hängt vom Mandantenmuster der Datenbank ab (Einzelheiten nachfolgend).
 
    - **Eigenständige Anwendung:** Server für jeden Mandanten (Beispiel: *contosoconcerthall-&lt;Benutzer&gt;* -Server) und *catalog-sa-&lt;Benutzer&gt;*
    - **Datenbank pro Mandant:** *tenants1-dpt-&lt;Benutzer&gt;* und *catalog-dpt-&lt;Benutzer&gt;* -Server
@@ -86,19 +86,19 @@ Um sicherzustellen, dass erfolgreich eine Verbindung mit der Demo hergestellt wi
 
 
 1. Öffnen Sie *SSMS*, und stellen Sie eine Verbindung mit den Mandanten her. Der Servername hängt vom gewählten Mandantenmuster der Datenbank ab (Einzelheiten nachfolgend):
-    - **Eigenständige Anwendung:** Server der einzelnen Mandanten (Beispiel: *contosoconcerthall-&lt;Benutzer&gt;.database.windows.net*) 
+    - **Eigenständige Anwendung:** Server der einzelnen Mandanten (Beispiel: *contosoconcerthall-&lt;Benutzer&gt;.database.windows.net*)
     - **Datenbank pro Mandant:** *tenants1-dpt-&lt;Benutzer&gt;.database.windows.net*
-    - **Mehrinstanzenfähige Datenbank:** *tenants1-mt-&lt;Benutzer&gt;.database.windows.net* 
+    - **Mehrinstanzenfähige Datenbank:** *tenants1-mt-&lt;Benutzer&gt;.database.windows.net*
 2. Klicken Sie auf **Verbinden** > **Datenbank-Engine...** :
 
    ![Katalogserver](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. Die folgenden Anmeldeinformationen gelten für die Demo: Anmeldung = *developer*, Kennwort = *P\@ssword1*
 
-    Die Abbildung unten stellt die Anmeldung für das Muster *Datenbank pro Mandant* dar. 
+    Die Abbildung unten stellt die Anmeldung für das Muster *Datenbank pro Mandant* dar.
     ![Verbindung](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
-    
-   
+
+
 
 4. Wiederholen Sie die Schritte 2 und 3, und stellen Sie die Verbindung zum Katalogserver her (die spezifischen Servernamen, die auf dem gewählten Datenbank-Mandantenmuster basieren, finden Sie unten)
     - **Eigenständige Anwendung:** *catalog-sa-&lt;Benutzer&gt;.database.windows.net*

@@ -1,17 +1,14 @@
 ---
 title: Erstellen und Freigeben einer Abfrage im Azure-Portal
 description: In diesem Tutorial erfahren Sie, wie Sie eine Resource Graph-Abfrage erstellen und für andere Benutzer im Azure-Portal freigeben.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/23/2019
 ms.topic: tutorial
-ms.service: resource-graph
-ms.openlocfilehash: e49cff5a9b9b2c8841b6cc685d4778688c214d26
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622481"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958569"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
@@ -161,4 +158,4 @@ Wenn Sie mit diesem Tutorial fertig sind, löschen Sie die privaten und freigege
 - Erfahren Sie mehr über das [Erkunden von Ressourcen](../concepts/explore-resources.md).
 - Sehen Sie sich Beispiele für [einfache Abfragen](../samples/starter.md) an.
 - Sehen Sie sich Beispiele für [erweiterte Abfragen](../samples/advanced.md) an.
-- Stellen Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback bereit.
+- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797235"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931200"
 ---
 # <a name="references"></a>Referenzen
 
@@ -85,7 +85,7 @@ Der URL zum API-Dienst ist Ihr Datenhub-URL (https://\<Name-Ihrer-Datenhub-Websi
 
 Die Beispielanforderung unten dient zum Abrufen der Liste mit den Geräten:
 
-```
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ Für die meisten GET-, POST- und PUT-Aufrufe ist ein JSON-Anforderungstext erfor
 
 Die folgende Beispielanforderung dient zum Erstellen eines Geräts (mit Eingabe im JSON-Format im Anforderungstext).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -108,7 +108,6 @@ Beim Abfragen der Geräteliste (GET-Aufruf in „/Device“) können die folgend
 
 Azure FarmBeats-Datenhub-APIs geben die standardmäßigen HTTP-Fehler zurück. Hier finden Sie die häufigsten Fehlercodes:
 
-
  |Fehlercode             | BESCHREIBUNG |
  |---                    | --- |
  |200                    | Erfolgreich |
@@ -121,29 +120,29 @@ Azure FarmBeats-Datenhub-APIs geben die standardmäßigen HTTP-Fehler zurück. H
 
 Zusätzlich zu den standardmäßigen HTTP-Fehlern geben Azure FarmBeats-Datenhub-APIs auch interne Fehler im folgenden Format zurück:
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
+```json
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
 ```
 
 Beispiel: Beim Erstellen eines Bauernhofs wurde das obligatorische Feld „Name“ in der Eingabenutzlast nicht angegeben. Daraus resultiert die folgende Fehlermeldung:
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+ ```json    
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Hinzufügen von Benutzern oder App-Registrierungen zu Azure Active Directory
 
- Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in Azure Active Directory zugegriffen werden. Um eine App-Registrierung in Ihrer Azure Active Directory-Instanz zu erstellen, führen Sie folgende Schritte aus:  
+Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in Azure Active Directory zugegriffen werden. Um eine App-Registrierung in Ihrer Azure Active Directory-Instanz zu erstellen, führen Sie folgende Schritte aus:  
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung**. Alternativ dazu können Sie auch ein vorhandenes Konto verwenden.
 2. Stellen Sie bei einem neuen Konto Folgendes sicher:
