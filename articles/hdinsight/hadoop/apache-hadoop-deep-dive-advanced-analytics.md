@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066978"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241658"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Tief eintauchen – Advanced Analytics
 
@@ -78,7 +78,7 @@ Als Teil von HDInsight können Sie einen HDInsight-Cluster mit [ML Services](../
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning und Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) verfügt über Tools zur Modellierung von Predictive Analytics-Lösungen und einen vollständig verwalteten Dienst, über den Sie Ihre Vorhersagemodelle als sofort nutzbare Webdienste bereitstellen können. Azure Machine Learning bietet Tools zum Erstellen vollständiger Predictive Analytics-Lösungen in der Cloud, um Vorhersagemodelle schnell und mühelos zu erstellen, testen, operationalisieren und verwalten. Wählen Sie aus einer großen Algorithmusbibliothek aus, verwenden Sie ein webbasiertes Studio zum Erstellen von Modellen, und stellen Sie Ihr Modell ganz einfach als Webdienst bereit.
+[Azure Machine Learning Studio (klassisch)](https://studio.azureml.net/) verfügt über Tools zur Modellierung von Predictive Analytics-Lösungen und einen vollständig verwalteten Dienst, über den Sie Ihre Vorhersagemodelle als sofort nutzbare Webdienste bereitstellen können. Azure Machine Learning bietet Tools zum Erstellen vollständiger Predictive Analytics-Lösungen in der Cloud, um Vorhersagemodelle schnell und mühelos zu erstellen, testen, operationalisieren und verwalten. Wählen Sie aus einer großen Algorithmusbibliothek aus, verwenden Sie ein webbasiertes Studio zum Erstellen von Modellen, und stellen Sie Ihr Modell ganz einfach als Webdienst bereit.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark und Deep Learning
 

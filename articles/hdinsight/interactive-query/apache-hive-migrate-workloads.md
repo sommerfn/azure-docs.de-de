@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091468"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930884"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -67,7 +67,7 @@ Nachdem Sie Ihre Tabelleneigenschaften korrekt festgelegt haben, führen Sie das
 
 1. Stellen Sie über SSH eine Verbindung mit Ihrem Clusterhauptknoten her. Anweisungen hierzu finden Sie unter [Herstellen einer Verbindung mit HDInsight per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 1. Öffnen Sie als Hive-Benutzer eine Anmelde-Shell, indem Sie `sudo su - hive` ausführen.
-1. Führen Sie `ls /usr/hdp` aus, um die Version des Hortonworks Data Platform-Stapels zu ermitteln. In der Ausgabe wird eine Versionszeichenfolge angezeigt, die Sie im nächsten Befehl verwenden.
+1. Führen Sie `ls /usr/hdp` aus, um die Version des Datenplattformstapels zu ermitteln. In der Ausgabe wird eine Versionszeichenfolge angezeigt, die Sie im nächsten Befehl verwenden.
 1. Führen Sie den folgenden Befehl über die Shell aus. Ersetzen Sie `${{STACK_VERSION}}` durch die Versionszeichenfolge aus dem vorherigen Schritt:
 
 ```bash

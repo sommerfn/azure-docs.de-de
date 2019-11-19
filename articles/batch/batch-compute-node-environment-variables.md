@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958784"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177158"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 

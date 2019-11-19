@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine Verbindung mit Azure Cosmos DB herstelle
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242643"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882346"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
 
@@ -59,7 +59,7 @@ Eine alternative Möglichkeit zum Herstellen einer Verbindung mit einer Azure Co
 
     ![Herstellen einer Verbindung mit Cosmos DB mithilfe einer Verbindungszeichenfolge](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Derzeit werden nur SQL und die Tabellen-API unterstützt. Wählen Sie die API aus, fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+2. Derzeit werden nur SQL und die Tabellen-API unterstützt. Wählen Sie die API aus, fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
 
     ![Verbindungszeichenfolge](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Verwenden Sie die folgenden Schritte, um eine Verbindung mit Azure Cosmos DB per
 
     ![Herstellen einer Verbindung mit Cosmos DB per Emulator](./media/storage-explorer/emulator-entry.png)
 
-3. Derzeit wird nur die SQL-API unterstützt. Fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+3. Derzeit wird nur die SQL-API unterstützt. Fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
 
     ![Dialogfeld zum Herstellen einer Verbindung mit Cosmos DB per Emulator](./media/storage-explorer/emulator-dialog.png)
 

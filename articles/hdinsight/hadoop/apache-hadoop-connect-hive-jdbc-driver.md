@@ -2,18 +2,18 @@
 title: Abfragen von Apache Hive über den JDBC-Treiber – Azure HDInsight
 description: Erfahren Sie, wie Sie den JDBC-Treiber aus einer Java-Anwendung heraus verwenden, um Apache Hive-Abfragen an Hadoop in HDInsight zu übermitteln. Stellen Sie programmgesteuert vom SQuirrel SQL-Client eine Verbindung her.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/24/2019
+ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058619"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053811"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Abfragen von Apache Hive über den JDBC-Treiber in HDInsight
 
@@ -71,10 +71,12 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 5. Fügen Sie im Dialogfeld „Add Driver“ die folgenden Informationen hinzu:
 
-    * **Name**: Hive
-    * **Beispiel-URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra Class Path**: Fügen Sie mit der Schaltfläche **Add** alle JAR-Dateien hinzu, die Sie zuvor heruntergeladen haben.
-    * **Class Name:** org.apache.hive.jdbc.HiveDriver
+    |Eigenschaft | Wert |
+    |---|---|
+    |NAME|Hive|
+    |Beispiel-URL|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
+    |Zusätzlicher Klassenpfad|Fügen Sie mit der Schaltfläche **Add** alle JAR-Dateien hinzu, die Sie zuvor heruntergeladen haben.|
+    |Klassenname|org.apache.hive.jdbc.HiveDriver|
 
    ![Dialogfeld zum Hinzufügen eines Treibers mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
@@ -84,21 +86,17 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
     ![SQuirreL SQL – Dialogfeld zum Hinzufügen eines neuen Alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. Verwenden Sie für das Dialogfeld **Add Alias** die folgenden Werte.
+7. Verwenden Sie für das Dialogfeld **Add Alias** die folgenden Werte:
 
-    * **Name**: Hive in HDInsight
+    |Eigenschaft |Wert |
+    |---|---|
+    |NAME|Hive in HDInsight|
+    |Treiber|Wählen Sie in der Dropdownliste den **Hive**-Treiber aus.|
+    |URL|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.|
+    |Benutzername|Der Name des Clusteranmeldekontos für den HDInsight-Cluster. Der Standardname lautet **admin**.|
+    |Kennwort|Das Kennwort für das Clusteranmeldekonto.|
 
-    * **Driver**: Wählen Sie in der Dropdownliste den **Hive**-Treiber aus
-
-    * **URL**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-
-        Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.
-
-    * **User Name**: Der Name des Clusteranmeldekontos für den HDInsight-Cluster. Der Standardwert lautet `admin`.
-
-    * **Password**: Das Kennwort für das Clusteranmeldekonto.
-
-   ![Dialogfeld zum Hinzufügen eines Alias mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    ![Dialogfeld zum Hinzufügen eines Alias mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
     > Überprüfen Sie mithilfe der Schaltfläche **Test**, ob die Verbindung funktioniert. Wenn das Dialogfeld **Connect to: Hive on HDInsight** angezeigt wird, wählen Sie **Connect** aus, um den Test durchzuführen. Wenn der Test erfolgreich ist, wird das Dialogfeld **Connection successful** (Verbindung erfolgreich) angezeigt. Wenn ein Fehler auftritt, finden Sie Informationen unter [Problembehandlung](#troubleshooting).
@@ -137,9 +135,9 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Lösung**: Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus:
 
-1. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib` -Verzeichnisses, die vorhandene commons-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
+1. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist, beispielsweise `C:\Program Files\squirrel-sql-4.0.0\lib`. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib` -Verzeichnisses, die vorhandene commons-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
 
-2. Starten Sie SQuirreL neu. Dieser Fehler sollte jetzt nicht mehr auftreten, wenn Sie eine Verbindung mit Hive in HDInsight herstellen.
+1. Starten Sie SQuirreL neu. Dieser Fehler sollte jetzt nicht mehr auftreten, wenn Sie eine Verbindung mit Hive in HDInsight herstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

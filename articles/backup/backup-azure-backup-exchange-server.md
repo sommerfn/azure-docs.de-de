@@ -1,5 +1,5 @@
 ---
-title: Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
+title: Sichern eines Exchange-Servers unter Azure Backup mit System Center DPM
 description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit System Center 2012 R2 DPM sichern.
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689422"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968508"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
-In diesem Artikel wird beschrieben, wie Sie einen Server mit System Center 2012 R2 Data Protection Manager (DPM) konfigurieren, um einen Microsoft Exchange-Server in Azure Backup zu sichern.  
+
+In diesem Artikel wird beschrieben, wie Sie einen System Center 2012 R2 Data Protection Manager-Server (DPM) konfigurieren, um einen Microsoft Exchange-Server unter Azure Backup zu sichern.  
 
 ## <a name="updates"></a>Aktualisierungen
+
 Zum erfolgreichen Registrieren des DPM-Servers für Azure Backup müssen Sie das aktuelle Updaterollup für System Center 2012 R2 DPM und die aktuelle Version des Azure Backup-Agents installieren. Sie finden das aktuelle Updaterollup im [Microsoft-Katalog](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
@@ -27,6 +29,7 @@ Zum erfolgreichen Registrieren des DPM-Servers für Azure Backup müssen Sie das
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Zu diesen Voraussetzungen gehört Folgendes:
 
 * Auf der Azure-Website wurde ein Sicherungstresor erstellt.
@@ -36,12 +39,14 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 * Wenn Sie Exchange 2016 schützen, aktualisieren Sie auf DPM 2012 R2 UR9 oder höher.
 
 ## <a name="dpm-protection-agent"></a>DPM-Schutz-Agent
+
 Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange-Server zu installieren:
 
 1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
+
 1. Klicken Sie in der DPM-Verwaltungskonsole auf **Schutz** und dann im Menüband des Tools auf **Neu**, um den Assistenten **Neue Schutzgruppe erstellen** zu öffnen.
 2. Klicken Sie im Assistenten auf dem Bildschirm **Willkommen** auf **Weiter**.
 3. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** aus, und klicken Sie auf **Weiter**.
@@ -103,6 +108,7 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
 19. Klicken Sie auf **Schließen**.
 
 ## <a name="recover-the-exchange-database"></a>Wiederherstellen der Exchange-Datenbank
+
 1. Klicken Sie zum Wiederherstellen einer Exchange-Datenbank in der DPM-Administratorkonsole auf **Wiederherstellung** .
 2. Suchen Sie nach der Exchange-Datenbank, die Sie wiederherstellen möchten.
 3. Wählen Sie in der Dropdownliste *Wiederherstellungszeit* einen Online-Wiederherstellungspunkt aus.
@@ -119,4 +125,5 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
     ![Onlinereplikation auswählen](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)

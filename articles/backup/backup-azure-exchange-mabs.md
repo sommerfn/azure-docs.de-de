@@ -8,26 +8,30 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689283"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968462"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Sichern eines Exchange-Servers in Azure mit Azure Backup Server
+
 In diesem Artikel wird beschrieben, wie Sie einen Microsoft Azure Backup Server (MABS) konfigurieren, um einen Microsoft Exchange-Server in Azure zu sichern.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie fortfahren, stellen Sie sicher, dass Azure Backup Server [installiert und vorbereitet](backup-azure-microsoft-azure-backup.md) ist.
 
 ## <a name="mabs-protection-agent"></a>MABS-Schutz-Agent
+
 Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchange-Server zu installieren:
 
 1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der MABS-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des MABS-Schutz-Agents](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396).
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
+
 1. Klicken Sie in der MABS-Verwaltungskonsole auf **Schutz** und dann im Menüband des Tools auf **Neu**, um den Assistenten **Neue Schutzgruppe erstellen** zu öffnen.
 2. Klicken Sie im Assistenten auf dem Bildschirm **Willkommen** auf **Weiter**.
 3. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** aus, und klicken Sie auf **Weiter**.
@@ -89,6 +93,7 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
 19. Klicken Sie auf **Schließen**.
 
 ## <a name="recover-the-exchange-database"></a>Wiederherstellen der Exchange-Datenbank
+
 1. Klicken Sie zum Wiederherstellen einer Exchange-Datenbank in der MABS-Administratorkonsole auf **Wiederherstellung**.
 2. Suchen Sie nach der Exchange-Datenbank, die Sie wiederherstellen möchten.
 3. Wählen Sie in der Dropdownliste *Wiederherstellungszeit* einen Online-Wiederherstellungspunkt aus.
@@ -105,4 +110,5 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
     ![Onlinereplikation auswählen](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)

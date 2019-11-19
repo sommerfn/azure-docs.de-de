@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: dacurwin
-ms.openlocfilehash: 2cd298323d8f455010978361078d474415e77dfa
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a72e43d068f9fc6cf06a4786d511bbc6c25e85d4
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954523"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968433"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
+
 Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe bietet Azure Backup jetzt neue Sicherheitsfeatures für den Schutz von Hybridsicherungen. In diesem Artikel werden Aktivierung und Verwendung dieser Features mit einem Azure Recovery Services-Agent und Azure Backup Server beschrieben. Zu den Features zählen:
 
 - **Prävention**. Es wurde eine zusätzliche Authentifizierungsebene hinzugefügt, die bei allen kritischen Vorgängen wie Passphrasenänderungen zum Tragen kommt. Durch diese Überprüfung wird gewährleistet, dass solche Vorgänge nur von Benutzern durchgeführt werden können, die über gültige Azure-Anmeldeinformationen verfügen.
@@ -34,6 +35,7 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 >
 
 ## <a name="enable-security-features"></a>Aktivieren der Sicherheitsfeatures
+
 Wenn Sie einen Recovery Services-Tresor erstellen, können Sie alle Sicherheitsfeatures verwenden. Aktivieren Sie die Sicherheitsfeatures bei Verwendung eines bereits vorhandenen Tresors mit folgenden Schritten:
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Azure-Portal an.
@@ -58,6 +60,7 @@ Wenn Sie einen Recovery Services-Tresor erstellen, können Sie alle Sicherheitsf
     ![Screenshot der Sicherheitseinstellungen](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>Wiederherstellen von gelöschten Sicherungsdaten
+
 Backup bewahrt gelöschte Sicherungsdaten zusätzlich 14 Tage lang auf und löscht sie nicht sofort, wenn der Datenvorgang **Stop backup with delete backup** (Sicherungsabbruch mit Sicherungslöschung) ausgeführt wird. Um diese Daten innerhalb dieser 14 Tagen wiederherzustellen, gehen Sie je nachdem, was Sie verwenden, folgendermaßen vor:
 
 Für Benutzer des **Microsoft Azure Recovery Services-Agent**:
@@ -76,13 +79,15 @@ Für Benutzer von **Data Protection Manager**:
 2. Wenn dieser Server nicht verfügbar ist, verwenden Sie [Externen DPM hinzufügen](backup-azure-alternate-dpm-server.md), um einen anderen Data Protection Manager-Server zum Abrufen dieser Daten zu verwenden.
 
 ## <a name="prevent-attacks"></a>Verhindern von Angriffen
+
 Es wurden Prüfungen hinzugefügt, um sicherzustellen, dass bestimmte Vorgänge nur von gültigen Benutzern ausgeführt werden können. Dazu gehören das Hinzufügen einer zusätzlichen Authentifizierungsebene und das Einhalten einer minimalen Aufbewahrungsdauer für die Wiederherstellung.
 
 ### <a name="authentication-to-perform-critical-operations"></a>Authentifizierung für das Ausführen von kritischen Vorgängen
+
 Als Teil der zusätzlich hinzugefügten Authentifizierungsebene für kritische Vorgänge werden Sie beim Ausführen der Vorgänge **Stop Protection with Delete data** (Schutz mit Datenlöschung beenden) und **Passphrase ändern** dazu aufgefordert, die Sicherheits-PIN einzugeben.
 
 > [!NOTE]
-> 
+>
 > Die Sicherheits-PIN wird derzeit für **Schutz beenden und Daten löschen** für DPM und MABS nicht unterstützt.
 
 So erhalten Sie diese PIN:
@@ -93,6 +98,7 @@ So erhalten Sie diese PIN:
     Diese PIN gilt nur für fünf Minuten und wird nach Ablauf dieses Zeitraums automatisch generiert.
 
 ### <a name="maintain-a-minimum-retention-range"></a>Einhalten einer minimalen Aufbewahrungsdauer
+
 Um sicherzustellen, dass immer eine geeignete Anzahl von Wiederherstellungspunkten verfügbar ist, wurden die folgenden Prüfungen hinzugefügt:
 
 - Bei einer täglichen Aufbewahrung sollten mindestens **sieben** Aufbewahrungstage vorgesehen werden.
@@ -101,11 +107,13 @@ Um sicherzustellen, dass immer eine geeignete Anzahl von Wiederherstellungspunkt
 - Bei einer jährlichen Aufbewahrung sollte mindestens **ein** Aufbewahrungsjahr vorgesehen werden.
 
 ## <a name="notifications-for-critical-operations"></a>Benachrichtigungen über kritische Vorgänge
+
 Wenn kritische Vorgänge ausgeführt werden, erhält der Administrator der Abonnements in der Regel eine E-Mail-Benachrichtigung mit den Details des Vorgangs. Sie können im Azure-Portal zusätzliche E-Mail-Empfänger für diese Benachrichtigungen konfigurieren.
 
 Die in diesem Artikel genannten Sicherheitsfeatures bieten Abwehrmechanismen gegen gezielte Angriffe. Vor allem aber bieten Ihnen diese Features die Möglichkeit, bei einem Angriff Ihre Daten wiederherzustellen.
 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
+
 | Vorgang | Fehlerdetails | Lösung |
 | --- | --- | --- |
 | Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Fehler Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die optional bevorzugte Vorgehensweise ist das Aktualisieren des Backup-Agents, von Azure Backup Server und/oder DPM-Updaterollups (UR), um in den Genuss aller Sicherheitsupdates zu kommen. |
@@ -113,7 +121,8 @@ Die in diesem Artikel genannten Sicherheitsfeatures bieten Abwehrmechanismen geg
 | Ändern der Passphrase |Fehler beim Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben).<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf Mindestversion 2.0.9052, Azure Backup-Server auf mindestens Update 1 und/oder DPM auf mindestens DPM 2012 R2 UR12 oder DPM 2016 UR2 (Downloadlinks siehe unten) aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erste Schritte mit Azure Recovery Services-Tresor](backup-azure-vms-first-look-arm.md), um diese Features zu aktivieren.
-* [Laden Sie den neuesten Azure Recovery Services-Agent herunter](https://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
-* [Laden Sie die neueste Version von Azure Backup Server herunter](https://aka.ms/latest_azurebackupserver), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
-* Laden Sie [UR12 für System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) oder [UR2 für System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) herunter, um Workloads und Ihre Sicherungsdaten vor Angriffen zu schützen.
+
+- [Erste Schritte mit Azure Recovery Services-Tresor](backup-azure-vms-first-look-arm.md), um diese Features zu aktivieren.
+- [Laden Sie den neuesten Azure Recovery Services-Agent herunter](https://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
+- [Laden Sie die neueste Version von Azure Backup Server herunter](https://aka.ms/latest_azurebackupserver), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
+- Laden Sie [UR12 für System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) oder [UR2 für System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) herunter, um Workloads und Ihre Sicherungsdaten vor Angriffen zu schützen.

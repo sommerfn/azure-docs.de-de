@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755181"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990619"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
 
@@ -62,6 +62,10 @@ In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und de
 *K* = Anzahl von *„K“* -Versionen (d. h. Updates) eines Elements.
 
 *T* = Zeitintervall *„T“* seit dem letzten Update.
+
+## <a name="strong-consistency-and-multi-master"></a>Starke Konsistenz und Multimasterunterstützung
+
+Für Multimaster konfigurierte Cosmos-Konten können nicht für eine hohe Konsistenz konfiguriert werden, da es für ein verteiltes System nicht möglich ist, einen RPO-Wert von 0 (null) und einen RTO-Wert von 0 zu erreichen. Außerdem gibt es keine Vorteile hinsichtlich der Schreiblatenz für die Verwendung von hoher Konsistenz mit einem Multimaster, da jeder Schreibvorgang in eine beliebige Region repliziert und in allen konfigurierten Regionen innerhalb des Kontos festgeschrieben werden muss. Dies führt zur selben Schreiblatenz wie bei einem einzelnen Masterkonto.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

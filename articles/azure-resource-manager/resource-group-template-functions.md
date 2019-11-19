@@ -4,16 +4,17 @@ description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258884"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894159"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
+
 In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](template-expressions.md).
 
 Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](resource-group-authoring-templates.md#functions).
@@ -123,6 +124,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 * [mul](resource-group-template-functions-numeric.md#mul)
 * [sub](resource-group-template-functions-numeric.md#sub)
 
+<a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
 <a id="list" aria-hidden="true" />
 <a id="providers" aria-hidden="true" />
@@ -130,10 +132,13 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 <a id="resourcegroup" aria-hidden="true" />
 <a id="resourceid" aria-hidden="true" />
 <a id="subscription" aria-hidden="true" />
+<a id="subscriptionResourceId" aria-hidden="true" />
+<a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Ressourcenfunktionen
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
 
+* [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
 * [listKeys](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
@@ -143,6 +148,8 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [Ressourcengruppe](resource-group-template-functions-resource.md#resourcegroup)
 * [Ressourcen-ID](resource-group-template-functions-resource.md#resourceid)
 * [Abonnement](resource-group-template-functions-resource.md#subscription)
+* [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
+* [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -213,6 +220,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Eine Beschreibung der Abschnitte in einer Azure-Ressourcen-Manager-Vorlage finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md)
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md)
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md)

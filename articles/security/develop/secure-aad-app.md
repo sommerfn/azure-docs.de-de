@@ -265,7 +265,7 @@ Der Azure App Service ermöglicht Ihnen das Erstellen von Web-Apps mithilfe der 
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Bevor Sie fortfahren, wechseln Sie zur Azure Domain Name System-Konfigurationsbenutzeroberfläche für Ihre benutzerdefinierte Domäne, und befolgen Sie die Anweisungen unter https://aka.ms/appservicecustomdns, um einen CNAME-Eintrag für den Hostnamen „www“ zu konfigurieren. Verweisen Sie von ihm auf den Standarddomänennamen Ihrer Web-App.
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Bevor Sie fortfahren, wechseln Sie zur Azure Domain Name System-Konfigurationsbenutzeroberfläche für Ihre benutzerdefinierte Domäne, und befolgen Sie die Anweisungen unter https://aka.ms/appservicecustomdns , um einen CNAME-Eintrag für den Hostnamen „www“ zu konfigurieren. Verweisen Sie von ihm auf den Standarddomänennamen Ihrer Web-App.
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>Führen Sie ein Upgrade des App Service-Plan auf den Tarif „Shared“ (Mindestanforderung für benutzerdefinierte Domänen) durch.
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -443,7 +443,7 @@ Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowi
 1.  Navigieren Sie zurück zum Azure-Portal. Wählen Sie im linken Navigationsbereich den Dienst „Azure Active Directory“ und anschließend „App-Registrierungen“ aus.
 2.  Wählen Sie im daraufhin angezeigten Bildschirm die Anwendung „WebApp-OpenIDConnect-DotNet-code-v2“ aus.
 3.  Auf der Registerkarte „Authentifizierung“ o   Wählen Sie im Abschnitt „Umleitungs-URIs“ im Kombinationsfeld die Option „Web“ aus, und fügen Sie die folgenden Umleitungs-URIs hinzu.
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   Legen Sie im Abschnitt „Erweiterte Einstellungen“ die Option „Abmelde-URL“ auf https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc fest.
+    [https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net](https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ) https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   Legen Sie im Abschnitt „Erweiterte Einstellungen“ die Option „Abmelde-URL“ auf https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc fest.
 4.  Auf der Registerkarte „Branding“ o   Aktualisieren Sie die URL der Startseite auf die Adresse des App Service, z. B. https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o   Speichern Sie die Konfiguration.
 5.  Wenn Ihre Anwendung eine Web-API aufruft, stellen Sie sicher, dass Sie die erforderlichen Änderungen an der Datei „appsettings.json“ des Projekts vornehmen, damit anstelle von „localhost“ die veröffentlichte API-URL aufgerufen wird.

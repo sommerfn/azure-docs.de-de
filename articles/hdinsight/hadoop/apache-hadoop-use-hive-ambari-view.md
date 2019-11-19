@@ -1,19 +1,19 @@
 ---
-title: Verwenden von Apache Ambari-Ansichten für die Arbeit mit Hive in HDInsight (Apache Hadoop) – Azure
+title: Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in Azure HDInsight
 description: Erfahren Sie, wie Sie die Hive-Ansicht im Webbrowser zum Übermitteln von Hive-Abfragen verwenden. Die Hive-Ansicht ist Teil der Ambari-Webbenutzeroberfläche, die mit dem Linux-basierten HDInsight-Cluster bereitgestellt wird.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077010"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097098"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -30,9 +30,9 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird in einem neuen Blatt des Portals geöffnet.
 
-2. Wählen Sie aus **Clusterdashboards** die Option **Ambari-Ansichten** aus. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben.
+1. Wählen Sie aus **Clusterdashboards** die Option **Ambari-Ansichten** aus. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben. Navigieren Sie alternativ zu `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in Ihrem Browser, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
 
-3. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
+1. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
     ![Apache Ambari – Auswahl der Apache Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
     ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
+1. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
    > [!IMPORTANT]  
    > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
-5. Wählen Sie zum Starten der Abfrage **Execute** (Ausführen) unter dem Arbeitsblatt aus. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
+1. Wählen Sie zum Starten der Abfrage **Execute** (Ausführen) unter dem Arbeitsblatt aus. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
 
-6. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
+1. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
 
         loglevel       count
         [ERROR]        3

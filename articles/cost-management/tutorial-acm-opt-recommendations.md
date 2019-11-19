@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/30/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 603de4d9bed936ecb91f130b0e30f6d1383a9092
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164488"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935807"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -29,10 +29,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen der Aktion, um sicherzustellen, dass die Größe des virtuellen Computers erfolgreich geändert wurde
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Empfehlungen sind für eine Vielzahl von Bereichen und Azure-Kontotypen verfügbar. Dies schließt auch Kunden mit [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ein. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+Empfehlungen sind für eine Vielzahl von Bereichen und Azure-Kontotypen verfügbar. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
-- Abonnement
-- Ressourcengruppe
+- Subscription
+- Resource group
 
 Sie benötigen aktive virtuelle Computer, die schon mindestens 14 Tage aktiv sind.
 
@@ -63,7 +63,7 @@ Empfehlungen mit mittleren Auswirkungen:
 
 ## <a name="act-on-a-recommendation"></a>Umsetzen einer Empfehlung
 
-Azure Advisor überwacht die Verwendung Ihrer virtuellen Computer 14 Tage lang und ermittelt nicht ausgelastete virtuelle Computer. Virtuelle Computer, bei denen an mindestens vier Tagen die CPU-Auslastung unter fünf Prozent und die Netzwerklast unter sieben MB lag, gelten als virtuelle Computer mit geringer Auslastung.
+Azure Advisor überwacht die Verwendung Ihrer virtuellen Computer sieben Tage lang und ermittelt nicht ausgelastete virtuelle Computer. Virtuelle Computer, bei denen an mindestens vier Tagen die CPU-Auslastung unter fünf Prozent und die Netzwerklast unter sieben MB lag, gelten als virtuelle Computer mit geringer Auslastung.
 
 Die CPU-Auslastung von 5 % oder weniger ist die Standardeinstellung, aber Sie können die Einstellungen anpassen. Weitere Informationen zum Anpassen der Einstellung finden Sie unter [Konfigurieren der Regel für die durchschnittliche CPU-Auslastung oder der Empfehlung für VMs mit geringer Auslastung](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
@@ -79,14 +79,14 @@ Klicken Sie in der Liste der Empfehlungen auf **Größe eines nicht ausgelastete
 
 Beachten Sie die aktuelle VM-Größe. Nachdem Sie überprüft haben, ob die Größe des virtuellen Computers geändert werden soll, schließen Sie die VM-Details, sodass wieder die Liste der virtuellen Computer angezeigt wird.
 
-Wählen Sie in der Liste der Kandidaten, die heruntergefahren oder deren Größe geändert werden soll, auf **Größe des virtuellen Computers ändern**.
+Wählen Sie in der Liste der Kandidaten, die heruntergefahren sollen oder deren Größe geändert werden soll, **Von *&lt;FromVirtualMachineSKU&gt;* auf *&lt;ToVirtualMachineSKU&gt; ändern*** aus.
 ![Beispielempfehlung mit Option zum Ändern der Größe des virtuellen Computers](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-Als Nächstes wird eine Liste der verfügbaren Optionen für die Größenänderung angezeigt. Wählen Sie diejenige, die für Ihr Szenario die beste Leistung und Kosteneffizienz bietet. Im folgenden Beispiel ändert die gewählte Option die Größe von **DS14\_V2** auf **DS13\_V2**. Die Umsetzung der Empfehlung spart 551,30 USD/Monat oder 6.615,60 USD/Jahr.
+Als Nächstes wird eine Liste der verfügbaren Optionen für die Größenänderung angezeigt. Wählen Sie diejenige, die für Ihr Szenario die beste Leistung und Kosteneffizienz bietet. Im folgenden Beispiel ändert die gewählte Option die Größe von **Standard_D8s_v3** auf **Standard_D2s_v3**.
 
 ![Beispielliste der verfügbaren VM-Größen, in der Sie eine Größe wählen können](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-Nachdem Sie eine geeignete Größe ausgewählt haben, klicken Sie auf **Auswählen**, um die Aktion zum Ändern der Größe zu starten.
+Nachdem Sie eine geeignete Größe ausgewählt haben, klicken Sie auf **Größe ändern**, um die Aktion zum Ändern der Größe zu starten.
 
 Die Größenänderung erfordert einen Neustart eines aktiv laufenden virtuellen Computers. Wenn sich der virtuelle Computer in einer Produktionsumgebung befindet, empfehlen wir Ihnen, den Vorgang zur Größenänderung außerhalb der Geschäftszeiten durchzuführen. Durch eine Planung des Neustarts kann Unterbrechungen durch eine vorübergehende Nichtverfügbarkeit reduzieren werden.
 

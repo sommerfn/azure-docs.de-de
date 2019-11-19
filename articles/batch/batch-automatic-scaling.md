@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
-ms.date: 10/08/2019
+ms.date: 10/24/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: ab16fc959a332076cac1d615b86d37e8c66e2f67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286699"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933694"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -105,7 +105,7 @@ Sie können diese vom Dienst definierten Variablen abrufen und festlegen, um die
 | Vom Dienst definierte Variablen mit Lese-/Schreibzugriff | BESCHREIBUNG |
 | --- | --- |
 | $TargetDedicatedNodes |Die Zielanzahl dedizierter Computeknoten für den Pool. Die Anzahl der dedizierten Knoten wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreicht. Wenn die Zielanzahl dedizierter Knoten beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, erreicht der Pool möglicherweise nicht die Zielanzahl. <br /><br /> Ein Pool in einem Konto, der mit der Konfiguration „Batch-Dienst“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. Ein Pool in einem Konto, der mit der Konfiguration „Benutzerabonnement“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel das freigegebene Kernkontingent für das Abonnement überschreitet.|
-| $TargetLowPriorityNodes |Die Zielanzahl von Computeknoten mit niedriger Priorität für den Pool. Die Anzahl der Knoten mit niedriger Priorität wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreichen kann. Wenn die Zielanzahl von Knoten mit niedriger Priorität beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, kann der Pool möglicherweise nicht die Zielanzahl erreichen. Ein Pool kann sein Ziel möglicherweise auch dann nicht erreichen, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. <br /><br /> Weitere Informationen zu Computeknoten mit niedriger Priorität finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch (Vorschau)](batch-low-pri-vms.md). |
+| $TargetLowPriorityNodes |Die Zielanzahl von Computeknoten mit niedriger Priorität für den Pool. Die Anzahl der Knoten mit niedriger Priorität wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreichen kann. Wenn die Zielanzahl von Knoten mit niedriger Priorität beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, kann der Pool möglicherweise nicht die Zielanzahl erreichen. Ein Pool kann sein Ziel möglicherweise auch dann nicht erreichen, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. <br /><br /> Weitere Informationen zu Computeknoten mit niedriger Priorität finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch](batch-low-pri-vms.md). |
 | $NodeDeallocationOption |Dieser Vorgang wird ausgeführt, wenn Computeknoten aus einem Pool entfernt werden. Mögliche Werte:<ul><li>**requeue**: Der Standardwert. Aufgaben sofort beenden und wieder in die Auftragswarteschlange einfügen, damit sie neu geplant werden können. Dadurch wird sichergestellt, dass die Zielanzahl der Knoten so schnell wie möglich erreicht wird, kann aber weniger effizient sein, da alle ausgeführten Aufgaben unterbrochen werden und neu gestartet werden müssen, sodass alle bereits durchgeführten Schritte umsonst erfolgten. <li>**terminate**: Aufgaben sofort beenden und aus der Auftragswarteschlange entfernen.<li>**taskcompletion**: Auf derzeit ausgeführte Aufgaben warten und den Knoten dann aus dem Pool entfernen. Verwenden Sie diese Option, um zu verhindern, dass Aufgaben unterbrochen und nochmals der Warteschlange hinzugefügt werden, wodurch bereits durchgeführte Aufgabenschritte umsonst erfolgt wären. <li>**retaineddata**: Warten, bis alle lokal vorgehaltenen Aufgabendaten des Pools gelöscht wurden, bevor der Knoten aus dem Pool entfernt wird.</ul> |
 
 > [!NOTE]

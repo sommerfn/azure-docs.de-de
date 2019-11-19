@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 12e433a146d8dd8a6fb7e1d7c40acc72e023047b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8e3c525230c3de530a93bd61a9227e9a4d7ed10b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736216"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933428"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-single-database-into-a-failover-group"></a>Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe mithilfe der Befehlszeilenschnittstelle
 
@@ -50,6 +50,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Erstellt die Firewallregeln eines Servers. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Erstellt eine Datenbank. | 
 | [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Erstellt eine Failovergruppe. | 
 | [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Listet die Failovergruppen eines Servers auf. |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. | 

@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden von Excel über den Hive ODBC-Treiber mit Apache Hadoop: Azure HDInsight'
+title: Excel und Apache Hadoop mit ODBC-Treiber – Azure HDInsight
 description: Erfahren Sie, wie Sie den Microsoft Hive ODBC-Treiber für Excel einrichten und zum Abfragen von Daten in HDInsight-Clustern von Microsoft Excel verwenden können.
 keywords: Hadoop, Excel, Hive Excel, Hive ODBC
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 7451eaf56a2466bbb02fa879008b4a9787f6c2f5
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264624"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177329"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Apache Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -33,7 +33,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Installieren des Microsoft Hive ODBC-Treibers
 
-Laden Sie die [Microsoft Hive ODBC-Treiberversion](https://go.microsoft.com/fwlink/?LinkID=286698) herunter, die der Version der Anwendung entspricht, in der Sie den ODBC-Treiber verwenden, und installieren Sie die Version.  In diesem Artikel wird der Treiber für Office Excel verwendet.
+Laden Sie die [Microsoft Hive ODBC-Treiberversion](https://www.microsoft.com/download/details.aspx?id=40886) herunter, die der Version der Anwendung entspricht, in der Sie den ODBC-Treiber verwenden, und installieren Sie die Version.  In diesem Artikel wird der Treiber für Office Excel verwendet.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Erstellen einer Apache Hive ODBC-Datenquelle
 
@@ -85,7 +85,7 @@ In den folgenden Schritten wird beschrieben, wie Sie mithilfe der ODBC-Datenquel
 
 2. Navigieren Sie auf der Registerkarte **Daten** zu **Daten abrufen** > **Aus anderen Quellen** > **Aus ODBC**, um das Fenster **Aus ODBC** zu öffnen.
 
-    ![Öffnen des Datenverbindungs-Assistenten von Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Öffnen des Datenverbindungs-Assistenten von Excel")
+    ![Öffnen des Excel-Datenverbindungs-Assistenten](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Öffnen des Excel-Datenverbindungs-Assistenten")
 
 3. Wählen Sie in der Dropdownliste den im letzten Abschnitt erstellten Datenquellennamen aus, und wählen Sie anschließend **OK**.
 
@@ -93,7 +93,7 @@ In den folgenden Schritten wird beschrieben, wie Sie mithilfe der ODBC-Datenquel
 
 5. Navigieren Sie von **Navigator** zu **HIVE** > **Standard** > **hivesampletable**, und wählen Sie dann **Laden** aus. Es dauert einige Augenblicke, bis die Daten in Excel importiert werden.
 
-    ![HDInsight Excel Hive ODBC-Navigator](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC-Navigator")
+    ![Excel-Hive ODBC-Navigator in HDInsight](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Excel-Hive ODBC-Navigator in HDInsight")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

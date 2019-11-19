@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753262"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053366"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Die nativen SDKs (.NET/.NET Core, Java, Node.js und Python) fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Sofern nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
-Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesem Fall löst der Client die Ausnahme `DocumentClientException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `DocumentClientException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
+Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesen Fällen löst der Client die Ausnahme `RequestRateTooLargeException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `RequestRateTooLargeException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
 

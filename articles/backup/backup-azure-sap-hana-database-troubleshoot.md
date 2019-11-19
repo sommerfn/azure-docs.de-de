@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken mithilfe von Azure Backup | Microsoft-Dokumentation
+title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken – Azure Backup
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954453"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968454"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -32,13 +32,13 @@ Aufgaben des Vorregistrierungsskripts:
     - CATALOG READ: Lesen des Sicherungskatalogs
     - SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen
 2. Hinzufügen eines Schlüssels zum Hdbuserstore für das HANA-Plug-In, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln.
-   
+
    Um die Schlüsselerstellung zu bestätigen, führen Sie auf dem HANA-Computer den Befehl HDBSQL mit SIDADM-Anmeldeinformationen aus:
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZUREWLBACKUPHANAUSER enthalten.
 
 > [!NOTE]
@@ -67,7 +67,8 @@ Angenommen, eine SDC HANA-Instanz „H21“ wird gesichert. Auf der Seite mit de
 
 ![Eingaben für die SDC-Wiederherstellung](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
+
 - Standardmäßig wird der Name der wiederhergestellten Datenbank mit dem Namen des Sicherungselements aufgefüllt, d.h. „h21(sdc)“.
 - Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank NICHT automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, der „sdc“ in Klammern angefügt wird.
 - Da SDC nur über eine einzelne Datenbank verfügen kann, müssen Sie auch das Kontrollkästchen aktivieren, um das Überschreiben der vorhandenen Datenbankdaten mit den Daten des Wiederherstellungspunkts zuzulassen.

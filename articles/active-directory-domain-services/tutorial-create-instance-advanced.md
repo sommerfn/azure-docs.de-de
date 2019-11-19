@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757646"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172565"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz mit erweiterten Konfigurationsoptionen
 
@@ -88,7 +88,11 @@ Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Azure AD DS-Instanz zu erstellen:
 
 1. Geben Sie einen **DNS-Domänennamen** für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die oben genannten Punkte.
-1. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll.
+1. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
+
+    Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden.
+
+    Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurationsaufwand an. Die Verteilung der Ressourcen auf Zonen wird von der Azure-Plattform automatisch durchgeführt. Weitere Informationen, z. B. zur regionalen Verfügbarkeit, finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][availability-zones].
 
     ![Konfigurieren der grundlegenden Einstellungen für eine Azure AD Domain Services-Instanz](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Grup
 
     ![Status der Domäne nach erfolgreicher Bereitstellung](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-Während des Bereitstellungsprozesses erstellt Azure AD DS zwei Unternehmensanwendungen mit den Namen *Domain Controller Services* und *AzureActiveDirectoryDomainControllerServices* in Ihrem Verzeichnis. Diese Unternehmensanwendungen werden zur Unterstützung Ihrer verwalteten Domäne benötigt. Diese Anwendungen dürfen unter keinen Umständen gelöscht werden.
+Die verwaltete Domäne wird Ihrem Azure AD-Mandanten zugeordnet. Während des Bereitstellungsprozesses erstellt Azure AD DS auf Ihrem Azure AD-Mandanten zwei Unternehmensanwendungen mit den Namen *Domain Controller Services* und *AzureActiveDirectoryDomainControllerServices*. Diese Unternehmensanwendungen werden zur Unterstützung Ihrer verwalteten Domäne benötigt. Löschen Sie diese Anwendungen nicht.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk
 
@@ -238,6 +242,7 @@ Um diese verwaltete Domäne in Aktion zu erleben, erstellen Sie eine VM, und bin
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

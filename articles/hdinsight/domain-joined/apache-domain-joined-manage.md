@@ -1,5 +1,5 @@
 ---
-title: Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket – Azure
+title: Verwalten von Enterprise-Sicherheitspaketclustern – Azure HDInsight
 description: Informationen zum Verwalten von Azure HDInsight-Clustern mit dem Enterprise-Sicherheitspaket.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 35accc587fe197da751a8695e3ec0b21ea9fbbd4
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034116"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044918"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket
 Lernen Sie die Benutzer und Rollen im Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) von HDInsight kennen, und erfahren Sie, wie ESP-Cluster verwaltet werden.
@@ -58,7 +58,7 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernam
 
 3. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
-   ![Azure-Explorer – Clusterverknüpfung in IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "Clusterverknüpfung in IntelliJ]")
+   ![Azure-Explorer – Verknüpfter Cluster in IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "verknüpfter Cluster IntelliJ]")
 
 4. Sie können die Verknüpfung eines Clusters im **Azure-Explorer** auch aufheben.
 

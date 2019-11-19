@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274104"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821386"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3-Buckets mit AzCopy
 
@@ -52,6 +52,9 @@ Da für AzCopy die [Put Block From URL](https://docs.microsoft.com/rest/api/stor
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Wenn Sie sich entscheiden, nach einem Kopiervorgang Daten aus Ihren S3-Bucket zu entfernen, vergewissern Sie sich vor dem Entfernen der Daten, dass die Daten ordnungsgemäß in Ihr Speicherkonto kopiert wurden.
+
+> [!TIP]
+> In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 ### <a name="copy-an-object"></a>Kopieren eines Objekts
 
