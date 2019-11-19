@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box-Datenträger – Übersicht | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der Cloudlösung für Azure Data Box-Datenträger, die zum Übertragen von großen Datenmengen nach Azure dient.
+title: 'Microsoft Azure Data Box Disk: Sicherheitsfunktionen | Microsoft-Dokumentation'
+description: Enthält eine Beschreibung der Sicherheitsfunktionen, die für Azure Data Box Disk, eine Cloudlösung zum Übertragen großer Datenmengen nach Azure, implementiert sind.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093455"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606574"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk: Sicherheit und Schutz von Daten
 
@@ -73,11 +73,11 @@ Für den Azure Data Box-Datenträger werden persönliche Informationen im Dienst
 
   - Kontaktname
   - Telefonnummer
-  - E-Mail
+  - Email
   - Anschrift
   - City
   - Postleitzahl
-  - Zustand
+  - State
   - Land/Provinz/Region
   - Laufwerk-ID
   - Kontonummer des Versanddienstleisters

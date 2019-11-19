@@ -1,20 +1,17 @@
 ---
 title: Leitfaden zur Problembehandlung für Azure Spring Cloud | Microsoft-Dokumentation
 description: Leitfaden zur Problembehandlung für Azure Spring Cloud
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592484"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607626"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Leitfaden zur Problembehandlung für häufige Probleme
 
@@ -165,7 +162,7 @@ Umgebungsvariablen informieren das Azure Spring Cloud-Framework und stellen sich
             </dependency>
         ```
 
-1. Wenn Sie den Endpunkt für den Spring Boot-Aktor aktiviert haben, navigieren Sie im Azure-Portal zur Konfigurationsseite Ihrer Anwendung.  Fügen Sie eine Umgebungsvariable mit dem Namen `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value `* hinzu. 
+1. Wenn Sie den Endpunkt für den Spring Boot-Aktor aktiviert haben, navigieren Sie im Azure-Portal zur Konfigurationsseite Ihrer Anwendung.  Fügen Sie eine Umgebungsvariable mit dem Namen `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` und dem Wert `*` hinzu. 
 
 1. Starten Sie Ihre Anwendung neu.
 
