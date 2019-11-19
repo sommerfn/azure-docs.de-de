@@ -1,8 +1,8 @@
-- name: CDN-Dokumentation
+- name: Content Delivery Network-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Azure CDN?
+    - name: Was ist Azure Content Delivery Network (Azure CDN)?
       href: cdn-overview.md
     - name: Vergleichen von Produktfeatures
       href: cdn-features.md
@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: HTTP/2-Unterstützung
       href: cdn-http2.md
-    - name: Abrufen von der POP-Liste für Verizon
+    - name: Abrufen einer POP-Liste für Verizon
       href: cdn-pop-list-api.md
     - name: Migrieren von Verizon Standard zu Verizon Premium
       href: cdn-migrate.md
@@ -63,13 +63,13 @@
           href: cdn-create-endpoint-how-to.md
         - name: Verwalten mit Azure PowerShell
           href: cdn-manage-powershell.md
-        - name: Einschränken des Zugriffs nach Land/Region
+        - name: Einschränken des Zugriffs nach Land oder Region
           href: cdn-restrict-access-by-country.md
         - name: Verbessern der Leistung durch Komprimieren von Dateien
           href: cdn-improve-performance.md
         - name: Steuern des Zwischenspeicherverhaltens
           items:
-            - name: Steuern des Zwischenspeicherverhaltens mit Cacheregeln
+            - name: Steuern des Zwischenspeicherverhaltens mithilfe von Cacheregeln
               href: cdn-caching-rules.md
             - name: Zwischenspeichern von Inhalten nach Abfragezeichenfolgen
               items:
@@ -81,7 +81,7 @@
               href: cdn-purge-endpoint.md
             - name: Vorabladen von zwischengespeicherten Assets
               href: cdn-preload-endpoint.md
-        - name: Konfigurieren der Gültigkeitsdauer
+        - name: Konfigurieren der Gültigkeitsdauer (TTL)
           items:
             - name: Azure-Webinhalt
               href: cdn-manage-expiration-of-cloud-service-content.md
@@ -89,13 +89,13 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Tokenauthentifizierung
           href: cdn-token-auth.md
-        - name: SAS-Speichersupport
+        - name: SAS-Speicherunterstützung
           href: cdn-sas-storage-support.md
         - name: Cross-Origin Resource Sharing
           href: cdn-cors.md
         - name: Überwachen von Ressourcen
           href: cdn-resource-health.md
-        - name: Überschreiben des Verhaltens mit Regeln
+        - name: Verwenden von Regeln zur Außerkraftsetzung des Verhaltens
           href: cdn-verizon-premium-rules-engine.md
         - name: Verwenden von Traffic Manager
           href: cdn-traffic-manager.md
@@ -110,7 +110,7 @@
               href: cdn-analyze-usage-patterns.md
             - name: Benutzerdefinierte Berichte aus Verizon
               href: cdn-verizon-custom-reports.md
-        - name: Analysetools für Azure CDN Premium von Verizon
+        - name: Analysetools für Azure CDN (Premium) aus Verizon
           items:
             - name: Generieren von erweiterten HTTP-Berichten
               href: cdn-advanced-http-reports.md
@@ -136,7 +136,7 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
-    - name: Referenz zur Microsoft-Standardregel-Engine
+    - name: Referenz zur Standardregel-Engine
       href: cdn-standard-rules-engine-reference.md
       items:
         - name: Übereinstimmungsbedingungen der Standardregel-Engine
@@ -177,7 +177,7 @@
           href: cdn-pop-locations.md
         - name: POP-Standorte nach Abkürzung
           href: cdn-pop-abbreviations.md
-    - name: Grundlegendes zur Abrechnung für Azure CDN
+    - name: 'Azure Content Delivery Network (CDN): Abrechnung'
       href: cdn-billing.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

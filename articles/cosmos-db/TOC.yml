@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Gültigkeitsdauer – MongoDB
               href: mongodb-time-to-live.md
+            - name: Ändern von Datenströmen
+              href: mongodb-change-streams.md
             - name: Verwalten der Datenindizierung
               href: mongodb-indexing.md
             - name: Speichern und Verwalten von Spring-Daten
