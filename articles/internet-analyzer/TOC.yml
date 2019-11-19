@@ -22,6 +22,8 @@
   items:
     - name: Häufig gestellte Fragen zu Internet Analyzer
       href: internet-analyzer-faq.md
+    - name: Referenz zur Internet Analyzer-Befehlszeilenschnittstelle
+      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog

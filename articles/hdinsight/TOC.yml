@@ -225,9 +225,9 @@
           items:
             - name: "Neuigkeiten in HDInsight\_4.0"
               href: ./hdinsight-version-release.md
-            - name: 'HDInsight 4.0: Vollständige Versionshinweise'
+            - name: Versionshinweise
               href: ./hdinsight-release-notes.md
-            - name: 'HDInsight 3.6: Vollständige Versionshinweise'
+            - name: Archivierte Versionshinweise für Azure HDInsight
               href: ./hdinsight-release-notes-archive.md
         - name: Häufig gestellte Fragen (FAQ)
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: Erforderliche IP-Adressen für NSGs und UDRs
           href: ./hdinsight-management-ip-addresses.md
+        - name: Diensttags für Azure Firewall
+          href: ./hdinsight-service-tags.md
     - name: Anleitung
       items:
         - name: Erstellen von ESP-Clustern und Synchronisieren mit lokalen Ressourcen
