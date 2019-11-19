@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 13f751b472b3443ba50be5d54ab08e015d1a8f5a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824892"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905031"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -250,9 +250,8 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
       1. Zusätzliche Ports für ASCS ERS
          * Wiederholen Sie die oben stehenden Schritte für die Ports 33**02**, 5**02**13, 5**02**14, 5**02**16 und TCP für ASCS ERS
 
-> [!TIP]
-> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Load Balancer Standard-Instanz eingefügt werden, verfügen die virtuellen Computer über keine ausgehende Internetverbindung, sofern keine zusätzliche Konfiguration durchgeführt wird.  
-> Wenn im Szenario ausgehende Verbindungen zu öffentlichen Endpunkten erforderlich sind, finden Sie unter [Konnektivität öffentlicher Endpunkte für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit hoher Verfügbarkeit](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) Tipps und Überlegungen zum Herstellen ausgehender Verbindungen zu öffentlichen Endpunkten.
+> [!Note]
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
 
 > [!IMPORTANT]
 > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

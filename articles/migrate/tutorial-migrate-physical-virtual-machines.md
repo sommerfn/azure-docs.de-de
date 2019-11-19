@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9b1944cdad67f9f1b74c8dae95bc9d8409e56f54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309469"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605552"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrieren von physischen oder virtualisierten Servern zu Azure 
 
@@ -135,10 +135,10 @@ Bei der Azure Migrate-Servermigration wird eine Replikationsappliance verwendet,
 - **Konfigurationsserver**: Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
 - **Prozessserver** Der Prozessserver fungiert als Replikationsgateway. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an ein Cachespeicherkonto in Azure. 
 
-Bevor Sie beginnen, müssen Sie einen Windows Server 2016-Computer für das Hosten der Replikationsappliance vorbereiten. Der Computer sollte [diese Anforderungen](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) erfüllen.
+Bevor Sie beginnen, müssen Sie einen Windows Server 2016-Computer für das Hosten der Replikationsappliance vorbereiten. Der Computer sollte [diese Anforderungen](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) erfüllen. Die Appliance sollte nicht auf einem Quellcomputer installiert werden, den Sie schützen möchten.
 
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Hinzufügen des Tools für die Azure Migrate-Servermigration
+## <a name="add-the-azure-migrate-server-migration-tool"></a>Hinzufügen des Tools für die Azure Migrate-Servermigration
 
 Richten Sie ein Azure Migrate-Projekt ein, und fügen Sie diesem dann das Tool für die Azure Migrate-Servermigration hinzu.
 

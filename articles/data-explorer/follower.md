@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828385"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083191"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Verwenden der Follower-Datenbank zum Anfügen von Datenbanken in Azure Data Explorer
 
@@ -242,15 +242,15 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Verwalten von Prinzipalen
 
-Wenn Sie eine Datenbank anfügen, geben Sie die **Standardänderungsart für Prinzipale** an. Die Standardeinstellung ist die Beibehaltung der Leader-Datenbanksammlung von [autorisierten Prinzipalen](/azure/kusto/management/access-control/index.md#authorization).
+Wenn Sie eine Datenbank anfügen, geben Sie die **Standardänderungsart für Prinzipale** an. Die Standardeinstellung ist die Beibehaltung der Leader-Datenbanksammlung von [autorisierten Prinzipalen](/azure/kusto/management/access-control/index#authorization).
 
-|**Art** |**Beschreibung**  |
+|**Kind** |**Beschreibung**  |
 |---------|---------|
 |**Union**     |   Die angefügten Datenbankprinzipale umfassen immer die ursprünglichen Datenbankprinzipale und zusätzliche neue Prinzipale, die der Follower-Datenbank hinzugefügt werden.      |
 |**Replace**   |    Keine Vererbung von Prinzipalen aus der ursprünglichen Datenbank. Für die angefügte Datenbank müssen neue Prinzipale erstellt werden. Mindestens ein Prinzipal muss hinzugefügt werden, um die Prinzipalvererbung zu blockieren.     |
-|**None**   |   Die angefügten Datenbankprinzipale umfassen nur die Prinzipale der ursprünglichen Datenbank ohne zusätzliche Prinzipale.      |
+|**Keine**   |   Die angefügten Datenbankprinzipale umfassen nur die Prinzipale der ursprünglichen Datenbank ohne zusätzliche Prinzipale.      |
 
-Weitere Informationen zur Verwendung von Steuerungsbefehlen zum Konfigurieren der autorisierten Prinzipale finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower.md).
+Weitere Informationen zur Verwendung von Steuerungsbefehlen zum Konfigurieren der autorisierten Prinzipale finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower).
 
 ### <a name="manage-permissions"></a>Verwalten von Berechtigungen
 
@@ -258,7 +258,7 @@ Das Verwalten der Berechtigung für schreibgeschützte Datenbanken entspricht de
 
 ### <a name="configure-caching-policy"></a>Konfigurieren der Cacherichtlinie
 
-Der Administrator der Follower-Datenbank kann die [Cacherichtlinie](/azure/kusto/management/cache-policy) der angefügten Datenbank oder einer der zugehörigen Tabellen im Hostingcluster ändern. Die Standardeinstellung ist die Beibehaltung der Leader-Datenbanksammlung von Cacherichtlinien auf Datenbank- und Tabellenebene. Sie können beispielsweise über eine 30-Tage-Cacherichtlinie für die Leader-Datenbank zur monatlichen Berichterstellung und eine 3-Tage-Cacherichtlinie für die Follower-Datenbank zum ausschließlichen Abfragen der aktuellen Daten für die Problembehandlung verfügen. Weitere Informationen zur Verwendung von Steuerungsbefehlen zum Konfigurieren der Cacherichtlinie für die Follower-Datenbank oder -Tabelle finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower.md).
+Der Administrator der Follower-Datenbank kann die [Cacherichtlinie](/azure/kusto/management/cache-policy) der angefügten Datenbank oder einer der zugehörigen Tabellen im Hostingcluster ändern. Die Standardeinstellung ist die Beibehaltung der Leader-Datenbanksammlung von Cacherichtlinien auf Datenbank- und Tabellenebene. Sie können beispielsweise über eine 30-Tage-Cacherichtlinie für die Leader-Datenbank zur monatlichen Berichterstellung und eine 3-Tage-Cacherichtlinie für die Follower-Datenbank zum ausschließlichen Abfragen der aktuellen Daten für die Problembehandlung verfügen. Weitere Informationen zur Verwendung von Steuerungsbefehlen zum Konfigurieren der Cacherichtlinie für die Follower-Datenbank oder -Tabelle finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -270,4 +270,4 @@ Der Administrator der Follower-Datenbank kann die [Cacherichtlinie](/azure/kusto
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zur Konfiguration von Follower-Clustern finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower.md).
+* Informationen zur Konfiguration von Follower-Clustern finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower).
