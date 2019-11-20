@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201636"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803915"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
@@ -41,15 +41,12 @@ In den folgenden Abschnitten werden die unterstützten Serverbetriebssysteme auf
 
 ### Windows Server-Betriebssysteme <a name="os-windows"></a>
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> Die Integration von Microsoft Defender ATP unterstützt nur Windows Server 2012 R2 und Windows Server 2016.
+|OS|Unterstützt durch Azure Security Center|Unterstützung für die Integration in Microsoft Defender ATP|
+|:---|:-:|:-:|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2008 R2|✔|✔|
 
 Weitere Informationen zu den unterstützten Features für die oben aufgeführten Windows-Betriebssysteme finden Sie unter [Virtuelle Computer/Server – unterstützte Features](security-center-services.md##vm-server-features).
 

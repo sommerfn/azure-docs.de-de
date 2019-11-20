@@ -1,5 +1,5 @@
 ---
-title: 'Serverloses Szenario: Erstellen eines Customer Insights-Dashboards mit Azure-Diensten | Microsoft-Dokumentation'
+title: Erstellen eines Customer Insights-Dashboards – Azure Logic Apps
 description: Verwalten von Kundenfeedback, Daten aus sozialen Netzwerken und Ähnlichem durch Erstellen eines Kundendashboards mit Azure Logic Apps und Azure Functions
 services: logic-apps
 ms.service: logic-apps
@@ -7,17 +7,16 @@ ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c9c5cf9c56f2e22faa973c983c6fd81733119daa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164859"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680105"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
 Azure bietet [serverlose](https://azure.microsoft.com/solutions/serverless/) Tools, mit denen Sie Apps schnell erstellen und in der Cloud hosten können, ohne sich um die Infrastruktur kümmern zu müssen. In diesem Tutorial können Sie ein Dashboard erstellen, das bei Kundenfeedback ausgelöst wird, Feedback mittels Machine Learning analysiert und Erkenntnisse in einer Quelle wie Power BI oder Azure Data Lake veröffentlicht.
 

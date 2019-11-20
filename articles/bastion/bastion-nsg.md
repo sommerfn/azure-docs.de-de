@@ -5,49 +5,61 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694944"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527996"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Arbeiten mit NSG-Zugriff und Azure Bastion (Vorschau)
+# <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
 Bei der Arbeit mit Azure Bastion können Sie Netzwerksicherheitsgruppen (NSGs) verwenden. Weitere Informationen finden Sie unter [Sicherheitsgruppen](../virtual-network/security-overview.md). 
 
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
-![Architecture](./media/bastion-nsg/nsg_architecture.png)
+![Architecture](./media/bastion-nsg/nsg-architecture.png)
 
 In diesem Diagramm:
 
-* Der Bastion-Host wird im virtuellen Netzwerk bereitgestellt.
+* Der Bastionhost wird im virtuellen Netzwerk bereitgestellt.
 * Der Benutzer stellt in einem HTML5-Browser eine Verbindung mit dem Azure-Portal her.
-* Der Benutzer wählt den virtuellen Computer für die Verbindung aus.
-* Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet.
+* Der Benutzer navigiert zum virtuellen Azure-Computer, um eine RDP-/SSH-Verbindung herzustellen.
+* Verbindungsintegration: RDP-/SSH-Sitzung innerhalb des Browsers mit nur einem Klick
 * Für den virtuellen Azure-Computer ist keine öffentliche IP-Adresse erforderlich.
 
 ## <a name="nsg"></a>Netzwerksicherheitsgruppen
 
-* **AzureBastionSubnet:** Azure Bastion wird im bestimmten AzureBastionSubnet bereitgestellt.  
-    * **Eingehender Datenverkehr über das öffentliche Internet:** Azure Bastion erstellt eine öffentliche IP-Adresse, für die Port 443 auf der öffentlichen IP-Adresse für den eingehenden Datenverkehr aktiviert sein muss. Ports 3389/22 müssen NICHT auf dem AzureBastionSubnet geöffnet sein.
-    * **Ausgehender Datenverkehr zu Ziel-VMs:** Azure Bastion erreicht die Ziel-VMs über die private IP-Adresse. Die Netzwerksicherheitsgruppen müssen den ausgehenden Datenverkehr zu anderen Ziel-VM-Subnetzen ermöglichen.
+In diesem Abschnitt wird der Netzwerkdatenverkehr zwischen dem Benutzer und Azure Bastion und weiter zu virtuellen Zielcomputern in Ihrem virtuellen Netzwerk gezeigt:
+
+### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+
+Azure Bastion wird speziell im Azure Bastion-Subnetz (AzureBastionSubnet) bereitgestellt.
+
+* **Eingehender Datenverkehr:**
+
+   * **Eingehender Datenverkehr über das öffentliche Internet:** Azure Bastion erstellt eine öffentliche IP-Adresse, für die Port 443 auf der öffentlichen IP-Adresse für den eingehenden Datenverkehr aktiviert sein muss. Ports 3389/22 müssen NICHT auf dem AzureBastionSubnet geöffnet sein.
+   * **Eingehender Datenverkehr von der Azure Bastion-Steuerungsebene:** Aktivieren Sie für Steuerungsebenenkonnektivität den Eingangsport 443 über das Diensttag **GatewayManager**. Dadurch kann die Steuerungsebene (also der Gateway-Manager) mit Azure Bastion kommunizieren.
+
+* **Ausgehender Datenverkehr:**
+
+   * **Ausgehender Datenverkehr für virtuelle Zielcomputer:** Azure Bastion erreicht die Ziel-VMs über die private IP-Adresse. Die Netzwerksicherheitsgruppen müssen ausgehenden Datenverkehr für andere Ziel-VM-Subnetze für die Ports 3389 und 22 zulassen.
+   * **Ausgehender Datenverkehr für andere öffentliche Endpunkte in Azure:** Azure Bastion muss eine Verbindung mit verschiedenen öffentlichen Endpunkten in Azure herstellen können, um beispielsweise Diagnose- und Messprotokolle zu speichern. Aus diesem Grund benötigt Azure Bastion ausgehende Konnektivität über den Port 443 mit dem Diensttag **AzureCloud**.
+
 * **Ziel-VM-Subnetz:** Dieses Subnetz enthält die Ziel-VM, mit der Sie eine RDP-/SSH-Verbindung herstellen möchten.
-    * **Eingehender Datenverkehr von Azure Bastion:** Azure Bastion erreicht die Ziel-VM über die private IP-Adresse. RDP/SSH-Ports (Port 3389 und 22) müssen über die private IP-Adresse auf der Ziel-VM-Seite geöffnet werden.
+
+   * **Eingehender Datenverkehr von Azure Bastion:** Azure Bastion erreicht die Ziel-VM über die private IP-Adresse. RDP-/SSH-Ports (Port 3389 bzw. 22) müssen aufseiten des virtuellen Zielcomputers für die private IP-Adresse geöffnet werden. Es empfiehlt sich, in dieser Regel den IP-Adressbereich des Azure Bastion-Subnetzes hinzuzufügen, damit diese Ports auf den virtuellen Zielcomputern in Ihrem Ziel-VM-Subnetz nur von Bastion geöffnet werden können.
 
 ## <a name="apply"></a>Anwenden von NSGs auf AzureBastionSubnet
 
-Wenn Sie NSGs auf das **AzureBastionSubnet** anwenden, lassen Sie die folgenden beiden Diensttags für Azure-Steuerungsebene und -Infrastruktur zu:
+Wenn Sie eine NSG erstellen und auf ***AzureBastionSubnet*** anwenden, stellen Sie sicher, dass Sie die folgenden Regeln in Ihrer NSG hinzugefügt haben. Wenn Sie diese Regeln nicht hinzufügen, ist die Erstellung/Aktualisierung der NSG nicht erfolgreich:
 
-* **GatewayManager (nur Resource Manager)** : Dieses Tag gibt die Adresspräfixe des Azure Gateway Manager-Diensts an. Wenn Sie GatewayManager als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert.  Wenn Sie NSGs für das Subnetz „AzureBastionSubnet“ erstellen, aktivieren Sie das GatewayManager-Tag für eingehenden Datenverkehr.
+* **Steuerungsebenenkonnektivität:** Eingehend am Port 443 von „GatewayManager“
+* **Diagnoseprotokollierung und Sonstiges:** Ausgehend am Port 443 an „AzureCloud“. Regionale Tags innerhalb dieses Diensttags werden noch nicht unterstützt.
+* **Virtueller Zielcomputer:** Ausgehend für die Ports 3389 und 22 an „VirtualNetwork“
 
-* **AzureCloud (nur Resource Manager)** : Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller öffentlichen IP-Adressen für das Datencenter. Wenn Sie AzureCloud als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte Region zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie AzureCloud.EastUS als Diensttag angeben. Wenn Sie NSGs für das Subnetz „AzureBastionSubnet“ erstellen, aktivieren Sie das AzureCloud-Tag für ausgehenden Datenverkehr. Wenn Sie Port 443 für eingehenden Datenverkehr im Internet öffnen, sollte Sie das AzureCloud-Tag nicht für eingehenden Datenverkehr aktivieren müssen.
+Eine exemplarische NSG-Regel finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über Azure Bastion finden Sie in den [FAQ](bastion-faq.md).
+Weitere Informationen zu Azure Bastion finden Sie in den [häufig gestellten Fragen](bastion-faq.md).

@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387967"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553697"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
-
-
 
 Eine Schemaabweichung liegt vor, wenn Ihre Quellen Metadaten häufig ändern. Felder, Spalten und Typen können bei laufendem Betrieb hinzugefügt, entfernt oder geändert werden. Ohne Vorkehrungen bei Schemaabweichungen wird Ihr Datenfluss anfällig für Änderungen an vorgelagerten Datenquellen. Wenn sich eingehende Spalten und Felder ändern, treten bei typischen ETL-Mustern Fehler auf, da sie dazu neigen, an diesen Quellennamen gebunden zu sein.
 
@@ -31,6 +29,8 @@ Flexible und sich von Ausführung zu Ausführung ändernde Schemas werden von Az
 Sie müssen eine architektonische Entscheidung in Ihrem Datenfluss treffen, um die Schemaabweichung in Ihrem Fluss zu akzeptieren. Wenn Sie dies tun, können Sie Schutz gegen Schemaänderungen aus den Quellen bieten. Allerdings verlieren Sie die frühe Bindung Ihrer Spalten und Typen im gesamten Datenfluss. Azure Data Factory behandelt Schemaabweichungsflüsse als Flüsse mit später Bindung, sodass die abweichenden Spaltennamen bei der Erstellung Ihrer Transformationen Ihnen nicht im gesamten Fluss in den Schemaansichten zur Verfügung stehen.
 
 ## <a name="schema-drift-in-source"></a>Schemaabweichung in der Quelle
+
+Spalten, die Ihrem Datenfluss aus Ihrer Quelldefinition hinzugefügt werden, sind als abweichende Spalten definiert, wenn sie nicht in Ihrer Quellprojektion vorhanden sind. Ihre Quellprojektion können Sie sich auf der Registerkarte „Projektion“ der Quelltransformation ansehen. Wenn Sie ein Dataset für Ihre Quelle auswählen, verwendet ADF automatisch das Schema aus dem Dataset und erstellt ein Projekt auf der Grundlage dieser Datasetschema-Definition.
 
 Bei einer Quelltransformation ist die Schemaabweichung definiert als das Lesen von Spalten, die nicht in Ihrem Datasetschema definiert sind. Um Schemaabweichung zu ermöglichen, wählen Sie in Ihrer Quellentransformation **Allow Schema Drift** (Schemaabweichung zulassen) aus.
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999047"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159876"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -34,28 +34,14 @@ Dieser Artikel beschäftigt sich mit Folgendem:
 [Entwickeln sicherer Anwendungen in Azure](abstract-develop-secure-apps.md) ist ein allgemeiner Leitfaden und behandelt die Sicherheitsfragen und Steuerelemente, die Sie beim Entwickeln von Anwendungen für die Cloud in den einzelnen Phasen des Softwareentwicklungszyklus berücksichtigen sollten.
 
 ## <a name="cloud-security-advantages"></a>Sicherheitsvorteile der Cloud
-Die Nutzung der Cloud bringt einige Sicherheitsvorteile mit sich. In einer lokalen Umgebung werden in Organisationen häufig nicht alle Zuständigkeitsbereiche abgedeckt, und für die Sicherheit stehen nur begrenzte Ressourcen zur Verfügung. So entsteht eine Umgebung, in der Angreifer Sicherheitslücken auf allen Ebenen ausnutzen können.
+Es ist wichtig, die [Aufteilung der Zuständigkeiten](shared-responsibility.md) zwischen Ihnen und Microsoft zu verstehen. In einer lokalen Umgebung sind Sie für den gesamten Stapel zuständig. Bei einem Wechsel in die Cloud wird dagegen ein Teil der Zuständigkeit auf Microsoft übertragen.
 
-![Sicherheitsvorteile des Cloudzeitalters](./media/paas-deployments/advantages-of-cloud.png)
+Die [Nutzung der Cloud bringt einige Sicherheitsvorteile mit sich](shared-responsibility.md#cloud security advantages). In einer lokalen Umgebung werden in Organisationen häufig nicht alle Zuständigkeitsbereiche abgedeckt, und für die Sicherheit stehen nur begrenzte Ressourcen zur Verfügung. So entsteht eine Umgebung, in der Angreifer Sicherheitslücken auf allen Ebenen ausnutzen können.
 
 Mithilfe der cloudbasierten Sicherheitsfunktionen und Clouddaten eines Anbieters können Organisationen ihre Bedrohungserkennung und ihre Reaktionszeiten verbessern.  Durch die Übertragung von Aufgaben an den Cloudanbieter profitieren Organisationen von einer höheren Sicherheit und können Sicherheitsressourcen und entsprechende Finanzmittel für andere geschäftliche Prioritäten nutzen.
 
-## <a name="division-of-responsibility"></a>Geteilte Zuständigkeit
-Es ist wichtig, die Aufteilung der Zuständigkeit zwischen Ihnen und Microsoft zu verstehen. In einer lokalen Umgebung sind Sie für den gesamten Stapel zuständig. Bei einem Wechsel in die Cloud wird dagegen ein Teil der Zuständigkeit auf Microsoft übertragen. Die folgende Zuständigkeitsmatrix zeigt, für welche Bereiche des Stapels in einer SaaS-, PaaS- und IaaS-Bereitstellung Sie selbst zuständig sind und für welche Bereiche Microsoft zuständig ist.
-
-![Zuständigkeitszonen](./media/paas-deployments/responsibility-zones.png)
-
-Ihre Daten und Identitäten gehören bei jeder Art von Cloudbereitstellung Ihnen. Sie sind für den Schutz der Sicherheit Ihrer Daten und Identitäten, lokalen Ressourcen und der von Ihnen gesteuerten Cloudkomponenten zuständig (abhängig von der Art des Diensts).
-
-Für folgende Bereiche sind immer Sie selbst zuständig (unabhängig von der Art der Bereitstellung):
-
-- Data
-- Endpunkte
-- Konto
-- Zugriffsverwaltung
-
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Sicherheitsvorteile eines PaaS-Clouddienstmodells
-Sehen wir uns anhand der gleichen Zuständigkeitsmatrix die Sicherheitsvorteile einer Azure-PaaS-Bereitstellung im Vergleich zu einer lokalen Bereitstellung an.
+Sehen wir uns die Sicherheitsvorteile einer Azure-PaaS-Bereitstellung im Vergleich zu einer lokalen Bereitstellung an.
 
 ![Sicherheitsvorteile von PaaS](./media/paas-deployments/advantages-of-paas.png)
 
@@ -181,5 +167,3 @@ Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitst
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z.B. Probleme mit Azure, melden oder eine E-Mail an secure@microsoft.com schreiben.
-
-

@@ -8,35 +8,44 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 6e9ac50f38b2cf7bc3531e58e87ff2a8768c0a45
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c30dbad9e2d433920ade6890eabd85f083f9d968
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650470"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596827"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Einstellen von Runtimeversionen von Azure Functions als Ziel
 
-Eine Funktionen-App wird für eine bestimmte Version der Azure Functions-Runtime ausgeführt. Es gibt zwei Hauptversionen: [1.x und 2.x](functions-versions.md). Standardmäßig werden Funktions-Apps für Version 2.x der Runtime erstellt. In diesem Artikel wird erläutert, wie Sie eine Funktionen-App in Azure so konfigurieren, dass sie mit der von Ihnen ausgewählten Version ausgeführt wird. Informationen zum Konfigurieren einer lokalen Entwicklungsumgebung für eine bestimmte Version finden Sie unter [Codieren und lokales Testen von Azure Functions](functions-run-local.md).
+Eine Funktionen-App wird für eine bestimmte Version der Azure Functions-Runtime ausgeführt. Es gibt zwei Hauptversionen: [1.x und 2.x](functions-versions.md). Die Version 3.x befindet sich in der Vorschauphase. Standardmäßig werden Funktions-Apps für Version 2.x der Runtime erstellt. In diesem Artikel wird erläutert, wie Sie eine Funktionen-App in Azure so konfigurieren, dass sie mit der von Ihnen ausgewählten Version ausgeführt wird. Informationen zum Konfigurieren einer lokalen Entwicklungsumgebung für eine bestimmte Version finden Sie unter [Codieren und lokales Testen von Azure Functions](functions-run-local.md).
 
 ## <a name="automatic-and-manual-version-updates"></a>Automatische und manuelle Versionsupdates
 
 Mit Azure Functions können Sie eine bestimmte Version der Runtime als Ziel festlegen, indem Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` in einer Funktionen-App verwenden. Die Funktionen-App verwendet weiterhin die angegebene Version der Runtime, bis Sie ausdrücklich die Verwendung einer neuen Version auswählen.
 
-Wenn Sie nur die Hauptversion („~2“ für 2.x oder „~1“ für 1.x) angeben, wird die Funktions-App automatisch auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Neue Nebenversion enthalten keine grundlegenden Änderungen. Wenn Sie eine Nebenversion (z.B. „2.0.12345“) angeben, wird die Funktions-App an diese spezifische Version angeheftet, bis Sie sie explizit ändern.
+Wenn Sie nur die Hauptversion angeben, wird die Funktions-App automatisch auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Neue Nebenversion enthalten keine grundlegenden Änderungen. Wenn Sie eine Nebenversion (z.B. „2.0.12345“) angeben, wird die Funktions-App an diese spezifische Version angeheftet, bis Sie sie explizit ändern.
 
 > [!NOTE]
 > Wenn Sie an eine bestimmte Version von Azure Functions anheften und dann versuchen, mit Visual Studio in Azure zu veröffentlichen, wird ein Dialogfenster angezeigt, in dem Sie aufgefordert werden, auf die neueste Version zu aktualisieren oder die Veröffentlichung abzubrechen. Um dies zu vermeiden, fügen Sie die `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>`-Eigenschaft Ihrer `.csproj`-Datei hinzu.
 
 Wenn eine neue Version öffentlich verfügbar ist, bietet eine Eingabeaufforderung im Portal Ihnen die Möglichkeit, auf diese Version umzusteigen. Nach dem Wechsel zu einer neuen Version können Sie jederzeit mit der Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` zu einer früheren Version zurückkehren.
 
-Eine Änderung an der Runtimeversion bewirkt, dass eine Funktionen-App neu gestartet wird.
+Die folgende Tabelle enthält die Werte vom Typ `FUNCTIONS_EXTENSION_VERSION` für die jeweilige Hauptversion, um automatische Updates zu aktivieren:
 
-Die Werte, die Sie in der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` festlegen können, um automatische Updates zu aktivieren, lauten zurzeit „~1“ für die 1.x-Runtime und „~2“ für 2.x.
+| Hauptversion | Wert vom Typ `FUNCTIONS_EXTENSION_VERSION` |
+| ------------- | ----------------------------------- |
+| 3.x (Vorschauversion) | `~3` |
+| 2.x  | `~2` |
+| 1.x | `~1` |
+
+Eine Änderung an der Runtimeversion bewirkt, dass eine Funktionen-App neu gestartet wird.
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Anzeigen und Aktualisieren der aktuellen Runtimeversion
 
-Sie können die von der Funktions-App verwendete Runtimeversion ändern. Da möglicherweise wesentliche Änderungen vorliegen, können Sie nur die Runtimeversion ändern, bevor Sie Funktionen in Ihrer Funktions-App erstellt haben. Obwohl die Runtime-Version durch die Einstellung `FUNCTIONS_EXTENSION_VERSION` bestimmt wird, sollten Sie diese Änderung im Azure-Portal vornehmen und nicht durch direkte Änderung der Einstellung. Grund dafür ist, dass das Portal Ihre Änderungen überprüft und bei Bedarf weitere zugehörige Änderungen vornimmt.
+Sie können die von der Funktions-App verwendete Runtimeversion ändern. Da möglicherweise wesentliche Änderungen vorliegen, können Sie nur die Runtimeversion ändern, bevor Sie Funktionen in Ihrer Funktions-App erstellt haben. 
+
+> [!IMPORTANT]
+> Obwohl die Runtime-Version durch die Einstellung `FUNCTIONS_EXTENSION_VERSION` bestimmt wird, sollten Sie diese Änderung im Azure-Portal vornehmen und nicht durch direkte Änderung der Einstellung. Grund dafür ist, dass das Portal Ihre Änderungen überprüft und bei Bedarf weitere zugehörige Änderungen vornimmt.
 
 ### <a name="from-the-azure-portal"></a>Über das Azure-Portal
 

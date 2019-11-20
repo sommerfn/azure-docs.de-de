@@ -1,5 +1,5 @@
 ---
-title: Einbinden einer Windows Server-VM in Azure AD DS mithilfe einer Vorlage | Microsoft-Dokumentation
+title: Einbinden eines virtuellen Windows-Computers in Azure AD DS mithilfe einer Vorlage | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen verwenden können, um eine neue oder bestehende Windows Server-VM in eine mit Azure Active Directory Domain Services verwaltete Domäne einzubinden.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: d4e6beb376172e5ec5285d26b47fd23b396d5e38
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104110"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755700"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 

@@ -1,17 +1,17 @@
 ---
-title: Exportieren von Azure Resource Manager-Vorlagen über das Azure-Portal
+title: Exportieren einer Resource Manager-Vorlage – Azure-Portal
 description: Verwenden Sie das Azure-Portal, um eine Azure Resource Manager-Vorlage aus Ressourcen in Ihrem Abonnement zu exportieren.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0605e24590fa2d702a1385429a7808a7e1226809
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300361"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532346"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal
 

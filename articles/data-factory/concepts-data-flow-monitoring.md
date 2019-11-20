@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387987"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597113"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
@@ -24,7 +24,7 @@ Wenn Sie Ihre Pipeline ausführen, können Sie die Pipeline und alle in der Pipe
 
 ![Datenflussüberwachung](media/data-flow/mon001.png "Datenflussüberwachung")
 
-Sie sehen die Statistiken auf dieser Ebene als auch die Laufzeiten und den Status. Die Ausführungs-ID auf der Aktivitätsebene unterscheidet sich von der Ausführungs-ID auf Pipelineebene. Die Ausführungs-ID der vorherigen Ebene ist für die Pipeline. Durch Anklicken der Brille erhalten Sie detaillierte Informationen über Ihre Datenflussausführung.
+Auf dieser Ebene werden neben Statistikdaten auch die Laufzeiten und der Status angezeigt. Die Ausführungs-ID auf der Aktivitätsebene unterscheidet sich von der Ausführungs-ID auf Pipelineebene. Die Ausführungs-ID der vorherigen Ebene ist für die Pipeline. Durch Anklicken der Brille erhalten Sie detaillierte Informationen über Ihre Datenflussausführung.
 
 ![Datenflussüberwachung](media/data-flow/mon002.png "Datenflussüberwachung")
 
@@ -47,6 +47,11 @@ Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basie
   * Berechnet: Sie verwenden die Spalte für die bedingte Verarbeitung oder innerhalb eines Ausdrucks in Ihrem Datenfluss, sie wird aber nicht in die Senke weitergeleitet.
   * Abgeleitet: Die Spalte ist eine neue Spalte, die Sie in Ihrem Fluss generiert haben, d.h. sie war nicht in der Quelle vorhanden.
   * Zugeordnet: Die Spalte stammt aus der Quelle und Sie ordnen sie einem Senkenfeld zu.
+  * „Data flow status“ (Datenflussstatus): Der aktuelle Status Ihrer Ausführung.
+  * „Cluster startup time“ (Startzeit des Clusters): Zeitraum zum Abrufen der JIT-Spark-Computeumgebung für Ihre Datenflussausführung.
+  * „Number of transforms“ (Anzahl von Transformationen): Die Anzahl von Transformationsschritten, die in Ihrem Fluss ausgeführt werden.
+  
+![Acit-Datenflussüberwachung](media/data-flow/monitornew.png "Datenflussüberwachung (neu)")  
   
 ## <a name="monitor-icons"></a>Symbole für die Überwachung
 

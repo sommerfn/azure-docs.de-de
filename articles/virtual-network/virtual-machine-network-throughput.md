@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874942"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750324"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -54,13 +54,13 @@ Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Fl
 
 ## <a name="flow-limits-and-recommendations"></a>Grenzwerte und Empfehlungen für Flows
 
-Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Bei Überschreibung dieses Grenzwerts nimmt die Leistung bei weiteren Flows ab. Dies gilt bis zur absoluten Obergrenze von 1 Mio. Flows – 500.000 ein- und 500.000 ausgehend –, ab der weitere Flows verworfen werden.
+Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Jenseits dieses Grenzwerts nimmt die Leistung für weitere Flows nach und nach ab. Dies gilt bis zur absoluten Obergrenze von 500.000 Flows (250.000 eingehend und 250.000 ausgehend), ab der weitere Flows verworfen werden.
 
 ||VMs mit weniger als 8 CPU-Kernen|VMs mit mehr als 8 CPU-Kernen|
 |---|---|---|
 |<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
 |<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
-|<b>Grenzwert für Flows</b>|1 Mio. Flows|1 Mio. Flows|
+|<b>Grenzwert für Flows</b>|500.000 Flows|500.000 Flows|
 
 In [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
 

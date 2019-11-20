@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498393"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690881"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -43,7 +43,7 @@ Es gibt zwei Typen von ausführenden Konten:
 
 ## <a name="permissions"></a>Berechtigungen zum Konfigurieren von ausführenden Konten
 
-Um ein ausführendes Konto erstellen oder aktualisieren zu können, müssen Sie über bestimmte Rechte und Berechtigungen verfügen. Die Rollen „Globaler Administrator“ in Azure Active Directory und „Besitzer“ in einem Abonnement können alle Aufgaben erledigen. In der folgenden Tabelle werden die Aufgaben, das entsprechende Cmdlet und die erforderlichen Berechtigungen für Situationen mit Aufgabentrennung aufgeführt:
+Um ein ausführendes Konto erstellen oder aktualisieren zu können, müssen Sie über bestimmte Rechte und Berechtigungen verfügen. Ein Anwendungsadministrator in Azure Active Directory und ein Besitzer in einem Abonnement können sämtliche Aufgaben erledigen. In der folgenden Tabelle werden die Aufgaben, das entsprechende Cmdlet und die erforderlichen Berechtigungen für Situationen mit Aufgabentrennung aufgeführt:
 
 |Aufgabe|Cmdlet  |Mindestberechtigungen  |Hier legen Sie die Berechtigungen fest|
 |---|---------|---------|---|
@@ -424,7 +424,7 @@ $roleDefinition | Set-AzureRMRoleDefinition
 
 Um zu bestimmen, ob der als ausführendes Konto verwendete Dienstprinzipal sich in der Definition **Mitwirkender** oder einer benutzerdefinierten Rollendefinition befindet, wechseln Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** > **Ausführendes Azure-Konto** aus. Unter **Rolle** ist die verwendete Rollendefinition aufgeführt.
 
-[![](media/manage-runas-account/verify-role.png "Überprüfen der Rolle „Ausführendes Konto“")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
 Um die Rollendefinition zu bestimmen, die von den ausführenden Automation-Konten für mehrere Abonnements oder Automation-Konten verwendet werden, können Sie das Skript [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) im PowerShell-Katalog verwenden.
 

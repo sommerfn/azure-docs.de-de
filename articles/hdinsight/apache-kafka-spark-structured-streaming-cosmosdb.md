@@ -1,5 +1,5 @@
 ---
-title: Apache Spark-Daten von Apache Kafka zu Azure Cosmos DB – Azure HDInsight
+title: Apache Spark und Apache Kafka mit Azure Cosmos DB – Azure HDInsight
 description: Erfahren Sie, wie Sie strukturiertes Apache Spark-Streaming verwenden, um Daten aus Apache Kafka zu lesen und in Azure Cosmos DB zu speichern. In diesem Beispiel streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark auf HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037287"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044907"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB
 

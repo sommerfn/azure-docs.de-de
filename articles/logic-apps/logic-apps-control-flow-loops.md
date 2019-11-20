@@ -1,21 +1,20 @@
 ---
-title: Hinzufügen von Schleifen zum Wiederholen von Aktionen oder Verarbeiten von Arrays – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie in Azure Logic Apps Schleifen erstellen, die Workflowaktionen wiederholen oder Arrays verarbeiten.
+title: Hinzufügen von Schleifen zum Wiederholen von Aktionen – Azure Logic Apps
+description: Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-manager: jeconnoc
-ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/05/2019
+ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683960"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680445"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -236,8 +235,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
-      | **An** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **To** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **Subject** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
       | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 
 

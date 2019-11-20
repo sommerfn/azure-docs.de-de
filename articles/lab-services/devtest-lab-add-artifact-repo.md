@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1555eb4e48a0cf43a38aa811e20ffbbed8ee87a9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311716"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755818"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
@@ -65,7 +65,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
    1. Geben Sie eine **Beschreibung** für das Token ein.
    2. Wählen Sie **180 Tagen** in der Liste **Läuft ab in** aus.
    3. Wählen Sie **Alle verfügbaren Konten** in der Liste **Konten** aus.
-   4. Wählen Sie die Option **Alle Bereiche** aus.
+   4. Wählen Sie die Option **Schreibgeschützt** aus.
    5. Wählen Sie **Token erstellen** aus.
 9. Das neue Token wird in der Liste **Persönliche Zugriffstokens** angezeigt. Wählen Sie **Token kopieren**, und speichern Sie den Tokenwert für die spätere Verwendung.
 10. Fahren Sie mit dem Abschnitt [Verbinden des Labs mit dem Repository](#connect-your-lab-to-the-repository) fort.

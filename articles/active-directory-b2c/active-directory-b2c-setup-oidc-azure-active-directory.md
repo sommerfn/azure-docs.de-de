@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c2e368b9c12d8ab673e5b8808632501de448b9a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622366"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755771"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -58,6 +59,8 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
     ```
 
     Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+
+    Verwenden Sie **nicht** den Azure AD v2.0-Metadatenendpunkt (beispielsweise `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`). Andernfalls tritt bei der Anmeldung ein Fehler wie der folgende auf: `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.onmicrosoft.com'`.
 
 1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
 1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten geheimen Clientschlüssel ein.

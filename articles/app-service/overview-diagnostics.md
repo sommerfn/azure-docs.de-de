@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066856"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755528"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -92,17 +92,17 @@ Diagnosetools umfassen erweiterte Diagnosetools, mit denen Sie Probleme mit dem 
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktive CPU-Überwachung
 
-Die proaktive CPU-Überwachung stellt eine einfache und proaktive Möglichkeit für Sie dar, mit einer Aktion einzugreifen, wenn eine App oder ein untergeordneter Prozess der App CPU-Ressourcen in hohem Maße auslastet. Sie können eigene Regeln für den CPU-Schwellenwert festlegen, um eine hohe CPU-Auslastung vorübergehend zu beheben, bis die tatsächliche Ursache für das unerwartete Problem gefunden wird.
+Die proaktive CPU-Überwachung stellt eine einfache und proaktive Möglichkeit für Sie dar, mit einer Aktion einzugreifen, wenn eine App oder ein untergeordneter Prozess der App CPU-Ressourcen in hohem Maße auslastet. Sie können eigene Regeln für den CPU-Schwellenwert festlegen, um eine hohe CPU-Auslastung vorübergehend zu beheben, bis die tatsächliche Ursache für das unerwartete Problem gefunden wird. Weitere Informationen finden Sie unter [Behandeln von CPU-Problemen, bevor sie auftreten](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktive CPU-Überwachung](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Automatische Reparatur und proaktive automatische Reparatur
 
-Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben.
+Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben. Weitere Informationen finden Sie unter [Announcing the new auto healing experience in app service diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) (Bekanntgabe der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose).
 
 ![Automatische Reparatur](./media/app-service-diagnostics/auto-healing-10.png)
 
-Wie die proaktive CPU-Überwachung ist die proaktive automatische Reparatur eine einfache Lösung, unerwartetes Verhalten Ihrer App in den Griff zu bekommen. Die proaktive automatische Reparatur startet Ihre App neu, wenn App Service feststellt, dass sie sich in einem nicht wiederherstellbaren Zustand befindet. Weitere Informationen finden Sie unter [Announcing the new auto healing experience in app service diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) (Bekanntgabe der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose).
+Wie die proaktive CPU-Überwachung ist die proaktive automatische Reparatur eine einfache Lösung, unerwartetes Verhalten Ihrer App in den Griff zu bekommen. Die proaktive automatische Reparatur startet Ihre App neu, wenn App Service feststellt, dass sie sich in einem nicht wiederherstellbaren Zustand befindet. Weitere Informationen finden Sie in der [Einführung in die proaktive automatische Reparatur](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigator und Änderungsanalyse (nur für Windows-Apps)
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374483"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597083"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -132,6 +132,7 @@ Abrechnungskonten der Microsoft-Kundenvereinbarung haben die folgenden Bereiche:
 
 Im Gegensatz zu EA-Abrechnungsbereichen _sind_ Abrechnungskonten der Kundenvereinbarung an ein einzelnes Verzeichnis gebunden und lassen keine Abonnements in mehreren Azure AD-Verzeichnissen zu.
 
+Abrechnungsbereiche der Kundenvereinbarung gelten nicht für Partner. Partnerrollen und -berechtigungen sind unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview) dokumentiert.
 
 Abrechnungsbereiche der Kundenvereinbarung unterstützen die folgenden Rollen:
 
@@ -159,7 +160,21 @@ Wenn die AWS-Integration abgeschlossen ist, finden Sie weitere Informationen unt
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Bereiche für Cloud Solution Provider (CSP)
 
-Cloud Solution Provider-Partner (CSP) werden derzeit in Cost Management nicht unterstützt. Stattdessen können Sie das [Partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) verwenden.
+Die folgenden Bereiche werden für CSPs mit Kunden in einer Microsoft-Kundenvereinbarung unterstützt:
+
+- **Abrechnungskonto**: Stellt eine Kundenvereinbarung für mehrere Microsoft-Produkte und -Dienste dar. Abrechnungskonten der Microsoft-Kundenvereinbarung bieten nicht dieselben Funktionen wie EA-Registrierungen. EA-Registrierungen orientieren sich eher an Abrechnungsprofilen.
+
+    Ressourcentyp: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Abrechnungsprofil**: Definiert die Abonnements, die in einer Rechnung berücksichtigt werden. Abrechnungsprofile entsprechen funktional einer EA-Registrierung, da dies der Bereich ist, in dem Rechnungen generiert werden. Nicht nutzungsabhängige Käufe (wie Marketplace und Reservierungen) sind auch nur in diesem Bereich möglich.
+
+    Ressourcentyp: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Kunde**: Stellt eine Gruppe von Abonnements dar, die einem bestimmten Kunden zugeordnet sind, der von einem Partner in eine Microsoft-Kundenvereinbarung aufgenommen wird.
+
+Nur die Benutzer mit den Rollen *Globaler Administrator* und *Administrator-Agent* können Kosten für Abrechnungskonten, Abrechnungsprofile und Kunden direkt im Azure-Mandanten des Partners verwalten und anzeigen. Weitere Informationen zu Partner Center-Rollen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
+
+CSP-Partnerkunden werden von Azure Cost Management nur unterstützt, wenn die Kunden über eine Microsoft-Kundenvereinbarung verfügen. Informationen zu von CSP unterstützten Kunden ohne Microsoft-Kundenvereinbarung finden Sie unter [Übersicht über Partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Umschalten zwischen Bereichen in Cost Management
 

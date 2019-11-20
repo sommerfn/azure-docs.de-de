@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333435"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598218"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Häufig gestellte Fragen zu Azure Network Watcher
 Dier Dienst [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) stellt eine Sammlung von Tools für die Überwachung, Diagnose, Metrikanzeige sowie zur Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereit. In diesem Artikel werden häufig gestellte Fragen zum Dienst beantwortet.
@@ -54,16 +54,26 @@ Besuchen Sie die Seite [Preise](https://azure.microsoft.com/pricing/details/netw
 ### <a name="which-regions-is-network-watcher-available-in"></a>In welchen Regionen ist Network Watcher verfügbar?
 Sie können die aktuelle regionale Verfügbarkeit auf der Azure-Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) anzeigen.
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Welche Ressourcengrenzwerte gelten für Network Watcher?
+Alle Grenzwerte finden Sie unter [Network Watcher-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits).  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Warum ist pro Region nur eine einzelne Network Watcher-Instanz zulässig?
+Network Watcher muss lediglich einmal für ein Abonnement aktiviert werden, damit die zugehörigen Features funktionieren. Hierbei handelt es sich nicht um eine Diensteinschränkung.
+
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Welche Aufgabe haben NSG-Flussprotokolle?
 Azure-Netzwerkressourcen können mithilfe von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) kombiniert und verwaltet werden. NSG-Flussprotokolle ermöglichen Ihnen, Flussinformationen mit 5 Tupeln zum gesamten Datenverkehr durch Ihre NSGs zu protokollieren. Die unformatierten Flowprotokolle werden in ein Azure Storage-Konto geschrieben, in dem Sie nach Bedarf weiterverarbeitet, analysiert, abgefragt oder exportiert werden können.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>Gelten Einschränkungen bei der Verwendung von NSG-Flussprotokollen?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Gelten Einschränkungen für die Verwendung von NSG-Flussprotokollen?
 Für die Verwendung von NSG-Flussprotokollen gibt es keine Voraussetzungen. Es gelten jedoch zwei Einschränkungen:
 - **In Ihrem VNET dürfen keine Dienstendpunkte vorhanden sein**: NSG-Flussprotokolle werden von Agents auf Ihren VMs an Speicherkonten ausgegeben. Derzeit können Sie Protokolle jedoch nur direkt an Speicherkonten ausgeben und keinen Dienstendpunkt verwenden, der Ihrem VNET hinzugefügt wurde.
 
-Es gibt zwei Möglichkeiten, dies zu beheben:
+- **Das Speicherkonto darf sich nicht hinter einer Firewall befinden**: Aufgrund interner Einschränkungen müssen Speicherkonten über das öffentliche Internet zugänglich sein, damit NSG-Flussprotokolle mit ihnen arbeiten können. Datenverkehr wird weiterhin intern durch Azure geleitet, und es fallen keine zusätzlichen Gebühren für ausgehenden Datenverkehr an.
+
+In den nächsten beiden Fragen erfahren Sie, wie Sie diese Probleme umgehen. Es wird erwartet, dass diese beiden Einschränkungen bis Januar 2020 ausgeräumt sein werden.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Wie verwende ich NSG-Flussprotokolle mit Dienstendpunkten?
 
 *Option 1: Konfigurieren Sie die NSG-Flussprotokolle neu, damit die Ausgabe in das Azure Storage-Konto ohne VNET-Endpunkte erfolgt.*
 
@@ -88,8 +98,7 @@ Sie können nach einigen Minuten die Speicherprotokolle überprüfen, um zu ermi
 
 Wenn die Microsoft.Storage-Dienstendpunkte zwingend erforderlich sind, müssen Sie die NSG-Flussprotokolle deaktivieren.
 
-
-- **Speicherkonten dürfen nicht per Firewall geschützt werden**: Aufgrund interner Einschränkungen müssen Speicherkonten über das öffentliche Internet zugänglich sein, damit NSG-Flussprotokolle mit ihnen arbeiten können. Datenverkehr wird weiterhin intern durch Azure geleitet, und es fallen keine zusätzlichen Gebühren für ausgehenden Datenverkehr an.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Wie deaktiviere ich die Firewall für mein Speicherkonto?
 
 Dieses Problem wird behoben, indem Sie für den Zugriff auf das Speicherkonto „Alle Netzwerke“ aktivieren:
 
@@ -97,8 +106,6 @@ Dieses Problem wird behoben, indem Sie für den Zugriff auf das Speicherkonto �
 * Navigieren Sie zum Speicherkonto, indem Sie im Portal den Namen des Speicherkontos in das Feld für die globale Suche eingeben.
 * Wählen Sie unter **EINSTELLUNGEN** die Option **Firewalls und virtuelle Netzwerke**.
 * Wählen Sie die Option **Alle Netzwerke** aus, und speichern Sie. Falls die Option bereits ausgewählt ist, ist keine Änderung erforderlich.  
-
-Es wird erwartet, dass diese beiden Einschränkungen bis Januar 2020 ausgeräumt sein werden.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Worin besteht der Unterschied bei den Flowprotokollen der Version 1 und 2?
 In Flowprotokolle der Version 2 wurde des Konzept des *Flowzustands* eingeführt, gemäß dem Informationen zu Bytes und Paketen gespeichert werden. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

@@ -1,5 +1,5 @@
 ---
-title: EDIFACT-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+title: EDIFACT-Nachrichten für die B2B-Integration – Azure Logic Apps
 description: Austauschen von EDIFACT-Nachrichten im EDI-Format für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42197f8bf08ae1f36c531c220ebbf78484a5946e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684447"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680343"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von EDIFACT-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -63,7 +62,7 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
 
    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-   | Eigenschaft | BESCHREIBUNG |
+   | Eigenschaft | Description |
    | --- | --- |
    | NAME |Name der Vereinbarung |
    | Vereinbarungstyp | Muss EDIFACT lauten. |
@@ -246,5 +245,5 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).
 
 ## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
+* [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
 

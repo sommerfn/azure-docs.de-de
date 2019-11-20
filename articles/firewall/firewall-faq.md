@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130223"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596779"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -154,7 +154,7 @@ Azure Firewall besteht aus mehreren Back-End-Knoten in einer aktiv/aktiv-Konfigu
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Gibt es eine Beschränkung der Zeichenzahl für einen Firewallnamen?
 
-Ja. Ein Firewallname ist auf 50 Zeichen beschränkt.
+Ja. Ein Firewallname ist auf 50 Zeichen beschränkt.
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Warum benötigt Azure Firewall die Subnetzgröße /26?
 
@@ -163,6 +163,14 @@ Der Azure Firewall-Dienst muss mehr VM-Instanzen bereitstellen, als er skaliert.
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Muss die Größe des Firewallsubnetzes geändert werden, wenn der Dienst eine Skalierung ausführt?
 
 Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Wie kann ich meinen Firewalldurchsatz erhöhen?
+
+Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s. Das horizontale Hochskalieren basiert aktuell nur auf der CPU-Auslastung. Es kann also vorkommen, dass eine Firewall, die nur über Netzwerkregeln verfügt, nicht horizontal hochskaliert wird, um den Durchsatz zu erhöhen, da die Netzwerkregeln keine signifikanten Auswirkungen auf die CPU-Auslastung haben. Sollten Sie einen höheren Durchsatz für Ihre Firewall benötigen, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall horizontal hochskaliert wird?
+
+Aktuell dauert es zwischen fünf und sieben Minuten, bis Azure Firewall horizontal hochskaliert wird. Wenn bei Ihnen Bursts auftreten, die eine schnellere automatische Skalierung erfordern, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
 

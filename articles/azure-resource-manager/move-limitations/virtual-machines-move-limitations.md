@@ -1,17 +1,17 @@
 ---
-title: Verschieben von virtuellen Azure-Computern in ein neues Abonnement oder eine neue Ressourcengruppe | Microsoft-Dokumentation
+title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286737"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528428"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 

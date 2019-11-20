@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: 22522a3f577e8d0533f7c8926de12bd464cc2d92
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068878"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965778"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe des Azure-Portals
 
@@ -67,10 +67,13 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 
 5. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
->[!Note]
->Der neue Server, der durch die Point-in-Time-Wiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server zum gewählten Zeitpunkt gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+Der neue Server, der durch die Point-in-Time-Wiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server zum gewählten Zeitpunkt gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
+
 
 ## <a name="geo-restore"></a>Geowiederherstellung
+
 Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann aus der Sicherung dieses vorhandenen Servers ein neuer Server erstellt werden. Dieser neue Server kann in allen Regionen erstellt werden, in denen Azure Database for PostgreSQL verfügbar ist.  
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+). Wählen Sie **Datenbanken** > **Azure-Datenbank für PostgreSQL** aus.
@@ -86,8 +89,10 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 3. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen. Nachdem Sie den Standort ausgewählt haben, können Sie die Option **Tarif** wählen. Standardmäßig werden die Parameter für den vorhandenen Server angezeigt, für den die Wiederherstellung durchgeführt wird. Sie können ohne weitere Änderungen auf **OK** klicken, um diese Einstellungen zu erben. Oder Sie können **Computegeneration** (falls in der gewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, die **Aufbewahrungszeit für Sicherung** und die **Optionen für Sicherungsredundanz** wählen. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
 
->[!Note]
->Der neue Server, der durch die Geowiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der durch die Geowiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

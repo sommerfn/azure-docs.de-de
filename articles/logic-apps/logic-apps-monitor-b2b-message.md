@@ -1,6 +1,6 @@
 ---
-title: Überwachen von B2B-Nachrichten mit Azure Monitor-Protokollen – Azure Logic Apps | Microsoft-Dokumentation
-description: Überwachen Sie AS2-, X12- und EDIFACT-Nachrichten für Integrationskonten und Azure Logic Apps, und richten Sie Diagnoseprotokollierung mit Azure Monitor-Protokollen ein.
+title: Überwachen von B2B-Nachrichten mit Azure Monitor – Azure Logic Apps
+description: Einrichten der Diagnoseprotokollierung für AS2-, X12-und EDIFACT-Nachrichten in Azure Logic Apps mithilfe von Azure Monitor
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261199"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680200"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Überwachen von B2B-Nachrichten mit Azure Monitor-Protokollen in Azure Logic Apps
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Einrichten der Diagnoseprotokollierung für B2B-Nachrichten in Azure Logic Apps mithilfe von Azure Monitor
 
 Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten austauschen. Um zu überprüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) AS2-, X12- und EDIFACT-Nachrichten überwachen und die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst überwacht Ihre Cloud- und Ihre lokale Umgebung, unterstützt Sie dabei, deren Verfügbarkeit und Leistung zu gewährleisten, und erfasst Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Sie können diese Daten auch mit anderen Diensten verwenden, z.B. Azure Storage und Azure Event Hubs.
 

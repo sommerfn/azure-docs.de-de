@@ -1,5 +1,5 @@
 ---
-title: X12-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+title: X12-Nachrichten für die B2B-Integration – Azure Logic Apps
 description: Austauschen von X12-Nachrichten im EDI-Format für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728756"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679999"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -66,7 +65,7 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
     ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | Eigenschaft | BESCHREIBUNG |
+    | Eigenschaft | Description |
     | --- | --- |
     | NAME |Name der Vereinbarung |
     | Vereinbarungstyp | Muss X12 sein |
@@ -302,5 +301,5 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
 
 ## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
+* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
 

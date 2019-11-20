@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 10/25/2019
+ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331296"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965932"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 Azure Database for PostgreSQL ermöglicht es Ihnen, die Standardprotokolle von Postgres zu konfigurieren und darauf zuzugreifen. Die Protokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Beispiele für Protokollierungsinformationen, für die die Konfiguration und der Zugriff möglich sind, sind Fehler, Abfrageinformationen, Autovacuum-Datensätze, Verbindungen und Prüfpunkte. (Der Zugriff auf Transaktionsprotokolle ist nicht verfügbar.)
@@ -82,12 +82,13 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-Suchen nach den gesamten Fehlern für alle Postgres-Server dieses Arbeitsbereichs für die letzten sechs Stunden
+Suchen nach allen Nicht-Localhost-Verbindungsversuchen
 ```
 AzureDiagnostics
-| where errorLevel_s == "error" and category == "PostgreSQLogs"
-| where TimeGenerated > ago(6h)
+| where Message contains "connection received" and Message !contains "host=127.0.0.1"
+| where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
+In der oben stehenden Abfrage werden die Ergebnisse in den letzten 6 Stunden für eine beliebige Postgres-Serverprotokollierung in diesem Arbeitsbereich angezeigt.
 
 ### <a name="log-format"></a>Protokollformat
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105416"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241628"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -41,7 +41,7 @@ Azure Machine Learning verfügt über Tools zur Modellierung von Predictive Anal
 
 ![Microsoft Azure Machine Learning – Übersicht](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/studio/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
+Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/studio/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio (klassisch) ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 

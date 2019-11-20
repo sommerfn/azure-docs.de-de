@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086150"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674924"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurieren der Exportrichtlinie für ein NFS-Volume
 
-Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Exportrichtlinie wird nur für NFS-Volumes unterstützt. 
+Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Azure NetApp Files-Exportrichtlinie unterstützt nur NFS-Volumes.  Sowohl NFSv3 als auch NFSv4 wird unterstützt. 
 
 ## <a name="steps"></a>Schritte 
 
-1.  Klicken Sie auf dem Blatt für die Volumeverwaltung auf das Blatt **Create Export Policy** (Exportrichtlinie erstellen). 
+1.  Klicken Sie im Navigationsbereich von Azure NetApp Files auf **Richtlinie exportieren**. 
 
 2.  Geben Sie Informationen für die folgenden Felder an, um eine Exportrichtlinienregel zu erstellen:   
     *  **Index**   
@@ -44,10 +44,6 @@ Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure
         * Kein Zugriff 
         * Lesen/Schreiben
         * Nur Leseberechtigung
-
-    * **Protokolle**   
-        Geben Sie das gewünschte Protokoll für die Exportrichtlinie an.   
-        Derzeit unterstützt die Azure NetApp Files-Exportrichtlinie nur NFSv3.
 
     ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

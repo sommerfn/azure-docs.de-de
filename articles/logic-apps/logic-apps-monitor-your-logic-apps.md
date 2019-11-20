@@ -1,5 +1,5 @@
 ---
-title: Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen – Azure Logic Apps | Microsoft-Dokumentation
+title: Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen – Azure Logic Apps
 description: Überwachen des Status, Protokollieren von Diagnosedaten und Einrichten von Warnungen für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261369"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680302"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 

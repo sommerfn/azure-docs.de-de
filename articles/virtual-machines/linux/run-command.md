@@ -1,6 +1,6 @@
 ---
-title: Ausführen von Shellskripts in einer Linux-VM unter Azure
-description: In diesem Thema wird beschrieben, wie Skripts auf einem virtuellen Azure Linux-Computer mithilfe von „Befehl ausführen“ ausgeführt werden
+title: Ausführen von Shellskripts auf einem virtuellen Linux-Computer in Azure
+description: In diesem Thema erfahren Sie, wie Sie Skripts innerhalb eines virtuellen Azure-Computers unter Linux mithilfe des Features „Skriptausführung“ ausführen.
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -8,42 +8,42 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6550b6e3f59ff7e6bac39dfc1abcf829256122d4
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376355"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597878"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Ausführen von Shellskripts in einer Linux-VM mit „Befehl ausführen“
+# <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
 
-„Befehl ausführen“ verwendet den VM-Agent, um Shellskripts innerhalb einer Azure Linux-VM auszuführen. Diese Skripts können für die allgemeine Verwaltung von Computern oder Anwendungen sowie für die schnelle Diagnose und Korrektur von Zugriffs- und Netzwerkproblemen in VMs verwendet werden und allgemein, um die VM wieder in einen guten Zustand zu bringen.
+Das Feature „Skriptausführung“ verwendet den VM-Agent (virtual machine, virtueller Computer), um Shellskripts innerhalb eines virtuellen Azure-Computers unter Linux auszuführen. Diese Skripts können für die allgemeine Computer- oder Anwendungsverwaltung verwendet werden. Mit ihrer Hilfe können Sie Zugriffs- und Netzwerkprobleme eines virtuellen Computers schnell diagnostizieren und beheben und den virtuellen Computer wieder in einen funktionierenden Zustand versetzen.
 
 ## <a name="benefits"></a>Vorteile
 
-Es können mehrere Optionen für den Zugriff auf Ihre virtuellen Computer verwendet werden. „Befehl ausführen“ kann Skripts mithilfe des VM-Agents remote auf Ihren virtuellen Computern ausführen. „Befehl ausführen“ kann für virtuelle Linux-Computer über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder die [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) verwendet werden.
+Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die Skriptausführung kann Skripts remote unter Verwendung des VM-Agents auf Ihren virtuellen Computern ausführen. Die Skriptausführung kann für virtuelle Linux-Computer über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder die [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) verwendet werden.
 
-Diese Möglichkeit ist in allen Szenarien nützlich, in denen Sie ein Skript auf einem virtuellen Computer ausführen möchten, und stellt eine der wenigen Möglichkeiten zur Problembehandlung und Wartung von virtuellen Computern dar, deren RDP- oder SSH-Port aufgrund einer nicht ordnungsgemäßen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
+Diese Funktion ist in allen Szenarien sinnvoll, in denen Sie ein Skript innerhalb eines virtuellen Computers ausführen möchten. Es ist eine der wenigen Möglichkeiten, Fehler auf einem virtuellen Computer zu beheben, bei dem der RDP- oder SSH-Port aufgrund einer falschen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
 
 ## <a name="restrictions"></a>Einschränkungen
 
-Im Anschluss finden eine Liste der Einschränkungen, denen die Verwendung von „Befehl ausführen“ unterliegt.
+Die Verwendung der Skriptausführung unterliegt den folgenden Einschränkungen:
 
-* Die Ausgabe ist auf die letzten 4096 Bytes beschränkt
-* Der Mindestzeitraum für die Ausführung eines Skripts liegt bei etwa 20 Sekunden
-* Skripts werden unter Linux standardmäßig mit erhöhten Benutzerberechtigungen ausgeführt
-* Es kann zu jeder Zeit jeweils nur ein Skript ausgeführt werden
+* Die Ausgabe ist auf die letzten 4.096 Bytes beschränkt.
+* Der Mindestzeitraum für die Ausführung eines Skripts liegt bei etwa 20 Sekunden.
+* Skripts werden unter Linux standardmäßig mit erhöhten Benutzerberechtigungen ausgeführt.
+* Es können nicht mehrere Skripts gleichzeitig ausgeführt werden.
 * Skripts, die Informationen anfordern (interaktiver Modus), werden nicht unterstützt.
-* Die Ausführung von Skripts kann nicht abgebrochen werden
-* Der Maximalzeitraum beim Ausführen von Skripts ist auf 90 Minuten beschränkt, danach tritt ein Timeout auf
+* Die Ausführung von Skripts kann nicht abgebrochen werden.
+* Die maximal zulässige Ausführungsdauer eines Skripts beträgt 90 Minuten. Danach tritt ein Timeout auf.
 * Um die Ergebnisse des Skripts zurückzugeben, ist eine ausgehende Konnektivität des virtuellen Computers erforderlich.
 
 > [!NOTE]
-> Der Ausführungsbefehl muss über Port 443 eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit er richtig funktioniert. Wenn die Erweiterung keinen Zugriff auf diese Endpunkte hat, werden die Skripts möglicherweise erfolgreich ausgeführt, geben aber keine Ergebnisse zurück. Wenn Sie Datenverkehr auf dem virtuellen Computer blockieren, können Sie [Diensttags](../../virtual-network/security-overview.md#service-tags) verwenden, um Datenverkehr mit öffentlichen Azure-IP-Adressen über das `AzureCloud`-Tag zulassen.
+> Die Skriptausführung muss über den Port 443 eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können. Wenn die Erweiterung keinen Zugriff auf diese Endpunkte hat, werden die Skripts zwar möglicherweise erfolgreich ausgeführt, geben aber keine Ergebnisse zurück. Wenn Sie Datenverkehr auf dem virtuellen Computer blockieren, können Sie [Diensttags](../../virtual-network/security-overview.md#service-tags) verwenden, um Datenverkehr mit öffentlichen Azure-IP-Adressen über das Tag `AzureCloud` zuzulassen.
 
 ## <a name="available-commands"></a>Verfügbare Befehle
 
-Diese Tabelle enthält die Liste der für virtuelle Linux-Computer verfügbaren Befehle. Der Befehl **RunShellScript** kann für die Ausführung jedes beliebigen benutzerdefinierten Skripts verwendet werden. Bei Verwenden von Azure CLI oder PowerShell zum Ausführen eines Befehls muss der Wert, den Sie für den Parameter `--command-id` oder `-CommandId` angeben, einer der nachstehend aufgeführten Werte sein. Wenn Sie einen Wert angeben, der kein verfügbarer Befehl ist, erhalten Sie die entsprechende Fehlermeldung.
+Diese Tabelle enthält die Liste der für virtuelle Linux-Computer verfügbaren Befehle. Mit dem Befehl **RunShellScript** können Sie jedes beliebige benutzerdefinierte Skript ausführen. Wenn Sie einen Befehl mithilfe der Azure-Befehlszeilenschnittstelle oder über PowerShell ausführen, muss für den Parameter `--command-id` oder `-CommandId` einer der Werte aus der folgenden Liste angegeben werden. Wenn Sie einen Wert angeben, bei dem es sich nicht um einen verfügbaren Befehl handelt, tritt der folgende Fehler auf:
 
 ```error
 The entity was not found in this Azure location
@@ -56,33 +56,33 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Im folgenden Beispiel wird der Befehl [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) verwendet, um ein Shellskript auf einer Azure Linux-VM auszuführen.
+Im folgenden Beispiel wird der Befehl [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) verwendet, um ein Shellskript auf einem virtuellen Azure-Computer unter Linux auszuführen.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
 ```
 
 > [!NOTE]
-> Um Befehle als ein anderer Benutzer auszuführen, können Sie `sudo -u` verwenden, um ein anderes Benutzerkonto für eine Aktion anzugeben.
+> Wenn Sie Befehle als anderer Benutzer ausführen möchten, geben Sie `sudo -u` ein, um ein Benutzerkonto anzugeben.
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie in [Azure](https://portal.azure.com) zu einer VM, und wählen Sie unter **VORGÄNGE** **Befehl ausführen** aus. Es wird eine Liste mit den für die Ausführung auf der VM verfügbaren Befehlen angezeigt.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem virtuellen Computer, und wählen Sie unter **VORGÄNGE** die Option **Skriptausführung** aus. Daraufhin wird eine Liste mit den verfügbaren Befehlen angezeigt, die auf dem virtuellen Computer ausgeführt werden können.
 
-![Ausführen-Befehlsliste](./media/run-command/run-command-list.png)
+![Befehlsliste](./media/run-command/run-command-list.png)
 
-Wählen Sie einen auszuführenden Befehl aus. Einige der Befehle weisen möglicherweise optionale oder erforderliche Eingabeparameter auf. Bei diesen Befehlen werden Ihnen die Parameter in Form von Textfeldern angezeigt, für die Sie die Eingabewerte bereitstellen müssen. Für jeden Befehl können Sie das ausgeführte Skript anzeigen, indem Sie **Skript anzeigen** aufklappen. **RunShellScript** unterscheidet sich insofern von den anderen Befehlen, als es Ihnen die Angabe eines eigenen, benutzerdefinierten Skripts ermöglicht.
+Wählen Sie einen auszuführenden Befehl aus. Einige der Befehle verfügen möglicherweise über optionale oder erforderliche Eingabeparameter. Bei diesen Befehlen werden die Parameter in Form von Textfeldern für die Eingabewerte angezeigt. Für jeden Befehl können Sie das ausgeführte Skript anzeigen, indem Sie **Skript anzeigen** erweitern. Der Befehl **RunShellScript** unterscheidet sich von den anderen Befehlen, da er die Angabe eines eigenen, benutzerdefinierten Skripts ermöglicht.
 
 > [!NOTE]
 > Die integrierten Befehle können nicht bearbeitet werden.
 
-Nachdem Sie den Befehl ausgewählt haben, klicken Sie auf **Ausführen**, um das Skript auszuführen. Das Skript wird ausgeführt und gibt nach dem Abschluss die Ausgabe und eventuelle Fehler im Ausgabefenster zurück. Der folgende Screenshot zeigt eine Beispielausgabe für die Ausführung des **ifconfig**-Befehls.
+Nachdem Sie den Befehl ausgewählt haben, wählen Sie **Ausführen** aus, um das Skript auszuführen. Nach Abschluss des Skripts gibt es die Ausgabe und eventuelle Fehler im Ausgabefenster zurück. Der folgende Screenshot zeigt eine Beispielausgabe für die Ausführung des **ifconfig**-Befehls.
 
 ![Skriptausgabe von „Befehl ausführen“](./media/run-command/run-command-script-output.png)
 
 ### <a name="powershell"></a>PowerShell
 
-Im folgenden Beispiel wird das Cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) zum Ausführen eines PowerShell-Skripts in einem virtuellen Azure-Computer verwendet. Für das Cmdlet gilt, dass das im Parameter `-ScriptPath` referenzierte Skript am Ausführungsort des Cmdlets lokal sein muss.
+Im folgenden Beispiel wird das Cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) zum Ausführen eines PowerShell-Skripts auf einem virtuellen Azure-Computer verwendet. Für das Cmdlet gilt, dass das im Parameter `-ScriptPath` referenzierte Skript am Ausführungsort des Cmdlets lokal sein muss.
 
 ```powershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -90,12 +90,12 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Einschränken des Zugriffs auf „Befehl ausführen“
 
-Das Auflisten der ausführbaren Befehle oder das Anzeigen der Details zu einem Befehl erfordert die Berechtigung `Microsoft.Compute/locations/runCommands/read` auf Abonnementebene, über die die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) und höhere Rollen verfügen.
+Zum Auflisten der ausführbaren Befehle oder Anzeigen der Details zu einem Befehl ist die Berechtigung `Microsoft.Compute/locations/runCommands/read` auf Abonnementebene erforderlich. Die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) und höhere Rollen verfügen über diese Berechtigung.
 
-Für das Ausführen eines Befehls ist die Berechtigung `Microsoft.Compute/virtualMachines/runCommand/action` auf Abonnementebene erforderlich, über die die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und höhere Rollen verfügen.
+Zum Ausführen eines Befehls ist die Berechtigung `Microsoft.Compute/virtualMachines/runCommand/action` auf der Abonnementebene erforderlich. Die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und höhere Rollen verfügen über diese Berechtigung.
 
-Um „Befehl ausführen“ zu verwenden, können Sie eine der [integrierten](../../role-based-access-control/built-in-roles.md) Rollen verwenden oder eine [benutzerdefinierte](../../role-based-access-control/custom-roles.md) Rolle erstellen.
+Für die Skriptausführung können Sie eine der [integrierten Rollen](../../role-based-access-control/built-in-roles.md) verwenden oder eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen über andere Möglichkeiten zur Remoteausführung von Skripts und Befehlen finden Sie unter [Ausführen von Skripts in Ihrer Linux-VM](run-scripts-in-vm.md).
+Informationen zu weiteren Möglichkeiten für die Remoteausführung von Skripts und Befehlen auf Ihrem virtuellen Computer finden Sie unter [Ausführen von Skripts in Ihrer Linux-VM](run-scripts-in-vm.md).

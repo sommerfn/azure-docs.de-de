@@ -1,6 +1,6 @@
 ---
-title: Ausnahmebehandlungs- und Fehlerprotokollierungsszenario – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier wird ein Anwendungsfall aus der Praxis zur erweiterten Ausnahmebehandlung und Fehlerprotokollierung in Azure Logic Apps beschrieben.
+title: Ausnahmebehandlungs- und Fehlerprotokollierungsszenario – Azure Logic Apps
+description: Anwendungsfall und Szenario aus der Praxis zur erweiterten Ausnahmebehandlung und Fehlerprotokollierung in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,12 +10,12 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385461"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680159"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -40,9 +40,9 @@ Das Projekt musste zwei wesentliche Anforderungen erfüllen:
 
 ## <a name="how-we-solved-the-problem"></a>Lösung des Problems
 
-Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") gewählt (Cosmos DB verweist auf Datensätze als Dokumente). Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
+Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") gewählt. (In Cosmos DB werden Datensätze als Dokumente bezeichnet.) Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
 
-Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer"), mit der wir einen Wert für **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
+Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer") (Time-To-Live, TTL), mit der wir einen Wert vom Typ **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
 
 > [!IMPORTANT]
 > Zur Durchführung dieses Tutorials müssen Sie eine Cosmos DB-Datenbank und zwei Sammlungen (Protokollierung und Fehler) erstellen.
@@ -479,7 +479,7 @@ Mit dem Ausdruck im obigen Codebeispiel wird geprüft, ob *Create_NewPatientReco
 
 ### <a name="source-code"></a>Quellcode
 
-Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie in [diesem GitHub-Repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Ausnahmeverwaltungs-API für Logik-App")können Sie sich ein allgemeines Video zu diesem Projekt ansehen.
+Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie in [diesem GitHub-Repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Ausnahmeverwaltungs-API der Logik-App").
 
 ## <a name="next-steps"></a>Nächste Schritte
 

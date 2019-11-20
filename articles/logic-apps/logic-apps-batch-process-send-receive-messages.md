@@ -1,5 +1,5 @@
 ---
-title: Batchverarbeitung von Nachrichten als Gruppe oder Sammlung – Azure Logic Apps | Microsoft-Dokumentation
+title: Batchverarbeitung von Nachrichten als Gruppe – Azure Logic Apps
 description: Senden und Empfangen von Nachrichten als Batches in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683703"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680438"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 

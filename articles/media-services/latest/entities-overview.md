@@ -1,5 +1,5 @@
 ---
-title: Filtern und Sortieren von Azure Media Services-Entitäten sowie Einteilen der Entitäten in Seiten| Microsoft-Dokumentation
+title: Filtern, Sortieren und Paginieren von Media Services-Entitäten – Azure | Microsoft-Dokumentation
 description: Dieser Artikel erörtert die Filterung, Sortierung und Paginierung von Azure Media Services-Entitäten.
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298951"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693307"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
 
-In diesem Thema werden die OData-Abfrageoptionen und die Paginierungsunterstützung behandelt, die beim Auflisten von Azure Media Services v3-Entitäten verfügbar sind.
+In diesem Thema werden die OData-Abfrageoptionen und die Paginierungsunterstützung behandelt, die beim Auflisten von Azure Media Services v3-Entitäten zur Verfügung stehen.
 
 ## <a name="considerations"></a>Überlegungen
 
-* Eigenschaften von Entitäten vom Datetime-Typ liegen immer im UTC-Format vor.
-* Leerraum in der Abfragezeichenfolge muss vor dem Senden einer Anforderung URL-codiert werden.
+* Eigenschaften von Entitäten des Typs `Datetime` liegen immer im UTC-Format vor.
+* Leerzeichen in der Abfragezeichenfolge müssen vor dem Senden einer Anforderung URL-codiert werden.
 
 ## <a name="comparison-operators"></a>Vergleichsoperatoren
 
@@ -34,21 +34,21 @@ Sie können die folgenden Operatoren verwenden, um ein Feld mit einem konstanten
 
 Gleichheitsoperatoren:
 
-- `eq`: Testet, ob ein Feld **gleich** einem konstanten Wert ist.
-- `ne`: Testet, ob ein Feld **nicht gleich** einem konstanten Wert ist.
+- `eq`: Testet, ob ein Feld *gleich* einem konstanten Wert ist.
+- `ne`: Testet, ob ein Feld *ungleich* einem konstanten Wert ist.
 
 Bereichsoperatoren:
 
-- `gt`: Testet, ob ein Feld **größer als** ein konstanter Wert ist.
-- `lt`: Testet, ob ein Feld **kleiner als** ein konstanter Wert ist.
-- `ge`: Testet, ob ein Feld **größer oder gleich** einem konstanten Wert ist.
-- `le`: Testet, ob ein Feld **kleiner oder gleich** einem konstanten Wert ist.
+- `gt`: Testet, ob ein Feld *größer als* ein konstanter Wert ist.
+- `lt`: Testet, ob ein Feld *kleiner als* ein konstanter Wert ist.
+- `ge`: Testet, ob ein Feld *größer oder gleich* einem konstanten Wert ist. value
+- `le`: Testet, ob ein Feld *kleiner oder gleich* einem konstanten Wert ist.
 
 ## <a name="filter"></a>Filter
 
-**$filter**: Verwenden Sie Filter, um einen OData-Filterparameter anzugeben, um nur die Objekte zu finden, die Sie interessieren.
+Verwenden Sie `$filter`, um einen OData-Filterparameter anzugeben und nur die Objekte zu suchen, die Sie interessieren.
 
-Im folgenden REST-Beispiel wird nach der alternateId einer Ressource gefiltert:
+Im folgenden REST-Beispiel wird nach dem Wert `alternateId` einer Ressource gefiltert:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,7 +63,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>ORDER BY
 
-**$orderby**: Verwenden Sie diese Klausel, um die zurückgegebenen Objekte anhand des angegebenen Parameters zu sortieren. Beispiel:    
+Verwenden Sie `$orderby`, um die zurückgegebenen Objekte anhand des angegebenen Parameters zu sortieren. Beispiel:    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -73,20 +73,20 @@ Um die Ergebnisse in auf- oder absteigender Reihenfolge zu sortieren, fügen Sie
 
 ## <a name="skip-token"></a>Skiptoken
 
-**$skiptoken**: Wenn die Antwort auf eine Abfrage viele Elemente enthält, gibt der Dienst den Skiptokenwert `@odata.nextLink` zurück, mit dem Sie die nächste Seite der Ergebnisse abrufen können. Auf diese Weise kann das gesamte Resultset paginiert werden.
+Wenn die Antwort auf eine Abfrage viele Elemente enthält, gibt der Dienst einen Wert vom Typ `$skiptoken` (`@odata.nextLink`) zurück, mit dem Sie die nächste Seite der Ergebnisse abrufen können. Verwenden Sie diesen Wert, um das gesamte Resultset seitenweise zu durchlaufen.
 
-Sie können in Media Services v3 die Seitengröße nicht konfigurieren. Die Seitengröße unterscheidet sich nach der Art der Entität, bitte entnehmen Sie Details den folgenden Einzelabschnitten.
+In Media Services v3 kann die Seitengröße nicht konfiguriert werden. Die Seitengröße variiert je nach Art der Entität. Lesen Sie die folgenden Abschnitte, um ausführliche Informationen zu erhalten.
 
-Wenn während der Paginierung der Sammlung Entitäten erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen reflektiert (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde). 
+Wenn während des Durchlaufens der Sammlung Entitäten erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen berücksichtigt (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde). 
 
 > [!TIP]
-> Verwenden Sie stets `nextLink` zum Aufzählen der Sammlung und keine bestimmte Seitengröße als Referenz.
+> Verwenden Sie zum Aufzählen der Sammlung stets `nextLink`, anstatt sich auf eine bestimmte Seitengröße zu verlassen.
 >
-> `nextLink` ist nur vorhanden, wenn es mehr als eine Seite mit Entitäten gibt.
+> Der Wert `nextLink` ist nur vorhanden, wenn mehrere Seiten mit Entitäten vorliegen.
 
-Betrachten Sie das folgende Beispiel für die Verwendung von „$skiptoken“. Stellen Sie sicher, dass Sie *amstestaccount* durch Ihren Kontonamen ersetzen und den Wert für *api-version* auf die neueste Version festlegen.
+Sehen Sie sich das folgende Beispiel für die Verwendung von `$skiptoken` an. Stellen Sie sicher, dass Sie *amstestaccount* durch Ihren Kontonamen ersetzen und den Wert für *api-version* auf die neueste Version festlegen.
 
-Fordern Sie folgendermaßen eine Liste von Medienobjekten an:
+Angenommen, Sie fordern wie folgt eine Liste mit Medienobjekten an:
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -94,7 +94,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-Sie erhalten eine Antwort, die etwa wie folgt aussieht:
+In diesem Fall erhalten eine Antwort wie die folgende:
 
 ```
 HTTP/1.1 200 OK
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>Verwenden logischer Operatoren zum Kombinieren von Abfrageoptionen
 
-Media Services v3 unterstützt die logischen Operatoren „or“ und „and“. 
+Media Services v3 unterstützt die logischen Operatoren **OR** und **AND**. 
 
 Im folgenden REST-Beispiel wird der Status des Auftrags überprüft:
 
@@ -153,7 +153,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>Filter- und Sortieroptionen für Entitäten
 
-Die folgende Tabelle zeigt, wie die Filter- und Sortieroptionen auf verschiedene Entitäten angewendet werden können:
+Die folgende Tabelle zeigt, wie Sie die Filter- und Sortieroptionen auf verschiedene Entitäten anwenden können:
 
 |Name der Entität|Eigenschaftenname|Filter|Reihenfolge|
 |---|---|---|---|

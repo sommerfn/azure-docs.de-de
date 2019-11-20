@@ -1,6 +1,6 @@
 ---
-title: 'Verarbeiten von EDIFACT-Nachrichten mit UNH2.5-Segmenten: Azure Logic Apps | Microsoft-Dokumentation'
-description: Auflösen von EDIFACT-Dokumenten mit UNH2.5-Segmenten in Azure Logic Apps mit Enterprise Integration Pack
+title: UNH2.5-Segmente in EDIFACT-Nachrichten – Azure Logic Apps
+description: Auflösen von EDIFACT-Nachrichten mit UNH2.5-Segmenten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,45 +8,62 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.openlocfilehash: 926c9ebe8675d8b50d4544be813ae0b15492ae35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60681671"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679958"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Verarbeiten von EDIFACT-Dokumenten mit UNH2.5-Segmenten in Azure Logic Apps
 
-Wenn das Feld „UNH2.5“ im EDIFACT-Dokument vorhanden ist, wird es zur Schemasuche verwendet. 
+Wenn ein EDIFACT-Dokument ein UNH2.5-Segment enthält, wird das Segment für die Schemasuche verwendet. In der folgenden exemplarischen EDIFACT-Nachricht ist das UNH-Feld beispielsweise `EAN008`:
 
-Beispiel: **EAN008** ist das UNH-Feld in der EDIFACT-Nachricht.  
-UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
-Schritte zum Verarbeiten der Nachricht 
-1. Aktualisieren des Schemas
-2. Überprüfen der Vereinbarungseinstellungen  
+Gehen Sie zur Verarbeitung dieser Nachricht wie folgt vor:
+
+1. Aktualisieren Sie das Schema.
+
+1. Überprüfen Sie die Vereinbarungseinstellungen.
 
 ## <a name="update-the-schema"></a>Aktualisieren des Schemas
-Um die Nachricht zu verarbeiten, müssen Sie ein Schema mit dem UNH2.5-Stammknotennamen bereitstellen.  Bei diesem Beispiel ist der Schemastammname **EFACT_D03B_ORDERS_EAN008**.  
 
-Für alle D03B_ORDERS mit einem anderen UNH2.5-Segment müssen Sie ein eigenes Schema bereitstellen.  
+Um die Nachricht zu verarbeiten, müssen Sie ein Schema bereitstellen, das über den UNH2.5-Stammknotennamen verfügt. Der Schemastammname für das exemplarische UNH-Feld ist beispielsweise `EFACT_D03B_ORDERS_EAN008`. Für jedes Element vom Typ `D03B_ORDERS`, das über ein anderes UNH2.5-Segment verfügt, muss ein eigenes Schema bereitgestellt werden.
 
-## <a name="add-schema-to-the-edifact-agreement"></a>Hinzufügen des Schemas zur EDIFACT-Vereinbarung
+## <a name="add-schema-to-edifact-agreement"></a>Hinzufügen des Schemas zur EDIFACT-Vereinbarung
+
 ### <a name="edifact-decode"></a>Decodieren von EDIFACT-Nachrichten
-Um die eingehende Nachricht zu decodieren, konfigurieren Sie das Schema in den Empfangseinstellungen der EDIFACT-Vereinbarung.
-1. Fügen Sie das Schema dem Integrationskonto hinzu.    
-2. Konfigurieren Sie das Schema in den Empfangseinstellungen der EDIFACT-Vereinbarung. 
-3. Wählen Sie die EDIFACT-Vereinbarung aus, und klicken Sie auf **Als JSON bearbeiten**.  Fügen Sie den UNH2.5-Wert in der Empfangsvereinbarung dem Abschnitt **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png) hinzu.
+
+Richten Sie das Schema in den Empfangseinstellungen der EDIFACT-Vereinbarung ein, um die eingehende Nachricht zu decodieren:
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto.
+
+1. Fügen Sie das Schema Ihrem Integrationskonto hinzu.
+
+1. Konfigurieren Sie das Schema in den Empfangseinstellungen der EDIFACT-Vereinbarung.
+
+1. Wählen Sie die EDIFACT-Vereinbarung und anschließend **Als JSON bearbeiten** aus. Fügen Sie den UNH2.5-Wert dem Abschnitt `schemaReferences` der Empfangsvereinbarung hinzu:
+
+   ![Hinzufügen des UNH2.5-Werts zur Empfangsvereinbarung](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
 ### <a name="edifact-encode"></a>Codieren von EDIFACT-Nachrichten
-Um die eingehende Nachricht zu codieren, konfigurieren Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung.
-1. Fügen Sie das Schema dem Integrationskonto hinzu.    
-2. Konfigurieren Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung. 
-3. Wählen Sie die EDIFACT-Vereinbarung aus, und klicken Sie auf **Als JSON bearbeiten**.  Fügen Sie den UNH2.5-Wert in der Sendevereinbarung dem Abschnitt **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) hinzu.
+
+Richten Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung ein, um die eingehende Nachricht zu codieren:
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihr Integrationskonto.
+
+1. Fügen Sie das Schema Ihrem Integrationskonto hinzu.
+
+1. Konfigurieren Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung.
+
+1. Wählen Sie die EDIFACT-Vereinbarung aus, und klicken Sie auf **Als JSON bearbeiten**.  Fügen Sie den UNH2.5-Wert in der Sendevereinbarung dem Abschnitt **schemaReferences** hinzu.
+
+1. Wählen Sie die EDIFACT-Vereinbarung und anschließend **Als JSON bearbeiten** aus. Fügen Sie den UNH2.5-Wert dem Abschnitt `schemaReferences` der Sendevereinbarung hinzu:
+
+   ![Hinzufügen des UNH2.5-Werts zur Sendevereinbarung](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zu Integrationskontovereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")  
+
+* Weitere Informationen zu Integrationskontovereinbarungen finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-agreements.md).

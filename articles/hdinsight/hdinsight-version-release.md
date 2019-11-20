@@ -1,18 +1,18 @@
 ---
 title: Übersicht über HDInsight 4.0 – Azure
 description: Vergleich der Features, Einschränkungen und Aktualisierungsempfehlungen zwischen HDInsight 3.6 und HDInsight 4.0.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879327"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901529"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Übersicht über Azure HDInsight 4.0
 
@@ -40,7 +40,7 @@ Hive unterstützt jetzt dynamisch materialisierte Sichten (Vorberechnung relevan
 
 HDI 4.0 umfasst Apache Hive 3, das ACID-Konformität (Atomicity, Consistency, Isolation, Durability – Unteilbarkeit, Konsistenz, Isolation, Dauerhaftigkeit) für Transaktionstabellen erfordert, die im Hive-Warehouse gespeichert sind. ACID-konforme Tabellen und Tabellendaten werden von Hive abgerufen und verwaltet. Daten in CRUD-Tabellen (Create, Retrieve, Update, Delete – Erstellen, Abrufen, Aktualisieren, Löschen) müssen das ORC-Dateiformat (Optimized Row Column – optimierte Zeilen in Spalten) aufweisen, Tabellen nur mit Einfügung unterstützen jedoch alle Dateiformate.
 
-* ACID v2 weist Leistungsverbesserungen beim Speicherformat und der Ausführungsengine auf. 
+* ACID v2 weist Leistungsverbesserungen beim Speicherformat und der Ausführungsengine auf.
 
 * ACID ist standardmäßig aktiviert, um vollständige Unterstützung für Datenaktualisierungen zu ermöglichen.
 
@@ -71,7 +71,6 @@ Sie müssen sich keine Sorgen mehr darum machen, versehentlich direkt aus Spark 
 
 Erfahren Sie mehr über [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
-
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 4.3.1 ist in HDI 4.0 mit den folgenden Änderungen enthalten:
@@ -91,8 +90,8 @@ Es gibt keinen unterstützten Upgradepfad von früheren Versionen von HDInsight 
 ## <a name="limitations"></a>Einschränkungen
 
 * HDInsight 4.0 unterstützt MapReduce für Apache Hive nicht. Verwenden Sie stattdessen Apache Tez. Erfahren Sie mehr über [Apache Tez](https://tez.apache.org/).
-* HDInsight 4.0 unterstützt Apache Storm nicht. 
-* Hive View ist in HDInsight 4.0 nicht mehr verfügbar. 
+* HDInsight 4.0 unterstützt Apache Storm nicht.
+* Hive View ist in HDInsight 4.0 nicht mehr verfügbar.
 * Shellinterpreter in Apache Zeppelin wird in Spark- und Interactive Query-Clustern nicht unterstützt.
 * Sie können LLAP in einem Spark-LLAP-Cluster nicht *deaktivieren*. Sie können LLAP nur ausschalten.
 * Für Azure Data Lake Storage Gen2 können Juypter Notebooks nicht in einem Spark-Cluster gespeichert werden.

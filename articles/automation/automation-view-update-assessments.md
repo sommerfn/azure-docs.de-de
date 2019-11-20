@@ -1,6 +1,6 @@
 ---
 title: Anzeigen von Updatebewertungen der Azure-Updateverwaltung
-description: In diesem Artikel wird beschrieben, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
+description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,26 +9,26 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e88622ede6437086b86a33081d6ec9b9ea50ef65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d4e20b2924504b714dff9f5ba650f9b25c1c26c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377439"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690866"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure-Updateverwaltung
 
-Wählen Sie in Ihrem Automation-Konto **Updateverwaltung** aus, um den Status Ihrer Computer anzuzeigen.
+Wählen Sie in Ihrem Azure Automation-Konto **Updateverwaltung** aus, um den Status Ihrer Computer anzuzeigen.
 
-Diese Ansicht enthält Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und geplanten Updatebereitstellungen. In der Spalte **KONFORMITÄT** können Sie sehen, wann der Computer zuletzt bewertet wurde. In der Spalte **UPDATE-AGENT-BEREITSCHAFT** können Sie die Integrität des Update-Agents anzeigen. Wenn ein Problem vorliegt, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und zu erfahren, welche Schritte zum Beheben des Problems erforderlich sind.
+Diese Ansicht enthält Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und geplanten Updatebereitstellungen. Die Spalte **KONFORMITÄT** gibt Aufschluss darüber, wann der Computer zuletzt bewertet wurde. Die Spalte **UPDATE-AGENT-BEREITSCHAFT** gibt Aufschluss über die Integrität des Update-Agents. Liegt ein Problem vor, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und Informationen zur Behebung des Problems zu erhalten.
 
-Um eine Protokollsuche auszuführen, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, wählen Sie das Element in der Liste aus. Der Bereich **Protokollsuche** wird mit einer Abfrage für das ausgewählte Element geöffnet:
+Wenn Sie eine Protokollsuche ausführen möchten, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, wählen Sie das entsprechende Element in der Liste aus. Der Bereich **Protokollsuche** wird mit einer Abfrage für das ausgewählte Element geöffnet:
 
 ![Standardansicht der Updateverwaltung](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Anzeigen fehlender Updates
 
-Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und kann ausgewählt werden. Es werden Informationen zur Anzahl der Computer, die das Update benötigen, und zum Betriebssystem sowie ein Link zu weiteren Informationen angezeigt. Der Bereich **Protokollsuche** zeigt weitere Details zu den Updates an.
+Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und kann ausgewählt werden. Es werden Informationen zur Anzahl von Computern, die das Update benötigen, sowie Details zum Betriebssystem und ein Link zu weiteren Informationen angezeigt. Im Bereich **Protokollsuche** werden weitere Details zu den Updates angezeigt.
 
 ![Fehlende Updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -56,13 +56,13 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
 
-Für Linux kann die Updateverwaltung zwischen kritischen und Sicherheitsupdates in der Cloud unterscheiden. Sie zeigt Bewertungsdaten aufgrund der Datenanreicherung in der Cloud an. Für das Patchen verwendet die Updateverwaltung Klassifizierungsdaten, die auf dem Computer verfügbar sind. Im Gegensatz zu anderen Distributionen verfügt CentOS nicht standardmäßig über diese Informationen. Wenn Sie CentOS-Computer für das Zurückgeben von Sicherheitsdaten für den folgenden Befehl konfiguriert haben, kann die Updateverwaltung basierend auf Klassifizierungen Patchvorgänge ausführen.
+Für Linux kann die Updateverwaltung bei der Anzeige von Bewertungsdaten zwischen kritischen Updates und Sicherheitsupdates in der Cloud unterscheiden. (Diese Granularität wird durch die Datenanreicherung in der Cloud ermöglicht.) Für das Patchen verwendet die Updateverwaltung Klassifizierungsdaten, die auf dem Computer verfügbar sind. Im Gegensatz zu anderen Distributionen verfügt CentOS in den RTM-Versionen des Produkts standardmäßig nicht über diese Informationen. Wenn Sie CentOS-Computer so konfiguriert haben, dass für den folgenden Befehl Sicherheitsdaten zurückgegeben werden, kann die Updateverwaltung basierend auf Klassifizierungen Patchvorgänge ausführen.
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Es gibt derzeit keine unterstützte Methode zum Aktivieren einer nativen Klassifizierungsdatenverfügbarkeit unter CentOS. Zu diesem Zeitpunkt wird nur Unterstützung nach bestem Wissen für Kunden bereitgestellt, die dies möglicherweise auf eigene Weise aktiviert haben.
+Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die diese Funktion möglicherweise selbst implementiert haben, wird derzeit nur Support nach bestem Wissen bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

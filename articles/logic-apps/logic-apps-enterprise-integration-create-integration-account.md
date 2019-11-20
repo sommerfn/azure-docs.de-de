@@ -1,24 +1,22 @@
 ---
-title: Erstellen und Verwalten von Integrationskonten für B2B-Lösungen – Azure Logic Apps
-description: Erstellen, Verknüpfen, Verschieben und Löschen von Integrationskonten für Unternehmensintegrations- und B2B-Lösungen mithilfe von Azure Logic Apps
+title: Erstellen oder Verwalten von B2B-Integrationskonten – Azure Logic Apps
+description: Erstellen, Verknüpfen und Verwalten von Integrationskonten für die Unternehmensintegration mit Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: carmonm
-ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 960733b7423ad1e22bd05a75d9b994cd85b1d30c
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801285"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680368"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für B2B-Lösungen mithilfe von Azure Logic Apps
+# <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
 Bevor Sie [Unternehmensintegrations- und B2B-Lösungen](../logic-apps/logic-apps-enterprise-integration-overview.md) mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) aufbauen können, müssen Sie ein Integrationskonto erstellen. Dabei handelt es sich um eine separate Azure-Ressource, die einen sicheren, skalierbaren und verwaltungsfreundlichen Container für die Integrationsartefakte, die Sie mit Ihren Logik-App-Workflows definieren und verwenden.
 
