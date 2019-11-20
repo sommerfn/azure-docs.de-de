@@ -51,7 +51,7 @@ Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basie
   * „Cluster startup time“ (Startzeit des Clusters): Zeitraum zum Abrufen der JIT-Spark-Computeumgebung für Ihre Datenflussausführung.
   * „Number of transforms“ (Anzahl von Transformationen): Die Anzahl von Transformationsschritten, die in Ihrem Fluss ausgeführt werden.
   
-![Acit-Datenflussüberwachung](media/data-flow/monitornew.png "Datenflussüberwachung (neu)")  
+![Datenflussüberwachung](media/data-flow/monitornew.png "Datenflussüberwachung (neu)")  
   
 ## <a name="monitor-icons"></a>Symbole für die Überwachung
 
