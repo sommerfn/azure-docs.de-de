@@ -6,13 +6,13 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: b0cb5f9fa0a0bc64b38225fba03568cf31021572
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/30/2019
+ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181096"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241677"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -28,14 +28,13 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 > [!NOTE]  
 > Eine weitere Option zum Definieren von Workflows mit HDInsight ist die Verwendung von Azure Data Factory. Weitere Informationen zu Data Factory finden Sie unter [Verwenden von Apache Pig und Apache Hive mit Data Factory][azure-data-factory-pig-hive]. Informationen zur Verwendung von Oozie in Clustern mit dem Enterprise-Sicherheitspaket finden Sie unter [Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit einer Resource Manager-Vorlage](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Eine Azure SQL-Datenbank**.  Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](../sql-database/sql-database-get-started.md).  Der Artikel verwendet eine Datenbank namens `oozietest`.
+* **Eine Azure SQL-Datenbank**.  Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](../sql-database/sql-database-get-started.md).  Der Artikel verwendet eine Datenbank namens **oozietest**.
 
 * Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
 
@@ -64,10 +63,10 @@ Der in diesem Dokument verwendeten Workflows weist zwei Aktionen auf. Aktionen s
 
 Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben Verzeichnis gespeichert werden. In diesem Beispiel wird `wasbs:///tutorials/useoozie` verwendet. Erstellen Sie das Verzeichnis, und führen Sie die folgenden Schritte aus:
 
-1. Bearbeiten Sie den Code unten so, dass `sshuser` durch den SSH-Benutzername für den Cluster ersetzt wird, und ersetzen Sie `clustername` durch den Namen des Clusters.  Geben Sie dann den Code ein, um [mithilfe von SSH](hdinsight-hadoop-linux-use-ssh-unix.md) eine Verbindung mit dem HDInsight-Cluster herzustellen.  
+1. Bearbeiten Sie den Code unten so, dass `sshuser` durch den SSH-Benutzername für den Cluster ersetzt wird, und ersetzen Sie `CLUSTERNAME` durch den Namen des Clusters.  Geben Sie dann den Code ein, um [mithilfe von SSH](hdinsight-hadoop-linux-use-ssh-unix.md) eine Verbindung mit dem HDInsight-Cluster herzustellen.  
 
     ```bash
-    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
 2. Verwenden Sie zum Erstellen des Verzeichnisses den folgenden Befehl:
@@ -79,10 +78,10 @@ Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben 
     > [!NOTE]  
     > Der Parameter `-p` bewirkt, dass alle Verzeichnisse im Pfad erstellt werden. Das Verzeichnis `data` dient zum Speichern der Daten, die vom Skript `useooziewf.hql` verwendet werden.
 
-3. Bearbeiten Sie den Code unten so, dass `username` durch Ihren SSH-Benutzername ersetzt wird.  Führen Sie den folgenden Befehl aus, damit Oozie die Identität Ihres Benutzerkontos annehmen kann:
+3. Bearbeiten Sie den Code unten so, dass `sshuser` durch Ihren SSH-Benutzername ersetzt wird.  Führen Sie den folgenden Befehl aus, damit Oozie die Identität Ihres Benutzerkontos annehmen kann:
 
     ```bash
-    sudo adduser username users
+    sudo adduser sshuser users
     ```
 
     > [!NOTE]  
@@ -111,7 +110,7 @@ Verwenden Sie die folgenden Schritte, um ein Skript der Hive-Abfragesprache (Hiv
     nano useooziewf.hql
     ```
 
-3. Nachdem der GNU-Nano-Editor geöffnet wurde, verwenden Sie die folgende Abfrage als Inhalt der Datei:
+1. Nachdem der GNU-Nano-Editor geöffnet wurde, verwenden Sie die folgende Abfrage als Inhalt der Datei:
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -128,9 +127,9 @@ Verwenden Sie die folgenden Schritte, um ein Skript der Hive-Abfragesprache (Hiv
 
      Die Workflowdefinitionsdatei („workflow.xml“ in diesem Artikel) übergibt diese Werte zur Laufzeit an das HiveQL-Skript.
 
-4. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.  
+1. Um die Datei zu speichern, drücken Sie **STRG+X**, geben Sie **J** ein, und drücken Sie auf die **EINGABETASTE**.  
 
-5. Führen Sie den folgenden Befehl aus, um `useooziewf.hql` nach `wasbs:///tutorials/useoozie/useooziewf.hql` zu kopieren:
+1. Führen Sie den folgenden Befehl aus, um `useooziewf.hql` nach `wasbs:///tutorials/useoozie/useooziewf.hql` zu kopieren:
 
     ```bash
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
@@ -213,7 +212,7 @@ Oozie-Workflowdefinitionen sind in der Sprache der Hadoop-Prozessdefinition (hPD
 
      Beachten Sie auch den Eintrag `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` im Abschnitt „Sqoop“. Dieser Eintrag weist Oozie an, dieses Archiv für Sqoop zur Verfügung zu stellen, wenn diese Aktion ausgeführt wird.
 
-3. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.  
+3. Um die Datei zu speichern, drücken Sie **STRG+X**, geben Sie **J** ein, und drücken Sie auf die **EINGABETASTE**.  
 
 4. Kopieren Sie mit folgendem Befehl die Datei `workflow.xml` nach `/tutorials/useoozie/workflow.xml`:
 
@@ -376,7 +375,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
 
 4. Nachdem der Nano-Editor geöffnet wurde, fügen Sie den bearbeiteten XML-Code als Inhalt der Datei ein.
 
-5. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
+5. Um die Datei zu speichern, drücken Sie **STRG+X**, geben Sie **J** ein, und drücken Sie auf die **EINGABETASTE**.
 
 ## <a name="submit-and-manage-the-job"></a>Übermitteln und Verwalten des Auftrags
 
@@ -449,7 +448,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 
     Wenn Sie nach diesem Befehl den Status überprüfen, lautet dieser „Wird ausgeführt“, und Informationen für die Aktionen innerhalb des Auftrags werden zurückgegeben.  Die Ausführung des Auftrags nimmt einige Minuten in Anspruch.
 
-6. Bearbeiten Sie den Code unten so, dass `<serverName>` durch Ihren Azure SQL-Servername ersetzt wird, und `<sqlLogin>` durch die Azure SQL-Serveranmeldung.  Sobald die Aufgabe erfolgreich abgeschlossen wurde, können Sie mit dem folgenden Befehl überprüfen, ob die Daten generiert wurden und ob die SQL-Datenbanktabelle exportiert wurde.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
+6. Bearbeiten Sie den Code unten so, dass `<serverName>` durch Ihren Azure SQL-Servername ersetzt wird, und `<sqlLogin>` durch die Azure SQL-Serveranmeldung.  *Sobald die Aufgabe erfolgreich abgeschlossen wurde*, können Sie mit dem folgenden Befehl überprüfen, ob die Daten generiert wurden und ob die SQL-Datenbanktabelle exportiert wurde.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -566,7 +565,7 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
     > * `${coordTimezone}`: Für Koordinatoraufträge wird eine feste Zeitzone ohne Sommerzeit verwendet (in der Regel in UTC). Diese Zeitzone wird als *Oozie-Verarbeitungszeitzone* bezeichnet.
     > * `${wfPath}`: Der Pfad der Datei „workflow.xml“.
 
-2. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
+2. Um die Datei zu speichern, drücken Sie **STRG+X**, geben Sie **J** ein, und drücken Sie auf die **EINGABETASTE**.
 
 3. Verwenden Sie den folgenden Befehl, um die Datei in das Arbeitsverzeichnis dieses Auftrags zu kopieren:
 
@@ -621,7 +620,7 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
 
        Diese Werte legen die Startzeit auf 12:00 Uhr am 10. Mai 2018 und die Endzeit auf den 12. Mai 2018 fest. Das Intervall für die Auftragsausführung ist auf „täglich“ festgelegt. Die Häufigkeit wird in Minuten angegeben. Daher gilt 24 Stunden x 60 Minuten = 1.440 Minuten. Schließlich wird die Zeitzone auf UTC festgelegt.
 
-5. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
+5. Um die Datei zu speichern, drücken Sie **STRG+X**, geben Sie **J** ein, und drücken Sie auf die **EINGABETASTE**.
 
 6. Verwenden Sie den folgenden Befehl zum Übermitteln und Starten des Auftrags:
 
@@ -712,41 +711,10 @@ In diesem Artikel haben Sie gelernt, wie ein Oozie-Workflow definiert und Oozie-
 * [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
 * [Verwenden von Apache Sqoop mit Apache Hadoop in HDInsight][hdinsight-use-sqoop]
 * [Verwenden von Apache Hive mit Apache Hadoop in HDInsight][hdinsight-use-hive]
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight][hdinsight-use-pig]
-* [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
+* [Entwickeln von Java MapReduce-Programmen für HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-storage]: hdinsight-use-blob-storage.md
-[hdinsight-get-started]: hdinsight-get-started.md
 [hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-[hdinsight-storage]: hdinsight-use-blob-storage.md
-[hdinsight-get-started-emulator]: hdinsight-get-started-emulator.md
-[hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-
-[sqldatabase-get-started]: sql-database-get-started.md
-
-[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-
-[apache-hadoop]: https://hadoop.apache.org/
-[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
-
-[powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-
-[img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
-[img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
-
-[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7565ce24199dd8f86f756f01f66aa79e764a1a12
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64872724"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752134"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -69,6 +69,31 @@ Die CPU- und die Arbeitsspeichernutzung werden aus folgenden Gründen nachverfol
 - Bereitstellen von transparenter Einsicht in interne Systemabläufe
 - Verstehen der Kapazität der erworbenen Ressourcen
 - Kapazitätsplanung, damit Sie über zentrales Hoch-/Herunterskalieren entscheiden können
+
+## <a name="messaging-unit---how-many-are-needed"></a>Messagingeinheit: Wie viele werden benötigt?
+
+Wenn Sie einen Azure Service Bus-Namespace im Tarif „Premium“ bereitstellen, muss die Anzahl zugeordneter Messagingeinheiten angegeben werden. Bei diesen Messagingeinheiten handelt es sich um dedizierte Ressourcen, die dem Namespace zugeordnet werden.
+
+Die Anzahl von Messagingeinheiten, die dem Service Bus-Namespace im Tarif „Premium“ zugeordnet werden, kann **dynamisch angepasst** werden, um auf Veränderungen (Zu- oder Abnahme) bei Workloads zu reagieren.
+
+Bei der Entscheidung über die Anzahl von Messagingeinheiten für Ihre Architektur muss eine Reihe von Faktoren berücksichtigt werden:
+
+- Beginnen Sie mit ***ein bis zwei Messagingeinheiten***, die Ihrem Namespace zugeordnet sind.
+- Sehen Sie sich in den [Metriken zur Ressourcennutzung](service-bus-metrics-azure-monitor.md#resource-usage-metrics) für Ihren Namespace die Metriken zur CPU-Auslastung an.
+    - Bei einer CPU-Auslastung von ***unter 20 Prozent*** können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. ***zentral herunterskalieren***.
+    - Bei einer CPU-Auslastung von ***über 70 Prozent*** verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ***zentral hochskalieren***.
+
+Die Skalierung der Ressourcen, die einem Service Bus-Namespace zugeordnet werden, kann mithilfe von [Azure Automation-Runbooks](../automation/automation-quickstart-create-runbook.md) automatisiert werden.
+
+> [!NOTE]
+> Die Ressourcen, die dem Namespace zugeordnet werden, können präventiv oder reaktiv **skaliert** werden.
+>
+>  * **Präventiv:** Wenn zusätzliche Workloads erwartet werden (saisonbedingt oder aufgrund von Trends), können Sie dem Namespace weitere Messagingeinheiten zuordnen, bevor die Workloads auftreten.
+>
+>  * **Reaktiv:** Wenn bei der Betrachtung der Metriken zur Ressourcennutzung zusätzliche Workloads erkannt werden, können dem Namespace zusätzliche Ressourcen zugeordnet werden, um auf die steigende Nachfrage zu reagieren.
+>
+> Die Verbrauchseinheiten für die Service Bus-Abrechnung sind stundenbasiert. Wenn Sie zentral hochskalieren, werden die zusätzlichen Ressourcen nur für die Stunden berechnet, in denen sie verwendet wurden.
+>
 
 ## <a name="get-started-with-premium-messaging"></a>Erste Schritte mit Premium-Messaging
 
