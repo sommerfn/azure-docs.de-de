@@ -323,7 +323,7 @@ Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem K
 Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
 - **Metrik**: app_cpu_billed (virtueller Kern – Sekunden)
-- ***Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
+- **Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
 - **Berichtsfrequenz**: Pro Minute
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.

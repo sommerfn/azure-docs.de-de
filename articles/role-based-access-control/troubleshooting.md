@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967106"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819771"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -29,7 +29,7 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 ## <a name="problems-with-rbac-role-assignments"></a>Probleme mit RBAC-Rollenzuweisungen
 
 - Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, weil die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „The client with object id does not have authorization to perform action“ (Der Client mit der Objekt-ID ist zum Ausführen der Aktion nicht autorisiert) ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z.B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
-- Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen.
+- Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Dieses Rollenzuweisungslimit ist fest und kann nicht erweitert werden.
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 
@@ -54,7 +54,7 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 - Wenn beim Erstellen einer Ressource der Berechtigungsfehler „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)“ (Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die im ausgewählten Bereich über Schreibberechtigungen für die Ressource verfügt. Zum Verwalten virtueller Computer in einer Ressourcengruppe sollte Ihnen zum Beispiel die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) für die Ressourcengruppe (oder den übergeordneten Bereich) zugewiesen sein. Eine Liste mit den Berechtigungen für die integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
 - Wenn beim Erstellen oder Aktualisieren eines Supporttickets der Berechtigungsfehler „You don't have permission to create a support request“ (Sie sind zum Erstellen einer Supportanfrage nicht berechtigt) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die über die Berechtigung `Microsoft.Support/supportTickets/write` verfügt, wie z. B. [Mitwirkender für Supportanfragen](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-without-a-security-principal"></a>Rollenzuweisungen ohne einen Sicherheitsprinzipal
+## <a name="role-assignments-with-unknown-security-principal"></a>Rollenzuweisungen mit unbekanntem Sicherheitsprinzipal
 
 Wenn Sie Ihre Rollenzuweisungen mithilfe von Azure PowerShell auflisten, werden möglicherweise Zuweisungen mit einem leeren `DisplayName` und einem auf „Unbekannt“ festgelegten `ObjectType` angezeigt. Beispiel: [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
 

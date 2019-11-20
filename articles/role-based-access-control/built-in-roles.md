@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/25/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842295"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101294"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -114,6 +114,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Leser für verwaltete Anwendungen](#managed-applications-reader) | Ermöglicht Ihnen, Ressourcen in einer verwalteten App zu lesen und JIT-Zugriff anzufordern. |
 | [Mitwirkender für verwaltete Identität](#managed-identity-contributor) | Dem Benutzer zugewiesene Identität erstellen, lesen, aktualisieren und löschen. |
 | [Operator für verwaltete Identität](#managed-identity-operator) | Dem Benutzer zugewiesene Identität lesen und zuweisen. |
+| [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](#managed-services-registration-assignment-delete-role) | Mit der Rolle „Registrierungszuweisung für verwaltete Dienste löschen“ können Benutzer des verwaltenden Mandanten die ihrem Mandanten zugewiesene Registrierungszuweisung löschen. |
 | [Verwaltungsgruppenmitwirkender](#management-group-contributor) | Rolle „Verwaltungsgruppenmitwirkender“ |
 | [Verwaltungsgruppenleser](#management-group-reader) | Rolle „Verwaltungsgruppenleser“ |
 | [Überwachungsmitwirkender](#monitoring-contributor) | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
@@ -279,7 +280,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Beschreibung** | ACR-Quarantänedatenleser |
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Aktionen** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
+> | Microsoft.ContainerRegistry/registries/quarantine/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -294,8 +295,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Beschreibung** | ACR-Quarantänedatenschreiber |
 > | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Aktionen** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
-> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Schreiben/Ändern des Quarantänezustands von unter Quarantäne gestellten Images |
+> | Microsoft.ContainerRegistry/registries/quarantine/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
+> | Microsoft.ContainerRegistry/registries/quarantine/write | Schreiben/Ändern des Quarantänezustands von unter Quarantäne gestellten Images |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1838,6 +1839,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Listet die Zugriffsschlüssel für die Speicherkonten auf. |
 > | Microsoft.ClassicStorage/storageAccounts/read | Dient zum Zurückgeben des Speicherkontos mit dem angegebenen Konto. |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
+> | Microsoft.Insights/metricAlerts/* |  |
 > | Microsoft.Insights/diagnosticSettings/* | Erstellt, aktualisiert oder liest die Diagnoseeinstellung für den Analysis-Server. |
 > | Microsoft.Insights/logdefinitions/* | Diese Berechtigung ist für Benutzer notwendig, die über das Portal auf Aktivitätsprotokolle zugreifen müssen. Auflisten der Protokollkategorien im Aktivitätsprotokoll. |
 > | Microsoft.Insights/metricDefinitions/* | Lesen von Metrikdefinitionen (Liste der verfügbaren Metriktypen für eine Ressource). |
@@ -1870,6 +1872,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/*/read | Lesen von Insights-Warnungsregeln |
+> | Microsoft.Insights/metricAlerts/*/read |  |
 > | Microsoft.Insights/diagnosticSettings/*/read | Ruft die Diagnoseeinstellungen für Logic Apps ab. |
 > | Microsoft.Insights/metricDefinitions/*/read | Ruft die verfügbaren Metriken für Logic Apps ab. |
 > | Microsoft.Logic/*/read | Liest Logic Apps-Ressourcen. |
@@ -1961,6 +1964,23 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>Rolle „Registrierungszuweisung für verwaltete Dienste löschen“
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Mit der Rolle „Registrierungszuweisung für verwaltete Dienste löschen“ können Benutzer des verwaltenden Mandanten die ihrem Mandanten zugewiesene Registrierungszuweisung löschen. |
+> | **Id** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **Aktionen** |  |
+> | Microsoft.ManagedServices/registrationAssignments/read | Ruft eine Liste der Registrierungszuweisungen für verwaltete Dienste ab. |
+> | Microsoft.ManagedServices/registrationAssignments/delete | Entfernt die Registrierungszuweisung für verwaltete Dienste. |
+> | Microsoft.ManagedServices/operationStatuses/read | Liest den Vorgangsstatus für die Ressource. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |

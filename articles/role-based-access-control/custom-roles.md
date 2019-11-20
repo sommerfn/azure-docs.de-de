@@ -15,18 +15,18 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fbea0567ec125ce12acd8f757b32df723876fe09
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338572"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821451"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Benutzerdefinierte Rollen für Azure-Ressourcen
 
 Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
-Benutzerdefinierte Rollen werden in einem Azure AD-Verzeichnis (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Jedes Verzeichnis kann bis zu **5.000** benutzerdefinierte Rollen enthalten. (Für spezielle Clouds, z. B. Azure Government, Azure Deutschland und Azure China 21Vianet, beträgt das Limit 2.000 benutzerdefinierte Rollen.) Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
+Benutzerdefinierte Rollen können von Abonnements, die demselben Azure AD-Verzeichnis vertrauen, gemeinsam genutzt werden. Es gilt ein Limit von **5.000** benutzerdefinierte Rollen pro Verzeichnis. (Für spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, beträgt das Limit 2.000 benutzerdefinierte Rollen.) Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
