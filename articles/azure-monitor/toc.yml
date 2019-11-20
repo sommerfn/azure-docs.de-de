@@ -798,12 +798,14 @@
               items:
                 - name: 'Aktivieren der Überwachung: Übersicht'
                   href: insights/container-insights-onboard.md
-                - name: Aktivieren für einen neuen Cluster
+                - name: Aktivieren für einen neuen AKS-Cluster
                   href: insights/container-insights-enable-new-cluster.md
-                - name: Aktivieren für einen vorhandenen Cluster
+                - name: Aktivieren für einen vorhandenen AKS-Cluster
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Aktivieren für einen Hybridcluster
                   href: insights/container-insights-hybrid-setup.md
+                - name: Aktivieren für Azure Red Hat OpenShift
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: Regionszuordnungen
                   href: insights/container-insights-region-mapping.md
             - name: Überwachen der Leistung

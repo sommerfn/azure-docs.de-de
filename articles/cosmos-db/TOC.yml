@@ -974,21 +974,19 @@
       items:
         - name: Wiederherstellen von Daten aus einer Sicherung
           href: how-to-backup-and-restore.md
-    - name: Protokollierung
+    - name: Überwachen
       items:
-        - name: Diagnoseprotokollierung
-          href: logging.md
+        - name: Überwachen von Cosmos DB
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor für Cosmos (Vorschauversion)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Anzeigen von Metriken über das Cosmos DB-Konto
+          href: use-metrics.md
         - name: Anwendungsprotokollierung mit Logic Apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Mit Metriken überwachen
-      items:
-        - name: Anzeigen von Metriken über das Cosmos DB-Konto
-          href: use-metrics.md
-        - name: Anzeigen von Metriken über Azure Monitor
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: Überwachen von SLAs
-          href: monitor-accounts.md
+        - name: Überwachen von Daten – Referenz
+          href: monitor-cosmos-db-reference.md
     - name: Lokale Entwicklung
       items:
         - name: Verwenden des Emulators

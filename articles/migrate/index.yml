@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Migrate
-summary: Verwenden Sie Azure Migrate für die Migration zur Azure-Cloud. Azure Migrate bietet einen zentralen Hub für die Ermittlung, Bewertung und Migration von lokalen Workloads zu Azure. Der Hub stellt Azure Migrate-Tools sowie integrierte Tools von unabhängigen Softwareanbietern (ISVs) bereit.
+summary: Azure Migrate bietet einen zentralen Hub mit Tools für die Ermittlung, Bewertung und Migration von lokalen Workloads zu Azure.
 metadata:
   title: Dokumentation zu Azure Migrate
-  description: Verwenden Sie Azure Migrate für die Migration zur Azure-Cloud. Azure Migrate bietet einen zentralen Hub für die Ermittlung, Bewertung und Migration von lokalen Workloads zu Azure. Der Hub stellt Azure Migrate-Tools sowie integrierte Tools von unabhängigen Softwareanbietern (ISVs) bereit.
+  description: Verwenden Sie Azure Migrate zum Migrieren von lokalen Workloads zu Azure.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001142"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185847"
 landingContent:
 - title: Informationen zu Azure Migrate
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: Bewerten virtueller Hyper-V-Computer mit der Serverbewertung
       url: ./tutorial-prepare-hyper-v.md
+    - text: Bewerten physischer Server mit der Serverbewertung
+      url: ./tutorial-prepare-physical.md
+    - text: Bewerten von Servern mit importierten Daten
+      url: tutorial-assess-import.md
     - text: Migrieren virtueller VMware-Computer mit der Serverbewertung
       url: ./server-migrate-overview.md
     - text: Migrieren virtueller Hyper-V-Computer mit der Serverbewertung
@@ -52,13 +56,19 @@ landingContent:
     - text: Überprüfen der Unterstützungsmatrix für Azure Migrate
       url: migrate-support-matrix.md
     - text: Überprüfen der Unterstützungsmatrix für VMware
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: Überprüfen der Unterstützungsmatrix für Hyper-V
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: Überprüfen der Supportmatrix für physische Server
+      url: ./migrate-support-matrix-physical.md
 - title: Verwalten
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Hinzufügen von Bewertungstools
+      url: ./how-to-assess.md
+    - text: Ermitteln des Anwendungsbestands
+      url: ./how-to-discover-applications.md
     - text: Hinzufügen von Migrationstools
       url: ./how-to-migrate.md
     - text: Skalieren der VMware-Bewertung
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Architektur für die Agent-basierte VMware-Migration
+    - text: Informationen zur agentbasierten Migration von VMware-Ressourcen/physischen Ressourcen
       url: ./agent-based-migration-architecture.md
-    - text: Hyper-V-Migrationsarchitektur
+    - text: Informationen zur Hyper-V-Migration
       url: ./hyper-v-migration-architecture.md
     - text: Informationen zu Bewertungen
       url: ./concepts-assessment-calculation.md

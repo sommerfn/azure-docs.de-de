@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Site Recovery-Dokumentation
-summary: Verwenden Sie Azure Site Recovery für die Notfallwiederherstellung lokaler Computer und Workloads in Azure sowie virtueller Azure-Computer in einer sekundären Azure-Region. Mit der Replikation in Azure können Sie bei Ausfällen ein Failover orchestrieren und weiterhin auf Workloads und Apps in Azure zugreifen. Wenn der primäre Standort wieder verfügbar ist, können Sie nach Bedarf ein Failback ausführen.
+summary: Verwenden Sie Azure Site Recovery für die Notfallwiederherstellung von lokalen Workloads und Azure-VMs.
 metadata:
   title: Azure Site Recovery-Dokumentation
-  description: Verwenden Sie Azure Site Recovery für die Notfallwiederherstellung lokaler Computer und Workloads in Azure sowie virtueller Azure-Computer in einer sekundären Azure-Region. Mit der Replikation in Azure können Sie bei Ausfällen ein Failover orchestrieren und weiterhin auf Workloads und Apps in Azure zugreifen. Wenn der primäre Standort wieder verfügbar ist, können Sie nach Bedarf ein Failback ausführen.
+  description: Richten Sie Notfallwiederherstellung in Azure für lokale Workloads und VMware-VMs ein.
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001096"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186580"
 landingContent:
 - title: Informationen zu Azure Site Recovery
   linkLists:
