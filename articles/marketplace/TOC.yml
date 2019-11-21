@@ -443,6 +443,12 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Erstellen eines neuen Angebots
       items:
+        - name: Azure-Anwendungsangebote
+          items:
+            - name: Erstellen eines Azure-Anwendungsangebots
+              href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Verarbeiten von Prüfungsfeedback
+              href: ./partner-center-portal/azure-apps-review-feedback.md
         - name: Dynamics 365-Angebote
           items:
             - name: Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps

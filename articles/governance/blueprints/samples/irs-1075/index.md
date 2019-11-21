@@ -3,12 +3,12 @@ title: 'IRS 1075-Blaupausenbeispiel: Übersicht'
 description: Übersicht über das IRS 1075-Blaupausenbeispiel Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer IRS 1075-Kontrollen.
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: f713f6a59f439b2d5cb9df0860d16ff761304b4b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210192"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267371"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Übersicht über das IRS 1075-Blaupausenbeispiel
 
@@ -23,7 +23,8 @@ Der Bereich für die Steuerungszuordnung enthält Details zu in dieser Blaupause
 Sie haben sich die Übersicht über das Blaupausenbeispiel „IRS 1075“ angesehen. Lesen Sie als Nächstes die folgenden Artikel, um sich über die Steuerungszuordnung und die Bereitstellung dieses Beispiels zu informieren:
 
 > [!div class="nextstepaction"]
-> [IRS 1075-Blaupause – Steuerungszuordnung](./control-mapping.md)
+> [IRS 1075-Blaupause – Steuerungszuordnung](./control-mapping.md)
+> [IRS 1075-Blaupause – Bereitstellungsschritte](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

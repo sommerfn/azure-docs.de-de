@@ -193,7 +193,7 @@
             - name: Vorhersage von Flugverspätungen
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Testen der Klassifizierung
+            - name: Textklassifizierung
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: Verwenden von Kalkulatoren für Machine Learning
