@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Erstellen einer erweiterten verwalteten Domäne
       href: tutorial-create-instance-advanced.md
+    - name: Erstellen einer Gesamtstruktur-Vertrauensstellung (Vorschau)
+      href: tutorial-create-forest-trust.md
 - name: Beispiele
   items:
     - name: Erstellen einer verwalteten Domäne mithilfe von Azure PowerShell
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Allgemeine Bereitstellungsszenarien
       href: scenarios.md
+    - name: Gesamtstrukturen und Vertrauensstellungen
+      items:
+        - name: Ressourcengesamtstrukturen
+          href: concepts-resource-forest.md
+        - name: Gesamtstruktur-Vertrauensstellungen
+          href: concepts-forest-trust.md
     - name: Funktionsweise der Azure AD DS-Synchronisierung
       href: synchronization.md
     - name: So funktioniert die Kennworthashsynchronisierung
