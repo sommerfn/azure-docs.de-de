@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Verwenden von externen Paketen mit Jupyter mit Cell Magic
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Verwenden von externen Paketen mit Jupyter mit Skriptaktion
+                - name: Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: Verwenden von Apache Zeppelin-Notebooks
                   href: ./spark/apache-spark-zeppelin-notebook.md

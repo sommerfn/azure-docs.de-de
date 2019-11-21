@@ -112,14 +112,6 @@
               items:
                 - name: Erste Schritte mit der SQL-Datenbanküberwachung
                   href: sql-database-auditing.md
-        - name: Netzwerksicherheit
-          items:
-            - name: Endpunkte im virtuellen Netzwerk
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: 'Endpunkte im virtuellen Netzwerk: PowerShell'
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Private Link
-              href: sql-database-private-endpoint-overview.md
         - name: Sicherheitsverwaltung
           items:
             - name: Advanced Data Security
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Sicherheit von Singletons
           items:
+            - name: Kontrolle des Netzwerkzugriffs
+              href: sql-database-networkaccess-overview.md
+            - name: IP-basierte Firewall
+              href: sql-database-firewall-configure.md
+            - name: VNET-Firewallregeln
+              items:
+                - name: VNET-Endpunkte
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: 'VNET-Endpunkte: PowerShell'
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
             - name: Format der Überwachungsprotokolle
               href: sql-database-audit-log-format.md
             - name: Bedingter Zugriff
               href: sql-database-conditional-access.md
-            - name: IP-Firewallregeln auf Serverebene
-              items:
-                - name: Erstellen und Verwalten
-                  href: sql-database-firewall-configure.md
         - name: Sicherheit bei verwalteten Instanzen
           items:
             - name: Schützen öffentlicher Endpunkte
