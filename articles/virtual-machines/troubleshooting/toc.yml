@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: Serielle Konsole – NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: 'Serielle Konsole: proaktive GRUB-Konfiguration'
+          href: serial-console-grub-proactive-configuration.md
     - name: Serielle Konsole für Windows
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: Allgemeine Fehler für die serielle Konsole
       href: serial-console-errors.md
-    - name: 'Serielle Konsole: proaktive GRUB-Konfiguration'
-      href: serial-console-grub-proactive-configuration.md
 - name: Fehler beim Löschen von Speicherressourcen
   href: storage-resource-deletion-errors.md
 - name: Fehler beim Löschen von klassischen Speicherressourcen

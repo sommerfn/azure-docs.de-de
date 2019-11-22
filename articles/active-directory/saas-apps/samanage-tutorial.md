@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714e67bc7cf9e9c928eb4fd0764619041c9c1424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092595"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory-Integration mit Samanage
 
@@ -136,11 +137,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 3. Klicken Sie auf **Einmaliges Anmelden**.
    
-    ![Einmaliges Anmelden](./media/samanage-tutorial/tutorial_samanage_002.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/samanage-tutorial/tutorial_samanage_002.png "Single Sign-On")
 
 4. Führen Sie im Abschnitt **Login using SAML** (Mit SAML anmelden) die folgenden Schritte aus:
    
-    ![Mit SAML anmelden](./media/samanage-tutorial/tutorial_samanage_003.png "Mit SAML anmelden")
+    ![Login using SAML (Mit SAML anmelden)](./media/samanage-tutorial/tutorial_samanage_003.png "Login using SAML")
  
     a. Klicken Sie auf **Enable Single Sign-On with SAML**(Einmaliges Anmelden mit SAML aktivieren).  
  
@@ -220,7 +221,7 @@ Im Fall von Samanage ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie auf **Dashboard**, und wählen Sie im linken Navigationsbereich die Option **Setup** aus.
    
-    ![Setup](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
+    ![Einrichtung](./media/samanage-tutorial/tutorial_samanage_001.png "Einrichtung")
 
 3. Klicken Sie auf die Registerkarte **Benutzer** .
    
@@ -249,5 +250,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Samanage“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

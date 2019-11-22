@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240402"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053734"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -59,6 +59,10 @@ Aktivieren Sie [Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md
 Der Schutz von Daten ist wichtig, um die Sicherheits- und Compliance-Anforderungen des Unternehmens zu erfüllen. Sie sollten den Zugriff auf Daten durch nicht autorisierte Mitarbeitern nicht nur beschränken, sondern Sie sollten diesen auch verschlüsseln.
 
 Beide Datenspeicher für HDInsight-Cluster – Azure Blob Storage und Azure Data Lake Storage Gen1/Gen2 – unterstützen die transparente serverseitige [Verschlüsselung von Daten](../../storage/common/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster arbeiten reibungslos mit dieser Funktion zur serverseitigen Verschlüsselung ruhender Daten zusammen.
+
+### <a name="compliance"></a>Compliance
+
+Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formalen Zertifizierungen, Nachweisen, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
 
 ## <a name="shared-responsibility-model"></a>Modell der gemeinsamen Zuständigkeit
 
