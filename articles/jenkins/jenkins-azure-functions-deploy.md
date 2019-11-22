@@ -1,23 +1,23 @@
 ---
 title: Bereitstellen in Azure Functions mit dem Jenkins-Azure Functions-Plug-In
-description: Es wird beschrieben, wie Sie in Azure Functions mit dem Jenkins-Azure Functions-Plug-In Bereitstellungen durchführen.
+description: Hier wird beschrieben, wie Sie mit dem Jenkins-Azure Functions-Plug-In Bereitstellungen in Azure Functions durchführen.
 ms.service: jenkins
 keywords: Jenkins, Azure, DevOps, Java, Azure Functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815738"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882040"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Bereitstellen in Azure Functions mit dem Jenkins-Azure Functions-Plug-In
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Bereitstellen in Azure Functions mit dem Jenkins-Azure Functions-Plug-In
 
-[Azure Functions](/azure/azure-functions/) ist ein serverloser Computedienst. Mit Azure Functions können Sie Code bedarfsgesteuert ausführen, ohne dass eine Infrastruktur für die Bereitstellung oder Verwaltung verwendet werden muss. In diesem Tutorial wird beschrieben, wie Sie eine Java-Funktion für Azure Functions mit dem Azure Functions-Plug-In bereitstellen.
+[Azure Functions](/azure/azure-functions/) ist ein serverloser Computedienst. Mit Azure Functions können Sie Code bedarfsgesteuert ausführen, ohne dass eine Infrastruktur für die Bereitstellung oder Verwaltung verwendet werden muss. In diesem Tutorial wird beschrieben, wie Sie mit dem Azure Functions-Plug-In eine Java-Funktion in Azure Functions bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

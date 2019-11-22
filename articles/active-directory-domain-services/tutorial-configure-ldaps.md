@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193330"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172800"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -68,7 +68,7 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
 
-In diesem Zertifikat erstellen Sie in PowerShell ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird, z. B. *contoso.com*:
+In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird, z. B. *contoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -176,7 +176,7 @@ Die *CER*-Zertifikatdatei kann jetzt auf Clientcomputer verteilt werden, die der
 
 Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Schlüssel enthält, und Sie haben den Clientcomputer so eingerichtet, dass er der Verbindung vertraut. Nun aktivieren Sie Secure LDAP in Ihrer verwalteten Azure AD DS-Domäne. Führen Sie die folgenden Konfigurationsschritte aus, um Secure LDAP in einer verwalteten Azure AD DS-Domäne zu aktivieren:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) im Feld **Ressourcen suchen** nach *Domänendienste*. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus.
+1. Geben Sie im [Azure-Portal](https://portal.azure.com) im Feld **Ressourcen suchen** den Begriff *Domänendienste* ein. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus.
 
     ![Suchen und Auswählen der verwalteten Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,7 +207,7 @@ Wenn Sie Secure LDAP-Zugriff auf Ihre verwaltete Azure AD DS-Domäne über das
 Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Port 636 nur für eine angegebene Gruppe von IP-Adressen zuzulassen. Auf den gesamten restlichen eingehenden Datenverkehr aus dem Internet wird eine standardmäßige *DenyAll*-Regel mit niedrigerer Priorität angewendet, sodass nur die angegebenen Adressen Ihre verwaltete Azure AD DS-Domäne über Secure LDAP erreichen können.
 
 1. Wählen Sie im Azure-Portal im linken Navigationsbereich *Ressourcengruppen* aus.
-1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und Ihre Netzwerksicherheitsgruppe (z. B. *AADDS-contoso.com-NSG*) aus.
+1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und Ihre Netzwerksicherheitsgruppe (z. B. *aaads-nsg*) aus.
 1. Die Liste der vorhandenen Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Wählen Sie auf der linken Seite des Fensters „Netzwerksicherheitsgruppe“ die Optionen **Sicherheit > Eingangssicherheitsregeln** aus.
 1. Klicken Sie auf **Hinzufügen**, und erstellen Sie eine Regel zum Zulassen von *TCP*-Port *636*. Wählen Sie zur Verbesserung der Sicherheit *IP-Adressen* als Quelle aus, und geben Sie die eigene gültige IP-Adresse oder den eigenen gültigen IP-Adressbereich für Ihre Organisation an.
 
@@ -219,7 +219,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Aktion                            | ZULASSEN        |
+    | Aktion                            | Allow        |
     | Priority                          | 401          |
     | NAME                              | AllowLDAPS   |
 
@@ -297,3 +297,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

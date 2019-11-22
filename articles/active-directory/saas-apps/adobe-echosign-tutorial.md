@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb27e24e9b53b734a24304a63c8fd91d5e94f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107333"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration mit Adobe Sign
 
@@ -151,13 +152,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Si
 
 1. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  >  **SAML Settings** (SAML-Einstellungen) auf.
    
-    ![Screenshot von Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/ic789520.png "Account") (Konto)
+    ![Screenshot der Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/ic789520.png "Konto")
 
 1. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
   
-   ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML Settings")
+   ![Screenshot der SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML-Einstellungen")
    
-   ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML Settings")
+   ![Screenshot der SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML-Einstellungen")
 
    a. Wählen Sie als **SAML Mode** (SAML-Modus) **SAML Mandatory** (SAML erforderlich) aus.
    
@@ -237,11 +238,11 @@ Damit sich Azure AD-Benutzer bei Adobe Sign anmelden können, müssen sie in Ado
 
 2. Wählen Sie oben im Menü **Account** (Konto) aus. Wählen Sie im linken Bereich **Users & Groups** (Benutzer & Gruppen)  >  **Create a new user** (Neuen Benutzer erstellen) aus.
    
-    ![Screenshot von Adobe Sign-Unternehmenswebsite mit Hervorhebung von „Account“ (Konto), „Users & Groups“ (Benutzer & Gruppen) und „Create a new user“ (Neuen Benutzer erstellen) – ](./media/adobe-echosign-tutorial/ic789524.png "Account") (Konto)
+    ![Screenshot der Adobe Sign-Unternehmenswebsite mit Hervorhebung von „Account“ (Konto), „Users & Groups“ (Benutzer & Gruppen) und „Create a new user“ (Neuen Benutzer erstellen)](./media/adobe-echosign-tutorial/ic789524.png "Konto")
    
 3. Führen Sie im Abschnitt **Create New User** die folgenden Schritte aus:
    
-    ![Screenshot vom Abschnitt „Create New User“ (Neuen Benutzer erstellen) – ](./media/adobe-echosign-tutorial/ic789525.png "Create User") (Benutzer erstellen)
+    ![Screenshot des Abschnitts „Create New User“ (Neuen Benutzer erstellen)](./media/adobe-echosign-tutorial/ic789525.png "Benutzer erstellen")
    
     a. Geben Sie in die Textfelder **Email Address** (E-Mail-Adresse), **First Name** (Vorname) und **Last Name** (Nachname) die entsprechenden Informationen eines gültigen Azure AD-Kontos ein, das Sie bereitstellen möchten.
    
@@ -262,5 +263,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Sign“ klicken, sollten Sie
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

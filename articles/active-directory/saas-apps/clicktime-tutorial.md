@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b14b060cc37f94e51ceb902f8b4158120d4d02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105295"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Tutorial: Azure Active Directory-Integration mit ClickTime
 
@@ -136,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickTim
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On Preferences** die folgenden Schritte aus:
    
-    ![Sicherheitseinstellungen](./media/clicktime-tutorial/tic777280.png "Sicherheitseinstellungen")
+    ![Security Settings (Sicherheitseinstellungen)](./media/clicktime-tutorial/tic777280.png "Security Settings")
    
     a.  Wählen Sie **Zulassen** für das einmalige Anmelden (SSO) mit **Azure AD**.
    
@@ -215,7 +216,7 @@ Im Fall von ClickTime ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Klicken Sie auf **Person hinzufügen**.
    
-    ![Person hinzufügen](./media/clicktime-tutorial/tic777283.png "Person hinzufügen")
+    ![Add Person (Person hinzufügen)](./media/clicktime-tutorial/tic777283.png "Add Person")
 
 1. Führen Sie im Abschnitt "New Person" die folgenden Schritte aus:
    
@@ -242,5 +243,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ClickTime“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

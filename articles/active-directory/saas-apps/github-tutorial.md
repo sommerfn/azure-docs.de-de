@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0730dd89a61b046f73e7e39c8226e66700b3494
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af5021d3a8bed48003f38f01c3d61eac4bdd96b0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101642"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Tutorial: Azure Active Directory-Integration in GitHub
 
@@ -232,17 +233,17 @@ In diesem Abschnitt wird in GitHub eine Benutzerin namens Britta Simon erstellt.
 
 3. Klicken Sie auf **Invite member** (Mitglied einladen).
 
-    ![Benutzer einladen](./media/github-tutorial/tutorial_github_config_github_09.png "Benutzer einladen")
+    ![Invite Users (Benutzer einladen)](./media/github-tutorial/tutorial_github_config_github_09.png "Invite Users")
 
 4. Führen Sie auf der Dialogfeldseite **Invite member** (Mitglied einladen) die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    ![Personen einladen](./media/github-tutorial/tutorial_github_config_github_10.png "Personen einladen")
+    ![Invite People (Personen einladen)](./media/github-tutorial/tutorial_github_config_github_10.png "Invite People")
 
     b. Klicken Sie auf **Einladung senden**.
 
-    ![Personen einladen](./media/github-tutorial/tutorial_github_config_github_11.png "Personen einladen")
+    ![Invite People (Personen einladen)](./media/github-tutorial/tutorial_github_config_github_11.png "Invite People")
 
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -259,4 +260,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „GitHub“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

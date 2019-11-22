@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178710"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808833"
 ---
 ## <a name="create-base-resources"></a>Erstellen der grundlegenden Ressourcen
 
-Bevor Sie das Nachrichtenrouting konfigurieren können, müssen Sie zunächst eine IoT Hub-Instanz, ein Speicherkonto und eine Service Bus-Warteschlange erstellen. Diese Ressourcen können anhand eines der vier Artikel erstellt werden, die für den ersten Teil dieses Tutorials verfügbar sind. In diesen Artikeln wird die Vorgehensweise mit der Azure-Befehlszeilenschnittstelle, mit Azure PowerShell, mit dem Azure-Portal bzw. mit einer Azure Resource Manager-Vorlage erläutert.
+Bevor Sie das Nachrichtenrouting konfigurieren können, müssen Sie zunächst eine IoT Hub-Instanz, ein Speicherkonto und eine Service Bus-Warteschlange erstellen. Diese Ressourcen können anhand eines der vier Artikel erstellt werden, die für den ersten Teil dieses Tutorials verfügbar sind. In diesen Artikeln wird die Vorgehensweise mit dem Azure-Portal, mit einer Azure Resource Manager-Vorlage, der Azure CLI und mit Azure PowerShell erläutert.
 
 Verwenden Sie für alle Ressourcen die gleiche Ressourcengruppe und den gleichen Speicherort. Am Ende dieses Tutorials können Sie dann sämtliche Ressourcen in einem einzelnen Schritt entfernen, indem Sie die Ressourcengruppe löschen.
 
-In den folgenden Abschnitten werden die erforderlichen Schritte beschrieben.
+Nachfolgend finden Sie eine Zusammenfassung der Schritte, die in den folgenden Abschnitten ausgeführt werden müssen: 
 
 1. Erstellen Sie eine [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md).
 

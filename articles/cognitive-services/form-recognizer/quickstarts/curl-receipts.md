@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c533949cf0ce69ddc5237dd893dd75e43447c4a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073829"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931580"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der REST-API für die Formularerkennung mit cURL
 
@@ -36,7 +36,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **Analyze Receipt**-API mit dem folgenden cURL-Befehl auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
-1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<your receipt URL>` mit der URL-Adresse eines Verkaufsbelegbilds.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 

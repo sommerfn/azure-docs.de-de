@@ -1,5 +1,6 @@
 ---
-title: 'Microsoft Identity Platform: .NET Core-Daemon | Azure'
+title: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App | Azure
+titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie für einen .NET Core-Prozess ein Zugriffstoken abgerufen und eine API aufgerufen werden kann, die mit einem Microsoft Identity Platform-Endpunkt geschützt ist, indem die eigene Identität der App verwendet wird.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: a2617013b90cc9709a27ff8ab8c5046ebdcc9951
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211860"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149437"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie eine .NET Core-Anwendung schreiben, mit der anhand der eigenen Identität der App ein Zugriffstoken abgerufen werden kann. Anschließend wird veranschaulicht, wie Sie die Microsoft Graph-API aufrufen, um im Verzeichnis eine [Liste mit Benutzern](https://docs.microsoft.com/graph/api/user-list) anzuzeigen. Dieses Szenario ist für Situationen hilfreich, in denen ein monitorloser, unbeaufsichtigter Auftrag oder ein Windows-Dienst nicht mit der Identität eines Benutzers, sondern mit einer Anwendungsidentität ausgeführt werden muss.
 

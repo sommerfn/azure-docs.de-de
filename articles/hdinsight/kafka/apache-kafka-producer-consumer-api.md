@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs – Azure HDInsight '
+title: 'Tutorial: Apache Kafka Producer- und Consumer-APIs – Azure HDInsight'
 description: Erfahren Sie, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. In diesem Tutorial erfahren Sie, wie Sie diese APIs mit Kafka auf HDInsight aus einer Java-Anwendung verwenden.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446400"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242012"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -59,9 +59,9 @@ Wichtige Informationen zur `pom.xml`-Datei:
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
@@ -140,47 +140,48 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Installieren Sie den JSON-Befehlszeilenprozessor [jq](https://stedolan.github.io/jq/). Geben Sie über die geöffnete SSH-Verbindung den folgenden Befehl ein, um `jq` zu installieren:
+1. Installieren Sie den JSON-Befehlszeilenprozessor [jq](https://stedolan.github.io/jq/). Geben Sie über die geöffnete SSH-Verbindung den folgenden Befehl ein, um `jq` zu installieren:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Richten Sie Umgebungsvariablen ein. Ersetzen Sie `PASSWORD` und `CLUSTERNAME` durch das Kennwort für die Clusteranmeldung bzw. durch den Clusternamen, und geben Sie anschließend den folgenden Befehl ein:
+1. Richten Sie eine Kennwortvariable ein. Ersetzen Sie `PASSWORD` durch das Kennwort für die Clusteranmeldung, und geben Sie dann den folgenden Befehl ein:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Dieser Befehl ruft den Namen mit korrekter Groß-/Kleinschreibung ab, speichert ihn in einer Variablen und zeigt anschließend den Namen mit korrekter Groß-/Kleinschreibung sowie den Namen an, den Sie zuvor angegeben haben. Geben Sie den folgenden Befehl ein:
+1. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Mit diesem Befehl wird die tatsächliche Schreibweise abgerufen und in einer Variable gespeichert. Geben Sie den folgenden Befehl ein:
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > Falls Sie diesen Vorgang außerhalb des Clusters ausführen, gilt für das Speichern des Clusternamens eine andere Vorgehensweise. Rufen Sie den Clusternamen in Kleinbuchstaben aus dem Azure-Portal ab. Ersetzen Sie dann im folgenden Befehl den Clusternamen durch `<clustername>`, und führen Sie den Befehl aus: `export clusterName='<clustername>'`.  
 
-5. Verwenden Sie den folgenden Befehl, um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen:
+1. Verwenden Sie den folgenden Befehl, um die Kafka-Brokerhosts abzurufen:
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-6. Geben Sie den folgenden Befehl ein, um ein Kafka-Thema namens `myTest` zu erstellen:
+    > [!Note]  
+    > Für diesen Befehl ist Zugriff auf Ambari erforderlich. Wird Ihr Cluster durch eine NSG geschützt, führen Sie diesen Befehl auf einem Computer aus, über den auf Ambari zugegriffen werden kann.
+
+1. Geben Sie den folgenden Befehl ein, um ein Kafka-Thema namens `myTest` zu erstellen:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
     ```
 
-7. Um den Producer auszuführen und Daten in das Thema zu schreiben, führen Sie folgenden Befehl aus:
+1. Um den Producer auszuführen und Daten in das Thema zu schreiben, führen Sie folgenden Befehl aus:
 
     ```bash
     java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
     ```
 
-8. Wenn der Producer abgeschlossen ist, führen Sie folgenden Befehl aus, um Daten aus dem Thema zu lesen:
+1. Wenn der Producer abgeschlossen ist, führen Sie folgenden Befehl aus, um Daten aus dem Thema zu lesen:
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
@@ -188,7 +189,7 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
 
     Die gelesenen Datensätze und die Anzahl von Datensätzen wird angezeigt.
 
-9. Drücken Sie __STRG+C__, um den Consumer zu beenden.
+1. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
 ### <a name="multiple-consumers"></a>Mehrere Consumer
 

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271540"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808841"
 ---
 Das [Nachrichtenrouting](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) ermöglicht das Senden von Telemetriedaten von Ihren IoT-Geräten an integrierte, Event Hub-kompatible Endpunkte oder benutzerdefinierte Endpunkte wie Blob Storage-Instanzen, Service Bus-Warteschlangen, Service Bus-Themen und Event Hubs. Zum Konfigurieren des benutzerdefinierten Nachrichtenroutings erstellen Sie [Routingabfragen](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md), um die Route anzupassen, die eine bestimmte Bedingung erfüllt. Nach der Einrichtung werden die eingehenden Daten von IoT Hub automatisch an die Endpunkte weitergeleitet. Wenn eine Nachricht nicht mit einer der definierten Routingabfragen übereinstimmt, wird sie an den Standardendpunkt geleitet.
 
 In diesem zweiteiligen Tutorial lernen Sie, wie Sie diese benutzerdefinierten Routingabfragen mit IoT Hub einrichten und verwenden. Sie leiten Nachrichten von einem IoT-Gerät an einen von mehreren Endpunkten weiter, z. B. Blob Storage oder eine Service Bus-Warteschlange. Nachrichten an die Service Bus-Warteschlange werden über eine Logik-App per E-Mail gesendet. Nachrichten, für die kein benutzerdefiniertes Nachrichtenrouting definiert ist, werden an den Standardendpunkt gesendet und dann von Azure Stream Analytics ausgewählt und in einer Power BI-Visualisierung angezeigt.
 
-Sie haben die folgenden Aufgaben ausgeführt, um Teil 1 und 2 dieses Tutorials durchzuarbeiten:
+Sie führen die folgenden Aufgaben aus, um Teil 1 und 2 dieses Tutorials durchzuarbeiten:
 
 **Teil 1: Erstellen von Ressourcen, Einrichten des Nachrichtenroutings**
 > [!div class="checklist"]
-> * Sie erstellen die Ressourcen: einen IoT-Hub, ein Speicherkonto, eine Service Bus-Warteschlange und ein simuliertes Gerät. Hierfür können Sie das Portal, die Azure CLI, Azure PowerShell oder eine Azure Resource Manager-Vorlage verwenden.
+> * Sie erstellen die Ressourcen: einen IoT-Hub, ein Speicherkonto, eine Service Bus-Warteschlange und ein simuliertes Gerät. Hierfür können Sie das Portal, eine Azure Resource Manager-Vorlage, die Azure CLI oder Azure PowerShell verwenden.
 > * Sie konfigurieren die Endpunkte und Nachrichtenrouten in IoT Hub für das Speicherkonto und die Service Bus-Warteschlange.
 
 **Teil 2: Senden von Nachrichten an den Hub, Anzeigen von Routingergebnissen**
@@ -44,7 +44,7 @@ Sie haben die folgenden Aufgaben ausgeführt, um Teil 1 und 2 dieses Tutorials
 * Für Teil 2 dieses Tutorials:
   - Sie müssen Teil 1 dieses Tutorials abgeschlossen haben, und die Ressourcen müssen noch verfügbar sein.
   - Installieren Sie [Visual Studio](https://www.visualstudio.com/).
-  - Ein Power BI-Konto zum Ausführen von Stream Analytics-Funktionen des Standardendpunkts. ([Power BI kostenlos testen](https://app.powerbi.com/signupredirect?pbi_source=web))
-  - Ein Office 365-Konto zum Senden von Benachrichtigungs-E-Mails.
+  - Zugriff auf ein Power BI-Konto zum Analysieren der Stream Analytics-Daten des Standardendpunkts. ([Power BI kostenlos testen](https://app.powerbi.com/signupredirect?pbi_source=web))
+  - Ein Office 365-Konto zum Senden von Benachrichtigungs-E-Mails
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

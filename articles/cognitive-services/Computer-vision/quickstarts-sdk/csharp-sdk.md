@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 27884d83b9ca828a81922d27fe958334665e664a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719533"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931777"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für .NET
 
@@ -108,7 +108,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Maschinelles Sehen-Schlüssel namens `COMPUTER_VISION_SUBSCRIPTION_KEY` [eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
+> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Schlüssel und den Endpunkt für maschinelles Sehen (mit den Namen `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`) [eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
 
 Instanziieren Sie in einer neuen Methode einen Client mit Ihrem Endpunkt und Schlüssel. Erstellen Sie ein [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python)-Objekt mit Ihrem Schlüssel, und verwenden Sie es mit Ihrem Endpunkt, um ein [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)-Objekt zu erstellen.
 
@@ -211,7 +211,7 @@ Der folgende Code analysiert Daten zu erkannten Sehenswürdigkeiten im Bild:
 
 ### <a name="get-the-image-type"></a>Abrufen des Bildtyps
 
-Der folgende Code gibt Informationen über den Typ des Bilds aus, und zwar unabhängig davon, ob es sich um ClipArt oder eine linienbasierte Zeichnung handelt.
+Die folgende Funktion gibt Informationen zur Art des Bilds (ClipArt oder Strichzeichnung) aus.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
 

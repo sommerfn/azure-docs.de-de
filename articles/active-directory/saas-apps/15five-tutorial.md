@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2fb301c2-7d7a-4046-8ee1-7dc9e7684806
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219af24aceea9291e34a9854d230b5dc6bd85fdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0753a061b698adb3c79ccde6856799c8928cd9f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107574"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>Tutorial: Azure Active Directory-Integration mit 15Five
 
@@ -191,7 +192,7 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
 2. Wechseln Sie zu **Manage Company**.
 
-    ![Manage Company](./media/15five-tutorial/ic784675.png "Manage Company")
+    ![Manage Company (Unternehmen verwalten)](./media/15five-tutorial/ic784675.png "Manage Company")
 
 3. Wechseln Sie zu **People \> Add People** (Personen > Personen hinzufügen).
 
@@ -199,7 +200,7 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
 4. Führen Sie im Abschnitt **Add New Person** (Neue Person hinzufügen) die folgenden Schritte aus:
 
-    ![Neue Person hinzufügen](./media/15five-tutorial/ic784677.png "neue Person hinzufügen")
+    ![Add New Person (Neue Person hinzufügen)](./media/15five-tutorial/ic784677.png "Add New Person")
 
     a. Geben Sie in die entsprechenden Textfelder **Vorname**, **Nachname**, **Titel** und **E-Mail-Adresse** eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
 
@@ -220,4 +221,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „15Five“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

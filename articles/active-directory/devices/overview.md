@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851770"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175043"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
@@ -90,8 +90,8 @@ Mit der Geräteidentitätsverwaltung in Azure AD haben Sie folgende Möglichkeit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [bei Azure AD registrierten Geräten](concept-azure-ad-register.md)
-- Weitere Informationen zu [in Azure AD eingebundene Geräte](concept-azure-ad-join.md)
+- Informieren Sie sich über [bei Azure AD registrierte Geräte](concept-azure-ad-register.md).
+- Informieren Sie sich über [in Azure AD eingebundene Geräte](concept-azure-ad-join.md).
 - Weitere Informationen zu [in Hybrid Azure AD eingebundene Geräte](concept-azure-ad-join-hybrid.md)
 - Einen Überblick über die Verwaltung von Geräteidentitäten im Azure-Portal finden Sie unter [Managing device identities using the Azure portal](device-management-azure-portal.md) (Verwalten von Geräteidentitäten mit dem Azure-Portal, in englischer Sprache).
-- Weitere Informationen zum gerätebasierten bedingten Zugriff finden Sie unter [Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Weitere Informationen zum gerätebasierten bedingten Zugriff finden Sie unter [Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](../conditional-access/require-managed-devices.md).

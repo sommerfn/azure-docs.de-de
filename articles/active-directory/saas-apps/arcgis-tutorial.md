@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db56cd7551ef8179aeff575fdd1f2578cbee74ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106710"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Tutorial: Azure Active Directory-Integration von ArcGIS Online
 
@@ -128,7 +129,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in ArcGIS On
 
 2. Klicken Sie auf **EINSTELLUNGEN BEARBEITEN**.
 
-    ![Einstellungen bearbeiten](./media/arcgis-tutorial/ic784742.png "Einstellungen bearbeiten")
+    ![Edit Settings (Einstellungen bearbeiten)](./media/arcgis-tutorial/ic784742.png "Edit Settings")
 
 3. Klicken Sie auf **Sicherheit**.
 
@@ -136,11 +137,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in ArcGIS On
 
 4. Klicken Sie unter **Unternehmensanmeldungen** auf **IDENTITÄTSANBIETER FESTLEGEN**.
 
-    ![Unternehmensanmeldungen](./media/arcgis-tutorial/ic784744.png "Unternehmensanmeldungen")
+    ![Enterprise Logins (Unternehmensanmeldungen)](./media/arcgis-tutorial/ic784744.png "Enterprise Logins")
 
 5. Führen Sie auf der Konfigurationsseite **Set Identity Provider** die folgenden Schritte aus.
 
-    ![Identitätsanbieter festlegen](./media/arcgis-tutorial/ic784745.png "Identitätsanbieter festlegen")
+    ![Set Identity Provider (Identitätsanbieter festlegen)](./media/arcgis-tutorial/ic784745.png "Set Identity Provider")
 
     a. Geben Sie in das Textfeld **Name** den Namen Ihrer Organisation ein.
 
@@ -212,22 +213,22 @@ Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie auf **MITGLIEDER EINLADEN**.
    
-    ![Mitglieder einladen](./media/arcgis-tutorial/ic784747.png "Mitglieder einladen")
+    ![Invite Members (Mitglieder einladen)](./media/arcgis-tutorial/ic784747.png "Invite Members")
 
 3. Wählen Sie **Mitglieder automatisch hinzufügen, ohne eine E-Mail zu senden** aus, und klicken Sie dann auf **WEITER**.
    
-    ![Mitglieder automatisch hinzufügen](./media/arcgis-tutorial/ic784748.png "Mitglieder automatisch hinzufügen")
+    ![Automatisches Hinzufügen von Mitgliedern](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
 4. Führen Sie auf der Dialogfeldseite **Members** die folgenden Schritte aus:
    
-     ![Hinzufügen und überprüfen Sie](./media/arcgis-tutorial/ic784749.png "hinzufügen und überprüfen")
+     ![Hinzufügen und Überprüfen](./media/arcgis-tutorial/ic784749.png "Add And Review")
     
      a. Geben Sie **E-Mail-Adresse**, **Vorname** und **Nachname** eines gültigen AAD-Kontos ein, das Sie bereitstellen möchten.
   
      b. Klicken Sie auf **HINZUFÜGEN UND ÜBERPRÜFEN**.
 5. Überprüfen Sie die eingegebenen Daten, und klicken Sie dann auf **MITGLIEDER HINZUFÜGEN**.
    
-    ![Mitglied hinzufügen](./media/arcgis-tutorial/ic784750.png "Mitglied hinzufügen")
+    ![Hinzufügen eines Mitglieds](./media/arcgis-tutorial/ic784750.png "Add member")
         
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -244,5 +245,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Online“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

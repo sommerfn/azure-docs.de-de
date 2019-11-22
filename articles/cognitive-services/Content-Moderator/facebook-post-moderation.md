@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564946"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936003"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
@@ -72,7 +72,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
     | -------------------- |-------------|
     | cm:TeamId   | Ihre Content Moderator-Team-ID  | 
     | cm:SubscriptionKey | Ihr Content Moderator-Abonnementschlüssel – Siehe [Anmeldeinformationen](review-tool-user-guide/credentials.md) |
-    | cm:Region | Ihr Content Moderator-Regionsname, ohne Leerzeichen. |
+    | cm:Region | Ihr Content Moderator-Regionsname, ohne Leerzeichen. Sie finden ihn auf der Registerkarte **Übersicht** Ihrer Azure-Ressource im Feld **Standort**.|
     | cm:ImageWorkflow | Name des Workflows für Bilder |
     | cm:TextWorkflow | Name des Workflows für Text |
     | cm:CallbackEndpoint | URL für die CMListener-Funktionen-App, die Sie später in diesem Leitfaden erstellen |

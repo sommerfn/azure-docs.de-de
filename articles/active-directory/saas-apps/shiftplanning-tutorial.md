@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 6aa771e9-31c6-48d1-8dde-024bebc06943
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6bd02bcd52808af43c2254304c56fee76903c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090963"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory-Integration mit Humanity
 
@@ -132,14 +133,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Humanity
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administrator](./media/shiftplanning-tutorial/iC786619.png "Administrator")
 3. Klicken Sie unter **Integration** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786620.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
 
 4. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786905.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
 
     a. Wählen Sie **SAML aktiviert**aus.
 
@@ -214,7 +215,7 @@ Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Human
 
 2. Klicken Sie auf **Administrator**.
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administrator](./media/shiftplanning-tutorial/iC786619.png "Administrator")
 
 3. Klicken Sie auf **Personal**.
 
@@ -222,11 +223,11 @@ Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Human
 
 4. Klicken Sie unter **Aktionen** auf **Mitarbeiter hinzufügen**.
 
-    ![Hinzufügen von Mitarbeitern](./media/shiftplanning-tutorial/iC786624.png "Hinzufügen von Mitarbeitern")
+    ![Add Employees (Mitarbeiter hinzufügen)](./media/shiftplanning-tutorial/iC786624.png "Mitarbeiter hinzufügen")
 
 5. Führen Sie im Abschnitt **Mitarbeiter hinzufügen** die folgenden Schritte aus:
 
-    ![Speichern von Mitarbeitern](./media/shiftplanning-tutorial/iC786625.png "Speichern von Mitarbeitern")
+    ![Save Employees (Mitarbeiter speichern)](./media/shiftplanning-tutorial/iC786625.png "Mitarbeiter speichern")
 
     a. Geben Sie **Vorname**, **Nachname** und **E-Mail-Adresse** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
@@ -247,4 +248,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Humanity“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808564f291328450b17db8eb7ea299c194c66400
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53f3adbf7f9909d3590a0bc34dadc49d498291d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103518"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Tutorial: Azure Active Directory-Integration mit Egnyte
 
@@ -142,7 +143,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Egnyte d
 
 5. Führen Sie im Abschnitt **SSO-Authentifizierung** die folgenden Schritte aus:
 
-    ![SSO-Authentifizierung](./media/egnyte-tutorial/ic787822.png "SSO-Authentifizierung")   
+    ![Single Sign On Authentication (SSO-Authentifizierung)](./media/egnyte-tutorial/ic787822.png "SSO-Authentifizierung")   
     
     a. Wählen Sie für **SSO-Authentifizierung** die Option **SAML 2.0** aus.
    
@@ -257,5 +258,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Egnyte“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

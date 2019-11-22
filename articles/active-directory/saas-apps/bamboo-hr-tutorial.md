@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bc3de858102c02d49a7cefeef15de7e1c82220e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106469"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Tutorial: Azure Active Directory-Integration in BambooHR
 
@@ -132,7 +133,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in BambooHR 
 
 2. Gehen Sie auf der Startseite wie folgt vor:
    
-    ![Die BambooHR-SSO-Seite](./media/bamboo-hr-tutorial/ic796691.png "Einmaliges Anmelden")   
+    ![Seite für einmaliges Anmelden mit BambooHR](./media/bamboo-hr-tutorial/ic796691.png "Single Sign-On")   
 
     a. Wählen Sie **Apps**.
    
@@ -142,7 +143,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in BambooHR 
 
 3. Gehen Sie im Bereich **SAML Single Sign-On** (Einmaliges Anmelden für SAML) wie folgt vor:
    
-    ![Bereich „Einmaliges Anmelden für SAML“](./media/bamboo-hr-tutorial/IC796692.png "Einmaliges Anmelden für SAML")
+    ![Bereich „SAML Single Sign-On“ (Einmaliges Anmelden für SAML)](./media/bamboo-hr-tutorial/IC796692.png "SAML Single Sign-On")
    
     a. Fügen Sie im Feld **SSO Login Url** (SSO-Anmelde-URL) die **Anmelde-URL** ein, die Sie in Schritt 6 aus dem Azure-Portal kopiert haben.
       
@@ -209,7 +210,7 @@ Damit sich Azure AD-Benutzer bei BambooHR anmelden können, richten Sie diese wi
 
 2. Wählen Sie oben in der Symbolleiste **Einstellungen**.
    
-    ![Die Schaltfläche „Einstellungen“](./media/bamboo-hr-tutorial/IC796694.png "Einstellung")
+    ![Schaltfläche „Settings“ (Einstellungen)](./media/bamboo-hr-tutorial/IC796694.png "Einstellung")
 
 3. Wählen Sie **Übersicht**.
 
@@ -234,5 +235,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BambooHR“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

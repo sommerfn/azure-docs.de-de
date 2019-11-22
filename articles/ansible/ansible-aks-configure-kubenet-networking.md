@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242165"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881521"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Tutorial: Konfigurieren von kubenet-Netzwerken in Azure Kubernetes Service (AKS) mit Ansible
 
@@ -109,7 +109,7 @@ Hier sind einige wichtige Hinweise aufgeführt, die Sie beim Arbeiten mit dem Be
 
 - Verwenden Sie das Modul `azure_rm_aks_version`, um nach der unterstützten Version zu suchen.
 - Bei `vnet_subnet_id` handelt es sich um das Subnetz, das im vorherigen Abschnitt erstellt wurde.
-- Mit `network_profile` werden die definierten Eigenschaften für das kubenet-Netzwerk-Plug-In definiert.
+- Mit `network_profile` werden die Eigenschaften für das kubenet-Netzwerk-Plug-In definiert.
 - Mit `service_cidr` werden interne Dienste im AKS-Cluster einer IP-Adresse zugewiesen. Dieser IP-Adressbereich muss ein Adressraum sein, der nicht an einer anderen Stelle in Ihrem Netzwerk verwendet wird. 
 - Die Adresse `dns_service_ip` sollte die „.10“-Adresse Ihres Dienst-IP-Adressbereichs sein.
 - `pod_cidr` sollte ein großer Adressraum sein, der nicht an einer anderen Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Adressbereich muss groß genug für die Anzahl von Knoten sein, auf die Sie voraussichtlich zentral hochskalieren möchten. Sie können diesen Adressbereich nicht mehr ändern, nachdem der Cluster bereitgestellt wurde.

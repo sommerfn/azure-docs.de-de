@@ -1,22 +1,19 @@
 ---
-title: Überprüfen eines Hub-Spoke-Netzwerks mit Terraform in Azure
+title: 'Tutorial: Überprüfen eines Hub-and-Spoke-Netzwerks in Azure mit Terraform'
 description: Tutorial zum Überprüfen der Hub-Spoke-Netzwerktopologie mit allen miteinander verbundenen virtuellen Netzwerken.
-services: terraform
-ms.service: azure
-keywords: Terraform, Hub and Spoke, Netzwerke, Hybridnetzwerke, DevOps, virtueller Computer, Azure, VNET-Peering
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169726"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969335"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Tutorial: Überprüfen eines Hub-Spoke-Netzwerks mit Terraform in Azure
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Tutorial: Überprüfen eines Hub-and-Spoke-Netzwerks in Azure mit Terraform
 
 In diesem Artikel führen Sie die Terraform-Dateien aus, die im vorherigen Artikel dieser Reihe erstellt wurden. Das Ergebnis ist eine Überprüfung der Verbindungen zwischen den virtuellen Demonetzwerken.
 

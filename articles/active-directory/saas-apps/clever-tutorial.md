@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 999f947170528c1ae89a1cf44f714e96af7bddbf
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9c06953f84339da2a27155b721b050d9d33e2363
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136912"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Tutorial: Azure Active Directory-Integration von Clever
 
@@ -154,14 +155,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clever d
 
 1. Klicken Sie auf der Symbolleiste auf **Instant Login**.
 
-    ![Sofortige Anmeldung](./media/clever-tutorial/ic798984.png "Sofortige Anmeldung")
+    ![Instant Login](./media/clever-tutorial/ic798984.png "Instant Login")
 
     > [!NOTE]
     > Bevor Sie einmaliges Anmelden testen können, müssen Sie das [Clever Client-Supportteam](https://clever.com/about/contact/) kontaktieren, um Office 365 SSO im Back-End zu aktivieren.
 
 1. Führen Sie auf der Seite **Instant Login** die folgenden Schritte aus:
     
-      ![Sofortige Anmeldung](./media/clever-tutorial/ic798985.png "Sofortige Anmeldung")
+      ![Instant Login](./media/clever-tutorial/ic798985.png "Instant Login")
     
       a. Geben Sie die **Login URL**ein.
     
@@ -246,5 +247,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Clever“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

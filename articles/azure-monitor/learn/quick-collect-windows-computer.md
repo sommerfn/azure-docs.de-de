@@ -1,5 +1,5 @@
 ---
-title: Sammeln von Daten auf einem Windows-Hybridcomputer mit Azure Monitor | Microsoft-Dokumentation
+title: Sammeln von Daten von einem Windows-Hybridcomputer mit Azure Monitor
 description: In dieser Schnellstartanleitung erfahren Sie, wie der Log Analytics-Agent für außerhalb von Azure ausgeführte Windows-Computer bereitgestellt wird und wie Sie die Sammlung von Daten mit Azure Monitor-Protokollen aktivieren.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677294"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199029"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Sammeln von Daten auf einem Windows-Computer in einer Hybridumgebung mit Azure Monitor
 

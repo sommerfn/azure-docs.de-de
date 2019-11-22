@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227498"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Tutorial: Azure Active Directory-Integration mit AnswerHub
 
@@ -144,7 +145,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
 
 4. Führen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die folgenden Schritte aus:
 
-    ![Registerkarte „Benutzer und Gruppen“](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
+    ![Registerkarte „Users & Groups“ (Benutzer und Gruppen)](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
   
     a. Fügen Sie im Feld **IDP Login Url** (IDP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
   
@@ -156,7 +157,7 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
 
 5. Führen Sie im Abschnitt **Keys and Certificates** (Schlüssel und Zertifikate) die folgenden Schritte aus:
 
-    ![Abschnitt „Keys and Certificates“ (Schlüssel und Zertifikate)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates (Schlüssel und Zertifikate)")  
+    ![Abschnitt „Keys and Certificates“ (Schlüssel und Zertifikate)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
 
     a. Öffnen Sie das Base64-codierte Zertifikat, das Sie über das Azure-Portal heruntergeladen haben, im Editor, und kopieren Sie seinen Inhalt. Fügen Sie den Inhalt dann in das Feld **IDP Public Key (x509 Format)** (Öffentlicher IDP-Schlüssel (X.509-Format)) ein.
   
@@ -235,7 +236,7 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 4. Wählen Sie im linken Bereich im Abschnitt **Benutzer verwalten** die Option **Create or import users** (Benutzer erstellen oder importieren) und dann **Benutzer und Gruppen**.
 
-   ![Registerkarte „Benutzer und Gruppen“](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
+   ![Registerkarte „Users & Groups“ (Benutzer und Gruppen)](./media/answerhub-tutorial/ic785175.png "Users & Groups")
 
 5. Geben Sie in den entsprechenden Feldern die **E-Mail-Adresse**, den **Benutzernamen** und das **Kennwort** eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten, und wählen Sie anschließend **Speichern**.
 
@@ -254,5 +255,5 @@ Wenn Sie im Zugriffsbereich die Kachel „AnswerHub“ wählen, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

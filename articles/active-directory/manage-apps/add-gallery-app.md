@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477286"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062573"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation
 
@@ -34,29 +34,32 @@ Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab
 
 1. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
 
-    ![Öffnen von „Unternehmensanwendungen“](media/add-application-portal/open-enterprise-apps.png)
+    ![Öffnen von „Unternehmensanwendungen“](media/add-gallery-app/open-enterprise-apps.png)
 
-1. Wählen Sie **Neue Anwendung** aus.
 
-    ![Neue Anwendung](media/add-application-portal/new-application.png)
+3. Wählen Sie zum Hinzufügen einer Katalog-App zu Ihrem Mandanten **Neue Anwendung** aus.
 
-1. Geben Sie unter **Aus Katalog hinzufügen** den Namen der hinzuzufügenden Anwendung ins Suchfeld ein. 
+    ![Auswählen von „Neue Anwendung“ zum Hinzufügen einer Katalog-App zu Ihrem Mandanten](media/add-gallery-app/new-application.png)
 
-    ![Suchen nach Name oder Kategorie](media/add-application-portal/categories.png)
+ 4. Wechseln Sie zur neuen Vorschaubenutzeroberfläche des Katalogs: Wählen Sie auf dem Banner oben auf der Seite **Eine Anwendung hinzufügen** den Link **Klicken Sie hier, um den neuen und verbesserten App-Katalog auszuprobieren.** aus.
 
-1. Wählen Sie die Anwendung in den Ergebnissen aus.
+5. Der Bereich **Azure AD-Katalog durchsuchen** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Beachten Sie, dass für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen mithilfe von Symbolen angegeben wird, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen.
 
-1. (Optional) In dem anwendungsspezifischen Formular können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten.
+    ![Suchen nach einer App anhand des Namens oder der Kategorie](media/add-gallery-app/browse-gallery.png)
 
-1. Wählen Sie **Hinzufügen**. Die Seite **Übersicht** der Anwendung wird geöffnet.
+6. Durchsuchen Sie den Katalog nach der hinzuzufügenden App, oder suchen Sie nach der Anwendung, indem Sie ihren Namen in das Suchfeld eingeben. Wählen Sie dann die Anwendung in den Ergebnissen aus. (Optional) In dem Formular können Sie den Anwendungsnamen entsprechend den Anforderungen Ihres Unternehmens bearbeiten.
+
+    ![Zeigt, wie Sie eine Anwendung aus dem Katalog hinzufügen](media/add-gallery-app/create-application.png)
+
+7. Klicken Sie auf **Erstellen**. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurieren der Eigenschaften für die Benutzeranmeldung
 
 1. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
 
-    ![Bereich „Eigenschaften bearbeiten“](media/add-application-portal/edit-properties.png)
+    ![Bereich „Eigenschaften bearbeiten“](media/add-gallery-app/edit-properties.png)
 
-1. Legen Sie mit den folgenden Optionen fest, wie sich wie sich Benutzer mit bzw. ohne Anwendungszuweisung bei der Anwendung anmelden können und ob einem Benutzer die Anwendung im Zugriffsbereich angezeigt wird.
+1. Legen Sie mit den folgenden Optionen fest, wie sich Benutzer mit bzw. ohne Anwendungszuweisung bei der Anwendung anmelden können und ob einem Benutzer die Anwendung im Zugriffsbereich angezeigt wird.
 
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
@@ -94,15 +97,15 @@ Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab
 
 1. Wenn Sie ein benutzerdefiniertes Logo verwenden möchten, erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format. Navigieren Sie dann zu Ihrem Logo, und laden Sie es hoch.
 
-    ![Ändern des Logos](media/add-application-portal/change-logo.png)
+    ![Ändern des Logos](media/add-gallery-app/change-logo.png)
 
 1. Wählen Sie abschließend **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben die Anwendung zu Ihrer Azure AD-Organisation hinzugefügt. Wählen Sie nun die gewünschte [Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method) aus, und sehen Sie sich die folgenden Artikel an:
+Nachdem Sie Ihrer Azure AD-Organisation die Anwendung hinzugefügt haben, können Sie jetzt die gewünschte [Methode für einmaliges Anmelden auswählen](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Lesen Sie dazu die folgenden Artikel:
 
-- [Konfigurieren des einmaligen Anmeldens bei nicht im Katalog enthaltenen Anwendungen auf der Microsoft Identity Platform](configure-single-sign-on-non-gallery-applications.md)
-- [Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung](configure-password-single-sign-on-non-gallery-applications.md)
+- [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-non-gallery-applications.md)
+- [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md)
 - [Konfigurieren der Anmeldung über Link](configure-linked-sign-on.md)
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a34c688b7d8e12dac1d76b3e03fb1b50583c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106261"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory-Integration mit Bime
 
@@ -136,11 +137,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bime die
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Konto**.
   
-    ![Admin](./media/bime-tutorial/ic775558.png "Admin")
+    ![Administrator](./media/bime-tutorial/ic775558.png "Administrator")
 
 3. Führen Sie auf der Kontenkonfigurationsseite die folgenden Schritte aus:
   
-    ![Einmaliges Anmelden konfigurieren](./media/bime-tutorial/ic775559.png "Einmaliges Anmelden konfigurieren")
+    ![Einmaliges Anmelden konfigurieren](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. Aktivieren Sie **Enable SAML authentication**.
 
@@ -211,7 +212,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Benutzer**.
 
-    ![Admin](./media/bime-tutorial/ic775561.png "Admin")
+    ![Administrator](./media/bime-tutorial/ic775561.png "Administrator")
 
 3. Klicken Sie unter **Benutzerliste** auf **Neuen Benutzer hinzufügen** („+“).
 
@@ -219,7 +220,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 4. Führen Sie auf der Dialogfeldseite **User Details** die folgenden Schritte aus:
 
-    ![Benutzerdetails](./media/bime-tutorial/ic775563.png "Benutzerdetails")
+    ![User Details (Benutzerdetails)](./media/bime-tutorial/ic775563.png "User Details")
 
     a. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers ein (z.B. **Britta**).
 
@@ -244,5 +245,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bime“ klicken, sollten Sie autom
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

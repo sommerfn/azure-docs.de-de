@@ -1,24 +1,21 @@
 ---
 title: Verwenden von Terraform mit Azure
 description: Einführung in die Verwendung von Terraform zur Versionserstellung und Bereitstellung für die Azure-Infrastruktur
-services: terraform
-ms.service: azure
-keywords: Terraform, Devops, Übersicht, plan, apply, automate
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 4e51b8b5aa1cd00fcdd2481d73c40458d01d38c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: overview
+ms.date: 10/26/2019
+ms.openlocfilehash: 1c6ac9b67f556b039b9ffd5ed725ea1f24aeeb3a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173072"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969243"
 ---
 # <a name="terraform-with-azure"></a>Terraform mit Azure
 
-[Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool für die Bereitstellung und Verwaltung von Cloudinfrastrukturen. Es wird die Infrastruktur in Konfigurationsdateien codiert, die die Topologie von Cloudressourcen wie virtuelle Computern, Speicherkonten und Netzwerkschnittstellen beschreiben. Die Befehlszeilenschnittstelle von Terraform bietet einen einfachen Mechanismus zum Bereitstellen und für die Versionserstellung für Konfigurationsdateien in Azure oder einer beliebigen anderen unterstützten Cloud.
+[Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool für die Bereitstellung und Verwaltung von Cloudinfrastrukturen. Die Infrastruktur in Konfigurationsdateien, die die Topologie von Cloudressourcen beschreiben, wird kodifiziert. Zu diesen Ressourcen zählen virtuelle Computer, Speicherkonten und Netzwerkschnittstellen. Die Befehlszeilenschnittstelle von Terraform bietet einen einfachen Mechanismus für die Bereitstellung von Konfigurationsdateien und für ihre Versionserstellung in Azure.
 
 In diesem Artikel werden die Vorteile bei der Verwendung von Terraform zum Verwalten der Azure-Infrastruktur beschrieben.
 
@@ -30,23 +27,22 @@ Die vorlagenbasierten Konfigurationsdateien von Terraform ermöglichen es Ihnen,
 - Stellt dieselbe Vorlage mehrmals bereit, um identische Entwicklungs-, Test- und Produktionsumgebungen zu erzeugen.
 - Verringert die Kosten für Entwicklungs- und Testumgebungen, indem diese bei Bedarf erstellt werden.
 
-## <a name="understand-infrastructure-changes-before-they-are-applied"></a>Verstehen der Infrastrukturänderungen vor deren Anwendung 
+## <a name="understand-infrastructure-changes-before-being-applied"></a>Verstehen der Infrastrukturänderungen vor ihrer Anwendung
 
 Wenn eine Ressourcentopologie komplex wird, kann es schwierig sein, die Bedeutung und Auswirkung von Infrastrukturänderungen zu verstehen.
 
-Terraform bietet eine Befehlszeilenschnittstelle (CLI), mit der Benutzer Infrastrukturänderungen vor deren Bereitstellung überprüfen und in einer Vorschau anzeigen können. Das Anzeigen von Infrastrukturänderungen auf sichere, produktive Weise in einer Vorschau hat mehrere Vorteile:
+Über die Terraform-Befehlszeilenschnittstelle können Benutzer Infrastrukturänderungen vor ihrer Anwendung überprüfen und in einer Vorschau anzeigen. Das Anzeigen von Infrastrukturänderungen auf sichere Weise in einer Vorschau hat mehrere Vorteile:
 - Teammitglieder können effektiver zusammenarbeiten, indem sie vorgeschlagene Änderungen und deren Auswirkung schnell verstehen.
 - Unbeabsichtigte Änderungen können frühzeitig im Entwicklungsprozess abgefangen werden.
 
-
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Bereitstellen der Infrastruktur in mehreren Clouds
 
-Terraform wird häufig als Tool für Szenarios mit mehreren Clouds gewählt, in denen eine ähnliche Infrastruktur für Azure und zusätzliche Cloudanbieter oder für lokale Rechenzentren bereitgestellt wird. Entwicklern wird ermöglicht, dieselben Tools und Konfigurationsdateien zum Verwalten der Infrastruktur für mehrere Cloudanbieter zu verwenden.
+Terraform kann eine Infrastruktur für mehrere Cloudanbieter bereitstellen. Terraform ermöglicht es Entwicklern, die einzelnen Infrastrukturdefinitionen mithilfe konsistenter Tools zu verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun eine Übersicht über Terraform und seine Vorteile haben, folgen hier die empfohlenen nächsten Schritte:
 
-- Erste Schritte durch die [Installation von Terraform und seiner Konfiguration für die Verwendung von Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
-- [Erstellen eines virtuellen Azure-Computers mit Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm)
+- Erste Schritte durch die [Installation von Terraform und seiner Konfiguration für die Verwendung von Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- [Erstellen eines virtuellen Azure-Computers mit Terraform](/azure/virtual-machines/linux/terraform-create-complete-vm)
 - Untersuchen des [Azure Resource Manager-Moduls für Terraform](https://www.terraform.io/docs/providers/azurerm/) 

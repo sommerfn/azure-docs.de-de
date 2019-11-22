@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/14/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 7075e127192635c08aa2da2b4798dea6d6abb13b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f027926a7b90ac99b04456ad3635466a6e27655
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639418"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968789"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Sichern einer Azure-VM mit einer Resource Manager-Vorlage
 
@@ -58,7 +58,7 @@ Informationen zum Überwachen des Sicherungsauftrags finden Sie unter [Überwach
 
 Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn bereinigen.
 
-- Wenn Sie den virtuellen Computer wiederherstellen möchten, überspringen Sie die Bereinigung.
+- Wenn Sie das Wiederherstellen des virtuellen Computers ausprobieren möchten, überspringen Sie die Bereinigung.
 - Wenn Sie einen vorhandenen virtuellen Computer verwendet haben, können Sie das letzte Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) überspringen, um die Ressourcengruppe und den VM beizubehalten.
 
 Deaktivieren Sie den Schutz, und entfernen Sie die Wiederherstellungspunkte und den Tresor. Löschen Sie anschließend die Ressourcengruppe und die zugehörigen VM-Ressourcen wie folgt:

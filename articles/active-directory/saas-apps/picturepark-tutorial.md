@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 32af532fcb3b3c5a294590bb7a1fa610d1068e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094452"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Tutorial: Azure Active Directory-Integration in Picturepark
 
@@ -117,7 +117,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Picturep
     | |
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Picturepark-Client](https://picturepark.com/about/contact/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Picturepark-Client](https://picturepark.com/company/picturepark-customer-support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
 
@@ -144,15 +144,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Picturep
 
 2. Klicken Sie oben auf der Symbolleiste auf **Verwaltungstools**, und klicken Sie dann auf **Verwaltungskonsole**.
    
-    ![Verwaltungskonsole](./media/picturepark-tutorial/ic795062.png "Verwaltungskonsole")
+    ![Management Console (Verwaltungskonsole)](./media/picturepark-tutorial/ic795062.png "Verwaltungskonsole")
 
 3. Klicken Sie auf **Authentifizierung** und dann auf **Identitätsanbieter**.
    
-    ![Authentifizierung](./media/picturepark-tutorial/ic795063.png "Authentifizierung")
+    ![Authentifizierung](./media/picturepark-tutorial/ic795063.png "Authentication")
 
 4. Führen Sie im Abschnitt **Identitätsanbieterkonfiguration** die folgenden Schritte aus:
    
-    ![Identitätsanbieterkonfiguration](./media/picturepark-tutorial/ic795064.png "Identitätsanbieterkonfiguration")
+    ![Identity provider configuration (Identitätsanbieterkonfiguration)](./media/picturepark-tutorial/ic795064.png "Identitätsanbieterkonfiguration")
    
     a. Klicken Sie auf **Hinzufügen**.
   
@@ -276,5 +276,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Picturepark“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

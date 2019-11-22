@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376687"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898543"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung
 
 Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. Es kann beispielsweise sein, dass Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Der Zugriff auf Azure kann auch im Rahmen eines Konzernvertrags, einer Microsoft-Kundenvereinbarung oder einer Microsoft-Partnervereinbarung Ihrer Organisation erfolgen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto.
 
-Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen. Diese Konten werden für Cloudlösungsanbieter (Cloud Solution Providers, CSPs) erstellt, um die Abrechnung für ihre Kunden in der neuen Handelsumgebung zu verwalten. Die neue Umgebung ist nur für Partner verfügbar, die über mindestens einen Kunden verfügen, der eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert hat und einen Azure-Plan besitzt. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Partnervereinbarung haben.](#check-access-to-a-microsoft-partner-agreement)
+Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen. Diese Konten werden für Cloudlösungsanbieter (Cloud Solution Providers, CSPs) erstellt, um die Abrechnung für ihre Kunden in der neuen Handelsumgebung zu verwalten. Die neue Umgebung ist nur für Partner verfügbar, die über mindestens einen Kunden verfügen, der eine Microsoft-Kundenvereinbarung akzeptiert hat und einen Azure-Plan besitzt. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Partnervereinbarung haben.](#check-access-to-a-microsoft-partner-agreement) Ein [Azure-Plan](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) ermöglicht Kunden den Zugriff auf Azure-Dienste zu den Preisen der nutzungsbasierten Bezahlung im Rahmen der Microsoft-Kundenvereinbarung.
 
 ## <a name="your-billing-account"></a>Ihr Abrechnungskonto
 
@@ -35,7 +35,7 @@ Benutzer mit der Rolle **Globaler Administrator** oder **Administrator-Agent** i
 
 ## <a name="billing-profiles"></a>Abrechnungsprofile
 
-Mit einem Abrechnungsprofil können Sie Ihre Rechnungen für eine Währung verwalten. Am Anfang jedes Kalendermonats wird in Ihrem Konto eine monatliche Rechnung für jedes Abrechnungsprofil erstellt. Die Rechnung enthält Gebühren für alle Azure-Abonnements und andere Käufe aus dem Vormonat in der Währung des Abrechnungsprofils. 
+Mit einem Abrechnungsprofil können Sie Ihre Rechnungen für eine Währung verwalten. Am Anfang jedes Kalendermonats wird in Ihrem Konto eine monatliche Rechnung für jedes Abrechnungsprofil erstellt. Die Rechnung enthält Gebühren für alle Azure-Abonnements und andere Käufe aus dem Vormonat in der Währung des Abrechnungsprofils.
 
 Sie können die Rechnung im Azure-Portal anzeigen und die zugehörigen Dokumente wie Nutzungsdatei und Preisblatt herunterladen. Weitere Informationen finden Sie unter [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md).
 
@@ -45,11 +45,11 @@ Sie können die Rechnung im Azure-Portal anzeigen und die zugehörigen Dokumente
 
 ## <a name="customers"></a>Kunden
 
-Kunden, die eine Microsoft-Kundenvereinbarung akzeptiert haben und über einen Azure-Plan verfügen, können im Azure-Portal angezeigt und verwaltet werden. Sie können Gebühren und Transaktionen anzeigen und Azure-Abonnements für diese Kunden erstellen und verwalten. 
+Kunden, die eine Microsoft-Kundenvereinbarung akzeptiert haben und über einen Azure-Plan verfügen, können im Azure-Portal angezeigt und verwaltet werden. Sie können Gebühren und Transaktionen anzeigen und Azure-Abonnements für diese Kunden erstellen und verwalten.
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Aktivieren einer Richtlinie für Kostentransparenz
 
-Wenden Sie eine Richtlinie an, um zu steuern, ob Benutzer in Kundenorganisationen Kosten für ihre Azure-Nutzung zu Sätzen für die nutzungsbasierte Bezahlung anzeigen und analysieren können. Standardmäßig ist die Richtlinie deaktiviert, und Benutzer können die Kosten nicht anzeigen. Nach Aktivierung der Richtlinie können Benutzer mit entsprechendem [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)-Abonnementzugriff die Kosten für das Abonnement anzeigen und analysieren. 
+Wenden Sie eine Richtlinie an, um zu steuern, ob Benutzer in Kundenorganisationen Kosten für ihre Azure-Nutzung zu Sätzen für die nutzungsbasierte Bezahlung anzeigen und analysieren können. Standardmäßig ist die Richtlinie deaktiviert, und Benutzer können die Kosten nicht anzeigen. Nach Aktivierung der Richtlinie können Benutzer mit entsprechendem [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)-Abonnementzugriff die Kosten für das Abonnement anzeigen und analysieren.
 
 So aktivieren Sie die Richtlinie:
 
@@ -60,7 +60,7 @@ So aktivieren Sie die Richtlinie:
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mpa-overview/search-cmb.png)
 
 1. Wählen Sie auf der linken Seite **Kunden** und anschließend einen Kunden aus der Liste aus.
-   
+
    ![Screenshot: Auswählen des Kunden](./media/mpa-overview/mpa-customers.png)
 
 1. Wählen Sie auf der linken Seite **Richtlinien** aus.

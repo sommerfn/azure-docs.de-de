@@ -1,5 +1,5 @@
 ---
-title: Anpassen des Seitenstils im Azure API Management-Entwicklerportal | Microsoft-Dokumentation
+title: Anpassen des Seitenstils im Azure API Management-Legacy-Entwicklerportal | Microsoft-Dokumentation
 description: Führen Sie die Schritte in dieser Schnellstartanleitung aus, um den Stil von Elementen im Azure API Management-Entwicklerportal anzupassen.
 services: api-management
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176862"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
 
@@ -28,13 +28,13 @@ Es gibt drei sehr häufig verwendete Möglichkeiten, das Entwicklerportal in Azu
 * Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden (in diesem Leitfaden beschrieben)
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden](api-management-developer-portal-templates.md) (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung)
 
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Anpassen des Stils von Elementen auf Seiten im **Entwicklerportal**
-> * Anzeigen der Änderungen
+In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des Legacy-**Entwicklerportals** anpassen und Ihre Änderungen anzeigen.
 
 ![Anpassen des Stils](./media/modify-developer-portal-style/developer_portal.png)
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,12 +42,10 @@ In diesem Tutorial lernen Sie Folgendes:
 + Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
-
 ## <a name="customize-the-developer-portal"></a>Anpassen des Entwicklerportals
 
 1. Wählen Sie **Übersicht**.
-2. Klicken Sie oben im Fenster **Übersicht** auf die Schaltfläche **Entwicklerportal**. Alternativ können Sie auf den Link **Entwicklerportal-URL** klicken.
+2. Klicken Sie oben im Fenster **Übersicht** auf die Schaltfläche **Developer portal (legacy)** (Entwicklerportal (Legacy-Version)).
 3. Oben links auf dem Bildschirm wird ein aus zwei Pinseln bestehendes Symbol angezeigt. Zeigen Sie auf dieses Symbol, um das Menü für die Portalanpassung zu öffnen.
 
     ![Anpassen des Stils](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -77,11 +75,5 @@ In diesem Tutorial lernen Sie Folgendes:
 2. Sie können die vorgenommenen Änderung hier sehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Anpassen des Stils von Elementen auf Seiten im **Entwicklerportal**
-> * Anzeigen der Änderungen
 
 Sie sind vielleicht auch daran interessiert, zu erfahren, [wie Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen anpassen können](api-management-developer-portal-templates.md).

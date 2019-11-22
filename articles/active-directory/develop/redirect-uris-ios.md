@@ -1,5 +1,6 @@
 ---
-title: Verwenden von Umleitungs-URIs mit der Microsoft Authentication Library | Microsoft Identity Platform
+title: Verwenden von Umleitungs-URIs mit der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft Authentication Library für Objective-C (MSAL für iOS und macOS) und der Azure AD-Authentifizierungsbibliothek für Objective-C (ADAL.ObjC) sowie über die Migration zwischen ihnen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a84ea0acc165b236e2dbe17e62a84269a16eedb9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b78906a03eb9dc96fb58dea4ceabff953f2a3e4f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269288"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803785"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Verwenden von Umleitungs-URIs mit der Microsoft Authentication Library für iOS und macOS
 
@@ -140,4 +141,4 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

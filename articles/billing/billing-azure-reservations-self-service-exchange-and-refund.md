@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543023"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052173"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -44,7 +44,7 @@ Zunächst storniert Microsoft die vorhandene Reservierung und erstattet den ents
 
 ### <a name="enterprise-agreement-customers"></a>Enterprise Agreement-Kunden
 
-Ein Geldbetrag wird der finanziellen Verpflichtung für Umtausch und Rückerstattungen hinzugefügt, wenn dies Teil des ursprünglichen Kaufs war. Alle Überschreitungsrechnungen seit den ursprünglichen Käufen werden erneut geöffnet und neu bewertet, um sicherzustellen, dass die finanzielle Verpflichtung verwendet wird. Falls der Zeitraum der finanziellen Verpflichtung für die Nutzung der erworbenen Reservierung nicht mehr aktiv ist, wird das Guthaben dem Zeitraum Ihrer finanziellen Verpflichtung unter dem derzeitigen Enterprise Agreement hinzugefügt.
+Ein Geldbetrag wird der finanziellen Verpflichtung für Umtausch und Rückerstattungen hinzugefügt, wenn dies Teil des ursprünglichen Kaufs war. Alle Überschreitungsrechnungen seit den ursprünglichen Käufen werden erneut geöffnet und neu bewertet, um sicherzustellen, dass die finanzielle Verpflichtung verwendet wird. Falls der Zeitraum der finanziellen Verpflichtung für die Nutzung der erworbenen Reservierung nicht mehr aktiv ist, wird das Guthaben dem Zeitraum Ihrer finanziellen Verpflichtung unter dem derzeitigen Enterprise Agreement hinzugefügt. Das Guthaben ist ab dem Datum der Rückerstattung 90 Tage lang gültig. Nicht verwendetes Guthaben verfällt nach 90 Tagen.
 
 Falls der ursprüngliche Kauf als Überschreitung durchgeführt wurde, stellt Microsoft eine Gutschrift aus.
 

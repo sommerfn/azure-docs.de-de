@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72372974"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Veracode
 
@@ -31,7 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie Veracode in Azure Active Directory (Azu
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Veracode anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,31 +42,28 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Veracode unterstützt vom Identitätsanbieter initiiertes einmaliges Anmelden sowie die Just-In-Time-Benutzerbereitstellung.
 
-* Veracode unterstützt **IDP**-initiiertes einmaliges Anmelden.
-* Veracode unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+## <a name="add-veracode-from-the-gallery"></a>Hinzufügen von Veracode aus dem Katalog
 
-## <a name="adding-veracode-from-the-gallery"></a>Hinzufügen von Veracode aus dem Katalog
-
-Zum Konfigurieren der Integration von Veracode in Azure AD müssen Sie Veracode aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Fügen Sie zum Konfigurieren der Integration von Veracode in Azure AD Veracode aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzu.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Veracode** in das Suchfeld ein.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff „Veracode“ in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Veracode** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Veracode
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Veracode mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Veracode eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Veracode mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Verknüpfung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Veracode eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Veracode die folgenden Schritte aus:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Veracode](#configure-veracode-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
     * **[Erstellen eines Veracode-Testbenutzers](#create-veracode-test-user)** , um eine Entsprechung von B. Simon in Veracode zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
@@ -75,23 +72,23 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Veracode** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Veracode** zum Abschnitt **Verwalten**. Wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Screenshot: „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit hervorgehobenem Stiftsymbol](common/edit-urls.png)
 
-1. Im Abschnitt **SAML-Basiskonfiguration** ist die Anwendung vorkonfiguriert und die notwendigen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
+1. Im Abschnitt **SAML-Basiskonfiguration** ist die Anwendung vorkonfiguriert und die notwendigen URLs sind bereits mit Azure vorausgefüllt. Wählen Sie **Speichern** aus.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Screenshot: Abschnitt „SAML-Signaturzertifikat“ mit hervorgehobenem Downloadlink](common/certificatebase64.png)
 
-1. Die Veracode-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+1. Veracode erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
-    ![image](common/default-attributes.png)
+    ![Screenshot: Abschnitt „Benutzerattribute und Ansprüche“](common/default-attributes.png)
 
-1. Darüber hinaus wird von der Veracode-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+1. Veracode erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überarbeiten.
 
     | NAME | Quellattribut|
     | ---------------| --------------- |
@@ -101,35 +98,35 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Kopieren Sie im Abschnitt **Veracode einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Screenshot: Abschnitt „Veracode einrichten“ mit hervorgehobenen Konfigurations-URLs](common/copy-configuration-urls.png)
 
 ## <a name="configure-veracode-sso"></a>Konfigurieren des einmaligen Anmeldens für Veracode
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Veracode-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie oben im Menü auf **Einstellungen** und dann auf **Administration**.
+1. Wählen Sie im oberen Menü **Einstellungen** > **Administrator** aus.
    
-    ![Verwaltung](./media/veracode-tutorial/ic802911.png "Verwaltung")
+    ![Screenshot: Veracode-Verwaltung mit hervorgehobenen Symbolen für Einstellungen und Administrator](./media/veracode-tutorial/ic802911.png "Verwaltung")
 
-1. Klicken Sie auf die Registerkarte **SAML** .
+1. Wählen Sie die Registerkarte **SAML** aus.
 
 1. Führen Sie im Abschnitt für die **SAML-Einstellungen der Organisation** die folgenden Schritte aus:
 
-    ![Verwaltung](./media/veracode-tutorial/ic802912.png "Verwaltung")
+    ![Screenshot: Abschnitt „SAML-Einstellungen der Organisation“](./media/veracode-tutorial/ic802912.png "Verwaltung")
 
-    a.  Fügen Sie in das Textfeld **Issuer** (Aussteller) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a.  Fügen Sie unter **Issuer** (Aussteller) den Wert für den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    b. Klicken Sie auf **Choose file** (Datei auswählen), um das aus dem Azure-Portal heruntergeladene Zertifikat hochzuladen.
+    b. Wählen Sie unter **Assertion Signing Certificate** (Assertionssignaturzertifikat) die Option **Choose File** (Datei auswählen) aus, um das heruntergeladene Zertifikat aus dem Azure-Portal hochzuladen.
 
-    c. Wählen Sie **Selbstregistrierung aktivieren**.
+    c. Aktivieren Sie unter **Self Registration** (Selbstregistrierung) die Option **Enable Self Registration** (Selbstregistrierung aktivieren).
 
-1. Führen Sie im Abschnitt **Selbstregistrierungseinstellungen** die folgenden Schritte aus. Klicken Sie dann auf **Speichern**:
+1. Führen Sie im Abschnitt **Self Registration Settings** (Selbstregistrierungseinstellungen) die folgenden Schritte aus, und klicken Sie dann auf **Save** (Speichern):
 
-    ![Verwaltung](./media/veracode-tutorial/ic802913.png "Verwaltung")
+    ![Screenshot: Abschnitt „Self Registration Settings“ (Selbstregistrierungseinstellungen) mit verschiedenen hervorgehobenen Optionen](./media/veracode-tutorial/ic802913.png "Verwaltung")
 
-    a. Wählen Sie für **Aktivierung neuer Benutzer** die Option **Keine Aktivierung erforderlich** aus.
+    a. Wählen Sie für **New User Activation** (Aktivierung neuer Benutzer) die Option **No Activation Required** (Keine Aktivierung erforderlich) aus.
 
-    b. Wählen Sie für **Benutzerdaten-Aktualisierungen** die Option **Veracode-Benutzerdaten bevorzugen** aus.
+    b. Wählen Sie für **User Data Updates** (Benutzerdatenaktualisierungen) die Option **Preference Veracode User Data** (Veracode-Benutzerdaten bevorzugen) aus.
 
     c. Wählen Sie für die **SAML-Attributdetails**Folgendes aus:
       * **Benutzerrollen**
@@ -147,35 +144,36 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich **Azure Active Directory** >**Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+
+   1. Geben Sie unter **Name** `B.Simon` ein.  
+   1. Geben Sie unter **Benutzername** einen Benutzernamen im Format username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den angezeigten Wert.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Veracode gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Veracode** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+   ![Screenshot: Abschnitt „Verwalten“ mit hervorgehobener Option „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
+    ![Screenshot: Seite „Benutzer und Gruppen“ mit hervorgehobener Option zum Hinzufügen eines Benutzers](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** unter **Benutzer** die Option **B.Simon** aus. Wählen Sie anschließend am unteren Bildschirmrand **Auswählen** aus.
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie anschließend am unteren Bildschirmrand **Auswählen** aus.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 ### <a name="create-veracode-test-user"></a>Erstellen eines Veracode-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Veracode anmelden können, müssen sie in Veracode bereitgestellt werden. Im Fall von Veracode ist die Bereitstellung eine automatisierte Aufgabe. Für Sie steht kein Aktionselement zur Verfügung. Benutzer werden beim Versuch des einmaligen Anmeldens bei Bedarf automatisch erstellt.
+Für die Anmeldung bei Veracode müssen Azure AD-Benutzer in Veracode bereitgestellt werden. Diese Aufgabe ist vollständig automatisiert. Benutzer werden beim Versuch des einmaligen Anmeldens bei Bedarf automatisch erstellt.
 
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Veracode-Benutzerkonten oder mithilfe der von Veracode bereitgestellten APIs erstellen.
@@ -184,7 +182,7 @@ Damit sich Azure AD-Benutzer bei Veracode anmelden können, müssen sie in Vera
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Veracode“ klicken, sollten Sie automatisch bei der Veracode-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel **Veracode** auswählen, sollten Sie automatisch bei der Veracode-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13ab9752391519f38e843b9d625164e655348d28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091794"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform
 
@@ -156,11 +157,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 2. Klicken Sie auf die Registerkarte **Vertrauen** .
    
-    ![Vertrauen](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Vertrauen")
+    ![Trust (Vertrauen)](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Vertrauen")
 
 3. Führen Sie im Abschnitt für die Verwaltung der Vertrauensstellung unter **Local Service Provider** (Lokaler Dienstanbieter) die folgenden Schritte aus:
 
-    ![Verwalten von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Verwalten von Vertrauensstellungen")
+    ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Verwaltung von Vertrauensstellungen")
    
     a. Klicken Sie auf **Edit**.
 
@@ -178,7 +179,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 4. Führen Sie nach dem Speichern der Einstellungen für **Local Service Provider** (Lokaler Dienstanbieter) die folgenden Schritte aus, um die Antwort-URL zu erhalten:
    
-    ![Abrufen von Metadaten](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Abrufen von Metadaten")
+    ![Abrufen von Metadaten](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Metadaten abrufen")
 
     a. Klicken Sie zum Herunterladen der SAP Cloud Platform-Metadatendatei auf **Metadaten abrufen**.
 
@@ -188,7 +189,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 5. Klicken Sie auf die Registerkarte **Vertrauenswürdiger Identitätsanbieter**, und klicken Sie dann auf **Vertrauenswürdigen Identitätsanbieter hinzufügen**.
    
-    ![Verwalten von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Verwalten von Vertrauensstellungen")
+    ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Verwaltung von Vertrauensstellungen")
    
     >[!NOTE]
     >Um die Liste der vertrauenswürdigen Identitätsanbieter verwalten zu können, müssen Sie den Konfigurationstyp „Benutzerdefinierte“ im Abschnitt „Lokale Dienstanbieter“ ausgewählt haben. Beim Standard-Konfigurationstyp haben Sie ein nicht-bearbeitbares und implizites Vertrauen gegenüber dem SAP ID-Dienst. Bei der Option „Keine“ haben Sie keine Vertrauenseinstellungen.
@@ -197,7 +198,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 6. Klicken Sie auf die Registerkarte **Allgemein** und dann auf **Durchsuchen**, um die heruntergeladene Metadatendatei hochzuladen.
     
-    ![Verwalten von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Verwalten von Vertrauensstellungen")
+    ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Verwaltung von Vertrauensstellungen")
     
     >[!NOTE]
     >Nach dem Hochladen der Metadatendatei werden die Werte für **URL für einmaliges Anmelden**, **URL für einmaliges Abmelden** und **Signaturzertifikat** automatisch ausgefüllt.
@@ -296,7 +297,7 @@ Um Azure AD-Benutzern die Anmeldung bei SAP Cloud Platform zu ermöglichen, müs
 
 2. Führen Sie Folgendes aus:
    
-    ![Autorisierungen](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Autorisierungen")
+    ![Autorisierungen](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Authorizations")
    
     a. Klicken Sie auf **Autorisierung**.
 
@@ -320,5 +321,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP Cloud Platform“ klicken, sol
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

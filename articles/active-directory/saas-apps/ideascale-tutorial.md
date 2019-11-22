@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a312e0ca70ef3a37b43f1ffb68a974a8aedaf982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100797"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory-Integration mit IdeaScale
 
@@ -137,19 +138,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IdeaSca
 
 2. Navigieren Sie zu **Communityeinstellungen**.
 
-    ![Communityeinstellungen](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
+    ![Community Settings (Communityeinstellungen)](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
 
 3. Navigieren Sie zu **Sicherheit \> Einstellungen für einmaliges Anmelden**.
 
-    ![Einstellungen für einmaliges Anmelden](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
+    ![Single Signon Settings (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790848.png "Einstellungen für einmaliges Anmelden")
 
 4. Wählen Sie für **SSO-Typ** die Einstellung **SAML 2.0** aus.
 
-    ![SSO-Typ](./media/ideascale-tutorial/ic790849.png "SSO-Typ")
+    ![Single Signon Type (SSO-Typ)](./media/ideascale-tutorial/ic790849.png "SSO-Typ")
 
 5. Führen Sie im Dialogfeld **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![Einstellungen für einmaliges Anmelden](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
+    ![Single Signon Settings (Einstellungen für einmaliges Anmelden)](./media/ideascale-tutorial/ic790850.png "Einstellungen für einmaliges Anmelden")
 
     a. Fügen Sie in das Textfeld **SAML IdP Entity ID** (SAML-IdP-Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -220,17 +221,17 @@ Damit sich Azure AD-Benutzer bei IdeaScale anmelden können, müssen sie in Idea
 
 2. Navigieren Sie zu **Communityeinstellungen**.
 
-    ![Communityeinstellungen](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
+    ![Community Settings (Communityeinstellungen)](./media/ideascale-tutorial/ic790847.png "Communityeinstellungen")
 
 3. Navigieren Sie zu **Grundlegende Einstellungen \> Mitgliederverwaltung**.
 
 4. Klicken Sie auf **Mitglied hinzufügen**.
 
-    ![Mitgliederverwaltung](./media/ideascale-tutorial/ic790852.png "Mitgliederverwaltung")
+    ![Member Management (Mitgliederverwaltung)](./media/ideascale-tutorial/ic790852.png "Mitgliederverwaltung")
 
 5. Führen Sie im Abschnitt „Neues Mitglied hinzufügen“ die folgenden Schritte aus:
 
-    ![Neues Mitglied hinzufügen](./media/ideascale-tutorial/ic790853.png "Neues Mitglied hinzufügen")
+    ![Add New Member (Neues Mitglied hinzufügen)](./media/ideascale-tutorial/ic790853.png "Neues Mitglied hinzufügen")
 
     a. Geben Sie im Textfeld **E-Mail-Adressen** die E-Mail-Adresse eines gültigen Azure AD-Benutzerkontos ein, das Sie bereitstellen möchten.
 
@@ -254,5 +255,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „IdeaScale“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

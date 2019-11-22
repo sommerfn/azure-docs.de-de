@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302474"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177822"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der AWS-Infrastruktur zum Hosten eines Service Fabric-Clusters
 
@@ -82,7 +82,7 @@ Für Service Fabric müssen einige Ports zwischen den Hosts in Ihrem Cluster ge�
 
 Öffnen Sie diese Ports nur für Hosts in der gleichen Sicherheitsgruppe, um sie nicht zugänglich zu machen. Notieren Sie sich die Sicherheitsgruppen-ID (**sg-c4fb1eba** in diesem Beispiel).  Klicken Sie anschließend auf **Edit** (Bearbeiten).
 
-Fügen Sie der Sicherheitsgruppe als Nächstes vier Regeln für Dienstabhängigkeiten und anschließend drei weitere für Service Fabric selbst hinzu. Die erste Regel dient zum Zulassen von ICMP-Datenverkehr für grundlegende Konnektivitätsprüfungen. Die anderen Regeln öffnen die erforderlichen Ports für SMB und Remoteregistrierung.
+Fügen Sie der Sicherheitsgruppe als Nächstes vier Regeln für Dienstabhängigkeiten und anschließend drei weitere für Service Fabric selbst hinzu. Die erste Regel dient zum Zulassen von ICMP-Datenverkehr für grundlegende Konnektivitätsprüfungen. Die anderen Regeln öffnen die erforderlichen Ports für die Remoteregistrierung.
 
 Klicken Sie für die erste Regel auf **Add Rule** (Regel hinzufügen), und wählen Sie dann im Dropdownmenü die Option **All ICMP - IPv4** (Vollständiges ICMP – IPv4) aus. Klicken Sie auf das Eingabefeld neben „Custom“ (Benutzerdefiniert), und geben Sie Ihre Sicherheitsgruppen-ID von weiter oben ein.
 
@@ -118,30 +118,18 @@ Verwenden Sie zur Überprüfung der grundlegenden Konnektivität den Pingbefehl.
 ping 172.31.20.163
 ```
 
-Wenn viermal eine Ausgabe wie `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` zurückgegeben wird, funktioniert die Verbindung zwischen den Instanzen.  Überprüfen Sie nun mithilfe des folgenden Befehls, ob Ihre SMB-Freigabe funktioniert:
-
-```
-net use * \\172.31.20.163\c$
-```
-
-Die zurückgegebene Ausgabe sollte in etwa wie folgt aussehen: `Drive Z: is now connected to \\172.31.20.163\c$.`.
+Wenn viermal eine Ausgabe wie `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` zurückgegeben wird, funktioniert die Verbindung zwischen den Instanzen.  
 
 ## <a name="prep-instances-for-service-fabric"></a>Vorbereiten der Instanzen für Service Fabric
 
-Wenn Sie alles von Grund auf neu erstellen, sind noch einige Zusatzschritte erforderlich.  In diesem Fall müssten Sie sich vergewissern, dass die Remoteregistrierung ausgeführt wird, und Sie müssten SMB aktivieren und die erforderlichen Ports für SMB und Remoteregistrierung öffnen.
+Wenn Sie alles von Grund auf neu erstellen, sind noch einige Zusatzschritte erforderlich.  In diesem Fall müssten Sie sich vergewissern, dass die Remoteregistrierung ausgeführt wird, und die erforderlichen Ports öffnen.
 
 Zur Vereinfachung haben Sie alle diese Schritte beim Bootstrapping der Instanzen mit Ihrem Benutzerdatenskript eingebettet.
-
-SMB wurde mithilfe des folgenden PowerShell-Befehls aktiviert:
-
-```powershell
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-```
 
 Zum Öffnen der Firewallports wurde der folgende PowerShell-Befehl verwendet:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,6 @@
 ---
-title: 'Azure AD v2.0 – ASP.NET-Webserver: Erste Schritte | Microsoft-Dokumentation'
+title: 'Azure AD v2.0: ASP.NET-Webserver – Erste Schritte'
+titleSuffix: Microsoft identity platform
 description: Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Lösung mithilfe einer herkömmlichen webbrowserbasierten Anwendung und des OpenID Connect-Standards
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113648"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803720"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -269,7 +270,7 @@ Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmeld
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Weitere Informationen
-> Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Brandingrichtlinien").
+> Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "BBrandingrichtlinien).
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
@@ -410,7 +411,7 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Az
 >  > - Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
 >  > - Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
 >
-> Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent).
+> Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
 <!--end-collapse-->
 
 #### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen

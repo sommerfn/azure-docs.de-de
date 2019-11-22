@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618790"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172332"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -36,9 +36,9 @@ Wenn Sie kein Azure-Abonnement haben, [erstellen Sie ein Konto](https://azure.mi
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 * Ein aktives Azure-Abonnement.
-    * Wenn Sie kein Azure-Abonnement haben, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+    * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
-    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
+    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Eine Windows Server-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
@@ -101,7 +101,7 @@ Verwaltete Azure AD DS-Domänen werden mit den gleichen Verwaltungstools verwal
 
 Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM zu installieren:
 
-1. **Server-Manager** sollte standardmäßig geöffnet werden, wenn Sie sich bei der VM anmelden. Wenn dies nicht der Fall ist, wählen Sie im **Startmenü** die Option **Server-Manager** aus.
+1. Wenn **Server-Manager** bei der Anmeldung beim virtuellen Computer nicht standardmäßig geöffnet wird, wählen Sie das **Startmenü** und dann **Server-Manager** aus.
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
@@ -131,13 +131,15 @@ Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Si
 
 1. Wählen Sie den Container **AADDC Users** (Azure AD-DC-Benutzer) aus, um die Benutzer und Gruppen anzuzeigen, die der verwalteten Azure AD DS-Domäne angehören. In diesem Container werden die Benutzerkonten und -gruppen aus Ihrem Azure AD-Mandanten aufgelistet.
 
-    In der folgenden Beispielausgabe werden in diesem Container ein Benutzerkonto namens *contosoadmin* und eine Gruppe für *Azure AD-DC-Administratoren* angezeigt.
+    In der folgenden Beispielausgabe werden in diesem Container ein Benutzerkonto namens *Contoso Admin* und eine Gruppe für *AAD DC-Administratoren* angezeigt.
 
     ![Anzeigen der Liste der Azure AD DS-Domänenbenutzer im Active Directory-Verwaltungscenter](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Wählen Sie den Container **AADDC Computers** (Azure AD-DC-Computer) aus, um die Computer anzuzeigen, die in die verwaltete Azure AD DS-Domäne eingebunden sind. Ein Eintrag für die aktuelle VM (z. B. *myVM*) wird angezeigt. Computerkonten für alle in die verwaltete Azure AD DS-Domäne eingebundenen Computer werden im Container *AADDC Computers* (Azure AD-DC-Computer) gespeichert.
 
-Allgemeine Aktionen im Active Directory-Verwaltungscenter wie das Zurücksetzen des Kennworts für ein Benutzerkonto oder Verwalten der Gruppenmitgliedschaft sind verfügbar. Für allgemeine Verwaltungsaktionen in Ihrer verwalteten Azure AD DS-Domäne können Sie auch das *Active Directory-Modul für Windows PowerShell* verwenden, das als Teil der Verwaltungstools installiert wird.
+Allgemeine Aktionen im Active Directory-Verwaltungscenter wie das Zurücksetzen des Kennworts für ein Benutzerkonto oder Verwalten der Gruppenmitgliedschaft sind verfügbar. Diese Aktionen können nur für Benutzer und Gruppen ausgeführt werden, die direkt in der verwalteten Azure AD DS-Domäne erstellt wurden. Identitätsinformationen werden nur *aus* Azure AD mit Azure AD DS synchronisiert. Es werden keine Daten aus Azure AD DS in Azure AD zurückgeschrieben. Sie können Kennwörter oder die Mitgliedschaft in verwalteten Gruppen für Benutzer, die aus Azure AD synchronisiert wurden, nicht ändern und die Änderungen wieder mit Azure AD synchronisieren.
+
+Für allgemeine Verwaltungsaktionen in Ihrer verwalteten Azure AD DS-Domäne können Sie auch das *Active Directory-Modul für Windows PowerShell* verwenden, das als Teil der Verwaltungstools installiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

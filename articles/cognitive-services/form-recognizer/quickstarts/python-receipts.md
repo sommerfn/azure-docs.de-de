@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073744"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931261"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python
 
@@ -36,7 +36,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **Analyze Receipt**-API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
 
-1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<your receipt URL>` mit der URL-Adresse eines Verkaufsbelegbilds.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 

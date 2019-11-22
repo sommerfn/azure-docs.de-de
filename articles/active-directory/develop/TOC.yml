@@ -61,8 +61,6 @@
               href: quickstart-v2-netcore-daemon.md
             - name: Python-Konsole (Daemon)
               href: quickstart-v2-python-daemon.md
-            - name: ASP.NET-Daemon-Web-App
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
     - name: Lernprogramme
       items:
         - name: Einseitige Apps
@@ -83,6 +81,10 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows Desktop .NET
               href: tutorial-v2-windows-desktop.md
+        - name: Daemon-Apps
+          items:
+            - name: ASP.NET-Daemon-Web-App
+              href: tutorial-v2-aspnet-daemon-web-app.md
     - name: Beispiele
       href: sample-v2-code.md
     - name: Konzepte

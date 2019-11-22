@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599723"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Contentful
 
@@ -48,7 +48,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Contentful unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert. Es kann nur eine Instanz in einem Mandanten konfiguriert werden.
 
 ## <a name="adding-contentful-from-the-gallery"></a>Hinzufügen von Contentful aus dem Katalog
 
@@ -59,7 +59,7 @@ Zum Konfigurieren der Integration von Contentful in Azure AD müssen Sie Conten
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Contentful** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Contentful** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Wählen Sie in den Ergebnissen **Contentful** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Contentful
 
@@ -86,28 +86,28 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://be.contentful.com/sso/<organization_id>/consume`.
+    - Kopieren Sie die ACS-URL (Assertion Consumer Service, Assertionsverbraucherdienst) von der Seite für die SSO-Einrichtung in Contentful in das Textfeld **Antwort-URL**. Sie sieht wie folgt aus: `https://be.contentful.com/sso/<organization_id>/consume`.
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://be.contentful.com/sso/<organization_id>/login`
+    - Kopieren Sie die gleiche ACS-URL in das Feld **Anmelde-URL**. Sie sieht wie folgt aus: `https://be.contentful.com/sso/<organization_id>/login`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Diese Werte erhalten Sie vom [Supportteam für den Contentful-Client](mailto:support@contentful.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL und Anmelde-URL, indem Sie die ACS-URL von der Seite für die SSO-Einrichtung in Contentful kopieren.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Rohdaten)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificateraw.png)
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Kopieren Sie im Abschnitt **Contentful einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Contentful einrichten** die Anmelde-URL, um einmaliges Anmelden für Contentful zu konfigurieren.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Kopieren der Konfiguration-URLs](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie im linken Bereich des Azure-Portals Folgendes aus: **Azure Active Directory** > **Benutzer** > **Alle Benutzer**.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
@@ -129,13 +129,22 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf der Seite auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Seitenbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-contentful-sso"></a>Konfigurieren des einmaligen Anmeldens für Contentful
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Contentful** müssen Sie das heruntergeladene **Zertifikat (Rohdaten)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Contentful](mailto:support@contentful.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Führen Sie die folgenden Schritte aus, um einmaliges Anmelden aufseiten von **Contentful** zu konfigurieren.
+
+1. Navigieren Sie in [Contentful](https://app.contentful.com) unter **Organization Settings** (Organisationseinstellungen) zur Seite für die SSO-Einrichtung.
+1. Klicken Sie auf **Set up SSO** (SSO einrichten).
+1. Kopieren Sie die Anmelde-URL aus dem Abschnitt **Contentful einrichten** in Azure AD, und fügen Sie sie ein.
+1. Kopieren Sie das Zertifikat aus der Base64-Zertifikatdatei, die Sie aus Azure AD heruntergeladen haben, und fügen Sie es ein.
+1. Legen Sie einen SSO-Namen für die vom Dienstanbieter initiierte Anmeldung fest.
+1. Klicken Sie auf **Enable SSO** (SSO aktivieren).
+
+Funktioniert das nicht, wenden Sie sich an das [Contentful-Supportteam](mailto:support@contentful.com).
 
 ### <a name="create-contentful-test-user"></a>Erstellen eines Contentful-Testbenutzers
 
@@ -149,7 +158,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Contentful“ klicken, sollten Sie
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

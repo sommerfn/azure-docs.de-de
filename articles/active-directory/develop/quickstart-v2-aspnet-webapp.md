@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: d03bb9ede4bbbfdc1c902fec755425a433fea07a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891543"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149472"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
+# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.
+In dieser Schnellstartanleitung ermöglichen Sie einer ASP.NET-Web-App die Anmeldung persönlicher Konten (hotmail.com, outlook.com usw.) sowie von Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory).
 
 ![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
@@ -90,7 +90,7 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Kont
 > > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
-> Hinweis:
+> Hierbei gilt:
 > - `Enter_the_Application_Id_here` ist die Anwendungs-ID für die von Ihnen registrierte Anwendung.
 > - `Enter_the_Tenant_Info_Here` ist eine der folgenden Optionen:
 >   - Unterstützt Ihre Anwendung **Nur meine Organisation**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.onmicrosoft.com“).

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385030"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177723"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der Infrastruktur virtueller Azure-Computer zum Hosten eines Service Fabric-Clusters
 
@@ -90,18 +90,12 @@ Starten Sie zwei weitere **virtuelle Computer**, und behalten Sie die gleichen i
  
 4. Öffnen Sie die RDP-Datei, und geben Sie bei der entsprechenden Aufforderung den Benutzernamen und das Kennwort ein, die Sie beim Einrichten des virtuellen Computers festgelegt haben.
 
-5. Nachdem die Verbindung mit einer Instanz hergestellt wurde, müssen Sie sich vergewissern, dass die Remoteregistrierung ausgeführt wird, und anschließend SMB aktivieren und die erforderlichen Ports für SMB und die Remoteregistrierung öffnen.
-
-   SMB wird mit dem folgenden PowerShell-Befehl aktiviert:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Nachdem die Verbindung mit einer Instanz hergestellt wurde, müssen Sie sich vergewissern, dass die Remoteregistrierung ausgeführt wurde, und die erforderlichen Ports öffnen.
 
 6. Zum Öffnen der Firewallports wurde der folgende PowerShell-Befehl verwendet:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Wiederholen Sie diesen Vorgang für die anderen Instanzen, und notieren Sie sich auch hier die privaten IP-Adressen.
@@ -117,15 +111,6 @@ Starten Sie zwei weitere **virtuelle Computer**, und behalten Sie die gleichen i
    ```
 
    Wenn viermal eine Ausgabe wie `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` zurückgegeben wird, funktioniert die Verbindung zwischen den Instanzen.
-
-3. Überprüfen Sie nun mithilfe des folgenden Befehls, ob Ihre SMB-Freigabe funktioniert:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   Die zurückgegebene Ausgabe sollte in etwa wie folgt aussehen: `Drive Z: is now connected to \\172.31.20.163\c$.`.
-
 
    Damit sind die Instanzen ordnungsgemäß für Service Fabric vorbereitet.
 

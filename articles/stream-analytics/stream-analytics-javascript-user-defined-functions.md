@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft Docs '
+title: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
 description: In diesem Tutorial führen Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen aus.
 services: stream-analytics
 author: rodrigoamicrosoft
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329377"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990226"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
  
@@ -71,6 +71,9 @@ Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinie
 6.  Wählen Sie **Speichern** aus. Ihre Funktion wird in der Liste der Funktionen angezeigt.
 7.  Wählen Sie die neue **hex2Int**-Funktion aus, und überprüfen Sie die Funktionsdefinition. Bei allen Funktionen wird dem Funktionsalias ein **UDF**-Präfix hinzugefügt. Sie müssen das Präfix beim Aufruf der Funktion in der Stream Analytics-Abfrage *einschließen*. Rufen Sie in diesem Fall **UDF.hex2Int** aus.
 
+## <a name="testing-javascript-udfs"></a>Testen von JavaScript-UDFs 
+Sie können Ihre JavaScript-UDF-Logik in einem beliebigen Browser testen und debuggen. Das Debuggen und Testen der Logik dieser benutzerdefinierten Funktionen wird im Stream Analytics-Portal derzeit nicht unterstützt. Sobald die Funktion wie gewünscht funktioniert, können Sie sie wie oben beschrieben dem Stream Analytics-Auftrag hinzufügen und dann direkt über Ihre Abfrage aufrufen.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Aufrufen benutzerdefinierter JavaScript-Funktionen in einer Abfrage
 
 1. Wählen Sie im Abfrage-Editor unter der Überschrift **Auftragstopologie** die Option **Abfrage** aus.
@@ -100,9 +103,9 @@ Es gibt Unterschiede zwischen den Typen, die in der Stream Analytics-Abfragespra
 Stream Analytics | JavaScript
 --- | ---
 bigint | Number (in JavaScript können nur ganze Zahlen bis genau 2^53 dargestellt werden)
-DateTime | Date (JavaScript unterstützt nur Millisekunden)
+Datetime | Date (JavaScript unterstützt nur Millisekunden)
 double | Number
-nvarchar(MAX) | string
+nvarchar(MAX) | Zeichenfolge
 Datensatz | Object
 Array | Array
 NULL | Null
@@ -114,8 +117,8 @@ Konvertierungen von JavaScript zu Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Number | bigint (wenn die Zahl gerundet ist und zwischen long.MinValue und long.MaxValue liegt, andernfalls double)
-Date | DateTime
-string | nvarchar(MAX)
+Date | Datetime
+Zeichenfolge | nvarchar(MAX)
 Object | Datensatz
 Array | Array
 Null, Undefined | NULL
@@ -125,7 +128,6 @@ Die JavaScript-Sprache unterscheidet Groß-/Kleinschreibung, weshalb die Groß-/
 
 ## <a name="troubleshooting"></a>Problembehandlung
 JavaScript-Laufzeitfehler werden als schwerwiegend angesehen und im Aktivitätsprotokoll aufgezeichnet. Navigieren Sie im Azure-Portal zu Ihrem Auftrag, und wählen Sie **Aktivitätsprotokoll** aus, um das Protokoll abzurufen.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Weitere benutzerdefinierte JavaScript-Funktionsmuster
 

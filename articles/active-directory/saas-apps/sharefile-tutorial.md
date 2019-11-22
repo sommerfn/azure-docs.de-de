@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9904ba14e8d5a518807eda371ba655963b33bd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71d2fe97a4af07f48038ffd88de648247b56bb80
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091012"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory-Integration mit Citrix ShareFile
 
@@ -151,7 +152,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Sh
 
 3. Klicken Sie im linken Navigationsbereich auf **Configure Single Sign-On**.
    
-    ![Kontoverwaltung](./media/sharefile-tutorial/ic773627.png "Kontoverwaltung")
+    ![Account Administration (Kontoverwaltung)](./media/sharefile-tutorial/ic773627.png "Kontoverwaltung")
 
 4. Gehen Sie auf der Dialogseite **SSO-/SAML 2.0-Konfiguration** unter **Grundeinstellungen** folgendermaßen vor:
    
@@ -230,11 +231,11 @@ Damit sich Azure AD-Benutzer bei Citrix ShareFile anmelden können, müssen sie
 
 2. Klicken Sie auf **Benutzer verwalten \> Benutzerbereich verwalten \> + Mitarbeiter erstellen**.
    
-    ![Mitarbeiter erstellen](./media/sharefile-tutorial/IC781050.png "Mitarbeiter erstellen")
+    ![Create Employee (Mitarbeiter erstellen)](./media/sharefile-tutorial/IC781050.png "Create Employee")
 
 3. Führen Sie unter **Grundlegende Informationen** die folgenden Schritte aus:
    
-    ![Grundlegende Informationen](./media/sharefile-tutorial/IC799951.png "Grundlegende Informationen")
+    ![Basic Information (Grundlegende Informationen)](./media/sharefile-tutorial/IC799951.png "Basic Information")
    
     a. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse von Britta Simon ein (Beispiel: **brittasimon\@contoso.com**).
    
@@ -259,5 +260,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Citrix ShareFile“ klicken, sollt
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

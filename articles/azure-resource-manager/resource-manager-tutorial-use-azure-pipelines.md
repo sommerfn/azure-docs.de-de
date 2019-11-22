@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597219"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052203"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -223,7 +223,7 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Öffnen Sie die Ressourcengruppe. Der Name entspricht der Angabe aus der YAML-Pipelinedatei.  Es sollte ein einzelnes Speicherkonto erstellt werden.  Der Name des Speicherkontos beginnt mit **store**.
 1. Wählen Sie den Namen des Speicherkontos aus, um es zu öffnen.
-1. Wählen Sie **Eigenschaften** aus. Die **SKU** lautet **Standard_LRS**.
+1. Wählen Sie **Eigenschaften** aus. Beachten Sie, dass unter **Replikation** die Option **Lokal redundanter Speicher (LRS)** ausgewählt ist.
 
     ![Azure Resource Manager/Azure DevOps/Azure Pipelines: Überprüfung im Portal](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
@@ -250,7 +250,7 @@ Wenn Sie die Vorlage aktualisieren und die Änderungen in das Remoterepository p
 
     Nachdem der Masterbranch des Remoterepositorys aktualisiert wurde, wird die Pipeline erneut ausgelöst.
 
-Sehen Sie sich zur Überprüfung der Änderungen die SKU des Speicherkontos an.  Eine entsprechende Anleitung finden Sie unter [Überprüfen der Bereitstellung](#verify-the-deployment).
+Sehen Sie sich zur Überprüfung der Änderungen die Replikationseigenschaft des Speicherkontos an.  Eine entsprechende Anleitung finden Sie unter [Überprüfen der Bereitstellung](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

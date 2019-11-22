@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c2599a2ddd09cbaf869bf4d9e21a8032855cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fc58b9cdec1a68dd12b7f70f7521a024f358ce
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086162"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161057"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Tutorial: Azure Active Directory-Integration mit Zoho
 
@@ -134,11 +135,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoho die
 
 3. Klicken Sie auf die Registerkarte **SAML-Authentifizierung** .
    
-    ![SAML-Authentifizierung](./media/zoho-mail-tutorial/ic789608.png "SAML-Authentifizierung")
+    ![SAML Authentication (SAML-Authentifizierung)](./media/zoho-mail-tutorial/ic789608.png "SAML-Authentifizierung")
 
 4. Führen Sie im Abschnitt für die **SAML-Authentifizierungsdetails** die folgenden Schritte aus:
    
-    ![SAML-Authentifizierungsdetails](./media/zoho-mail-tutorial/ic789609.png "SAML-Authentifizierungsdetails")
+    ![SAML Authentication Details (SAML-Authentifizierungsdetails)](./media/zoho-mail-tutorial/ic789609.png "SAML-Authentifizierungsdetails")
    
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
    
@@ -249,5 +250,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Zoho“ klicken, sollten Sie autom
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

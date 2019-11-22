@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdf91993-aaaa-4598-89b7-77ef8ca065d5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 97e38c62da74444f1f229f12e42d98e75a6e5073
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7e7498411e68b83f8c05d50f52f73f97df9f797
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097202"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory-Integration mit Mindflash
 
@@ -190,13 +191,13 @@ Damit sich Azure AD-Benutzer bei Mindflash anmelden können, müssen sie in Mind
 
 1. Navigieren Sie zu **Benutzer verwalten**.
    
-    ![Benutzer verwalten](./media/mindflash-tutorial/ic787140.png "Benutzer verwalten")
+    ![Verwalten von Benutzern](./media/mindflash-tutorial/ic787140.png "Benutzer verwalten")
 
 1. Klicken Sie auf **Benutzer hinzufügen** und dann auf **Neu**.
 
 1. Führen Sie im Abschnitt **Neue Benutzer hinzufügen** die folgenden Schritte für ein gültiges Azure AD-Konto aus, das Sie bereitstellen möchten:
    
-    ![Neue Benutzer hinzufügen](./media/mindflash-tutorial/ic787141.png "Neue Benutzer hinzufügen")
+    ![Add New Users (Neue Benutzer hinzufügen)](./media/mindflash-tutorial/ic787141.png "Neue Benutzer hinzufügen")
    
     a. Geben Sie im Textfeld **Vorname** den **Vornamen** des Benutzers ein: **Britta**.
 
@@ -222,5 +223,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Mindflash“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3186b9a8-f4d8-45e2-ad82-6275f95e7aa6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 664824772d9c04e5d02d7a38cda58ad4ede8baaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd75cc392bb30d15b665190eef8fbea39d692ee3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096266"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Tutorial: Azure Active Directory-Integration mit New Relic
 
@@ -128,11 +129,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit New Rel
 
 2. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
    
-    ![Konteneinstellungen](./media/new-relic-tutorial/ic797036.png "Konteneinstellungen")
+    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797036.png "Kontoeinstellungen")
 
 3. Klicken Sie auf die Registerkarte **Sicherheit und Authentifizierung** und anschließend auf die Registerkarte **Einmaliges Anmelden**.
    
-    ![Einmaliges Anmelden](./media/new-relic-tutorial/ic797037.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/new-relic-tutorial/ic797037.png "Single Sign-On")
 
 4. Führen Sie auf der Dialogfeldseite für SAML die folgenden Schritte aus:
    
@@ -207,11 +208,11 @@ Damit sich Azure Active Directory-Benutzer bei New Relic anmelden können, müss
 
 2. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
    
-    ![Konteneinstellungen](./media/new-relic-tutorial/ic797040.png "Konteneinstellungen")
+    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797040.png "Kontoeinstellungen")
 
 3. Klicken Sie links im Bereich **Konto** auf **Zusammenfassung** und anschließend auf **Benutzer hinzufügen**.
    
-    ![Konteneinstellungen](./media/new-relic-tutorial/ic797041.png "Konteneinstellungen")
+    ![Account Settings (Kontoeinstellungen)](./media/new-relic-tutorial/ic797041.png "Kontoeinstellungen")
 
 4. Führen Sie im Dialogfeld **Aktive Benutzer** die folgenden Schritte aus:
    
@@ -239,5 +240,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „New Relic“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

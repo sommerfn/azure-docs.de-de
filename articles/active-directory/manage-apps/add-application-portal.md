@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466660a1e064ef41eb330b36107dbdcb1d097498
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e5ee40f6fcd77465b67a7c409493027fefa48ca9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477309"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062947"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 
@@ -43,24 +43,26 @@ Es wird empfohlen, zum Testen der Schritte in diesem Tutorial keine Produktionsu
 So fügen Sie eine Kataloganwendung zu Ihrem Azure AD-Mandanten hinzu:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Azure Active Directory** aus.
-1. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
-1. Der Bereich **Alle Anwendungen** wird mit einer nach dem Zufallsprinzip ausgewählten Gruppe von Anwendungen in Ihrem Azure AD-Mandanten geöffnet. Wählen Sie oben im Bereich **Alle Anwendungen** die Option **Neue Anwendung** aus, um Ihrem Mandanten eine Katalog-App hinzuzufügen.
+
+2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine nach dem Zufallsprinzip ausgewählte Gruppe von Anwendungen in Ihrem Azure AD-Mandanten an.
+
+3. Wählen Sie zum Hinzufügen einer Katalog-App zu Ihrem Mandanten **Neue Anwendung** aus. 
 
     ![Auswählen von „Neue Anwendung“ zum Hinzufügen einer Katalog-App zu Ihrem Mandanten](media/add-application-portal/new-application.png)
 
-1. Im Bereich **Kategorien** werden im Abschnitt **Ausgewählte Anwendungen** Symbole für nach dem Zufallsprinzip ausgewählte Kataloganwendungen angezeigt. Um weitere Anwendungen anzuzeigen, könnten Sie auch **Weitere anzeigen** verwenden, diese Art von Suche im Katalog empfiehlt sich jedoch nicht, weil der Katalog Tausende von Anwendungen enthält.
+ 4. Wechseln Sie zur neuen Vorschaubenutzeroberfläche des Katalogs: Wählen Sie auf dem Banner oben auf der Seite **Eine Anwendung hinzufügen** den Link **Klicken Sie hier, um den neuen und verbesserten App-Katalog auszuprobieren.** aus.
 
-    ![Suchen nach einer App anhand des Namens oder der Kategorie](media/add-application-portal/categories.png)
+5. Der Bereich **Azure AD-Katalog durchsuchen (Vorschau)** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Beachten Sie, dass für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen mithilfe von Symbolen angegeben wird, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen.
 
-1. Geben Sie zum Suchen nach einer Anwendung unter **Aus Katalog hinzufügen** den Namen der hinzuzufügenden Anwendung ein. Wählen Sie die Anwendung in den Ergebnissen aus, und klicken Sie auf **Hinzufügen**. Das folgende Beispiel zeigt das Formular **App hinzufügen**, das nach dem Suchvorgang für GitHub.com angezeigt wird.
+    ![Suchen nach einer App anhand des Namens oder der Kategorie](media/add-application-portal/browse-gallery.png)
 
-    ![Zeigt, wie Sie eine Anwendung aus dem Katalog hinzufügen](media/add-application-portal/add-an-application.png)
+6. Sie können den Katalog nach der hinzuzufügenden App durchsuchen oder nach der Anwendung suchen, indem Sie ihren Namen in das Suchfeld eingeben. Wählen Sie dann die Anwendung in den Ergebnissen aus. In dem Formular können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. In diesem Beispiel haben wir den Namen in **GitHub-test** geändert.
 
-1. Im anwendungsspezifischen Formular können Sie Informationen zu Eigenschaften ändern. Beispielsweise können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. In diesem Beispiel wird der Name **GitHub-test** verwendet.
-1. Wenn Sie die gewünschten Änderungen an den Eigenschaften vorgenommen haben, wählen Sie **Hinzufügen** aus.
-1. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt.
+    ![Zeigt, wie Sie eine Anwendung aus dem Katalog hinzufügen](media/add-application-portal/create-application.png)
 
-Das Hinzufügen der Anwendung ist abgeschlossen. Sie können nun eine Pause einlegen. In den nächsten Abschnitten wird gezeigt, wie Sie das Logo ändern und weitere Eigenschaften für Ihre Anwendung bearbeiten.
+7. Klicken Sie auf **Erstellen**. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt.
+
+Das Hinzufügen der Anwendung ist abgeschlossen. In den nächsten Abschnitten wird gezeigt, wie Sie das Logo ändern und weitere Eigenschaften für Ihre Anwendung bearbeiten.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Suchen nach Ihrer Azure AD-Mandantenanwendung
 
@@ -81,17 +83,17 @@ Sie haben die Anwendung gefunden. Nun können Sie sie öffnen und Anwendungseige
 So bearbeiten Sie die Anwendungseigenschaften:
 
 1. Wählen Sie die Anwendung aus, um sie zu öffnen.
-1. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
+2. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
 
     ![Zeigt den Eigenschaftenbildschirm und App-Eigenschaften, die bearbeitet werden können](media/add-application-portal/edit-properties.png)
 
-1. Nehmen Sie sich einen Moment Zeit, um die Anmeldeoptionen nachzuvollziehen. Die Optionen bestimmen, wie die der Anwendung zugewiesenen bzw. nicht zugewiesenen Benutzer sich bei der Anwendung anmelden können. Darüber hinaus legen die Optionen fest, ob ein Benutzer die Anwendung im Zugriffsbereich sehen kann.
+3. Nehmen Sie sich einen Moment Zeit, um die Anmeldeoptionen nachzuvollziehen. Die Optionen bestimmen, wie die der Anwendung zugewiesenen bzw. nicht zugewiesenen Benutzer sich bei der Anwendung anmelden können. Darüber hinaus legen die Optionen fest, ob ein Benutzer die Anwendung im Zugriffsbereich sehen kann.
 
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
-    - Mit **Für Benutzer sichtbar?** wird festgelegt, ob für der App zugewiesene Benutzer die Anwendung im Zugriffsbereich und im Office 365-Startfeld angezeigt wird.
+    - Mit **Für Benutzer sichtbar?** wird festgelegt, ob für der App zugewiesene Benutzer die Anwendung im Zugriffsbereich und im Office 365-Startfeld angezeigt wird.
 
-1. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
+4. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
 
    - Verhalten für **zugewiesene** Benutzer:
 
@@ -131,13 +133,16 @@ So verwenden Sie ein benutzerdefiniertes Logo:
 1. Da Sie Ihre Anwendung bereits gefunden haben, wählen Sie sie aus.
 1. Wählen Sie im linken Bereich **Eigenschaften** aus.
 1. Laden Sie das Logo hoch.
-1. Wählen Sie abschließend **Speichern** aus.
+1. Wählen Sie abschließend **Speichern** aus. 
 
     ![Zeigt, wie sich das Logo auf der Eigenschaftenseite der App ändern lässt](media/add-application-portal/change-logo.png)
 
+   > [!NOTE]
+   > Die in diesem Bereich **Eigenschaften** angezeigte Miniaturansicht wird nicht sofort aktualisiert. Sie können die Eigenschaften schließen und wieder öffnen, um das aktualisierte Symbol anzuzeigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben die Anwendung zu Ihrer Azure AD-Organisation hinzugefügt. Wählen Sie nun die gewünschte [Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method) aus, und sehen Sie sich die folgenden Artikel an:
+Nachdem Sie Ihrer Azure AD-Organisation die Anwendung hinzugefügt haben, können Sie jetzt die gewünschte [Methode für einmaliges Anmelden auswählen](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Lesen Sie dazu die folgenden Artikel:
 
 - [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-non-gallery-applications.md)
 - [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md)

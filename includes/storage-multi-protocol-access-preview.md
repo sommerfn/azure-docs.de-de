@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/22/2019
 ms.author: normesta
-ms.openlocfilehash: 5dd79f01029d25f050a28dba2431350942ca6933
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bd21a70daaad16725fe77311176890884d37ff17
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68556175"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958586"
 ---
 > [!NOTE]
-> Die in diesem Artikel beschriebenen Features stehen für Konten mit hierarchischem Namespace nur zur Verfügung, wenn Sie sich für die Public Preview des [Multiprotokollzugriffs für Azure Data Lake Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) registrieren.  Informationen zu den Einschränkungen finden Sie im Artikel [Bekannte Probleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-known-issues).
+> Die in diesem Artikel beschriebenen Funktionen sind jetzt für Konten mit einem hierarchischen Namespace verfügbar. Informationen zu Einschränkungen finden Sie im Artikel [Bekannte Probleme mit Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-known-issues).
 
 

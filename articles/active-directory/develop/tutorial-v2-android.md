@@ -11,23 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677967"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242204"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App
+
+> [!NOTE]
+> Dieses Tutorial wurde noch nicht für die Version 1.0 der MSAL für Android aktualisiert. Es kann jedoch mit einer älteren Version verwendet werden, die wie in diesem Tutorial beschrieben konfiguriert ist.
 
 In diesem Tutorial wird die Integration einer Android-App in Microsoft Identity Platform beschrieben. Ihre App meldet einen Benutzer an, ruft ein Zugriffstoken zum Aufrufen der Microsoft Graph-API ab und sendet eine Anforderung an die Microsoft Graph-API.  
 
-Am Ende dieses Leitfadens akzeptiert Ihre Anwendung Anmeldungen von persönlichen Microsoft-Konten (z.B. outlook.com, live.com u.a.) sowie von Geschäfts,- Schul- oder Unikonten von allen Unternehmen oder Organisationen, die Azure Active Directory nutzen.
+> [!div class="checklist"]
+> * Integrieren einer Android-App in Microsoft Identity Platform
+> * Anmelden eines Benutzers
+> * Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API
+> * Rufen Sie die Microsoft Graph-API auf.  
+
+Am Ende dieses Tutorials akzeptiert Ihre Anwendung Anmeldungen von persönlichen Microsoft-Konten (outlook.com, live.com u. a.) sowie von Geschäfts,- Schul- oder Unikonten von allen Unternehmen oder Organisationen, die Azure Active Directory nutzen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="how-this-tutorial-works"></a>So funktioniert dieses Tutorial
 
@@ -53,7 +64,7 @@ Dieses Beispiel verwendet die Microsoft-Authentifizierungsbibliothek (Microsoft 
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
-In diesem Tutorial wird ein neues Projekt erstellt. Wenn Sie stattdessen das abgeschlossene Tutorial herunterladen möchten, [laden Sie den Code](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip) herunter.
+In diesem Tutorial wird ein neues Projekt erstellt. Wenn Sie stattdessen das abgeschlossene Tutorial herunterladen möchten, [laden Sie den Code](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip) herunter.
 
 1. Öffnen Sie Android Studio, und wählen Sie **Start a new Android Studio project** (Neues Android Studio-Projekt starten) aus.
 2. Wählen Sie **Basic Activity** (Standardaktivität) aus, und klicken Sie dann auf **Next** (Weiter).
@@ -177,7 +188,7 @@ In diesem Tutorial wird ein neues Projekt erstellt. Wenn Sie stattdessen das abg
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:0.3+'
     ```
 
 ### <a name="use-msal"></a>Verwendung von MSAL
@@ -535,6 +546,10 @@ Nach der Anmeldung zeigt die App die vom Microsoft Graph `/me`-Endpunkt zurückg
 ### <a name="consent"></a>Zustimmung
 
 Wenn sich ein Benutzer zum ersten Mal bei Ihrer App anmeldet, wird er von Microsoft aufgefordert, den angeforderten Berechtigungen zuzustimmen.  Die meisten Benutzer können zustimmen, allerdings haben einige Azure AD-Mandanten die Zustimmung durch Benutzer deaktiviert, sodass Administratoren im Namen aller Benutzer zustimmen müssen. Zur Unterstützung dieses Szenarios müssen Sie die Bereiche Ihrer App im Azure-Portal registrieren.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie das im Schritt [Registrieren Ihrer Anwendung](#register-your-application) erstellte App-Objekt, wenn Sie es nicht mehr benötigen.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

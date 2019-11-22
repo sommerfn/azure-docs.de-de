@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcf9c8ea62610b6e4eb4ad642107df81ae712054
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3125f5b9075a69289bd6a44d62c3d06d5e6d910d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950399"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk – Secure
 
@@ -138,7 +139,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
 
 3. Klicken Sie auf **Anmeldeeinstellungen**.
 
-    ![Anmeldeeinstellungen](./media/topdesk-secure-tutorial/ic790599.png "Anmeldeeinstellungen")
+    ![Login Settings (Anmeldeeinstellungen)](./media/topdesk-secure-tutorial/ic790599.png "Anmeldeeinstellungen")
 
 4. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
 
@@ -152,13 +153,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
 
     b. Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService** .
 
-    ![AssertionConsumerService](./media/topdesk-secure-tutorial/ic790856.png "AssertionConsumerService")
+    ![Assertion Consumer Service](./media/topdesk-secure-tutorial/ic790856.png "Assertion Consumer Service")
 
     c. Kopieren Sie den Wert **AssertionConsumerService**, und fügen Sie ihn im Abschnitt **Domäne und URLs für TOPdesk - Secure** in das Textfeld Antwort-URL ein.
 
 6. Zum Erstellen einer Zertifikatsdatei führen Sie die folgenden Schritte durch:
 
-    ![Zertifikat](./media/topdesk-secure-tutorial/ic790606.png "Zertifikat")
+    ![Certificate](./media/topdesk-secure-tutorial/ic790606.png "Zertifikat")
 
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene Metadatendatei.
 
@@ -170,11 +171,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
 
 7. Klicken Sie im Abschnitt **Öffentlich** auf **Hinzufügen**.
 
-    ![Hinzufügen](./media/topdesk-secure-tutorial/ic790607.png "Hinzufügen")
+    ![Add (Hinzufügen)](./media/topdesk-secure-tutorial/ic790607.png "Hinzufügen")
 
 8. Führen Sie auf der Seite **SAML Configuration Assistant** die folgenden Schritte aus:
 
-    ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
+    ![SAML Configuration Assistant (SAML-Konfigurationsassistent)](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
 
     a. Klicken Sie zum Hochladen der aus dem Azure-Portal heruntergeladenen Metadatendatei unter **Verbundmetadaten** auf **Durchsuchen**.
 
@@ -256,7 +257,7 @@ Im Fall von TOPdesk - Secure ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
-    ![Neuer Operator](./media/topdesk-secure-tutorial/ic790611.png "Neuer Operator")
+    ![New Operator (Neuer Benutzer)](./media/topdesk-secure-tutorial/ic790611.png "Neuer Benutzer")
 
     a. Klicken Sie auf die Registerkarte **Allgemein**.
 
@@ -283,5 +284,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „TOPdesk – Secure“ klicken, sol
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

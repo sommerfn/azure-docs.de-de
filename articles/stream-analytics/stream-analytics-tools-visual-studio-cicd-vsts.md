@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure DevOps
+title: Bereitstellen von Azure Stream Analytics-Aufträgen mit CI/CD und Azure DevOps
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Stream Analytics-Auftrag mit CI/CD mithilfe von Azure DevOps Services bereitstellen.
 services: stream-analytics
 author: su-jie
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e05e4eab8bd3c307334b62df00dc03e56ce60ad
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727586"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925066"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure Pipelines
 In diesem Tutorial wird beschrieben, wie Continuous Integration und Continuous Deployment für einen Azure Stream Analytics-Auftrag mithilfe von Azure-Pipelines eingerichtet werden. 
@@ -89,7 +89,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     
     ![Auswählen der Agent-Warteschlange im Menü „Aufgaben“](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **NuGet** hinzu.
+6. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **NuGet** hinzu.
     
     ![Hinzufügen einer NuGet-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
@@ -97,7 +97,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
 
    ![Konfigurieren der NuGet-Wiederherstellungsaufgabe](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **MSBuild** hinzu.
+8. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **MSBuild** hinzu.
 
    ![Hinzufügen einer MSBuild-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
@@ -109,7 +109,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
 
    ![Konfigurieren der MSBuild-Aufgabe in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **Bereitstellung einer Azure-Ressourcengruppe** hinzu. 
+10. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **Bereitstellung einer Azure-Ressourcengruppe** hinzu. 
     
     ![Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“ hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
@@ -117,7 +117,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     
     |**Einstellung**  |**Empfohlener Wert**  |
     |---------|---------|
-    |Abonnement  |  Wählen Sie Ihr Abonnement aus.   |
+    |Subscription  |  Wählen Sie Ihr Abonnement aus.   |
     |Aktion  |  Erstellen oder aktualisieren Sie eine Ressourcengruppe.   |
     |Ressourcengruppe  |  Geben Sie einen Ressourcengruppennamen ein.   |
     |Vorlage  | [Ihr Projektmappenpfad]\bin\Debug\Deploy\\[Ihr Projektname].JobTemplate.json   |

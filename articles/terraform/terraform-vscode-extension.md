@@ -1,29 +1,26 @@
 ---
-title: Installieren und Verwenden der Azure Terraform-Erweiterung für Visual Studio Code
+title: 'Tutorial: Konfigurieren der Azure Terraform-Erweiterung für Visual Studio Code'
 description: Erfahren Sie, wie Sie die Azure Terraform-Erweiterung in Visual Studio Code installieren und verwenden.
-services: terraform
-ms.service: azure
-keywords: Terraform, Azure, DevOps, Visual Studio Code, Erweiterung
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 7dd87f38ca5dfb1c2fdd38b56b314e0cbbe3ce12
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 93ec85a2e37350ef56ff8c2e1a0ea16bb3be355e
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169919"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969311"
 ---
-# <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Installieren und Verwenden der Azure Terraform-Erweiterung für Visual Studio Code
+# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Tutorial: Konfigurieren der Azure Terraform-Erweiterung für Visual Studio Code
 
-Die Microsoft Azure Terraform-Erweiterung für Visual Studio Code wurde entwickelt, um die Produktivität des Entwicklers beim Erstellen und Testen mithilfe von Terraform mit Azure zu verbessern. Die Erweiterung bietet Unterstützung für Terraform-Befehle, die Visualisierung von Ressourcendiagrammen und die Cloud Shell-Integration in Visual Studio Code.
+Dank der Azure Terraform-Erweiterung für Visual Studio Code können Sie Terraform im Editor nutzen. Mit dieser Erweiterung können Sie Terraform-Konfigurationen erstellen, testen und ausführen. Die Erweiterung unterstützt auch die Visualisierung des Ressourcendiagramms.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
-> * Verwenden von Terraform zum Automatisieren und Vereinfachen der Bereitstellung von Azure-Diensten
-> * Installieren und Verwenden der Microsoft Terraform-Erweiterung für Visual Studio Code für Azure-Dienste
+> * Automatisieren der Bereitstellung von Azure-Diensten mithilfe von Terraform
+> * Installieren und Verwenden der Terraform-Erweiterung für Visual Studio Code für Azure-Dienste
 > * Verwenden von Visual Studio Code zum Schreiben, Planen und Ausführen von Terraform-Plänen
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -144,7 +141,7 @@ In dieser Übung erstellen Sie eine grundlegende Terraform-Konfigurationsdatei, 
 
     ![Möchten Sie Cloud Shell öffnen?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-1. Wenn Sie Cloud Shell zum ersten Mal über einen neuen Ordner starten, werden Sie dazu aufgefordert, die Webanwendung einzurichten. Wählen Sie **Open**(Öffnen).
+1. Wenn Sie Cloud Shell zum ersten Mal über einen neuen Ordner starten, werden Sie zur Erstellung einer Webanwendung aufgefordert. Wählen Sie **Open**(Öffnen).
 
     ![Erster Start von Cloud Shell](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
@@ -287,7 +284,7 @@ Nach einigen Augenblicken wird eine Liste im Terminalbereich angezeigt, die folg
 
 ![Testergebnisse von „lint“](media/terraform-vscode-extension/tf-lint-test-results.png)
 
-### <a name="module-test-end-to-end"></a>Modultest: *end to end*
+### <a name="test-the-module"></a>Testen des Moduls
 
 1. Wählen Sie auf der Menüleiste **Ansicht > Befehlspalette > Azure Terraform: Test ausführen** aus.
 
@@ -304,7 +301,7 @@ Nach einigen Augenblicken wird eine Liste im Terminalbereich angezeigt, die folg
 
 Nach einigen Augenblicken wird eine Liste im Terminalbereich angezeigt, die folgendem Beispiel ähnelt:
 
-![Testergebnisse von „end to end“](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
+![Testergebnisse](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

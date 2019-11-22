@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b4db749d1191179b3f4f1d9bb13d77925697f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104543"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory-Integration mit Coupa
 
@@ -146,11 +147,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Coupa d
 
 2. Navigieren Sie zu **Einrichtung \> Sicherheitskontrollen**.
 
-    ![Sicherheitskontrollen](./media/coupa-tutorial/ic791900.png "Sicherheitskontrollen")
+    ![Security Controls (Sicherheitskontrollen)](./media/coupa-tutorial/ic791900.png "Einstellungen für einmaliges Anmelden")
 
 3. Führen Sie im Abschnitt **Mit Coupa-Anmeldeinformationen anmelden** die folgenden Schritte aus:
 
-    ![Coupa SP-Metadaten](./media/coupa-tutorial/ic791901.png "Coupa SP-Metadaten")
+    ![Coupa-SP-Metadaten](./media/coupa-tutorial/ic791901.png "Coupa-SP-Metadaten")
 
     a. Wählen Sie **Mit SAML anmelden**aus.
 
@@ -225,11 +226,11 @@ Damit sich Azure AD-Benutzer bei Coupa anmelden können, müssen sie in Coupa be
 
 3. Klicken Sie auf **Create**.
 
-    ![Benutzer erstellen](./media/coupa-tutorial/ic791909.png "Benutzer erstellen")
+    ![Erstellen von Benutzern](./media/coupa-tutorial/ic791909.png "Benutzer erstellen")
 
 4. Führen Sie im Abschnitt **Benutzer erstellen** die folgenden Schritte aus:
 
-    ![Benutzerdetails](./media/coupa-tutorial/ic791910.png "Benutzerdetails")
+    ![User Details (Benutzerdetails)](./media/coupa-tutorial/ic791910.png "User Details")
 
     a. Geben Sie die Attribute **Benutzername**, **Vorname**, **Nachname**, **ID für einmaliges Anmelden** und **E-Mail** eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
@@ -254,5 +255,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Coupa“ klicken, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

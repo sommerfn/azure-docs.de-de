@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468d55b2b96979658bc8f3e226da36dc4af1c174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 463a8981689614d96100e03965117c9344aa5d50
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097946"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Tutorial: Azure Active Directory-Integration mit LogicMonitor
 
@@ -136,11 +137,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 3. Klicken Sie auf der Navigationsleiste links auf **Einmaliges Anmelden**
 
-    ![Einmaliges Anmelden](./media/logicmonitor-tutorial/ic790053.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/logicmonitor-tutorial/ic790053.png "Single Sign-On")
 
 4. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden (SSO)** die folgenden Schritte aus:
 
-    ![Einstellungen für einmaliges Anmelden](./media/logicmonitor-tutorial/ic790054.png "Einstellungen für einmaliges Anmelden")
+    ![SSO-Einstellungen](./media/logicmonitor-tutorial/ic790054.png "Einstellungen für einmaliges Anmelden")
 
     a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
 
@@ -211,13 +212,13 @@ Damit sich Azure AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-
 
 2. Klicken Sie im oberen Menü auf **Einstellungen** und dann auf **Rollen und Benutzer**.
 
-    ![Rollen und Benutzer](./media/logicmonitor-tutorial/ic790056.png "Rollen und Benutzer")
+    ![Roles and Users (Rollen und Benutzer)](./media/logicmonitor-tutorial/ic790056.png "Rollen und Benutzer")
 
 3. Klicken Sie auf **Hinzufügen**.
 
 4. Führen Sie im Abschnitt **Konto hinzufügen** die folgenden Schritte aus:
 
-    ![Konto hinzufügen](./media/logicmonitor-tutorial/ic790057.png "Konto hinzufügen")
+    ![Hinzufügen eines Kontos](./media/logicmonitor-tutorial/ic790057.png "Konto hinzufügen")
 
     a. Geben Sie für den Azure Active Directory-Benutzer, den Sie bereitstellen möchten, Werte für **Benutzername**, **E-Mail**, **Kennwort** und **Kennwort erneut eingeben** in die entsprechenden Textfelder ein.
 
@@ -240,5 +241,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LogicMonitor“ klicken, sollten S
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097337"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Admin Console
 
@@ -139,15 +140,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Mimecast
 
 3. Klicken Sie auf **Authentifizierungsprofile**.
 
-    ![Authentifizierungsprofile](./media/mimecast-admin-console-tutorial/ic794999.png "Authentifizierungsprofile")
+    ![Authentication Profiles (Authentifizierungsprofile)](./media/mimecast-admin-console-tutorial/ic794999.png "Authentifizierungsprofile")
     
 4. Klicken Sie auf **Neues Authentifizierungsprofil**.
 
-    ![Neue Authentifizierungsprofile](./media/mimecast-admin-console-tutorial/ic795000.png "Neue Authentifizierungsprofile")
+    ![New Authentication Profile (Neues Authentifizierungsprofil)](./media/mimecast-admin-console-tutorial/ic795000.png "Neue Authentifizierungsprofile")
 
 5. Führen Sie im Abschnitt **Authentifizierungsprofil** die folgenden Schritte aus:
 
-    ![Authentifizierungsprofil](./media/mimecast-admin-console-tutorial/ic795015.png "Authentifizierungsprofil")
+    ![Authentication Profile (Authentifizierungsprofil)](./media/mimecast-admin-console-tutorial/ic795015.png "Authentifizierungsprofil")
     
     a. Geben Sie im Textfeld **Beschreibung** einen Namen für die Konfiguration ein.
     
@@ -237,11 +238,11 @@ Damit sich Azure AD-Benutzer bei Mimecast Admin Console anmelden können, müsse
 
 3. Klicken Sie auf **Neue Domäne registrieren**.
    
-    ![Neue Domäne registrieren](./media/mimecast-admin-console-tutorial/ic795004.png "Neue Domäne registrieren")
+    ![Register New Domain (Neue Domäne registrieren)](./media/mimecast-admin-console-tutorial/ic795004.png "Neue Domäne registrieren")
 
 4. Nachdem die neue Domäne erstellt wurde, klicken Sie auf **Neue Adresse**.
    
-    ![Neue Adresse](./media/mimecast-admin-console-tutorial/ic795005.png "Neue Adresse")
+    ![New Address (Neue Adresse)](./media/mimecast-admin-console-tutorial/ic795005.png "Neue Adresse")
 
 5. Führen Sie im Dialogfeld „Neue Adresse“ die folgenden Schritte aus:
    
@@ -266,5 +267,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Mimecast Admin Console“ klicken,
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

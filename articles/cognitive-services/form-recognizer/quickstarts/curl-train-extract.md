@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264366"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931276"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
@@ -38,7 +38,7 @@ Zunächst benötigen Sie Trainingsdaten in einem Azure Storage-Blob. Als Hauptei
 
 Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **Trainings**-API auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
-1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `<SAS URL>` mit der Shared Access Signature-URL (SAS) des Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
 
@@ -93,7 +93,7 @@ Notieren Sie den Wert von `"modelId"`. Sie benötigen ihn in den folgenden Schri
 
 Als Nächstes analysieren Sie ein Dokument und extrahieren daraus Schlüssel-Werte-Paare und Tabellen. Rufen Sie die API **Model – Analyze** auf, indem Sie den nachstehenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
-1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<modelID>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
 1. Ersetzen Sie `<path to your form>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
 1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: `application/pdf`, `image/jpeg`, `image/png`.

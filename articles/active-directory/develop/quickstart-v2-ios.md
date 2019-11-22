@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149510"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
-Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine native iOS- oder macOS-Anwendung persönliche Konten und Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann.
+Diese Schnellstartanleitung enthält ein Codebeispiel, das zeigt, wie eine native iOS- oder macOS-Anwendung Microsoft Identity Platform verwenden kann, um persönliche Konten und Geschäfts-, Schul- oder Unikonten anzumelden, ein Zugriffstoken abzurufen und die Microsoft Graph-API aufzurufen.
 
 Dieser Schnellstart gilt für iOS- und macOS-Apps. Einige Schritte sind nur bei iOS-Apps erforderlich. Bei diesen Schritten wird darauf hingewiesen, dass sie nur für iOS gelten.
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d96d1addf1028c2651ed837f3dab66f12d5d5fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab998b6d9aec663123f0bd2428e4c6f1767f1846
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105860"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Tutorial: Azure Active Directory-Integration mit Canvas
 
@@ -140,7 +141,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Canvas d
 
 3. Wählen Sie im Navigationsbereich auf der linken Seite **Authentifizierung** aus, und klicken Sie dann auf **Neue SAML-Konfiguration hinzufügen**.
 
-    ![Authentifizierung](./media/canvas-lms-tutorial/ic775991.png "Authentifizierung")
+    ![Authentifizierung](./media/canvas-lms-tutorial/ic775991.png "Authentication")
 
 4. Führen Sie auf der Seite "Current Integration" die folgenden Schritte aus.
 
@@ -262,5 +263,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Canvas“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

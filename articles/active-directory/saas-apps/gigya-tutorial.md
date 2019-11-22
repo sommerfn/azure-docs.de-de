@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2c7d200b-9242-44a5-ac8a-ab3214a78e41
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c9925e11325c87598f90af1b677246eca805e6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe4f730826f99a5cd0ce15d0763ea28d3ff0a7f9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101708"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Tutorial: Azure Active Directory-Integration mit Gigya
 
@@ -131,11 +132,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Gigya die
 
 2. Navigieren Sie zu **Einstellungen \> SAML-Anmeldung**, und klicken Sie dann auf die Schaltfläche **Hinzufügen**.
    
-    ![SAML-Anmeldung](./media/gigya-tutorial/ic789532.png "SAML-Anmeldung")
+    ![SAML Login (SAML-Anmeldung)](./media/gigya-tutorial/ic789532.png "SAML-Anmeldung")
 
 3. Führen Sie im Abschnitt **SAML-Anmeldung** die folgenden Schritte aus:
    
-    ![SAML-Konfiguration](./media/gigya-tutorial/ic789533.png "SAML-Konfiguration")
+    ![SAML Configuration (SAML-Konfiguration)](./media/gigya-tutorial/ic789533.png "SAML-Konfiguration")
    
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
    
@@ -210,11 +211,11 @@ Damit sich Azure AD-Benutzer bei Gigya anmelden können, müssen sie in Gigya be
 
 2. Navigieren Sie zu **Administrator \> Benutzer verwalten**, und klicken Sie dann auf **Benutzer einladen**.
    
-    ![Benutzer verwalten](./media/gigya-tutorial/ic789535.png "Benutzer verwalten")
+    ![Verwalten von Benutzern](./media/gigya-tutorial/ic789535.png "Benutzer verwalten")
 
 3. Führen Sie im Dialogfeld „Benutzer einladen“ die folgenden Schritte aus:
    
-    ![Benutzer einladen](./media/gigya-tutorial/ic789536.png "Benutzer einladen")
+    ![Invite Users (Benutzer einladen)](./media/gigya-tutorial/ic789536.png "Invite Users")
    
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
     
@@ -236,5 +237,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Gigya“ klicken, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

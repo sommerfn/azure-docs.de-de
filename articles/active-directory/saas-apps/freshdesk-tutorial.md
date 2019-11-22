@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed903e71a019d0bdb1b62503913bd696e9d8a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102044"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit FreshDesk
 
@@ -245,7 +246,7 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![Administrator](./media/freshdesk-tutorial/IC776772.png "Administrator")
 
 3. Klicken Sie auf der Registerkarte **Allgemeine Einstellungen** auf **Agents**.
   
@@ -253,11 +254,11 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 4. Klicken Sie auf **Neuer Agent**.
 
-    ![Neuer Agent](./media/freshdesk-tutorial/IC776774.png "Neuer Agent")
+    ![New Agent (Neuer Agent)](./media/freshdesk-tutorial/IC776774.png "Neuer Agent")
 
 5. Führen Sie im Dialogfeld „Agent-Informationen“ die folgenden Schritte aus:
 
-    ![Agent-Informationen](./media/freshdesk-tutorial/IC776775.png "Agent-Informationen")
+    ![Agent Information (Agent-Informationen)](./media/freshdesk-tutorial/IC776775.png "Agent-Informationen")
 
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Azure AD-Kontos ein, das Sie bereitstellen möchten.
 
@@ -285,5 +286,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „FreshDesk“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

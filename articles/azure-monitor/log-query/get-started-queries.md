@@ -1,34 +1,23 @@
 ---
 title: Erste Schritte mit Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten beim Schreiben von Protokollabfragen in Azure Monitor.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: tutorial
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076759"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933036"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
-
-> [!NOTE]
-> Vor der Durchführung dieses Tutorials sollten Sie [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) lesen.
-
 > [!NOTE]
 > Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.
-
 
 In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 
@@ -42,6 +31,10 @@ In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schr
 
 Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md).<br>
 Weitere Informationen zu Protokollabfragen in Azure Monitor finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
+
+Sehen Sie sich die Videoversion dieses Tutorials an:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Schreiben einer neuen Abfrage
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
