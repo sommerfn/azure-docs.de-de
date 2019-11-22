@@ -28,6 +28,8 @@
       href: tutorial-restore-files.md
     - name: Sichern von SQL Server auf virtuellen Azure-Computern
       href: tutorial-sql-backup.md
+    - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      href: tutorial-backup-sap-hana-db.md
     - name: "Sichern von Azure\_Files-Dateifreigaben"
       href: tutorial-backup-azure-files.md
     - name: Sichern von Windows Server
@@ -52,6 +54,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: Supportmatrix für den MARS-Agent
           href: backup-support-matrix-mars-agent.md
+        - name: "Unterstützungsmatrix für SAP\_HANA-Sicherungen"
+          href: sap-hana-backup-support-matrix.md
     - name: Sicherheit
       items:
         - name: Rollenbasierte Access Control
@@ -74,6 +78,8 @@
           href: backup-azure-files-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
           href: faq-backup-sql-server.md
+        - name: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
+          href: sap-hana-faq-backup-azure-vm.md
         - name: 'Häufig gestellte Fragen: Azure Backup Server und DPM'
           href: backup-azure-dpm-azure-server-faq.md
         - name: Häufig gestellte Fragen zur Azure Backup-Monitorwarnung
@@ -228,8 +234,14 @@
           href: restore-sql-database-azure-vm.md
         - name: Verwalten von gesicherten SQL Server-Datenbanken
           href: manage-monitor-sql-database-backup.md
-    - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
-      href: backup-azure-sap-hana-database.md
+    - name: SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      items:
+        - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+          href: backup-azure-sap-hana-database.md
+        - name: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+          href: sap-hana-db-restore.md
+        - name: Verwalten von gesicherten SAP HANA-Datenbanken
+          href: sap-hana-db-manage.md
     - name: Windows Server
       items:
         - name: Sichern von Windows Server-Dateien und -Ordnern

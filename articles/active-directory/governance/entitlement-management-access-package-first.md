@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory'
-description: Schrittweises Tutorial zum Erstellen Ihres ersten Zugriffspakets in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion)
+title: 'Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung – Azure Active Directory'
+description: Schritt-für-Schritt-Tutorial zum Erstellen Ihres ersten Zugriffspakets in der Azure Active Directory-Berechtigungsverwaltung
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,27 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032918"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174878"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
 Das Verwalten des Zugriffs auf alle Ressourcen, die von Mitarbeitern benötigt werden, etwa Gruppen, Anwendungen und Websites, ist eine wichtige Aufgabe für Organisationen. Sie möchten Mitarbeitern den richtigen Umfang an Zugriff gewähren, den sie benötigen, um produktiv zu sein, und Sie möchten deren Zugriff entfernen, wenn er nicht mehr benötigt wird.
 
-In diesem Tutorial arbeiten Sie als IT-Administrator für die Woodgrove Bank. Sie wurden gebeten, ein Paket von Ressourcen für ein Webprojekt zu erstellen, das interne Benutzern selbst anfordern können. Für die Anforderungen sind Genehmigungen erforderlich, und der Zugriff eines Benutzer läuft nach 30 Tagen ab. Für dieses Tutorial gehören die Webprojekt-Ressourcen nur zu einer einzelnen Gruppe, diese könnte aber auch eine Sammlung von Gruppen, Anwendungen oder SharePoint Online-Websites sein.
+In diesem Tutorial arbeiten Sie als IT-Administrator für die Woodgrove Bank. Sie wurden gebeten, ein Paket von Ressourcen für eine Marketingkampagne zu erstellen, das interne Benutzern selbst anfordern können. Anforderungen bedürfen keiner Genehmigung, und der Zugriff eines Benutzer läuft nach 30 Tagen ab. Für dieses Tutorial gehören die Ressourcen der Marketingkampagne nur zu einer einzelnen Gruppe, sie könnten aber auch einer Sammlung von Gruppen, Anwendungen oder SharePoint Online-Websites angehören.
 
 ![Übersicht über das Szenario](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -40,9 +35,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Zugriffspakets mit einer Gruppe als Ressource
-> * Bestimmen einer genehmigenden Person
+> * Zulassen von Zugriffsanforderungen durch Benutzer in Ihrem Verzeichnis
 > * Vorgehen, wie ein interner Benutzer das Zugriffspaket anfordern kann
-> * Genehmigen der Zugriffsanforderung
 
 Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Berechtigungsverwaltung, einschließlich der Erstellung Ihres ersten Zugriffspakets, finden Sie in folgendem Video:
 
@@ -50,16 +44,16 @@ Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Be
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Azure AD-Berechtigungsverwaltung (Vorschauversion) verwenden zu können, benötigen Sie eine der folgenden Lizenzen:
+Um die Azure AD-Berechtigungsverwaltung verwenden zu können, benötigen Sie eine der folgenden Lizenzen:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-Lizenz
 
-Wenn Sie keine Azure AD Premium P2- oder Enterprise Mobility + Security E5-Lizenz haben, erstellen Sie eine kostenlose [Enterprise Mobility + Security E5-Testversion](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-management-overview.md#license-requirements).
 
 ## <a name="step-1-set-up-users-and-group"></a>Schritt 1: Einrichten von Benutzern und Gruppen
 
-Ein Ressourcenverzeichnis hat mindestens eine Ressource, die freigegeben (geteilt) werden soll. In diesem Schritt erstellen Sie eine Gruppe namens **Technik-Gruppe** im Woodgrove Bank-Verzeichnis, die die Zielressource für die Berechtigungsverwaltung ist. Außerdem richten Sie einen internen Anforderer ein.
+Ein Ressourcenverzeichnis hat mindestens eine Ressource, die freigegeben (geteilt) werden soll. In diesem Schritt erstellen Sie eine Gruppe namens **Marketing resources** im Verzeichnis „Woodgrove Bank“ – der Zielressource für die Berechtigungsverwaltung. Außerdem richten Sie einen internen Anforderer ein.
 
 **Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
 
@@ -71,22 +65,20 @@ Ein Ressourcenverzeichnis hat mindestens eine Ressource, die freigegeben (geteil
 
 1. Erstellen Sie konfigurieren Sie die beiden folgenden Benutzer. Sie können diese Namen oder eine andere Namen verwenden. **Admin1** kann der Benutzer sein, als der Sie derzeit angemeldet sind.
 
-    | NAME | Verzeichnisrolle | BESCHREIBUNG |
-    | --- | --- | --- |
-    | **Admin1** | Globaler Administrator<br/>Oder<br/>Eingeschränkter Administrator (Benutzeradministrator) | Administrator und genehmigende Person |
-    | **Anforderer1** | Benutzer | Interner Anforderer |
+    | NAME | Verzeichnisrolle |
+    | --- | --- |
+    | **Admin1** | Globaler Administrator<br/>Oder<br/>Benutzeradministrator |
+    | **Anforderer1** | Benutzer |
 
-    Für dieses Tutorial sind der Administrator und die genehmigende Person dieselbe Person, aber üblicherweise bestimmen Sie mehrere Personen als genehmigende Personen.
-
-1. Erstellen Sie eine Azure AD-Sicherheitsgruppe namens **Technik-Gruppe** mit dem Mitgliedschaftstyp **Zugewiesen**.
+1. Erstellen Sie eine Azure AD-Sicherheitsgruppe namens **Marketing resources** mit dem Mitgliedschaftstyp **Zugewiesen**.
 
     Diese Gruppe ist die Zielressource für die Berechtigungsverwaltung. Die Gruppe darf zu Beginn keine Mitglieder haben.
 
 ## <a name="step-2-create-an-access-package"></a>Schritt 2: Erstellen eines Zugriffspakets
 
-Ein *Zugriffspaket* ist ein Bündel aller Ressourcen, die ein Benutzer benötigt, um an einem Projekt zu arbeiten oder seine Arbeit zu erledigen. Zugriffspakete sind in Containern definiert, die als *Kataloge* bezeichnet werden. In diesem Schritt erstellen Sie ein **Webprojekt-Zugriffspaket** im Katalog **Allgemein**.
+Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind in Containern definiert, die als *Kataloge* bezeichnet werden. In diesem Schritt erstellen Sie ein Zugriffspaket namens **Marketing Campaign** im Katalog **Allgemein**.
 
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 ![Erstellen eines Zugriffspakets](./media/entitlement-management-access-package-first/elm-access-package.png)
 
@@ -94,13 +86,13 @@ Ein *Zugriffspaket* ist ein Bündel aller Ressourcen, die ein Benutzer benötigt
 
 1. Klicken Sie im linken Menü auf **Identity Governance**.
 
-1. Klicken Sie im linken Menü auf **Zugriffspakete**.  Wenn **Zugriff verweigert** angezeigt wird, prüfen Sie, ob eine Azure AD Premium P2-Lizenz in diesem Verzeichnis vorhanden ist.
+1. Klicken Sie im linken Menü auf **Zugriffspakete**.  Sollte **Zugriff verweigert** angezeigt werden, prüfen Sie, vergewissern Sie sich, dass in Ihrem Verzeichnis eine Azure AD Premium P2-Lizenz vorhanden ist.
 
 1. Klicken Sie auf **Neues Zugriffspaket**.
 
-    ![Berechtigungsverwaltung im Azure-Portal](./media/entitlement-management-access-package-first/access-packages-list.png)
+    ![Berechtigungsverwaltung im Azure-Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Geben Sie auf der Registerkarte **Grundeinstellungen** den Namen **Webprojekt-Zugriffspaket** und die Beschreibung **Zugriffspaket für das Technik-Webprojekt** ein.
+1. Geben Sie auf der Registerkarte **Grundeinstellungen** den Namen **Marketing Campaign** und die Beschreibung **Access to resources for the campaign** ein.
 
 1. Übernehmen Sie für die Dropdownliste **Katalog** die Einstellung **Allgemein**.
 
@@ -108,11 +100,11 @@ Ein *Zugriffspaket* ist ein Bündel aller Ressourcen, die ein Benutzer benötigt
 
 1. Klicken Sie auf **Weiter**, um die Registerkarte **Ressourcenrollen** zu öffnen.
 
-    Auf dieser Registerkarte wählen Sie die Berechtigungen aus, die in das Zugriffspaket aufgenommen werden sollen.
+    Wählen Sie auf dieser Registerkarte die Ressourcen und die Ressourcenrolle aus, die in das Zugriffspaket aufgenommen werden sollen.
 
-1. Klicken Sie auf **Gruppen**.
+1. Klicken Sie auf **Gruppen und Teams**.
 
-1. Suchen Sie im Bereich „Gruppen auswählen“ nach der Gruppe**Technik-Gruppe**, die Sie zuvor erstellt haben, und wählen Sie diese Gruppe aus.
+1. Suchen Sie im Bereich „Gruppen auswählen“ nach der zuvor erstellten Gruppe **Marketing resources**, und wählen Sie sie aus.
 
     Standardmäßig werden Gruppen angezeigt, die sich innerhalb und außerhalb des Katalogs **Allgemein** befinden. Wenn Sie eine Gruppe auswählen, die sich außerhalb des Katalogs **Allgemein** befindet, wird sie dem Katalog **Allgemein** hinzugefügt.
 
@@ -124,79 +116,53 @@ Ein *Zugriffspaket* ist ein Bündel aller Ressourcen, die ein Benutzer benötigt
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Richtlinie** zu öffnen.
+1. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
 
-1. Legen Sie die Option **Erste Richtlinie erstellen** auf **Später** fest.
+    Diese Registerkarte dient zum Erstellen einer Anforderungsrichtlinie. In einer *Richtlinie* sind die Regeln oder Leitlinien für den Zugriff auf ein Zugriffspaket definiert. Sie erstellen eine Richtlinie, die es einem bestimmten Benutzer im Ressourcenverzeichnis ermöglicht, dieses Zugriffspaket anzufordern.
 
-    Sie erstellen die Richtlinie im nächsten Abschnitt.
+1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für in Ihrem Verzeichnis befindliche Benutzer** und anschließend auf **Bestimmte Benutzer und Gruppen**.
 
-    ![Neues Zugriffspaket, Registerkarte „Richtlinie“](./media/entitlement-management-access-package-first/policy.png)
+    ![Neues Zugriffspaket, Registerkarte „Anforderungen“](./media/entitlement-management-access-package-first/requests.png)
+
+1. Klicken Sie auf **Benutzer und Gruppen hinzufügen**.
+
+1. Wählen Sie im Bereich „Benutzer und Gruppen auswählen“ den zuvor erstellten Benutzer **Anforderer1** aus.
+
+    ![Neues Zugriffspaket, Registerkarte „Anforderungen“: „Benutzer und Gruppen auswählen“](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
+
+1. Klicken Sie auf **Auswählen**.
+
+1. Scrollen Sie nach unten zu den Abschnitten **Genehmigung** und **Enable requests** (Anforderungen aktivieren).
+
+1. Behalten Sie für **Genehmigung erforderlich** die Einstellung **Nein** bei.
+
+1. Klicken Sie für **Enable requests** (Anforderungen aktivieren) auf **Ja**, damit dieses Zugriffspaket angefordert werden kann, sobald es erstellt wurde.
+
+    ![Neues Zugriffspaket, Registerkarte „Anforderungen“: „Genehmigung“ und „Enable requests“ (Anforderungen aktivieren)](./media/entitlement-management-access-package-first/requests-approval-enable.png)
+
+1. Klicken Sie auf **Weiter**, um die Registerkarte **Lebenszyklus** zu öffnen.
+
+1. Legen Sie im Abschnitt **Ablauf** die Option **Die Zugriffspaketzuweisungen laufen ab.** auf **Anzahl Tage** fest.
+
+1. Legen Sie **Zuweisungen laufen ab nach:** auf **30** Tage fest.
+
+    ![Neues Zugriffspaket, Registerkarte „Lebenszyklus“](./media/entitlement-management-access-package-first/lifecycle.png)
 
 1. Klicken Sie auf **Weiter**, um die Registerkarte **Überprüfen + erstellen** zu öffnen.
 
     ![Neues Zugriffspaket, Registerkarte „Überprüfen + erstellen“](./media/entitlement-management-access-package-first/review-create.png)
 
-1. Überprüfen Sie die Zugriffspaketeinstellungen, und klicken Sie dann auf **Erstellen**.
-
-    Möglicherweise wird eine Meldung angezeigt, dass das Zugriffspaket für Benutzer noch nicht sichtbar ist, weil der Katalog noch nicht aktiviert ist.
-
-    ![Neues Zugriffspaket, Meldung über „Nicht sichtbar“](./media/entitlement-management-access-package-first/not-visible.png)
-
-1. Klicken Sie auf **OK**.
-
     Nach einigen Augenblicken sollte eine Benachrichtigung angezeigt werden, dass das Zugriffspaket erfolgreich erstellt wurde.
 
-## <a name="step-3-create-a-policy"></a>Schritt 3: Erstellen einer Richtlinie
-
-In einer *Richtlinie* sind die Regeln oder Leitlinien für den Zugriff auf ein Zugriffspaket definiert. In diesem Schritt erstellen Sie eine Richtlinie, die es einem bestimmten Benutzer im Ressourcenverzeichnis erlaubt, das Zugriffspaket anzufordern. Sie geben außerdem an, dass Anforderungen genehmigt werden müssen, und Sie geben an, wer die genehmigende Person ist.
-
-![Erstellen einer Zugriffspaketrichtlinie](./media/entitlement-management-access-package-first/elm-access-package-policy.png)
-
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
-
-1. Klicken Sie im **Webprojekt-Zugriffspaket** im linken Menü auf **Richtlinien**.
-
-    ![Liste der Zugriffspaketrichtlinien](./media/entitlement-management-access-package-first/policies-list.png)
-
-1. Klicken Sie auf **Richtlinie hinzufügen**, um „Richtlinie erstellen“ zu öffnen.
-
-1. Geben Sie den Namen **Richtlinie für internen Anforderer** und die Beschreibung **Ermöglicht Benutzern in diesem Verzeichnis, Zugriff auf Webprojektressourcen anzufordern** ein.
-
-1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für in Ihrem Verzeichnis befindliche Benutzer**.
-
-    ![Richtlinie erstellen](./media/entitlement-management-access-package-first/policy-create.png)
-
-1. Scrollen Sie nach unten zum Abschnitt **Benutzer und Gruppen auswählen**, und klicken Sie auf **Benutzer und Gruppen hinzufügen**.
-
-1. Wählen Sie im Bereich „Benutzer und Gruppen auswählen“ den Benutzer **Anforderer1** aus, den Sie zuvor erstellt haben, und klicken Sie dann auf **Auswählen**.
-
-1. Legen Sie im Abschnitt **Anforderung** die Option **Genehmigung anfordern** auf **Ja** fest.
-
-1. Klicken Sie im Abschnitt **Genehmigende Personen auswählen** auf **Genehmigende Personen hinzufügen**.
-
-1. Wählen Sie im Bereich „Genehmigende Personen auswählen“ den Administrator **Admin1** aus, den Sie zuvor erstellt haben, und klicken Sie dann auf **Auswählen**.
-
-    Für dieses Tutorial sind der Administrator und die genehmigende Person dieselbe Person, Sie können aber eine andere Person als genehmigende Personen bestimmen.
-
-1. Legen Sie im Abschnitt **Ablauf** die Option **Zugriffspaket läuft ab** auf **Anzahl Tage** fest.
-
-1. Legen Sie **Zugriff läuft ab nach** auf **30** Tage fest.
-
-1. Klicken Sie für **Richtlinie aktivieren** auf **Ja**.
-
-    ![Erstellen von Richtlinieneinstellungen](./media/entitlement-management-access-package-first/policy-create-settings.png)
-
-1. Klicken Sie auf **Erstellen**, um die **Richtlinie für internen Anforderer** zu erstellen.
-
-1. Klicken Sie im linken Menü des Webprojekt-Zugriffspakets auf **Übersicht**.
+1. Klicken Sie im linken Menü des Zugriffspakets „Marketing Campaign“ auf **Übersicht**.
 
 1. Kopieren Sie den Wert von **Link zum Portal "Mein Zugriff"** .
 
     Sie verwenden diesen Link im nächsten Schritt.
 
-    ![Übersicht über das Zugriffspaket, Link zum Portal "Mein Zugriff"](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Zugriffspaket (Übersicht): Link zum Portal „Mein Zugriff“](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-4-request-access"></a>Schritt 4: Zugriff anfordern
+## <a name="step-3-request-access"></a>Schritt 3: Zugriff anfordern
 
 In diesem Schritt führen Sie die Schritte als **interner Anforderer** aus und fordern Zugriff auf das Paket an. Anforderer senden ihre Anforderungen über eine Website, die als Portal „Eigener Zugriff“ (Mein Zugriff) bezeichnet wird. Über das Portal „Mein Zugriff“ können Anforderer Anforderungen für Zugriffspakete senden, die Zugriffspakete sehen, auf die sie bereits Zugriff haben, und ihre Anforderungsverläufe anzeigen.
 
@@ -208,7 +174,7 @@ In diesem Schritt führen Sie die Schritte als **interner Anforderer** aus und f
 
 1. Melden Sie beim Portal „Mein Zugriff“ als **Anforderer1** an.
 
-    Sie sollten das **Webprojekt-Zugriffspaket** sehen.
+    Das Zugriffspaket **Marketing Campaign** sollte angezeigt werden.
 
 1. Klicken Sie ggf. in der Spalte **Beschreibung** auf den Pfeil, um die Details zu dem Zugriffspaket anzuzeigen.
 
@@ -218,11 +184,9 @@ In diesem Schritt führen Sie die Schritte als **interner Anforderer** aus und f
 
 1. Klicken Sie auf **Zugriff anfordern**, um den Bereich „Zugriff anfordern“ zu öffnen.
 
-1. Geben Sie in das Feld **Geschäftliche Begründung** die Begründung **Arbeiten an einem Webprojekt** ein.
+    ![Portal „Mein Zugriff“, Schaltfläche „Zugriff anfordern“](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
 
-1. Legen Sie die Option **Für bestimmten Zeitraum anfordern?** auf **Ja** fest.
-
-1. Legen Sie **Startdatum** auf heute und **Enddatum** auf morgen fest.
+1. Geben Sie in das Feld **Geschäftliche Begründung** die Begründung **I am working on the new marketing campaign** ein.
 
     ![Portal „Mein Zugriff“ – Zugriff anfordern](./media/entitlement-management-shared/my-access-request-access.png)
 
@@ -230,39 +194,11 @@ In diesem Schritt führen Sie die Schritte als **interner Anforderer** aus und f
 
 1. Klicken Sie im linken Menü auf **Anforderungsverlauf**, um zu überprüfen, ob Ihre Anforderung übermittelt wurde.
 
-## <a name="step-5-approve-access-request"></a>Schritt 5: Genehmigen der Zugriffsanforderung
+## <a name="step-4-validate-that-access-has-been-assigned"></a>Schritt 4: Überprüfen, ob der Zugriff zugewiesen wurde
 
-In diesem Schritt melden Sie sich als der **Genehmigende Person**-Benutzer an, und genehmigen Sie die Zugriffsanforderung für den internen Anforderer. Genehmigende Personen verwenden dasselbe „Mein Zugriff“-Portal (Eigener Zugriff) wie Anforderer, um Anforderungen zu senden. Im Portal „Mein Zugriff“ können genehmigenden Personen ausstehende Genehmigungen anzeigen und Anforderungen genehmigen oder verweigern.
+In diesem Schritt vergewissern Sie sich, dass das Zugriffspaket dem **internen Anforderer** zugewiesen wurde und er nun der Gruppe **Marketing resources** angehört.
 
-**Erforderliche Rolle:** Genehmigende Person
-
-1. Melden Sie sich vom Portal „Mein Zugriff“ ab.
-
-1. Melden Sie sich unter **Admin1** beim [Portal „Mein Zugriff“](https://myaccess.microsoft.com) an.
-
-1. Klicken Sie im linken Menü auf **Genehmigungen**.
-
-1. Suchen Sie auf der Registerkarte **Ausstehend** nach **Anforderer1**.
-
-    Wenn die Anforderung von Anforderer1 nicht angezeigt wird, warten Sie einige Minuten, und versuchen Sie es dann erneut.
-
-1. Klicken Sie auf den Link **Anzeigen**, um den Bereich „Zugriffsanforderung“ zu öffnen.
-
-1. Klicken Sie auf **Approve**.
-
-1. Geben Sie in das Feld **Grund** den Grund **Genehmigter Zugriff für das Webprojekt** ein.
-
-    ![Portal „Mein Zugriff“ – Zugriffsanforderung](./media/entitlement-management-shared/my-access-approve-request.png)
-
-1. Klicken Sie auf **Absenden**, um Ihre Entscheidung zu übermitteln.
-
-    Es sollte eine Meldung angezeigt werden, dass die Anforderung erfolgreich genehmigt wurde.
-
-## <a name="step-6-validate-that-access-has-been-assigned"></a>Schritt 6: Überprüfen, ob der Zugriff zugewiesen wurde
-
-Nachdem Sie die Zugriffsanforderung genehmigt haben, bestätigen Sie in diesem Schritt, dass dem **internen Anforderer** das Zugriffspaket zugewiesen wurde und dass er nun Mitglied der Gruppe **Technik-Gruppe** ist.
-
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Melden Sie sich vom Portal „Mein Zugriff“ ab.
 
@@ -272,11 +208,11 @@ Nachdem Sie die Zugriffsanforderung genehmigt haben, bestätigen Sie in diesem S
 
 1. Klicken Sie im linken Menü auf **Zugriffspakete**.
 
-1. Suchen Sie nach **Webprojekt-Zugriffspaket**, und klicken Sie darauf.
+1. Suchen Sie nach dem Zugriffspaket **Marketing Campaign**, und klicken Sie darauf.
 
 1. Klicken Sie im linken Menü auf **Anforderungen**.
 
-    Sie sollten „Anforderer1“ und die „Richtlinie für internen Anforderer“ mit dem Status **Übermittelt** sehen.
+    „Anforderer1“, die anfängliche Richtlinie und der Status **Übermittelt** sollten angezeigt werden.
 
 1. Klicken Sie auf die Anforderung, um die Anforderungsdetails anzuzeigen.
 
@@ -284,45 +220,41 @@ Nachdem Sie die Zugriffsanforderung genehmigt haben, bestätigen Sie in diesem S
 
 1. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
 
-1. Klicken Sie auf **Gruppen**, und öffnen Sie die Gruppe **Technik-Gruppe**.
+1. Klicken Sie auf **Gruppen**, und öffnen Sie die Gruppe **Marketing resources**.
 
 1. Klicken Sie auf **Mitglieder**.
 
     Sie sollten sehen, dass **Anforderer1** als Mitglied (Member) aufgelistet wird.
 
-    ![Mitglieder der Technik-Gruppe](./media/entitlement-management-access-package-first/group-members.png)
+    ![Mitglieder von „Marketing resources“](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-7-clean-up-resources"></a>Schritt 7: Bereinigen von Ressourcen
+## <a name="step-5-clean-up-resources"></a>Schritt 5: Bereinigen von Ressourcen
 
-In diesem Schritt entfernen Sie die von Ihnen vorgenommenen Änderungen, und Sie löschen das Zugriffspaket **Webprojekt-Zugriffspaket**.
+In diesem Schritt werden die von Ihnen vorgenommenen Änderungen entfernt, und das Zugriffspaket **Marketing Campaign** wird gelöscht.
 
 **Erforderliche Rolle:**  Globaler Administrator oder Benutzeradministrator
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
-1. Öffnen Sie **Webprojekt-Zugriffspaket**.
+1. Öffnen Sie das Zugriffspaket **Marketing Campaign**.
 
 1. Klicken Sie auf **Zuweisungen:** .
 
-1. Klicken Sie für **Anforderer1** auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Zugriff entfernen**.
+1. Klicken Sie für **Anforderer1** auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Zugriff entfernen**. Klicken Sie in der angezeigten Meldung auf **Ja**.
 
-    Der Status ändert sich von „Übermittelt“ in „Verfallen“.
-
-1. Klicken Sie auf **Richtlinien**.
-
-1. Klicken Sie für **Richtlinie für internen Anforderer** auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Löschen**.
+    Kurz darauf ändert sich der Status von „Übermittelt“ in „Abgelaufen“.
 
 1. Klicken Sie auf **Ressourcenrollen**.
 
-1. Klicken Sie für **Technik-Gruppe** auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Ressourcenrolle entfernen**.
+1. Klicken Sie für **Marketing resources** auf die Auslassungspunkte ( **...** ) und anschließend auf **Ressourcenrolle entfernen**. Klicken Sie in der angezeigten Meldung auf **Ja**.
 
 1. Öffnen Sie die Liste der Zugriffspakete.
 
-1. Klicken Sie für **Webprojekt-Zugriffspaket** auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Löschen**.
+1. Klicken Sie für **Marketing Campaign** auf die Auslassungspunkte ( **...** ) und anschließend auf **Löschen**. Klicken Sie in der angezeigten Meldung auf **Ja**.
 
 1. Löschen Sie in Azure Active Directory alle Benutzer, die Sie erstellt, z. B. **Anforderer1** und **Admin1**.
 
-1. Löschen Sie die Gruppe **Technik-Gruppe**.
+1. Löschen Sie die Gruppe **Marketing resources**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

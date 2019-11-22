@@ -156,7 +156,7 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Ankündigen von benutzerdefinierten Routen zu P2S-Clients
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Erstellen eines zonenredundanten VNET-Gateways in Azure-Verfügbarkeitszonen
+    - name: Erstellen eines zonenredundanten Gateways
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
       href: vpn-gateway-ipsecikepolicy-rm-powershell.md

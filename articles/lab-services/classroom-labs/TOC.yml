@@ -40,6 +40,8 @@
           href: class-type-ethical-hacking.md
         - name: Datenbankverwaltung
           href: class-type-database-management.md
+        - name: "Python und Jupyter\_Notebook-Instanzen"
+          href: class-type-jupyter-notebook.md
     - name: Erstellen und Konfigurieren von Labkonten (Labkontobesitzer)
       items:
         - name: Erstellen und Verwalten von Labkonten

@@ -243,14 +243,8 @@
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Verstehen und Beheben von WebHCat-Fehlern
           href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
-        - name: Azure-Roadmap
-          href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
         - name: Hilfe im Forum
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
-        - name: Lernpfad
-          href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
-        - name: Microsoft Professional Program für Big Data
-          href: 'https://academy.microsoft.com/en-us/professional-program/tracks/big-data/'
         - name: Preisrechner
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Windows-Tools für HDInsight
@@ -279,8 +273,6 @@
           href: ./spark/apache-spark-intellij-tool-failure-debug.md
         - name: Analysieren von Daten mithilfe von BI-Tools
           href: ./spark/apache-spark-use-bi-tools.md
-        - name: Ausführen eines Streamingauftrags
-          href: ./spark/apache-spark-eventhub-streaming.md
         - name: Erstellen einer Machine Learning-App
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Erstellen einer Apache Spark-App in IntelliJ

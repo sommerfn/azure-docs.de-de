@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: Exportieren der Vorlage
       href: export-template-portal.md
-    - name: Move
+    - name: 'Verschieben: Regionen'
       items:
-        - name: Verschieben von Ressourcen
+        - name: Regionsübergreifendes Verschieben
+          href: resource-group-move-region.md
+        - name: Unterstützte Dienste
+          href: region-move-support.md
+        - name: Dienste
+          items:
+            - name: Virtuelle Azure-Computer
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuelles Netzwerk
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Netzwerksicherheitsgruppe (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Öffentliche IP-Adressen
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: 'Verschieben: Ressourcengruppen/Abonnements'
+      items:
+        - name: Verschieben zwischen Ressourcengruppen/Abonnements
           href: resource-group-move-resources.md
-        - name: Ressourcenunterstützung
+        - name: Unterstützte Dienste
           href: move-support-resources.md
         - name: Problembehandlung bei der Verschiebung
           href: troubleshoot-move.md
-        - name: Anleitung zum Verschieben für Dienste
+        - name: Dienste
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md

@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: Mobilitätsabdeckung
           href: mobility-coverage.md
+        - name: Wettervorhersage
+          href: weather-coverage.md
     - name: Lokalisierungsunterstützung
       href: supported-languages.md
     - name: Unterstützte Kartenstile
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: Mobility Service-Datenstruktur
       href: mobility-service-data-structure.md
+    - name: Konzepte des Wetterdiensts
+      href: weather-services-concepts.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Renderingdienst
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Renderingdienst V2
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: Routendienst
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Suchdienst
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Verkehrsinfodienst
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Wetterdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: Kartenkontoverwaltung
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript
