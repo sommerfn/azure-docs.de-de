@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: Herstellen einer Verbindung mit dem iOS-Client
           href: connect-ios.md
-    - name: Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
-      href: create-host-pools-arm-template.md
-    - name: Erstellen eines Hostpools mit PowerShell
-      href: create-host-pools-powershell.md
-    - name: "Bereitstellen eines virtuellen Windows\_7-Computers in Windows Virtual Desktop"
-      href: deploy-windows-7-virtual-machine.md
-    - name: Anwenden einer Windows-Lizenz auf Windows Virtual Desktop-Sitzungshosts
+    - name: Einen Hostpool und Sitzungshosts erstellen
+      items:
+        - name: Azure Resource Manager-Vorlage
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
+          href: deploy-windows-7-virtual-machine.md
+        - name: Bereitstellen eines GPU-basierten Sitzungshosts
+          href: configure-vm-gpu.md
+    - name: Erstellen eines Profilcontainers
+      items:
+        - name: Verwenden einer VM-basierten Dateifreigabe
+          href: create-host-pools-user-profile.md
+        - name: Verwenden von Azure NetApp Files
+          href: create-fslogix-profile-container.md
+    - name: Konfigurieren von Hostpooleinstellungen
+      items:
+        - name: RDP-Eigenschaften
+          href: customize-rdp-properties.md
+        - name: Lastenausgleich für in einem Pool zusammengefasste Hostpools
+          href: configure-host-pool-load-balancing.md
+    - name: Verwenden einer Windows Virtual Desktop-Lizenz
       href: apply-windows-license.md
-    - name: Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe
+    - name: Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
       href: create-host-pools-user-profile.md
-    - name: Erstellen eines Profilcontainers für einen Hostpool unter Verwendung von Azure NetApp Files
-      href: create-fslogix-profile-container.md
-    - name: Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
-      href: configure-host-pool-load-balancing.md
-    - name: Vorbereiten und Anpassen eines VHD-Masterimages
-      href: set-up-customize-master-image.md
-    - name: Installieren von Office für ein VHD-Masterimage
-      href: install-office-on-wvd-master-image.md
-    - name: Konfigurieren einer GPU für Windows Virtual Desktop
-      href: configure-vm-gpu.md
+    - name: Anpassen des Sitzungshostimages
+      items:
+        - name: Einrichten eines Master-VHD-Images
+          href: set-up-customize-master-image.md
+        - name: Installieren von Office für ein VHD-Masterimage
+          href: install-office-on-wvd-master-image.md
     - name: Dynamisches Skalieren von Sitzungshosts
       href: set-up-scaling-script.md
-    - name: Anpassen von Feeds für Windows Virtual Desktop-Benutzer
+    - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Anpassen der RDP-Eigenschaften
-      href: customize-rdp-properties.md
     - name: Bereitstellen des Diagnosetools
       href: deploy-diagnostics.md
     - name: Einrichten des MSIX-Features zum Anfügen von Apps

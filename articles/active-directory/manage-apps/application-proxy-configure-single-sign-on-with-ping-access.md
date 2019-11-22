@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0544ed0ff217b6e37cca22a1fc1e0048b30da462
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694218"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062704"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -77,7 +77,7 @@ Zuerst müssen Sie die Anwendung veröffentlichen. Dieser Vorgang umfasst Folgen
 So veröffentlichen Sie Ihre eigene lokale Anwendung
 
 1. Melden Sie sich als Anwendungsadministrator beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an, sofern nicht im letzten Abschnitt erfolgt.
-1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** > **Lokale Anwendung** aus. Die Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** wird angezeigt.
+1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** > **Lokale Anwendung hinzufügen** aus. Die Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** wird angezeigt.
 
    ![Fügen Sie Ihre eigene lokale Anwendung hinzu](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
 1. Füllen Sie die Pflichtfelder mit Informationen zur neuen Anwendung aus. Befolgen Sie zum Festlegen der Einstellungen die nachstehenden Anweisungen.
@@ -102,7 +102,7 @@ Ordnen Sie nun einen Benutzer für das Testen der Anwendung zu, und wählen Sie 
 
 1. Wählen Sie auf der Randleiste der Anwendung **Benutzer und Gruppen** > **Benutzer hinzufügen** > **Benutzer und Gruppen (ausgewählte \<Anzahl>)** aus. Eine Liste mit Benutzern und Gruppen wird angezeigt, in der Sie wählen können.
 
-   ![Zeigt die Liste der Benutzer und Gruppen.](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
+   ![Zeigt die Liste der Benutzer und Gruppen an.](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
 1. Wählen Sie einen Benutzer zum Testen der Anwendung aus, und klicken Sie auf **Auswählen**. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann.
 1. Wählen Sie **Zuweisen** aus.
@@ -111,7 +111,7 @@ Ordnen Sie nun einen Benutzer für das Testen der Anwendung zu, und wählen Sie 
    > [!TIP]
    > Wenn Sie das headerbasierte einmalige Anmelden zum ersten Mal verwenden, müssen Sie PingAccess installieren. Verwenden Sie den Link auf dieser SSO-Seite zum Herunterladen von PingAccess, um sicherzustellen, dass Ihr Azure-Abonnement automatisch Ihrer PingAccess-Installation zugeordnet wird. Sie können die Download-Website jetzt öffnen oder später zu dieser Seite zurückkehren.
 
-   ![Zeigt den headerbasierten Anmeldebildschirm und PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
+   ![Zeigt den headerbasierten Anmeldebildschirm und PingAccess an.](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
 1. Wählen Sie **Speichern** aus.
 
@@ -222,9 +222,9 @@ $pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"Inc
 Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id
 ```
 
-### <a name="enable-pingaccess-to-use-custom-claims"></a>Aktivieren Sie PingAccess, um benutzerdefinierte Ansprüche zu verwenden.
+### <a name="enable-pingaccess-to-use-custom-claims"></a>Aktivieren von PingAccess, um benutzerdefinierte Ansprüche zu verwenden
 
-Aktivieren von PingAccess, um benutzerdefinierte Ansprüche zu verwenden, ist optional, jedoch erforderlich, wenn Sie erwarten, dass die Anwendung zusätzliche Ansprüche nutzt.
+Das Aktivieren von PingAccess zum Verwenden benutzerdefinierter Ansprüche ist optional, jedoch erforderlich, wenn Sie erwarten, dass die Anwendung zusätzliche Ansprüche nutzt.
 
 Wenn Sie im folgenden Schritt PingAccess konfigurieren, muss in der Websitzung, die Sie erstellen (Einstellungen->Zugriff->Websitzungen) **Anforderungsprofil** deaktiviert und **Benutzerattribute aktualisieren** auf **Nein** gesetzt sein.
 

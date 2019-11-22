@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667141"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881311"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection und B2B-Benutzer
 
@@ -33,9 +33,9 @@ Das Benutzerrisiko für Benutzer von B2B-Zusammenarbeit wird in deren Basisverze
 
 Es gibt Einschränkungen bei der Implementierung von Identity Protection für Benutzer von B2B-Zusammenarbeit in einem Ressourcenverzeichnis, weil sich ihre Identität im eigenen Basisverzeichnis befindet. Die wichtigsten Einschränkungen sind folgende:
 
-- Wenn ein Gastbenutzer die Richtlinie zum Benutzerrisiko von Identity Protection auslöst, um eine Kennwortzurücksetzung zu erzwingen, wird er gesperrt. Diese Sperrung ist darauf zurückzuführen, dass Kennwörter nicht im Ressourcenverzeichnis zurückgesetzt werden können.
-- Gastbenutzer werden im Bericht „Riskante Benutzer“ nicht angezeigt. Dieser Sichtbarkeitsverlust ist darauf zurückzuführen, dass die Risikobewertung im Basisverzeichnis des B2B-Benutzers erfolgt.
-- Administratoren können einen riskanten Benutzer von B2B-Zusammenarbeit in ihrem Ressourcenverzeichnis nicht verwerfen oder bereinigen. Dieser Funktionsverlust ist darauf zurückzuführen, dass Administratoren im Ressourcenverzeichnis keinen Zugriff auf das Basisverzeichnis des B2B-Benutzers haben.
+- Wenn ein Gastbenutzer die Richtlinie zum Benutzerrisiko von Identity Protection auslöst, um eine Kennwortzurücksetzung zu erzwingen, **wird er gesperrt**. Diese Sperrung ist darauf zurückzuführen, dass Kennwörter nicht im Ressourcenverzeichnis zurückgesetzt werden können.
+- **Gastbenutzer werden im Bericht „Riskante Benutzer“ nicht angezeigt**. Dieser Sichtbarkeitsverlust ist darauf zurückzuführen, dass die Risikobewertung im Basisverzeichnis des B2B-Benutzers erfolgt.
+- Administratoren **können einen riskanten Benutzer von B2B-Zusammenarbeit in ihrem Ressourcenverzeichnis nicht verwerfen oder bereinigen**. Dieser Funktionsverlust ist darauf zurückzuführen, dass Administratoren im Ressourcenverzeichnis keinen Zugriff auf das Basisverzeichnis des B2B-Benutzers haben.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Warum kann ich riskante Benutzer von B2B-Zusammenarbeit in meinem Verzeichnis nicht bereinigen?
 
@@ -54,4 +54,3 @@ Durch das Ausschließen von B2B-Benutzern aus den risikobasierten Richtlinien f�
 Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](../b2b/what-is-b2b.md)
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

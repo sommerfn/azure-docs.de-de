@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108619"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063041"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
@@ -57,7 +57,7 @@ Um die SecretAPI-Web-API über den Anwendungsproxy zu veröffentlichen:
    
 1. Wählen Sie oben auf der Seite **Unternehmensanwendungen – Alle Anwendungen** die Option **Neue Anwendung** aus.
    
-1. Wählen Sie auf der Seite **Anwendung hinzufügen** unter **Eigene App hinzufügen** die Option **Lokale Anwendung** aus. 
+1. Wählen Sie auf der Seite **Azure AD-Katalog durchsuchen** unter **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus. Die Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** wird angezeigt.
    
 1. Wenn kein Anwendungsproxyconnector installiert ist, werden Sie zur Installation aufgefordert. Wählen Sie **Anwendungsproxyconnector herunterladen** aus, um den Connector herunterzuladen und zu installieren. 
    

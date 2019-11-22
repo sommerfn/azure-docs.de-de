@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421250"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062495"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -41,7 +41,7 @@ In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanb
 
 1. Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen**, und wählen Sie die Option **Neue Anwendung**.
 
-2. Wählen Sie unter **Eigene App hinzufügen** die Option **Nicht-Kataloganwendung**.
+2. Wählen Sie im Abschnitt **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus.
 
 3. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein, und wählen Sie **Hinzufügen**.
 

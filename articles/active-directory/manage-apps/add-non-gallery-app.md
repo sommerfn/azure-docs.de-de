@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477256"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062811"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Hinzufügen einer nicht aufgeführten Anwendung (Nicht-Kataloganwendung) zu Ihrer Azure AD-Organisation
 
@@ -33,21 +33,36 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal den **Unternehmensan
 ## <a name="add-a-non-gallery-application"></a>Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
 1. Melden Sie sich mit Ihrem Administratorkonto für die Microsoft Identity Platform beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an.
-1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
-2. (Optional, aber empfohlen) Geben Sie im Suchfeld **Aus Katalog hinzufügen** den Anzeigename der Anwendung ein. Wenn die Anwendung in den Suchergebnissen angezeigt wird, wählen Sie sie aus und überspringen den Rest dieses Verfahrens.
-3. Wählen Sie **Nicht-Kataloganwendung** aus. Die Seite **Eigene Anwendung hinzufügen** wird angezeigt.
 
-   ![Anwendung hinzufügen](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein.
-6. Wählen Sie **Hinzufügen**. Die Seite **Übersicht** der Anwendung wird geöffnet.
+2. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
+
+3. (Optional, aber empfohlen) Geben Sie im Suchfeld **Azure AD-Katalog durchsuchen** den Anzeigename der Anwendung ein. 
+
+4. Wählen Sie **Eigene Anwendung erstellen** aus. Die Seite **Eigene Anwendung erstellen** wird angezeigt.
+
+   ![Anwendung hinzufügen](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Beginnen Sie mit der Eingabe des Anzeigenamens für Ihre neue Anwendung. Wenn Kataloganwendungen mit ähnlichen Namen vorhanden sind, werden diese in einer Suchergebnisliste angezeigt.
+
+   > [!NOTE]
+   > Es wird empfohlen, nach Möglichkeit die Katalogversion Ihrer Anwendung zu verwenden. Wenn die Anwendung, die Sie hinzufügen möchten, in den Suchergebnissen angezeigt wird, wählen Sie die Anwendung aus, und überspringen den Rest dieses Verfahrens.
+
+6. Unter **Was haben Sie mit Ihrer Anwendung vor?** wählen Sie **Beliebige andere, nicht im Katalog zu findende Anwendung integrieren** aus. Diese Option wird in der Regel für SAML- und WS-Fed-Anwendungen verwendet.
+
+   > [!NOTE]
+   > Die anderen beiden Optionen werden in den folgenden Szenarien verwendet:
+   >* **Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren** öffnet die Konfigurationsseite für Azure AD-Anwendungsproxy und -Connectors.
+   >* **Von Ihnen bearbeitete Anwendung für die Integration in Azure AD registrieren** öffnet die Seite **App-Registrierungen**. Diese Option wird in der Regel für OpenID Connect-Anwendungen verwendet.
+
+7. Klicken Sie auf **Erstellen**. Die Seite **Übersicht** der Anwendung wird geöffnet.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurieren der Eigenschaften für die Benutzeranmeldung
 
 1. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
 
-    ![Bereich „Eigenschaften bearbeiten“](media/add-application-portal/edit-properties.png)
+    ![Bereich „Eigenschaften bearbeiten“](media/add-non-gallery-app/edit-properties.png)
 
-1. Legen Sie mit den folgenden Optionen fest, wie sich Benutzer mit bzw. ohne Anwendungszuweisung bei der Anwendung anmelden können und ob einem Benutzer die Anwendung im Zugriffsbereich angezeigt wird.
+2. Legen Sie mit den folgenden Optionen fest, wie sich Benutzer mit bzw. ohne Anwendungszuweisung bei der Anwendung anmelden können und ob einem Benutzer die Anwendung im Zugriffsbereich angezeigt wird.
 
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
@@ -83,11 +98,11 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal den **Unternehmensan
 
      *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
 
-1. Wenn Sie ein benutzerdefiniertes Logo verwenden möchten, erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format. Navigieren Sie dann zu Ihrem Logo, und laden Sie es hoch.
+3. Wenn Sie ein benutzerdefiniertes Logo verwenden möchten, erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format. Navigieren Sie dann zu Ihrem Logo, und laden Sie es hoch.
 
-    ![Ändern des Logos](media/add-application-portal/change-logo.png)
+    ![Ändern des Logos](media/add-non-gallery-app/change-logo.png)
 
-1. Wählen Sie abschließend **Speichern** aus.
+4. Wählen Sie abschließend **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/03/2019
+ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74c6787068cf8ba1e86cbf43955d0ac995aa8de1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e4a091abff02e544f97f5621b56836cf6ba6e237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702115"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175959"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 
@@ -35,6 +35,8 @@ Welche Methode(n) Sie zur Bereitstellung in Ihrer Organisation wählen, liegt in
 Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Portal, das es einem Endbenutzer mit einem Organisationskonto in Azure Active Directory ermöglicht, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über den Zugriffsbereich verwenden.
 
 ![Screenshot zeigt das Azure AD-Zugriffsbereichsportal](media/what-is-single-sign-on/azure-ad-access-panel.png)
+
+Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Arbeitsbereichen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, wodurch sie leichter auffindbar sind. So können Sie mit Arbeitsbereichen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Arbeitsbereichen zum Anpassen von Zugriffsbereichen für Benutzer (Vorschau)](access-panel-workspaces.md). 
 
 Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Office 365-Abonnement verfügen.
 

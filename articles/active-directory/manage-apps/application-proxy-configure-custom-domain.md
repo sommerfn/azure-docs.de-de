@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756505"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062526"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -77,38 +77,40 @@ Eine ausführlichere Anleitung finden Sie unter [Hinzufügen Ihres benutzerdefin
 
 Veröffentlichen Sie Ihre App wie folgt per Anwendungsproxy mit einer benutzerdefinierten Domäne:
 
-1. Wählen Sie für eine neue App in Azure Active Directory im linken Navigationsbereich die Option **Unternehmensanwendungen** und dann **Neue Anwendung** und **Lokale Anwendung** aus. 
+1. Wählen Sie für eine neue App in Azure Active Directory im linken Navigationsbereich die Option **Unternehmensanwendungen** aus. Wählen Sie **Neue Anwendung** aus. Wählen Sie im Abschnitt **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus. 
    
    Wählen Sie für eine App, die sich bereits unter **Unternehmensanwendungen** befindet, die App in der Liste und dann im linken Navigationsbereich die Option **Anwendungsproxy** aus. 
 
-1. Geben Sie auf der Seite **Anwendungsproxy** im Feld **Interne URL** die interne URL für Ihre App ein. 
+2. Geben Sie auf der Seite der Anwendungsproxyeinstellungen einen **Namen** ein, wenn Sie Ihre eigene lokale Anwendung hinzufügen.
+
+3.  Geben Sie im Feld **Interne URL** die interne URL für Ihre App ein.
    
-1. Öffnen Sie im Feld **Externe URL** die Dropdownliste, und wählen Sie die gewünschte benutzerdefinierte Domäne aus.
+4. Öffnen Sie im Feld **Externe URL** die Dropdownliste, und wählen Sie die gewünschte benutzerdefinierte Domäne aus.
    
-1. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Hinzufügen**.
    
    ![Auswählen der benutzerdefinierten Domäne](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Wenn die Domäne bereits über ein Zertifikat verfügt, werden im Feld **Zertifikat** die Zertifikatinformationen angezeigt. Wählen Sie andernfalls das Feld **Zertifikat** aus. 
+6. Wenn die Domäne bereits über ein Zertifikat verfügt, werden im Feld **Zertifikat** die Zertifikatinformationen angezeigt. Wählen Sie andernfalls das Feld **Zertifikat** aus. 
    
    ![Klicken zum Hochladen eines Zertifikats](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains).
+7. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains).
    
    ![Hochladen des Zertifikats](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Für eine benutzerdefinierte Domäne muss das Zertifikat nur einmal hochgeladen werden. Danach wird das hochgeladene Zertifikat automatisch angewendet, wenn Sie die benutzerdefinierte Domäne für andere Apps verwenden.
    
-1. Wählen Sie nach dem Hinzufügen eines Zertifikats auf der Seite **Anwendungsproxy** die Option **Speichern** aus. 
+8. Wählen Sie nach dem Hinzufügen eines Zertifikats auf der Seite **Anwendungsproxy** die Option **Speichern** aus. 
    
-1. Notieren Sie sich in der Informationsleiste auf der Seite **Anwendungsproxy** den CNAME-Eintrag, den Sie Ihrer DNS-Zone hinzufügen möchten. 
+9. Notieren Sie sich in der Informationsleiste auf der Seite **Anwendungsproxy** den CNAME-Eintrag, den Sie Ihrer DNS-Zone hinzufügen möchten. 
    
    ![Hinzufügen eines CNAME-DNS-Eintrags](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Befolgen Sie unter [Verwalten von DNS-Einträgen und -Ressourceneintragssätzen im Azure-Portal](../../dns/dns-operations-recordsets-portal.md) die Anleitung zum Hinzufügen eines DNS-Eintrags, mit dem die neue externe URL an die Domäne *msappproxy.net* umgeleitet wird.
+10. Befolgen Sie unter [Verwalten von DNS-Einträgen und -Ressourceneintragssätzen im Azure-Portal](../../dns/dns-operations-recordsets-portal.md) die Anleitung zum Hinzufügen eines DNS-Eintrags, mit dem die neue externe URL an die Domäne *msappproxy.net* umgeleitet wird.
    
-1. Verwenden Sie zum Überprüfen der richtigen Konfiguration des DNS-Eintrags den Befehl [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx), um sicherzustellen, dass Ihre externe URL erreichbar ist und die Domäne *msapproxy.net* als Alias angezeigt wird.
+11. Verwenden Sie zum Überprüfen der richtigen Konfiguration des DNS-Eintrags den Befehl [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx), um sicherzustellen, dass Ihre externe URL erreichbar ist und die Domäne *msapproxy.net* als Alias angezeigt wird.
 
 Ihre Anwendung ist jetzt für die Verwendung der benutzerdefinierten Domäne eingerichtet. Achten Sie darauf, dass Sie Ihrer Anwendung Benutzer zuweisen, bevor Sie diese testen oder freigeben. 
 
