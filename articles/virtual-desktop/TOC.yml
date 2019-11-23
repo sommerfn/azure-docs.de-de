@@ -72,6 +72,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: Bereitstellen des Diagnosetools
       href: deploy-diagnostics.md
+    - name: Veröffentlichen von Apps
+      href: publish-apps.md
     - name: Einrichten des MSIX-Features zum Anfügen von Apps
       href: app-attach.md
 - name: Konzepte
@@ -128,6 +130,8 @@
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Lernpfad
+      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
     - name: Supportgruppe der technischen Community
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
     - name: UserVoice-Forum
