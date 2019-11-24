@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264343"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804266"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
@@ -75,7 +75,7 @@ Dieser integrierte Trigger registriert eine Rückruf-URL beim angegebenen Dienst
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP-Webhooks finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Fahren Sie mit dem Erstellen des Workflows Ihrer Logik-App fort, und fügen Sie weitere Aktionen hinzu, die bei Auslösung des Triggers ausgeführt werden.
 
@@ -111,7 +111,7 @@ Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, 
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP-Webhooks finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 

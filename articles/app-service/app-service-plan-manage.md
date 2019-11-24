@@ -5,22 +5,22 @@ keywords: App Service, Azure App Service, Skalierung, App Services-Plan, ändern
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067205"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898955"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -33,23 +33,17 @@ Ein [Azure App Service-Plan](overview-hosting-plans.md) stellt Ressourcen bereit
 
 Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber auch im Rahmen der App-Erstellung erstellen.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web + Mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
-
-2. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Neu** > **Web-App** oder eine andere Art von App Service-App aus.
 
    ![Erstellen Sie eine App im Azure-Portal.][createWebApp]
 
-   So erstellen Sie einen Plan:
+2. Konfigurieren Sie den Abschnitt **Instanzdetails**, bevor Sie den App Service-Plan konfigurieren. Einstellungen wie **Veröffentlichen** und **Betriebssysteme** können die verfügbaren Tarife für Ihren App Service-Plan ändern. **Region** bestimmt, wo Ihr App Service-Plan erstellt wird.
+   
+3. Wählen Sie im Abschnitt **App Service-Plan** einen vorhandenen Plan aus, oder erstellen Sie einen Plan, indem Sie **Neu erstellen** auswählen.
 
-   a. Wählen Sie **+ Neu erstellen** aus.
+   ![Erstellen eines App Service-Plans][createASP] 
 
-      ![Erstellen eines App Service-Plans][createASP] 
-
-   b. Geben Sie einen Namen für Ihren **App Service-Plan** ein.
-
-   c. Wählen Sie unter **Speicherort** einen geeigneten Speicherort aus.
-
-   d. Wählen Sie einen geeigneten **Tarif** für den Dienst aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
+4. Beim Erstellen eines Plans können Sie den Tarif für den neuen Plan auswählen. Wählen Sie in **SKU und Größe** die Option **Größe ändern** aus, um den Tarif zu ändern. 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ Sie können eine App in einen anderen App Service-Plan verschieben, solange sich
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der App, die Sie verschieben möchten.
 
-1. Suchen Sie im Menü nach dem Abschnitt **App Service-Plan**.
+2. Wählen Sie im linken Menü **App Service-Plan ändern** aus.
 
-1. Wählen Sie **App Service-Plan ändern** aus, um die Auswahlfunktion für den **App Service-Plan** zu öffnen.
+3. Wählen Sie im Dropdown **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten. Im Dropdown werden nur Pläne angezeigt, die sich in derselben Ressourcengruppe und geografischen Region wie der aktuelle App Service-Plan befinden. Wenn kein solcher Plan vorhanden ist, können Sie dort standardmäßig einen Plan erstellen. Sie können einen neuen Plan auch manuell erstellen, indem Sie **Neu erstellen** auswählen.
 
+4. Wenn Sie einen Plan erstellen, können Sie den Tarif für den neuen Plan auswählen. Wählen Sie in **Tarif** den vorhandenen Tarif aus, um ihn zu ändern. 
+   
+   > [!IMPORTANT]
+   > Wenn Sie eine App aus einem Plan mit einem höheren Tarif in einen Plan mit einem niedrigeren Tarif verschieben, z. B. von **D1** in **F1**, kann die App bestimmte Funktionen im Zielplan verlieren. Wenn Ihrer App beispielsweise SSL-Zertifikate verwendet, wird Ihnen möglicherweise folgende Fehlermeldung angezeigt:
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. Wenn Sie fertig sind, wählen Sie **OK** aus.
+   
    ![Auswahlelement für App Service-Pläne][change] 
-
-1. Wählen Sie in der Auswahlfunktion **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten.   
-
-Auf der Seite **App Service-Plan auswählen** werden nur Pläne angezeigt, die sich in der gleichen Ressourcengruppe und geografischen Region wie der App Service-Plan der aktuellen App befinden.
-
-Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus einem **Free**-Tarif in einen **Standard**-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des **Standard**-Tarifs nutzen. Allerdings bedeutet das Verschieben einer App von einem Plan mit einem höheren Tarif in einen Plan mit einem niedrigeren Tarif, dass Sie keinen Zugriff mehr auf bestimmte Features haben. Wenn Ihre Anwendung ein Feature verwendet, das im Zielplan nicht verfügbar ist, erhalten Sie eine Fehlermeldung, die anzeigt, welches Feature verwendet wird, das nicht verfügbar ist. 
-
-Wenn beispielsweise eine Ihrer Apps SSL-Zertifikate verwendet, wird Ihnen möglicherweise folgende Fehlermeldung angezeigt:
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-In diesem Fall müssen Sie einen der folgenden Schritte ausführen, bevor Sie die App in den Zielplan verschieben können:
-- Skalieren Sie den Tarif des Zielplans zentral auf **Basic** oder einen höheren Tarif hoch.
-- Entfernen Sie alle SSL-Verbindungen mit Ihrer App.
 
 ## <a name="move-an-app-to-a-different-region"></a>Verschieben einer App in eine andere Region
 
