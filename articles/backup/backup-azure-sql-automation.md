@@ -10,20 +10,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090947"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell eine SQL-Datenbank auf einem virtuellen Azure-Computer mithilfe des [Azure Backup](backup-overview.md) Recovery Services-Tresors sichern und wiederherstellen.
 
 In diesem Tutorial werden folgende Punkte erläutert:
 
 > [!div class="checklist"]
+>
 > * Einrichten von PowerShell und Registrieren des Azure Recovery Services-Anbieters
 > * Erstellen Sie einen Recovery Services-Tresor.
 > * Konfigurieren der Sicherung für eine SQL-Datenbank auf einem virtuellen Azure-Computer
@@ -270,8 +271,8 @@ Sobald der beabsichtigte automatische Schutz festgelegt ist, wird die Anfrage an
 
 Azure Backup kann auf virtuellen Azure-Computern ausgeführte SQL Server-Datenbanken folgendermaßen wiederherstellen:
 
-1. Wiederherstellung eines bestimmten Datums oder einer bestimmten Uhrzeit (sekundengenau) mithilfe von Transaktionsprotokollsicherungen. Azure Backup ermittelt automatisch die geeignete vollständige differenzielle Sicherung und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten basierend auf dem ausgewählten Zeitpunkt benötigt werden.
-2. Wiederherstellung einer bestimmten vollständigen oder differenziellen Sicherung, um die Daten auf einen bestimmten Wiederherstellungspunkt wiederherzustellen.
+* Wiederherstellung eines bestimmten Datums oder einer bestimmten Uhrzeit (sekundengenau) mithilfe von Transaktionsprotokollsicherungen. Azure Backup ermittelt automatisch die geeignete vollständige differenzielle Sicherung und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten basierend auf dem ausgewählten Zeitpunkt benötigt werden.
+* Wiederherstellung einer bestimmten vollständigen oder differenziellen Sicherung, um die Daten eines bestimmten Wiederherstellungspunkts wiederherzustellen.
 
 Überprüfen Sie vor dem Wiederherstellen von SQL-Datenbanken die [hier](restore-sql-database-azure-vm.md#prerequisites) genannten Voraussetzungen.
 
@@ -335,9 +336,9 @@ Die oben gezeigte Ausgabe bedeutet, dass der Benutzer auf einen beliebigen Zeitp
 
 Im Fall der Wiederherstellung einer SQL-Datenbank werden die folgenden Wiederherstellungsszenarien unterstützt:
 
-1. Überschreiben der gesicherten SQL-Datenbank mit Daten von einem anderen Wiederherstellungspunkt – OriginalWorkloadRestore
-2. Wiederherstellen der SQL-Datenbank als eine neue Datenbank in derselben SQL-Instanz – AlternateWorkloadRestore
-3. Wiederherstellen der SQL-Datenbank als eine neue Datenbank in einer anderen SQL-Instanz auf einem anderen virtuellen SQL-Computer – AlternateWorkloadRestore
+* Überschreiben der gesicherten SQL-Datenbank mit Daten von einem anderen Wiederherstellungspunkt – OriginalWorkloadRestore
+* Wiederherstellen der SQL-Datenbank als eine neue Datenbank in derselben SQL-Instanz – AlternateWorkloadRestore
+* Wiederherstellen der SQL-Datenbank als eine neue Datenbank in einer anderen SQL-Instanz auf einem anderen virtuellen SQL-Computer – AlternateWorkloadRestore
 
 Nach dem Abrufen des relevanten Wiederherstellungspunkts (eindeutig oder Protokollzeitpunkt) verwenden Sie das PS-Cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) zum Abrufen des Wiederherstellungskonfigurationsobjekts gemäß dem gewünschten Wiederherstellungsplan.
 
@@ -459,7 +460,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-Der Ad-hoc-Sicherungsbefehl gibt einen nachzuverfolgenden Auftrag zurück.
+Der Befehl zur bedarfsgesteuerten Sicherung gibt einen nachzuverfolgenden Auftrag zurück.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -471,7 +472,7 @@ Wenn die Ausgabe verloren geht oder Sie die relevante Auftrags-ID abrufen möcht
 
 ### <a name="change-policy-for-backup-items"></a>Ändern der Richtlinie für Sicherungselemente
 
-Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie einfach die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
+Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -540,13 +541,13 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Es ist wichtig zu beachten, dass Azure Backup nur vom Benutzer ausgelöste Aufträge in der SQL-Sicherung nachverfolgt. Geplante Sicherungen (einschließlich Protokollsicherungen) werden nicht im Portal/PowerShell angezeigt. Wenn jedoch Fehler bei geplanten Aufträgen auftreten, wird eine [Sicherungswarnung](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) generiert und im Portal angezeigt. [Verwenden Sie Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) zum Nachverfolgen aller geplanten Aufträge und anderer relevanter Informationen.
 
-Benutzer können Ad-hoc- und vom Benutzer ausgelöste Vorgänge anhand der Auftrags-ID nachverfolgen, die in der [Ausgabe](#on-demand-backup) asynchroner Aufträge (z.B. einer Sicherung) zurückgegeben wird. Mit dem PS-Cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) können Sie einen Auftrag und seine Details nachverfolgen.
+Benutzer können bedarfsgesteuerte bzw. vom Benutzer ausgelöste Vorgänge anhand der Auftrags-ID nachverfolgen, die in der [Ausgabe](#on-demand-backup) asynchroner Aufträge (z.B. einer Sicherung) zurückgegeben wird. Mit dem PS-Cmdlet [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) können Sie einen Auftrag und seine Details nachverfolgen.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-Um die Liste der Ad-hoc-Aufträge und deren Status vom Azure Backup-Dienst abzurufen, verwenden Sie das PS-Cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0). Im folgenden Beispiel werden alle in Bearbeitung befindlichen SQL-Aufträge zurückgegeben.
+Um die Liste der bedarfsgesteuerten Aufträge und deren Status vom Azure Backup-Dienst abzurufen, verwenden Sie das PS-Cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0). Im folgenden Beispiel werden alle in Bearbeitung befindlichen SQL-Aufträge zurückgegeben.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
@@ -560,13 +561,13 @@ Stellen Sie im Fall von SQL-AlwaysOn-Verfügbarkeitsgruppen sicher, dass [alle K
 
 Angenommen, eine SQL-Verfügbarkeitsgruppe hat zwei Knoten („sql-server-0“ und „sql-server-1“) und eine SQL-Verfügbarkeitsgruppendatenbank. Wenn der Benutzer nach der Registrierung dieser beiden Knoten [die schützbaren Elemente auflistet](#fetching-sql-dbs), sind die folgenden Komponenten enthalten:
 
-1. Ein SQL-Verfügbarkeitsgruppenobjekt – Typ des schützbaren Elements ist „SQLAvailabilityGroup“
-2. Eine SQL-Verfügbarkeitsgruppendatenbank – Typ des schützbaren Elements ist „SQLDatabase“
-3. sql-server-0 – Typ des schützbaren Elements ist „SQLInstance“
-4. sql-server-1 – Typ des schützbaren Elements ist „SQLInstance“
-5. Alle SQL-Standarddatenbanken (Master, Modell, MSDB) unter „sql-server-0“ – Typ des schützbaren Elements ist „SQLDatabase“
-6. Alle SQL-Standarddatenbanken (Master, Modell, MSDB) unter „sql-server-1“ – Typ des schützbaren Elements ist „SQLDatabase“
+* Ein SQL-Verfügbarkeitsgruppenobjekt – Typ des schützbaren Elements ist „SQLAvailabilityGroup“
+* Eine SQL-Verfügbarkeitsgruppendatenbank – Typ des schützbaren Elements ist „SQLDatabase“
+* sql-server-0 – Typ des schützbaren Elements ist „SQLInstance“
+* sql-server-1 – Typ des schützbaren Elements ist „SQLInstance“
+* Alle SQL-Standarddatenbanken (Master, Modell, MSDB) unter „sql-server-0“ – Typ des schützbaren Elements ist „SQLDatabase“
+* Alle SQL-Standarddatenbanken (Master, Modell, MSDB) unter „sql-server-1“ – Typ des schützbaren Elements ist „SQLDatabase“
 
 Beim [Auflisten von Sicherungscontainern](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0) werden auch „sql-server-0“ und „sql-server-1“ als „AzureVMAppContainer“ aufgeführt.
 
-Rufen Sie einfach die entsprechende SQL-Datenbank ab, um die [Sicherung zu aktivieren](#configuring-backup). Die PS-Cmdlets für die [Ad-hoc-Sicherung](#on-demand-backup) und [Wiederherstellung](#restore-sql-dbs) sind identisch.
+Rufen Sie einfach die entsprechende SQL-Datenbank ab, um die [Sicherung zu aktivieren](#configuring-backup). Die PS-Cmdlets für die [bedarfsgesteuerte Sicherung](#on-demand-backup) und [Wiederherstellung](#restore-sql-dbs) sind identisch.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019072"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090736"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server
 
@@ -22,18 +22,20 @@ Azure Backup Server v2 und höhere Versionen unterstützen Modern Backup Storage
 > [!NOTE]
 > Zum Verwenden von Modern Backup Storage müssen Sie Backup Server v2 oder v3 unter Windows Server 2016 oder v3 unter Windows Server 2019 ausführen.
 > Wenn Sie Backup Server v2 unter einer früheren Version von Windows Server ausführen, kann Modern Backup Storage nicht von Azure Backup Server genutzt werden. Workloads werden dann wie mit Backup Server v1 geschützt. Weitere Informationen finden Sie in der [Schutzmatrix](backup-mabs-protection-matrix.md) der Backup Server-Versionen.
+>
+> Um verbesserte Sicherungsleistungen zu erzielen, empfehlen wir die Bereitstellung von MABS v3 mit mehrstufigen Speicher unter Windows Server 2019. Die Schritte zum Konfigurieren des mehrstufigen Speichers finden Sie im DPM-Artikel „[Einrichten von MBS mit mehrstufigem Speicher](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
 
 ## <a name="volumes-in-backup-server"></a>Volumes in Backup Server
 
 Backup Server v2 oder höhere Versionen unterstützen Speichervolumes. Wenn Sie ein Volume hinzufügen, formatiert Azure Backup das Volume mit ReFS (Resilient File System), was für Modern Backup Storage erforderlich ist. Um ein Volume hinzuzufügen und es zu einem späteren Zeitpunkt zu erweitern, sollten Sie diesen Workflow befolgen:
 
-1.  Richten Sie Backup Server auf einer VM ein.
-2.  Erstellen Sie ein Volume auf einem virtuellen Datenträger in einem Speicherpool:
-    1.  Fügen Sie einen Datenträger zu einem Speicherpool hinzu, und erstellen Sie einen virtuellen Datenträger mit einfachem Layout.
-    2.  Fügen Sie zusätzliche Datenträger hinzu, und erweitern Sie den virtuellen Datenträger.
-    3.  Erstellen Sie Volumes auf dem virtuellen Datenträger.
-3.  Fügen Sie Backup Server die Volumes hinzu.
-4.  Konfigurieren Sie workloadorientierten Speicher.
+1. Richten Sie Backup Server auf einer VM ein.
+2. Erstellen Sie ein Volume auf einem virtuellen Datenträger in einem Speicherpool:
+    1. Fügen Sie einen Datenträger zu einem Speicherpool hinzu, und erstellen Sie einen virtuellen Datenträger mit einfachem Layout.
+    2. Fügen Sie zusätzliche Datenträger hinzu, und erweitern Sie den virtuellen Datenträger.
+    3. Erstellen Sie Volumes auf dem virtuellen Datenträger.
+3. Fügen Sie Backup Server die Volumes hinzu.
+4. Konfigurieren Sie workloadorientierten Speicher.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Erstellen eines Volumes für Modern Backup Storage
 
@@ -65,6 +67,11 @@ Durch Verwenden von Backup Server v2 oder höheren Versionen mit Volumes als Dat
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Hinzufügen von Volumes zu Azure Backup-Datenträgerspeicher
 
+> [!NOTE]
+>
+> - Fügen Sie nur einen Datenträger zum Pool hinzu, damit die Spaltenanzahl 1 bleibt. Sie können dann später bei Bedarf Datenträger hinzufügen.
+> - Wenn Sie mehrere Datenträger auf einmal zum Speicherpool hinzufügen, wird die Anzahl der Datenträger als Anzahl der Spalten gespeichert. Wenn weitere Datenträger hinzugefügt werden, muss es sich immer um ein Vielfaches der Spaltenanzahl handeln.
+
 Um Backup Server ein Volume hinzuzufügen, durchsuchen Sie im Bereich **Verwaltung** erneut den Speicher, und klicken Sie dann auf **Hinzufügen**. Eine Liste aller Volumes wird angezeigt, die dem Azure Backup-Speicher hinzugefügt werden können. Nachdem verfügbare Volumes der Liste ausgewählter Volumes hinzugefügt wurden, können Sie sie mit einem Anzeigenamen versehen, damit sie besser verwaltet werden können. Um diese Volumes mit ReFS zu formatieren, damit Backup Server die Vorteile von Modern Backup Storage nutzen kann, klicken Sie auf **OK**.
 
 ![Hinzufügen verfügbarer Volumes](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
@@ -75,7 +82,7 @@ Mithilfe von workloadorientiertem Speicher können Sie die Volumes auswählen, a
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Sie können workloadorientierten Speicher mithilfe des PowerShell-Cmdlets „Update-DPMDiskStorage“ einrichten, das die Eigenschaften eines Volumes im Speicherpool einer Azure Backup Server-Instanz aktualisiert. 
+Sie können workloadorientierten Speicher mithilfe des PowerShell-Cmdlets „Update-DPMDiskStorage“ einrichten, das die Eigenschaften eines Volumes im Speicherpool einer Azure Backup Server-Instanz aktualisiert.
 
 Syntax:
 
@@ -84,6 +91,7 @@ Syntax:
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 Der folgende Screenshot zeigt das Cmdlet „Update-DPMDiskStorage“ im PowerShell-Fenster.
 
 ![Das Cmdlet „Update DPMDiskStorage“ im PowerShell-Fenster](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +100,8 @@ Die Änderungen, die Sie mithilfe von PowerShell vornehmen, werden in der Backup
 
 ![Datenträger und Volumes in der Administratorkonsole](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrieren von Legacyspeicher zu Modern Backup Storage
+
 Nach dem Upgrade auf oder der Installation von Backup Server v2 und dem Upgrade des Betriebssystems auf Windows Server 2016 müssen Sie Ihre Schutzgruppen für die Verwendung von Modern Backup Storage aktualisieren. Standardmäßig werden Schutzgruppen nicht geändert. Sie funktionieren weiterhin, wie sie ursprünglich eingerichtet wurden.
 
 Das Aktualisieren von Schutzgruppen zur Verwendung von Modern Backup Storage ist optional. Beenden Sie zum Aktualisieren der Schutzgruppe den Schutz aller Datenquellen mithilfe der Option „Daten beibehalten“. Fügen Sie dann die Datenquellen einer neuen Schutzgruppe hinzu.
@@ -120,11 +128,12 @@ So fügen Sie Datenspeicher hinzu
 
     ![Dialogfeld „Datenspeicher hinzufügen“](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. Wählen Sie im Dialogfeld **Datenspeicher hinzufügen** den Befehl **Datenträger hinzufügen** aus.
+2. Wählen Sie im Dialogfeld **Datenspeicher hinzufügen** den Befehl **Datenträger hinzufügen** aus.
 
-5. Wählen Sie in der Liste der verfügbaren Datenträger die Datenträger aus, die Sie hinzufügen möchten. Klicken Sie auf **Hinzufügen** und dann auf **OK**.
+3. Wählen Sie in der Liste der verfügbaren Datenträger die Datenträger aus, die Sie hinzufügen möchten. Klicken Sie auf **Hinzufügen** und dann auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie, wie Sie nach der Installation von Backup Server Ihren Server vorbereiten oder mit dem Schutz einer Workload beginnen.
 
 - [Vorbereiten von Backup Server-Workloads](backup-azure-microsoft-azure-backup.md)

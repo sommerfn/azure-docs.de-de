@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827390"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074928"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -38,8 +38,6 @@ Wie in der nachstehenden Tabelle zusammengefasst, kann Azure Backup Azure-VMs mi
 - Weitere Informationen zu [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md) und [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Lesen Sie [Häufig gestellte Fragen](../security/azure-security-disk-encryption-faq.md) zur Datenträgerverschlüsselung für virtuelle Azure-Computer.
 
-
-
 ### <a name="limitations"></a>Einschränkungen
 
 - Sie können verschlüsselte VMs innerhalb desselben Abonnements und derselben Region sichern und wiederherstellen.
@@ -47,9 +45,6 @@ Wie in der nachstehenden Tabelle zusammengefasst, kann Azure Backup Azure-VMs mi
 - Sie können verschlüsselte VMs innerhalb desselben Abonnements und derselben Region als Recovery Services-Sicherungstresor sichern und wiederherstellen.
 - Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Sie müssen den gesamten virtuellen Computer wiederherstellen, damit Dateien und Ordner wiederhergestellt werden.
 - Beim Wiederherstellen eines virtuellen Computers können Sie die Option [Vorhandenen virtuellen Computer ersetzen](backup-azure-arm-restore-vms.md#restore-options) für verschlüsselte virtuelle Computer nicht verwenden. Diese Option wird nur bei unverschlüsselten verwalteten Datenträgern unterstützt.
-
-
-
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -64,8 +59,6 @@ Darüber hinaus gibt es ein paar Schritte, die Sie in einigen Fällen möglicher
 
 - **Installieren des VM-Agents auf dem virtuellen Computer:** Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie möglicherweise [den Agent manuell installieren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 - **Explizites Zulassen von ausgehendem Zugriff:** Im Allgemeinen müssen Sie den ausgehenden Netzwerkzugriff für eine Azure-VM nicht explizit zulassen, damit sie mit Azure Backup kommunizieren kann. Bei einigen VMs können jedoch Verbindungsprobleme auftreten. Dann wird bei einem Verbindungsversuch der Fehler **ExtensionSnapshotFailedNoNetwork** angezeigt. In diesem Fall sollten Sie [ausgehenden Zugriff explizit zulassen](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), damit die Azure Backup-Erweiterung mit öffentlichen IP-Adressen von Azure für den Sicherungsdatenverkehr kommunizieren kann.
-
-
 
 ## <a name="configure-a-backup-policy"></a>Konfigurieren einer Sicherungsrichtlinie
 
@@ -87,7 +80,6 @@ Darüber hinaus gibt es ein paar Schritte, die Sie in einigen Fällen möglicher
 
 6. Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** und [Benutzerdefinierte Richtlinie erstellen](backup-azure-arm-vms-prepare.md#create-a-custom-policy) aus.
 
-
 7. Wählen Sie die verschlüsselten VMs, die Sie mit der ausgewählten Richtlinie sichern möchten, und dann **OK** aus.
 
       ![Auswählen von verschlüsselten VMs](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
@@ -104,7 +96,6 @@ Darüber hinaus gibt es ein paar Schritte, die Sie in einigen Fällen möglicher
 
 9. Klicken Sie auf **Sicherung aktivieren**, um die Sicherungsrichtlinie im Tresor bereitzustellen, und aktivieren Sie die Sicherung für die ausgewählten VMs.
 
-
 ## <a name="trigger-a-backup-job"></a>Auslösen eines Sicherungsauftrags
 
 Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie können sie aber auch mit den folgenden Schritten sofort ausführen:
@@ -115,7 +106,6 @@ Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie
 4. Klicken Sie auf **Jetzt sichern**.
 5. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
 6. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
-
 
 ## <a name="provide-permissions"></a>Gewähren von Berechtigungen
 
@@ -140,11 +130,11 @@ So legen Sie Berechtigungen fest:
 
     ![Auswählen von Azure Backup](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. Klicken Sie auf **OK**. **Sicherungsverwaltungsdienst** wird zu **Zugriffsrichtlinien** hinzugefügt.
+7. Klicken Sie auf **OK**. **Sicherungsverwaltungsdienst** wird zu **Zugriffsrichtlinien** hinzugefügt.
 
     ![Zugriffsrichtlinien](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-7. Klicken Sie auf **Speichern**, um Azure Backup die Berechtigungen bereitzustellen.
+8. Klicken Sie auf **Speichern**, um Azure Backup die Berechtigungen bereitzustellen.
 
 ## <a name="restore-an-encrypted-vm"></a>Wiederherstellen eines verschlüsselten virtuellen Computers
 
@@ -154,7 +144,7 @@ Verschlüsselte virtuelle Computer stellen Sie wie folgt wieder her:
 2. Führen Sie dann einen der folgenden Schritte aus:
     - Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
     - Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
-    - Setzen Sie für virtuelle Linux-Computer die ADE-Erweiterung zurück, damit die Datenträger offen und eingebunden sind. 
+    - Setzen Sie für virtuelle Linux-Computer die ADE-Erweiterung zurück, damit die Datenträger offen und eingebunden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

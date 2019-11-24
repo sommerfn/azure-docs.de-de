@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor-Protokolldatenmodell für Azure Backup
-description: In diesem Artikel werden die Details des Azure Monitor-Protokolldatenmodells für Azure Backup-Daten vorgestellt.
+description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: dacurwin
-ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 283dc4c1ad4bc683833da3d689d842fa84079a00
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689243"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074945"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -48,7 +48,7 @@ Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 | State_s |Text |Aktueller Status des Warnungsobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der diese Warnung gehört, z.B. IaaSVM, FileFolder |
 | OperationName |Text |Name des aktuellen Vorgangs, z.B. Warnung |
-| Category (Kategorie) |Text |Kategorie der Diagnosedaten, die mithilfe von Push in Azure Monitor-Protokolle übertragen werden Immer „AzureBackupReport“ |
+| Category |Text |Kategorie der Diagnosedaten, die mithilfe von Push in Azure Monitor-Protokolle übertragen werden Immer „AzureBackupReport“ |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedContainerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der der Warnung zugeordnet ist (war ProtectedServerUniqueId_s in V1)|
 | VaultUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Tresors, der der Warnung zugeordnet ist |
@@ -80,7 +80,7 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf Sicherungselemente.
 | State_s |Text |Status des Sicherungselementobjekts, z.B. „Aktiv“ oder „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für die Sicherung, zu der dieses Sicherungselement gehört, z.B. IaaSVM, FileFolder |
 | OperationName |Text |Name des Vorgangs, z.B. „BackupItem“ |
-| Category (Kategorie) |Text |Kategorie der Diagnosedaten, die mithilfe von Push in Azure Monitor-Protokolle übertragen werden Immer „AzureBackupReport“ |
+| Category |Text |Kategorie der Diagnosedaten, die mithilfe von Push in Azure Monitor-Protokolle übertragen werden Immer „AzureBackupReport“ |
 | Resource |Text |Ressource, für die Daten erfasst werden; z.B. der Name des Recovery Services-Tresors |
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | resourceId |Text |Ressourcen-ID, für die Daten erfasst werden; z.B. die Ressourcen-ID des Recovery Services-Tresors |
@@ -102,7 +102,7 @@ Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschie
 | BackupManagementType_s |Text |Anbietertyp für den Server zur Durchführung des Sicherungsjobs, z.B. IaaSVM, FileFolder |
 | BackupItemSourceSize_s |Text | Front-End-Größe des Sicherungselements |
 | BackupManagementServerUniqueId_s |Text | Feld, um den Server für die Sicherungsverwaltung, durch den das Sicherungselement geschützt wird, eindeutig zu bestimmen (wenn zutreffend) |
-| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
+| Category |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | OperationName |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: BackupItemAssociation |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedContainerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der dem Sicherungselement zugeordnet ist (war ProtectedServerUniqueId_s in V1) |
@@ -145,7 +145,7 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | State_s |Text |Aktueller Status des Auftragsobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für den Server zur Durchführung des Sicherungsjobs, z.B. IaaSVM, FileFolder |
 | OperationName |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Auftrag |
-| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
+| Category |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der dem Job zugeordnet ist |
 | ProtectedContainerUniqueId_s |Text | Eindeutige ID, um den geschützten Container zu bestimmen, in dem der Auftrag ausgeführt wird |
@@ -160,7 +160,7 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | DataTransferredInMB_s | Number |Für diesen Auftrag übertragene Daten in MB|
 | JobUniqueId_g |Text |Eindeutige ID zur Bezeichnung des Auftrags |
 | RecoveryJobDestination_s |Text | Ziel eines Wiederherstellungsauftrags, an dem die Daten wiederhergestellt werden |
-| RecoveryJobRPDateTime_s |DateTime | Datum und Uhrzeit, wann der Wiederherstellungspunkt, der wiederhergestellt wird, erstellt wurde |
+| RecoveryJobRPDateTime_s |Datetime | Datum und Uhrzeit, wann der Wiederherstellungspunkt, der wiederhergestellt wird, erstellt wurde |
 | RecoveryJobRPLocation_s |Text | Ort, an dem der Wiederherstellungspunkt, der wiederhergestellt wird, gespeichert wurde|
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | resourceId |Text |Ressourcenbezeichner der Daten, die erfasst werden. Beispiel: Ressourcen-ID des Recovery Services-Tresors|
@@ -180,7 +180,7 @@ Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 | State_s |Text ||Aktueller Status des Richtlinienobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text ||Anbietertyp für den Server zur Durchführung des Sicherungsjobs, z.B. IaaSVM, FileFolder |
 | OperationName |Text ||Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Richtlinie |
-| Category (Kategorie) |Text ||Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
+| Category |Text ||Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
 | Resource |Text ||Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | PolicyUniqueId_g |Text ||Eindeutige ID zur Bezeichnung der Richtlinie |
 | PolicyName_s |Text ||Name der definierten Richtlinie |
@@ -228,7 +228,7 @@ Diese Tabelle enthält Details zur Zuordnung von Richtlinien zu verschiedenen En
 | State_s |Text ||Aktueller Status des Richtlinienobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text ||Anbietertyp für den Server zur Durchführung des Sicherungsjobs, z.B. IaaSVM, FileFolder |
 | OperationName |Text ||Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: PolicyAssociation |
-| Category (Kategorie) |Text ||Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
+| Category |Text ||Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
 | Resource |Text ||Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | PolicyUniqueId_g |Text ||Eindeutige ID zur Bezeichnung der Richtlinie |
 | VaultUniqueId_s |Text ||Eindeutige ID des Tresors, zu dem diese Richtlinie gehört |
@@ -272,7 +272,7 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 | State_s |Text |Aktueller Status des Speicherobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | BackupManagementType_s |Text |Anbietertyp für den Server zur Durchführung des Sicherungsjobs, z.B. IaaSVM, FileFolder |
 | OperationName |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Speicher |
-| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
+| Category |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | ProtectedServerUniqueId_s |Text |Eindeutige ID des geschützten Servers, für den der Speicher berechnet wird |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors, für den der Speicher berechnet wird |
@@ -296,7 +296,7 @@ In dieser Tabelle sind grundlegende speicherbezogene Felder enthalten, die Speic
 | StorageUniqueId_s |Text |Eindeutige ID, mithilfe derer die Speicherentität bestimmt wird |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
 | BackupItemUniqueId_s |Text |Eindeutige ID, mithilfe derer das Sicherungselement bestimmt wird, das mit der Speicherentität verbunden ist |
-| BackupManagementServerUniqueId_s |Text |Eindeutige ID, mithilfe derer der Sicherungsverwaltungsserver bestimmt wird, der mit der Speicherentität verbunden ist|
+| BackupManagementServerUniqueId_s |Text |Eindeutige ID, mithilfe derer das Sicherungselement bestimmt wird, das mit der Speicherentität verbunden ist|
 | VaultUniqueId_s |Text |Eindeutige ID, mithilfe derer der Tresor bestimmt wird, der mit der Speicherentität verbunden ist|
 | StorageConsumedInMBs_s |Number|Speichergröße, die vom entsprechenden Sicherungselement im entsprechenden Speicher benötigt wird |
 | StorageAllocatedInMBs_s |Number |Speichergröße, die dem entsprechenden Sicherungselement im entsprechenden Speicher des Typs „Datenträger“ zugewiesen wird|
@@ -311,7 +311,7 @@ Diese Tabelle enthält Details zu tresorbezogenen Feldern.
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
 | State_s |Text |Aktueller Status des Tresorobjekts, z.B. „Aktiv“, „Gelöscht“ |
 | OperationName |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Tresor |
-| Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
+| Category |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Azure Monitor-Protokolle übermittelt werden: AzureBackupReport |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
 | VaultUniqueId_s |Text |Eindeutige ID des Tresors |
 | VaultName_s |Text |Name des Tresors |

@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: dacurwin
-ms.openlocfilehash: d0d2663fcf7be9662325b24f9f063a8f3def668a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8ba28829d3ee18b441227e537cb0a7ca97fb7638
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688524"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074049"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
+
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
 > [!IMPORTANT]
@@ -29,9 +30,8 @@ Azure Backup bietet drei integrierte Rollen, um Vorgänge der Sicherungsverwaltu
 
 Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum [Erstellen von benutzerdefinierten Rollen](../role-based-access-control/custom-roles.md) in Azure RBAC weiter.
 
-
-
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Zuordnen der integrierten Backup-Rollen zu Aktionen der Sicherungsverwaltung
+
 In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale RBAC-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
 
 | Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle | Bereich erforderlich |
@@ -63,23 +63,24 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 > Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und auf „Sicherung“ klicken, öffnet sich der Bildschirm „Sicherung aktivieren“, obwohl die VM bereits gesichert ist, da der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
+
 In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende Rolle aufgeführt, die zum Ausführen des Vorgangs für die Azure-Dateifreigabe erforderlich ist.
 
 | Verwaltungsvorgang | Erforderliche Rolle | Ressourcen |
 | --- | --- | --- |
-| Aktivieren der Sicherung von Azure-Dateifreigaben | Mitwirkender für Sicherungen | Recovery Services-Tresor |
-| | Speicherkonto | Speicherkontoressource „Mitwirkender“ |
+| Aktivieren der Sicherung von Azure-Dateifreigaben | Mitwirkender für Sicherungen |Recovery Services-Tresor |
+| |Speicherkonto | Speicherkontoressource „Mitwirkender“ |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
 | Wiederherstellen einer Azure-Dateifreigabe | Sicherungsoperator | Recovery Services-Tresor |
 | | Mitwirkender von Speicherkonto | Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
 | Wiederherstellen einzelner Dateien | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von Speicherkonto |   Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
-| Schutz beenden | Mitwirkender für Sicherungen | Recovery Services-Tresor |      
-| Aufheben der Registrierung eines Speicherkontos im Tresor |   Mitwirkender für Sicherungen | Recovery Services-Tresor |
-| | Mitwirkender von Speicherkonto | Speicherkontoressource|
-
+| |Mitwirkender von Speicherkonto|Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
+| Schutz beenden |Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Aufheben der Registrierung eines Speicherkontos im Tresor |Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| |Mitwirkender von Speicherkonto | Speicherkontoressource|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)

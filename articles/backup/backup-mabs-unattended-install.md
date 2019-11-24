@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210170"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074797"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Ausführen einer unbeaufsichtigten Installation von Azure Backup Server
 
@@ -60,6 +60,7 @@ Sie können diese Flags für die Installation verwenden:</br>
 **/x**: Deinstallationspfad</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie, wie Sie nach der Installation von Backup Server Ihren Server vorbereiten oder mit dem Schutz einer Workload beginnen.
 
 - [Vorbereiten von Backup Server-Workloads](backup-azure-microsoft-azure-backup.md)

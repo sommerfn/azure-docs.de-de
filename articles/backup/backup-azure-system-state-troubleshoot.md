@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5901cbe1e30eb1ce2334a7b935a3629c66c24b8a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747306"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091587"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -45,7 +45,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 - Eine Systemstatuswiederherstellung auf anderer Hardware wird von Microsoft nicht empfohlen.
 - Die Systemstatussicherung unterstützt derzeit „lokale“ Windows-Server. Für virtuelle Azure-Computer steht diese Funktion nicht zur Verfügung.
 
-## <a name="pre-requisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit der Problembehandlung bei der Systemstatussicherung mit Azure Backup beginnen, müssen Sie die folgende Voraussetzungen überprüfen.  
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747628"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903625"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
 
@@ -276,7 +276,7 @@ Momentaufnahmen von Azure-Dateifreigaben werden beim Erstellen von Sicherungen v
 
 ### <a name="using-on-demand-backups-to-extend-retention"></a>Verwenden von bedarfsgesteuerten Sicherungen zum Verlängern der Aufbewahrung
 
-Durch Verwendung von bedarfsgesteuerten Sicherungen können Ihre Momentaufnahmen 10 Jahre lang aufbewahrt werden. Sie können Scheduler verwenden, um bedarfsgesteuerte PowerShell-Skripts mit ausgewählter Aufbewahrung auszuführen und so Momentaufnahmen in regelmäßigen Abständen (wöchentlich, monatlich oder jährlich) zu erstellen. Informationen zum Erstellen regelmäßiger Momentaufnahmen unter Verwendung von Azure Backup finden Sie unter den [Einschränkungen von bedarfsgesteuerten Sicherungen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-).
+Durch Verwendung von bedarfsgesteuerten Sicherungen können Ihre Momentaufnahmen 10 Jahre lang aufbewahrt werden. Sie können Scheduler verwenden, um bedarfsgesteuerte PowerShell-Skripts mit ausgewählter Aufbewahrung auszuführen und so Momentaufnahmen in regelmäßigen Abständen (wöchentlich, monatlich oder jährlich) zu erstellen. Informationen zum Erstellen regelmäßiger Momentaufnahmen unter Verwendung von Azure Backup finden Sie unter den [Einschränkungen von bedarfsgesteuerten Sicherungen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share).
 
 Ein Beispielskript finden Sie auf GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)>. Mit diesem Skript können Sie unter Verwendung eines Azure Automation-Runbooks Sicherungen regelmäßig planen und sogar bis zu 10 Jahre aufbewahren.
 
