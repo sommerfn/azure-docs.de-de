@@ -4,7 +4,7 @@ description: Azure AD Self-Service-Kennwortzurücksetzung – Problembehandlung
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ecb2086f15159142ea55f96b2405b464c1f23a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786809"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893448"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -142,7 +142,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 | 33001| ADUnKnownError| Dieses Ereignis gibt an, dass von Active Directory ein unbekannter Fehler zurückgegeben wurde. Prüfen Sie das Ereignisprotokoll des Azure AD Connect-Servers auf Ereignisse mit der Quelle „ADSync“, um weitere Informationen zu erhalten.|
 | 33002| ADUserNotFoundError| Dieses Ereignis weist darauf hin, dass der Benutzer, der ein Kennwort zurücksetzen oder ändern möchte, nicht im lokalen Verzeichnis gefunden wurde. Dieser Fehler kann auftreten, wenn der Benutzer lokal, aber nicht in der Cloud gelöscht wurde. Er kann aber auch auf ein Problem mit der Synchronisierung zurückzuführen sein. Prüfen Sie Ihre Synchronisierungsprotokolle und die Details zu den letzten Synchronisierungsvorgängen, um weitere Informationen zu erhalten.|
 | 33003| ADMutliMatchError| Wenn eine Anforderung zur Kennwortzurücksetzung oder -änderung aus der Cloud stammt, wird mithilfe des bei der Einrichtung von Azure AD Connect angegeben Cloudankers ermittelt, wie diese Anforderung mit einem Benutzer in Ihrer lokalen Umgebung verknüpft wird. Dieses Ereignis weist darauf hin, dass zwei Benutzer mit demselben Cloudankerattribut im lokalen Verzeichnis gefunden wurden. Prüfen Sie Ihre Synchronisierungsprotokolle und die Details zu den letzten Synchronisierungsvorgängen, um weitere Informationen zu erhalten.|
-| 33004| ADPermissionsError| Dieses Ereignis gibt an, dass das ADMA-Dienstkonto (Active Directory Management Agent, Active Directory-Verwaltungs-Agent) über keine ausreichenden Berechtigungen verfügt, um für das betreffende Konto neues Kennwort festzulegen. Stellen Sie sicher, dass das ADMA-Konto in der Gesamtstruktur des Benutzers über die Berechtigungen zum Zurücksetzen und Ändern von Kennwörtern für alle Objekte in der Gesamtstruktur verfügt. Weitere Informationen zum Festlegen von Berechtigungen finden Sie in Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen.|
+| 33004| ADPermissionsError| Dieses Ereignis gibt an, dass das ADMA-Dienstkonto (Active Directory Management Agent, Active Directory-Verwaltungs-Agent) über keine ausreichenden Berechtigungen verfügt, um für das betreffende Konto neues Kennwort festzulegen. Stellen Sie sicher, dass das ADMA-Konto in der Gesamtstruktur des Benutzers über die Berechtigungen zum Zurücksetzen und Ändern von Kennwörtern für alle Objekte in der Gesamtstruktur verfügt. Weitere Informationen zum Festlegen von Berechtigungen finden Sie in Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen. Dieser Fehler kann auch auftreten, wenn das „AdminCount“-Attribut des Benutzers auf „1“ festgelegt ist.|
 | 33005| ADUserAccountDisabled| Dieses Ereignis gibt an, dass versucht wurde, ein Kennwort für ein lokal deaktiviertes Konto zurückzusetzen oder zu ändern. Aktivieren Sie das Konto, und versuchen Sie es erneut.|
 | 33006| ADUserAccountLockedOut| Dieses Ereignis gibt an, dass versucht wurde, ein Kennwort für ein lokal gesperrtes Konto zurückzusetzen oder zu ändern. Sperrungen können auftreten, wenn ein Benutzer innerhalb eines kurzen Zeitraums zu häufig versucht hat, ein Kennwort zu ändern oder zurückzusetzen. Entsperren Sie das Konto, und versuchen Sie es erneut.|
 | 33007| ADUserIncorrectPassword| Dieses Ereignis weist darauf hin, dass der Benutzer beim Ausführen einer Kennwortänderung ein falsches aktuelles Kennwort angegeben hat. Geben Sie das richtige aktuelle Kennwort an, und versuchen Sie es erneut.|

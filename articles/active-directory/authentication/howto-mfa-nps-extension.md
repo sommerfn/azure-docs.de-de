@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874331"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061482"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -119,13 +119,13 @@ Wenn Sie einen neuen Synchronisierungslauf starten möchten, gehen Sie anhand de
 Zwei Faktoren haben Einfluss darauf, welche Authentifizierungsmethoden mit der Bereitstellung einer NPS-Erweiterung verfügbar sind:
 
 1. Der Kennwortverschlüsselungsalgorithmus wird zwischen dem RADIUS-Client (VPN, NetScaler-Server oder andere) und den NPS-Servern verwendet.
-   - **PAP** unterstützt alle Authentifizierungsmethoden von Azure MFA in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App und Überprüfungscode in der mobilen App.
+   - **PAP** unterstützt alle Authentifizierungsmethoden von Azure MFA in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App, OATH-Hardwaretoken und Überprüfungscode in der mobilen App.
    - **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App.
 
       > [!NOTE]
       > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
       >
-      > Wenn die Benutzeroberfläche Ihres VPN-Clients kein Eingabefeld unterstützt und Sie eine Netzwerkzugriffsrichtlinie konfiguriert haben, kann zwar die Authentifizierung erfolgreich sein, aber keines der in der Netzwerkrichtlinie konfigurierten RADIUS-Attribute wird auf das Netzwerkzugriffsgerät, z. B. den RRAS-Server, oder den VPN-Client angewendet. Daraus resultiert, dass der VPN-Client mehr, weniger oder fast keinen Zugriff haben kann, als gewünscht.
+      > Wenn die Benutzeroberfläche Ihres VPN-Clients kein Eingabefeld unterstützt und Sie eine Netzwerkzugriffsrichtlinie konfiguriert haben, kann zwar die Authentifizierung erfolgreich sein, aber keines der in der Netzwerkrichtlinie konfigurierten RADIUS-Attribute wird auf das Netzwerkzugriffsgerät, z. B. den RRAS-Server, oder den VPN-Client angewendet. Folglich hat der VPN-Client möglicherweise mehr Zugriff als gewünscht, weniger oder gar keinen Zugriff.
       >
 
 2. Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
@@ -140,7 +140,7 @@ Führen Sie die folgende Schritte aus, um ein Testkonto einzurichten:
 
 1. Melden Sie sich bei [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an.
 2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
-3. [Erstellen Sie eine bedingte Zugriffsrichtline](howto-mfa-getstarted.md#create-conditional-access-policy) für eine mehrstufige Authentifizierung beim Testkonto.
+3. [Erstellen Sie eine Richtlinie für bedingten Zugriff](howto-mfa-getstarted.md#create-conditional-access-policy), um für das Testkonto eine mehrstufige Authentifizierung zu erzwingen.
 
 ## <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
@@ -195,11 +195,11 @@ Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat ge
 
 ### <a name="certificate-rollover"></a>Zertifikatrollover
 
-Mit der Veröffentlichung von Version 1.0.1.32 der NPS-Erweiterung wird jetzt das Lesen von mehreren Zertifikaten unterstützt. Diese Funktion hilft Ihnen dabei, Zertifikatupdates vor ihrem Ablauf einzuführen. Wenn Ihre Organisation eine ältere Version der NPS-Erweiterung verwendet, dann sollten Sie sie auf 1.0.1.32 oder neuer aktualisieren.
+Ab Release 1.0.1.32 der NPS-Erweiterung wird das Lesen von mehreren Zertifikaten unterstützt. Diese Funktion vereinfacht das Aktualisieren von Zertifikaten vor deren Ablauf. Wenn in Ihrer Organisation eine ältere Version der NPS-Erweiterung ausgeführt wird, sollten Sie ein Upgrade auf Version 1.0.1.32 oder höher durchführen.
 
-Zertifikat, die vom `AzureMfaNpsExtnConfigSetup.ps1`-Skript erstellt werden, sind 2 Jahre gültig. IT-Organisationen sollten ein Auge auf das Ablaufdatum von Zertifikaten haben. Zertifikate für die NPS-Erweiter werden im Zertifikatspeicher des lokalen Computers unter „persönlich“ gespeichert und der Mandanten-ID zugeteilt, die zum Skript gehört.
+Vom `AzureMfaNpsExtnConfigSetup.ps1`-Skript erstellte Zertifikate sind 2 Jahre gültig. IT-Organisationen sollten das Ablaufdatum von Zertifikaten überwachen. Zertifikate für die NPS-Erweiterung werden im Zertifikatspeicher des lokalen Computers unter „Persönlich“ gespeichert und für die Mandanten-ID ausgestellt, die für das Skript bereitgestellt wird.
 
-Wenn ein Zertifikat sich seinem Ablaufdatum nähert, dann sollten Sie ein neues Zertifikat erstellen, das es ersetzt.  Dies können Sie durch erneutes Ausführen von `AzureMfaNpsExtnConfigSetup.ps1` erreichen. Behalten Sie dazu die Mandanten-ID bei, wenn Sie dazu aufgefordert werden. Wiederholen Sie diesen Vorgang auf jedem NPS-Server in Ihrer Umgebung.
+Wenn sich das Ablaufdatum eines Zertifikats nähert, sollten Sie ein neues Zertifikat erstellen, um es zu ersetzen.  Dies können Sie durch erneutes Ausführen von `AzureMfaNpsExtnConfigSetup.ps1` erreichen. Behalten Sie dazu die Mandanten-ID bei, wenn Sie dazu aufgefordert werden. Dieser Vorgang sollte auf jedem NPS-Server in Ihrer Umgebung wiederholt werden.
 
 ## <a name="configure-your-nps-extension"></a>Konfigurieren der NPS-Erweiterung
 
@@ -314,7 +314,7 @@ Es empfiehlt sich, ältere und weniger leistungsstarke Verschlüsselungssammlung
 
 ### <a name="additional-troubleshooting"></a>Weitere Informationen zur Problembehandlung
 
-Zusätzliche Anleitungen zur Problembehandlung und mögliche Lösungen finden Sie im Artikel [„Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication“](howto-mfa-nps-extension-errors.md).
+Zusätzliche Anleitungen zur Problembehandlung und mögliche Lösungen finden Sie im Artikel [Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

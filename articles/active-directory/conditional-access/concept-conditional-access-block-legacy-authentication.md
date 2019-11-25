@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452928"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819738"
 ---
 # <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
  
@@ -33,9 +33,11 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 1. Navigieren Sie im Azure-Portal zu „Azure Active Directory“ > „Anmeldungen“.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf „Spalten“ > „Client-App“ hinzu.
-1. Filtern Sie nach „Client-App“ > „Andere Clients“, und klicken Sie auf „Übernehmen“.
+1. Filtern Sie nach Client-App, überprüfen Sie alle anderen angezeigten Clientoptionen, und klicken Sie auf „Übernehmen“.
+1. Filtern Sie nach Status > Erfolg, und klicken Sie auf „Übernehmen“. 
+1. Erweitern Sie ggf. den Datumsbereich mithilfe des Filters „Datum“.
 
-Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das Feld „Client-App“ auf der Registerkarte „Grundlegende Informationen“ gibt an, welches Legacyauthentifizierungsprotokoll verwendet wurden. Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Für Benutzer, die nicht in diesen Protokollen aufgeführt sind und für die bestätigt wurde, dass sie keine veraltete Authentifizierungsmethode verwenden, implementieren Sie eine Richtlinie für bedingten Zugriff. Oder aktivieren Sie nur für diese Benutzer die Basisrichtlinie zum Blockieren der Legacyauthentifizierung.
+Beim Filtern werden nur erfolgreiche Anmeldeversuche der ausgewählten Legacyauthentifizierungsprotokolle angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Wenn Sie eine einzelne Datenzeile auswählen, wird in der Spalte „Client-App“ oder im Feld „Client-App“ (auf der Registerkarte „Grundlegende Infos“) angezeigt, welches Legacyauthentifizierungsprotokoll verwendet wurde. Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Für Benutzer, die nicht in diesen Protokollen aufgeführt sind und für die bestätigt wurde, dass sie keine veraltete Authentifizierungsmethode verwenden, implementieren Sie eine Richtlinie für bedingten Zugriff. Oder aktivieren Sie nur für diese Benutzer die Basisrichtlinie zum Blockieren der Legacyauthentifizierung.
 
 ## <a name="moving-away-from-legacy-authentication"></a>Der Abschied von der Legacyauthentifizierung 
 

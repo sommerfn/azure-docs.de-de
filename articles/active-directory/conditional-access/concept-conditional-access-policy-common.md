@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abcca0d2712a462e4d2ecf9c8023d0cb0e68ad6c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1991a3fe844b3a8669a67e491359e1a96658c844
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576013"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151254"
 ---
 # <a name="common-conditional-access-policies"></a>Allgemeine Richtlinien für bedingten Zugriff
 
@@ -35,6 +35,7 @@ Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finde
 
 * [Vorschreiben der MFA für Administratoren](howto-conditional-access-policy-admin-mfa.md)
 * [Vorschreiben der MFA für die Azure-Verwaltung](howto-conditional-access-policy-azure-management.md)
+* [Erzwingen der MFA für alle Benutzer](howto-conditional-access-policy-all-users-mfa.md)
 * [Blockieren älterer Authentifizierungsmethoden](howto-conditional-access-policy-block-legacy.md)
 * [Risikobasierter bedingter Zugriff (erfordert Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung](howto-conditional-access-policy-registration.md)

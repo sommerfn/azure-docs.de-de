@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162416"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808463"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -35,6 +35,9 @@ Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nat
 
 > [!IMPORTANT]
 > Wenn Benutzer für die ursprüngliche Vorschauversion und für die erweiterte kombinierte Registrierung aktiviert sind, können sie das neue Verhalten sehen. Benutzer, die für beide Funktionen aktiviert sind, sehen nur die neue Oberfläche „Mein Profil“. Die neue Oberfläche „Mein Profil“ hat das Erscheinungsbild der kombinierten Registrierung und bietet Benutzern eine einheitliche Oberfläche. Benutzer können „Mein Profil“ anzeigen, indem sie zu [https://myprofile.microsoft.com](https://myprofile.microsoft.com) navigieren.
+
+> [!NOTE] 
+> Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, auf die Option „Sicherheitsinformation“ zuzugreifen. Beispielsweise „Anmeldung nicht möglich“. Vergewissern Sie sich in diesem Fall, dass Cookies von Drittanbietern im Webbrowser nicht durch eine Konfiguration oder ein Gruppenrichtlinienobjekt blockiert werden. 
 
 Die Seiten von „Mein Profil“ sind entsprechend den aktuellen Spracheinstellungen auf dem Computer lokalisiert, über den auf die Seite zugegriffen wird. Microsoft speichert die aktuell verwendete Sprache im Browsercache, sodass nachfolgende Zugriffsversuche auf die Seiten weiterhin in der zuletzt verwendeten Sprache angezeigt werden. Wenn Sie den Cache löschen, werden die Seiten neu gerendert. Wenn Sie eine bestimmte Sprache erzwingen möchten, können Sie am Ende der URL `?lng=<language>` hinzufügen. Dabei ist `<language>` der Code der Sprache, in der Sie rendern möchten.
 

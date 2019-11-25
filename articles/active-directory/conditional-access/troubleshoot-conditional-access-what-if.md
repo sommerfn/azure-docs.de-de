@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278632"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175819"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Beheben von Problemen beim bedingten Zugriff mit dem Was-wäre-wenn-Tool
 
@@ -25,6 +25,9 @@ Das [Was-wäre-wenn-Tool](what-if-tool.md) für den bedingten Zugriff ist effekt
 Das Was-wäre-wenn-Tool befindet sich in **Azure-Portal** > **Azure Active Directory** > **Bedingter Zugriff** > **What If**.
 
 ![Was-wäre-wenn-Tool für den bedingten Zugriff im Standardzustand](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> Derzeit ist es mit dem Was-wäre-wenn-Tool nicht möglich, Richtlinien im reinen Berichtsmodus auszuwerten.
 
 ## <a name="gathering-information"></a>Sammeln von Informationen
 

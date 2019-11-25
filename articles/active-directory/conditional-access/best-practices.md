@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980494"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175770"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -89,7 +89,7 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 Ja, Sie können Exchange ActiveSync in einer Richtlinie für bedingten Zugriff verwenden.
 
-Einige Cloud-Apps wie SharePoint Online und Exchange Online unterstützen auch ältere Authentifizierungsprotokolle. Wenn eine Client-App mit einem älteren Authentifizierungsprotokoll auf eine Cloud-App zugreifen kann, kann Azure AD für diesen Zugriffsversuch keine Richtlinie für den bedingten Zugriff erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
+Einige Cloud-Apps wie SharePoint Online und Exchange Online unterstützen auch ältere Authentifizierungsprotokolle. Wenn eine Client-App mit einem Legacyauthentifizierungsprotokoll auf eine Cloud-App zugreifen kann, ist es Azure AD nicht möglich, eine Richtlinie für bedingten Zugriff für diesen Zugriffsversuch zu erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Wie sollten Sie den bedingten Zugriff für Office 365-Apps konfigurieren?
 
