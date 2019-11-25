@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: Konfiguration für die Systemüberwachung
               href: insights/container-insights-health-monitors-config.md
-            - name: Deaktivieren der Überwachung
+            - name: Deaktivieren der Überwachung von AKS
               href: insights/container-insights-optout.md
+            - name: Deaktivieren der Überwachung von Red Hat OpenShift
+              href: insights/container-insights-optout-openshift.md
             - name: Problembehandlung
               href: insights/container-insights-troubleshoot.md
         - name: Überwachen von Docker- und Windows-Containern

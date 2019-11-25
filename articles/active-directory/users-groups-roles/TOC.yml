@@ -86,6 +86,8 @@
           href: groups-members-owners-search.md
         - name: Erstellen einer Gruppe (Azure-Portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Vertraulichkeitsbezeichnungen zuweisen (Vorschau)
+          href: groups-assign-sensitivity-labels.md
         - name: 'Verwalten von Gruppen: PowerShell für Graph (v2)'
           href: groups-settings-v2-cmdlets.md
         - name: 'Verwalten von Gruppen: PowerShell MSOnline'
