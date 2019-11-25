@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Traffic Manager-Profils für Hochverfügbarkeit von Anwendungen mit der Azure-Befehlszeilenschnittstelle'
+title: 'Schnellstart: Erstellen eines Profils für hoch verfügbare Anwendungen – Azure CLI – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um eine hoch verfügbare Webanwendung zu entwickeln.
 services: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: dc7e555eb95cf88ecf57a6df4999672bb721b8cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618790"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034220"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung mit der Azure-Befehlszeilenschnittstelle
 

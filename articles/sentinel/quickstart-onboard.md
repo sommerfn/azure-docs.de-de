@@ -1,30 +1,22 @@
 ---
-title: Ausführen des Onboardings für Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Daten in Azure Sentinel sammeln.
+title: 'Schnellstart: Ausführen des Onboardings für Azure Sentinel'
+description: Informationen zum Sammeln von Daten in Azure Sentinel finden Sie in diesem Schnellstart Dokument.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316809"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133098"
 ---
-# <a name="on-board-azure-sentinel"></a>Ausführen des Onboardings für Azure Sentinel
-
-
+# <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
 In diesem Schnellstart erfahren Sie, wie Sie mit Azure Sentinel loslegen können. 
 
@@ -32,6 +24,19 @@ Wenn Sie Azure Sentinel integrieren wollen, müssen Sie Azure Sentinel zuerst ak
 
 Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von professionell erstellten Arbeitsmappen zur Anzeige der Erkenntnisse, die Sie aus Ihren Daten gewinnen, zur Auswahl. Diese Arbeitsmappen können einfach an Ihre Anforderungen angepasst werden.
 
+>[!NOTE] 
+> Der [Azure Sentinel-Preis](https://azure.microsoft.com/pricing/details/azure-sentinel/) basiert auf der Menge der Daten, die im zugeordneten Azure Monitor Log Analytics-Arbeitsbereich erfasst wurden. Einige der folgenden Datenconnectors werden nicht für die Erfassung in Rechnung gestellt, es fallen jedoch Gebühren an, wenn Sie eine beliebige Warnung mithilfe der erfassten Daten generieren, die im Log Analytics-Arbeitsbereich gespeichert werden. Dies wird gemäß den [Azure Monitor Log Analytics-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet. 
+  > - Azure-Aktivität (Aktivitätsprotokolle für Azure-Vorgänge)
+  > - Azure Active Directory Identity Protection (für Mandanten mit AAD P2-Lizenzen)
+  > - Azure Information Protection
+  > - Azure Advanced Threat Protection (Warnungen)
+  > - Azure Security Center (Warnungen)
+  > - Microsoft Cloud App Security (nur Warnungen)
+  > - Microsoft Defender Advanced Threat Protection (Überwachen von Agent-Warnungen)
+  > - Office 365 (Exchange- und SharePoint-Protokolle)
+>
+> Azure AD/Office 365-Überwachungsprotokolle sind nicht kostenlos und werden als Premium-Tarif angeboten, daher wird die Erfassung dieser Daten pro GB berechnet. 
+  
 
 ## <a name="global-prerequisites"></a>Globale Voraussetzungen
 

@@ -1,22 +1,18 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266677"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132504"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
-Das häufigste Szenario für Azure Lighthouse ist ein Dienstanbieter, der Ressourcen auf den Azure AD-Mandanten (Azure Active Directory) seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse können aber auch zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
+Das häufigste Szenario für [Azure Lighthouse](../overview.md) ist ein Dienstanbieter, der Ressourcen auf den Azure AD-Mandanten (Azure Active Directory) seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse können aber auch zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
 
 ## <a name="single-vs-multiple-tenants"></a>Einzelner Mandant und mehrere Mandanten
 

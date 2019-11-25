@@ -1,18 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe von Azure PowerShell'
+title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags – Azure PowerShell'
+titleSuffix: Azure DNS
 description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist ein schrittweiser Schnellstart zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe von Azure PowerShell.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730312"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072185"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags mithilfe von Azure PowerShell
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f570cb6f945f403e77a36374cc9f82edb7b640c9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 266e68b2378db7148649fd4067f1da6172932367
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174537"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833853"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung
 
@@ -150,6 +150,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zum Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für SAP Cloud Platform Identity Authentication ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* Der SCIM-Endpunkt von SAP Cloud Platform Identity Authentication erfordert, dass bestimmte Attribute ein spezifisches Format aufweisen. Weitere Informationen zu diesen Attributen und deren spezifischem Format finden Sie [hier](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073819"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176871"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
 
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
-  
+
 Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im Entwicklerportal anpassen.  
   
 -   [API-Liste](#APIList)  
@@ -41,12 +41,14 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="APIList"></a> API-Liste  
  Mit der Vorlage für die **API-Liste** können Sie den Text der API-Listenseite im Entwicklerportal anpassen.  
   
- ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM-Entwicklerportal API-Vorlagenliste")  
+ ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Vorlagen im APIM-Entwicklerportal: API-Liste")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -114,7 +116,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 ## <a name="Product"></a> Vorgang  
  Mit der Vorlage für den **Vorgang** können Sie den Text der Vorgangsseite im Entwicklerportal anpassen.  
   
- ![Vorgangsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorgangsseite mit Vorlagen des APIM-Entwicklerportals")  
+ ![Betriebsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorlagen im APIM-Entwicklerportal: Betriebsseite")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -644,7 +646,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 ## <a name="CodeSamples"></a> Codebeispiele  
  Mit den folgenden Vorlagen können Sie den Text der einzelnen Codebeispiele auf der Vorgangsseite anpassen.  
   
- ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Codebeispiele für Vorlagen im APIM-Entwicklerportal")  
+ ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Vorlagen im APIM-Entwicklerportal: Codebeispiele")  
   
 -   [Curl](#Curl)  
   

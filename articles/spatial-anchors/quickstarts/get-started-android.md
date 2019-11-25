@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 248b66a928d373678d3058be488e226ee51bbcae
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845733"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092129"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors
 
@@ -38,7 +38,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
   - Zum Erstellen des NDK-Beispiels müssen Sie auch NDK und die SDK Tools für CMake 3.6 oder höher in Android Studio installieren.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
   - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen und Anweisungen finden Sie [hier](https://developer.android.com/studio/run/device.html).
-- Ihre App muss für ARCore **1.8** geeignet sein.
+- Ihre App muss für ARCore **1.11.0** geeignet sein.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,7 +52,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Laden Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
+Laden Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
 
 Initialisieren Sie im neu geklonten Repository Submodule, indem Sie den folgenden Befehl ausführen:
 

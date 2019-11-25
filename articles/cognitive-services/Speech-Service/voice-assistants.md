@@ -39,7 +39,7 @@ Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welch
 Wir empfehlen Ihnen die Verwendung von [Direct Line Speech](direct-line-speech.md) als Standardauswahl, falls Sie noch nicht genau wissen, wie Ihr Assistent eingesetzt werden soll. Hiermit erhalten Sie eine Integration mit umfassenden Tools und Erstellungshilfen, z. B. die [Lösung „Virtueller Assistent“ und die Unternehmensvorlage](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) sowie den [QnA Maker-Dienst](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview), um häufig verwendete Muster zu nutzen und zu erweitern und Ihre vorhandenen Wissensquellen zu verwenden.
 
 Bei [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) handelt es sich um eine optimierte Erstellungs- und Hostingumgebung, die für Szenarien vom Typ „Befehl und Steuerung“ in natürlicher Sprache konzipiert wurde.
-   ![Vergleich von Assistentenlösungen](media/voice-assistants/assistant-solution-comparison.png "CompVergleich von Assistenten-Lösungen
+   ![Vergleich von Assistentenlösungen](media/voice-assistants/assistant-solution-comparison.png "CompVergleich von Assistentenlösungen")
 
 ## <a name="core-features"></a>Wichtige Funktionen
 

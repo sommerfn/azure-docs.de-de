@@ -1,22 +1,22 @@
 ---
-title: Einrichten von Device Provisioning im Azure-Portal | Microsoft-Dokumentation
+title: 'Schnellstart: Einrichten von Device Provisioning im Azure-Portal'
 description: Azure-Schnellstart – Einrichten des Azure IoT Hub Device Provisioning-Diensts im Azure-Portal
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/12/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0b16c6da0066ac4e919c1bef031d3206a359aae6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 504e027095d839efcbfb535c0e1ecc8c6cfbad26
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818118"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903453"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
 Diese Schritte veranschaulichen, wie Sie die Azure-Cloudressourcen im Portal für die Bereitstellung Ihrer Geräte einrichten. Dieser Artikel enthält Schritte für die Erstellung Ihres IoT Hub, die Erstellung eines neuen IoT Hub Device Provisioning-Diensts und die Verknüpfung der beiden Dienste. 
 

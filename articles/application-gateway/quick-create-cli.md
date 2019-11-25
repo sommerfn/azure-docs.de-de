@@ -1,19 +1,20 @@
 ---
-title: 'Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure CLI | Microsoft-Dokumentation'
+title: 'Schnellstart: Weiterleiten von Webdatenverkehr mit der CLI'
+titleSuffix: Azure Application Gateway
 description: Es wird beschrieben, wie Sie die Azure CLI zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: de1f30d949509ab48999d0080ccc4df74321ce01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314893"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075200"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI
 

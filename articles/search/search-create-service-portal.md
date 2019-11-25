@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal'
+title: 'Schnellstart: Erstellen eines Suchdiensts über das Portal'
 titleSuffix: Azure Cognitive Search
 description: Stellen Sie eine Ressource für die kognitive Azure-Suche im Azure-Portal bereit. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792433"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112121"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
 Die kognitive Azure-Suche ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Die kognitive Azure-Suche lässt sich problemlos in andere Azure-Dienste integrieren, kann aber auch als eigenständige Komponente verwendet oder in Apps auf Netzwerkservern oder in auf anderen Cloudplattformen ausgeführte Software integriert werden.
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure-Ressource für die kognitive Suche im [Azure-Portal](https://portal.azure.com/) erstellen.
+In diesem Artikel erfahren Sie, wie Sie eine Ressource im [Azure-Portal](https://portal.azure.com/) erstellen.
 
 [![Animiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -37,24 +37,26 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
 3. Suchen Sie mithilfe der Suchleiste nach „kognitive Azure-Suche“, oder navigieren über **Web** > **Azure Cognitive Search** (Kognitive Azure-Suche) zu der Ressource.
 
-![Navigieren zu einer Ressource für die kognitive Azure-Suche](./media/search-create-service-portal/find-search3.png "Navigationspfad zur kognitiven Azure-Suche")
+![Erstellen einer Ressource im Portal](./media/search-create-service-portal/find-search3.png "Erstellen einer Ressource im Portal")
 
-## <a name="select-a-subscription"></a>Auswählen eines Abonnements
+## <a name="choose-a-subscription"></a>Wählen Sie ein Abonnement.
 
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie ein Abonnement aus, in dem sich Daten- oder Dateispeicherdienste befinden. Die kognitive Azure-Suche kann die Dienste Azure Table Storage, Blob Storage, SQL-Datenbank und Azure Cosmos DB automatisch erkennen, um sie über [*Indexer*](search-indexer-overview.md) zu indizieren. Dies gilt jedoch nur für Dienste im selben Abonnement.
+Der erste Schritt besteht im Festlegen der Abonnement-ID und der Ressourcengruppe. Wenn Sie über mehrere Abonnements verfügen, wählen Sie ein Abonnement aus, in dem sich Daten- oder Dateispeicherdienste befinden. Die kognitive Azure-Suche kann die Dienste Azure Table Storage, Blob Storage, SQL-Datenbank und Azure Cosmos DB automatisch erkennen, um sie über [*Indexer*](search-indexer-overview.md) zu indizieren. Dies gilt jedoch nur für Dienste im selben Abonnement.
 
 ## <a name="set-a-resource-group"></a>Festlegen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist erforderlich und nützlich, um alle Aspekte von Ressourcengruppen zu verwalten, einschließlich der Kostenverwaltung. Eine Ressourcengruppe kann aus einem Dienst oder einer Kombination aus mehreren Diensten bestehen. Wenn Sie beispielsweise die kognitive Azure-Suche verwenden, um eine Azure Cosmos DB-Datenbank zu indizieren, können Sie beide Dienste zu Verwaltungszwecken zur selben Ressourcengruppe hinzufügen. 
+Eine Ressourcengruppe ist erforderlich und nützlich, um alle Aspekte von Ressourcengruppen zu verwalten, einschließlich der Kosten. Eine Ressourcengruppe kann aus einem Dienst oder einer Kombination aus mehreren Diensten bestehen. Wenn Sie beispielsweise die kognitive Azure-Suche verwenden, um eine Azure Cosmos DB-Datenbank zu indizieren, können Sie beide Dienste zu Verwaltungszwecken zur selben Ressourcengruppe hinzufügen. 
 
 Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene Ressourcengruppen mit Ressourcen gefüllt sind, die in nicht verbundenen Lösungen verwendet werden, erstellen Sie eine neue Ressourcengruppe nur für die Ressource für die kognitive Azure-Suche. 
 
-Während Sie den Dienst nutzen, können Sie aktuelle und prognostizierte Kosten insgesamt nachverfolgen (wie im Screenshot gezeigt) oder nach unten scrollen, um die Gebühren für einzelne Ressourcen anzuzeigen.
+![Erstellen einer neuen Ressourcengruppe](./media/search-create-service-portal/new-resource-group.png "Erstellen einer neuen Ressourcengruppe")
+
+Im weiteren Verlauf können Sie aktuelle und prognostizierte Kosten insgesamt nachverfolgen (wie im Screenshot gezeigt) oder nach unten scrollen, um die Gebühren für einzelne Ressourcen anzuzeigen. Im folgenden Screenshot wird die Art der Kosteninformationen dargestellt, die Sie letztendlich erwarten können, wenn Sie mehrere Ressourcen in einer Gruppe kombinieren.
 
 ![Verwalten von Kosten auf Ressourcengruppenebene](./media/search-create-service-portal/resource-group-cost-management.png "Verwalten von Kosten auf Ressourcengruppenebene")
 
 > [!TIP]
-> Wenn eine Ressourcengruppe gelöscht wird, werden auch die darin befindlichen Dienste gelöscht. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen.
+> Ressourcengruppen vereinfachen die Bereinigung, da durch Löschen einer Gruppe auch die darin enthaltenen Dienste gelöscht werden. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen.
 
 ## <a name="name-the-service"></a>Benennen des Diensts
 
@@ -77,7 +79,7 @@ Als Azure-Dienst kann die kognitive Azure-Suche in Rechenzentren auf der ganzen 
 
 Sie können Bandbreitenkosten minimieren oder sogar ganz vermeiden, indem Sie für mehrere Dienste denselben Standort auswählen. Wenn Sie beispielsweise Daten indizieren, die von einem anderen Azure-Dienst (Azure Storage, Azure Cosmos DB, Azure SQL-Datenbank) bereitgestellt werden, können Sie Bandbreitenkosten vermeiden, indem Sie den Dienst für die kognitive Azure-Suche in derselben Region erstellen (wenn Dienste sich in derselben Region befinden, fallen keine Gebühren für ausgehenden Datenverkehr an).
 
-Darüber hinaus gilt: Wenn Sie KI-Erweiterungen der kognitiven Suche verwenden, erstellen Sie Ihren Dienst in derselben Region wie Ihre Cognitive Services-Ressource. *Die Bereitstellung der kognitiven Azure-Suche und von Cognitive Services in der gleichen Region ist eine Voraussetzung für KI-Erweiterungen.*
+Darüber hinaus gilt: Wenn Sie KI-Erweiterungen verwenden, erstellen Sie Ihren Dienst in derselben Region wie Cognitive Services. *Die Bereitstellung der kognitiven Azure-Suche und von Cognitive Services in der gleichen Region ist eine Voraussetzung für KI-Erweiterungen.*
 
 > [!Note]
 > „Indien, Mitte“ ist zurzeit für neue Dienste nicht verfügbar. Dienste, die bereits in „Indien, Mitte“ bereitgestellt sind, können ohne Einschränkungen zentral hochskaliert werden, und Ihr Dienst wird in dieser Region vollständig unterstützt. Die Einschränkung für diese Region ist vorübergehend und betrifft nur neue Dienste. Wenn die Einschränkung nicht mehr gilt, wird dieser Hinweis wird entfernt.
@@ -104,9 +106,9 @@ Die Dienstbereitstellung dauert nur wenige Minuten und kann anhand von Azure-Ben
 
 Falls Sie nicht das Portal verwenden, müssen Sie den URL-Endpunkt und einen Authentifizierungs-API-Schlüssel angeben, um programmgesteuert auf Ihren neuen Dienst zugreifen zu können.
 
-1. Kopieren Sie rechts auf der Dienstübersichtsseite den URL-Endpunkt.
+1. Kopieren Sie rechts auf der Seite **Übersicht** den URL-Endpunkt.
 
-2. Wählen Sie im linken Navigationsbereich **Schlüssel** aus, und kopieren sie dann einen der Administratorschlüssel (sie sind identisch). Administrator-API-Schlüssel sind für das Erstellen, Aktualisieren und Löschen von Objekten in Ihrem Dienst erforderlich.
+2. Kopieren Sie auf der Seite **Schlüssel** einen der Administratorschlüssel (diese sind gleichwertig). Administrator-API-Schlüssel sind für das Erstellen, Aktualisieren und Löschen von Objekten in Ihrem Dienst erforderlich. Im Gegensatz dazu bieten Abfrageschlüssel Lesezugriff auf den Indexinhalt.
 
    ![Übersichtsseite des Diensts mit URL-Endpunkt](./media/search-create-service-portal/get-url-key.png "URL-Endpunkt und andere Dienstdetails")
 
@@ -151,7 +153,7 @@ Ein zweiter Dienst ist für Hochverfügbarkeit nicht vonnöten. Hochverfügbarke
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Bereitstellen eines Diensts für die kognitive Azure-Suche können Sie im Portal mit dem Erstellen des ersten Index fortfahren.
+Nach dem Bereitstellen eines Diensts können Sie im Portal mit dem Erstellen des ersten Index fortfahren.
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal](search-get-started-portal.md)

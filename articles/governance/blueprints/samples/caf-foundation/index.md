@@ -1,14 +1,14 @@
 ---
 title: 'CAF-Basisblaupausenbeispiel: Übersicht'
-description: Übersicht und Architektur des CAF-Basisblaupausenbeispiels.
+description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: a353f92be995412702a93219c8fb1af967368beb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2943d3327fe6ea3c935694118aaa995b8e96ace6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038494"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404794"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -50,7 +50,7 @@ Weitere Informationen finden Sie unter [Governance, Sicherheit und Konformität 
 Sie sind nun mit der Übersicht und Architektur des CAF-Basisblaupausenbeispiels vertraut.
 
 > [!div class="nextstepaction"]
->  [Deploy the Microsoft Cloud Adoption Framework for Azure Foundation blueprint sample](./deploy.md) (Bereitstellen des Microsoft Cloud Adoption Framework-Basisblaupausenbeispiels für Azure)
+> [Deploy the Microsoft Cloud Adoption Framework for Azure Foundation blueprint sample](./deploy.md) (Bereitstellen des Microsoft Cloud Adoption Framework-Basisblaupausenbeispiels für Azure)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

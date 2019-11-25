@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687043"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129698"
 ---
 # <a name="what-is-azure-app-configuration"></a>Was ist Azure App Configuration?
 
@@ -30,7 +30,7 @@ App Configuration ist derzeit als Public Preview verfügbar. Der Dienst kann wä
 
 Cloudbasierte Anwendungen werden häufig auf mehreren virtuellen Computern oder in Containern in mehreren Regionen ausgeführt, und es werden mehrere externe Dienste verwendet. Die Erstellung einer verteilten Anwendung, die robust und skalierbar ist, stellt eine Herausforderung dar.
 
-Entwickler greifen als Hilfe bei der immer komplexer werdenden Erstellung von Anwendungen auf verschiedene Programmiermethodiken zurück. Die 12-Faktor-App enthält beispielsweise viele sorgfältig getestete Architekturmuster und bewährte Methoden für die Verwendung mit Cloudanwendungen. Eine wichtige Empfehlung dieses Leitfadens lautet, dass Konfiguration und Code getrennt werden sollten. In diesem Fall sollten die Konfigurationseinstellungen einer Anwendung getrennt von der ausführbaren Datei vorliegen und aus der Runtimeumgebung oder einer externen Quelle eingelesen werden.
+Entwickler greifen als Hilfe bei der immer komplexer werdenden Erstellung von Anwendungen auf verschiedene Programmiermethodiken zurück. Die [Twelve-Factor-App](https://12factor.net/) enthält beispielsweise viele sorgfältig getestete Architekturmuster und bewährte Methoden für die Verwendung mit Cloudanwendungen. Eine wichtige Empfehlung dieses Leitfadens lautet, dass Konfiguration und Code getrennt werden sollten. In diesem Fall sollten die Konfigurationseinstellungen einer Anwendung getrennt von der ausführbaren Datei vorliegen und aus der Runtimeumgebung oder einer externen Quelle eingelesen werden.
 
 App Configuration kann zwar mit allen Anwendungen genutzt werden, eignet sich aber beispielsweise besonders für folgende Arten von Anwendungen:
 

@@ -4,25 +4,25 @@ description: Erfahren Sie, wie Sie in Azure eine Verbindung mit Analysis Service
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147317"
 ---
 # <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe von Anwendungen für die Datenmodellierung und -verwaltung, z.B. SQL Server Management Studio (SSMS) oder SQL Server Data Tools (SSDT), eine Verbindung mit einem Server herstellen. Oder mithilfe von Clientanwendungen für die Berichterstellung wie Microsoft Excel, Power BI Desktop oder benutzerdefinierten Anwendungen. Für Verbindungen mit Azure Analysis Services wird HTTPS verwendet.
+Dieser Artikel beschreibt das Herstellen einer Verbindung mit einem Server mithilfe von Datenmodellierungs- und -verwaltungsanwendungen wie SQL Server Management Studio (SSMS) oder Visual Studio mit Analysis Services-Projekten oder mit Clientberichterstattungsanwendungen wie Microsoft Excel, Power BI Desktop oder benutzerdefinierte Anwendungen. Für Verbindungen mit Azure Analysis Services wird HTTPS verwendet.
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
 [Abrufen der neuesten Clientbibliotheken](analysis-services-data-providers.md)
 
-Für alle Verbindungen mit einem Server sind unabhängig vom Typ aktualisierte AMO-, ADOMD.NET- und OLEDB-Clientbibliotheken erforderlich, um eine Verbindung mit einem Analysis Services-Server herzustellen und mit ihm zu kommunizieren. Für SSMS, SSDT, Excel 2016 und höhere Versionen sowie Power BI werden die neuesten Clientbibliotheken installiert oder mit monatlichen Releases aktualisiert. In einigen Fällen ist es jedoch möglich, dass eine Anwendung nicht über die neuesten Clientbibliotheken verfügt. Dies kann beispielsweise der Fall sein, wenn Updates durch Richtlinien verzögert werden oder wenn Office 365-Updates über den verzögerten Kanal erfolgen.
+Für alle Verbindungen mit einem Server sind unabhängig vom Typ aktualisierte AMO-, ADOMD.NET- und OLEDB-Clientbibliotheken erforderlich, um eine Verbindung mit einem Analysis Services-Server herzustellen und mit ihm zu kommunizieren. Für SSMS, Visual Studio, Excel 2016 und höhere Versionen sowie Power BI werden die neuesten Clientbibliotheken installiert oder mit monatlichen Releases aktualisiert. In einigen Fällen ist es jedoch möglich, dass eine Anwendung nicht über die neuesten Clientbibliotheken verfügt. Dies kann beispielsweise der Fall sein, wenn Updates durch Richtlinien verzögert werden oder wenn Office 365-Updates über den verzögerten Kanal erfolgen.
 
 ## <a name="server-name"></a>Servername
 

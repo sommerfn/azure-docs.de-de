@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072650"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176911"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Anwendungsvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -32,12 +32,14 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a> Anwendungsliste  
  Mit der Vorlage für die **Anwendungsliste** können Sie den Text der Anwendungslistenseite im Entwicklerportal anpassen.  
   
- ![Anwendungslistenseite, Vorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM-Anwendungslistenseite, Vorlagen im Entwicklerportal")  
+ ![Anwendungslistenseiten-Vorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM-Anwendungslistenseiten-Vorlagen im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -138,7 +140,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="Application"></a> Anwendung  
  Mit der Vorlage für die **Anwendung** können Sie den Text der Anwendungsseite im Entwicklerportal anpassen.  
   
- ![Anwendungsseite, Vorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM-Anwendungsseite, Vorlagen im Entwicklerportal")  
+ ![Anwendungsseitenvorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM-Anwendungsseiten-Vorlagen im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   

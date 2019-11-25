@@ -1,18 +1,14 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a7d39d95e35e30a16ce11db5b942024b6890438
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286599"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132185"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
@@ -50,6 +46,12 @@ So delegieren Sie Abonnements oder Ressourcengruppen
 Ein Kunde kann ein neues Angebot eines Dienstanbieters über die Seite **Anbieterangebote** hinzufügen, indem er **Angebot** hinzufügen auswählt. Der Dienstanbieter muss ein Angebot für diesen Kunden veröffentlicht haben. Der Kunde kann das Angebot dann im Bildschirm **Private Angebote** auswählen und dann **Erstellen** auswählen.
 
 Wenn der Kunde ein Angebot eines Dienstanbieters entfernen möchte, kann er das Papierkorbsymbol in der Zeile für dieses Angebot auswählen. Nach dem Bestätigen des Löschvorgangs hat dieser Dienstanbieter keinen Zugriff mehr auf die Kundenressourcen, die zuvor für dieses Angebot delegiert wurden.
+
+## <a name="update-service-provider-offers"></a>Aktualisieren von Dienstanbieterangeboten
+
+Nachdem ein Kunde ein Angebot hinzugefügt hat, kann ein Dienstanbieter eine aktualisierte Version desselben Angebots für Azure Marketplace veröffentlichen. Dabei kann es sich beispielsweise um das Hinzufügen einer neuen Rollendefinition handeln. Wenn eine neue Version des Angebots veröffentlicht wurde, wird auf der Seite **Anbieter** ein Aktualisierungssymbol in der Zeile für das Angebot angezeigt. Der Kunde kann dieses Symbol auswählen, um die Unterschiede zwischen der aktuellen Version des Angebots und der neuen Version anzuzeigen. 
+
+Nachdem er die Änderungen überprüft hat, kann der Kunde auf die neue Version aktualisieren. Anschließend gelten die in der neuen Version angegebenen Autorisierungen und anderen Einstellungen für alle Abonnements und/oder Ressourcengruppen, die für dieses Angebot delegiert wurden.
 
 ## <a name="view-delegations"></a>Anzeigen von Delegierungen
 

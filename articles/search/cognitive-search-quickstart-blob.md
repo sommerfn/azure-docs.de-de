@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines kognitiven Skillsets im Azure-Portal
+title: 'Schnellstart: Erstellen eines Skillsets im Azure-Portal'
 titleSuffix: Azure Cognitive Search
 description: Verwenden Sie den Datenimport-Assistenten, um einer Indizierungspipeline kognitive Qualifikationen hinzuzufügen. Zu kognitiven Qualifikationen zählen die optische Zeichenerkennung (Optical Character Recognition, OCR) und die Verarbeitung natürlicher Sprache.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 14d2751f55f3df26277b1210b9201eed61409c6b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2280b718fe949384bb67b1b606ab143ddca8e077
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792081"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113353"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 In dieser Schnellstartanleitung werden Azure Cognitive Search, Azure Blob Storage und [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) (für die KI) verwendet. 
 
-Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund genutzt und bietet eine kostenlose Verarbeitung von bis zu 20 Transaktionen pro Tag für Aufrufe, die von Azure Cognitive Search stammen. Solange Sie die von uns bereitgestellten Beispieldaten verwenden, können Sie das Erstellen oder Anfügen einer Cognitive Services-Ressource überspringen.
+Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund genutzt und bietet eine kostenlose Verarbeitung von bis zu 20 Transaktionen pro Tag für Aufrufe über Azure Cognitive Search. Solange Sie die von uns bereitgestellten Beispieldaten verwenden, können Sie das Erstellen oder Anfügen einer Cognitive Services-Ressource überspringen.
 
 1. [Laden Sie die Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), die aus einem kleinen Satz Dateien verschiedener Typen bestehen. Entzippen Sie die Dateien.
 

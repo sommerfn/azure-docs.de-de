@@ -1,19 +1,20 @@
 ---
-title: 'Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal | Microsoft-Dokumentation'
+title: 'Schnellstart: Weiterleiten von Webdatenverkehr mit dem Portal'
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie das Azure-Portal zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469705"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074577"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
 
@@ -65,7 +66,7 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
 
 1. Vergewissern Sie sich auf der Registerkarte **Front-Ends**, dass der **Typ der Front-End-IP-Adresse** auf **Öffentlich** festgelegt ist. <br>Je nach Anwendungsfall können Sie konfigurieren, dass die Front-End-IP-Adresse öffentlich oder privat ist. In diesem Beispiel verwenden Sie eine öffentliche Front-End-IP-Adresse.
    > [!NOTE]
-   > Für die Application Gateway v2-SKU können Sie nur die **öffentliche** Front-End-IP-Konfiguration wählen. Die private Front-End-IP-Konfiguration ist derzeit für diese v2-SKU nicht aktiviert.
+   > Für die Application Gateway v2-SKU können Sie nur die **öffentliche** Front-End-IP-Konfiguration wählen. Nur die private Front-End-IP-Konfiguration ist derzeit für diese v2-SKU nicht aktiviert. Sie können sowohl über eine öffentliche als auch eine private Front-End-IP-Konfiguration verfügen.
 
 2. Wählen Sie **Neu erstellen** für die **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
 

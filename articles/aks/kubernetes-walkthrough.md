@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f7e7804b2fc60976ef0ec9af9dcd22e2a2bd9db0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592961"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929121"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
-> [!Note]
+> [!NOTE]
 > Wenn Sie die Befehle in diesem Schnellstart (anstelle von Azure Cloud Shell) ausführen, stellen Sie sicher, dass Sie die Befehle als Administrator ausführen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -69,7 +69,8 @@ Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstel
 
 Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt. Azure Monitor für Container wird auch mit dem Parameter *--enable-addons monitoring* aktiviert.  Dieser Schritt dauert einige Minuten.
 
-> [HINWEIS] Beim Erstellen eines AKS-Clusters wird automatisch eine zweite Ressourcengruppe erstellt, um die AKS-Ressourcen zu speichern. Weitere Informationen finden Sie unter [Warum werden zwei Ressourcengruppen mit AKS erstellt?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks).
+> [!NOTE]
+> Beim Erstellen eines AKS-Clusters wird automatisch eine zweite Ressourcengruppe erstellt, um die AKS-Ressourcen zu speichern. Weitere Informationen finden Sie unter [Warum werden zwei Ressourcengruppen mit AKS erstellt?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks).
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys

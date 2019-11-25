@@ -1,25 +1,25 @@
 ---
-title: 'Schnellstart: Ablaufrichtlinie für Office 365-Gruppen: Azure Active Directory | Microsoft-Dokumentation'
+title: 'Schnellstart: Gruppenablaufrichtlinie – Azure AD | Microsoft-Dokumentation'
 description: 'Ablauf für Office 365-Gruppen: Azure Active Directory'
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606175"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026901"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Office 365-Gruppen in Azure Active Directory
 
@@ -27,9 +27,13 @@ In dieser Schnellstartanleitung legen Sie die Ablaufrichtlinie für Ihre Office 
 
 Eine Ablaufrichtlinie ist einfach:
 
-* Gruppenbesitzer werden benachrichtigt, eine ablaufende Gruppe zu verlängern.
-* Nicht verlängerte Gruppen werden gelöscht.
-* Eine gelöschte Office 365-Gruppe kann innerhalb von 30 Tagen durch einen Gruppenbesitzer oder einen Azure AD-Administrator wiederhergestellt werden.
+- Gruppen mit Benutzeraktivitäten werden kurz vor Ablauf automatisch verlängert.
+- Gruppenbesitzer werden benachrichtigt, eine ablaufende Gruppe zu verlängern.
+- Nicht verlängerte Gruppen werden gelöscht.
+- Eine gelöschte Office 365-Gruppe kann innerhalb von 30 Tagen durch einen Gruppenbesitzer oder einen Azure AD-Administrator wiederhergestellt werden.
+
+> [!NOTE]
+> Gruppen verwenden jetzt Azure AD-Intelligence für die automatische Verlängerung, je nachdem, ob sie kürzlich verwendet wurden. Diese Verlängerungsentscheidung basiert auf Benutzeraktivitäten in Gruppen für Office 365-Dienste wie Outlook, SharePoint, Teams, Yammer und anderen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

@@ -1,17 +1,14 @@
 ---
 title: Beispiele einfacher Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige einfache Abfragen auszuführen, etwa Abfragen zum Zählen oder Bestellen von Ressourcen oder Abfragen anhand eines bestimmten Tags.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: ca7fc2ba3e952f93f85c677eb8a8a7322901c7d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622503"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076113"
 ---
 # <a name="starter-resource-graph-queries"></a>Einfache Resource Graph-Abfragen
 
@@ -253,7 +250,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ---
 
 > [!NOTE]
-> Denken Sie daran, dass `=~` zwar Übereinstimmungen ohne Berücksichtigung der Groß-/Kleinschreibung ermöglicht, die Verwendung von Eigenschaften (z.B. **properties.storageProfile.osDisk.osType**) in der Abfrage jedoch die richtige Groß-/Kleinschreibung erfordert. Wenn die Eigenschaft in falscher Groß-/Kleinschreibung vorliegt, kann trotzdem ein Wert zurückgegeben werden, aber die Gruppierung oder Zusammenfassung wäre falsch.
+> Denken Sie daran, dass `=~` zwar Übereinstimmungen ohne Berücksichtigung der Groß-/Kleinschreibung ermöglicht, die Verwendung von Eigenschaften (z.B. **properties.storageProfile.osDisk.osType**) in der Abfrage jedoch die richtige Groß-/Kleinschreibung erfordert. Wenn die Eigenschaft in falscher Groß-/Kleinschreibung vorliegt, wird NULL oder ein falscher Wert zurückgegeben, sodass die Gruppierung oder Zusammenfassung falsch ist.
 
 ## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />Anzeigen von Ressourcen mit Speicher
 

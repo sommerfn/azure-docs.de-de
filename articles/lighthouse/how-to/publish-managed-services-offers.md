@@ -1,18 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615460"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131296"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -81,10 +77,10 @@ Fügen Sie zu guter Letzt Ihrem Plan einen oder mehrere **Autorisierung**seintr�
 
 Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie können dann so oft wie nötig **Neue Autorisierung** auswählen, um weitere Benutzer- und Rollendefinitionen hinzuzufügen.
 
-  - **Azure AD-Objekt-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder Anwendung, dem bestimmte Berechtigungen (wie in der Rollendefinition beschrieben) für die Ressourcen Ihrer Kunden gewährt werden.
-  - **Azure AD-Objektanzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
-  - **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) und [Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
-  - **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen** [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
+- **Azure AD-Objekt-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder Anwendung, dem bestimmte Berechtigungen (wie in der Rollendefinition beschrieben) für die Ressourcen Ihrer Kunden gewährt werden.
+- **Azure AD-Objektanzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
+- **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) und [Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
+- **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen** [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
 
 > [!TIP]
 > In den meisten Fällen sollten Sie einer Azure AD-Benutzergruppe oder einem Dienstprinzipal Berechtigungen zuzuweisen, anstatt eine Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern. Zusätzliche Empfehlungen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
@@ -141,64 +137,19 @@ Nachdem Sie diese Informationen hinzugefügt haben, wählen Sie **Speichern** au
 
 Nach der Vervollständigung aller Abschnitte besteht Ihr nächster Schritt darin, das Angebot im Azure Marketplace zu veröffentlichen. Wählen Sie die Schaltfläche **Veröffentlichen** aus, um den Vorgang zu starten, mit dem Ihr Angebot live geschaltet wird. Weitere Informationen zu diesem Vorgang finden Sie unter [Veröffentlichen von Azure Marketplace- und AppSource-Angeboten](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
+Sie können jederzeit [eine aktualisierte Version Ihres Angebots veröffentlichen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer). Beispielsweise können Sie einem zuvor veröffentlichten Angebot eine neue Rollendefinition hinzufügen. Kunden, die das Angebot bereits hinzugefügt haben, wird dann auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) im Azure-Portal ein Symbol angezeigt, das darauf hinweist, dass eine Aktualisierung verfügbar ist. Jeder Kunde kann die [Änderungen überprüfen](view-manage-service-providers.md#update-service-provider-offers) und entscheiden, ob er auf die neue Version aktualisieren möchte. 
+
 ## <a name="the-customer-onboarding-process"></a>Kundenonboarding
 
-Wenn ein Kunde Ihr Angebot hinzufügt, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann für die delegierte Azure-Ressourcenverwaltung das Onboarding durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt. Wenn ein Benutzer im Mandanten des Kunden diese Delegierung nicht ausführen kann, liegt dies wahrscheinlich daran, dass er nicht über die Rolle „Besitzer“ für das Abonnement verfügt. Um Benutzer zu suchen, die das Abonnement delegieren können, kann der Benutzer das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+Nachdem ein Kunde Ihr Angebot hinzugefügt hat, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann ein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
 
-Bevor für ein Abonnement (oder Ressourcengruppen innerhalb eines Abonnements) das Onboarding durchgeführt werden kann, muss das Abonnement manuell für das Onboarding autorisiert werden, indem der Ressourcenanbieter **Microsoft.ManagedServices** registriert wird. Ein Benutzer im Kundenmandanten mit der Rolle „Mitwirkender“ oder „Besitzer“ kann diesen Schritt anhand der Anleitung unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md) ausführen.
+> [!IMPORTANT]
+> Die Delegierung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-Der Kunde kann dann mit einer der folgenden Methoden bestätigen, dass das Abonnement für das Onboarding bereit ist:
+Nachdem der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert hat, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
 
-### <a name="azure-portal"></a>Azure-Portal
-
-1. Wählen Sie im Azure-Portal das Abonnement aus.
-1. Wählen Sie **Ressourcenanbieter** aus.
-1. Vergewissern Sie sich, dass **Microsoft. ManagedServices** als **Registriert** angezeigt wird.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Derzeit können Abonnements (oder Ressourcengruppen innerhalb eines Abonnements) nicht delegiert werden, wenn das Abonnement Azure Databricks verwendet. Ebenso ist es nicht möglich, Databricks-Arbeitsbereiche in diesem Abonnement zu erstellen, wenn ein Abonnement (oder eine Ressourcengruppe innerhalb eines Abonnements) bereits delegiert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

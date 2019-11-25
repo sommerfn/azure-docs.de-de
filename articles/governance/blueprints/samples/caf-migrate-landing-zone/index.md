@@ -1,14 +1,14 @@
 ---
 title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Übersicht'
-description: Übersicht und Architektur des CAF-Blaupausenbeispiels für die Migrationslandezone.
+description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für die Azure-Migrationslandezone.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: cba1eb6d4761ae8e236f22fa22ff08c129d9637e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e007c7af4d788016d74f085ba39b63ee218d6de0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038461"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404750"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Cloudmigration im Cloud Adoption Framewo
 Sie sind nun mit der Übersicht und Architektur des CAF-Blaupausenbeispiels für die Migrationslandezone vertraut.
 
 > [!div class="nextstepaction"]
->  [CAF-Blaupause für die Migrationslandezone: Bereitstellungsschritte](./deploy.md)
+> [CAF-Blaupause für die Migrationslandezone: Bereitstellungsschritte](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 
