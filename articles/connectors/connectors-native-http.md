@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4f585778808b133fe5c731ab6a3189594cbfc0f9
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122698"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804234"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Senden von ausgehenden Aufrufen an HTTP- oder HTTPS-Endpunkte mithilfe von Azure Logic Apps
 
@@ -45,7 +45,7 @@ Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für ein
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
-1. Geben Sie im Suchfeld des Designers „http“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP**-Trigger aus.
+1. Geben Sie unter **Aktion auswählen** im Suchfeld „HTTP“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP**-Trigger aus.
 
    ![Auswählen des HTTP-Triggers](./media/connectors-native-http/select-http-trigger.png)
 
@@ -53,9 +53,9 @@ Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für ein
 
 1. Geben Sie die Werte für die [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Zielendpunkt überprüfen soll.
 
-   ![Eingeben der HTTP-Triggerparameter](./media/connectors-native-http/http-trigger-parameters.png)
+   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   ![Eingeben der HTTP-Triggerparameter](./media/connectors-native-http/http-trigger-parameters.png)
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
@@ -75,7 +75,7 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld des Designers „http“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP**-Aktion aus.
+1. Geben Sie unter **Aktion auswählen** im Suchfeld „HTTP“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP**-Aktion aus.
 
    ![Auswählen der HTTP-Aktion](./media/connectors-native-http/select-http-action.png)
 
@@ -83,9 +83,9 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 1. Geben Sie die Werte für die [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten.
 
-   ![Eingeben der Parameter für die HTTP-Aktion](./media/connectors-native-http/http-action-parameters.png)
+   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   ![Eingeben der Parameter für die HTTP-Aktion](./media/connectors-native-http/http-action-parameters.png)
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 

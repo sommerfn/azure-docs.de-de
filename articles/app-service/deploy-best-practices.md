@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.custom: ''
-ms.openlocfilehash: d1b6444b8512b1b55ac46370e805f8f662f5f555
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070679"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199490"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -69,7 +69,7 @@ Verwenden Sie nach Möglichkeit immer [Bereitstellungsslots](deploy-staging-slot
 
 Azure App Service-Inhalt wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Manche Apps benötigen jedoch lediglich einen hochleistungsfähigen, schreibgeschützten Inhaltsspeicher, aus dem sie mit Hochverfügbarkeit ausgeführt werden können. Diese Apps können von der Verwendung eines [lokalen Caches](overview-local-cache.md) profitieren. Der lokale Cache wird für Content Management-Sites wie WordPress nicht empfohlen.
 
-Verwenden Sie immer einen lokalen Cache zusammen mit [Bereitstellungsslots](deploy-staging-slots md), um Ausfallzeiten zu verhindern. Informationen zur Verwendung dieser Funktionen in Kombination finden Sie in [diesem Abschnitt](overview-local-cache.md#best-practices-for-using-app-service-local-cache).
+Verwenden Sie immer einen lokalen Cache zusammen mit [Bereitstellungsslots](deploy-staging-slots.md), um Ausfallzeiten zu verhindern. Informationen zur Verwendung dieser Funktionen in Kombination finden Sie in [diesem Abschnitt](overview-local-cache.md#best-practices-for-using-app-service-local-cache).
 
 ### <a name="high-cpu-or-memory"></a>Hohe CPU- oder Arbeitsspeicherauslastung
 

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073769"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176815"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
 
@@ -29,6 +29,8 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 * [Ändern der Vorlagen, die für durch das Portal generierte Seiten verwendet werden][portal-templates] (in diesem Leitfaden erläutert)
 
 Vorlagen dienen zum Anpassen des Inhalts von systemgenerierten Entwicklerportalseiten (z.B. API-Dokumentation, Produkte, Benutzerauthentifizierung usw.). Sie können die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und verschiedenen lokalisierten Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen flexibel an Ihre Bedürfnisse anpassen.
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

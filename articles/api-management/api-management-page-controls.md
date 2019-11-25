@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70072298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176600"
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
@@ -28,9 +28,11 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
- Die Werte für die Parameter werden als Teil des Datenmodells für die Vorlage übergeben. In den meisten Fällen können Sie einfach das bereitgestellte Beispiel für jedes Steuerelement einfügen, damit es ordnungsgemäß funktioniert. Weitere Informationen zu den Parameterwerten finden Sie im Datenmodellabschnitt für jede Vorlage, in der ein Steuerelement verwendet werden kann.  
-  
- Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+Die Werte für die Parameter werden als Teil des Datenmodells für die Vorlage übergeben. In den meisten Fällen können Sie einfach das bereitgestellte Beispiel für jedes Steuerelement einfügen, damit es ordnungsgemäß funktioniert. Weitere Informationen zu den Parameterwerten finden Sie im Datenmodellabschnitt für jede Vorlage, in der ein Steuerelement verwendet werden kann.  
+
+Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   

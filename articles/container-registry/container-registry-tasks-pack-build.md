@@ -3,16 +3,17 @@ title: Erstellen eines Azure Container Registry-Images aus einer App
 description: Verwenden Sie den Befehl „az acr pack build“, um ein Containerimage aus einer App zu erstellen und ohne Dockerfile an Azure Container Registry zu überführen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/24/2019
 ms.author: danlep
-ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293906"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965907"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Erstellen und Übertragen eines Images aus einer App mithilfe eines Cloud Native-Buildpacks
 
@@ -32,25 +33,23 @@ Geben Sie beim Ausführen des Befehls `az acr pack build` mindestens Folgendes a
 * Eine Azure-Containerregistrierung, in der Sie den Befehl ausführen
 * Ein Imagename und -tag für das neu erstellte Image
 * Einen der [unterstützten Kontextspeicherorte](container-registry-tasks-overview.md#context-locations) für ACR Tasks (z. B. ein lokales Verzeichnis, ein GitHub-Repository oder ein Remotetarball)
-* Den Namen eines Buildpack-Generatorimages (z. B. `cloudfoundry/cnb:0.0.12-bionic`)  
+* Den Namen eines Buildpack-Generatorimages, das für Ihre Anwendung geeignet ist. Azure Container Registry speichert Generatorimages wie `cloudfoundry/cnb:0.0.34-cflinuxfs3` zwischen, um das Erstellen zu beschleunigen.  
 
 Der Befehl `az acr pack build` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-overview.md#view-task-logs)).
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Beispiel: Erstellen eines Node.js-Images mit dem Cloud Foundry-Generator
 
-Im folgenden Beispiel wird mithilfe des Generators `cloudfoundry/cnb:0.0.12-bionic` ein Containerimage aus der Node.js-App im Repository [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) erstellt:
+Im folgenden Beispiel wird mithilfe des Generators `cloudfoundry/cnb:0.0.34-cflinuxfs3` ein Containerimage aus der Node.js-App im Repository [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) erstellt. Dieser Generator wird von Azure Container Registry zwischengespeichert, sodass ein Parameter `--pull` nicht erforderlich ist:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
+    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-In diesem Beispiel wird das `node-app`-Image mit dem `1.0`-Tag erstellt und mithilfe von Push an die *myregistry*-Containerregistrierung übertragen. Hier wird der Name der Zielcontainerregistrierung dem Namen des Image explizit vorangestellt. Wenn dieser nicht angegeben ist, wird die Registrierungs-URL automatisch dem Imagenamen vorangestellt.
-
-Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt.
+In diesem Beispiel wird das `node-app`-Image mit dem `1.0`-Tag erstellt und mithilfe von Push an die *myregistry*-Containerregistrierung übertragen. In diesem Beispiel wird der Name der Zielcontainerregistrierung dem Namen des Image explizit vorangestellt. Wenn dieser nicht angegeben ist, wird der Anmeldeservername der Registrierung automatisch dem Imagenamen vorangestellt.
 
 Die Befehlsausgabe zeigt den Status der Erstellung und Übertragung des Images mithilfe von Push an. 
 
@@ -70,7 +69,7 @@ Navigieren Sie in Ihrem bevorzugten Browser zu `localhost:1337`, um die Beispiel
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Beispiel: Erstellen eines Java-Images mit dem Heroku-Generator
 
-Im folgenden Beispiel wird mithilfe des Generators `heroku/buildpacks:18` ein Containerimage aus der Java-App im Repository [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) erstellt.
+Im folgenden Beispiel wird mithilfe des Generators `heroku/buildpacks:18` ein Containerimage aus der Java-App im Repository [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) erstellt. Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt. 
 
 ```azurecli
 az acr pack build \
@@ -81,8 +80,6 @@ az acr pack build \
 ```
 
 In diesem Beispiel wird das mit der Ausführungs-ID des Befehls markierte `java-app`-Image erstellt und mithilfe von Push an die Containerregistrierung *myregistry* übertragen.
-
-Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt.
 
 Die Befehlsausgabe zeigt den Status der Erstellung und Übertragung des Images mithilfe von Push an. 
 
