@@ -1,5 +1,5 @@
 ---
-title: Indizieren der Inhalte von Azure Table Storage für die Volltextsuche
+title: Suche über Azure Table Storage-Inhalte
 titleSuffix: Azure Cognitive Search
 description: Erfahren Sie, wie in Azure Table Storage gespeicherte Daten mit dem Indexer der kognitiven Azure-Suche indiziert werden.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793749"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112998"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indizieren von Tabellen aus Azure Blob Storage mit der kognitiven Azure-Suche
 

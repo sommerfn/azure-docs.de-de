@@ -1,6 +1,6 @@
 ---
 title: Azure Storage-Sicherheitsleitfaden | Microsoft Docs
-description: Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption.
+description: Erläutert Methoden zum Sichern von Azure Storage-Konten, einschließlich Sicherheit auf Verwaltungsebene, Autorisierung, Netzwerksicherheit, Verschlüsselung usw.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,54 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 15c59a29bff50f13eea104cb436d1a3764f6d713
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598087"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926724"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
-Azure Storage bietet umfassende Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen:
+Azure Storage bietet umfassende Sicherheitsfunktionen, die Organisationen das Erstellen und Bereitstellen sicherer Anwendungen ermöglichen:
 
-- Alle Daten (einschließlich Metadaten) werden mit [Storage Service Encryption (SSE)](storage-service-encryption.md) automatisch verschlüsselt, wenn sie in Azure Storage geschrieben werden. Weitere Informationen finden Sie unter [Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/) (Ankündigung: Standardverschlüsselung für Azure Blobs, Files, Table und Queue Storage).
-- Azure Active Directory (Azure AD) und die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) werden für Azure Storage sowohl für Ressourcenverwaltungsvorgänge als auch für Datenvorgänge wie folgt unterstützt:   
+- Alle Daten (einschließlich Metadaten) werden mit [Storage Service Encryption (SSE)](storage-service-encryption.md) automatisch verschlüsselt, wenn sie in Azure Storage geschrieben werden. Weitere Informationen finden Sie unter [Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/) (Ankündigung: Standardverschlüsselung für Azure Blobs, Files, Tables und Queue Storage).
+- Azure Active Directory (Azure AD) und die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) werden sowohl für Ressourcenverwaltungsvorgänge als auch für Vorgänge auf Datenebene unterstützt:   
     - Sie können RBAC-Rollen, die auf das Speicherkonto beschränkt sind, Dienstprinzipalen zuweisen und Azure AD verwenden, um Ressourcenverwaltungsvorgänge, z.B. die Schlüsselverwaltung, zu autorisieren.
-    - Die Azure AD-Integration wird für Datenvorgänge in Blobs und Warteschlangen unterstützt. Sie können RBAC-Rollen, die auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder einen einzelnen Container oder eine Warteschlange bezogen sind, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).   
+    - Die Azure AD-Integration wird für Datenvorgänge in Blobs und Warteschlangen unterstützt. RBAC-Rollen können für ein Abonnement, eine Ressourcengruppe, ein Speicherkonto, einen einzelnen Container oder eine bestimmte Warteschlange festgelegt werden. Rollen können einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zugewiesen werden. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 - Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](../storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden.  
 - Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Azure-Computern verwendet werden, können mit [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) verschlüsselt werden.
 - Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit einer Shared Access Signature erteilt werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
+- Sicherheit auf Netzwerkebene zwischen Ihren Anwendungskomponenten und dem Speicher ist über die Speicherfirewall, Dienstendpunkte oder private Endpunkte möglich.
 
-Dieser Artikel bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Links führen Sie zu Artikeln, die weitere Informationen zu den einzelnen Funktionen enthalten. So können Sie Ihre Kenntnisse zu jedem Thema problemlos vertiefen.
+Dieser Artikel bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Über Links zu Artikeln können Sie auf zusätzliche Informationen zu den einzelnen Funktionen zugreifen.
 
-Folgende Themen werden in diesem Artikel abgedeckt:
+Folgende Bereiche werden in diesem Artikel abgedeckt:
 
-* [Sicherheit auf Verwaltungsebene](#management-plane-security) – Sichern Ihres Speicherkontos
+* [Sicherheit auf Verwaltungsebene](#management-plane-security) – Sichern des Zugriffs auf Ihr Speicherkonto auf Ressourcenebene
 
-  Die Verwaltungsebene besteht aus den Ressourcen, die zum Verwalten Ihres Speicherkonto verwendet werden. In diesem Abschnitt erfahren Sie mehr über das Azure Resource Manager-Bereitstellungsmodell und wie Sie mit der rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) den Zugriff auf Ihre Speicherkonten verwalten. Zudem erfahren Sie mehr über die Verwaltung Ihrer Speicherkontoschlüssel und deren erneute Generierung.
-* [Sicherheit auf Datenebene](#data-plane-security) – Sichern des Zugriffs auf Ihre Daten
+  Die Verwaltungsebene umfasst die Vorgänge, die zum Verwalten Ihres Speicherkontos verwendet werden. In diesem Abschnitt erfahren Sie mehr über das Azure Resource Manager-Bereitstellungsmodell und wie Sie mit der rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) den Zugriff auf Ihre Speicherkonten verwalten. Zudem erfahren Sie mehr über die Verwaltung Ihrer Speicherkontoschlüssel und deren erneute Generierung.
 
-  In diesem Abschnitt betrachten wir die Gewährung des Zugriffs auf die tatsächlichen Datenobjekte in Ihrem Speicherkonto, z.B. Blobs, Dateien, Warteschlangen und Tabellen mit SAS und gespeicherten Zugriffsrichtlinien. Wir betrachten SAS sowohl auf Dienst- als auch auf Kontoebene. Wir behandeln auch die Beschränkung des Zugriffs auf eine bestimmte IP-Adresse (oder einen Bereich von IP-Adressen), die Beschränkung des verwendeten HTTPS-Protokolls und das Widerrufen einer SAS, ohne ihren Ablauf abzuwarten.
+* [Netzwerksicherheit](#network-security) – Sichern des Zugriffs auf Ihr Speicherkonto auf Netzwerkebene
+
+  In diesem Abschnitt wird beschrieben, wie Sie den Zugriff auf die Speicherdienstendpunkte auf Netzwerkebene sichern können. Es wird erläutert, wie Sie mithilfe der Speicherfirewall den Zugriff auf Ihre Daten aus bestimmten virtuellen Netzwerken oder IP-Adressbereichen gestatten können. Außerdem wird die Verwendung von Dienstendpunkten und privaten Endpunkten mit Speicherkonten behandelt.
+
+* [Autorisierung](#authorization) – Autorisieren des Zugriffs auf Ihre Daten
+
+  In diesem Abschnitt wird der Zugriff auf die Datenobjekte in Ihrem Speicherkonto, z.B. Blobs, Dateien, Warteschlangen und Tabellen, mit SAS und gespeicherten Zugriffsrichtlinien beschrieben. Wir betrachten SAS sowohl auf Dienst- als auch auf Kontoebene. Wir behandeln auch die Beschränkung des Zugriffs auf eine bestimmte IP-Adresse (oder einen Bereich von IP-Adressen), die Beschränkung des verwendeten HTTPS-Protokolls und das Widerrufen einer SAS, ohne ihren Ablauf abzuwarten.
+
 * [Verschlüsselung während der Übertragung](#encryption-in-transit)
 
-  In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder aus Azure Storage übertragen. Wir behandeln die empfohlene Verwendung von HTTPS und die Verschlüsselung, die von SMB 3.0 für Azure-Dateifreigaben verwendet wird. Wir werfen auch einen Blick auf die clientseitige Verschlüsselung, mit der Sie die Daten verschlüsseln können, bevor sie in einer Clientanwendung in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher entschlüsseln können.
+  In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder aus Azure Storage übertragen. Wir behandeln die empfohlene Verwendung von HTTPS und die Verschlüsselung, die von SMB 3.0 für Azure-Dateifreigaben verwendet wird. Außerdem wird die clientseitige Verschlüsselung erläutert, mit der Sie Daten vor der Übertragung in Storage verschlüsseln und nach der Übertragung aus Storage entschlüsseln können.
+
 * [Verschlüsselung ruhender Daten](#encryption-at-rest)
 
   Zu den Themen zählt Storage Service Encryption (SSE). Dieses Feature ist jetzt automatisch für neue und vorhandene Speicherkonten aktiviert. Außerdem erläutern wie die Verwendung von Azure Disk Encryption und untersuchen die grundlegenden Anwendungsfälle von Azure Disk Encryption, SSE und clientseitiger Verschlüsselung sowie deren wesentlichen Unterschiede. Wir betrachten kurz die FIPS-Konformität für die US- Regierungscomputer.
+
 * Verwenden der [Speicheranalyse](#storage-analytics) zum Überwachen des Zugriffs auf Azure Storage
 
   Dieser Abschnitt beschreibt, wie Sie in den Speicheranalyseprotokollen Informationen für eine Anforderung suchen. Wir betrachten reale Speicheranalyse-Protokolldaten und sehen, wie wir unterscheiden können, ob eine Anforderung mit dem Speicherkontoschlüssel, einer Shared Access Signature oder anonym erfolgt ist, und ob sie erfolgreich war oder nicht.
+
 * [Aktivieren browserbasierter Clients über CORS](#cross-origin-resource-sharing-cors)
 
   Dieser Abschnitt behandelt, wie Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht wird. Wir sprechen über domänenübergreifenden Zugriff und wie er mit den in Azure Storage integrierten CORS-Funktionen durchgeführt wird.
@@ -112,16 +122,16 @@ Speicherkontoschlüssel sind von Azure erstellte 512-Bit-Zeichenfolgen, die zusa
 
 Jedes Speicherkonto verfügt über zwei Schlüssel, die im [Azure-Portal](https://portal.azure.com/) und in den PowerShell-Cmdlets „Key 1“ und „Key 2“ genannt werden. Diese können mit verschiedenen Methoden manuell erneut generiert werden, beispielsweise im [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle. Die Neugenerierung kann auch programmgesteuert mithilfe der .NET-Speicherclientbibliothek bzw. der REST-API der Azure Storage-Dienste erfolgen.
 
-Es gibt verschiedene Gründe, Ihre Speicherkontoschlüssel erneut zu generieren.
+Es gibt verschiedene Gründe für das erneute Generieren Ihrer Speicherkontoschlüssel.
 
-* Möglicherweise generieren Sie sie in regelmäßigen Abständen aus Sicherheitsgründen erneut.
-* Sie würden Ihre Speicherkontoschlüssel z. B. dann erneut generieren, wenn jemand eine Anwendung gehackt und den Schlüssel abgerufen hat, der hartcodiert oder in einer Konfigurationsdatei gespeichert war, sodass er jetzt vollständigen Zugriff auf Ihr Speicherkonto hat.
-* Ein weiterer Fall für die Neugenerierung des Schlüssels ist, wenn Ihr Team eine Storage-Explorer-Anwendung verwendet, die den Speicherkontoschlüssel beibehält, und eines der Mitglieder verlässt das Team. Die Anwendung würde nach seinem Ausscheiden auch weiterhin funktionieren und ihm den Zugriff auf Ihr Speicherkonto gewähren. Dies ist tatsächlich der Hauptgrund dafür, SAS auf Kontoebene zu erstellen – Sie können SAS auf Kontoebene verwenden, statt die Zugriffsschlüssel in einer Konfigurationsdatei zu speichern.
+* Sie können sie aus Sicherheitsgründen regelmäßig neu generieren.
+* Sie können Ihre Speicherkontoschlüssel neu generieren, wenn die Anwendungs- oder Netzwerksicherheit gefährdet ist.
+* Eine weitere Situation für die erneute Schlüsselgenerierung ist gegeben, wenn Teammitglieder mit Zugriff auf die Schlüssel das Team verlassen. Shared Access Signatures (SAS) wurde hauptsächlich für dieses Szenario entworfen. Sie sollten für die meisten der einzelnen Benutzer oder Anwendungen eine SAS-Verbindungszeichenfolge oder ein Token auf Kontoebene anstelle von Zugriffsschlüsseln freigeben.
 
 #### <a name="key-regeneration-plan"></a>Plan zur erneuten Schlüsselgenerierung
-Sie sollten den Schlüssel, den Sie verwenden, nicht ohne Planung erneut generieren. Andernfalls besteht die Gefahr, dass Sie jeglichen Zugriff auf dieses Speicherkonto abschneiden und so eine größere Unterbrechung verursachen. Darum gibt es zwei Schlüssel. Sie sollten jeweils nur einen Schlüssel erneut generieren.
+Sie sollten einen aktuell verwendeten Zugriffsschlüssel nicht ohne Planung erneut generieren. Durch eine abrupte Schlüsselgenerierung kann der Zugriff auf ein Speicherkonto für vorhandene Anwendungen blockiert werden, was zu erheblichen Störungen führt. Azure Storage Konten bieten zwei Schlüssel, sodass Sie jeweils einen der Schlüssel neu generieren können.
 
-Bevor Sie Ihre Schlüssel erneut generieren, halten Sie eine Liste aller Anwendungen bereit, die auf das Speicherkonto angewiesen sind, sowie aller anderen Dienste, die Sie in Azure verwenden. Falls Sie z.B. Azure Media Services verwenden, die auf Ihr Speicherkonto angewiesen sind, müssen Sie die Zugriffsschlüssel nach dem erneuten Generieren der Schlüssel mit Ihrem Mediendienst erneut synchronisieren. Wenn Sie Anwendungen wie z. B. einen Storage-Explorer verwenden, müssen Sie die neuen Schlüssel diesen Anwendungen ebenfalls bereitstellen. Wenn Sie über VMs verfügen, deren VHD-Dateien im Speicherkonto gespeichert werden, bleiben sie vom erneuten Generieren der Speicherkontoschlüssel unbeeinflusst.
+Bevor Sie Ihre Schlüssel erneut generieren, halten Sie eine Liste aller Anwendungen bereit, die auf das Speicherkonto angewiesen sind, sowie aller anderen Dienste, die Sie in Azure verwenden. Falls z.B. Azure Media Services Ihr Speicherkonto verwenden, müssen Sie die Zugriffsschlüssel nach dem erneuten Generieren mit Ihrem Mediendienst neu synchronisieren. Wenn Sie eine Anwendung wie z.B. einen Storage-Explorer verwenden, müssen Sie die diesen Anwendungen ebenfalls neue Schlüssel bereitstellen. Wenn Sie über VMs verfügen, deren VHD-Dateien im Speicherkonto gespeichert werden, bleiben sie vom erneuten Generieren der Speicherkontoschlüssel unbeeinflusst.
 
 Sie können Ihre Schlüssel im Azure-Portal erneut generieren. Nachdem Schlüssel neu generiert wurden, kann es bis zu 10 Minuten dauern, bis sie in den Speicherdiensten synchronisiert sind.
 
@@ -135,11 +145,11 @@ Wenn Sie derzeit „Key 2“ verwenden, verwenden Sie dieselbe Vorgehensweise, a
 
 Sie können ein paar Tage lang migrieren und jede Anwendung so ändern, dass sie den neuen Schlüssels verwendet und veröffentlicht. Anschließend sollten Sie den alten Schlüssel erneut generieren, damit er nicht mehr funktioniert.
 
-Eine weitere Option ist, dass Sie den Speicherkontoschlüssel als geheimen Schlüssel in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) platzieren und Ihre Anwendungen den Schlüssel von dort abrufen lassen. Wenn Sie den Schlüssel dann erneut generieren und Azure Key Vault aktualisieren, müssen die Anwendungen nicht erneut bereitgestellt werden, da sie den neuen Schlüssel automatisch aus Azure Key Vault abrufen. Beachten Sie, dass Sie festlegen können, dass die Anwendung den Schlüssel jedes Mal liest, wenn Sie ihn benötigen, oder Sie können ihn im Arbeitsspeicher zwischenspeichern, und wenn bei seiner Verwendung ein Fehler auftritt, den Schlüssel erneut aus Azure Key Vault abrufen.
+Eine weitere Option ist, dass Sie den Speicherkontoschlüssel als geheimen Schlüssel in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) platzieren und Ihre Anwendungen den Schlüssel von dort abrufen lassen. Wenn Sie den Schlüssel dann erneut generieren und Azure Key Vault aktualisieren, müssen die Anwendungen nicht erneut bereitgestellt werden, da sie den neuen Schlüssel automatisch aus Azure Key Vault abrufen. Sie können festlegen, dass die Anwendung den Schlüssel jedes Mal liest, wenn sie ihn benötigt, oder die Anwendung kann ihn im Arbeitsspeicher zwischenspeichern, und wenn bei seiner Verwendung ein Fehler auftritt, den Schlüssel erneut aus Azure Key Vault abrufen.
 
-Die Verwendung von Azure Key Vault stellt auch eine weitere Sicherheitsstufe für Ihre Speicherschlüssel dar. Wenn Sie diese Methode verwenden, benötigen Sie keinen hartcodierten Speicherschlüssel in einer Konfigurationsdatei, sodass niemand mehr ohne ausdrückliche Berechtigung Zugriff auf die Schlüssel erhalten kann.
+Die Verwendung von Azure Key Vault stellt auch eine weitere Sicherheitsstufe für Ihre Speicherschlüssel dar. Mithilfe von Key Vault können Sie das Schreiben von Speicherschlüsseln in Anwendungskonfigurationsdateien vermeiden. Außerdem wird verhindert, dass Schlüssel für alle Benutzer mit Zugriff auf diese Konfigurationsdateien verfügbar gemacht werden.
 
-Ein weiterer Vorteil der Verwendung von Azure Key Vault ist, dass Sie auch den Zugriff auf die Schlüssel mithilfe von Azure Active Directory steuern können. Dies bedeutet, dass Sie Zugriff auf die Reihe von Anwendungen gewähren können, die die Schlüssel aus Azure Key Vault abrufen müssen, und wissen, dass andere Anwendungen nicht auf die Schlüssel zugreifen können, ohne dass Sie ihnen die ausdrückliche Berechtigung gewähren.
+Azure Key Vault bietet außerdem den Vorteil, dass Azure AD zum Steuern des Zugriffs auf Ihre Schlüssel verwendet wird. Sie können den Zugriff für bestimmte Anwendungen gewähren, die die Schlüssel aus Key Vault abrufen müssen, ohne diese für andere Anwendungen verfügbar zu machen, die keinen Zugriff auf die Schlüssel benötigen.
 
 > [!NOTE]
 > Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
@@ -149,7 +159,35 @@ Ein weiterer Vorteil der Verwendung von Azure Key Vault ist, dass Sie auch den Z
 * [Verwalten von Speicherkontoeinstellungen im Azure-Portal](storage-account-manage.md)
 * [Azure Storage Resource Provider REST-API-Referenz](https://msdn.microsoft.com/library/mt163683.aspx)
 
-## <a name="data-plane-security"></a>Sicherheit auf Datenebene
+## <a name="network-security"></a>Netzwerksicherheit
+Mithilfe der Netzwerksicherheit können Sie den Zugriff auf die Daten in einem Azure Storage-Konto von ausgewählten Netzwerken aus einschränken. Mit der Azure Storage-Firewall können Sie den Zugriff auf Clients aus bestimmten öffentlichen IP-Adressbereichen, virtuellen Netzwerken (VNETs) in Azure oder von bestimmten Azure-Ressourcen einschränken. Sie haben auch die Möglichkeit, einen privaten Endpunkt für Ihr Speicherkonto in dem VNET zu erstellen, das Zugriff benötigt, und den gesamten Zugriff über den öffentlichen Endpunkt zu blockieren.
+
+Sie können die Netzwerkzugriffsregeln für Ihr Speicherkonto über die Registerkarte [Firewalls und virtuelle Netzwerke](storage-network-security.md) im Azure-Portal konfigurieren. Mithilfe der Speicherfirewall können Sie den Zugriff für den öffentlichen Internetdatenverkehr verweigern und Zugriff auf ausgewählte Clients basierend auf den konfigurierten Netzwerkregeln gewähren.
+
+Sie können auch [private Endpunkte](../../private-link/private-endpoint-overview.md) verwenden, um eine private und sichere Verbindung mit einem Speicherkonto über ein VNET mithilfe von [Private Link](../../private-link/private-link-overview.md) herzustellen.
+
+Storage-Firewallregeln gelten nur für den öffentlichen Endpunkt für das Speicherkonto. Das Subnetz, das einen privaten Endpunkt für ein Speicherkonto hostet, erhält impliziten Zugriff auf das Konto, wenn Sie die Erstellung dieses privaten Endpunkts genehmigen.
+
+> [!NOTE]
+> Die Storage-Firewallregeln gelten nicht für Speicherverwaltungsvorgänge, die über das Azure-Portal und die Azure Storage-Verwaltungs-API vorgenommen werden.
+
+### <a name="access-rules-for-public-ip-address-ranges"></a>Zugriffsregeln für öffentliche IP-Adressbereiche
+Mithilfe der Azure Storage-Firewall kann der Zugriff auf ein Speicherkonto aus bestimmten öffentlichen IP-Adressbereichen eingeschränkt werden. Sie können IP-Adressregeln verwenden, um den Zugriff auf bestimmte internetbasierte Dienste zu beschränken, die über einen festen öffentlichen IP-Endpunkt kommunizieren, oder um lokale Netzwerke auszuwählen.
+
+### <a name="access-rules-for-azure-virtual-networks"></a>Zugriffsregeln für virtuelle Azure-Netzwerke
+Speicherkonten akzeptieren standardmäßig Verbindungen von Clients in jedem Netzwerk. Mithilfe der Speicherfirewall können Sie den Clientzugriff auf die Daten in einem Speicherkonto auf ausgewählte Netzwerke beschränken. [Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) ermöglichen ein Routing des Datenverkehrs von einem virtuellen Azure-Netzwerk an das Speicherkonto. 
+
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>Gewähren des Zugriffs auf bestimmte vertrauenswürdige Ressourceninstanzen
+Sie können einer [Teilmenge der vertrauenswürdigen Azure-Dienste](storage-network-security.md#trusted-microsoft-services) den Zugriff auf das Speicherkonto über die Firewall mit strenger Authentifizierung basierend auf dem Dienstressourcentyp oder einer Ressourceninstanz gewähren.
+
+Bei Diensten, die den auf Ressourceninstanzen basierenden Zugriff über die Speicherfirewall unterstützen, kann nur die ausgewählte Instanz auf die Daten im Speicherkonto zugreifen. In diesem Fall muss der Dienst die Authentifizierung von Ressourceninstanzen mit vom System zugewiesenen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) unterstützen.
+
+### <a name="using-private-endpoints-for-securing-connections"></a>Verwenden privater Endpunkte zum Sichern von Verbindungen
+Azure Storage unterstützt private Endpunkte, die einen sicheren Zugriff auf das Speicherkonto über ein virtuelles Azure-Netzwerk ermöglichen. Private Endpunkte weisen dem Speicherdienst eine private IP-Adresse aus dem Adressraum Ihres VNET zu. Bei Verwendung privater Endpunkte leitet die Speicherverbindungszeichenfolge den Datenverkehr, der für das Speicherkonto bestimmt ist, an die private IP-Adresse um. Die Verbindung zwischen dem privaten Endpunkt und dem Speicherkonto verwendet einen privaten Link. Mithilfe privater Endpunkte können Sie die Exfiltration von Daten aus Ihrem VNET blockieren.
+
+Lokale Netzwerke, die über VPN oder privates [ExpressRoute](../../expressroute/expressroute-locations.md)-Peering und andere mittels Peering verknüpfte virtuelle Netzwerke verbunden sind, können auch über den privaten Endpunkt auf das Speicherkonto zugreifen. Private Endpunkte für Ihre Speicherkonten können in einem VNET in jeder Region erstellt werden, wodurch eine sichere globale Reichweite erzielt wird. Sie können auch private Endpunkte für Speicherkonten in anderen [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)-Mandanten erstellen.
+
+## <a name="authorization"></a>Authorization
 Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennengelernt, aber wie steuern Sie den Zugriff auf die Objekte?
 
 Sie haben drei Optionen zur Autorisierung des Zugriffs auf Datenobjekte in Azure Storage:
@@ -159,8 +197,6 @@ Sie haben drei Optionen zur Autorisierung des Zugriffs auf Datenobjekte in Azure
 - Verwenden Sie Shared Access Signatures, um bestimmten Datenobjekten für einen bestimmten Zeitraum kontrollierte Berechtigungen zu gewähren.
 
 Für Blob Storage können Sie öffentlichen Zugriff auf Ihre Blobs zulassen, indem Sie die Zugriffsebene für den Container, der die Blobs enthält, entsprechend festlegen. Wenn Sie den Zugriff für einen Container auf Blob oder Container festlegen, entspricht dies öffentlichem Lesezugriff auf die Blobs im Container. Dies bedeutet, dass jeder Benutzer, dessen URL auf ein Blob in diesem Container zeigt, es in einem Browser öffnen kann, ohne eine SAS zu verwenden oder über die Schlüssel des Speicherkontos zu verfügen.
-
-Zusätzlich zum Beschränken des Zugriffs durch Autorisierung können Sie auch [Firewalls und virtuelle Netzwerke](storage-network-security.md) verwenden, um den Zugriff auf das Speicherkonto basierend auf Netzwerkregeln einzuschränken.  Mit diesem Ansatz können Sie den Zugriff auf öffentlichen Internetdatenverkehr verweigern und nur den Zugriff auf bestimmte virtuelle Azure-Netzwerke oder IP-Adressbereiche im öffentlichen Internet gewähren.
 
 ### <a name="storage-account-keys"></a>Speicherkontoschlüssel
 Speicherkontoschlüssel sind von Azure erstellte 512-Bit-Zeichenfolgen, die zusammen mit dem Speicherkontonamen für den Zugriff auf die im Speicherkonto gespeicherten Datenobjekte verwendet werden können.
@@ -236,6 +272,11 @@ Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zug
     Dieser Artikel enthält Beispiele für die Verwendung einer Dienstebenen-SAS mit Blobs, Warteschlangennachrichten, Tabellenbereichen und Dateien.
   * [Constructing a service SAS (Erstellen einer Dienstebenen-SAS)](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Constructing an account SAS (Erstellen einer Kontoebenen-SAS)](https://msdn.microsoft.com/library/mt584140.aspx)
+
+* Dies ist ein Tutorial für die Verwendung der .NET-Clientbibliothek zum Erstellen von SAS und gespeicherten Zugriffsrichtlinien.
+  * [Verwenden von Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
+
+    Dieser Artikel enthält eine Erläuterung des SAS-Modells, Beispiele für SAS und Empfehlungen bewährter Methoden für die SAS-Verwendung. Auch der Widerruf der Berechtigung wird hier erörtert.
 
 * Authentication
 

@@ -1,30 +1,26 @@
 ---
 title: Azure Application Insights Snapshot-Debugger für .NET-Apps | Microsoft Docs
 description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahmen in .NET-Produktions-Apps erfasst.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: brahmnes
-ms.date: 08/06/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 02d72ab877577e97592dfdd763a58cb01b201d8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 10/23/2019
+ms.reviewer: brahmnes
+ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839355"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899798"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger (Vorschau) in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht die Ausnahmetelemetrie aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md).
 
 Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2019 Enterprise. In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
 
-Debugmomentaufnahmen werden sieben Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
+Debugmomentaufnahmen werden 15 Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Aktivieren des Application Insights-Momentaufnahmedebuggers für Ihre Anwendung
 Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:

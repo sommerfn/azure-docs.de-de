@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
-description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen abrufen.
+description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
 ms.date: 02/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: b460a3e70b5462be3fdc7f34dd7261d491a495b3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959584"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132804"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 

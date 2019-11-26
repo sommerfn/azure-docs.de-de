@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88f8b6a8dcce0e498a7b81b8741072bcf4cfcad8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259442"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881658"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Bedingte Bereitstellung in Resource Manager-Vorlagen
 
@@ -81,6 +81,10 @@ Die komplette Vorlage finden Sie unter [Azure SQL logical server](https://github
 Bei Verwendung einer Funktion vom Typ [reference](resource-group-template-functions-resource.md#reference) oder [list](resource-group-template-functions-resource.md#list) mit einer Ressource, die bedingt bereitgestellt wird, wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die Funktion auf eine nicht vorhandene Ressource verweist.
 
 Verwenden Sie die [if](resource-group-template-functions-logical.md#if)-Funktion, um sicherzustellen, dass die Funktion nur für Bedingungen ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
+
+## <a name="condition-with-complete-mode"></a>Bedingung mit vollständigem Modus
+
+Wenn Sie eine Vorlage mit [vollständigem Modus](deployment-modes.md) bereitstellen und eine Ressource aufgrund einer nicht zutreffenden Bedingung nicht bereitgestellt wird, hängt das Ergebnis davon ab, welche Rest-API-Version Sie zum Bereitstellen der Vorlage verwenden. Wenn Sie eine frühere Version als 2019-05-10 verwenden, wird die Ressourcen **nicht gelöscht**. Bei Version 2019-05-10 oder höher wird die Ressourcen **gelöscht**. Die neuesten Versionen von Azure PowerShell und Azure CLI löschen die Ressource, wenn die Bedingung nicht zutrifft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

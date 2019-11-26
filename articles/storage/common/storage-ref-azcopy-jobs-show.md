@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 42b8bde9adb6980ff2c7004d43b02fc1fdc38363
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513454"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034124"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
@@ -30,6 +30,13 @@ Wenn das Flag `with-status` festgelegt wird, wird die Liste der Übertragungen i
 ```azcopy
 azcopy jobs show [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
+
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Optionen
 

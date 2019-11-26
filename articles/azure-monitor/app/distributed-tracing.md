@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677123"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242443"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -40,6 +40,7 @@ Die verteilte Ablaufverfolgung wird von den Application Insights SDKs für .NET,
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (Vorschau)](opencensus-python.md)
 
 Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -49,7 +50,7 @@ Wenn das richtige Application Insights SDK installiert und konfiguriert ist, wer
 
 Zusätzlich zu den Application Insights SDKs unterstützt Application Insights auch die verteilte Ablaufverfolgung durch [OpenCensus](https://opencensus.io/). OpenCensus ist eine herstellerunabhängige, Open Source-Einzelverteilung von Bibliotheken, mit denen Funktionen für das Sammeln von Metriken und für die verteilte Ablaufverfolgung für Dienste bereitgestellt werden. Darüber hinaus ermöglicht es der Open Source-Community, die verteilte Ablaufverfolgung mit gängigen Technologien wie Redis, Memcached oder MongoDB zu durchzuführen. [Microsoft arbeitet bei OpenCensus mit mehreren anderen Überwachungs- und Cloud-Partnern zusammen](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Um einer Anwendung mit OpenCensus Funktionen für die verteilte Ablaufverfolgung hinzuzufügen, [installieren und konfigurieren Sie zunächst die lokale Weiterleitung von Application Insights](./../../azure-monitor/app/opencensus-local-forwarder.md). Von dort aus konfigurieren Sie OpenCensus zum Weiterleiten von verteilten Ablaufverfolgungsdaten über die lokale Weiterleitung. Sowohl [Python](./../../azure-monitor/app/opencensus-python.md) als auch [Go](./../../azure-monitor/app/opencensus-go.md) werden unterstützt.
+[Python (Vorschau)](opencensus-python.md) 
 
 Auf der OpenCensus-Website finden Sie API-Referenzdokumentation für [Python](https://opencensus.io/api/python/trace/usage.html) und [Go](https://godoc.org/go.opencensus.io), sowie verschiedene andere Anleitungen für die Verwendung von OpenCensus. 
 

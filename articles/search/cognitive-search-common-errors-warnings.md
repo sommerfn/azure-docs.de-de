@@ -1,5 +1,5 @@
 ---
-title: Häufige Fehler und Warnungen
+title: Indexerfehler und -warnungen
 titleSuffix: Azure Cognitive Search
 description: Dieser Artikel enthält Informationen und Lösungen für häufige Fehler und Warnungen, die bei der KI-Anreicherung in der kognitiven Azure-Suche auftreten können.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0230fbb2cb94001f7965cf1756a8a0d1061978da
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806122"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133214"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Häufige Fehler und Warnungen der KI-Anreicherungspipeline in der kognitiven Azure-Suche
+# <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
-Dieser Artikel enthält Informationen und Lösungen für häufige Fehler und Warnungen, die bei der KI-Anreicherung in der kognitiven Azure-Suche auftreten können.
+Dieser Artikel enthält Informationen und Lösungen für häufige Fehler und Warnungen, die bei der Indizierung und KI-Anreicherung in Azure Cognitive Search auftreten können.
 
 ## <a name="errors"></a>Errors
 Die Indizierung wird angehalten, wenn die Fehleranzahl ['maxFailedItems'](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) überschreitet. 
@@ -229,6 +229,9 @@ Dieses Verhalten kann außer Kraft gesetzt werden, indem durch Verwendung der Ko
 
 Weitere Informationen finden Sie unter [Inkrementeller Status und benutzerdefinierte Abfragen](search-howto-index-cosmosdb.md#IncrementalProgress).
 
+### <a name="some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>Einige Daten sind während der Projektion verloren gegangen. Zeile „X“ in Tabelle „Y“ weist Zeichenfolgeneigenschaft „Z“ auf, die zu lang war.
+Im [Table Storage-Dienst](https://azure.microsoft.com/services/storage/tables) ist die Größe der [Entitätseigenschaften](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) begrenzt. Zeichenfolgen können maximal 32.000 Zeichen enthalten. Wird eine Zeile mit einer Zeichenfolgeneigenschaft, die länger als 32.000 Zeichen ist, projiziert, werden nur die ersten 32.000 Zeichen beibehalten. Um dieses Problem zu umgehen, vermeiden Sie das Projizieren von Zeilen mit Zeichenfolgeneigenschaften, die länger als 32.000 Zeichen sind.
+
 ### <a name="truncated-extracted-text-to-x-characters"></a>Der extrahierte Text wurde auf x Zeichen gekürzt.
 Indexer begrenzen die pro Dokument extrahierbare Textmenge. Dieser Grenzwert ist tarifabhängig: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Abgeschnittener Text wird nicht indiziert. Zur Vermeidung dieser Warnung können Sie versuchen, Dokumente mit umfangreichem Text in mehrere kleinere Dokumente aufzuteilen. 
 
@@ -237,4 +240,5 @@ Weitere Informationen finden Sie unter [Indexergrenzwerte](search-limits-quotas-
 ### <a name="could-not-map-output-field-x-to-search-index"></a>Das Ausgabefeld „X“ konnte dem Suchindex nicht zugeordnet werden.
 Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest.
 
-Der Indexer konnte einen Skill im Skillset ausführen, aber die Antwort auf die Web-API-Anforderung ergab, dass während der Ausführung Warnungen aufgetreten sind. Überprüfen Sie die Warnungen, um zu verstehen, wie sich dies auf die Daten auswirkt und ob Handlungsbedarf besteht.
+### <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Die Richtlinie zur Erkennung von Datenänderungen ist für die Verwendung der Schlüsselspalte „X“ konfiguriert.
+[Richtlinien für die Datenänderungserkennung](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) weisen bestimmte Anforderungen an die zum Erkennen von Änderungen verwendeten Spalten auf. Eine dieser Anforderungen besteht darin, dass diese Spalte jedes Mal aktualisiert wird, wenn das Quellelement geändert wird. Eine weitere Anforderung besteht darin, dass der neue Wert für diese Spalte größer als der vorherige Wert ist. Schlüsselspalten erfüllen diese Anforderung nicht, da Sie nicht bei jeder Aktualisierung geändert werden. Um dieses Problem zu umgehen, wählen Sie eine andere Spalte für die Änderungserkennungsrichtlinie aus.

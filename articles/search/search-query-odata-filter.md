@@ -1,7 +1,7 @@
 ---
 title: Referenz zu OData-Filtern
 titleSuffix: Azure Cognitive Search
-description: OData-Sprachreferenz für die Syntax von „$filter“ in Abfragen der kognitiven Azure-Suche.
+description: OData-Sprachreferenz und vollständige Syntax, die zum Erstellen von Filterausdrücken in Azure Cognitive Search-Abfragen verwendet werden.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793368"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113202"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$filter“ in der kognitiven Azure-Suche
 
@@ -53,7 +53,7 @@ variable ::= identifier | field_path
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
 > Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
@@ -196,7 +196,7 @@ Suche nach Hotels, bei denen die Begriffe „hotel“ und „airport“ in der B
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in der kognitiven Azure-Suche](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

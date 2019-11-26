@@ -1,24 +1,19 @@
 ---
 title: Überwachen der Integrität und Nutzung Ihrer Anwendung mit Application Insights
 description: Erste Schritte mit Application Insights. Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihres lokalen oder Microsoft Azure-Anwendungen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373085"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899300"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
 

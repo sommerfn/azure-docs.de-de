@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65910822"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990648"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -1024,11 +1024,11 @@ Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueck
 ## <a name="sample-custom-activities-on-github"></a>Benutzerdefinierte Beispielaktivitäten in GitHub
 | Beispiel | Aktion der benutzerdefinierten Aktivität |
 | --- | --- |
-| [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in Azure Blob Storage herunter. |
-| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure Machine Learning Studio-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
-| [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
-| [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |
-| [Erneutes Verarbeiten eines Modells in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Erneutes Verarbeiten eines Modells in Azure Analysis Services |
+| [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in Azure Blob Storage herunter. |
+| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure Machine Learning Studio-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
+| [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
+| [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |
+| [Erneutes Verarbeiten eines Modells in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Erneutes Verarbeiten eines Modells in Azure Analysis Services |
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md

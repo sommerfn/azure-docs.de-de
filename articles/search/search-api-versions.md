@@ -1,5 +1,5 @@
 ---
-title: API-Versionsverwaltung für .NET SDK und REST-APIs
+title: API-Versionsverwaltung für .NET und REST
 titleSuffix: Azure Cognitive Search
 description: Versionsrichtlinie für REST-APIs für die kognitive Azure-Suche und die Clientbibliothek im .NET SDK.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793060"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112148"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-Versionen in der kognitiven Azure-Suche
 

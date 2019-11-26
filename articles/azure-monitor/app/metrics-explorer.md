@@ -1,23 +1,18 @@
 ---
 title: Untersuchen von Metriken in Azure Application Insights | Microsoft Docs
 description: Interpretieren von Metrik-Explorer-Diagrammen und Anpassen von Metrik-Explorer-Blättern
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700707"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820791"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Untersuchen von Metriken in Application Insights
 Metriken in [Application Insights][start] sind gemessene Werte und Anzahlen von Ereignissen, die als Telemetriedaten aus Ihrer Anwendung gesendet werden. Sie dienen zum Erkennen von Leistungsproblemen und Überwachen von Trends bei der Nutzung Ihrer Anwendung. Es gibt eine Vielzahl von Standardmetriken, doch Sie können auch eigene benutzerdefinierte Metriken und Ereignisse erstellen.

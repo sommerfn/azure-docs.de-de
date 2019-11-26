@@ -1,17 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
-description: Beschreibt, wie die von Azure Policy verwendete Definition von Ressourcenrichtlinien es Ihnen ermöglicht, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll und welche Auswirkungen erfolgen sollen.
-author: DCtheGeek
-ms.author: dacoulte
+description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464030"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132824"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 

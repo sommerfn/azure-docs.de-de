@@ -1,19 +1,19 @@
 ---
-title: Implementieren der Facettennavigation in einer Kategorienhierarchie
+title: Hinzufügen einer Kategoriehierarchie für die Facettennavigation
 titleSuffix: Azure Cognitive Search
-description: Fügen Sie die Facettennavigation Anwendungen hinzu, die in die kognitive Azure-Suche integriert sind, einem in Microsoft Azure gehosteten Cloudsuchdienst.
+description: Fügen Sie die Facettennavigation für das selbstgesteuerte Filtern in Suchanwendungen hinzu, die in Azure Cognitive Search integriert sind.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496515"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112085"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
 

@@ -1,21 +1,18 @@
 ---
 title: Azure Application Insights – Automatisches Sammeln von Abhängigkeiten | Microsoft-Dokumentation
 description: Mit Application Insights können Abhängigkeiten automatisch gesammelt und visualisiert werden.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
-ms.date: 10/16/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3ad2f4788a765366066023724772f5432d0d56eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/16/2018
+ms.openlocfilehash: 1d3259c32de7f937d4e5ac8e21c8cab60b9cc635
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699204"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819177"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights-NuGet-Pakete
 
@@ -43,6 +40,22 @@ Nachfolgend finden Sie eine Liste der stabilen NuGet-Releasepakete für Applicat
 | Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Mithilfe der Erfassung von Application Insights-Leistungsindikatoren können Sie über Leistungsindikatoren gesammelte Daten an Application Insights senden. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Das Windows Server-NuGet-Paket für Application Insights bietet eine automatische Sammlung von Telemetriedaten für .NET-Anwendungen, um Anwendungserkenntnisse zu gewinnen. Dieses Paket kann als abhängiges Paket für plattformspezifische Application Insights-Pakete oder als eigenständiges Paket für .NET-Anwendungen verwendet werden, die nicht durch plattformspezifische Pakete abgedeckt werden (z.B. für .NET-Workerrollen). | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Bietet einen Telemetriekanal zum Windows Server SDK für Application Insights, der Telemetriedaten in Offlineszenarien beibehält. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+
+## <a name="common-packages-for-python-using-opencensus"></a>Gängige Pakete für Python mit OpenCensus
+| Paketname | Stabile Version | BESCHREIBUNG | Download |
+|-------------------------------|-----------------------|------------|----|
+| opencensus-ext-azure | 1.0.0 | Application Insights für Python-Anwendungen unter Azure Monitor über OpenCensus. | [Paket herunterladen](https://pypi.org/project/opencensus-ext-azure/) |
+| opencensus-ext-django | 0.7.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [django](https://pypi.org/project/django/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-django/) |
+| opencensus-ext-flask | 0.7.3 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [flask](https://pypi.org/project/flask/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-flask/) |
+| opencensus-ext-httplib | 0.7.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [http.client](https://docs.python.org/3/library/http.client.html) für Python3 und [httplib](https://docs.python.org/2/library/httplib.html) für Python2. | [Paket herunterladen](https://pypi.org/project/opencensus-ext-httplib/) |
+| opencensus-ext-logging | 0.1.0 | Mit diesem Paket werden Protokolldatensätze um Ablaufverfolgungsdaten erweitert. | [Paket herunterladen](https://pypi.org/project/opencensus-ext-logging/) |
+| opencensus-ext-mysql | 0.1.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [mysql-connector](https://pypi.org/project/mysql-connector/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-mysql/) |
+| opencensus-ext-postgresql | 0.1.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [psycopg2](https://pypi.org/project/psycopg2/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-postgresql/) |
+| opencensus-ext-pymongo | 0.7.1 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [pymongo](https://pypi.org/project/pymongo/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-pymongo/) |
+| opencensus-ext-pymysql | 0.1.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [PyMySQL](https://pypi.org/project/PyMySQL/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-pymysql/) |
+| opencensus-ext-pyramid | 0.7.1 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [pyramid](https://pypi.org/project/pyramid/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-pyramid/) |
+| opencensus-ext-requests | 0.7.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [requests](https://pypi.org/project/requests/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-requests/) |
+| opencensus-ext-sqlalchemy | 0.1.2 | Dieses Paket ermöglicht die Integration in die Python-Datenbank [SQLAlchemy](https://pypi.org/project/SQLAlchemy/). | [Paket herunterladen](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
 
 ## <a name="listenerscollectorsappenders"></a>Listener/Sammler/Appender
 

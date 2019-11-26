@@ -1,5 +1,5 @@
 ---
-title: Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln in Azure Key Vault (Vorschau)
+title: Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in der kognitiven Azure-Suche durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721757"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112939"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Inhaltsverschlüsselung der kognitiven Azure-Suche mit von Kunden verwalteten Schlüsseln in Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Verschlüsselung ruhender Inhalte in Azure Cognitive Search mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
 > [!IMPORTANT] 
 > Die Unterstützung der Verschlüsselung ruhender Daten ist derzeit als öffentliche Vorschau verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) und die [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) bereitgestellt. Das Portal wird derzeit nicht unterstützt.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176659"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991433"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -107,7 +107,7 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 1. Klicken Sie auf **Speichern**.
 1. Scrollen Sie zum unteren Rand der Registerkarte, und wählen Sie **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** aus. 
    
-1. Ändern Sie das **Image** unter **Edge Hub** in **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2**.
+1. Ändern Sie das **Image** unter **Edge Hub** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
 
 1. Stellen Sie sicher, dass **Erstellungsoptionen** wie folgt festgelegt ist: 
          
@@ -168,9 +168,9 @@ Falls ein Problem auftritt, sind Containerprotokolle die beste Möglichkeit, um 
    
    | NAME | IMAGE |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
-   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
+   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
    
    Falls die mindestens erforderlichen Container nicht vorhanden sind, überprüfen Sie, ob Ihr IoT Edge-Bereitstellungsmanifest den empfohlenen Einstellungen entspricht. Weitere Informationen finden Sie unter [Deploy IoT Edge module](#deployment-using-azure-portal) (Bereitstellen eines IoT Edge-Moduls).
 

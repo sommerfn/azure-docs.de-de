@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143269"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901608"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -28,7 +28,7 @@ Wie viele interaktive Sitzungen gleichzeitig aktiv sein können, hängt von den 
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Warum meldet meine Anwendung Windows 10 Enterprise (mehrere Sitzungen) als Serverbetriebssystem?
 
-Windows 10 Enterprise (mehrere Sitzungen) ist eine virtuelle Edition von Windows 10 Enterprise. Einer der Unterschiede ist, dass dieses Betriebssystem für [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) den Wert „2“ meldet. Dies ist der gleiche Wert wie für Windows Server. Mit dieser Eigenschaft wird die Kompatibilität des Betriebssystems mit vorhandenen RDSH-Verwaltungstools, RDSH-Multisession-fähigen Anwendungen und vorwiegend auf Low-Level-Basis vorgenommenen Systemleistungsoptimierungen für RDSH-Umgebungen sichergestellt. Bei einigen Anwendungsinstallationsprogrammen kann es sein, dass die Installation unter Windows 10 Enterprise (mehrere Sitzungen) blockiert wird. Dies hängt davon ab, ob erkannt wird, dass „ProductType“ auf „Client“ festgelegt ist. Wenn Ihre App nicht installiert werden kann, sollten Sie sich an den Anbieter Ihrer Anwendung wenden, um eine aktualisierte Version zu erhalten. 
+Windows 10 Enterprise (mehrere Sitzungen) ist eine virtuelle Edition von Windows 10 Enterprise. Einer der Unterschiede ist, dass dieses Betriebssystem für [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) den Wert „3“ meldet. Dies ist der gleiche Wert wie für Windows Server. Mit dieser Eigenschaft wird die Kompatibilität des Betriebssystems mit vorhandenen RDSH-Verwaltungstools, RDSH-Multisession-fähigen Anwendungen und vorwiegend auf Low-Level-Basis vorgenommenen Systemleistungsoptimierungen für RDSH-Umgebungen sichergestellt. Bei einigen Anwendungsinstallationsprogrammen kann es sein, dass die Installation unter Windows 10 Enterprise (mehrere Sitzungen) blockiert wird. Dies hängt davon ab, ob erkannt wird, dass „ProductType“ auf „Client“ festgelegt ist. Wenn Ihre App nicht installiert werden kann, sollten Sie sich an den Anbieter Ihrer Anwendung wenden, um eine aktualisierte Version zu erhalten. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Kann ich Windows 10 Enterprise (mehrere Sitzungen) lokal ausführen?
 

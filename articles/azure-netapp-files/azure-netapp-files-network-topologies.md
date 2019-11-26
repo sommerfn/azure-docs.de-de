@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984137"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242478"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
@@ -99,7 +99,7 @@ Ein einfaches Szenario ist das Erstellen oder Verbinden mit einem Azure NetApp F
 
 Wenn Sie zusätzliche VNETs in derselben Region haben, die Zugriff auf die Ressourcen des jeweils anderen benötigen, können die VNETs über [VNET-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) verbunden werden, um über die Azure-Infrastruktur eine sichere Verbindung zu ermöglichen. 
 
-Sehen Sie sich VNET 2 und VNET 3 im obigen Diagramm an. Wenn VM 2 eine Verbindung mit VM 3 und Volume 2 herstellen muss oder VM 3 eine Verbindung mit VM 2 oder Volume 1 herstellen muss, müssen Sie VNET-Peering zwischen VNET 2 und VNET 3 aktivieren. 
+Sehen Sie sich VNET 2 und VNET 3 im obigen Diagramm an. Wenn VM 1 eine Verbindung mit VM 2 oder Volume 2 herstellen muss oder VM 2 eine Verbindung mit VM 1 oder Volume 1 herstellen muss, müssen Sie VNET-Peering zwischen VNET 2 und VNET 3 aktivieren. 
 
 Denken Sie zudem an ein Szenario, bei dem VNET 1 per Peering mit VNET 2 und VNET 2 per Peering mit VNET 3 in der gleichen Region verknüpft ist. Die Ressourcen in VNET 1 können sich mit Ressourcen in VNET 2 verbinden, aber sie können sich nicht mit Ressourcen in VNET 3 verbinden, es sei denn, VNET 1 und VNET 3 werden mittels Peering verknüpft. 
 

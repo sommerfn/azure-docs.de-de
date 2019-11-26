@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529027"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096975"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -102,6 +102,8 @@ Wenn Sie eingeschränkte Geräte mit begrenzt verfügbarem Arbeitsspeicher berei
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Vermeiden von Leistungsoptimierung auf eingeschränkten Geräten
 
 Der IoT Edge-Hub ist standardmäßig für Leistung optimiert, sodass er versucht, große Speicherblöcke zuzuordnen. Diese Konfiguration kann bei kleineren Geräten wie Raspberry Pi Stabilitätsprobleme verursachen. Wenn Sie Geräte mit eingeschränkten Ressourcen bereitstellen, legen Sie auf dem IoT Edge-Hub die Umgebungsvariable **OptimizeForPerformance** auf **FALSE** fest. 
+
+Wenn **OptimizeForPerformance** auf **TRUE** festgelegt wurde, wird im MQTT-Protokollkopf der Wert „PooledByteBufferAllocator“ verwendet, der eine bessere Leistung bietet, aber mehr Arbeitsspeicher zuordnet. Die Zuweisung funktioniert nicht gut unter 32-Bit-Betriebssystemen oder auf Geräten mit wenig Arbeitsspeicher. Und: Wenn RocksDb im Hinblick auf Leistung optimiert wurde, ordnet sie mehr Speicher für ihre Rolle als lokaler Speicheranbieter zu. 
 
 Weitere Informationen finden Sie unter [Stabilitätsprobleme auf Geräten mit Ressourceneinschränkungen](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 

@@ -1,19 +1,19 @@
 ---
 title: Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 description: Referenz zu Supportmetriken und -protokollen für Metrikwarnungen in Azure Monitor
-author: snehithm
+author: harelbr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 37ef1cda37e1799a4dc488947e6c9ed4c9ad4055
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fe7f7b8fae988a6e3f95b4fbade6296f4e6ac3f6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636187"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161994"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -34,7 +34,7 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.ApiManagement/service     | Ja        | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
 |Microsoft.Automation/automationAccounts     |     Ja   | [Automation-Konten](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
 |Microsoft.Batch/batchAccounts | –| [Batch-Konten](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
-|Microsoft.Cache/Redis     |    –     |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
+|Microsoft.Cache/Redis     |    Ja     |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
 |Microsoft.CognitiveServices/accounts     |    –     | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines     |    –     | [Virtuelle Computer](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   –      |[Skalierungsgruppen für virtuelle Computer](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
@@ -44,24 +44,29 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.DataFactory/factories     |   Ja     |[Data Factorys V2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
 |Microsoft.DBforMySQL/servers     |   –      |[Datenbank für MySQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/servers     |    –     | [Datenbank für PostgreSQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft.Devices/IotHubs    | –     |[IoT Hub-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)
-|Microsoft.Devices/provisioningServices    | Ja     |[DPS-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)
+|Microsoft.Devices/IotHubs    | –     |[IoT Hub-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
+|Microsoft.Devices/provisioningServices    | Ja     |[DPS-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
+|Microsoft.EventGrid/topics     |  Ja      |[Event Grid-Themen](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
+|Microsoft.EventHub/clusters     |  Ja      |[Event Hubs-Cluster](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
 |Microsoft.EventHub/namespaces     |  Ja      |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/vaults| Nein | [Tresore](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     –    |[Logik-Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft.MachineLearningServices/workspaces     |    Ja     | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft.Network/applicationGateways     |    –     | [Anwendungsgateways](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/dnsZones | –| [DNS-Zonen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | – |  [ExpressRoute-Verbindungen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/loadBalancers (nur für Standard-SKUs)| Ja| [Lastenausgleichsmodule](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  –       |[Öffentliche IP-Adressen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.Network/trafficManagerProfiles | Ja | [Traffic Manager-Profile](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft.OperationalInsights/workspaces| Ja|[Log Analytics-Arbeitsbereiche](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft.OperationalInsights/workspaces| Ja | [Log Analytics-Arbeitsbereiche](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft.Relay/namespaces | Ja | [Relays](../../azure-monitor/platform/metrics-supported.md#microsoftrelaynamespaces)|
 |Microsoft.PowerBIDedicated/capacities | – | [Kapazitäten](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   –      |[Suchdienste](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ja       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Ja     | [Speicherkonten](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ja    | [Blobdienste](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Dateidienste](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Warteschlangendienste](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) und [Tabellendienste](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  –       | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.Microsoft.VMWareCloudSimple/virtualMachines     |  Ja       | [Virtuelle CloudSimple-Computer](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
 | Microsoft.Web/serverfarms | Ja | [App Service-Pläne](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)  |
 | Microsoft.Web/sites | Ja | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) und [Functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 | Microsoft.Web/sites/slots | Ja | [App Service-Slots](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|

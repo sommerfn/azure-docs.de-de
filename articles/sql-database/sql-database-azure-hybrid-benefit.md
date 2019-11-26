@@ -8,20 +8,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821872"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048393"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
 
-Bei der bereitgestellten Computeebene des V-Kern-basierten Kaufmodells können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Mit diesem Azure-Vorteil können Sie bei Azure SQL-Datenbank bis zu 30 Prozent sparen, indem Sie Ihre lokalen SQL Server-Lizenzen mit Software Assurance verwenden.
+Bei der bereitgestellten Computeebene des V-Kern-basierten Kaufmodells können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Mit diesem Azure-Vorteil können Sie bei Azure SQL-Datenbank bis zu 30 Prozent sparen, indem Sie Ihre lokalen SQL Server-Lizenzen mit Software Assurance verwenden. 
+
+> [!NOTE]
+> Um zu Azure-Hybridvorteil zu wechseln, ist keine Downtime erforderlich.
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
-
 
 ## <a name="choose-a-license-model"></a>Auswählen eines Lizenzmodells
 
@@ -49,8 +51,6 @@ Sie können Ihr Lizenzierungsmodell im Azure-Portal oder mithilfe einer der folg
   - [Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [Verwaltete Instanzen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Verwaltete Instanzen – Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

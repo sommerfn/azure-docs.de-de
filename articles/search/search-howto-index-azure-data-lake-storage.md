@@ -1,5 +1,5 @@
 ---
-title: Indizieren von Dokumenten in Azure Data Lake Storage Gen2 (Vorschau)
+title: Suche über Azure Data Lake Storage Gen2 (Vorschauversion)
 titleSuffix: Azure Cognitive Search
 description: Erfahren Sie, wie Sie Inhalte und Metadaten in Azure Data Lake Storage Gen2 indizieren. Dieses Feature befindet sich zurzeit in der öffentlichen Vorschau.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 390f45ce874e4e64d3a7b9a6c3944983e0ba9028
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719922"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112289"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indizieren von Dokumenten in Azure Data Lake Storage Gen2
 

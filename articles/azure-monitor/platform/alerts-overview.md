@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555594"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802309"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -184,9 +184,9 @@ Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über di
 
 Möglicherweise möchten Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen. Zum Beispiel kann es sein, dass Sie benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen wollen oder Ihre Warnungen analysieren möchten, um Muster und Trends zu erkennen.
 
-Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) abfragen.
+Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) abfragen.
 
-Die [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) ermöglicht Ihnen das Abfragen von Warnungsinstanzen in großem Maßstab. Dies wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
+Die [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) ermöglicht Ihnen das Abfragen von Warnungsinstanzen in großem Maßstab. Dies wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
 
 Die folgende Beispielanforderung an die API gibt die Anzahl der Warnungen innerhalb eines Abonnements zurück:
 

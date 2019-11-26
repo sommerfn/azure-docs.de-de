@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987006"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146183"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -33,10 +33,10 @@ Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter U
     *   Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port SSH zu aktivieren. 
     *   Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
 4.  Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
-    1.  Kopieren Sie die Geräte-Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das Sie in Ihrer IoT Hub-Instanz erstellt haben. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts über das Azure-Portal](how-to-register-device-portal.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
+    1.  Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das Sie in Ihrem IoT Hub erstellt haben. (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) beschriebene Verfahren ausführen.)
     1.  Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
     1.  Wählen Sie die Option **RunShellScript** aus.
-    1.  Führen Sie über das Befehlsfenster das folgende Skript mit Ihrer Geräte-Verbindungszeichenfolge aus: `/etc/iotedge/configedge.sh “{device_connection_string}”`.
+    1.  Führen Sie über das Befehlsfenster das folgende Skript mit Ihrer Geräte-Verbindungszeichenfolge aus: `/etc/iotedge/configedge.sh "{device_connection_string}"`.
     1.  Wählen Sie **Ausführen** aus.
     1.  Warten Sie einige Minuten. Auf dem Bildschirm sollte dann eine Meldung mit dem Hinweis angezeigt werden, dass die Verbindungszeichenfolge festgelegt wurde.
 
@@ -85,7 +85,7 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-1. Legen Sie die Verbindungszeichenfolge fest. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle](how-to-register-device-cli.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
+1. Legen Sie die Geräte-Verbindungszeichenfolge fest (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge über die Azure-Befehlszeilenschnittstelle (CLI)](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) beschriebene Verfahren ausführen):
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"

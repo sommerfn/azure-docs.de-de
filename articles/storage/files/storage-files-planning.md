@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514667"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066343"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -207,11 +207,16 @@ Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In ein
 |-------|---------|
 |Australien (Osten) |LRS     |
 |Australien, Südosten|LRS |
+|Kanada, Mitte  |LRS     |
+|Kanada, Osten     |LRS     |
 |Indien, Mitte  |LRS     |
+|USA, Mitte*   |LRS     |
 |Asien, Osten      |LRS     |
 |USA, Osten*        |LRS     |
+|USA, Osten 2*      |LRS     |
 |Frankreich, Mitte |LRS, ZRS|
 |Frankreich, Süden   |LRS     |
+|Nordeuropa   |LRS     |
 |Indien (Süden)    |LRS     |
 |Asien, Südosten |LRS, ZRS|
 |USA, Westen-Mitte|LRS     |
@@ -219,13 +224,13 @@ Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In ein
 |USA, Westen*        |LRS     |
 |USA, Westen 2      |LRS, ZRS|
 
-\* Wird für neue Konten unterstützt. Nicht alle vorhandenen Konten haben den Upgradeprozess vollständig durchlaufen.
+\* Wird für neue Konten unterstützt. Nicht alle vorhandenen Konten haben den Upgradeprozess vollständig durchlaufen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
 
 Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Aktivieren und Erstellen größerer Dateifreigaben
 
-In unserem Artikel [Aktivieren großer Dateifreigaben](storage-files-how-to-create-large-file-share.md) erfahren Sie, wie Sie größere Dateifreigaben verwenden können.
+In unserem Artikel [Aktivieren und Erstellen großer Dateifreigaben](storage-files-how-to-create-large-file-share.md) erfahren Sie, wie Sie größere Dateifreigaben verwenden können.
 
 ## <a name="data-growth-pattern"></a>Muster des Datenwachstums
 

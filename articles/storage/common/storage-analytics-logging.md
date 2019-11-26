@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854604"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882639"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -179,7 +179,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ## <a name="download-storage-logging-log-data"></a>Herunterladen von Protokolldaten der Speicherprotokollierung
 
- Zum Anzeigen und Analysieren der Protokolldaten sollten Sie die Blobs, die die gewünschten Protokolldaten enthalten, auf einen lokalen Computer herunterladen. Mit vielen Tools zum Durchsuchen des Speichers können Sie Blobs von Ihrem Speicherkonto herunterladen. Außerdem können Sie das vom Azure Storage-Team bereitgestellte Befehlszeilentool Azure Copy (**AzCopy**) zum Herunterladen der Protokolldaten verwenden.  
+ Zum Anzeigen und Analysieren der Protokolldaten sollten Sie die Blobs, die die gewünschten Protokolldaten enthalten, auf einen lokalen Computer herunterladen. Mit vielen Tools zum Durchsuchen des Speichers können Sie Blobs von Ihrem Speicherkonto herunterladen. Außerdem können Sie das vom Azure Storage-Team bereitgestellte Befehlszeilentool Azure Copy ([AzCopy](storage-use-azcopy-v10.md)) zum Herunterladen der Protokolldaten verwenden.  
 
  So stellen Sie sicher, dass Sie die gewünschten Protokolldaten herunterladen und dieselben Protokolldaten nicht mehrmals herunterladen  
 
@@ -187,20 +187,17 @@ queueClient.SetServiceProperties(serviceProperties);
 
 -   Verwenden Sie die Metadaten für die Blobs mit Protokolldaten, um den jeweiligen Zeitraum zu identifizieren, für den das Blob Protokolldaten enthält, und so zu das genaue herunterzuladende Blob zu ermitteln.  
 
-> [!NOTE]
->  AzCopy ist Bestandteil des Azure SDK, unter [https://aka.ms/AzCopy](https://aka.ms/AzCopy) können Sie jedoch jederzeit die neueste Version herunterladen. AzCopy wird standardmäßig im Ordner **C:\Programme (x86)\Microsoft SDKs\Windows Azure\AzCopy** installiert. Fügen Sie diesen Ordner Ihrem Pfad hinzu, bevor Sie das Tool an einer Eingabeaufforderung oder in einem PowerShell-Fenster ausführen.  
+Informationen zu den ersten Schritten mit AzCopy finden Sie unter [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md). 
 
- Im folgenden Beispiel wird veranschaulicht, wie Sie die Protokolldaten für den Warteschlangendienst für die Stunden ab 9 Uhr, 10 Uhr und 11 Uhr am 20. Mai 2014 herunterladen können. Der Parameter **/S** bewirkt, dass AzCopy eine lokale Ordnerstruktur basierend auf den Datums- und Uhrzeitangaben in den Protokolldateinamen erstellt. Der Parameter **/V** bewirkt, dass AzCopy eine ausführliche Ausgabe generiert. Der Parameter **/Y** bewirkt, dass AzCopy alle lokalen Dateien überschreibt. Ersetzen Sie **<yourstorageaccount\>** durch den Namen Ihres Speicherkontos und **<yourstoragekey\>** durch Ihren Speicherkontoschlüssel.  
+Im folgenden Beispiel wird veranschaulicht, wie Sie die Protokolldaten für den Warteschlangendienst für die Stunden ab 9 Uhr, 10 Uhr und 11 Uhr am 20. Mai 2014 herunterladen können.
 
 ```
-AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
-```  
+azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
+```
 
- AzCopy enthält zudem einige nützliche Parameter, die steuern, wie der Zeitpunkt der letzten Änderung für die heruntergeladenen Dateien festgelegt wird und ob Dateien heruntergeladen werden, die älter oder neuer sind als bereits auf dem lokalen Computer vorhandene Dateien. Sie können das Tool auch im Neustartmodus ausführen. Ausführliche Informationen finden Sie in der Hilfe, indem Sie den Befehl **AzCopy /?** ausführen.  
+Weitere Informationen zum Herunterladen bestimmter Dateien finden Sie unter [Herunterladen bestimmter Dateien](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
- Ein Beispiel zum programmgesteuerten Herunterladen der Protokolldaten finden Sie im Blogbeitrag [Windows Azure Storage Logging: Using Logs to Track Storage Requests](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) (Microsoft Azure Storage-Protokollierung: Verwenden von Protokollen zur Nachverfolgung von Speicheranforderungen). Suchen Sie auf der Seite nach dem Begriff „DumpLogs“.  
-
- Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools wie Microsoft Message Analyzer analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
+Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools wie Microsoft Message Analyzer analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

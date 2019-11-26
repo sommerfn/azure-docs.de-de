@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cfac7fdbbdbf06ae74385fbc33e61d11cb99ff87
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795698"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066313"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
 Azure Storage verschlüsselt Ihre Daten beim Speichern in der Cloud automatisch. Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten in Azure Storage werden auf transparente Weise mit der [AES-256-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) ver- und entschlüsselt, einer der stärksten verfügbaren Blockchiffren, und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung ähnelt der BitLocker-Verschlüsselung unter Windows.
 
-Die Azure Storage-Verschlüsselung wird für alle neuen und vorhandenen Speicherkonten aktiviert und kann nicht deaktiviert werden. Da Ihre Daten standardmäßig geschützt werden, müssen Sie weder Code noch Anwendungen ändern, um die Azure Storage-Verschlüsselung nutzen zu können.
+Die Azure Storage-Verschlüsselung wird für alle neuen Speicherkonten aktiviert und kann nicht deaktiviert werden. Da Ihre Daten standardmäßig geschützt werden, müssen Sie weder Code noch Anwendungen ändern, um die Azure Storage-Verschlüsselung nutzen zu können.
 
 Speicherkonten werden unabhängig von ihrer Leistungsstufe (Standard oder Premium) und ihrem Bereitstellungsmodell (Azure Resource Manager oder klassisch) verschlüsselt. Alle Redundanzoptionen in Azure Storage unterstützten die Verschlüsselung, und alle Kopien eines Speicherkontos werden verschlüsselt. Alle Azure Storage-Ressourcen werden verschlüsselt, z. B. Blobs, Datenträger, Dateien, Warteschlangen und Tabellen. Objektmetadaten werden ebenfalls verschlüsselt.
 
@@ -194,7 +194,7 @@ public static void UploadBlobWithClientKey(CloudBlobContainer container)
 
 ## <a name="azure-storage-encryption-versus-disk-encryption"></a>Vergleich: Azure Storage-Verschlüsselung und Datenträgerverschlüsselung
 
-Mit der Azure Storage-Verschlüsselung werden alle Azure-Speicherkonten und darin enthaltene Ressourcen verschlüsselt, z. B. Seitenblobs, auf denen Datenträger auf Azure-VMs basieren. Darüber hinaus können Datenträger von Azure-VMs mit [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) verschlüsselt werden. Für Azure Disk Encryption wird die branchenübliche [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)-Verschlüsselung unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um betriebssystembasierte Verschlüsselungslösungen bereitzustellen, die mit dem Azure Key Vault integriert werden können.
+Azure Storage-Verschlüsselung verschlüsselt die Seitenblobs, die die Datenträger der virtuellen Azure-Computer sichern. Darüber hinaus können alle Datenträger von Azure-VMs, einschließlich lokaler temporärer Datenträger, optional mit [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) verschlüsselt werden. Für Azure Disk Encryption wird die branchenübliche [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)-Verschlüsselung unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um betriebssystembasierte Verschlüsselungslösungen bereitzustellen, die mit dem Azure Key Vault integriert werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

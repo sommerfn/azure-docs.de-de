@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Suchexplorer-Tools zum Abfragen von Daten im Azure-Portal
+title: Suchexplorer-Abfragetool im Azure-Portal
 titleSuffix: Azure Cognitive Search
 description: Suchexplorer ist in das Azure-Portal integriert. Das Tool ist hilfreich beim Erkunden von Inhalten und Überprüfen von Abfragen in der kognitiven Azure-Suche. Geben Sie Zeichenfolgen zum Suchen nach Begriffen oder Wendungen oder mithilfe erweiterter Syntax vollqualifizierte Suchausdrücke ein.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff2986c4e90cb997df250d647bdfbd068d70e51f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792961"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112094"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Verwenden von Suchexplorer im Azure-Portal zum Abfragen von Dokumenten in der kognitiven Azure-Suche 
 

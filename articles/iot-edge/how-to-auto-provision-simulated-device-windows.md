@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 16ac8ef9e0fb876103b57b1cc463bdae5b2362b7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5842d6fcb5f03754fc8f5922e299d0d9c30d21db
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828108"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900827"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Erstellen und Bereitstellen eines simulierten IoT Edge-Geräts mit einem virtuellen TPM unter Windows
 
 Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Device Provisioning-Dienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
+
+DPS unterstützt den Nachweis symmetrischer Schlüssel für IoT Edge-Geräte sowohl in Einzelregistrierungen als auch in Gruppenregistrierungen. Wenn Sie die Option zum Festlegen eines IoT Edge-Geräts für den Nachweis symmetrischer Schlüssel aktivieren, werden bei Gruppenregistrierungen alle in dieser Registrierungsgruppe registrierten Geräte als IoT Edge-Geräte markiert. 
 
 In diesem Artikel wird beschrieben, wie Sie die automatische Bereitstellung auf einem simulierten IoT Edge-Gerät mit den folgenden Schritten testen:
 

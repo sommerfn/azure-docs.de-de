@@ -1,17 +1,14 @@
 ---
 title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
-description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie deren Verwendung zur Erstellung dynamischer Blaupausen führt.
-author: DCtheGeek
-ms.author: dacoulte
+description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981070"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128933"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 

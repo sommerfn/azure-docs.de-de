@@ -4,34 +4,116 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827473"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965631"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
 
+* [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [providers](#providers)
 * [Referenz](#reference)
 * [Ressourcengruppe](#resourcegroup)
 * [Ressourcen-ID](#resourceid)
 * [Abonnement](#subscription)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](resource-group-template-functions-deployment.md).
+
+## <a name="extensionresourceid"></a>extensionResourceId
+
+```json
+extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
+```
+
+Gibt die Ressourcen-ID für eine [Erweiterungsressource](extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+|:--- |:--- |:--- |:--- |
+| resourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
+
+Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
+
+### <a name="return-value"></a>Rückgabewert
+
+Das Standardformat der Ressourcen-ID, die von dieser Funktion zurückgegeben wird, ist wie folgt:
+
+```json
+{scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Das „scope“-Segment ist je nach erweiterter Ressource unterschiedlich.
+
+Wenn die Erweiterungsressource auf eine **Ressource** angewendet wird, hat die zurückgegebene Ressourcen-ID das folgende Format:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wenn die Erweiterungsressource auf eine **Ressourcengruppe** angewendet wird, ist das Format wie folgt:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wenn die Erweiterungsressource auf ein **Abonnement** angewendet wird, ist das Format wie folgt:
+
+```json
+/subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wenn die Erweiterungsressource auf eine **Verwaltungsgruppe** angewendet wird, ist das Format wie folgt:
+
+```json
+/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+### <a name="extensionresourceid-example"></a>Beispiel für „extensionResourceId“
+
+Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre zurückgegeben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "lockName":{
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "lockResourceId": {
+            "type": "string",
+            "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
+        }
+    }
+}
+```
 
 <a id="listkeys" />
 <a id="list" />
 
 ## <a name="list"></a>list*
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+```json
+list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
+```
 
 Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys` und `listSecrets` verwendet. 
 
@@ -262,7 +344,9 @@ Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die A
 
 ## <a name="providers"></a>providers
 
-`providers(providerNamespace, [resourceType])`
+```json
+providers(providerNamespace, [resourceType])
+```
 
 Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Ressourcentypen zurück. Wenn Sie keinen Ressourcentyp angeben, gibt die Funktion alle unterstützten Typen für den Ressourcenanbieter zurück.
 
@@ -337,7 +421,9 @@ Für den Ressourcenanbieter **Microsoft.Web** und den Ressourcentyp **sites** wi
 
 ## <a name="reference"></a>Referenz
 
-`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
+```json
+reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
+```
 
 Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
@@ -558,7 +644,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-`resourceGroup()`
+```json
+resourceGroup()
+```
 
 Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt. 
 
@@ -637,7 +725,9 @@ Im vorherigen Beispiel wird ein Objekt im folgenden Format zurückgegeben:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
+```json
+resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
+```
 
 Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. 
 
@@ -655,10 +745,23 @@ Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp m
 
 ### <a name="return-value"></a>Rückgabewert
 
-Der Bezeichner wird im folgenden Format zurückgeben:
+Die Ressourcen-ID wird im folgenden Format zurückgeben:
 
-**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
 
+Bei Verwendung in einer [Bereitstellung auf Abonnementebene](deploy-to-subscription.md) wird die Ressourcen-ID im folgenden Format zurückgegeben:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Informationen zum Abrufen der ID in anderen Formaten finden Sie unter:
+
+* [extensionResourceId](#extensionresourceid)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>Anmerkungen
 
@@ -686,14 +789,6 @@ Um die Ressourcen-ID für eine Ressource in einem anderen Abonnement und in eine
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-Bei Verwendung mit einer [Bereitstellung auf Abonnementebene](deploy-to-subscription.md) kann die Funktion `resourceId()` nur die ID der auf dieser Ebene bereitgestellten Ressourcen abrufen. Sie können beispielsweise die ID einer Richtlinien- oder Rollendefinition, nicht aber die ID eines Speicherkontos abrufen. Für Bereitstellungen in einer Ressourcengruppe gilt das Gegenteil. Hier kann die Ressourcen-ID von auf der Abonnementebene bereitgestellten Ressourcen nicht abgerufen werden.
-
-Verwenden Sie für das Abrufen der Ressourcen-ID einer Ressource auf Abonnementebene bei der Bereitstellung im Abonnementkontext Folgendes:
-
-```json
-"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen virtuellen Computer in einer alternativen Ressourcengruppe verwenden. Das folgende Beispiel zeigt, wie eine Ressource von einer externen Ressourcengruppe leicht verwendet werden kann:
@@ -781,7 +876,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="subscription"></a>Abonnement
 
-`subscription()`
+```json
+subscription()
+```
 
 Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück. 
 
@@ -815,6 +912,120 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
     }
 }
 ```
+
+## <a name="subscriptionresourceid"></a>subscriptionResourceId
+
+```json
+subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
+```
+
+Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnementebene bereitgestellt wird.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+|:--- |:--- |:--- |:--- |
+| subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
+
+Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
+
+### <a name="return-value"></a>Rückgabewert
+
+Der Bezeichner wird im folgenden Format zurückgeben:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Anmerkungen
+
+Mit dieser Funktion können Sie die Ressourcen-ID für Ressourcen abrufen, die [im Abonnement bereitgestellt werden](deploy-to-subscription.md) und nicht in einer Ressourcengruppe. Die zurückgegebene ID unterscheidet sich dadurch von dem Wert, der von der Funktion [resourceId](#resourceid) zurückgegeben wird, dass kein Ressourcengruppenwert enthalten ist.
+
+### <a name="subscriptionresourceid-example"></a>Beispiel für „subscriptionResourceId“
+
+Mit der folgenden Vorlage wird eine integrierte Rolle zugewiesen. Sie können diese entweder in einer Ressourcengruppe oder einem Abonnement bereitstellen. Hierbei wird die Funktion „subscriptionResourceId“ verwendet, um die Ressourcen-ID für integrierte Rollen abzurufen.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
+    },
+    "variables": {
+        "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+## <a name="tenantresourceid"></a>tenantResourceId
+
+```json
+tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+```
+
+Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandantenebene bereitgestellt wird.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+|:--- |:--- |:--- |:--- |
+| resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
+| resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
+| resourceName2 |Nein |Zeichenfolge |Nächstes Ressourcennamensegment, sofern erforderlich. |
+
+Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp mehrere Segmente enthält.
+
+### <a name="return-value"></a>Rückgabewert
+
+Der Bezeichner wird im folgenden Format zurückgeben:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Anmerkungen
+
+Mit dieser Funktion können Sie die Ressourcen-ID für eine Ressource abrufen, die für den Mandanten bereitgestellt wird. Die zurückgegebene ID unterscheidet sich dadurch von den Werten, die von anderen Ressourcen-ID-Funktionen zurückgegeben werden, dass keinen Ressourcengruppen- oder Abonnementwerte enthalten sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

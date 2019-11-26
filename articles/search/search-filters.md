@@ -1,5 +1,5 @@
 ---
-title: Filter für das Begrenzen von Suchergebnissen in einem Index
+title: Filtern nach Suchergebnissen
 titleSuffix: Azure Cognitive Search
 description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in der kognitiven Azure-Suche, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792855"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132933"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 

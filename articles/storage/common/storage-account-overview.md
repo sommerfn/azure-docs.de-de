@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671309"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882590"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -44,7 +44,7 @@ Allgemein v2-Speicherkonten bieten mehrere Zugriffsebenen zum Speichern von Date
 
 ### <a name="general-purpose-v1-accounts"></a>Allgemeines Konto vom Typ „General Purpose v1“
 
-Konten vom Typ „Allgemein v1“ ermöglichen Zugriff auf alle Azure Storage-Dienste, bieten aber möglicherweise nicht die neuesten Features oder die niedrigsten Preise pro Gigabyte. Speicherkonten vom Typ „Allgemein v1“ unterstützen die folgenden Azure Storage-Dienste:
+Speicherkonten vom Typ „Universell v1“ ermöglichen Zugriff auf alle Azure Storage-Dienste, bieten aber möglicherweise nicht die neuesten Features oder die niedrigsten Preise pro Gigabyte. Speicherkonten vom Typ „Allgemein v1“ unterstützen die folgenden Azure Storage-Dienste:
 
 - Blobs (alle Typen)
 - Dateien
@@ -60,17 +60,19 @@ Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen si
 
 * Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.
 
-### <a name="block-blob-storage-accounts"></a>Blockblob-Speicherkonten
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-Konten
 
-Blockblob-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Objektdaten als Blockblobs zu speichern. Dieser Speicherkontotyp unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
+Ein BlockBlobStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern von unstrukturierten Objektdaten als Blockblobs und Erstellen von Premium-Blockblobs verwendet wird. Diese Speicherkontoart unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
 
-Gegenüber universellen V2- und Blobspeicherkonten bieten Blockblob-Speicherkonten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
+Gegenüber universellen V2- und BlobStorage-Konten bieten BlockBlobStorage-Konten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
 
-Blockblob-Speicherkonten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
+BlockBlobStorage-Konten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
 
-### <a name="filestorage-storage-accounts"></a>FileStorage-Speicherkonten
+### <a name="filestorage-accounts"></a>FileStorage-Konten
 
-Ein FileStorage-Speicherkonto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. FileStorage-Speicherkonten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
+Ein FileStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. Diese Speicherkontoart unterstützt Dateien, aber keine Block-, Anfüge- oder Seitenblobs, Tabellen oder Warteschlangen. 
+
+FileStorage-Konten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
 
 ## <a name="naming-storage-accounts"></a>Benennen von Speicherkonten
 
@@ -86,7 +88,7 @@ Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfig
 * Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
 * Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern.
 
-Blockblob-Speicherkonten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
+BlockBlobStorage-Konten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
 
 FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
 
@@ -186,5 +188,5 @@ Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Erstellen eines universellen Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
-* Informationen zum Erstellen eines Blockblob-Speicherkontos finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md).
+* Informationen zum Erstellen eines BlockBlobStorage-Kontos finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md).
 * Informationen zum Verwalten oder Löschen eines vorhandenen Speicherkontos finden Sie unter [Verwalten von Azure Storage-Konten](storage-account-manage.md).

@@ -3,27 +3,20 @@ layout: HubPage
 hide_bc: false
 title: Dokumentation zu Azure Monitor Application Insights – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Azure Monitor Application Insights bietet eine umfassende Überwachung der Anwendungsleistung auf Codeebene.
-ms.service: application-insights
-ms.subservice: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: hub-page
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/15/2019
-ms.openlocfilehash: 254cd4e67c0c64ba9b21133e957ae2cacfefe7a7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4feeeabf4718718d8dbdfa150d6c14cfd3242053
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596817"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899162"
 ---
-<div id="main" class="v2">
-    <div class="container">
-        <h1>Dokumentation zu Azure Monitor Application Insights</h1>
-        <p>Azure Monitor Application Insights bietet eine umfassende Überwachung der Anwendungsleistung auf Codeebene.</p>
-        <hr style="margin: 30px 0;" />
-        <ul class="pivots">
-            <li>
-                <a href="#products"></a>
+#<a name="productsa"></a>Produkte“></a>
                 <ul id="products">
                     <li>
                         <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
@@ -44,9 +37,9 @@ ms.locfileid: "72596817"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Grundlagen</h3>
+                                                                    <h3>Learn the fundamentals</h3>
                                                                     <p>
-                                                                        <a href="./app/app-insights-overview.md">Was ist Application Insights?</a><br>
+                                                                        <a href="./app/app-insights-overview.md">What is Application Insights?</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -63,57 +56,57 @@ ms.locfileid: "72596817"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Neuerungen</h3>
+                                                        <h3>What's new?</h3>
                                                         <p>
-                                                            <a href="./app/azure-vm-vmss-apps.md">Überwachung für Anwendungen auf virtuellen Azure-Computern und Azure-VM-Skalierungsgruppen ohne Code</a><br>
-                                                            <a href="./app/kubernetes.md">Überwachen von Kubernetes-Anwendungen</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">Statusmonitor v2 für IIS-Apps</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Codeless monitoring for Azure VM and Azure virtual machine scale set applications</a><br>
+                                                            <a href="./app/kubernetes.md">Monitor Kubernetes applications</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">Status Monitor v2 for IIS apps</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Schnellstarts</h3>
+                                                        <h3>Quickstarts</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
-                                                            <a href="./app/website-monitoring.md">Browser-/clientseitige Überwachung</a>
+                                                            <a href="./app/website-monitoring.md">Browser/client-side monitoring</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Lernprogramme</h3>
+                                                        <h3>Tutorials</h3>
                                                         <p>
-                                                            <a href="./learn/tutorial-runtime-exceptions.md">Suchen nach und Diagnostizieren von Laufzeitausnahmen</a><br>
-                                                            <a href="./learn/tutorial-performance.md">Suchen nach und Diagnostizieren von Leistungsproblemen</a><br>
-                                                            <a href="./learn/tutorial-alert.md">Überwachen der Anwendungsintegrität und Ausgeben von Warnungen</a><br>
-                                                            <a href="./learn/tutorial-users.md">Verständnis des Benutzerverhaltens</a><br>
-                                                            <a href="./learn/tutorial-app-dashboards.md">Erstellen benutzerdefinierter Dashboards</a>
+                                                            <a href="./learn/tutorial-runtime-exceptions.md">Find and diagnose run-time exceptions</a><br>
+                                                            <a href="./learn/tutorial-performance.md">Find and diagnose performance issues</a><br>
+                                                            <a href="./learn/tutorial-alert.md">Monitor and alert on application health</a><br>
+                                                            <a href="./learn/tutorial-users.md">Understand user behavior</a><br>
+                                                            <a href="./learn/tutorial-app-dashboards.md">Create custom dashboards</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Verteilte Ablaufverfolgung</h3>
+                                                        <h3>Distributed tracing</h3>
                                                         <p>
-                                                            <a href="./app/distributed-tracing.md">Was ist die verteilte Ablaufverfolgung?</a><br>
-                                                            <a href="./app/opencensus-python.md">OpenCensus für Python</a><br>
-                                                            <a href="./app/opencensus-go.md">OpenCensus für Go</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Lokale Weiterleitung</a>
+                                                            <a href="./app/distributed-tracing.md">What is distributed tracing?</a><br>
+                                                            <a href="./app/opencensus-python.md">OpenCensus for Python</a><br>
+                                                            <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
+                                                            <a href="./app/opencensus-local-forwarder.md">Local forwarder</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Automatische intelligente Erkennung</h3>
+                                                        <h3>Automatic smart detection</h3>
                                                         <p>
-                                                            <a href="./app/proactive-failure-diagnostics.md">Anomalien bei Fehlern</a><br>
-                                                            <a href="./app/proactive-performance-diagnostics.md">Leistungsanomalien</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">Verschlechterung der Schweregrade bei der Ablaufverfolgung</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">Ungewöhnliche Zunahme von Ausnahmen</a><br>
-                                                            <a href="./app/proactive-potential-memory-leak.md">Arbeitsspeicherverluste</a><br>
-                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Niedrige CPU-Auslastung</a><br>
-                                                            <a href="./app/proactive-application-security-detection-pack.md">Sicherheitsprobleme</a><br>
+                                                            <a href="./app/proactive-failure-diagnostics.md">Failure anomalies</a><br>
+                                                            <a href="./app/proactive-performance-diagnostics.md">Performance anomalies</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Trace degradation</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Abnormal rises in exceptions</a><br>
+                                                            <a href="./app/proactive-potential-memory-leak.md">Memory leaks</a><br>
+                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Low CPU utilization</a><br>
+                                                            <a href="./app/proactive-application-security-detection-pack.md">Security issues</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Verwalten der intelligenten Erkennung mit Vorlagen</a>
+                                                            <a href="./app/proactive-arm-config.md">Manage smart detection with templates</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Verweis</h3>
+                                                        <h3>Reference</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Automatisches Sammeln von Abhängigkeiten</a><br>
-                                                            <a href="./app/correlation.md">Telemetriekorrelation</a><br>
-                                                            <a href="./app/nuget.md">NuGet-Pakete</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Dependency auto-collection</a><br>
+                                                            <a href="./app/correlation.md">Telemetry correlation</a><br>
+                                                            <a href="./app/nuget.md">NuGet packages</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
                                                             </p>
                                                     </div>
@@ -126,17 +119,17 @@ ms.locfileid: "72596817"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Java-Anwendungen</h3>
+                                                        <h3>Java applications</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">Umfassende Überwachungskonfiguration</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Starter</a><br>
-                                                            <a href="./app/micrometer-java.md">Micrometer-Metriken</a><br>
-                                                            <a href="./app/java-filter-telemetry.md">Filtern von Telemetriedaten</a><br>
-                                                            <a href="./app/java-trace-logs.md">Ablaufverfolgungsprotokollierung</a><br>
-                                                            <a href="./app/java-agent.md">Agentkonfiguration für Abhängigkeitsnachverfolgung</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">Benutzerdefinierte Ereignisse und Metriken</a><br>
+                                                            <a href="./app/java-get-started.md">In-depth monitoring configuration</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Micrometer metrics</a><br>
+                                                            <a href="./app/java-filter-telemetry.md">Filter telemetry</a><br>
+                                                            <a href="./app/java-trace-logs.md">Trace logging</a><br>
+                                                            <a href="./app/java-agent.md">Agent config for dependency tracking</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">Custom events and metrics</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">Config.xml</a><br>
+“>Config.xml</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-Java">Open Source SDK für Java – GitHub-Repository</a>
                                                         </p>
                                                         <br><br>

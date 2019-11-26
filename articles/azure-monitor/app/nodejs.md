@@ -1,23 +1,18 @@
 ---
 title: Überwachen von Node.js-Diensten per Azure Application Insights | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme in Node.js-Diensten mit Application Insights diagnostizieren.
-services: application-insights
-documentationcenter: nodejs
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/14/2019
+ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255282"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820725"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 

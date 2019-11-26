@@ -1,23 +1,18 @@
 ---
-title: 'API-Referenz für den Azure Application Insights-Agent: Abrufen der Konfiguration | Microsoft-Dokumentation'
+title: API-Referenz für den Azure Application Insights-Agent
 description: API-Referenz für den Application Insights-Agent. Get-ApplicationInsightsMonitoringConfig. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: e0b389dfb27443b9b26b8ed650399c641c55eb86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: 91e7bcbe79dfde8bbd4011748b40b692015af1c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388265"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899734"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights-Agent-API: Get-ApplicationInsightsMonitoringConfig
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821768"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132421"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -64,6 +64,7 @@ Sie können Azure SQL-Datenbanken und Instanzdatenbanken zur Erfassung der folg
 | Überwachen von Telemetriedaten für Datenbanken | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :------------------- | ----- | ----- |
 | [Grundlegende Metriken](#basic-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | Ja | Nein |
+| [Instanz und App, Erweitert](#advanced-metrics):  Enthält die Daten der tempdb-Systemdatenbank, die Größe der Protokolldatei und den verwendeten Anteil der tempdb-Protokolldatei. | Ja | Nein |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | Ja | Ja |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z.B. CPU, LOG und LOCKING. | Ja | Ja |
 | [Fehler:](#errors-dataset) Enthält Informationen zu SQL-Fehlern für eine Datenbank. | Ja | Ja |
@@ -428,6 +429,16 @@ In den folgenden Tabellen finden Sie Details zu „Grundlegende Metriken“ für
 |**Ressource**|**Metriken**|
 |---|---|
 |Azure SQL-Datenbank|DTU-Prozentsatz, DTU-Verwendung, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent und Deadlocks |
+
+## <a name="advanced-metrics"></a>Erweiterte Metriken
+
+In der folgenden Tabelle finden Sie Details zu den erweiterten Metriken.
+
+|**Metrik**|**Metrikanzeigename**|**Beschreibung**|
+|---|---|---|
+|tempdb_data_size| Größe der tempdb-Datendatei in Kilobytes |Die Größe der tempdb-Datendatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden. |
+|tempdb_log_size| Größe der tempdb-Protokolldatei in Kilobytes |Die Größe der tempdb-Protokolldatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden. |
+|tempdb_log_used_percent| Nutzung des tempdb-Protokolls in Prozent |Die Nutzung des tempdb-Protokolls in Prozent. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden. |
 
 ## <a name="basic-logs"></a>Grundlegende-Protokolle
 

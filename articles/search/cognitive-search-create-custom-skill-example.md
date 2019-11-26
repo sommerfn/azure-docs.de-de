@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Erstellen einer benutzerdefinierten kognitiven Qualifikation mit der Bing-Entitätssuche-API'
+title: Beispiel für benutzerdefinierte Qualifikationen mit der Bing-Entitätssuche-API
 titleSuffix: Azure Cognitive Search
 description: Hier erfahren Sie, wie Sie den Bing-Entitätssuche-Dienst in einer benutzerdefinierten Qualifikation verwenden, die einer Indizierungspipeline mit KI-Anreicherung in der kognitiven Azure-Suche zugeordnet ist.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466819"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113820"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
 

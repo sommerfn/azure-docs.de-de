@@ -4,31 +4,87 @@ description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforder
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 7d53e5749385499113d0dc5261398561d82347a0
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302830"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965570"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
-Für jedes Azure-Abonnement und jeden Azure-Mandanten erlaubt Resource Manager pro Stunde bis zu 12.000 Leseanforderungen und bis zu 1.200 Schreibanforderungen. Diese Grenzwerte gelten für den Sicherheitsprinzipal (Benutzer oder Anwendung), von dem die Anforderungen stammen, sowie für die Abonnement-ID bzw. die Mandanten-ID. Falls Ihre Anforderungen von mehreren Sicherheitsprinzipalen stammen, liegen die Grenzwerte für das Abonnement oder den Mandanten über 12.000 bzw. 1.200 Anforderungen pro Stunde.
+In diesem Artikel wird beschrieben, wie Anforderungen durch Azure Resource Manager gedrosselt werden. Sie erfahren, wie die Anzahl der verbleibenden Anforderungen vor Erreichen des Grenzwerts nachverfolgt wird, und wie Sie bei Erreichen des Grenzwerts reagieren können.
 
-Anforderungen werden entweder auf Ihr Abonnement oder auf Ihren Mandanten angewendet. Bei Abonnementanforderungen wird Ihre Abonnement-ID übergeben, z. B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. In Mandantenanforderungen ist Ihre Abonnement-ID nicht enthalten (etwa beim Abrufen gültiger Azure-Standorte).
+Die Drosselung erfolgt auf zwei Ebenen. Azure Resource Manager drosselt Anforderungen für das Abonnement und den Mandanten. Wenn die Anforderung unterhalb der Drosselungsgrenzwerte für das Abonnement und den Mandanten liegt, leitet Resource Manager die Anforderung an den Ressourcenanbieter weiter. Der Ressourcenanbieter wendet Drosselungsgrenzwerte an, die auf seinen Betrieb zugeschnitten sind. Die folgende Abbildung zeigt, wie die Drosselung beim Weiterleiten einer Anforderung vom Benutzer an Azure Resource Manager und den Ressourcenanbieter angewendet wird.
 
-Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als die aufgeführten Grenzwerte, da Benutzeranforderungen in der Regel von vielen verschiedenen Instanzen verarbeitet werden.
+![Anforderungsdrosselung](./media/resource-manager-request-limits/request-throttling.svg)
 
-Wenn Ihre Anwendung oder Ihr Skript diese Grenzwerte erreicht, müssen Sie die Anforderungen begrenzen. In diesem Artikel erfahren Sie, wie Sie Ihre verbleibenden Anforderungen bestimmen können, bevor der Grenzwert erreicht wird, und wie Sie reagieren können, wenn Sie den Grenzwert erreicht haben.
+## <a name="subscription-and-tenant-limits"></a>Abonnement- und Mandantengrenzwerte
 
-Wenn Sie den Grenzwert erreichen, erhalten Sie den HTTP-Statuscode **429 Zu viele Anforderungen**.
+Alle Vorgänge auf Abonnement- und Mandantenebene unterliegen Drosselungsgrenzwerten. Bei Abonnementanforderungen wird Ihre Abonnement-ID übergeben, z. B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. In Mandantenanforderungen ist Ihre Abonnement-ID nicht enthalten (etwa beim Abrufen gültiger Azure-Standorte).
+
+In der folgenden Tabelle sind die Standardgrenzwerte für die Drosselung pro Stunde aufgeführt.
+
+| `Scope` | Vorgänge | Begrenzung |
+| ----- | ---------- | ------- |
+| Subscription | Lesevorgänge | 12000 |
+| Subscription | Löschvorgänge | 15000 |
+| Subscription | Schreibvorgänge | 1200 |
+| Tenant | Lesevorgänge | 12000 |
+| Tenant | Schreibvorgänge | 1200 |
+
+Diese Grenzwerte gelten für den Sicherheitsprinzipal (Benutzer oder Anwendung), von dem die Anforderungen stammen, sowie für die Abonnement-ID bzw. die Mandanten-ID. Falls Ihre Anforderungen von mehreren Sicherheitsprinzipalen stammen, liegen die Grenzwerte für das Abonnement oder den Mandanten über 12.000 bzw. 1.200 Anforderungen pro Stunde.
+
+Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also höher als diese Grenzwerte. Die Anforderungen von einem Benutzer werden in der Regel von unterschiedlichen Azure Resource Manager-Instanzen verarbeitet.
+
+## <a name="resource-provider-limits"></a>Grenzwerte der Ressourcenanbieter
+
+Ressourcenanbieter wenden ihre eigenen Drosselungsgrenzwerte an. Da Resource Manager die Drosselung nach Prinzipal-ID und nach Resource Manager-Instanz vornimmt, empfängt der Ressourcenanbieter möglicherweise mehr Anforderungen als die Standardgrenzwerte im vorherigen Abschnitt.
+
+In diesem Abschnitt werden die Drosselungsgrenzwerte einiger häufig genutzter Ressourcenanbieter erläutert.
+
+### <a name="storage-throttling"></a>Speicherdrosselung
+
+[!INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
+
+### <a name="network-throttling"></a>Netzwerkdrosselung
+
+Der Ressourcenanbieter Microsoft.Network wendet die folgenden Drosselungsgrenzwerte an:
+
+| Vorgang | Begrenzung |
+| --------- | ----- |
+| Schreib-/Löschvorgänge (PUT) | 1000 pro 5 Minuten |
+| Lesevorgänge (GET) | 10000 pro 5 Minuten |
+
+### <a name="compute-throttling"></a>Computedrosselung
+
+Informationen zu Drosselungsgrenzwerten für Computevorgänge finden Sie unter [Behandeln von API-Drosselungsfehlern – Compute](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+
+Verwenden Sie zum Überprüfen von VM-Instanzen innerhalb einer VM-Skalierungsgruppe die [Vorgänge von Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesetvms). Verwenden Sie beispielsweise die [List-Abfrage für VM-Skalierungsgruppen](/rest/api/compute/virtualmachinescalesetvms/list) mit Parametern zum Überprüfen des Betriebszustands von VM-Instanzen. Diese API reduziert die Anzahl der Anforderungen.
+
+### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph-Drosselung
 
 Azure Resource Graph begrenzt die Anzahl der Anforderungen nach seinen Vorgängen. Die Schritte in diesem Artikel zum Bestimmen der verbleibenden Anforderungen und zum Reagieren bei Erreichen des Grenzwerts gelten auch für Resource Graph. Resource Graph legt jedoch einen eigenen Grenzwert und eine eigene Rücksetzrate fest. Weitere Informationen finden Sie unter [Drosselung in Azure Resource Graph](../governance/resource-graph/overview.md#throttling).
 
+## <a name="request-increase"></a>Anfordern einer Erhöhung
+
+Manchmal können Drosselungsgrenzwerte erhöht werden. Wenn Sie erfahren möchten, ob die Drosselungsgrenzwerte für Ihr Szenario erhöht werden können, erstellen Sie eine Supportanfrage. Die Details Ihres Aufrufmusters werden ausgewertet.
+
+## <a name="error-code"></a>Fehlercode
+
+Wenn Sie den Grenzwert erreichen, erhalten Sie den HTTP-Statuscode **429 Zu viele Anforderungen**. Die Antwort enthält einen **Retry-After**-Wert, der die Anzahl von Sekunden angibt, die Ihre Anwendung warten muss (oder im Ruhezustand verbleibt), bevor die nächste Anforderung gesendet wird. Wenn Sie eine Anforderung senden, bevor der Retry-Wert verstrichen ist, wird Ihre Anforderung nicht verarbeitet, und es wird ein neuer Retry-Wert zurückgegeben.
+
+Nachdem Sie über den jeweiligen Zeitraum gewartet haben, können Sie die Verbindung zu Azure auch schließen und erneut öffnen. Durch Zurücksetzen der Verbindung können Sie eine Verbindung mit einer anderen Azure Resource Manager-Instanz herstellen.
+
+Wenn Sie ein Azure SDK verwenden, verfügt das SDK möglicherweise über eine Konfiguration für die automatische Wiederholung. Weitere Informationen finden Sie unter [Wiederholungsanleitung für Azure-Dienste](/azure/architecture/best-practices/retry-service-specific).
+
+Einige Ressourcenanbieter geben 429 zurück, um ein temporäres Problem zu melden. Das Problem kann eine Überlastbedingung sein, die nicht direkt durch Ihre Anforderung verursacht wird. Es kann sich aber auch um einen vorübergehenden Fehler in Bezug auf den Status der Zielressource oder der abhängigen Ressource handeln. Der Netzwerkressourcenanbieter gibt z.B. 429 mit dem Fehlercode **RetryableErrorDueToAnotherOperation** zurück, wenn die Zielressource durch einen anderen Vorgang gesperrt ist. Um festzustellen, ob der Fehler durch die Drosselung oder eine vorübergehende Bedingung entsteht, sehen Sie sich die Fehlerdetails in der Antwort an.
+
 ## <a name="remaining-requests"></a>Verbleibende Anforderungen
+
 Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Antwortheader bestimmen. Leseanforderungen geben im Header einen Wert für die Anzahl der verbleibenden Leseanforderungen zurück. Schreibanforderungen enthalten einen Wert für die Anzahl der verbleibenden Schreibanforderungen. Die folgende Tabelle beschreibt die Antwortheader, die Sie auf diese Werte untersuchen können:
 
 | Antwortheader | BESCHREIBUNG |
@@ -42,7 +98,10 @@ Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Ant
 | x-ms-ratelimit-remaining-tenant-resource-requests |Verbleibende mandantenbezogene Ressourcenanforderungen.<br /><br />Dieser Header wird nur für Anforderungen auf Mandantenebene hinzugefügt, und nur dann, wenn ein Dienst den standardmäßigen Grenzwert außer Kraft gesetzt hat. Resource Manager fügt diesen Wert anstelle der Lese- oder Schreibvorgänge des Mandanten hinzu. |
 | x-ms-ratelimit-remaining-tenant-resource-entities-read |Verbleibende mandantenbezogene Ressourcensammlungsanforderungen.<br /><br />Dieser Header wird nur für Anforderungen auf Mandantenebene hinzugefügt, und nur dann, wenn ein Dienst den standardmäßigen Grenzwert außer Kraft gesetzt hat. |
 
+Der Ressourcenanbieter kann auch Antwortheader mit Informationen zu verbleibenden Anforderungen zurückgeben. Informationen zu Antwortheadern, die vom Computeressourcenanbieter zurückgegeben werden, finden Sie unter [Aufrufrate für Informationsantwortkopfzeilen](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
+
 ## <a name="retrieving-the-header-values"></a>Abrufen der Headerwerte
+
 Das Abrufen dieser Headerwerte in Ihrem Code oder Skript unterscheidet sich nicht vom Abrufen anderer Headerwerte. 
 
 Beispiel: In **C#** rufen Sie den Headerwert aus einem **HttpWebResponse**-Objekt mit dem Namen **response** mit dem folgenden Code ab:
@@ -136,9 +195,6 @@ msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
 msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
-
-## <a name="waiting-before-sending-next-request"></a>Warten vor dem Senden der nächsten Anforderung
-Wenn der Grenzwert für Anforderungen erreicht ist, gibt Resource Manager den HTTP-Statuscode **429** und einen **Retry-After** Wert im Header zurück. Der **Retry-After**-Wert gibt die Anzahl von Sekunden an, die Ihre Anwendung warten muss (oder im Ruhezustand verbleibt), bevor die nächste Anforderung gesendet wird. Wenn Sie eine Anforderung senden, bevor der Retry-Wert verstrichen ist, wird Ihre Anforderung nicht verarbeitet, und es wird ein neuer Retry-Wert zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

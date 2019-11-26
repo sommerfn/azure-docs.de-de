@@ -9,16 +9,16 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af68f232c893259747e6ed106eced70fd8b89351
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792231"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889911"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
-Externe Datasets zum Auffüllen eines Index der kognitiven Azure-Suche können in vielen Formen vorliegen. Manchmal enthalten sie hierarchische oder geschachtelte Unterstrukturen. Beispiele sind mehrere Adressen für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch usw. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe*, *zusammengesetzte*, *verbundene* oder *aggregierte* Datentypen bezeichnet. Bei der kognitiven Azure-Suche wird für dieses Konzept der Begriff **komplexer Typ** verwendet. Komplexe Typen werden in der kognitiven Azure-Suche mithilfe **komplexer Felder** modelliert. Ein komplexes Feld ist ein Feld, das untergeordnete Elemente (untergeordnete Felder) enthält, die einen beliebigen Datentyp aufweisen können – einschließlich anderer komplexer Typen. Dies funktioniert auf ähnliche Weise wie bei strukturierten Datentypen in einer Programmiersprache.
+Externe Datasets zum Auffüllen eines Index der kognitiven Azure-Suche können in vielen Formen vorliegen. Manchmal enthalten sie hierarchische oder geschachtelte Unterstrukturen. Beispiele sind mehrere Adressen für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch usw. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe*, *zusammengesetzte*, *verbundene* oder *aggregierte* Datentypen bezeichnet. Bei der kognitiven Azure-Suche wird für dieses Konzept der Begriff **komplexer Typ** verwendet. Komplexe Typen werden in Azure Cognitive Search mithilfe **komplexer Felder** modelliert. Ein komplexes Feld ist ein Feld, das untergeordnete Elemente (untergeordnete Felder) enthält, die einen beliebigen Datentyp aufweisen können – einschließlich anderer komplexer Typen. Dies funktioniert auf ähnliche Weise wie bei strukturierten Datentypen in einer Programmiersprache.
 
 Komplexe Felder stellen je nach Datentyp entweder ein einzelnes Objekt im Dokument oder ein Array von Objekten dar. Felder vom Typ `Edm.ComplexType` stellen einzelne Objekte dar, während Felder vom Typ `Collection(Edm.ComplexType)` für Arrays von Objekten stehen.
 

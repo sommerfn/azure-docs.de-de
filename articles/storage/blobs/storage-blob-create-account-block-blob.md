@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Blockblob-Speicherkontos – Azure Storage | Microsoft-Dokumentation
-description: Hier wird gezeigt, wie Sie ein Azure-Blockblob-Speicherkonto mit Premium-Leistungsmerkmalen erstellen.
+description: Hier wird gezeigt, wie Sie ein Azure-BlockBlobStorage-Konto mit Premium-Leistungsmerkmalen erstellen.
 author: tamram
 services: storage
 ms.service: storage
@@ -8,22 +8,84 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141002"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933179"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Erstellen eines Blockblob-Speicherkontos
+# <a name="create-a-blockblobstorage-account"></a>Erstellen eines BlockBlobStorage-Kontos
 
-Mit dem Blockblob-Speicherkontotyp können Sie Blockblobs mit Premium-Leistungsmerkmalen erstellen. Diese Art von Speicherkonto ist für Workloads optimiert, die hohe Transaktionsraten aufweisen oder äußerst kurze Zugriffszeiten erfordern. In diesem Artikel wird gezeigt, wie Sie ein Blockblob-Speicherkonto über das Azure-Portal, mit der Azure-Befehlszeilenschnittstelle oder in Azure PowerShell erstellen.
+Mit der Kontoart BlockBlobStorage können Sie Blockblobs mit Premium-Leistungsmerkmalen erstellen. Diese Art von Speicherkonto ist für Workloads optimiert, die hohe Transaktionsraten aufweisen oder äußerst kurze Zugriffszeiten erfordern. In diesem Artikel wird gezeigt, wie Sie ein BlockBlobStorage-Konto über das Azure-Portal, mit der Azure CLI oder in Azure PowerShell erstellen.
 
-Weitere Informationen zu Blockblob-Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Weitere Informationen zu BlockBlobStorage-Konten finden Sie unter [Azure-Speicherkonto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-## <a name="create-account-in-the-azure-portal"></a>Erstellen eines Kontos über das Azure-Portal
+## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie ein Blockblob-Speicherkonto über das Azure-Portal erstellen möchten, gehen Sie wie folgt vor:
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+None (Keine):
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Für diese Anleitung wird Az-Version 1.2.0 oder höher des Azure PowerShell-Moduls benötigt. Führen Sie `Get-Module -ListAvailable Az` aus, um Ihre aktuelle Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben Sie zwei Möglichkeiten:
+
+- Sie können CLI-Befehle innerhalb des Azure-Portals in Azure Cloud Shell ausführen.
+- Sie können die Befehlszeilenschnittstelle installieren und CLI-Befehle lokal ausführen.
+
+### <a name="use-azure-cloud-shell"></a>Verwenden von Azure Cloud Shell
+
+Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im Azure-Portal im Menü im rechten oberen Bereich auf die Schaltfläche **Cloud Shell**:
+
+[![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
+
+Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die in diesem Artikel beschriebenen Schritte ausführen können:
+
+[![Screenshot des Fensters „Cloud Shell“ im Portal](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+
+### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
+
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Anleitung müssen Sie mindestens Version 2.0.46 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+
+---
+
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
+
+```powershell
+Connect-AzAccount
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
+
+Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus:
+
+```cli
+az login
+```
+
+---
+
+## <a name="create-a-blockblobstorage-account"></a>Erstellen eines BlockBlobStorage-Kontos
+
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, gehen Sie wie folgt vor:
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** > die Kategorie **Storage** > **Speicherkonten** aus.
 
@@ -55,7 +117,7 @@ Wenn Sie ein Blockblob-Speicherkonto über das Azure-Portal erstellen möchten, 
 
 1. Klicken Sie auf **Erstellen**.
 
-## <a name="create-account-using-azure-powershell"></a>Erstellen eines Kontos mithilfe von Azure PowerShell
+## <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -81,7 +143,7 @@ Wenn Sie ein Blockblob-Speicherkonto über das Azure-Portal erstellen möchten, 
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Erstellen Sie das Blockblob-Speicherkonto. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
+1. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -91,7 +153,7 @@ Wenn Sie ein Blockblob-Speicherkonto über das Azure-Portal erstellen möchten, 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="create-account-using-azure-cli"></a>Erstellen eines Kontos mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie zunächst die Azure-Befehlszeilenschnittstelle, Version 2.0.46 oder eine höhere Version, installieren. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -109,7 +171,7 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
     --location "<location>"
    ```
 
-1. Erstellen Sie das Blockblob-Speicherkonto. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
+1. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
 
    ```azurecli
    az storage account create \
@@ -119,6 +181,8 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
     --kind "BlockBlobStorage" \
     --sku "Premium_LRS"
    ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

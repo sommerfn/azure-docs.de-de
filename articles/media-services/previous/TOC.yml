@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: Spezifikation für die Liveerfassung von fragmentiertem MP4
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Erste Schritte
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Laden von Videos
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Konfigurieren von Tastenkombinationen
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Konfigurieren der Lokalisierung
-          href: media-services-azure-media-clipper-localization.md
-        - name: Übermitteln von Beschneidungsaufträgen
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure-Portal
-          href: media-services-azure-media-clipper-portal.md
     - name: Inhalt schützen
       href: media-services-content-protection-overview.md
       items:

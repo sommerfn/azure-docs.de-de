@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage
 description: Erstellen Sie Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage, um Protokolle der Azure-Plattform an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs weiterzuleiten.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597282"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200494"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage
 [Plattformprotokolle](platform-logs-overview.md) in Azure liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details zur Verwendung einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) für das Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen. Dadurch können Sie beim Erstellen einer Ressource automatisch mit dem Erfassen von Plattformprotokollen beginnen.

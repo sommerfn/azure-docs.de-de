@@ -1,19 +1,19 @@
 ---
 title: Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 description: Erfahren Sie, wie Sie mit einer Resource Manager-Vorlage eine Metrikwarnung erstellen.
-author: snehithm
+author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 9/27/2018
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372771"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099753"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -27,8 +27,9 @@ In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](..
 Die grundlegenden Schritte lauten wie folgt:
 
 1. Verwenden Sie eine der folgenden Vorlagen als JSON-Datei, die die Erstellung der Warnung beschreibt.
-2. Bearbeiten Sie die entsprechende Parameterdatei als JSON-Datei zum Anpassen der Warnung, und verwenden Sie sie.
-3. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](../../azure-resource-manager/resource-group-template-deploy.md) bereit.
+2. Bearbeiten und verwenden Sie die entsprechende Parameterdatei als JSON-Datei zum Anpassen der Warnung.
+3. Die verfügbare Metriken für den `metricName`-Parameter finden Sie unter [Von Azure Monitor unterstützte Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+4. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](../../azure-resource-manager/resource-group-template-deploy.md) bereit.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Vorlage für eine einfache Metrikwarnung mit statischem Schwellenwert
 
@@ -2970,6 +2971,9 @@ Speichern Sie den JSON-Code unten als „availabilityalert.json“ für diese ex
     },
     "actionGroupId": {
       "type": "string"
+    },
+    "location": {
+      "type": "string"
     }
   },
   "variables": {
@@ -2981,7 +2985,7 @@ Speichern Sie den JSON-Code unten als „availabilityalert.json“ für diese ex
       "name": "[variables('pingTestName')]",
       "type": "Microsoft.Insights/webtests",
       "apiVersion": "2014-04-01",
-      "location": "West Central US",
+      "location": "[parameters('location')]",
       "tags": {
         "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
       },
@@ -3060,13 +3064,16 @@ Speichern Sie die JSON-Datei unten als „availabilityalert.parameters.json“, 
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appName": {
-            "value": "Replace with your Application Insights component name"
+            "value": "Replace with your Application Insights resource name"
         },
         "pingURL": {
             "value": "https://www.yoursite.com"
         },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/actiongroups/replace-with-action-group-name"
+        },
+        "location": {
+            "value": "Replace with the location of your Application Insights resource"
         }
     }
 }
