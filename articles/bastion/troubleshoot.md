@@ -39,7 +39,7 @@ Weitere Informationen finden Sie im [NSG-Leitfaden für Azure Bastion](bastion-n
 
 Beispielsweise können Sie den folgenden Befehl verwenden, um einen neuen RSA-SSH-Schlüssel zu erstellen:
 
-**ssh-keygen -t rsa -b 4096 -C "email@domain.com"
+**ssh-keygen -t rsa -b 4096 -C "email@domain.com"**
 
 Ausgabe:
 
