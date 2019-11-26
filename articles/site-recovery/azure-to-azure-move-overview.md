@@ -1,34 +1,23 @@
 ---
-title: Verschieben von Azure IaaS-VMs in eine andere Azure-Region mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
-description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
-services: site-recovery
+title: Verschieben von Azure-VMs in eine andere Region mit Azure Site Recovery
+description: Verwenden Sie Azure Site Recovery, um virtuelle Azure-Computer aus einer Azure-Region in eine andere zu verschieben.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078005"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091942"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
+# <a name="moving-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
-Aufgrund des wachsenden Kundenstamms von Azure und der dadurch steigenden Nachfrage wird das Angebot durch neue Regionen ergänzt. Darüber hinaus werden in den Diensten monatlich neue Funktionen hinzugefügt. Es kann sinnvoll sein, Ihre virtuellen Computer in eine andere Region oder in Verfügbarkeitszonen zu verschieben, um die Verfügbarkeit zu erhöhen.
+Dieser Artikel enthält eine Übersicht über die Gründe und Schritte in Bezug auf das Verschieben von Azure-VMs in eine andere Azure-Region mit [Azure Site Recovery](site-recovery-overview.md). 
 
-In diesem Tutorial werden verschiedene Szenarien beschrieben, in die Sie Ihre virtuellen Computer verschieben können. Zudem wird beschrieben, wie Sie die Architektur in der Zielregion so konfigurieren können, dass eine höhere Verfügbarkeit erreicht werden kann. 
-
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> 
-> * Gründe für das Verschieben virtueller Computer
-> * Typische Architekturen
-> * Unverändertes Verschieben virtueller Computer in eine Zielregion
-> * Verschieben virtueller Computer zur Erhöhung der Verfügbarkeit
 
 ## <a name="reasons-to-move-azure-vms"></a>Gründe für das Verschieben virtueller Azure-Computer
 

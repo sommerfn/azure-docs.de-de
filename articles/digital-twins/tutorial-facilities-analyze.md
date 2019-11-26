@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Analysieren von Ereignissen aus dem Azure Digital Twins-Setup | Microsoft-Dokumentation'
+title: 'Tutorial: Analysieren von Ereignissen aus dem Azure Digital Twins-Setup'
 description: In diesem Tutorial erfahren Sie, wie Sie Ereignisse in Ihren Azure Digital Twins-Gebäudebereichen mit Azure Time Series Insights visualisieren und analysieren.
 services: digital-twins
 ms.author: alinast
@@ -8,15 +8,15 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: af776372026bf9affcda03fa9188b854ebedfc73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949798"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107682"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen in den Azure Digital Twins-Gebäudebereichen mit Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen über Azure Digital Twins mit Time Series Insights
 
 Nachdem Sie Ihre Azure Digital Twins-Instanz sowie Ihre Gebäudebereiche bereitgestellt und die benutzerdefinierte Funktion zum Überwachen bestimmter Bedingungen implementiert haben, können Sie die Ereignisse und Daten aus den Gebäudebereichen analysieren, um Trends und Abweichungen zu erkennen.
 

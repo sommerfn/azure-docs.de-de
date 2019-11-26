@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391644"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083735"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -27,7 +27,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 
 | Resource | Begrenzung |
 | --- | --- |
-| Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |50 |
+| Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |100 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
 | Maximale Anzahl von Zeichen in einer Geräte-ID | 128 |
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird |1\.000 |
@@ -53,7 +53,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Gerätestream-Datenübertragung | 300 MB pro Tag (nur für S1, S2, S3 und F1) |
 
 > [!NOTE]
-> Wenden Sie sich an den Microsoft-Support, wenn Sie mehr als 50 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
+> Wenden Sie sich an den Microsoft-Support, wenn Sie mehr als 100 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
 
 > [!NOTE]
 > Derzeit ist die Gesamtzahl der Geräte und Module, die bei einem einzigen IoT-Hub registriert werden können, auf 1 Mio. begrenzt. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).

@@ -1,24 +1,20 @@
 ---
 title: Synchronisieren des Gerätestatus über Azure IoT Hub | Microsoft-Dokumentation
-description: Verwenden von Gerätezwillingen zum Synchronisieren des Zustands zwischen Ihren Geräten und Ihrem IoT Hub
+description: Es wird beschrieben, wie Sie Gerätezwillinge zum Konfigurieren Ihrer Geräte aus der Cloud verwenden und den Status und Konformitätsdaten von Ihren Geräten empfangen.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330357"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890433"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 

@@ -1,5 +1,5 @@
 ---
-title: 'REST-Tutorial: Erstellen einer KI-Anreicherungspipeline zum Extrahieren von Text und Struktur aus JSON-Blobdaten'
+title: 'Tutorial: Extrahieren von Text und Struktur aus JSON-Blobs'
 titleSuffix: Azure Cognitive Search
 description: Hier wird Schritt für Schritt ein Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache anhand des Inhalts von JSON-Blobs mit Postman und den Azure Cognitive Search-Rest-APIs erläutert.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790189"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113661"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Tutorial: Strukturieren unstrukturierter Inhalte mit KI-Anreicherung
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Tutorial: Extrahieren von Text und Struktur aus JSON-Blobs in Azure mit REST-APIs (Azure Cognitive Search)
 
-Wenn Sie über unstrukturierte Text- oder Bildinhalte verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilddateien (JPG, PNG, TIFF) verarbeiten, dieses Tutorial konzentriert sich jedoch auf wortbasierte Inhalte, um mithilfe von Spracherkennung und Textanalyse neue Felder und Informationen zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
+Wenn Sie in Azure-Blobspeicher über unstrukturierte Text- oder Bildinhalte verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilddateien (JPG, PNG, TIFF) verarbeiten, dieses Tutorial konzentriert sich jedoch auf wortbasierte Inhalte, um mithilfe von Spracherkennung und Textanalyse neue Felder und Informationen zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
 > [!div class="checklist"]
 > * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, MD-, DOCX- oder PPTX-Format) in Azure Blob Storage.

@@ -10,17 +10,14 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 0ea85e60a84b540af2c772f81326dd8c45f61d4d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784017"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121279"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Tutorial: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
-
-> [!IMPORTANT]
-> Dieses Tutorial funktioniert mit der Version von Azure Databricks Runtime 5.2.
 
 In diesem Tutorial verbinden Sie ein Datenerfassungssystem mit Azure Databricks, um Daten nahezu in Echtzeit in einen Apache Spark-Cluster zu streamen. Sie richten ein Datenerfassungssystem mit Azure Event Hubs ein und verbinden es zur Verarbeitung der eingehenden Nachrichten mit Azure Databricks. Für den Zugriff auf Streamingdaten verwenden Sie Twitter-APIs, um Tweets in Event Hubs zu erfassen. Sobald sich die Daten in Azure Databricks befinden, können Sie Analyseaufträge ausführen, um die Daten näher zu analysieren.
 
@@ -104,10 +101,10 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
    * Geben Sie einen Namen für den Cluster ein.
-   * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **5.2**.
+   * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime *6.0*.
    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
-   Wählen Sie die für Ihre technischen Kriterien und Ihr [Budget](https://azure.microsoft.com/en-us/pricing/details/databricks/) geeignete Größe für Clusterworker und Treiberknoten.
+   Wählen Sie die für Ihre technischen Kriterien und Ihr [Budget](https://azure.microsoft.com/pricing/details/databricks/) geeignete Größe für Clusterworker und Treiberknoten.
 
      Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 

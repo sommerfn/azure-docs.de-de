@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Geofence mit Azure Maps | Microsoft-Dokumentation
-description: Richten Sie mit Azure Maps einen Geofence ein.
+title: 'Tutorial: Erstellen eines Geofence mit Azure Maps'
+description: 'Tutorial: Richten Sie mit Azure Maps einen Geofence ein.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694923"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107102"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
 In diesem Tutorial werden die grundlegenden Schritte beschrieben, die zum Einrichten eines Geofence mit Azure Maps ausgeführt werden müssen. Im Szenario dieses Tutorials unterstützen wir Baustellenleiter bei der Überwachung von Fällen, in denen potenziell gefährliche Ausrüstung den gekennzeichneten Baustellenbereich verlässt. Auf einer Baustelle wird teure Ausrüstung verwendet, und es gelten bestimmte gesetzliche Vorschriften. Eine häufige Anforderung ist, dass die Ausrüstung innerhalb des Baustellenbereichs verbleiben muss und diesen ohne vorherige Erlaubnis nicht verlassen darf.
 

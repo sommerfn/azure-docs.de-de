@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747033"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074661"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Sichern einer SQL Server-Datenbank auf einem virtuellen Azure-Computer
 
@@ -23,7 +23,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine SQL Server-Datenbank, die
 > * Erstellen und Konfigurieren eines Tresors
 > * Erkennen von Datenbanken und Einrichten von Sicherungen
 > * Einrichten des automatischen Schutzes für Datenbanken
-> * Ausführen einer Ad-hoc-Sicherung
+> * Ausführen einer bedarfsgesteuerten Sicherung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -215,7 +215,7 @@ So erstellen Sie eine Sicherungsrichtlinie
 
 14. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
 
-## <a name="run-an-ad-hoc-backup"></a>Ausführen einer Ad-hoc-Sicherung
+## <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
 
 1. Wählen Sie in Ihrem Recovery Services-Tresor Sicherungselemente aus.
 2. Klicken Sie auf „SQL Server in Azure-VM“.
@@ -233,7 +233,7 @@ In diesem Tutorial haben Sie das Azure-Portal zu folgenden Zwecken verwendet:
 > * Erstellen und Konfigurieren eines Tresors
 > * Erkennen von Datenbanken und Einrichten von Sicherungen
 > * Einrichten des automatischen Schutzes für Datenbanken
-> * Ausführen einer Ad-hoc-Sicherung
+> * Ausführen einer bedarfsgesteuerten Sicherung
 
 Im nächsten Tutorial stellen Sie einen virtuellen Azure-Computer von einem Datenträger wieder her.
 

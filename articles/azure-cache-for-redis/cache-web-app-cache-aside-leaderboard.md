@@ -1,26 +1,18 @@
 ---
-title: Tutorial zum Erstellen einer Web-App mit Azure Cache for Redis, die ein cachefremdes Muster nutzt | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen einer Web-App mit Azure Cache for Redis und Nutzung eines cachefremden Musters'
 description: Erfahren Sie, wie Sie eine Web-App mit Azure Cache for Redis erstellen, die ein cachefremdes Muster nutzt.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826390"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121515"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -671,7 +663,7 @@ In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App berei
 
    | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Benennungsregeln und Einschränkungen). |
+   | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
    | **Location** | *USA, Osten* | Wählen Sie die gleiche Region, in der Sie den Cache und App Service erstellt haben. |

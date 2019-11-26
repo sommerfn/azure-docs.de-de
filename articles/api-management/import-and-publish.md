@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072100"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108540"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
 
@@ -75,7 +75,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
 > [!TIP]
 > Sollten beim Importieren Ihrer eigenen API-Definition Probleme auftreten, sehen Sie sich die [Liste mit bekannten Problemen und Einschränkungen](api-management-api-import-restrictions.md) an.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testen der neuen API im Azure-Portal
 
 ![Testen der API](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -88,23 +88,6 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
 
-## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
-
-Vorgänge können auch über das **Entwicklerportal** aufgerufen werden, um APIs zu testen.
-
-1. Navigieren Sie zum **Entwicklerportal**.
-
-    ![Entwicklerportal](./media/api-management-get-started/developer-portal.png)
-
-2. Wählen Sie **APIS** aus, klicken Sie auf **Demo Conference API** und dann auf **GetSpeakers**.
-
-    Auf der Seite werden Felder für Abfrageparameter angezeigt (in diesem Fall keine) sowie Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
-
-3. Wählen Sie **Ausprobieren**.
-4. Klicken Sie auf **Senden**.
-
-    Nach dem Aufrufen eines Vorgangs werden im Entwicklerportal die Antworten angezeigt.  
-
 ## <a name="next-steps"> </a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -112,7 +95,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Importieren Ihrer ersten API
 > * Testen der API im Azure-Portal
-> * Testen der API im Entwicklerportal
 
 Fahren Sie mit dem nächsten Tutorial fort:
 

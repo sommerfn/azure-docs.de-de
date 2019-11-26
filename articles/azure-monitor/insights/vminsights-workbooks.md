@@ -1,5 +1,5 @@
 ---
-title: Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen | Microsoft-Dokumentation
+title: Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs | Microsoft-Dokumentation
 description: Vereinfachen Sie komplexe Berichte mit vorgefertigten und benutzerdefiniert parametrisierten Arbeitsmappen für Azure Monitor für VMs.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553734"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200544"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 
 Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Python-Tutorial: Aufrufen von Cognitive Services in einer KI-Anreicherungspipeline'
+title: 'Tutorial: Erstellen eines Skillsets in Python mit REST-APIs'
 titleSuffix: Azure Cognitive Search
 description: Detailliertes Beispiel für KI-basierte Datenextraktion, Verarbeitung natürlicher Sprache und Bildverarbeitung in Azure Cognitive Search unter Verwendung eines Jupyter Python-Notebooks. Extrahierte Daten werden indiziert und lassen sich einfach abfragen.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790203"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113681"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python-Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Cognitive Search-Anreicherungspipeline
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Tutorial: Erstellen einer Pipeline für die KI-Anreicherung mit REST und Python
 
 In diesem Tutorial werden die Fähigkeiten für die Programmierung von Datenanreicherungen in Azure Cognitive Search mithilfe von *kognitiven Qualifikationen* vermittelt. Qualifikationen werden durch die Verarbeitung von natürlicher Sprache und Bildanalysefunktionen in Cognitive Services unterstützt. Durch die Zusammenstellung und Konfiguration von Qualifikationsgruppen können Sie Text und Textdarstellungen eines Bilds oder einer gescannten Dokumentdatei extrahieren. Sie können außerdem Sprachen, Entitäten, Schlüsselbegriffe und mehr erkennen. Das Ergebnis sind umfangreiche zusätzliche Inhalte in einem Suchindex, die mit KI-Anreicherungen in einer Indizierungspipeline erstellt wurden. 
 

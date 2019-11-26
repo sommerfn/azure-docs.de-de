@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262869"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900694"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure
 In diesem Artikel wird beschrieben, wie Sie das Lizenzierungsmodell für einen virtuellen SQL Server-Computer (VM) in Azure ändern, indem Sie den neuen SQL-VM-Ressourcenanbieter **Microsoft.SqlVirtualMachine** verwenden.
@@ -154,7 +154,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, das Lizenzierungsmodell auf einer S
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Sie müssen den Ressourcenanbieter bei Ihrem [Abonnement](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription) und dann [Ihre SQL Server-VM beim Ressourcenanbieter registrieren](virtual-machines-windows-sql-register-with-resource-provider.md). 
+Sie müssen Ihr Abonnement beim Ressourcenanbieter registrieren und anschließend [Ihre SQL Server-VM beim Ressourcenanbieter registrieren](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Argument für „Sku“-Parameter kann nicht überprüft werden.
 Dieser Fehler könnte auftreten, wenn Sie versuchen, das Lizenzierungsmodell für Ihre SQL Server-VM mit einer Azure PowerShell-Version über 4.0 zu ändern:

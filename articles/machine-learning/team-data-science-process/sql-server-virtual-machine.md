@@ -1,6 +1,6 @@
 ---
 title: Untersuchen von Daten auf einem virtuellen SQL Server-Computer – Team Data Science-Prozess
-description: Durchsuchen von Daten und Erstellen von Funktionen auf einem virtuellen SQL Server-Computer in Azure
+description: Durchsuchen und Verarbeiten von Daten sowie Erstellen von Funktionen mit Python oder SQL auf einem virtuellen SQL Server-Computer in Azure
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036614"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053618"
 ---
 # <a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
 In diesem Dokument werden das Durchsuchen von Daten und das Generieren von Funktionen aus Daten auf einer SQL Server-VM in Azure beschrieben. Dies kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.

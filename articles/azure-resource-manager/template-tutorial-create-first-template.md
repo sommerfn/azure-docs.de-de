@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage'
-description: In diesem Tutorial wird beschrieben, wie Sie Ihre erste Azure Resource Manager-Vorlage erstellen. Sie lernen die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
+title: 'Tutorial: Erstellen und Bereitstellen der Azure Resource Manager-Vorlage'
+description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029538"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074374"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage
 
-In diesem Tutorial lernen Sie die Ressourcen-Manager-Vorlagen kennen. Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
+In diesem Tutorial lernen Sie die Azure Resource Manager-Vorlagen kennen. Es wird gezeigt, wie Sie eine Startvorlage erstellen und in Azure bereitstellen. Sie erfahren mehr über die Struktur der Vorlage und die Tools, die Sie für die Arbeit mit Vorlagen benötigen. Dieses Tutorial dauert ungefähr **12 Minuten**, die tatsächliche Zeit variiert jedoch je nach Anzahl der Tools, die Sie installieren müssen.
 
 Dieses Tutorial ist das erste einer Reihe. Im Laufe der Reihe ändern Sie die Startvorlage Schritt für Schritt, bis Sie alle wichtigen Bestandteile einer Resource Manager-Vorlage erkundet haben. Diese Elemente sind die Bausteine für weitaus komplexere Vorlagen. Wir hoffen, dass Sie am Ende der Reihe Ihre eigenen Vorlagen erstellen können und bereit sind, Ihre Bereitstellungen mit Vorlagen zu automatisieren.
 

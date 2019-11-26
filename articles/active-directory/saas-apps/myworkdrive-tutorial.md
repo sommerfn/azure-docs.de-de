@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160387"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074087"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Tutorial: Integrieren von MyWorkDrive in Azure Active Directory
 
@@ -100,9 +100,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="configure-myworkdrive-sso"></a>Konfigurieren des einmaligen Anmeldens für MyWorkDrive
 
-1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei MyWorkDrive an.
+1. Wenn Sie die Konfiguration in MyWorkDrive automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Klicken Sie auf dem MyWorkDrive-Server im Administratorpanel auf **ENTERPRISE**, und führen Sie die folgenden Schritte aus:
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **MyWorkDrive einrichten**, um zur Anwendung MyWorkDrive weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei MyWorkDrive anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 und 4.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie MyWorkDrive manuell einrichten möchten, müssen Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei MyWorkDrive anmelden.
+
+1. Klicken Sie auf dem MyWorkDrive-Server im Administratorpanel auf **ENTERPRISE**, und führen Sie die folgenden Schritte aus:
 
     ![Administrator](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 

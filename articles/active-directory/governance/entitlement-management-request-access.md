@@ -1,6 +1,6 @@
 ---
-title: Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie das Portal „Mein Zugriff“ verwenden, um Zugriff auf ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) anzufordern.
+title: Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+description: Erfahren Sie, wie Sie das Portal „Mein Zugriff“ verwenden, um Zugriff auf ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung anzufordern.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389082"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173707"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
 In der Azure AD-Berechtigungsverwaltung ermöglicht ein Zugriffspaket eine einmalige Einrichtung von Ressourcen und Richtlinien, die den Zugriff während der gesamten Lebensdauer des Zugriffspakets automatisch verwaltet. 
 
@@ -58,12 +53,13 @@ Nachdem Sie das Zugriffspaket im Portal „Mein Zugriff“ gefunden haben, könn
 
 1. Suchen Sie in der Liste nach dem Zugriffspaket.  Falls erforderlich, können Sie eine Suchzeichenfolge eingeben und dann den Filter **Name**, **Katalog** oder **Ressourcen** auswählen.
 
-    ![Portal „Mein Zugriff“ – Suche nach Ressourcen](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![Portal „Mein Zugriff“ – Suche nach Ressourcen](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. Klicken Sie auf das Häkchen, um das Zugriffspaket auszuwählen.
 
-    ![Portal „Mein Zugriff“ – Zugriffspakete](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. Klicken Sie auf **Zugriff anfordern**, um den Bereich „Zugriff anfordern“ zu öffnen.
+
+    ![Portal „Mein Zugriff“ – Zugriffspakete](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. Wenn das Feld **Geschäftliche Begründung** angezeigt wird, geben Sie eine Begründung für den benötigten Zugriff ein.
 
@@ -78,6 +74,12 @@ Nachdem Sie das Zugriffspaket im Portal „Mein Zugriff“ gefunden haben, könn
 1. Klicken Sie auf **Anforderungsverlauf**, um eine Liste Ihrer Anforderungen und den Status anzuzeigen.
 
     Wenn das Zugriffspaket genehmigt werden muss, weist die Anforderung jetzt den Status „Genehmigung steht aus“ auf.
+
+### <a name="select-a-policy"></a>Auswählen einer Richtlinie
+
+Wenn Sie Zugriff auf ein Zugriffspaket anfordern, für das mehrere Richtlinien gelten, werden Sie möglicherweise aufgefordert, eine Richtlinie auszuwählen. Beispielsweise kann ein Zugriffspaketmanager ein Zugriffspaket mit zwei Richtlinien für zwei Gruppen interner Mitarbeiter konfigurieren. Die erste Richtlinie könnte einen Zeitraum von 60 Tagen für den Zugriff zulassen und eine Genehmigung erfordern. Die zweite Richtlinie könnte den Zugriff 2 Tage lang zulassen und keine Genehmigung erfordern. Bei diesem Szenario müssen Sie die Richtlinie auswählen, die Sie verwenden möchten.
+
+![Portal „Mein Zugriff“ – Zugriff anfordern – mehrere Richtlinien](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>Abbrechen einer Anforderung
 
@@ -94,12 +96,6 @@ Wenn Sie eine Zugriffsanforderung senden und die Anforderung weiterhin den Statu
     ![Portal „Mein Zugriff“ – Anforderung abbrechen](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. Klicken Sie auf **Anforderungsverlauf**, um zu bestätigen, dass die Anforderung abgebrochen wurde.
-
-## <a name="select-a-policy"></a>Auswählen einer Richtlinie
-
-Wenn Sie Zugriff auf ein Zugriffspaket anfordern, für das mehrere Richtlinien gelten, werden Sie möglicherweise aufgefordert, eine Richtlinie auszuwählen. Beispielsweise kann ein Zugriffspaketmanager ein Zugriffspaket mit zwei Richtlinien für zwei Gruppen interner Mitarbeiter konfigurieren. Die erste Richtlinie könnte einen Zeitraum von 60 Tagen für den Zugriff zulassen und eine Genehmigung erfordern. Die zweite Richtlinie könnte den Zugriff 2 Tage lang zulassen und keine Genehmigung erfordern. Bei diesem Szenario müssen Sie die Richtlinie auswählen, die Sie verwenden möchten.
-
-**Erforderliche Rolle:** Anforderer
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,19 @@
 ---
 title: C#-Tutorial zur Reihenfolge von Ergebnissen
 titleSuffix: Azure Cognitive Search
-description: Dieses Tutorial baut auf das Projekt „Suchergebnispaginierung – Azure Cognitive Search“ auf, um die Reihenfolge von Suchergebnissen hinzuzufügen. Erfahren Sie, wie Ergebnisse anhand einer primären Eigenschaft angeordnet werden, und wie Ergebnisse mit derselben primären Eigenschaft anhand einer sekundären Eigenschaft angeordnet werden. Schließlich erfahren Sie, wie Ergebnisse basierend auf einem Bewertungsprofil angeordnet werden.
+description: In diesem Tutorial wird veranschaulicht, wie Sie Suchergebnisse sortieren. Es basiert auf einem vorherigen „hotels“-Projekt mit einer Sortierung nach primären und sekundären Eigenschaften und enthält ein Bewertungsprofil zum Hinzufügen von Kriterien für die Erhöhung.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794049"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112672"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Cognitive Search
 

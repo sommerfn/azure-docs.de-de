@@ -1,20 +1,19 @@
 ---
-title: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einer Azure IoT Hub-Instanz | Microsoft-Dokumentation
-description: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einer Azure IoT Hub-Instanz
+title: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einer Azure IoT Hub-Instanz
+description: Es wird beschrieben, wie Sie Metriken und Diagnoseprotokolle mit einer Azure IoT Hub-Instanz einrichten und verwenden. Auf diese Weise werden zu analysierende Daten bereitgestellt, damit eventuelle Probleme Ihres Hubs diagnostiziert werden können.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262313"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084360"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub
 

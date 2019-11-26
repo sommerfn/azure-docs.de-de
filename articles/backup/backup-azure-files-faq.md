@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747460"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091598"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -119,7 +119,7 @@ Ja. Informationen hierzu finden Sie in der ausführlichen Dokumentation unter [d
 
 Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über PowerShell oder mithilfe der CLI über die Funktion zum Anzeigen von Momentaufnahmen zugegriffen werden. Weitere Informationen zu Azure Files-Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files (Vorschauversion)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Was ist die maximale Aufbewahrungsdauer, die ich für Sicherungen konfigurieren kann?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Welche maximale Aufbewahrungsdauer kann ich für Sicherungen konfigurieren?
 
 Bei der Sicherung von Azure-Dateifreigaben können Sie Richtlinien mit einem Aufbewahrungszeitraum von bis zu 180 Tagen konfigurieren. Mit der [Option für die bedarfsgesteuerte Sicherung in PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) können Sie einen Wiederherstellungspunkt jedoch sogar bis zu zehn Jahre aufbewahren.
 
@@ -127,9 +127,9 @@ Bei der Sicherung von Azure-Dateifreigaben können Sie Richtlinien mit einem Auf
 
 Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie im Rahmen der nächsten Bereinigung gelöscht.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-Diese Informationen beziehen sich nur auf das Sichern von Azure Files. Wenn Sie weitere Informationen zu anderen Bereichen von Azure Backup benötigen, sehen Sie sich die folgenden Artikel mit häufig gestellten Fragen zu Backup an:
+Weitere Informationen zu anderen Bereichen von Azure Backup finden Sie in diesen weiteren Artikeln mit häufig gestellten Fragen zu Sicherungen:
 
 - [Häufig gestellte Fragen zum Recovery Services-Tresor](backup-azure-backup-faq.md)
 - [Häufig gestellte Fragen zur Azure-VM-Sicherung](backup-azure-vm-backup-faq.md)

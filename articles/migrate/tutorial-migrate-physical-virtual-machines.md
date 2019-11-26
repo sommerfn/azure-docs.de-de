@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605552"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907111"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrieren von physischen oder virtualisierten Servern zu Azure 
 
@@ -123,7 +123,7 @@ Stellen Sie sicher, dass die Computer die Anforderungen für die Migration zu Az
 > [!NOTE]
 > Die Agent-basierte Migration mit der Azure Migrate-Servermigration basiert auf Features des Azure Site Recovery-Diensts. Einige Anforderungen sind daher ggf. mit der Site Recovery-Dokumentation verknüpft.
 
-1. [Überprüfen](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Sie die Anforderungen für VMware-Server.
+1. [Überprüfen](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Sie die Serveranforderungen.
 2. [Überprüfen](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) Sie die VM-Unterstützungsanforderungen für die Migration.
 3. Überprüfen Sie die VM-Einstellungen. Lokale VMs, die Sie zu Azure replizieren möchten, müssen die [Azure-VM-Anforderungen](migrate-support-matrix-vmware.md#azure-vm-requirements) erfüllen.
 
@@ -164,7 +164,7 @@ Richten Sie ein Azure Migrate-Projekt ein, und fügen Sie diesem dann das Tool f
     USA | „USA, Osten“ oder „USA, Westen-Mitte“
 
     Die für das Projekt angegebene Region wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden. Bei der tatsächlichen Migration kann eine beliebige Zielregion ausgewählt werden.
-8. Wählen Sie unter **Bewertungstool auswählen** die Option **Hinzufügen eines Bewertungstools vorerst überspringen** und anschließend **Weiter** aus.
+8. Wählen Sie unter **Bewertungstool auswählen** die Option **Hinzufügen eines Bewertungstools vorerst überspringen** >  und anschließend **Weiter** aus.
 9. Wählen Sie unter **Migrationstool auswählen** Folgendes aus: **Azure Migrate: Servermigration** > **Weiter**.
 10. Überprüfen Sie die Einstellungen unter **Überprüfen + Tools hinzufügen**, und klicken Sie auf **Tools hinzufügen**.
 11. Nachdem Sie das Tool hinzugefügt haben, wird es im Azure Migrate-Projekt unter **Server** > **Migrationstools** angezeigt.
@@ -265,7 +265,7 @@ Wählen Sie nun Computer für die Migration aus.
 
     ![Replizieren von VMs](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere-Hypervisor** aus.
+2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus.
 3. Wählen Sie unter **Lokale Appliance** den Namen der Azure Migrate-Appliance aus, die Sie eingerichtet haben.
 4. Geben Sie unter **vCenter Server** den Namen des vCenter-Servers an, der die virtuellen Computer verwaltet, oder den vSphere-Server, auf dem die VMs gehostet werden.
 5. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.

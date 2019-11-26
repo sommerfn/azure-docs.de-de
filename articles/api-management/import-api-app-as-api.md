@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073267"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108491"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importieren einer API-App als API
 
@@ -58,7 +58,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
     * **Unbegrenzt**   
 7. Klicken Sie auf **Erstellen**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testen der neuen API im Azure-Portal
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.  
 
@@ -70,21 +70,6 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 1. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
-
-Vorgänge können auch im **Entwicklerportal** aufgerufen werden, um APIs zu testen. 
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-2. Klicken Sie auf **Entwicklerportal**.
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-3. Wählen Sie die **API** aus, die Sie erstellt haben.
-4. Klicken Sie auf den Vorgang, den Sie testen möchten.
-5. Klicken Sie auf **Ausprobieren**.
-6. Klicken Sie auf **Senden**.
-    
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

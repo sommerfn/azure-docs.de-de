@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828609"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896950"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 
@@ -130,15 +130,12 @@ In Azure werden die folgenden Einstellungen verwendet, um den Speicherpool auf S
 | Datenträgergrößen |1 TB jeder |
 | Cache |Lesen |
 | Zuordnungsgröße |Größe der NTFS-Zuordnungseinheit: 64 KB |
-| Sofortige Dateiinitialisierung |Enabled |
-| Sperren von Seiten im Speicher |Enabled |
-| Wiederherstellen |Einfache Wiederherstellung (keine Resilienz) |
-| Anzahl von Spalten |Anzahl von Datenträgern<sup>1</sup> |
-| Speicherort von TempDB |Auf Datenträgern gespeichert<sup>2</sup> |
+| Wiederherstellen | Einfache Wiederherstellung (keine Resilienz) |
+| Anzahl von Spalten |Anzahl von Datenträgern für Daten bis zu 8<sup>1</sup> |
+
 
 <sup>1</sup> Nach der Erstellung des Speicherpools können Sie die Anzahl von Spalten im Speicherpool nicht mehr ändern.
 
-<sup>2</sup> Diese Einstellung gilt nur für das erste Laufwerk, das Sie mit dem Feature für die Speicherkonfiguration erstellen.
 
 ## <a name="workload-optimization-settings"></a>Einstellungen für die Workloadoptimierung
 

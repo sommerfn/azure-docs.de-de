@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506163"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125489"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie unbedingt die folgenden Schritte aus, bevor Sie beginnen:
+Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
+>
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](../../../../quickstarts/create-luis.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md)
@@ -39,28 +40,28 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 ## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
-Um ein Objekt vom Typ `IntentRecognizer` initialisieren zu können, müssen Sie eine Konfiguration mit Ihrem LUIS-Endpunktschlüssel und der entsprechenden Region erstellen. Fügen Sie diesen Code als Nächstes ein.
+Damit Sie ein `IntentRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, in der Ihr LUIS-Endpunktschlüssel und Ihre Region verwendet werden. Fügen Sie diesen Code als Nächstes ein.
 
 In diesem Beispiel wird das Objekt `SpeechConfig` mit dem LUIS-Schlüssel und der entsprechenden Region erstellt. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
 > [!NOTE]
-> Wichtig: Verwenden Sie den LUIS-Endpunktschlüssel und keinen Start- oder Erstellungsschlüssel, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ geeignet ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).
+> Sie dürfen weder den Start- noch den Erstellungsschlüssel, sondern müssen den LUIS-Endpunktschlüssel verwenden, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ zulässig ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>Initialisieren eines IntentRecognizer-Objekts
+## <a name="initialize-an-intentrecognizer"></a>Initialisieren eines IntentRecognizer-Objekts
 
 Als Nächstes erstellen wir ein Objekt vom Typ `IntentRecognizer`. Fügen Sie den folgenden Code direkt unterhalb Ihrer Speech-Konfiguration ein:
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Hinzufügen eines LanguageUnderstandingModel-Objekts und von Absichten
 
-Nun müssen Sie der Absichtserkennung ein Objekt vom Typ `LanguageUnderstandingModel` zuordnen und die zu erkennenden Absichten hinzufügen.
+Nun müssen Sie der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen und die zu erkennenden Absichten hinzufügen.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 
-Über das Objekt `IntentRecognizer` muss die Methode `recognize_once()` aufgerufen werden. Diese Methode teilt dem Speech-Dienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
+Rufen Sie die Methode `recognize_once()` über das Objekt `IntentRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Anzeigen der Erkennungsergebnisse (oder Fehler)
@@ -71,7 +72,8 @@ Fügen Sie in der using-Anweisung unterhalb des Aufrufs von `recognize_once()` d
 
 ## <a name="check-your-code"></a>Überprüfen Ihres Codes
 
-Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+Ihr Code sollte nun wie folgt aussehen:  
+(Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen Ihrer App
 

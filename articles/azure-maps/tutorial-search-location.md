@@ -1,22 +1,22 @@
 ---
-title: Suchen mit Azure Maps | Microsoft-Dokumentation
-description: Suchen nach einem Point of Interest in der Nähe mit Azure Maps
+title: 'Tutorial: Suchen mit Azure Maps'
+description: 'Tutorial: Suchen nach einem Point of Interest in der Nähe mit Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8945ccef1dd44570f4f59c7c91c2fe05b222c5bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576922"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109517"
 ---
-# <a name="search-nearby-points-of-interest-using-azure-maps"></a>Suchen nach Points of Interest in der Nähe mit Azure Maps
+# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
 In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Maps einrichten und anschließend mithilfe der Maps-APIs nach einem Point of Interest suchen. In diesem Tutorial lernen Sie Folgendes:
 

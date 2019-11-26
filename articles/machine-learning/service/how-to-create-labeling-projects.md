@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612768"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837480"
 ---
 # <a name="get-labels-for-data"></a>Abrufen von Beschriftungen für Daten
 
 Das Beschriften großer Datenmengen bereitet in Projekten für maschinelles Lernen (ML) häufig Kopfzerbrechen. ML-Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Tausende von Bildern und entsprechende Beschriftungen. 
  
-Das Azure Machine Learning-Studio bietet Ihnen eine Zentrale zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Beschriftungsprojekte helfen dabei, Daten, Beschriftungen und Teammitglieder zu koordinieren, sodass Sie die Beschriftungsaufgaben effizienter verwalten können. Zu den zurzeit unterstützten Aufgaben gehören die Bildklassifizierung – mit mehreren Beschriftungen oder mehreren Klassen – und die Objektidentifikation mithilfe von Begrenzungsrahmen.
+Azure Machine Learning ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Beschriftungsprojekte helfen dabei, Daten, Beschriftungen und Teammitglieder zu koordinieren, sodass Sie die Beschriftungsaufgaben effizienter verwalten können. Zu den zurzeit unterstützten Aufgaben gehören die Bildklassifizierung – mit mehreren Beschriftungen oder mehreren Klassen – und die Objektidentifikation mithilfe von Begrenzungsrahmen.
 
 Azure verfolgt den Fortschritt nach und verwaltet die Warteschlange mit unvollständigen Beschriftungsaufgaben. Beschriftungsersteller benötigen kein Azure-Konto, um an einem solchen Projekt teilzunehmen. Sobald sie mit ihrem Microsoft-Konto (MSA) oder über [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) authentifiziert sind, können sie sich Beschriftungsaufgaben widmen, so wie es ihre Zeit erlaubt. Diese Personen können Beschriftungen mithilfe von Tastenkombination zuweisen und ändern. 
 
@@ -43,7 +43,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
 
-Beschriftungsprojekte werden im [Azure Machine Learning-Studio](https://ml.azure.com/) verwaltet. Auf der Seite **Beschriftungsprojekte** können Sie Projekte, Teams und Personen verwalten. Einem Projekt können ein oder mehrere Teams zugewiesen sein, und ein Team kann aus einem oder mehreren Personen bestehen. 
+Beschriftungsprojekte werden in [Azure Machine Learning](https://ml.azure.com/) verwaltet. Auf der Seite **Beschriftungsprojekte** können Sie Projekte, Teams und Personen verwalten. Einem Projekt können ein oder mehrere Teams zugewiesen sein, und ein Team kann aus einem oder mehreren Personen bestehen. 
 
 Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diese als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Informationen dazu finden Sie unter [Erstellen und Registrieren von Datenspeichern](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores). 
 
@@ -149,7 +149,7 @@ Sie können Daten direkt über die Seite **Projektdetails** beschriften, indem S
 
 Sie können die Beschriftungsdaten jederzeit für Experimente des maschinellen Lernens exportieren. Bildbeschriftungen können im [COCO-Format](http://cocodataset.org/#format-data) oder als Azure ML-Dataset exportiert werden. Sie finden die Schaltfläche **Exportieren** auf der Seite **Projektdetails** Ihres Beschriftungsprojekts.
 
-Die COCO-Datei wird im Standardblobspeicher des Azure ML-Arbeitsbereichs in einem Ordner unter **export/coco** erstellt. Sie können im Abschnitt **Datasets** des Studios auf das exportierte Azure ML-Dataset zugreifen. Die Seite mit Datasetdetails bietet auch Beispielcode für den Zugriff auf Ihre Beschriftungen aus Python.
+Die COCO-Datei wird im Standardblobspeicher des Azure ML-Arbeitsbereichs in einem Ordner unter **export/coco** erstellt. Sie können im Abschnitt **Datasets** von Azure Machine Learning auf das exportierte Azure ML-Dataset zugreifen. Die Seite mit Datasetdetails bietet auch Beispielcode für den Zugriff auf Ihre Beschriftungen aus Python.
 
 ![Exportiertes Dataset](media/how-to-create-labeling-projects/exported-dataset.png)
 

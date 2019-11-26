@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Überwachen virtueller Windows-Computer in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Überwachen virtueller Windows-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die Leistung und die ermittelten Anwendungskomponenten überwachen, die auf Ihren virtuellen Windows-Computern ausgeführt werden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679343"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112489"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Windows-Computers in Azure
 
@@ -91,7 +91,7 @@ So aktivieren Sie die Überwachung Ihrer virtuellen Azure-Computer mit Azure Mon
 
 3. Wählen Sie auf der Seite **Insights (Vorschau)** **Jetzt testen** aus.
 
-    ![Aktivieren von Azure Monitor for VMs für eine VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Aktivieren von Azure Monitor for VMs für eine VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. Wenn Sie im selben Abonnement einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Azure Monitor Insights Onboarding** (Onboarding von Azure Monitor Insights) in der Dropdownliste aus.  
 

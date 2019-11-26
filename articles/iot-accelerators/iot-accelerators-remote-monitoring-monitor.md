@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Überwachen Ihrer IoT-Geräte über eine Azure-Lösung: Azure | Microsoft-Dokumentation'
+title: 'Überwachen von Geräten in der Remoteüberwachungslösung: Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Ihre IoT-Geräte mit dem Solution Accelerator für die Remoteüberwachung überwachen.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173820"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890869"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Tutorial: Überwachen Ihrer IoT-Geräte
 

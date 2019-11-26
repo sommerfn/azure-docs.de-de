@@ -1,5 +1,6 @@
 ---
-title: Migrieren zu MSAL.NET | Azure
+title: Migrieren zu MSAL.NET
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) und der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) und über die Migration zu MSAL.NET.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264275"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175563"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -82,7 +83,7 @@ MSAL.NET weist mehr explizite Ausnahmen auf. Beispiel: Wenn die automatische Aut
 ```csharp
 catch(AdalException exception)
 {
- if (exception.ErrorCode == “user_interaction_required”)
+ if (exception.ErrorCode == "user_interaction_required")
  {
   try
   {“try to authenticate interactively”}}
@@ -181,7 +182,7 @@ Wenn Sie mit Azure Active Directory MSAL.NET unter Verwendung der AAD-Graph-API 
 
 ```csharp
 ResourceId = "https://graph.windows.net/";
-var scopes = new [] { ResourceId + “Directory.Read”, ResourceID + “Directory.Write”}
+var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Warnung: Verwendung von ein oder zwei Schrägstrichen im Geltungsbereich für eine v1.0-Web-API

@@ -1,5 +1,5 @@
 ---
-title: Stream Analytics-Edge-Aufträge in Azure Stream Analytics-Tools für Visual Studio
+title: Azure Stream Analytics Edge-Aufträge in Visual Studio
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Stream Analytics-Tools für Visual Studio Aufträge für Stream Analytics auf IoT Edge schreiben, debuggen und erstellen können.
 services: stream-analytics
 author: su-jie
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329960"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925022"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools
 

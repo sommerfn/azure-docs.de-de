@@ -1,19 +1,20 @@
 ---
-title: 'Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis: Azure-Befehlszeilenschnittstelle'
+title: 'Tutorial: Umleitung auf URL-Pfadbasis per CLI'
+titleSuffix: Azure Application Gateway
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 7/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 23ddbdc62b2592a8fbfb7cdccaca52cbfe9aee62
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315949"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074438"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 

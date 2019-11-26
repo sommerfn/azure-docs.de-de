@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193956"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176743"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway
 
@@ -123,7 +123,7 @@ Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort 
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuellen Netzwerks und eines Subnetzes für das Application Gateway
 
-Das folgende Beispiel zeigt, wie Sie mit dem Resource Manager ein virtuelles Netzwerk erstellen:
+Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen.
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -208,12 +208,15 @@ Erstellen Sie die Hostnamenkonfigurationsobjekte für den Proxy und das Portal u
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Zum Konfigurieren der Verbindung mit dem Legacy-Entwicklerportal müssen Sie `-HostnameType DeveloperPortal` durch `-HostnameType Portal` ersetzen.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
 

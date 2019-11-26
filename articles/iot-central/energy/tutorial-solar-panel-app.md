@@ -1,19 +1,19 @@
 ---
-title: Erstellen einer App für die Überwachung von Solarpanels mit IoT Central | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Solarpanel-Anwendung mithilfe von Azure IoT Central-Anwendungsvorlagen erstellen.
+title: 'Tutorial: Erstellen einer App für die Überwachung von Solarpanels mit IoT Central'
+description: 'Tutorial: Erfahren Sie, wie Sie eine Solarpanel-Anwendung mithilfe von Azure IoT Central-Anwendungsvorlagen erstellen.'
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c560c7e298dabbb5a3c31d90e0d48d0d63cfac5f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581515"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112511"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Tutorial: Erstellen und Durchlaufen der App-Vorlage für die Überwachung von Solarpanels 
 

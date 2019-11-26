@@ -1,5 +1,5 @@
 ---
-title: Hochfrequenzhandel-Simulation mit Azure Stream Analytics
+title: Hochfrequenzhandel mit Azure Stream Analytics
 description: Hier erfahren Sie, wie Sie das lineare Regressionsmodell in einem Azure Stream Analytics-Auftrag trainieren und bewerten.
 services: stream-analytics
 author: zhongc
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9d3c1a730c34632403669794bdd97f95e3b3662d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598647"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925515"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Hochfrequenzhandel-Simulation mit Stream Analytics
 Die Kombination aus SQL-Sprache und benutzerdefinierten JavaScript-Funktionen (User-Defined Functions, UDFs) bzw. benutzerdefinierten Aggregaten (User-Defined Aggregates, UDAs) in Azure Stream Analytics ermöglicht Benutzern die Nutzung von Advanced Analytics. Beispiele für Analysen mit Advanced Analytics sind das Online-Trainieren und -Bewerten für Machine Learning und die Simulation zustandsbehafteter Prozesse. In diesem Artikel wird beschrieben, wie Sie die lineare Regression in einem Azure Stream Analytics-Auftrag durchführen, mit dem ständig Trainings- und Bewertungsschritte für ein Hochfrequenzhandel-Szenario ausgeführt werden.

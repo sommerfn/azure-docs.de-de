@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073353"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107846"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importieren einer Azure-Funktionen-App als API in Azure API Management
 
@@ -142,7 +142,7 @@ Navigieren Sie zu Ihrer Azure API Management-Instanz, und klicken Sie im Menü a
 
 ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> Testen der neuen API Management-API im Azure-Portal
+## <a name="test-in-azure-portal"></a> Testen der neuen API im Azure-Portal
 
 Sie können Vorgänge direkt über das Azure-Portal aufrufen. Das Azure-Portal bietet eine komfortable Möglichkeit, die Vorgänge einer API anzuzeigen und zu testen.  
 
@@ -157,26 +157,6 @@ Sie können Vorgänge direkt über das Azure-Portal aufrufen. Das Azure-Portal b
 4. Wählen Sie **Senden** aus.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-## <a name="test-in-developer-portal"></a> Aufrufen eines Vorgangs über das Entwicklerportal
-
-Sie können Vorgänge auch über das Entwicklerportal aufrufen, um APIs zu testen. 
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-
-2. Klicken Sie auf **Entwicklerportal**.
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-
-3. Wählen Sie die **API** aus, die Sie erstellt haben.
-
-4. Wählen Sie den Vorgang aus, den Sie testen möchten.
-
-5. Wählen Sie **Testen**.
-
-6. Wählen Sie **Senden** aus.
-    
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

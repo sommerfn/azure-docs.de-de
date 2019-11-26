@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe einer Azure Resource Manager-Vorlage
 description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe einer Azure Resource Manager-Vorlage
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163264"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084406"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe einer Azure Resource Manager-Vorlage
 
@@ -370,7 +370,7 @@ Die Dateien hochgeladen werden auf die Freigabe, die von Ihrer Cloud Shell-Insta
 
 Führen Sie das Skript aus, um die Bereitstellung durchzuführen. Die letzte Zeile dieses Skripts ruft die zurückzugebende Variable ab (die Verbindungszeichenfolge für die Service Bus-Warteschlange).
 
-Das Skript enthält folgende Variablen:
+Vom Skript werden die folgenden Variablen festgelegt und verwendet:
 
 **$RGName**: Der Name der Ressourcengruppe, in der die Vorlage bereitgestellt werden soll. Dieses Feld wird erstellt, bevor Sie die Vorlage bereitstellen.
 

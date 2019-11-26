@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/28/2019
+ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105467"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991349"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
 
@@ -56,10 +56,10 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 ## <a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
 
-Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie `sshuser` durch einen SSH-Benutzer für Ihren HDInsight-Cluster und `clustername` durch den Namen des HDInsight-Clusters:
+Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie `sshuser` durch einen SSH-Benutzer für Ihren HDInsight-Cluster und `CLUSTERNAME` durch den Namen des HDInsight-Clusters:
 
 ```cmd
-ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
 Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
@@ -68,9 +68,9 @@ Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr ü
 * **C** : Alle Daten werden komprimiert, da der Webdatenverkehr hauptsächlich aus Text besteht.
 * **2** : SSH zwingen, nur Protokollversion 2 zu verwenden.
 * **q** : Stiller Modus.
-* **T**: Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
-* **n**: Verhindert den Lesevorgang für STDIN, da lediglich ein Port weitergeleitet wird.
-* **N**: Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
+* **T:** Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
+* **n:** Lesevorgang für STDIN verhindern, da lediglich ein Port weitergeleitet wird.
+* **N:** Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
 * **f** : Im Hintergrund ausführen.
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.
@@ -81,12 +81,15 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 ### <a name="create-or-load-a-session"></a>Erstellen oder Laden einer Sitzung
 
-1. Öffnen Sie PuTTY, und stellen Sie sicher, dass **Sitzung** im linken Menü ausgewählt ist. Wenn Sie bereits eine Sitzung gespeichert haben, wählen Sie den Sitzungsnamen aus der Liste **Saved Sessions** (Gespeicherte Sitzungen) aus, und klicken Sie auf **Load** (Laden).
+1. Öffnen Sie PuTTY, und stellen Sie sicher, dass **Sitzung** im linken Menü ausgewählt ist. Wenn Sie bereits eine Sitzung gespeichert haben, wählen Sie den Sitzungsnamen in der Liste **Saved Sessions** (Gespeicherte Sitzungen) und dann **Load** (Laden) aus.
 
 1. Wenn Sie noch keine gespeicherte Sitzung haben, geben Sie Ihre Verbindungsdaten ein:
-    * **Hostname (oder IP-Adresse)** : Die SSH-Adresse für den HDInsight-Cluster. Beispiel: **mycluster-ssh.azurehdinsight.net**.
-    * **Port**: 22.
-    * **Verbindungstyp**: SSH
+
+    |Eigenschaft |Wert |
+    |---|---|
+    |Hostname (oder IP-Adresse)|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
+    |Port|22|
+    |Verbindungstyp.|SSH|
 
 1. Wählen Sie **Speichern** aus.
 
@@ -96,15 +99,15 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 
-   * **Source port** : Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.
+    |Eigenschaft |Wert |
+    |---|---|
+    |Quellport|Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.|
+    |Destination|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
+    |Dynamisch|Ermöglicht das dynamische SOCKS-Proxyrouting.|
 
-   * **Destination**: Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.
+    ![Tunneloptionen für die PuTTY-Konfiguration](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-   * **Dynamic** : Ermöglicht das dynamische SOCKS-Proxyrouting.
-
-     ![Tunneloptionen für die PuTTY-Konfiguration](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
-
-1. Klicken Sie auf **Add** (Hinzufügen), um die Einstellungen hinzuzufügen. Klicken Sie dann auf **Open** (Öffnen), um eine SSH-Verbindung zu öffnen.
+1. Wählen Sie **Add** (Hinzufügen) aus, um die Einstellungen hinzuzufügen. Wählen Sie dann **Open** (Öffnen) aus, um eine SSH-Verbindung zu öffnen.
 
 1. Melden Sie sich bei entsprechender Aufforderung beim Server an.
 

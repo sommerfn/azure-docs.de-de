@@ -1,19 +1,19 @@
 ---
-title: 'Trainieren und Bereitstellen eines Modells: Machine Learning in Azure IoT Edge | Microsoft-Dokumentation'
-description: Trainieren Sie ein Machine Learning-Modell mit Azure Machine Learning, und verpacken Sie das Modell dann als Containerimage, das als Azure IoT Edge-Modul bereitgestellt werden kann.
+title: 'Tutorial: Trainieren und Bereitstellen eines Modells: Machine Learning in Azure IoT Edge'
+description: 'Tutorial: Trainieren Sie ein Machine Learning-Modell mit Azure Machine Learning, und verpacken Sie das Modell dann als Containerimage, das als Azure IoT Edge-Modul bereitgestellt werden kann.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8cb3d0329c41256823a66fc3276711c43da61cdd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493983"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112467"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 

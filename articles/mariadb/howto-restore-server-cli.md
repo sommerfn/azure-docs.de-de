@@ -1,22 +1,20 @@
 ---
 title: Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB
 description: Erfahren Sie, wie Sie einen Server in Azure Database for MariaDB mit der Azure-Befehlszeilenschnittstelle sichern und wiederherstellen.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171390"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965226"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit der Azure CLI
-
-## <a name="backup-happens-automatically"></a>Automatische Sicherung
 
 Azure Database for MariaDB-Server werden regelmäßig gesichert, um Wiederherstellungsfeatures zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 
@@ -80,9 +78,11 @@ Für den Befehl `az mariadb server restore` sind folgende Parameter erforderlich
 
 Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen, wird ein neuer Server erstellt. Der ursprüngliche Server und seine Datenbanken aus dem angegebenen Zeitpunkt werden auf den neuen Server kopiert.
 
-Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit denen des ursprünglichen Servers identisch.
+Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit denen des ursprünglichen Servers identisch. 
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
 
@@ -119,12 +119,14 @@ Für den Befehl `az mariadb server georestore` sind folgende Parameter erforderl
 |location | eastus | Der Speicherort des neuen Servers. |
 |sku-name| GP_Gen5_8 | Dieser Parameter legt Tarif, Computegeneration und Anzahl der virtuellen Kerne des neuen Servers fest. GP_Gen5_8 wird einem Gen 5-Server vom Typ „Allgemein“ mit acht virtuellen Kernen zugeordnet.|
 
->[!Important]
->Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
+Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
 
-Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln oder VNet-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
-- Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).
+- Weitere Informationen zu den [Sicherungen](concepts-backup.md)
+- Weitere Informationen zu [Replikaten](concepts-read-replicas.md)
+- Weitere Informationen zu den Optionen für [Geschäftskontinuität](concepts-business-continuity.md)

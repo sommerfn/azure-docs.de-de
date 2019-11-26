@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b038eca3d4e6beb6b1d226a4a7b1e20bfe3bb55a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121411"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074632"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Lesson.ly
 
@@ -65,10 +65,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Lesson.ly m
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Lesson.ly die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Lesson.ly](#configure-lessonly-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Lesson.ly-Testbenutzers](#create-lessonly-test-user)** , um eine Entsprechung von B. Simon in Lesson.ly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    * **[Erstellen eines Lesson.ly-Testbenutzers](#create-lessonly-test-user)** , um eine Entsprechung von B. Simon in Lesson.ly zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -92,6 +92,19 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Lessonly.com-Client](mailto:support@lessonly.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+
+1. Die Lesson.ly-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+
+    ![image](common/default-attributes.png)
+
+1. Darüber hinaus wird von der Anwendung „Lesson.ly“ erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+
+    | NAME | Quellattribut|
+    | ---------------  | ----------------|
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:2.5.4.4  | user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 | user.objectid |
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -137,7 +150,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Lesson.ly** müssen S
 
 ### <a name="create-lessonly-test-user"></a>Erstellen eines Lesson.ly-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, einen Benutzer namens Britta Simon in Lessonly.com zu erstellen. Lessonly.com unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
+Das Ziel dieses Abschnitts besteht darin, eine Benutzerin mit dem Namen „B. Simon“ in Lessonly.com zu erstellen. Lessonly.com unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Lessonly.com ein neuer Benutzer erstellt.
 

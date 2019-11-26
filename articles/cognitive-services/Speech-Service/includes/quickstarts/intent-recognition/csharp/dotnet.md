@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a54d01aa78ad77c9328f79f31d21da570e7f5676
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cb970a59118a93c7a9023cc7c0448019dc77362
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505923"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125491"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
+>
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](../../../../quickstarts/create-luis.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
@@ -42,16 +43,16 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert. Beachten Sie, 
 
 ## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
-Um ein Objekt vom Typ `IntentRecognizer` initialisieren zu können, müssen Sie eine Konfiguration mit Ihrem LUIS-Endpunktschlüssel und der entsprechenden Region erstellen. Fügen Sie diesen Code in die Methode `RecognizeIntentAsync()` ein.
+Damit Sie ein `IntentRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, in der Ihr LUIS-Endpunktschlüssel und Ihre Region verwendet werden. Fügen Sie diesen Code in die Methode `RecognizeIntentAsync()` ein.
 
 In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 
 > [!NOTE]
-> Wichtig: Verwenden Sie den LUIS-Endpunktschlüssel und keinen Start- oder Erstellungsschlüssel, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ geeignet ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).
+> Sie dürfen weder den Start- noch den Erstellungsschlüssel, sondern müssen den LUIS-Endpunktschlüssel verwenden, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ zulässig ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
 
-## <a name="initialize-a-intentrecognizer"></a>Initialisieren eines IntentRecognizer-Objekts
+## <a name="initialize-an-intentrecognizer"></a>Initialisieren eines IntentRecognizer-Objekts
 
 Als Nächstes erstellen wir ein Objekt vom Typ `IntentRecognizer`. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeIntentAsync()` direkt unterhalb der Speech-Konfiguration ein.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=28-30,76)]
@@ -63,7 +64,7 @@ Nun müssen Sie der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen 
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 
-Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `IntentRecognizer` auf. Diese Methode teilt dem Speech-Dienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
+Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `IntentRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 
 Fügen Sie in der using-Anweisung den folgenden Code hinzu: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
@@ -75,7 +76,8 @@ Fügen Sie in der using-Anweisung unterhalb von `RecognizeOnceAsync()` den folge
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 
-Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
+Ihr Code sollte nun wie folgt aussehen:  
+(Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 

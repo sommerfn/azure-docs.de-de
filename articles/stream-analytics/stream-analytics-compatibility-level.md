@@ -1,17 +1,17 @@
 ---
-title: Verstehen des Kompatibilitätsgrads für Azure Stream Analytics-Aufträge
+title: Kompatibilitätsgrade von Azure Stream Analytics
 description: Erfahren Sie, wie Sie einen Kompatibilitätsgrad für einen Azure Stream Analytics-Auftrag festlegen und welche größeren Änderungen am neuesten Kompatibilitätsgrad vorgenommen wurden.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173239"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925639"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
