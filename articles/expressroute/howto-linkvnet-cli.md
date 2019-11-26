@@ -1,5 +1,5 @@
 ---
-title: 'Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung: CLI: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Verknüpfen eines VNet mit einer Verbindung: Befehlszeilenschnittstelle (CLI)'
 description: Dieser Artikel zeigt Ihnen, wie Sie virtuelle Netzwerke (VNETs) über das Resource Manager-Bereitstellungsmodell und die CLI mit Azure ExpressRoute-Verbindungen verknüpfen.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076540"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe der CLI
 

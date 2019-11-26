@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293461"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968907"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 
@@ -31,15 +31,12 @@ Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurat
 - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) für das Subnetz und für den Netzwerkadapter
 
- > [!IMPORTANT]
-  > Diese Einstellungen werden derzeit nur beim Failovervorgang und nicht für das Testfailover unterstützt.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie sollten die Konfigurationen für die Wiederherstellung unbedingt im Voraus planen.
 - Erstellen Sie die Netzwerkressourcen im Voraus. Geben Sie sie als Eingabe an, damit der Azure Site Recovery-Dienst diese Einstellungen beachten und sicherstellen kann, dass die Failover-VM diese Einstellungen einhält.
 
-## <a name="customize-failover-networking-configurations"></a>Anpassen der Netzwerkkonfigurationen für Failover
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Anpassen der Netzwerkkonfigurationen für Failover und Testfailover
 
 1. Wechseln Sie zu **Replizierte Elemente**. 
 2. Wählen Sie die gewünschte Azure-VM aus.
@@ -47,13 +44,16 @@ Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurat
 
      ![Anpassen der Netzwerkkonfigurationen für das Failover](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Wählen Sie neben dem Netzwerkadapter, den Sie konfigurieren möchten, die Option **Bearbeiten** aus. Wählen Sie auf dem nächsten Blatt, das geöffnet wird, die entsprechenden vorab erstellten Ressourcen am Ziel aus.
+4. Wählen Sie ein virtuelles Netzwerk für den Testfailover aus. Sie können es leer lassen und zum Zeitpunkt des Testfailovers eines auswählen.
+5. Wählen Sie neben dem Netzwerkadapter, den Sie konfigurieren möchten, die Option **Bearbeiten** aus. Wählen Sie auf dem nächsten Blatt, das geöffnet wird, die entsprechenden vorab erstellten Ressourcen am Testfailover- und Failoverstandort aus.
 
     ![Bearbeiten der Konfiguration des Netzwerkadapters](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. Klicken Sie auf **OK**.
+6. Klicken Sie auf **OK**.
 
 Site Recovery berücksichtigt diese Einstellungen nun und stellt sicher, dass die VM bei einem Failover über den entsprechenden Netzwerkadapter mit der ausgewählten Ressource verbunden ist.
+
+Wenn Sie den Testfailover über den Wiederherstellungsplan auslösen, wird immer das virtuelle Azure-Netzwerk gefragt. Dieses virtuelle Netzwerk wird für den Testfailover für die Computer verwendet, für die keine vorkonfigurierten Testfailover-Einstellungen vorhanden waren.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -72,9 +72,8 @@ Wenn Sie eine Netzwerkressource nicht auswählen oder anzeigen können, überpr�
 - Wenn die Ziel-VM für die Platzierung in einer Verfügbarkeitszone konfiguriert ist, überprüfen Sie, ob das Lastenausgleichsmodul zonenredundant oder Teil einer Verfügbarkeitszone ist. (Lastenausgleichsmodule mit der Basic-SKU unterstützen keine Zonen und werden in diesem Fall nicht in der Dropdownliste angezeigt.)
 - Stellen Sie sicher, dass der interne Lastenausgleich über einen vorab erstellten Back-End-Pool und eine Front-End-Konfiguration verfügt.
 
-
 Öffentliche IP-Adresse:
-    
+
 - Das Abonnement und die Region der öffentlichen IP-Adresse und der Ziel-VM sollten identisch sein.
 - Die SKU der öffentlichen IP-Adresse der Ziel-VM und die SKU des internen Lastenausgleichs sollten identisch sein.
 

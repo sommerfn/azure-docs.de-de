@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828161"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893921"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Erstellen einer privaten CloudSimple-Cloud
 
@@ -31,6 +31,16 @@ Mithilfe einer privaten Cloud können Sie verschiedene häufige Anforderungen an
 
 Wenn Sie eine private Cloud erstellen, erhalten Sie einen einzelnen vSphere-Cluster und sämtliche VMs, die zur Verwaltung dienen und in diesem Cluster erstellt werden.
 
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Bevor Sie eine private Cloud erstellen können, müssen Knoten bereitgestellt werden. Weitere Informationen zum Bereitstellen von Knoten finden Sie unter [Bereitstellen von Knoten für Azure VMware Solution by CloudSimple](create-nodes.md).
+
+Zuordnung eines CIDR-Bereichs für vSphere/vSAN-Subnetze für die private Cloud. Eine private Cloud wird als isolierte VMware-Stapelumgebung (mit ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt. Der Adressraum des vSphere/vSAN-Subnetzadressraums muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. Weitere Informationen zu vSphere/vSAN-Subnetzen finden Sie unter „Übersicht über VLANs und Subnetze“.
+
+* Minimales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /24
+* Maximales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /21
+
+
 ## <a name="access-the-cloudsimple-portal"></a>Zugriff auf das CloudSimple-Portal
 
 Greifen Sie auf das [CloudSimple-Portal](access-cloudsimple-portal.md) zu.
@@ -46,7 +56,7 @@ Greifen Sie auf das [CloudSimple-Portal](access-cloudsimple-portal.md) zu.
 
 5. Geben Sie im CloudSimple-Portal einen Namen für Ihre private Cloud an.
 6. Wählen Sie den **Standort** für Ihre private Cloud aus.
-7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure erworbenen Knotentyp übereinstimmt.
+7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure bereitgestellten Knotentyp übereinstimmt.
 8. Geben Sie die **Knotenanzahl** an.  Für das Erstellen einer privaten Cloud sind mindestens drei Knoten erforderlich.
 
     ![Erstellen einer privaten Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)

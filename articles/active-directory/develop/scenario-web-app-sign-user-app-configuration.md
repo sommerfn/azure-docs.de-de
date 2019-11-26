@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596729"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175347"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Web-App, die Benutzer anmeldet – Codekonfiguration
 
@@ -34,7 +34,7 @@ Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API
 | Plattform | Bibliothek | BESCHREIBUNG |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Erweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die sowohl unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Webanwendung können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenüberprüfung steuern (insbesondere in ISV-Szenarios). |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL für Java – derzeit in öffentlicher Vorschau |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL für Java – derzeit in öffentlicher Vorschau |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL für Python – derzeit in öffentlicher Vorschau |
 
 Wählen Sie die Registerkarte aus, die der Plattform entspricht, die Sie interessiert:
@@ -53,7 +53,7 @@ Dieses Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus dem Web-App-Beispiel „msal4j“ unter [Java-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp).
+Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus dem MSAL-Java-Web-App-Beispiel [Java-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp).
 
 Dieses Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
@@ -137,7 +137,7 @@ In ASP.NET Core gibt es eine weitere Datei ([properties\launchSettings.json](htt
 ```
 
 Im Azure-Portal müssen die Antwort-URLs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, diesen URLs entsprechen. Für die beiden zuvor genannten Konfigurationsdateien wären diese beispielsweise `https://localhost:44321/signin-oidc`, da die applicationUrl `http://localhost:3110` ist, die `sslPort`-Eigenschaft aber angegeben ist (44321) und die `CallbackPath`-Eigenschaft in der `appsettings.json`-Konfiguration `/signin-oidc` ist.
-  
+
 Auf die gleiche Weise wird der Abmelde-URI auf `https://localhost:44321/signout-callback-oidc` festgelegt.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, mit dem von der Anwendung definierten RedirectURIs-Eintrag übereinstimmen, also mit `http://localhost:8080/msal4jsample/secure/aad` und `http://localhost:8080/msal4jsample/graph/users`.
+Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, mit dem von der Anwendung definierten RedirectURIs-Eintrag übereinstimmen, also mit `http://localhost:8080/msal4jsample/secure/aad` und `http://localhost:8080/msal4jsample/graph/me`.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird vorgeschlagen, den geheimen Clientschlüssel der Einfachheit halber in der Konfigurationsdatei zu speichern. In Ihrer Produktions-App sollten Sie andere Möglichkeiten zum Speichern Ihres Geheimnisses (z. B. KeyVault) oder eine Umgebungsvariable verwenden, wie in der Flask-Dokumentation beschrieben: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> In dieser Schnellstartanleitung wird vorgeschlagen, den geheimen Clientschlüssel der Einfachheit halber in der Konfigurationsdatei zu speichern.
+> In Ihrer Produktions-App sollten Sie andere Möglichkeiten zum Speichern Ihres Geheimnisses (z. B. KeyVault) oder eine Umgebungsvariable verwenden, wie in der Flask-Dokumentation beschrieben: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ In ASP.NET Core-Web-Apps (und Web-APIs) ist die Anwendung geschützt, da es das 
   > [!NOTE]
   > Falls Sie Ihr Projekt mit dem ASP.NET Core-Standardwebprojekt in Visual Studio oder mit `dotnet new mvc` starten, ist die Methode `AddAzureAD` standardmäßig verfügbar, da die zugehörigen Pakete automatisch geladen werden.
   > Wenn Sie jedoch ein Projekt von Grund auf neu erstellen und den unten angegebenen Code verwenden, empfiehlt es sich, Ihrem Projekt das NuGet-Paket **Microsoft.AspNetCore.Authentication.AzureAD.UI** hinzuzufügen, um die Methode `AddAzureAD` verfügbar zu machen.
-  
+
 Der folgende Code ist in [Startup.cs#L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34) verfügbar.
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -247,7 +248,7 @@ public class Startup
 - Konfigurieren von Optionen zum Lesen der Konfigurationsdatei
 - Konfigurieren der OpenID-Verbindungsoptionen dergestalt, dass die verwendete Autorität der Microsoft Identity Platform-Endpunkt (früher Azure AD v2.0) ist
 - Validieren des Ausstellers des Tokens
-- Zuordnen der dem Namen entsprechenden Ansprüche aus dem Anspruch „preferred_username“ im ID-Token 
+- Zuordnen der dem Namen entsprechenden Ansprüche aus dem Anspruch „preferred_username“ im ID-Token
 
 Zusätzlich zur Konfiguration können Sie beim Aufrufen von `AddMicrosoftIdentityPlatformAuthentication` Folgendes angeben:
 
@@ -347,7 +348,7 @@ Das Java-Beispiel verwendet das Spring-Framework. Die Anwendung ist geschützt, 
 
 - Überprüfen, ob der Benutzer authentifiziert ist (`isAuthenticated()`-Methode).
 - Wenn der Benutzer nicht authentifiziert ist, wird die URL der Azure AD-Autorisierungsendpunkte berechnet und der Browser zu diesem URI umgeleitet.
-- Wenn die Antwort eingeht, die den Autorisierungscodeflow enthält, lässt sie msal4j das Token beziehen.
+- Wenn die Antwort mit dem Autorisierungscodeflow eingeht, wird mit MSAL Java das Token bezogen.
 - Wenn das Token schließlich vom Tokenendpunkt (im Umleitungs-URI) empfangen wird, wird der Benutzer angemeldet.
 
 Weitere Informationen finden Sie unter der `doFilter()`-Methode in [AuthFilter.java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java).

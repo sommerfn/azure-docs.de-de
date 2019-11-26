@@ -1,5 +1,6 @@
 ---
-title: Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin iOS- und Android-Anwendungen | Azure
+title: Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin iOS- und Android-Anwendungen
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie Xamarin iOS-Anwendungen, die Microsoft Authenticator verwenden können, von der Azure AD Authentication Library for .NET (ADAL.NET, Azure AD-Authentifizierungsbibliothek für .NET) zur Microsoft Authentication Library for .NET (MSAL.NET, Microsoft-Authentifizierungsbibliothek für .NET) migrieren.
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abac7b95ceed0a199531b7ba30cea5fc1c9cc1e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e71e9ef72e7b6caaa3894bb30c6e7e9cf762232a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103971"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802711"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin-Anwendungen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67983665"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062256"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -59,10 +59,10 @@ Konfigurieren Sie die Einstellung **Weitere lokale Administratoren für in Azure
 >[!NOTE]
 > Für diese Option ist ein Azure AD Premium-Mandant erforderlich. 
 
-Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiesen. Sie können Geräteadministratoren nicht auf eine bestimmte Gerätegruppe beschränken. Die Aktualisierung der Geräteadministratorrolle wirkt sich nicht unbedingt unmittelbar auf die betroffenen Benutzer aus. Für die Geräte, bei denen ein Benutzer bereits angemeldet ist, wird die Aktualisierung zu folgendem Zeitpunkt ausgeführt:
+Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiesen. Sie können Geräteadministratoren nicht auf eine bestimmte Gerätegruppe beschränken. Die Aktualisierung der Geräteadministratorrolle wirkt sich nicht unbedingt unmittelbar auf die betroffenen Benutzer aus. Auf Geräten, auf denen bereits ein Benutzer angemeldet ist, wird die Berechtigungsaktualisierung durchgeführt, wenn die *beiden* folgenden Voraussetzungen erfüllt sind:
 
-- Bei Abmeldung eines Benutzers
-- Nach vier Stunden, wenn ein neues primäres Aktualisierungstoken ausgegeben wird 
+- Azure AD hatte vier Stunden Zeit, ein neues primäres Aktualisierungstoken mit den entsprechenden Berechtigungen auszustellen. 
+- Die Benutzer melden sich ab und wieder an (kein Sperren/Entsperren), um ihr Profil zu aktualisieren.
 
 ## <a name="manage-regular-users"></a>Verwalten der regulären Benutzer
 

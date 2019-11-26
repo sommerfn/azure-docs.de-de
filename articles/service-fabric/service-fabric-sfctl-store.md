@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl store | Microsoft-Dokumentation
 description: Beschreibt die sfctl store-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: ccd9e8323f6e0de7b81c7600e7828e4858c51201
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e8a085c4aa6df34441f22da5542231999930d89f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035860"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900942"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Ermöglicht es, grundlegende Vorgänge auf Dateiebene für den Clusterimagespeicher auszuführen.
@@ -41,7 +42,7 @@ Löscht den Imagespeicherinhalt, der im angegebenen relativen Pfad des Imagespei
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --content-path [erforderlich] | Relativer Pfad zu einer Datei oder einem Ordner im Imagespeicher ab dessen Stammverzeichnis. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -62,7 +63,7 @@ Gibt die Informationen über den Imagespeicherinhalt zurück, der sich im Stammv
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -84,7 +85,7 @@ Gibt die Informationen über den Imagespeicherinhalt zurück, der sich im angege
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --content-path [erforderlich] | Relativer Pfad zu einer Datei oder einem Ordner im Imagespeicher ab dessen Stammverzeichnis. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 

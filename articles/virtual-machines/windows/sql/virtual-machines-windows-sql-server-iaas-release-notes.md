@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300101"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897259"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 
@@ -28,8 +28,9 @@ In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 | Änderungen | Details |
 | --- | --- |
+| **Massenressourcen-Anbieterregistrierung** | Sie können jetzt eine [Massenregistrierung](virtual-machines-windows-sql-bulk-register-with-resource-provider.md) für virtuelle SQL-Computer mit dem Ressourcenanbieter durchführen. | 
 | **Leistungsoptimierte Speicherkonfiguration** | Sie ist nun möglich, Ihre [Speicherkonfiguration vollständig anzupassen](virtual-machines-windows-sql-server-storage-configuration.md#new-vms), wenn Sie eine neue SQL Server-VM erstellen. |
-| **Premium-Dateifreigabe für FCI** | Sie können nun eine Failoverclusterinstanz mit einer [Premium-Dateifreigabe](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) anstelle der ursprünglichen Methode für [direkte Speicherplätze](virtual-machines-windows-portal-sql-create-failover-cluster.md) erstellen. 
+| **Premium-Dateifreigabe für FCI** | Sie können nun eine Failoverclusterinstanz mit einer [Premium-Dateifreigabe](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) anstelle der ursprünglichen Methode für [direkte Speicherplätze](virtual-machines-windows-portal-sql-create-failover-cluster.md) erstellen. 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>August 2019

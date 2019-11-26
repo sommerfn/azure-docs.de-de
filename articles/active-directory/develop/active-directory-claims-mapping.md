@@ -1,5 +1,6 @@
 ---
-title: Anpassen von Ansprüchen für eine App in einem Azure AD-Mandanten (Vorschauversion)
+title: Anpassen von Ansprüchen für eine App in einem Azure AD-Mandanten (Öffentliche Vorschau)
+titleSuffix: Microsoft identity platform
 description: Auf dieser Seite wird die Anspruchszuordnung in Azure Active Directory beschreiben.
 services: active-directory
 author: rwike77
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9350a30ac6258664b3a8405923467a8468a6758
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835455"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803513"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -323,7 +324,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | othermail | Andere E-Mail-Nachrichten |
 | Benutzer | country | Country |
 | Benutzer | city | City |
-| Benutzer | state | Zustand |
+| Benutzer | state | State |
 | Benutzer | jobtitle | Position |
 | Benutzer | employeeid | Mitarbeiter-ID |
 | Benutzer | facsimiletelephonenumber | Faxnummer |
@@ -465,7 +466,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruch
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
-   1. Sie können Microsoft Graph abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im Graph-Explorer von Azure AD in Ihrem Azure AD-Konto an.
+   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
      
       ``` powershell
@@ -489,7 +490,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpft
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
-   1. Sie können Microsoft Graph abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im Graph-Explorer von Azure AD in Ihrem Azure AD-Konto an.
+   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
      
       ``` powershell
@@ -513,7 +514,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
-   1. Sie können Microsoft Graph abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im Graph-Explorer von Azure AD in Ihrem Azure AD-Konto an.
+   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen: 
      
       ``` powershell

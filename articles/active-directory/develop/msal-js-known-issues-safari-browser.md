@@ -1,5 +1,6 @@
 ---
-title: Bekannte Browserprobleme (Microsoft Authentication Library für JavaScript) | Azure
+title: Bekannte Probleme im Safari-Browser (MSAL für JavaScript)
+titleSuffix: Microsoft identity platform
 description: Enthält Informationen zu bekannten Problemen bei der Verwendung der Microsoft Authentication Library für JavaScript (MSAL.js) mit dem Safari-Browser.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c48ae9bf7bb5d7f1055ebf0391557a1d117ab39d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65874084"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934856"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>Bekannte Probleme im Safari-Browser mit „MSAL.js“ 
 

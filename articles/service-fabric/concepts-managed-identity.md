@@ -7,16 +7,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333122"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243025"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Verwaltete Identität für die Service Fabric-Anwendung (Vorschau)
 
-Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen im Code, die für die Authentifizierung bei Clouddiensten erforderlich sind. Der Schutz von Anmeldeinformationen ist wichtig, da sie nie auf Entwicklerarbeitsstationen angezeigt und nicht in die Quellcodeverwaltung eingecheckt werden. Die Funktion „Verwaltete Identität“ für Azure-Ressourcen in Azure Active Directory (Azure AD) löst dieses Problem. Mit dieser Funktion wird in Azure AD eine automatisch verwaltete Identität für Azure-Dienste bereitgestellt. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen im Code, die für die Authentifizierung bei Clouddiensten erforderlich sind. Der Schutz von Anmeldeinformationen ist wichtig, da sie nie auf Entwicklerarbeitsstationen angezeigt und nicht in die Quellcodeverwaltung eingecheckt werden. Die Funktion „Verwaltete Identität“ für Azure-Ressourcen in Azure Active Directory (Azure AD) löst dieses Problem. Dieses Feature stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure AD bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 Die Funktion „Verwaltete Identität“ für Azure-Ressourcen ist in Azure AD mit einem Azure-Abonnement kostenlos. Es fallen keine zusätzlichen Kosten an.
 
@@ -78,3 +78,4 @@ Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)
 * [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+* [Deklarieren und Verwenden von Anwendungsgeheimnissen als KeyVaultReferences](./service-fabric-keyvault-references.md) 

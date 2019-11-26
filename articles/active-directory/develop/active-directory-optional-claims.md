@@ -1,5 +1,6 @@
 ---
-title: Informationen zum Bereitstellen optionaler Ansprüche für Ihre Azure AD-Anwendung | Microsoft-Dokumentation
+title: Informationen zum Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
+titleSuffix: Microsoft identity platform
 description: Anleitung zum Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token), die von Azure Active Directory ausgestellt werden.
 documentationcenter: na
 author: rwike77
@@ -17,16 +18,16 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6e097df21051019495b3bf9bb6c83cb3dba03c8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835335"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803404"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
-Anwendungsentwickler können optionale Ansprüche in ihren Azure AD-Apps verwenden, um anzugeben, welche Ansprüche für Tokens vorhanden sein sollen, die an ihre Anwendungen geschickt werden. 
+Anwendungsentwickler können optionale Ansprüche in ihren Azure AD-Apps verwenden, um anzugeben, welche Ansprüche in Tokens vorhanden sein sollen, die an ihre Anwendungen geschickt werden. 
 
 Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
@@ -36,7 +37,7 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 Die Listen der Standardansprüche finden Sie in der Anspruchsdokumentation unter [Zugriffstoken](access-tokens.md) und [id_token](id-tokens.md). 
 
-Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Microsoft Identity Platform-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
+Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Microsoft Identity Platform-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um die optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
 
 **Tabelle 1: Anwendbarkeit**
 
@@ -162,7 +163,7 @@ Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie da
    }
 ```
 
-### <a name="optionalclaims-type"></a>„OptionalClaims“-Typ
+### <a name="optionalclaims-type"></a>Typ „OptionalClaims“
 
 Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anwendung kann optionale Ansprüche so konfigurieren, dass sie in jedem der drei Tokentypen (ID-Token, Zugriffstoken, SAML 2-Token) zurückgegeben werden, die vom Sicherheitstokendienst empfangen werden können. Die Anwendung kann einen anderen Satz optionaler Ansprüche für die Rückgabe im jeweiligen Tokentyp konfigurieren. Die „OptionalClaims“-Eigenschaft der Anwendungsentität ist ein „OptionalClaims“-Objekt.
 
@@ -174,7 +175,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
 | `saml2Token`  | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im SAML-Token zurückgegeben werden.   |
 
-### <a name="optionalclaim-type"></a>„OptionalClaim“-Typ
+### <a name="optionalclaim-type"></a>Typ „OptionalClaim“
 
 Enthält einen optionalen Anspruch, der einer Anwendung oder einem Dienstprinzipal zugeordnet ist. Die „idToken“-, „accessToken“- und „saml2Token“-Eigenschaften des [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)-Typs ist eine Sammlung von „OptionalClaim“.
 Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalten von „OptionalClaim“ mithilfe des Felds „AdditionalProperties“ ändern.
@@ -206,12 +207,12 @@ Innerhalb der SAML-Token werden diese Ansprüche mit dem folgenden URI-Format au
 ## <a name="configuring-group-optional-claims"></a>Konfigurieren von optionalen Gruppenansprüchen
 
    > [!NOTE]
-   > Die Fähigkeit, Gruppennamen für Benutzer und Gruppen auszugeben, die lokal synchronisiert werden, befindet sich noch in der Phase der öffentlichen Vorschau.
+   > Die Fähigkeit, Gruppennamen für Benutzer und Gruppen auszugeben, die lokal synchronisiert werden, befindet sich in der Phase der öffentlichen Vorschau.
 
 Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Ansprüchen, um die in Gruppenansprüchen verwendeten Gruppenattribute von der Standardgruppen-ObjectID in von lokalem Windows Active Directory synchronisierte Attribute zu ändern.
 
 > [!IMPORTANT]
-> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure AD](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen für die öffentliche Vorschau von Gruppenansprüchen aus lokalen Attributen.
+> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure AD](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen bei der öffentlichen Vorschau von Gruppenansprüchen aus lokalen Attributen.
 
 1. Wählen Sie im Portal folgende Optionen aus: Azure Active Directory > Anwendungsregistrierungen > Anwendung auswählen > Manifest.
 

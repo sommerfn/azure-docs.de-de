@@ -1,5 +1,5 @@
 ---
-title: Beispiele für die Routerkonfiguration – NAT – Azure ExpressRoute | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Beispiele für die Routerkonfiguration – NAT'
 description: Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367607"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072111"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT
 

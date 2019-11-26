@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 635476ed5ca6440995fff743b7eb8f70a66768b4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614398"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091524"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -31,7 +31,7 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 
 | severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
-| Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen bestimmte Sicherungstypen nicht, die in der zugehörigen Richtlinie enthalten sind. | <li>Für die Masterdatenbank kann nur eine vollständige Datenbanksicherung ausgeführt werden. Weder die differenzielle Sicherung noch die Sicherung des Transaktionsprotokolls ist möglich. </li> <li>Datenbanken im einfachen Wiederherstellungsmodell erlauben die Sicherung von Transaktionsprotokollen nicht.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Sie können die aktuelle Richtlinie auch so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-hoc-Sicherung fehl.
+| Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen bestimmte Sicherungstypen nicht, die in der zugehörigen Richtlinie enthalten sind. | <li>Für die Masterdatenbank kann nur eine vollständige Datenbanksicherung ausgeführt werden. Weder die differenzielle Sicherung noch die Sicherung des Transaktionsprotokolls ist möglich. </li> <li>Datenbanken im einfachen Wiederherstellungsmodell erlauben die Sicherung von Transaktionsprotokollen nicht.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Sie können die aktuelle Richtlinie auch so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer bedarfsgesteuerten Sicherung fehl.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -50,7 +50,7 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Protokollkette ist unterbrochen. | Die Datenbank oder der virtuelle Computer wird mit einer anderen Sicherungslösung gesichert, die die Protokollkette abschneidet.|<ul><li>Überprüfen Sie, ob eine andere Sicherungslösung oder ein anderes Skript verwendet wird. Wenn dies der Fall ist, beenden Sie die anderen Sicherungslösung. </li><li>Wenn die Sicherung eine Ad-hoc-Protokollsicherung war, sollten Sie eine vollständige Sicherung auslösen, um eine neue Protokollkette zu starten. Für geplante Protokollsicherungen ist keine Aktion erforderlich, da der Azure Backup-Dienst zur Behebung des Problems automatisch eine vollständige Sicherung auslöst.</li>|
+| Protokollkette ist unterbrochen. | Die Datenbank oder der virtuelle Computer wird mit einer anderen Sicherungslösung gesichert, die die Protokollkette abschneidet.|<ul><li>Überprüfen Sie, ob eine andere Sicherungslösung oder ein anderes Skript verwendet wird. Wenn dies der Fall ist, beenden Sie die anderen Sicherungslösung. </li><li>Wenn die Sicherung eine bedarfsgesteuerte Protokollsicherung war, sollten Sie eine vollständige Sicherung auslösen, um eine neue Protokollkette zu starten. Für geplante Protokollsicherungen ist keine Aktion erforderlich, da der Azure Backup-Dienst zur Behebung des Problems automatisch eine vollständige Sicherung auslöst.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -62,7 +62,7 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Die erste vollständige Sicherung für diese Datenquelle ist nicht vorhanden. | Vollständige Sicherung für die Datenbank ist nicht vorhanden. Protokollsicherungen und differenzielle Sicherungen sind einer vollständigen Sicherung übergeordnet. Daher müssen erst vollständige Sicherungen erstellt werden, bevor differenzielle Sicherungen oder Protokollsicherungen ausgelöst werden. | Lösen Sie eine vollständige Ad-hoc-Sicherung aus.   |
+| Die erste vollständige Sicherung für diese Datenquelle ist nicht vorhanden. | Vollständige Sicherung für die Datenbank ist nicht vorhanden. Protokollsicherungen und differenzielle Sicherungen sind einer vollständigen Sicherung übergeordnet. Daher müssen erst vollständige Sicherungen erstellt werden, bevor differenzielle Sicherungen oder Protokollsicherungen ausgelöst werden. | Auslösen einer bedarfsgesteuerten vollständigen Sicherung.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 

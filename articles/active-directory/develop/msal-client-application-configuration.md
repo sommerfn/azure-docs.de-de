@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren von Clientanwendungen (Microsoft-Authentifizierungsbibliothek) | Azure
+title: Konfigurieren von Clientanwendungen (Microsoft-Authentifizierungsbibliothek)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über Konfigurationsoptionen für öffentliche und vertrauliche Clientanwendungen in der Microsoft-Authentifizierungsbibliothek (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd90ef858fbcd2cfa418a2d7e58975cfa959705
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678101"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803190"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
 

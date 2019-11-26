@@ -1,6 +1,6 @@
 ---
 title: Anmelden von Benutzern bei Geräten ohne Browser über Microsoft Identity Platform | Azure
-description: Erstellen von eingebetteten und browserlosen Authentifizierungsflows unter Verwendung der Gerätecodegewährung.
+description: Erstellen von eingebetteten und browserlosen Authentifizierungsflows unter Verwendung der Geräteautorisierungsgenehmigung.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,30 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/24/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 90922a48f213ecd506f08f616fe8c28ab44776a2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192721"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893893"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Gerätecodeflow
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Microsoft Identity Platform unterstützt die [Gerätecodegewährung](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.  
-
-> [!IMPORTANT]
-> Derzeit wird am Microsoft Identity Platform-Endpunkt nur der Geräteflow für Azure AD-Mandanten, jedoch nicht für persönliche Konten unterstützt.  Dies bedeutet, dass Sie einen Endpunkt als Mandanten einrichten oder den Endpunkt `organizations` verwenden müssen.  Diese Unterstützung wird in Kürze aktiviert. 
->
-> Persönliche Konten, die zu einem Azure AD-Mandanten eingeladen werden, können die Geräteflowgewährung verwenden, aber nur im Kontext des Mandanten.
->
-> Ein zusätzlicher Hinweis: Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  Der Grund für diesen Hinweis: Wenn Sie den Standard lesen, sehen Sie, dass `verification_uri_complete` als optionaler Teil des Gerätecodeflow-Standards aufgeführt wird.
+Microsoft Identity Platform unterstützt die [Geräteautorisierungsgenehmigung](https://tools.ietf.org/html/rfc8628), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.  
 
 > [!NOTE]
 > Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure Active Directory. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
@@ -67,7 +60,7 @@ scope=user.read%20openid%20profile
 
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
-| `tenant` | Erforderlich |Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden.  |
+| `tenant` | Erforderlich | Kann "/common", „/consumers“ oder „/organizations“ sein.  Dies kann auch der Verzeichnismandant sein, von dem Sie die Berechtigung im GUID- oder Anzeigenamensformat anfordern möchten.  |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste mit [Bereichen](v2-permissions-and-consent.md) , denen der Benutzer zustimmen soll.  |
 
@@ -84,23 +77,29 @@ Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen
 |`interval`        | int | Die Anzahl der Sekunden, die der Client zwischen Abrufanforderungen warten soll. |
 | `message`        | Zeichenfolge | Eine lesbare Zeichenfolge mit Anweisungen für den Benutzer. Diese kann lokalisiert werden, indem ein **Abfrageparameter** in die Anforderung des Formulars `?mkt=xx-XX` aufgenommen und der entsprechende Sprachkulturcode eingetragen wird. |
 
+> [!NOTE]
+> Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  Dies ist wichtig zu wissen, da im [Standard](https://tools.ietf.org/html/rfc8628) `verification_uri_complete` als optionaler Teil des Gerätecodeflow-Standards aufgeführt wird.
+
 ## <a name="authenticating-the-user"></a>Authentifizieren des Benutzers
 
-Nach dem Empfang von `user_code` und `verification_uri` zeigt der Client diese für den Benutzer an und weist ihn an, sich unter Verwendung seines Mobiltelefons oder PC-Browsers anzumelden.  Darüber hinaus kann der Client einen QR-Code oder einen ähnlichen Mechanismus verwenden, um `verfication_uri_complete` anzuzeigen, der den Schritt des Eingebens des `user_code` für den Benutzer übernimmt.
+Nach dem Empfang von `user_code` und `verification_uri` zeigt der Client diese für den Benutzer an und weist ihn an, sich unter Verwendung seines Mobiltelefons oder PC-Browsers anzumelden.
+
+Wenn sich der Benutzer mit einem persönlichen Konto (mit „/common“ oder „/consumers“) authentifiziert, wird er aufgefordert, sich erneut anzumelden, um den Authentifizierungsstatus ans Gerät zu übertragen.  Außerdem wird er aufgefordert, seine Zustimmung zu erteilen, um sicherzustellen, dass er die gewährten Berechtigungen kennt.  Dies gilt nicht für Geschäfts-, Schul- oder Unikonten, die für die Authentifizierung verwendet werden. 
 
 Während sich der Benutzer bei dem `verification_uri` authentifiziert, sollte der Client beim `/token`-Endpunkt das angeforderte Token mithilfe des `device_code` abrufen.
 
 ``` 
-POST https://login.microsoftonline.com/tenant/oauth2/v2.0/token
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
 grant_type: urn:ietf:params:oauth:grant-type:device_code
 client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
-device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
+device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG|
 | -------- | -------- | ---------- |
+| `tenant`  | Erforderlich | Derselbe Mandant oder Mandantenalias, der in der ursprünglichen Anforderung verwendet wurde. | 
 | `grant_type` | Erforderlich | Muss gleich `urn:ietf:params:oauth:grant-type:device_code` sein.|
 | `client_id`  | Erforderlich | Muss mit der in der anfänglichen Anforderung verwendeten `client_id` übereinstimmen. |
 | `device_code`| Erforderlich | Der in der Geräteautorisierungsanforderung zurückgegebene `device_code`.  |
@@ -114,7 +113,7 @@ Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, F
 | `authorization_pending` | Der Benutzer hat die Authentifizierung nicht abgeschlossen, den Flow aber nicht abgebrochen. | Wiederholen Sie die Anforderung nach mindestens `interval` Sekunden. |
 | `authorization_declined` | Der Endbenutzer hat die Autorisierungsanforderung verweigert.| Beenden Sie das Abrufen, und kehren Sie in einen nicht authentifizierten Zustand zurück.  |
 | `bad_verification_code`| Der an den `/token`-Endpunkt gesendete `device_code` wurde nicht erkannt. | Stellen Sie sicher, dass der Client den richtigen `device_code` in der Anforderung sendet. |
-| `expired_token` | Mindestens `expires_in` Sekunden sind verstrichen, und die Authentifizierung ist mit diesem `device_code` nicht mehr möglich. | Beenden des Abrufens und Wiederherstellen eines nicht authentifizierten Zustands. |
+| `expired_token` | Mindestens `expires_in` Sekunden sind verstrichen, und die Authentifizierung ist mit diesem `device_code` nicht mehr möglich. | Beenden des Abrufens und Wiederherstellen eines nicht authentifizierten Zustands. |   
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 

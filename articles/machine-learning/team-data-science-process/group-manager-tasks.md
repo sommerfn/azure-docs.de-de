@@ -1,6 +1,6 @@
 ---
 title: Aufgaben eines Gruppenleiters im Team Data Science-Prozess
-description: Eine ausführliche exemplarische Vorgehensweise über die Aufgaben des Gruppenleiters eines Data Science-Teamprojekts.
+description: Befolgen Sie diese ausführliche exemplarische Vorgehensweise zu den Aufgaben des Gruppenleiters, die dieser für ein Data Science-Teamprojekt durchführt.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326809"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053307"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Aufgaben eines Gruppenleiters im Team Data Science-Prozess
 

@@ -4,19 +4,19 @@ description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal ein
 services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
-ms.date: 12/5/2018
+ms.date: 10/22/2019
 ms.topic: conceptual
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091348"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882692"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
 
@@ -49,23 +49,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    ![Alle VM-Images anzeigen](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. Geben Sie **SQL Server 2017** in das Suchfeld ein, und starten Sie die Suche durch Drücken der **EINGABETASTE**.
+1. Geben Sie **SQL Server 2019** in das Suchfeld ein, und starten Sie die Suche durch Drücken der **EINGABETASTE**.
 
-1. Schränken Sie die Suchergebnisse ein, indem Sie **Betriebssystem** > **RedHat** auswählen. Wählen Sie dann unter **Herausgeber** die Option **Microsoft** aus.
+1. Schränken Sie die Suchergebnisse ein, indem Sie **Betriebssystem** > **RedHat** auswählen.
 
-    ![Suchfilter für VM-Images mit SQL Server 2017](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![Suchfilter für VM-Images mit SQL Server 2019](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. Wählen Sie in den Suchergebnissen ein Linux-Image mit SQL Server 2017 aus. In diesem Tutorial wird **Free SQL Server License: SQL Server 2017 Developer on Red Hat Enterprise Linux 7.4** verwendet.
+1. Wählen Sie in den Suchergebnissen ein Linux-Image mit SQL Server 2019 aus. In diesem Tutorial wird **SQL Server 2019 auf RHEL74** verwendet.
 
    > [!TIP]
    > Mit der Developer Edition können Sie für Entwicklungs- und Testaufgaben die Features der Enterprise Edition nutzen, ohne das SQL Server-Lizenzkosten anfallen. Sie zahlen nur für die Ausführung des virtuellen Linux-Computers.
 
-1. Wählen Sie unter **Bereitstellungsmodell auswählen** ein für Ihre Workloadanforderungen geeignetes Bereitstellungsmodell aus.
+1. Klicken Sie auf **Erstellen**. 
 
-    > [!Note]
-    > Verwenden Sie für neue Workloads **Resource Manager**. Wenn Sie eine Verbindung mit einem vorhandenen virtuellen Netzwerk herstellen möchten, wählen Sie die Bereitstellungsmethode des virtuellen Netzwerks für Ihre Workload aus. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellungsmodell und klassische Bereitstellungsmodelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
-
-1. Klicken Sie auf **Erstellen**.
 
 ### <a name="set-up-your-linux-vm"></a>Einrichten Ihrer Linux-VM
 
@@ -91,9 +87,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    * **Benutzername**: Geben Sie den Administratornamen für die VM ein.
    * **Öffentlicher SSH-Schlüssel**: Geben Sie Ihren öffentlichen RSA-Schlüssel ein.
-   * **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus, und wählen Sie dann in der Liste **Öffentliche Eingangsports hinzufügen** den Port **SSH (22)** aus. Dieser Schritt ist in diesem Schnellstart notwendig, um eine Verbindung herzustellen und die SQL Server-Konfiguration durchzuführen. Wenn Sie eine Remoteverbindung mit SQL Server herstellen möchten, aktivieren Sie auch **MS SQL (1433)** , um Port 1433 für Verbindungen über das Internet zu öffnen.
+   * **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus, und wählen Sie dann in der Liste **Öffentliche Eingangsports hinzufügen** den Port **SSH (22)** aus. Dieser Schritt ist in diesem Schnellstart notwendig, um eine Verbindung herzustellen und die SQL Server-Konfiguration durchzuführen. Wenn Sie eine Remoteverbindung mit SQL Server herstellen möchten, müssen Sie den Datenverkehr an dem von Microsoft SQL Server verwendeten Standardport (1433) für Verbindungen über das Internet nach der Erstellung des virtuellen Computers manuell zulassen.
 
-   ![Eingehende Ports](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+     ![Eingehende Ports](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. Nehmen Sie auf den folgenden Registerkarten die gewünschten Änderungen an den Einstellungen vor, oder übernehmen Sie die Standardeinstellungen.
     * **Datenträger**

@@ -1,5 +1,5 @@
 ---
-title: Generische Problembehandlung bei Leistungsproblemen virtueller Azure-Computer mit Linux oder Windows
+title: Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 description: Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790793"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965486"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Generische Problembehandlung der Leistung virtueller Azure-Computer mit Linux oder Windows
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 
 Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können. Neben Überwachung können Sie auch Perfinsights verwenden, um einen Bericht mit Best Practice-Empfehlungen und wichtigen Engpässen rund um E/A, CPU und Arbeitsspeicher bereitzustellen. PerfInsights ist sowohl für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)- als auch für [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)-VMs in Azure verfügbar.
 

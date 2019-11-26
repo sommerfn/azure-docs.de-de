@@ -1,5 +1,5 @@
 ---
-title: 'Überprüfen der Konnektivität – ExpressRoute-Handbuch zur Problembehandlung: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Überprüfen der Konnektivität – Handbuch zur Problembehandlung'
 description: Diese Seite enthält Anleitungen für die Problembehandlung und Überprüfung der lückenlosen Konnektivität einer ExpressRoute-Verbindung.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580289"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033793"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität und beim Beheben von Problemen. ExpressRoute erweitert Ihr lokales Netzwerk über eine private Verbindung, die meistens von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud. Die ExpressRoute-Konnektivität umfasst in der Regel drei verschiedene Netzwerkzonen:
@@ -83,9 +83,9 @@ Beim Bereitstellen einer ExpressRoute-Verbindung werden redundante Layer-2-Verbi
 
 ![4][4]    
 
-Auf dem ExpressRoute-Blatt „Zusammenfassung“ ist unter *Leitungsstatus* der Status der Verbindung auf Microsoft-Seite angegeben. Unter *Anbieterstatus* ist angegeben, ob für die Verbindung auf Service Provider-Seite *Bereitgestellt/Nicht bereitgestellt* gilt. 
+Auf dem ExpressRoute-Blatt „Zusammenfassung“ ist unter *Schaltkreisstatus* der Status der Verbindung auf Microsoft-Seite angegeben. Unter *Anbieterstatus* ist angegeben, ob für die Verbindung auf Service Provider-Seite *Bereitgestellt/Nicht bereitgestellt* gilt. 
 
-Damit eine ExpressRoute-Verbindung betriebsbereit ist, muss *Leitungsstatus* auf *Aktiviert* und *Anbieterstatus* auf *Bereitgestellt* festgelegt sein.
+Damit eine ExpressRoute-Verbindung betriebsbereit ist, muss *Schaltkreisstatus* auf *Aktiviert* und *Anbieterstatus* auf *Bereitgestellt* festgelegt sein.
 
 > [!NOTE]
 > Wenn *Leitungsstatus* nach der Konfiguration einer ExpressRoute-Verbindung immer noch den Status „Nicht aktiviert“ aufweist, wenden Sie sich bitte an den [Microsoft-Support][Support]. Weist dagegen *Anbieterstatus* immer noch den Status „Nicht bereitgestellt“ auf, wenden Sie sich bitte an Ihren Dienstanbieter.

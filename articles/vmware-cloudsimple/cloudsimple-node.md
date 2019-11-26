@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845542"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899029"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Übersicht über CloudSimple-Knoten
 
 Knoten sind die Bausteine einer privaten Cloud. Ein Knoten ist:
 
 * Ein dedizierter Bare-Metal-Computehost, auf dem ein VMware ESXi-Hypervisor installiert ist  
-* Eine Computingeinheit, die Sie erwerben oder reservieren können, um private Clouds zu erstellen
-* Verfügbar, um in einer Region gekauft oder reserviert zu werden, in der der CloudSimple-Service verfügbar ist
+* Eine Recheneinheit, die Sie bereitstellen oder reservieren können, um Private Clouds zu erstellen
+* Verfügbar, um in einer Region bereitgestellt oder reserviert zu werden, in der der CloudSimple-Service verfügbar ist
 
-Sie erstellen eine private Cloud aus den erworbenen Knoten. Um eine private Cloud zu erstellen, benötigen Sie mindestens drei Knoten derselben SKU. Wenn Sie eine private Cloud erweitern möchten, fügen Sie zusätzliche Knoten hinzu.  Sie können Knoten zu einem vorhandenen Cluster hinzufügen oder einen neuen Cluster erstellen, indem Sie Knoten im Azure-Portal erwerben und diese dem CloudSimple-Dienst zuordnen.  Alle erworbenen Knoten werden im CloudSimple-Dienst angezeigt.  
+Sie erstellen eine Private Cloud aus den bereitgestellten Knoten. Um eine private Cloud zu erstellen, benötigen Sie mindestens drei Knoten derselben SKU. Wenn Sie eine private Cloud erweitern möchten, fügen Sie zusätzliche Knoten hinzu.  Sie können Knoten zu einem vorhandenen Cluster hinzufügen oder einen neuen Cluster erstellen, indem Sie Knoten im Azure-Portal bereitstellen und diese dem CloudSimple-Dienst zuordnen.  Alle bereitgestellten Knoten werden unter dem CloudSimple-Dienst angezeigt.  
 
-## <a name="purchased-nodes"></a>Gekaufte Knoten
+## <a name="provisioned-nodes"></a>Bereitgestellte Knoten
 
-Gekaufte Knoten bieten Kapazität mit nutzungsbasierter Bezahlung. Durch den Kauf von Knoten können Sie Ihren VMware-Cluster nach Bedarf schnell skalieren. Sie können Knoten nach Bedarf hinzufügen oder einen erworbenen Knoten löschen, um Ihren VMware-Cluster zentral herunterzuskalieren. Erworbene Knoten werden monatlich in dem Abonnement in Rechnung gestellt, mit dem sie erworben wurden.
+Bereitgestellte Knoten bieten Kapazität mit nutzungsbasierter Bezahlung. Durch das Bereitstellen von Knoten können Sie Ihren VMware-Cluster nach Bedarf schnell skalieren. Sie können Knoten bedarfsgerecht hinzufügen, oder Sie können einen bereitgestellten Knoten löschen, um Ihren VMware-Cluster herunterzuskalieren. Bereitgestellte Knoten werden monatlich in Rechnung gestellt und dem Abonnement belastet, in dem sie bereitgestellt werden.
 
 * Wenn Sie Ihr Azure-Abonnement per Kreditkarte bezahlen, wird die Karte sofort belastet.
 * Wenn Sie jeweils eine Rechnung erhalten, werden die Gebühren auf Ihrer nächsten Rechnung aufgeführt.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-Lösung entsprechend SKU für CloudSimple-Knoten
 
-Die folgenden Knotentypen können erworben oder reserviert werden.
+Es können Knoten der folgenden Typen bereitgestellt oder reserviert werden.
 
 | SKU           | CS28-Knoten                 | CS36-Knoten                 | CS36m-Knoten                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
@@ -58,5 +58,5 @@ Für private Clouds gelten die folgenden Knotengrenzwerte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Knoten erwerben](create-nodes.md).
+* Erfahren Sie, wie Sie [Knoten bereitstellen](create-nodes.md).
 * Erfahren Sie mehr über [private Clouds](cloudsimple-private-cloud.md).

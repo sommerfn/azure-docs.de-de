@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af3d4b51dadfaa99a166ca0ce475c5a110d8f6e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074891"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933682"
 ---
 # <a name="live-event-states-and-billing"></a>Zustandswerte von Liveereignissen und Abrechnung
 
@@ -26,11 +26,14 @@ In Azure Media Services fallen für ein Liveereignis Gebühren an, sobald der Zu
 
 Wenn **LiveEventEncodingType** für Ihr [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) auf „Standard“ oder „Premium1080p“ festgelegt ist, schaltet Media Services jedes Liveereignis, das sich noch im Zustand **Wird ausgeführt** befindet, 12 Stunden nach dem Verlust des Eingangsfeeds automatisch ab. Es werden keine **Liveausgaben** mehr ausgeführt. Allerdings wird Ihnen die Zeit in Rechnung gestellt, in der das Liveereignis den Zustand **Wird ausgeführt** hatte.
 
+> [!NOTE]
+> Pass-Through-Liveereignisse werden nicht automatisch heruntergefahren und müssen explizit über die API gestoppt werden, um eine übermäßige Abrechnung zu vermeiden. 
+
 ## <a name="states"></a>Zustände
 
 Das Liveereignis kann folgende Zustandswerte aufweisen:
 
-|Zustand|BESCHREIBUNG|
+|State|BESCHREIBUNG|
 |---|---|
 |**Beendet**| Dies ist der anfängliche Zustand des Liveereignisses nach der Erstellung (es sei denn, der automatische Start wurde auf „true“ festgelegt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die Eigenschaften des Liveereignisses aktualisiert werden, Streaming ist jedoch nicht zulässig.|
 |**Wird gestartet**| Das Liveereignis wird gestartet, und Ressourcen werden zugewiesen. In diesem Status werden keine Gebühren berechnet. In diesem Zustand sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das Liveereignis in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|

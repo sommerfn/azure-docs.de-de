@@ -1,18 +1,18 @@
 ---
 title: Lösungsmuster in Azure Stream Analytics
-description: Hier finden Sie Informationen zu den verschiedenen allgemeinen Lösungsmustern für Azure Stream Analytics.
+description: Erfahren Sie mehr über allgemeine Lösungsmuster für Azure Stream Analytics, wie Dashboarding, Ereignismessaging, Datenspeicher, Referenzdatenanreicherung und Überwachung.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173040"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901671"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 

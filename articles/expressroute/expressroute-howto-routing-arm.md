@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurieren des Peerings für eine Verbindung – ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Konfigurieren des Peerings: PowerShell'
 description: In diesem Artikel werden Sie durch die Schritte zum Erstellen und Bereitstellen des privaten, öffentlichen und Microsoft-Peerings einer ExpressRoute-Verbindung geführt. Außerdem wird veranschaulicht, wie Sie den Status überprüfen, Updates durchführen oder Peerings für die Verbindung löschen.
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 813263442bc82254d0cb5ea9e9f7e8a265de5b4a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e03abc25ec5224006f41946e6514836e2b6d534
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080144"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
 

@@ -1,5 +1,6 @@
 ---
-title: Hilfethemen zum App-Registrierungsportal | Microsoft Docs
+title: Hilfethemen zum App-Registrierungsportal
+titleSuffix: Microsoft identity platform
 description: Eine Beschreibung der verschiedenen Funktionen im App-Registrierungsportal von Microsoft.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49675d8b18020c73a27a41fedff47697e29d829e
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 61787e7a86a1c40ec04fb7a3d605158c85782d94
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988495"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803395"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features der [App-Registrierungen](https://aka.ms/appregistrations) im Azure-Portal.

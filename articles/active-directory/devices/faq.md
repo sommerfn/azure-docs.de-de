@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d44b868f2ea92c2d7bb8d7139822112a8545045
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787455"
+ms.locfileid: "72809252"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -62,6 +62,8 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 - Der Benutzer deaktiviert das Gerät im Meine Apps-Portal. 
 - Ein Administrator (oder Benutzer) löscht oder deaktiviert das Gerät im Azure-Portal oder über PowerShell.
 - Nur in Azure AD Hybrid eingebundene Geräte: Ein Administrator entfernt die Geräte-OE aus dem Synchronisierungsbereich, was dazu führt, dass die Geräte aus Azure AD gelöscht werden.
+- Aktualisieren von AAD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+
 
 Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden können.
 

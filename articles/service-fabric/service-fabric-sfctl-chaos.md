@@ -3,22 +3,23 @@ title: Azure Service Fabric-CLI – sfctl chaos | Microsoft-Dokumentation
 description: Beschreibt die sfctl chaos-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 27178b2f26086bf693dc9cda342c66f7d47a34d7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: f48ef260ab05f98da99c3ae317d0c350d018119f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035105"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901755"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
@@ -46,10 +47,10 @@ Um das jeweils nächste Segment der Chaostestereignisse abzurufen, können Sie d
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
-| --end-time-utc | Die Windows-Dateizeit, die die Endzeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
+| --end-time-utc | Die Windows-Dateizeit, die die Endzeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
 | --max-results | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthält die seitenweise Abfrage so viele Ergebnisse, wie in die Rückgabemeldung passen. |
-| --start-time-utc | Die Windows-Dateizeit, die die Anfangszeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --start-time-utc | Die Windows-Dateizeit, die die Anfangszeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -70,7 +71,7 @@ Ruft den Status des Chaostests ab, wobei der Ausführungsstatus des Chaostests, 
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -85,7 +86,7 @@ Ruft den Status des Chaostests ab, wobei der Ausführungsstatus des Chaostests, 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 Startet Chaos im Cluster
 
-Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cluster ausgeführt wird. Wenn Chaos bei der Ausführung dieses Aufrufs bereits ausgeführt wird, führt der Aufruf zu einem Fehler mit dem Fehlercode FABRIC_E_CHAOS_ALREADY_RUNNING.
+Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cluster ausgeführt wird. Wenn Chaos bei der Ausführung dieses Aufrufs bereits ausgeführt wird, führt der Aufruf zu einem Fehler mit dem Fehlercode FABRIC_E_CHAOS_ALREADY_RUNNING. Weitere Informationen finden Sie im Artikel [Auslösen von kontrolliertem Chaos in Service Fabric-Clustern](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos).
 
 ### <a name="arguments"></a>Argumente
 
@@ -100,7 +101,7 @@ Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cl
 | --max-percent-unhealthy-apps | Der maximal zulässige Prozentsatz fehlerhafter Anwendungen, bevor ein Fehler gemeldet wird, wenn während des Chaostests die Clusterintegrität ausgewertet wird. <br><br> Der maximal zulässige Prozentsatz fehlerhafter Anwendungen, bevor ein Fehler gemeldet wird. Soll es z. B.zulässig sein, dass 10 % der Anwendungen fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Anwendungen, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens eine fehlerhafte Anwendung, wird die Integrität als „Warning“ ausgewertet. Dies wird berechnet, indem die Anzahl von fehlerhaften Anwendungen durch die Gesamtanzahl von Anwendungsinstanzen im Cluster dividiert wird, wobei Anwendungen mit Anwendungstypen ausgeschlossen werden, die in „ApplicationTypeHealthPolicyMap“ enthalten sind. Die Berechnung wird aufgerundet, um einen Fehler bei einer kleinen Anzahl von Anwendungen zu tolerieren. Der Standardprozentsatz ist null. |
 | --max-percent-unhealthy-nodes | Der maximal zulässige Prozentsatz fehlerhafter Knoten, bevor ein Fehler gemeldet wird, wenn während des Chaostests die Clusterintegrität ausgewertet wird. <br><br> Der maximal zulässige Prozentsatz fehlerhafter Knoten, bevor ein Fehler gemeldet wird. Soll es z. B.zulässig sein, dass 10 % der Knoten fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Knoten, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens einen fehlerhaften Knoten, wird die Integrität als „Warning“ ausgewertet. Der Prozentsatz wird berechnet, indem die Anzahl von fehlerhaften Knoten durch die Gesamtanzahl von Knoten im Cluster dividiert wird. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. Der Standardprozentsatz ist null. Beim Konfigurieren dieses Prozentsatzes muss berücksichtigt werden, dass in großen Clustern immer einige Knoten inaktiv oder aufgrund von Wartungsarbeiten nicht verfügbar sind. |
 | --time-to-run | Die Gesamtzeit (in Sekunden), während der der Chaostest ausgeführt wird, bevor er automatisch beendet wird. Der maximal zulässige Wert ist „4.294.967.295“ (System.UInt32.MaxValue).  Standardwert\: „4294967295“. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 | --wait-time-between-faults | Wartezeit (in Sekunden) zwischen aufeinander folgenden Fehlern innerhalb einer einzelnen Iteration.  Standardwert\: „20“. <br><br> Je größer der Wert ist, desto geringer ist die Überlappung zwischen Fehlern und desto einfacher ist auch die Sequenz der Zustandswechsel, die der Cluster durchläuft. Es wird empfohlen, mit einem Wert zwischen 1 und 5 zu beginnen und diesen vorsichtig zu erhöhen. |
 | --wait-time-between-iterations | Zeitabstand (in Sekunden) zwischen zwei aufeinander folgenden Iterationen von Chaostests. Je höher der Wert ist, desto niedriger ist die durchschnittliche Fault Injection-Rate.  Standardwert\: „30“. |
 | --warning-as-error | Gibt an, ob Warnungen mit demselben Schweregrad wie Fehler berücksichtigt werden. |
@@ -124,7 +125,7 @@ Verhindert die Ausführung neuer Fehler im Rahmen des Chaostests. In der Ausfüh
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 

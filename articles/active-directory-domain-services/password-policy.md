@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248305"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893431"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 
 Um die Benutzersicherheit in Azure Active Directory Domain Services (Azure AD DS) zu verwalten, können Sie differenzierte Kennwortrichtlinien definieren, die die Einstellungen für die Kontosperre oder die minimale Kennwortlänge und -komplexität steuern. Eine differenzierte Standardkennwortrichtlinie wird erstellt und auf alle Benutzer in einer verwalteten Azure AD DS-Domäne angewendet. Um eine differenzierte Steuerung zu gewährleisten und bestimmte Geschäfts- oder Complianceanforderungen zu erfüllen, können zusätzliche Richtlinien erstellt und auf bestimmte Gruppen von Benutzern angewendet werden.
 
 In diesem Artikel wird das Erstellen und Konfigurieren einer differenzierten Kennwortrichtlinie in Azure AD DS mithilfe des Active Directory-Verwaltungscenters erläutert.
+
+> [!NOTE]
+> Kennwortrichtlinien sind nur für verwaltete Azure AD DS-Domänen verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Bei älteren verwalteten Domänen, die auf klassische Weise erstellt wurden, sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -34,6 +37,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
   * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
   * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+  * Die Azure AD DS-Instanz muss mit dem Azure Resource Manager-Bereitstellungsmodell erstellt worden sein. Bei Bedarf sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
   * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
@@ -130,3 +134,4 @@ Weitere Informationen zu Kennwortrichtlinien und zum Verwenden des Active Direct
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

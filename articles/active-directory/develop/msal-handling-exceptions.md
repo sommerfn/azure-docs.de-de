@@ -1,5 +1,6 @@
 ---
-title: Fehler und Ausnahmen (MSAL) | Microsoft Identity Platform
+title: Fehler und Ausnahmen (MSAL)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie Fehler und Ausnahmen, den bedingten Zugriff und Anspruchsaufforderungen in MSAL-Anwendungen verarbeiten.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 09/08/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: fe8483bd6055acb0a2c741192ec80211b9969a16
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982762"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175869"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Verarbeiten von MSAL-Ausnahmen und -Fehlern
 

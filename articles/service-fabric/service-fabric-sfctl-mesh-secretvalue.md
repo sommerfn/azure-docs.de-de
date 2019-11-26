@@ -3,22 +3,23 @@ title: 'Azure Service Fabric CLI: sfctl mesh secretvalue | Microsoft-Dokumentati
 description: Beschreibt die sfctl mesh secretvalue-Befehle der Service Fabric CLI.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035924"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901189"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Ruft die Mesh-secretvalue-Ressourcen ab bzw. löscht sie.
@@ -29,7 +30,7 @@ Ruft die Mesh-secretvalue-Ressourcen ab bzw. löscht sie.
 | --- | --- |
 | delete | Löscht den angegebenen Wert der benannten Geheimnisressource. |
 | list | Listet die Namen aller Werte der angegebenen Geheimnisressource auf. |
-| show | Ruft den Wert der angegebenen Version einer Geheimnisressource ab. |
+| show | Listet den angegebenen Wert der Geheimnisressource auf. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl mesh secretvalue delete
 Löscht den angegebenen Wert der benannten Geheimnisressource.
@@ -75,7 +76,7 @@ Ruft Informationen zu allen Geheimniswertressourcen der angegebenen Geheimnisres
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
-Ruft den Wert der angegebenen Version einer Geheimnisressource ab.
+Listet den angegebenen Wert der Geheimnisressource auf.
 
 ### <a name="arguments"></a>Argumente
 

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5ad03e69df4ca03d58bba98b912ade354f90042e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554311"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809203"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -38,25 +38,25 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
     Wenn Sie Privileged Identity Management im Azure-Portal noch nie gestartet haben, informieren Sie sich zunächst auf der Seite [Einstieg in Privileged Identity Management](pim-getting-started.md).
 
-1. Klicken Sie auf **Azure AD-Rollen**.
+1. Wählen Sie **Azure AD-Rollen** aus.
 
-1. Klicken Sie auf **Rollen** oder **Mitglieder**.
+1. Wählen Sie **Rollen** oder **Mitglieder** aus.
 
     ![Azure AD-Rollen mit hervorgehobenen Menüoptionen „Rollen“ und „Mitglieder“](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Klicken Sie auf **Mitglied hinzufügen**, um das Dialogfeld „Verwaltete Mitglieder hinzufügen“ zu öffnen.
+1. Wählen Sie **Mitglied hinzufügen** aus, um das Dialogfeld „Verwaltete Mitglieder hinzufügen“ zu öffnen.
 
-1. Klicken Sie auf **Rolle auswählen**, klicken Sie auf eine Rolle, die Sie verwalten möchten, und klicken Sie dann auf **Auswählen**.
+1. Wählen Sie **Rolle auswählen** und eine Rolle aus, die Sie verwalten möchten, und wählen Sie dann **Auswählen** aus.
 
     ![Bereich „Rolle auswählen“ mit einer Liste der Azure AD-Rollen](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Klicken Sie auf **Mitglieder auswählen**, wählen Sie die Benutzer aus, die der Rolle zugewiesen werden sollen, und klicken Sie dann auf **Auswählen**.
+1. Wählen Sie **Mitglieder auswählen** und die Benutzer aus, die der Rolle zugewiesen werden sollen, und wählen Sie dann **Auswählen** aus.
 
     ![Bereich „Mitglieder auswählen“, in dem Sie einen Benutzer auswählen können](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. Klicken Sie in „Verwaltete Mitglieder hinzufügen“ auf **OK**, um den Benutzer zur Rolle hinzuzufügen.
+1. Wählen Sie in „Verwaltete Mitglieder hinzufügen“ **OK** aus, um den Benutzer zur Rolle hinzuzufügen.
 
-1. Klicken Sie in der Liste der Rollen auf die soeben zugewiesene Rolle, um die Liste der Mitglieder anzuzeigen.
+1. Wählen Sie in der Liste der Rollen die soeben zugewiesene Rolle aus, um die Liste der Mitglieder anzuzeigen.
 
      Nach dem Zuweisen der Rolle wird der von Ihnen ausgewählte Benutzer in der Liste als **Berechtigt** für die Rolle angezeigt.
 
@@ -72,15 +72,15 @@ Standardmäßig sind neue Benutzer nur für eine Azure AD-Administratorrolle be
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie auf **Azure AD-Rollen**.
+1. Wählen Sie **Azure AD-Rollen** aus.
 
-1. Klicken Sie auf **Mitglieder**.
+1. Wählen Sie **Mitglieder** aus.
 
     ![Liste „Mitglieder“ von Azure AD-Rollen mit Rolle und Aktivierungszustand](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Klicken Sie auf eine als **Berechtigt** markierte Rolle, die Sie als dauerhafte Rollenzuweisung festlegen möchten.
+1. Wählen Sie eine als **Berechtigt** markierte Rolle aus, die Sie als dauerhafte Rollenzuweisung festlegen möchten.
 
-1. Klicken Sie auf **Weitere**, und klicken Sie anschließend auf **Als permanent festlegen**.
+1. Wählen Sie **Weitere** und dann **Als permanent festlegen** aus.
 
     ![Bereich mit einem Benutzer, der für eine Rolle berechtigt ist, mit geöffneter Menüoption „Mehr“](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
@@ -116,7 +116,9 @@ Führen Sie folgende Schritte aus, um einen Benutzer aus einer Azure AD-Adminis
 
 ## <a name="authorization-error-when-assigning-roles"></a>Autorisierungsfehler beim Zuweisen von Rollen
 
-Wenn Sie Privileged Identity Management erst kürzlich für ein Azure-Abonnement aktiviert haben und beim Versuch, einen Benutzer einer Azure AD-Administratorrolle zuzuweisen, einen Autorisierungsfehler erhalten, verfügt der MS-PIM-Dienstprinzipal möglicherweise noch nicht über die erforderlichen Berechtigungen. Für die Rollenzuweisung muss dem MS-PIM-Dienstprinzipal in der rollenbasierten Zugriffssteuerung von Azure die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) für den Ressourcenzugriff zugewiesen werden (anstelle von Azure AD-Administratorrollen). Anstatt zu warten, bis PIM die Rolle „Benutzerzugriffsadministrator“ zugewiesen wurde, können Sie sie auch manuell zuweisen.
+Szenario: Als aktiver Besitzer oder Benutzerzugriffsadministrator für eine Azure-Ressource können Sie Ihre Ressource in Privileged Identity Management zwar anzeigen, aber keine Aktionen ausführen (also beispielsweise eine berechtigte Zuweisung vornehmen oder eine Liste mit Rollenzuweisungen auf der Ressourcenübersichtsseite anzeigen). Bei jeder dieser Aktionen tritt ein Autorisierungsfehler auf.
+
+Für die Rollenzuweisung muss dem MS-PIM-Dienstprinzipal in der rollenbasierten Zugriffssteuerung von Azure die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) für den Ressourcenzugriff zugewiesen werden (anstelle von Azure AD-Administratorrollen). Anstatt zu warten, bis PIM die Rolle „Benutzerzugriffsadministrator“ zugewiesen wurde, können Sie sie auch manuell zuweisen.
 
 Gehen Sie wie folgt vor, um dem MS-PIM-Dienstprinzipal für ein Abonnement die Rolle „Benutzerzugriffsadministrator“ zuzuweisen:
 
@@ -147,7 +149,6 @@ Gehen Sie wie folgt vor, um dem MS-PIM-Dienstprinzipal für ein Abonnement die R
    Nach kurzer Zeit wird dem MS-PIM-Dienstprinzipal im Abonnementbereich die Rolle „Benutzerzugriffsadministrator“ zugewiesen.
 
    ![Blatt „Zugriffssteuerung (IAM)“ mit der Rollenzuweisung „Benutzerzugriffsadministrator“ für MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

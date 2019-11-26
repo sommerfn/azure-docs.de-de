@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442901"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809736"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Front Door Service
 
@@ -144,6 +144,8 @@ Azure Front Door Service ist eine global verteilte mehrinstanzenfähige Plattfor
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door-service"></a>Welche TLS-Versionen werden vom Azure Front Door Service unterstützt?
 
+Alle Front Door-Profile, die nach September 2019 erstellt wurden, verwenden standardmäßig TLS 1.2 als Mindestvoraussetzung.
+
 Front Door unterstützt die TLS-Versionen 1.0, 1.1 und 1.2. TLS 1.3 wird noch nicht unterstützt.
 
 ### <a name="what-certificates-are-supported-on-azure-front-door-service"></a>Welche Zertifikate werden von Azure Front Door Service unterstützt?
@@ -185,7 +187,7 @@ Ja. Azure Front Door Service unterstützt SSL-Abladung sowie End-to-End-SSL, das
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Kann ich die SSL-Richtlinie für die Steuerung von SSL-Protokollversionen konfigurieren?
 
-Nein. Zurzeit unterstützt Front Door weder die Ablehnung bestimmter TLS-Versionen noch können Sie die TLS-Mindestversion festlegen. 
+Sie können eine minimale TLS-Version in Azure Front Door über die [Azure REST-API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) konfigurieren. Derzeit können Sie zwischen 1.0 und 1.2 wählen.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Kann ich Front Door so konfigurieren, dass nur bestimmte Verschlüsselungssammlungen unterstützt werden?
 

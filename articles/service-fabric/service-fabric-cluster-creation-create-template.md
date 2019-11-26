@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599990"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901545"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
 
@@ -146,7 +146,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 Fügen Sie die Azure AD-Konfiguration einer Resource Manager-Vorlage für einen Cluster hinzu, indem Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln verweisen. Fügen Sie die Azure AD-Parameter und -werte zu einer Resource Manager-Vorlagenparameterdatei (*azuredeploy.parameters.json*) hinzu. 
 
 > [!NOTE]
-> Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
+> Azure AD-Mandanten und -Benutzer müssen unter Linux vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {

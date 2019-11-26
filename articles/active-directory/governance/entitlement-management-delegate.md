@@ -1,5 +1,5 @@
 ---
-title: Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
+title: Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
 description: Erfahren Sie, wie Sie die Zugriffskontrolle von IT-Administratoren an Abteilungsleiter und Projektmanager delegieren, damit diese den Zugriff selbst verwalten können.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d44a4265c3729bff3d983395a37a6cb64a463d4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389115"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174259"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
 Standardmäßig können globale Administratoren und Benutzeradministratoren alle Aspekte der Azure AD-Berechtigungsverwaltung erstellen und verwalten. Die Benutzer in diesen Rollen kennen jedoch möglicherweise nicht alle Situationen, in denen Zugriffspakete erforderlich sind. In der Regel handelt es sich um Benutzer in den entsprechenden Abteilungen, Teams oder Projekten, die wissen, mit wem sie zusammenarbeiten, welche Ressourcen sie verwenden und wie lange. Anstatt Nicht-Administratoren uneingeschränkte Berechtigungen zu gewähren, können Sie Benutzern die Mindestberechtigungen erteilen, die sie für die Ausführung ihrer Arbeit benötigen, und vermeiden, widersprüchliche oder unangemessene Zugriffsrechte zu erstellen.
 
@@ -99,6 +94,7 @@ In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigung
 | Aufgabe | Administrator | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegieren an einen Katalogersteller](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
 | [Erstellen eines neuen Katalogs](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Hinzufügen einer Ressource zu einem Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [Hinzufügen eines Katalogbesitzers](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
@@ -112,8 +108,9 @@ In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigung
 | [Direktes Zuweisen eines Benutzers zu einem Zugriffspaket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Anzeigen, wem ein Zugriffspaket zugewiesen ist](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Anzeigen der Anforderungen eines Zugriffspakets](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Anzeigen der Fehler bei der Übermittlung einer Anforderung](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Abbrechen einer ausstehenden Anforderung](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Anzeigen der Fehler bei der Übermittlung einer Anforderung](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Erneutes Verarbeiten einer Anforderung](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Abbrechen einer ausstehenden Anforderung](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Ausblenden eines Zugriffspakets](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Löschen eines Zugriffspakets](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 

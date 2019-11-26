@@ -3,22 +3,23 @@ title: Azure Service Fabric-CLI – sfctl property | Microsoft-Dokumentation
 description: Beschreibt die sfctl property-Befehle der Service Fabric-CLI.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035257"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901070"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Speichern und Abfragen von Eigenschaften unter Service Fabric-Namen.
@@ -43,7 +44,7 @@ Löscht die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen. 
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -66,7 +67,7 @@ Ruft die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen ab. 
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -90,7 +91,7 @@ Ein Service Fabric-Name kann eine oder mehrere benannte Eigenschaften haben, in 
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
 | --include-values | Ermöglicht die Angabe, ob die Werte der zurückgegebenen Eigenschaften eingeschlossen werden sollen. Mit „true“ wird festgelegt, dass die Werte mit den Metadaten zurückgegeben werden sollen, während „false“ angibt, dass nur Eigenschaftsmetadaten zurückgeben werden sollen. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -115,7 +116,7 @@ Erstellt oder aktualisiert die angegebene Service Fabric-Eigenschaft unter einem
 | --property-name [erforderlich] | Der Name der Service Fabric-Eigenschaft. |
 | --value [erforderlich] | Beschreibt einen Service Fabric-Eigenschaftswert. Hierbei handelt es sich um eine JSON-Zeichenfolge. <br><br> Die JSON-Zeichenfolge verfügt über zwei Felder, die die Werte „Kind“ und „Value“ der Daten angeben. Der Wert „Kind“ muss als erstes Element in der JSON-Zeichenfolge angezeigt werden und kann die Werte „Binary“, „Int64“, „Double“, „String“ und „Guid“ enthalten. Der Wert sollte für-die angegebenen Typen serialisiert werden können. Die Werte „Kind“ und „Value“ der Daten sollten als Zeichenfolgen angegeben werden. |
 | --custom-id-type | Die benutzerdefinierte Typ-ID der Eigenschaft. Mithilfe dieser Eigenschaft kann der Benutzer den Typ des Eigenschaftswerts kennzeichnen. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 

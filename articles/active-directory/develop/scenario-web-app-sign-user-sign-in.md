@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5c45005d6a54765458b463acb12c21a1f3b6d0c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d727b570361e721c49173138bb60ae89df710e81
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336765"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175224"
 ---
 # <a name="web-app-that-signs-in-users---sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen – Anmeldung und Abmeldung
 
@@ -161,7 +161,7 @@ public class AuthPageController {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Im Gegensatz zu anderen Plattformen sorgt MSAL.Python dafür, dass sich der Benutzer über die Anmeldeseite anmelden kann. Siehe [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
+Im Gegensatz zu anderen Plattformen sorgt MSAL Python dafür, dass sich der Benutzer über die Anmeldeseite anmelden kann. Siehe [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
 
 ```Python
 @app.route("/login")
@@ -227,7 +227,7 @@ Bei der Anwendungsregistrierung haben Sie einen **URI nach der Abmeldung** regis
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bei der Anwendungsregistrierung registrieren Sie einen **URI nach der Abmeldung**. In diesem Tutorial haben Sie auf der Seite **Authentifizierung** im Abschnitt **Erweiterte Einstellungen** im Feld **Abmelde-URL** die URL `http://localhost:8080/msal4jsample/` registriert.
+Bei der Anwendungsregistrierung registrieren Sie einen **URI nach der Abmeldung**. In diesem Tutorial haben Sie auf der Seite **Authentifizierung** im Abschnitt **Erweiterte Einstellungen** im Feld **Abmelde-URL** die URL `http://localhost:8080/msal4jsample/sign_out` registriert.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -423,7 +423,7 @@ public class AccountController : Controller
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-In unserem Java-Schnellstart zeigt der Umleitungs-URI nach der Abmeldung nur die Seite „index.html“ an. 
+In unserem Java-Schnellstart zeigt der Umleitungs-URI nach der Abmeldung nur die Seite „index.html“ an.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

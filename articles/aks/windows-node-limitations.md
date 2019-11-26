@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2cec24e5ea50360531e247b37369802f3ef4e336
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000216"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990294"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -89,6 +89,10 @@ Azure Dev Spaces ist derzeit nur für Linux-basierte Knotenpools verfügbar.
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Können meine Windows Server-Container gMSA verwenden?
 
 Die Unterstützung für gruppenverwaltete Dienstkonten (Group Managed Service Accounts, gMSA) ist derzeit in AKS nicht verfügbar.
+
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kann ich Azure Monitor für Container mit Windows-Knoten und -Containern verwenden?
+
+Ja, das können Sie, aber Azure Monitor erfasst keine Protokolle (stdout) von Windows-Containern. Sie können weiterhin an den Livestream von stdout-Protokollen aus einem Windows-Container anfügen.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wie sieht es aus, wenn ich ein Feature benötige, das nicht unterstützt wird?
 

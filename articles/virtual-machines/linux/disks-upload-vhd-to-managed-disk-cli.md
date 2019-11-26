@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 3257e75849c3e00ae4b221746ebd25798a0aa6f0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757579"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803992"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Hochladen einer VHD in Azure mithilfe der Azure CLI
 

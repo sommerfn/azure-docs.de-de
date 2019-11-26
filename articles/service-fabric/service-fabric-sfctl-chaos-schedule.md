@@ -3,22 +3,23 @@ title: Azure Service Fabric-CLI – sfctl chaos schedule | Microsoft-Dokumentati
 description: Beschreibt die sfctl chaos-Befehle der Service Fabric-CLI.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036533"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897541"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Ruft den Zeitplan des Chaostests ab und legt diesen fest.
@@ -39,7 +40,7 @@ Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -54,7 +55,7 @@ Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 Legt den von Chaos verwendeten Zeitplan fest.
 
-Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Die Version im angegebenen Eingabezeitplan muss mit der Version des Chaostestzeitplans auf dem Server übereinstimmen. Wenn die angegebene Version nicht der Version auf dem Server entspricht, wird der Chaostestzeitplan nicht aktualisiert. Wenn die angegebene Version der Version auf dem Server entspricht, wird der Chaostestzeitplan aktualisiert und die Version des Chaostestzeitplans auf dem Server erhöht sich um einen Schritt und springt nach 2.147.483.647 Schritten auf 0 zurück. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
+Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Der Chaostestzeitplan wird aktualisiert, wenn die angegebene Version mit der Version auf dem Server übereinstimmt. Beim Aktualisieren des Chaostestzeitplans wird die Version auf dem Server um 1 erhöht. Die Version auf dem Server wird nach Erreichen einer großen Zahl auf 0 zurückgesetzt. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
 
 ### <a name="arguments"></a>Argumente
 
@@ -64,7 +65,7 @@ Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. 
 | --expiry-date-utc | Datum und Uhrzeit, wann die Verwendung des Chaostestzeitplans für die Planung des Chaostests beendet werden soll.  Standardwert\: „9999-12-31T23\:59\:59.999Z“. |
 | --jobs | JSON-codierte Liste von ChaosScheduleJobs, die angibt, wann der Chaostest ausgeführt werden soll und welche Parameter beim Chaostest ausgeführt werden sollen. |
 | --start-date-utc | Datum und Uhrzeit, wann der Zeitplan für die Planung des Chaostests gestartet werden soll.  Standardwert\: „1601-01-01T00\:00\:00.000Z“. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 | --version | Die Versionsnummer des Zeitplans. |
 
 ### <a name="global-arguments"></a>Globale Argumente

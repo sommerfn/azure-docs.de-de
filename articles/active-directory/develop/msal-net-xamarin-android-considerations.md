@@ -1,5 +1,6 @@
 ---
-title: Überlegungen zu Xamarin.Android (Microsoft-Authentifizierungsbibliothek für .NET) | Azure
+title: Überlegungen zu Xamarin.Android (Microsoft-Authentifizierungsbibliothek für .NET)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532476"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802648"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Besondere Überlegungen zu Xamarin.Android mit MSAL.NET
 In diesem Artikel erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin.Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).

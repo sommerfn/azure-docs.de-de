@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: atsenthi
-ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166549"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242930"
 ---
 # <a name="resource-governance"></a>Ressourcenkontrolle
 
@@ -110,6 +110,18 @@ Für eine optimale Leistung sollte auch die folgende Einstellung im Clustermanif
 </Section>
 ```
 
+> [!IMPORTANT]
+> Mit Service Fabric Version 7.0 haben wir die Regel zur Berechnung von Knotenressourcenkapazitäten in den Fällen aktualisiert, in denen der Benutzer die Werte für Knotenressourcenkapazitäten manuell bereitstellt. Stellen Sie sich folgendes Szenario vor:
+>
+> * Es gibt insgesamt 10 CPU-Kerne auf dem Knoten.
+> * SF ist konfiguriert, um 80 % der Gesamtressourcen für die Benutzerdienste zu nutzen (Standardeinstellung), was einen Puffer von 20 % für die anderen auf dem Knoten ausgeführten Dienste (einschließlich Service Fabric-Systemdienste) lässt.
+> * Der Benutzer beschließt, die Kapazität der Knotenressourcen für die Metrik der CPU-Kerne manuell außer Kraft zu setzen und legt sie auf fünf Kerne fest.
+>
+> Wir haben die Regel, wie die verfügbare Kapazität für Service Fabric-Benutzerdienste berechnet wird, auf die folgende Weise geändert:
+>
+> * Vor Service Fabric 7.0 hat die Berechnung der verfügbaren Kapazität für Benutzerdienste **5 Kerne** ergeben (Kapazitätspuffer von 20 % wird ignoriert).
+> * Ab Service Fabric 7.0 ergibt die Berechnung der verfügbaren Kapazität für Benutzerdienste **4 Kerne** (Kapazitätspuffer von 20 % wird nicht ignoriert).
+
 ## <a name="specify-resource-governance"></a>Festlegen der Ressourcenkontrolle
 
 Ressourcenkontrollgrenzwerte werden im Anwendungsmanifest (Abschnitt „ServiceManifestImport“) festgelegt, wie im folgenden Beispiel gezeigt:
@@ -141,7 +153,7 @@ Die Arbeitsspeicherlimits sind absolut, daher sind beide Codepakete auf 1024 MB 
 
 ### <a name="using-application-parameters"></a>Verwenden von Anwendungsparametern
 
-Beim Angeben der Ressourcenkontrolle können Sie [Anwendungsparameter](service-fabric-manage-multiple-environment-app-configuration.md) verwenden, um mehrere App-Konfigurationen zu verwalten. Das folgende Beispiel zeigt die Verwendung von Anwendungsparametern:
+Beim Angeben der Einstellungen für die Ressourcenkontrolle können Sie [Anwendungsparameter](service-fabric-manage-multiple-environment-app-configuration.md) verwenden, um mehrere App-Konfigurationen zu verwalten. Das folgende Beispiel zeigt die Verwendung von Anwendungsparametern:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -185,6 +197,27 @@ In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung fe
 > Das Angeben der Ressourcenkontrolle mit Anwendungsparameter ist ab Service Fabric Version 6.1 möglich.<br>
 >
 > Wenn die Ressourcenkontrolle mithilfe von Anwendungsparameter angegeben wird, kann Service Fabric nicht auf eine Version vor 6.1 herabgestuft werden.
+
+## <a name="enforcing-the-resource-limits-for-user-services"></a>Erzwingen der Resourceneinschränkungen für Benutzerdienste
+
+Während die Anwendung der Ressourcenkontrolle auf Ihre Service Fabric-Dienste sicherstellt, dass diese ressourcengesteuerten Dienste ihr Ressourcenkontingent nicht überschreiten können, müssen viele Benutzer dennoch einige ihrer Service Fabric-Dienste im nicht verwalteten Modus ausführen. Bei der Verwendung von nicht verwalteten Service Fabric-Diensten ist es möglich, in Situationen zu geraten, in denen „endlose“ nicht verwaltete Dienste alle verfügbaren Ressourcen auf den Service Fabric-Knoten verbrauchen, was zu schwerwiegenden Problemen führen kann:
+
+* Nicht ausreichend verfügbare Ressourcen von anderen Diensten, die auf den Knoten ausgeführt werden (einschließlich Service Fabric-Systemdienste).
+* Knoten, die in einem fehlerhaften Zustand enden
+* Nicht reagierende APIs für die Service Fabric-Clusterverwaltung
+
+Zur Vermeidung dieser Situationen können Sie mit Service Fabric die  *Ressourceneinschränkungen für alle Service Fabric-Benutzerdienste erzwingen, die auf dem Knoten ausgeführt werden* (sowohl verwaltet als auch nicht verwaltet), um sicherzustellen, dass die Benutzerdienste niemals mehr als die angegebene Menge an Ressourcen verwenden. Dies wird erreicht, indem der Wert für die Konfiguration „EnforceUserServiceMetricCapacities“ im Abschnitt „PlacementAndLoadBalancing“ des „ClusterManifest“ auf „true“ festgelegt wird. Diese Einstellung ist standardmäßig deaktiviert.
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+Weitere Hinweise:
+
+* Die Erzwingung von Ressourceneinschränkungen gilt nur für die Ressourcenmetriken `servicefabric:/_CpuCores` und `servicefabric:/_MemoryInMB`.
+* Die Erzwingung der Ressourceneinschränkung funktioniert nur, wenn Knotenkapazitäten für die Ressourcenmetriken für Service Fabric verfügbar sind, entweder über einen automatischen Erkennungsmechanismus oder über Benutzer, die die Knotenkapazitäten manuell angeben (wie im Abschnitt [Clustereinrichtung zum Aktivieren der Ressourcenkontrolle](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) erläutert). Wenn Knotenkapazitäten nicht konfiguriert sind, kann die Erzwingungsfunktion für Ressourceneinschränkungen nicht verwendet werden, da Service Fabric nicht weiß, wie viele Ressourcen für Benutzerdienste reserviert werden müssen. Service Fabric gibt eine Integritätswarnung aus, wenn „EnforceUserServiceMetricCapacities“ den Wert „true“ aufweist, aber die Knotenkapazitäten nicht konfiguriert sind.
 
 ## <a name="other-resources-for-containers"></a>Weitere Ressourcen für Container
 

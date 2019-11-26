@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5e0904cc2fd9866a9f8354eac9815945043eca5c
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194127"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987584"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>Berechtigungsmodell der privaten CloudSimple-Cloud von VMware-vCenter
 
@@ -41,6 +41,9 @@ Eine Gruppe namens **Cloud-Owner-Group** wird während der Bereitstellung einer 
 | Cloud-Global-VM-Admin-Group | Mitglieder dieser Gruppe können virtuelle Computer für das vCenter der privaten Cloud verwalten. | [Cloud-VM-Admin-Role](#cloud-vm-admin-role) |
 
 Um einzelnen Benutzern Berechtigungen zum Verwalten der privaten Cloud zu erteilen, erstellen Sie Benutzerkonten und fügen diese den entsprechenden Gruppen hinzu.
+
+> [!CAUTION]
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Der Gruppe *Administratoren* dürfen nur Dienstkonten hinzugefügt werden.
 
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>Liste der vCenter-Berechtigungen für Standardrollen
 

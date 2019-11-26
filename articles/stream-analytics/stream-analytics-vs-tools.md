@@ -1,6 +1,6 @@
 ---
 title: Anzeigen von Azure Stream Analytics-Aufträgen in Visual Studio
-description: In diesem Artikel wird beschrieben, wie Azure Stream Analytics-Aufträge in Visual Studio angezeigt und verwaltet werden.
+description: Erfahren Sie, wie Sie mit Visual Studio Verbindungen anzeigen, starten, stoppen und testen, Ergebnisse überprüfen und Ihre Azure Stream Analytics-Aufträge exportieren.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173027"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893556"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio
 
@@ -38,8 +38,6 @@ In der Auftragsansicht können Sie mit Azure Stream Analytics-Aufträgen aus Vis
 
     ![Liste „Stream Analytics-Aufträge“ im Server-Explorer](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. Erweitern Sie den Auftragsknoten, und doppelklicken Sie auf den Knoten **Auftragsansicht**, um eine Auftragsansicht zu öffnen.
     
    ![Erweiterter Auftragsknoten](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ Azure Stream Analytics-Aufträge können vollständig über die Auftragsansicht 
     
    ![Steuerelemente für Stream Analytics-Aufträge](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>Überprüfen von Auftragsergebnissen
 
 Stream Analytics-Tools für Visual Studio unterstützt derzeit die Ausgabevorschauversion für Azure Data Lake Storage und Blob Storage. Um das Ergebnis anzuzeigen, doppelklicken Sie einfach auf den Ausgabeknoten des Auftragsdiagramms in der **Auftragsansicht**, und geben Sie die entsprechenden Anmeldeinformationen ein.
 
    ![Ausgabe des Stream Analytics-Auftragsblobs](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>Exportieren von Aufträgen in ein Projekt
 

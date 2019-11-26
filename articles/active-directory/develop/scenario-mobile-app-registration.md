@@ -1,5 +1,6 @@
 ---
-title: Mobile App, die Web-APIs aufruft (Codekonfiguration der App) – Microsoft Identity Platform
+title: Mobile App zum Aufrufen von Web-APIs – App-Codekonfiguration
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine mobile App erstellen, die Web-APIs aufruft (Codekonfiguration der App).
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413582"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803739"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobile App, die Web-APIs aufruft – App-Registrierung
 

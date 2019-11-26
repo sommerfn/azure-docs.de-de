@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376917"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887778"
 ---
 Die folgenden Grenzwerte gelten für Systemthemen und benutzerdefinierte Themen von Azure Event Grid, *nicht* für Ereignisdomänen.
 
@@ -29,8 +29,9 @@ Die folgenden Grenzwerte gelten ausschließlich für Ereignisdomänen.
 
 | Resource | Begrenzung |
 | --- | --- |
-| Themen pro Ereignisdomäne | 1\.000 während der Public Preview-Phase |
-| Ereignisabonnements pro Thema innerhalb einer Domäne | 50 während der Public Preview-Phase |
-| Domänenbereich-Ereignisabonnements | 50 während der Public Preview-Phase |
-| Veröffentlichungsrate für eine Ereignisdomäne (Eingang) | 5\.000 Ereignisse pro Sekunde während der Public Preview-Phase |
+| Themen pro Ereignisdomäne | 100.000 |
+| Ereignisabonnements pro Thema innerhalb einer Domäne | 500 |
+| Domänenbereich-Ereignisabonnements | 50 |
+| Veröffentlichungsrate für eine Ereignisdomäne (Eingang) | 5\.000 Ereignisse pro Sekunde |
 | Veröffentlichungsanforderungen | 250 pro Sekunde |
+| Ereignisdomänen pro Azure-Abonnement | 100 |
