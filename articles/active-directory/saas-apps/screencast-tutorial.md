@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Screencast-O-Matic | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Screencast-O-Matic | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Screencast-O-Matic konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,38 +13,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 11/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a29e106424fe87596bf196c16e9ea190da2d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc887e95b6fa6f8b17fbbb3dbaae5105385a07fa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091387"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132140"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Tutorial: Azure Active Directory-Integration mit Screencast-O-Matic
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Screencast-O-Matic
 
-In diesem Tutorial erfahren Sie, wie Sie Screencast-O-Matic in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Screencast-O-Matic in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Screencast-O-Matic in Azure Active Directory (Azure AD) integrieren. Die Integration von Screencast-O-Matic in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Screencast-O-Matic hat.
-* Sie können Benutzern ermöglichen, dass sie automatisch mit ihren Azure AD-Konten bei Screencast-O-Matic angemeldet werden (Single Sign-On, SSO; einmaliges Anmelden).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Screencast-O-Matic haben soll.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Screencast-O-Matic anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Screencast-O-Matic-Integration in Azure AD konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Screencast-O-Matic-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* SSO-fähiges Screencast-O-Matic-Abonnement
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Screencast-O-Matic unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Screencast-O-Matic unterstützt **Just-in-Time**-Benutzerbereitstellung.
@@ -53,169 +51,131 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Screencast-O-Matic in Azure AD müssen Sie Screencast-O-Matic über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Screencast-O-Matic aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Screencast-O-Matic** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich die Option **Screencast-O-Matic** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Screencast-O-Matic
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Screencast-O-Matic mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Screencast-O-Matic eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Screencast-O-Matic zu konfigurieren und zu testen:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Screencast-O-Matic](#configure-screencast-o-matic-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    * **[Erstellen eines Screencast-O-Matic-Testbenutzers](#create-screencast-o-matic-test-user)** , um in Screencast-O-Matic eine Entsprechung von B.Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld **Screencast-O-Matic** ein, wählen Sie im Ergebnisbereich **Screencast-O-Matic** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Screencast-O-Matic** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-    ![Screencast-O-Matic in der Ergebnisliste](common/search-new-app.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Screencast-O-Matic mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Screencast-O-Matic eingerichtet werden.
-
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD in Screencast-O-Matic zu konfigurieren und zu testen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Screencast-O-Matic](#configure-screencast-o-matic-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Screencast-O-Matic-Testbenutzers](#create-screencast-o-matic-test-user)** , um eine Entsprechung von Britta Simon in Screencast-O-Matic zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD in Screencast-O-Matic zu konfigurieren:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Screencast-O-Matic** die Option **Einmaliges Anmelden** aus.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Screencast-O-Matic](common/sp-signonurl.png)
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://screencast-o-matic.com/<InstanceName>`
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Screencast-O-Matic](mailto:support@screencast-o-matic.com), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Metadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-6. Kopieren Sie im Abschnitt **Screencast-O-Matic einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Screencast-O-Matic einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    b. Azure AD-Bezeichner
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    c. Abmelde-URL
-
-### <a name="configure-screencast-o-matic-single-sign-on"></a>Konfigurieren von einmaligem Anmelden für Screencast-O-Matic
-
-1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Screencast-O-Matic an.
-
-2. Klicken Sie auf **Subscription (Abonnement)** .
-
-    ![Das Abonnement](./media/screencast-tutorial/tutorial_screencast_sub.png)
-
-3. Klicken Sie im Abschnitt **Access page (Zugriffsseite)** auf **Setup**.
-
-    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_setup.png)
-
-4. Führen Sie auf der **Setup Access Page (Setupzugriffsseite)** die folgenden Schritte aus:
-
-   * Geben Sie im Abschnitt **Access URL (Zugriffs-URL)** Ihren Instanznamen in das angegebene Textfeld ein.
-
-    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_access.png)
-
-   * Wählen Sie **Require Domain User (Domänenbenutzer erfordern)** im Abschnitt **SAML User Restriction (optional) (SAML-Benutzereinschränkung (optional))** aus.
-
-   * Klicken Sie unter **Upload IDP Metadata XML File (IDP-Metadaten-XML-Datei hochladen)** auf **Choose File (Datei auswählen)** , um die Metadaten hochzuladen, die Sie im Azure-Portal heruntergeladen haben.
-
-   * Klicken Sie auf **OK**.
-
-    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_save.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Screencast-O-Matic gewähren.
+In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie dem Benutzer Zugriff auf Screencast-O-Matic gewähren.
 
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, wählen Sie **Alle Anwendungen** aus, und wählen Sie dann **Screencast-O-Matic** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Screencast-O-Matic** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-2. Wählen Sie in der Anwendungsliste **Screencast-O-Matic** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Screencast-O-Matic-Link in der Anwendungsliste](common/all-applications.png)
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+## <a name="configure-screencast-o-matic-sso"></a>Konfigurieren des einmaligen Anmeldens für Screencast-O-Matic
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wenn Sie die Konfiguration in Screencast-O-Matic automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Screencast-O-Matic einrichten**, um zur Anwendung Screencast-O-Matic zu gelangen. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Screencast-O-Matic anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 11.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+    ![Einrichtungskonfiguration](common/setup-sso.png)
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wenn Sie Screencast-O-Matic manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Screencast-O-Matic-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
+1. Klicken Sie auf **Subscription (Abonnement)** .
+
+    ![Das Abonnement](./media/screencast-tutorial/tutorial_screencast_sub.png)
+
+1. Klicken Sie im Abschnitt **Access page (Zugriffsseite)** auf **Setup**.
+
+    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_setup.png)
+
+1. Führen Sie unter **Setup Access Page** (Setupzugriffsseite) die folgenden Schritte aus:
+
+1. Geben Sie im Abschnitt **Access URL (Zugriffs-URL)** Ihren Instanznamen in das angegebene Textfeld ein.
+
+    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_access.png)
+
+1. Wählen Sie **Require Domain User (Domänenbenutzer erfordern)** im Abschnitt **SAML User Restriction (optional) (SAML-Benutzereinschränkung (optional))** aus.
+
+1. Klicken Sie unter **Upload IDP Metadata XML File (IDP-Metadaten-XML-Datei hochladen)** auf **Choose File (Datei auswählen)** , um die Metadaten hochzuladen, die Sie im Azure-Portal heruntergeladen haben.
+
+1. Klicken Sie auf **OK**.
+
+    ![Der Zugriff](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-screencast-o-matic-test-user"></a>Erstellen eines Screencast-O-Matic-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Screencast-O-Matic erstellt. Screencast-O-Matic unterstützt Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Screencast-O-Matic vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das  [Screencast-O-Matic-Clientsupportteam](mailto:support@screencast-o-matic.com).
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Screencast-O-Matic erstellt. Screencast-O-Matic unterstützt Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Screencast-O-Matic vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Screencast-O-Matic-Client-Supportteam ](mailto:support@screencast-o-matic.com) in Verbindung.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Screencast-O-Matic“ klicken, sollten Sie automatisch bei der Screencast-O-Matic-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Screencast-O-Matic mit Azure AD ausprobieren](https://aad.portal.azure.com/)

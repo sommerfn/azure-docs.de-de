@@ -1,6 +1,6 @@
 ---
 title: Anzeigen von Ergebnissen des Azure IoT Hub-Nachrichtenroutings (.NET) | Microsoft-Dokumentation
-description: Anzeigen von Ergebnissen des Azure IoT Hub-Nachrichtenroutings
+description: Nachdem Sie im Teil 1 des Tutorials alle Ressourcen eingerichtet haben, fügen Sie die Möglichkeit hinzu, Nachrichten an Azure Stream Analytics weiterzuleiten und die Ergebnisse in Power BI anzuzeigen.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f34799bbf2142ba07c29915deae5b5dbe590c9fc
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330529"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890388"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
 
@@ -26,11 +26,11 @@ ms.locfileid: "67330529"
 
 Dies sind die Regeln für das Nachrichtenrouting. Sie wurden in Teil 1 dieses Tutorials eingerichtet, und im zweiten Teil erfahren Sie, wie sie funktionieren.
 
-|value |Ergebnis|
+|Wert |Ergebnis|
 |------|------|
 |level="storage" |Schreibvorgang in Azure Storage.|
 |level="critical" |Schreibvorgang in eine Service Bus-Warteschlange. Eine Logik-App ruft die Nachricht aus der Warteschlange ab und sendet sie mithilfe von Office 365.|
-|die Standardeinstellung |Anzeigen dieser Daten mithilfe von Power BI.|
+|default |Anzeigen dieser Daten mithilfe von Power BI.|
 
 Sie erstellen jetzt die Ressourcen, an die die Nachrichten geleitet werden, führen eine App zum Senden der Nachrichten an den Hub aus, und erleben das Routing in Aktion.
 
@@ -52,9 +52,11 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
 
    ![Bildschirm „Logik-App erstellen“](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   Klicken Sie auf **Erstellen**.
+   Klicken Sie auf **Erstellen**. Das Bereitstellen der App kann einige Minuten in Anspruch nehmen.
 
-2. Wechseln Sie jetzt zur Logik-App. Am einfachsten wechseln Sie zur Logik-App, indem Sie die Option **Ressourcengruppen** und Ihre Ressourcengruppe (in diesem Tutorial wird **ContosoResources** verwendet) und dann in der Liste mit den Ressourcen die Logik-App auswählen. Die Seite „Designer für Logik-Apps“ wird angezeigt (möglicherweise müssen Sie nach rechts scrollen, um die ganze Seite zu sehen). Scrollen Sie auf der Seite „Designer für Logik-Apps“ nach unten, bis die Kachel **Leere Logik-App +** angezeigt wird. Wählen Sie sie aus. Die Standardregisterkarte ist „Für Sie“. Wählen Sie die Option **Alle**, wenn dieser Bereich leer ist, um alle verfügbaren Connectors und Trigger anzuzeigen.
+2. Wechseln Sie jetzt zur Logik-App. Am einfachsten wechseln Sie zur Logik-App, indem Sie die Option **Ressourcengruppen** und Ihre Ressourcengruppe (in diesem Tutorial wird **ContosoResources** verwendet) und dann in der Liste mit den Ressourcen die Logik-App auswählen. 
+
+    Die Seite „Designer für Logik-Apps“ wird angezeigt (möglicherweise müssen Sie nach rechts scrollen, um die ganze Seite zu sehen). Scrollen Sie auf der Seite „Designer für Logik-Apps“ nach unten, bis die Kachel **Leere Logik-App +** angezeigt wird. Wählen Sie sie aus. Die Standardregisterkarte ist „Für Sie“. Wählen Sie die Option **Alle**, wenn dieser Bereich leer ist, um alle verfügbaren Connectors und Trigger anzuzeigen.
 
 3. Wählen in der Liste mit den Connectors den Eintrag **Service Bus** aus.
 
@@ -76,7 +78,7 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
 
    ![Warteschlangenoptionen](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. Richten jetzt die Aktion ein, die eine E-Mail sendet, wenn in der Warteschlange eine Nachricht empfangen wird. Wählen Sie im Designer für Logik-Apps die Option **+ Neuer Schritt**, um einen Schritt hinzuzufügen, und dann **Alle**, um alle verfügbaren Optionen anzuzeigen. Suchen Sie im Bereich **Aktion auswählen** nach **Office 365 Outlook**, und wählen Sie diese Option aus. Wählen Sie im Bildschirm mit den Triggern die Option **E-Mail senden/Office 365 Outlook** aus.  
+7. Richten jetzt die Aktion ein, die eine E-Mail sendet, wenn in der Warteschlange eine Nachricht empfangen wird. Wählen Sie im Designer für Logik-Apps die Option **+ Neuer Schritt**, um einen Schritt hinzuzufügen, und dann **Alle**, um alle verfügbaren Optionen anzuzeigen. Suchen Sie im Bereich **Aktion auswählen** nach **Office 365 Outlook**, und wählen Sie diese Option aus. Wählen Sie im Bildschirm für Aktionen die Option **E-Mail senden/Office 365 Outlook** aus.  
 
    ![Office 365-Optionen](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
@@ -108,13 +110,15 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
 
    ![Erstellen des Stream Analytics-Auftrags](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
-3. Klicken Sie auf **Erstellen**, um den Auftrag zu erstellen. Wählen Sie **Ressourcengruppen**, um wieder zum Auftrag zu gelangen. In diesem Tutorial wird **ContosoResources** verwendet. Wählen Sie die Ressourcengruppe und anschließend in der Ressourcenliste den Stream Analytics-Auftrag aus.
+3. Klicken Sie auf **Erstellen**, um den Auftrag zu erstellen. Die Bereitstellung kann einige Minuten dauern.
+
+    Wählen Sie **Ressourcengruppen**, um wieder zum Auftrag zu gelangen. In diesem Tutorial wird **ContosoResources** verwendet. Wählen Sie die Ressourcengruppe und anschließend in der Ressourcenliste den Stream Analytics-Auftrag aus.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Hinzufügen einer Eingabe zum Stream Analytics-Auftrag
 
-4. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** aus.
+1. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** aus.
 
-5. Wählen Sie im Bereich **Eingaben** die Option **Datenstromeingabe hinzufügen** und dann „IoT Hub“ aus. Füllen Sie im daraufhin angezeigten Bildschirm die folgenden Felder aus:
+2. Wählen Sie im Bereich **Eingaben** die Option **Datenstromeingabe hinzufügen** und dann „IoT Hub“ aus. Füllen Sie im daraufhin angezeigten Bildschirm die folgenden Felder aus:
 
    **Eingabealias**: In diesem Tutorial wird **contosoinputs** verwendet.
 
@@ -128,13 +132,13 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
 
    **Name der SAS-Richtlinie**: Wählen Sie **Dienst** aus. Das Portal füllt den Schlüssel für die Richtlinie für den gemeinsamen Zugriff für Sie aus.
 
-   **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie in Schritt 1 dieses Tutorials eingerichtet haben. In diesem Tutorial wird **contosoconsumers** verwendet.
+   **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie in Teil 1 dieses Tutorials eingerichtet haben. In diesem Tutorial wird **contosoconsumers** verwendet.
    
    Übernehmen Sie in den restlichen Feldern die Standardwerte. 
 
    ![Einrichten der Eingaben für den Stream Analytics-Auftrag](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Speichern** aus.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Hinzufügen einer Ausgabe zum Stream Analytics-Auftrag
 
@@ -178,20 +182,20 @@ Um den Power BI-Bericht einzurichten, benötigen Sie Daten. Richten Sie Power BI
 
 ## <a name="run-simulated-device-app"></a>Ausführen der App zur Simulation von Geräten
 
-In Teil 1 dieses Tutorials haben Sie ein Gerät für eine Simulation mit einem IoT-Gerät eingerichtet. In diesem Abschnitt laden Sie die .NET-Konsolen-App herunter, mit der ein Gerät zum Senden von Gerät-zu-Cloud-Nachrichten an einen IoT-Hub simuliert wird. Hierbei wird vorausgesetzt, dass Sie die App und die Ressourcen nicht bereits in Teil 1 dieses Tutorials heruntergeladen haben.
+In Teil 1 dieses Tutorials haben Sie ein Gerät für eine Simulation mit einem IoT-Gerät eingerichtet. In diesem Abschnitt laden Sie die .NET-Konsolen-App herunter, mit der ein Gerät zum Senden von Gerät-zu-Cloud-Nachrichten an einen IoT-Hub simuliert wird (mit der Annahme, dass Sie die App und die Ressourcen nicht bereits in Teil 1 heruntergeladen haben).
 
 Mit dieser Anwendung werden Nachrichten unter Verwendung aller unterschiedlichen Nachrichtenroutingmethoden gesendet. Der Download beinhaltet auch einen Ordner, der die vollständige Azure Resource Manager-Vorlage und die Parameterdatei sowie die Azure CLI- und PowerShell-Skripts enthält.
 
-Wenn Sie die Dateien in Schritt 1 dieses Tutorials nicht aus dem Repository heruntergeladen haben, können Sie den Download jetzt unter [IoT Device Simulation](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) (IoT-Gerätesimulation) durchführen. Bei Auswahl dieses Links wird ein Repository mit mehreren Anwendungen heruntergeladen. Die von Ihnen benötigte Lösung ist „iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln“. 
+Wenn Sie die Dateien in Teil 1 dieses Tutorials nicht aus dem Repository heruntergeladen haben, können Sie den Download jetzt unter [IoT Device Simulation](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) (IoT-Gerätesimulation) durchführen. Bei Auswahl dieses Links wird ein Repository mit mehreren Anwendungen heruntergeladen. Die von Ihnen benötigte Lösung ist „iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln“. 
 
-Doppelklicken Sie auf die Lösungsdatei (IoT_SimulatedDevice.sln), um den Code in Visual Studio zu öffnen. Öffnen Sie anschließend „Program.cs“. Ersetzen Sie `{iot hub hostname}` durch den IoT Hub-Hostnamen. Das Format des IoT Hub-Hostnamens ist **{iot-hub-name}.azure-devices.net**. Für dieses Tutorial lautet der Hubhostname **ContosoTestHub.azure-devices.net**. Ersetzen Sie jetzt `{device key}` durch den Geräteschlüssel, den Sie zuvor beim Einrichten des simulierten Geräts gespeichert haben. 
+Doppelklicken Sie auf die Lösungsdatei (IoT_SimulatedDevice.sln), um den Code in Visual Studio zu öffnen. Öffnen Sie anschließend „Program.cs“. Ersetzen Sie `{your hub name}` durch den IoT Hub-Hostnamen. Das Format des IoT Hub-Hostnamens ist **{iot-hub-name}.azure-devices.net**. Für dieses Tutorial lautet der Hubhostname **ContosoTestHub.azure-devices.net**. Ersetzen Sie jetzt `{your device key}` durch den Geräteschlüssel, den Sie zuvor beim Einrichten des simulierten Geräts gespeichert haben. 
 
    ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHub.azure-devices.net";
+        static string s_myDeviceId = "Contoso-Test-Device";
+        static string s_iotHubUri = "ContosoTestHub.azure-devices.net";
         // This is the primary key for the device. This is in the portal. 
         // Find your IoT hub in the portal > IoT devices > select your device > copy the key. 
-        static string deviceKey = "{your device key here}";
+        static string s_deviceKey = "{your device key}";
    ```
 
 ## <a name="run-and-test"></a>Ausführen und Testen
@@ -212,7 +216,9 @@ Wenn alles ordnungsgemäß eingerichtet wurde, sollten Sie jetzt die folgenden E
    * Die Logik-App, die die Nachricht aus der Service Bus-Warteschlange abruft, funktioniert ordnungsgemäß.
    * Der Logik-App-Connector zu Outlook funktioniert ordnungsgemäß. 
 
-2. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressourcengruppen** und dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. Wählen Sie das Speicherkonto, die Option **Blobs** und dann den Container aus. In diesem Tutorial wird **contosoresults** verwendet. Es wird ein Ordner angezeigt, und Sie können ein Drilldown durch die Verzeichnisse ausführen, bis Dateien angezeigt werden. Öffnen Sie eine dieser Dateien. Sie enthalten die Einträge, die an das Speicherkonto weitergeleitet wurden. 
+2. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressourcengruppen** und dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. 
+
+    Wählen Sie das Speicherkonto aus, wählen Sie **Container** aus, und wählen Sie dann den Container aus. In diesem Tutorial wird **contosoresults** verwendet. Es wird ein Ordner angezeigt, und Sie können ein Drilldown durch die Verzeichnisse ausführen, bis Dateien angezeigt werden. Öffnen Sie eine dieser Dateien. Sie enthalten die Einträge, die an das Speicherkonto weitergeleitet wurden. 
 
    ![Ergebnisdateien im Speicher](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -250,11 +256,11 @@ Richten Sie die Power BI-Visualisierung ein, während die Anwendung weiter ausge
 
    Ein Liniendiagramm wird erstellt. Die x-Achse zeigt Datum und Uhrzeit in der Zeitzone UTC. Die y-Achse zeigt vom Sensor empfangene Temperatur an.
 
-6. Erstellen Sie ein weiteres Liniendiagramm, um die Luftfeuchtigkeit in Echtzeit im Zeitverlauf anzuzeigen. Um das zweite Diagramm zu erstellen, gehen Sie wie oben beschrieben vor. Platzieren Sie **EventEnqueuedUtcTime** auf der X-Achse und **humidity** auf der Y-Achse.
+6. Erstellen Sie ein weiteres Liniendiagramm, um die Luftfeuchtigkeit in Echtzeit im Zeitverlauf anzuzeigen. Um das zweite Diagramm zu erstellen, gehen Sie auf gleiche Weise vor wie für das erste Diagramm, wobei Sie **EventEnqueuedUtcTime** auf der X-Achse (**Achse**) und **humidity** auf der Y-Achse (**Werte**) platzieren.
 
    ![Endgültiger Power BI-Bericht mit den beiden Diagrammen](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
-7. Wählen Sie **Speichern**, um den Bericht zu speichern.
+7. Wählen Sie **Speichern** aus, um den Bericht zu speichern, und geben Sie einen Namen für den Bericht ein, wenn Sie dazu aufgefordert werden.
 
 In beiden Diagrammen sollten Daten angezeigt werden. Dieses Ergebnis bedeutet, dass die folgenden Anweisungen wahr (true) sind:
 
@@ -266,7 +272,7 @@ Sie können die Diagramme aktualisieren, um die neuesten Daten anzuzeigen. Wähl
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 
-Löschen Sie die Ressourcengruppe, falls Sie alle Ressourcen entfernen möchten, die Sie in den beiden Teilen dieses Tutorials erstellt haben. Diese Aktion löscht alle in der Gruppe enthaltenen Ressourcen. In diesem Fall werden folgende Elemente entfernt: die IoT Hub-Instanz, der Service Bus-Namespace und die Service Bus-Warteschlange, die Logik-App, das Speicherkonto und die Ressourcengruppe selbst. 
+Löschen Sie die Ressourcengruppe, falls Sie alle Azure-Ressourcen entfernen möchten, die Sie in den beiden Teilen dieses Tutorials erstellt haben. Diese Aktion löscht alle in der Gruppe enthaltenen Ressourcen. In diesem Fall werden folgende Elemente entfernt: die IoT Hub-Instanz, der Service Bus-Namespace und die Service Bus-Warteschlange, die Logik-App, das Speicherkonto und die Ressourcengruppe selbst. Sie können auch die Power BI-Ressourcen entfernen und die während des Tutorials gesendeten E-Mails löschen.
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Bereinigen von Ressourcen in der Power BI-Visualisierung
 
@@ -287,6 +293,10 @@ Verwenden Sie zum Entfernen der Ressourcengruppe den Befehl [Remove-AzResourceGr
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
 ```
+
+### <a name="clean-up-test-emails"></a>Löschen der Test-E-Mails
+
+Sie können auch die E-Mails in Ihrem Posteingang löschen, die über die Logik-App generiert wurden, während die Geräteanwendung ausgeführt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

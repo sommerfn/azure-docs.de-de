@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 467bf7fe26df2f826d6d44d42a9e30b98795232f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754204"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043930"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderieren von Text über die API-Konsole
 
@@ -61,9 +61,6 @@ Wählen Sie für **Content-Type** den Inhaltstyp aus, den Sie überprüfen möch
 ### <a name="sample-text-to-scan"></a>Beispieltext für Scan
 
 Geben Sie im Feld **Anforderungstext** Text ein. Das folgende Beispiel enthält im Text einen absichtlichen Rechtschreibfehler.
-
-> [!NOTE]
-> Die ungültige US-Sozialversicherungsnummer im folgenden Beispieltext ist beabsichtigt. Hier soll das Format der Beispieleingabe und -ausgabe vermittelt werden.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -176,4 +173,4 @@ Eine ausführliche Erläuterung aller Abschnitte in der JSON-Antwort finden Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API in Ihrem Code, oder beginnen Sie damit, den [Schnellstart: Analysieren von Text auf anstößige Inhalte in C#](text-moderation-quickstart-dotnet.md) in Ihre Anwendung zu integrieren.
+Verwenden Sie die REST-API im Code, oder befolgen Sie die Anweisungen im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) für die Integration mit Ihrer Anwendung.

@@ -1,35 +1,28 @@
 ---
-title: Verwenden von Näherungsplatzierungsgruppen für Windows-VMS | Microsoft-Dokumentation
+title: Verwenden von Näherungsplatzierungsgruppen für Windows-VMs
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Windows-VMs in Azure.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088835"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171210"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>Vorschau: Bereitstellen von VMs für Näherungsplatzierungsgruppen mit PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit PowerShell
 
 
-Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](co-location.md#preview-proximity-placement-groups) bereitstellen.
+Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](co-location.md#proximity-placement-groups) bereitstellen.
 
 Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Computeressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
-
-> [!IMPORTANT]
-> Näherungsplatzierungsgruppen sind zurzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> Näherungsplatzierungsgruppen sind in der Vorschauversion in den folgenden Regionen nicht verfügbar: **Japan, Osten**, **Australien, Osten** und **Indien, Mitte**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Erstellen einer Näherungsplatzierungsgruppe

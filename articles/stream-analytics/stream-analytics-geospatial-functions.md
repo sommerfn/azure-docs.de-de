@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dfbe7e607395006f9bd7da0be0d5673353e2801f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620929"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162595"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Einführung in Stream Analytics-Geofunktionen
 
@@ -111,7 +111,7 @@ FROM input
 Weitere Informationen finden Sie in der Referenz zu [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon).
 
 
-## <a name="stdistance"></a>ST_DISTANCE
+## <a name="st_distance"></a>ST_DISTANCE
 Die `ST_DISTANCE`-Funktion gibt den Abstand zwischen zwei Punkten in Metern zurück. 
 
 Die folgende Abfrage verwendet `ST_DISTANCE` zum Generieren eines Ereignisses, wenn sich eine Tankstelle näher als 10 km vom Auto befindet.
@@ -124,7 +124,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 
 Weitere Informationen finden Sie in der Referenz zu [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance).
 
-## <a name="stoverlaps"></a>ST_OVERLAPS
+## <a name="st_overlaps"></a>ST_OVERLAPS
 Die `ST_OVERLAPS`-Funktion vergleicht zwei Polygone. Wenn sich die Polygone überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die Polygone nicht überschneiden. 
 
 Die folgende Abfrage verwendet `ST_OVERLAPS` zum Generieren eines Ereignisses, wenn ein Gebäude sich in einer Zone mit Überflutungsrisiko befindet.
@@ -145,7 +145,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 
 Weitere Informationen finden Sie in der Referenz zu [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps).
 
-## <a name="stintersects"></a>ST_INTERSECTS
+## <a name="st_intersects"></a>ST_INTERSECTS
 Die `ST_INTERSECTS`-Funktion vergleicht zwei LineStrings. Wenn sich die LineStrings überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die LineStrings nicht überschneiden.
 
 Die folgende Beispielabfrage verwendet `ST_INTERSECTS`, um zu ermitteln, ob eine asphaltierte Straße eine unbefestigte Straße kreuzt.
@@ -160,8 +160,8 @@ FROM input
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{“type”:”LineString”, “coordinates”: [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{“type”:”LineString”, “coordinates”: [ [0.0, 10.0], [0.0, 0.0], [0.0, -10.0] ]}|  
-|{“type”:”LineString”, “coordinates”: [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{“type”:”LineString”, “coordinates”: [ [-10.0, 10.0], [0.0, 10.0], [10.0, 10.0] ]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [0.0, 10.0], [0.0, 0.0], [0.0, -10.0] ]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [-10.0, 10.0], [0.0, 10.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>Ausgabebeispiel  
 
@@ -171,7 +171,7 @@ FROM input
 
 Weitere Informationen finden Sie in der Referenz zu [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects).
 
-## <a name="stwithin"></a>ST_WITHIN
+## <a name="st_within"></a>ST_WITHIN
 Die `ST_WITHIN`-Funktion ermittelt, ob sich ein Punkt oder Polygon innerhalb eines Polygons befindet. Wenn das Polygon den Punkt oder das Polygon enthält, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich der Punkt oder das Polygon nicht im deklarierten Polygon befindet.
 
 Die folgende Beispielabfrage verwendet `ST_WITHIN`, um zu ermitteln, ob sich der Zielpunkt für eine Lieferung im Polygon des angegebenen Lagers befindet.
@@ -186,8 +186,8 @@ FROM input
   
 |deliveryDestination|warehouse|  
 |-------------------------|---------------|  
-|{“type”:”Point”, “coordinates”: [76.6, 10.1]}|{“type”:”Polygon”, “coordinates”: [ [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0] ]}|  
-|{“type”:”Point”, “coordinates”: [15.0, 15.0]}|{“type”:”Polygon”, “coordinates”: [ [10.0, 10.0], [20.0, 10.0], [20.0, 20.0], [10.0, 20.0], [10.0, 10.0] ]}|  
+|{"type":"Point", "coordinates": [76.6, 10.1]}|{"type":"Polygon", "coordinates": [ [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0] ]}|  
+|{"type":"Point", "coordinates": [15.0, 15.0]}|{"type":"Polygon", "coordinates": [ [10.0, 10.0], [20.0, 10.0], [20.0, 20.0], [10.0, 20.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>Ausgabebeispiel  
 

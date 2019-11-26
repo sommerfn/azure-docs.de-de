@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090428"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Linux
 
@@ -80,11 +80,34 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
    ![Screenshot des Paket-Explorers](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Öffnen Sie die Datei „pom.xml“, und bearbeiten Sie diese.
+
+    Erstellen Sie am Ende der Datei vor dem schließenden Tag `</project>` ein `repositories`- und ein `dependencies`-Element, wie hier zu sehen, und stellen Sie sicher, dass der Wert von `version` Ihrer aktuellen Version entspricht:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. Klicken Sie im **Paket-Explorer** mit der rechten Maustaste auf Ihr Projekt. Wählen Sie **Eigenschaften** und dann **Run/Debug Settings** > **New…** > **Java Application** (Ausführungs-/Debugeinstellungen > Neu > Java-Anwendung). 
 
 1. Das Fenster **Konfiguration bearbeiten** wird angezeigt. Geben Sie im Feld **Name** das Wort **Main** ein, und verwenden Sie **Suchen** für die **Main-Klasse**, um nach **com.microsoft.cognitiveservices.speech.samples.FunctionsList** zu suchen und diese Option auszuwählen.
 
    ![Screenshot: Bearbeiten der Startkonfiguration](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
+
+1. Kopieren Sie die binären Audiodateien für Ihre Zielarchitektur entweder aus **Linux-arm** oder **Linux-x64** in den Speicherort des Java-Projekts, z. B. **/home/wcaltest/JRE-Sample-Release**.
 
 1. Wählen Sie ebenfalls im Fenster **Konfiguration bearbeiten** die Seite **Umgebung** und dann **Neu**. Das Fenster **New Environment Variable** (Neue Umgebungsvariable) wird angezeigt. Geben Sie im Feld **Name** den Namen **LD_LIBRARY_PATH** und im Feld **Wert** den Ordner mit den SO-Dateien ein, z. B. **/home/wcaltest/JRE-Sample-Release**.
 
@@ -118,15 +141,14 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
    > [!TIP]
    > Sie können auch [ein benutzerdefiniertes Schlüsselwort erstellen](speech-devices-sdk-create-kws.md).
 
-    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `FunctionsList.java` und kopieren das Paket mit dem Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `kws-machine.zip` verwenden möchten:
+    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgende Zeile in `FunctionsList.java`, und kopieren Sie das Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `machine.zip` verwenden möchten:
 
-   * Kopieren Sie das Schlüsselwortpaket in den Projektordner **target/classes**.
+   * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes**.
 
-   * Aktualisieren Sie die Datei `FunctionsList.java` mit dem Schlüsselwort und dem Paketnamen:
+   * Aktualisieren Sie `FunctionsList.java` mit dem Schlüsselwortnamen:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Ausführen der Beispielanwendung aus Eclipse

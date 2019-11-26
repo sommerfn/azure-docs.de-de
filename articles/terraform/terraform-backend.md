@@ -1,32 +1,31 @@
 ---
-title: Verwenden von Azure Storage als Terraform-Back-End
+title: 'Tutorial: Speichern des Terraform-Zustands in Azure Storage'
 description: Eine Einführung in das Speichern des Terraform-Status in Azure Storage.
-services: terraform
+ms.service: terraform
 author: tomarchermsft
-ms.service: azure
-ms.topic: article
-ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: tutorial
+ms.date: 11/07/2019
+ms.openlocfilehash: 374936c39221d79d59fc8a54dc2bc4a49800240d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169948"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078559"
 ---
-# <a name="store-terraform-state-in-azure-storage"></a>Speichern des Terraform-Status in Azure Storage
+# <a name="tutorial-store-terraform-state-in-azure-storage"></a>Tutorial: Speichern des Terraform-Status in Azure Storage
 
-Der Terraform-Status wird verwendet, um bereitgestellte Ressourcen auf Terraform-Konfigurationen abzustimmen. Der Status gibt an, welche Azure-Ressourcen von Terraform hinzugefügt, aktualisiert oder gelöscht werden sollen. Standardmäßig wird der Terraform-Status lokal gespeichert, wenn *Terraform apply* ausgeführt wird. Diese Konfiguration ist aus diversen Gründen nicht optimal:
+Der Terraform-Status wird verwendet, um bereitgestellte Ressourcen auf Terraform-Konfigurationen abzustimmen. Anhand des Zustands kann Terraform bestimmen, welche Azure-Ressourcen hinzugefügt, aktualisiert oder gelöscht werden sollen. Standardmäßig wird der Terraform-Zustand lokal gespeichert, wenn Sie den Befehl `terraform apply` ausführen. Diese Konfiguration ist aus folgenden Gründen nicht ideal:
 
-- Der lokale Status funktioniert nicht in einem Team oder in einer Umgebung für die Zusammenarbeit.
-- Der Terraform-Status kann sensible Informationen enthalten.
-- Das lokale Speichern des Benutzerstatus erhöht das Risiko einer versehentlichen Löschung.
+- Der lokale Zustand eignet sich nicht besonders für eine team- oder zusammenarbeitsorientierte Umgebung.
+- Der Terraform-Zustand kann sensible Informationen enthalten.
+- Das lokale Speichern des Zustands erhöht das Risiko einer versehentlichen Löschung.
 
-Terraform basiert auf dem Konzept eines Status-Back-Ends, der den Remotespeicher für den Terraform-Status darstellt. Wenn Sie ein Status-Back-End verwenden, wird die Statusdatei in einem Datenspeicher wie Azure Storage gespeichert. In diesem Dokument wird beschrieben, wie Azure Storage als Terraform-Status-Back-End konfiguriert und verwendet werden kann.
+Terraform unterstützt die Speicherung des Zustands in einem Remotespeicher. Ein solches unterstütztes Back-End ist Azure Storage. In diesem Dokument erfahren Sie, wie Sie Azure Storage zu diesem Zweck konfigurieren und verwenden.
 
 ## <a name="configure-storage-account"></a>Konfigurieren des Speicherkontos
 
-Bevor Sie Azure Storage als Back-End verwenden können, muss ein Speicherkonto erstellt werden. Das Speicherkonto kann mit dem Azure-Portal, PowerShell, der Azure CLI oder Terraform selbst erstellt werden. Verwenden Sie das folgende Beispiel, um das Speicherkonto mit der Azure CLI zu konfigurieren.
+Um Azure Storage als Back-End verwenden zu können, müssen Sie zunächst ein Speicherkonto erstellen. Das Speicherkonto kann mit dem Azure-Portal, PowerShell, der Azure CLI oder Terraform selbst erstellt werden. Verwenden Sie das folgende Beispiel, um das Speicherkonto mit der Azure CLI zu konfigurieren.
 
 ```azurecli
 #!/bin/bash
@@ -52,18 +51,18 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
-Notieren Sie sich den Speicherkontonamen, den Containernamen und den Speicherzugriffsschlüssel. Diese Werte sind für die Konfiguration des Remotestatus erforderlich.
+Notieren Sie sich den Speicherkontonamen, den Containernamen und den Speicherzugriffsschlüssel. Diese Werte werden beim Konfigurieren des Remotezustands benötigt.
 
-## <a name="configure-state-backend"></a>Konfigurieren eines Status-Back-Ends
+## <a name="configure-state-back-end"></a>Konfigurieren des Zustands-Back-Ends
 
-Das Terraform-Status-Back-End wird bei der Ausführung von *Terraform init* konfiguriert. Um das Status-Back-End konfigurieren zu können, sind folgende Daten erforderlich.
+Das Terraform-Zustands-Back-End wird konfiguriert, wenn Sie den Befehl `terraform init` ausführen. Zum Konfigurieren des Zustands-Back-Ends benötigen Sie folgende Daten:
 
-- storage_account_name: Der Name des Azure Storage-Kontos.
-- container_name: Der Name des Blobcontainers.
-- key: Der Name der Statusspeicherdatei, die erstellt werden soll.
-- access_key: Der Speicherzugriffsschlüssel.
+- **storage_account_name**: Der Name des Azure Storage-Kontos.
+- **container_name**: Der Name des Blobcontainers.
+- **key**: Der Name der Zustandsspeicherdatei, die erstellt werden soll.
+- **access_key**: Der Speicherzugriffsschlüssel.
 
-Jeder dieser Werte kann in der Terraform-Konfigurationsdatei oder in der Befehlszeile angegeben werden, allerdings sollte eine Umgebungsvariable für den `access_key` verwendet werden. Durch die Verwendung einer Umgebungsvariablen wird verhindert, dass der Schlüssel auf den Datenträger geschrieben wird.
+Jeder dieser Werte kann in der Terraform-Konfigurationsdatei oder über die Befehlszeile angegeben werden. Wir empfehlen, für den Wert `access_key` eine Umgebungsvariable zu verwenden. Durch die Verwendung einer Umgebungsvariablen wird verhindert, dass der Schlüssel auf den Datenträger geschrieben wird.
 
 Erstellen Sie eine Umgebungsvariable namens `ARM_ACCESS_KEY` mit dem Wert des Azure Storage-Zugriffsschlüssels.
 
@@ -71,15 +70,19 @@ Erstellen Sie eine Umgebungsvariable namens `ARM_ACCESS_KEY` mit dem Wert des Az
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Um den Zugriffsschlüssel des Azure Storage-Kontos noch stärker zu schützen, speichern Sie ihn in Azure Key Vault. Die Umgebungsvariable kann dann mit einem Befehl ähnlich wie dem Folgenden festgelegt werden. Weitere Informationen zu Azure Key Vault finden Sie in der [Dokumentation zu Azure Key Vault][azure-key-vault].
+Um den Zugriffsschlüssel des Azure Storage-Kontos noch stärker zu schützen, speichern Sie ihn in Azure Key Vault. Die Umgebungsvariable kann dann mit einem Befehl wie dem Folgenden festgelegt werden. Weitere Informationen zu Azure Key Vault finden Sie in der [Dokumentation zu Azure Key Vault](../key-vault/quick-create-cli.md).
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-Um Terraform für die Verwendung des Back-Ends zu konfigurieren, schließen Sie eine *backend*-Konfiguration vom Typ *azurerm* in die Terraform-Konfiguration ein. Fügen Sie die Werte von *storage_account_name*, *container_name* und *key* zum Konfigurationsblock hinzu.
+Um Terraform für die Verwendung des Back-Ends zu konfigurieren, müssen folgende Schritte ausgeführt werden:
+- Fügen Sie einen Konfigurationsblock namens `backend` mit dem Typ `azurerm` hinzu.
+- Fügen Sie dem Konfigurationsblock einen Wert vom Typ `storage_account_name` hinzu.
+- Fügen Sie dem Konfigurationsblock einen Wert vom Typ `container_name` hinzu.
+- Fügen Sie dem Konfigurationsblock einen Wert vom Typ `key` hinzu.
 
-Das folgende Beispiel konfiguriert ein Terraform-Back-End und erstellt eine Azure-Ressourcengruppe. Ersetzen Sie die Werte durch Werte aus Ihrer Umgebung.
+Im folgenden Beispiel wird ein Terraform-Back-End konfiguriert und eine Azure-Ressourcengruppe erstellt.
 
 ```hcl
 terraform {
@@ -96,31 +99,30 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-Initialisieren Sie nun die Konfiguration mit *Terraform init*, und führen Sie die Konfiguration mit *Terraform apply* aus. Wenn Sie fertig sind, finden Sie die Statusdatei im Azure Storage-Blob.
+Gehen Sie zum Initialisieren der Konfiguration wie folgt vor:
+
+1. Führen Sie den Befehl `terraform init` aus.
+1. Führen Sie den Befehl `terraform apply` aus.
+
+Nun befindet sich die Zustandsdatei im Azure Storage-Blob.
 
 ## <a name="state-locking"></a>Statussperre
 
-Wenn Sie ein Azure Storage-Blob für Statusspeicher verwenden, wird der Blob vor jedem Vorgang, bei dem Zustand geschrieben wird, automatisch gesperrt. Diese Konfiguration verhindert mehrere gleichzeitige Statusvorgänge, die zu Beschädigungen führen können. Weitere Informationen finden Sie unter [State Locking][terraform-state-lock] (Sperren des Status) in der Terraform-Dokumentation.
+Azure Storage-Blobs werden vor Zustandsschreibvorgängen automatisch gesperrt. Diese Konfiguration verhindert die gleichzeitige Ausführung mehrerer Zustandsvorgänge, da dies zu Beschädigungen führen kann. 
 
-Die Sperre kann bei der Untersuchung des Blobs über das Azure-Portal oder andere Azure-Verwaltungstools angezeigt werden.
+Weitere Informationen finden Sie in der Terraform-Dokumentation unter [Zustandssperre](https://www.terraform.io/docs/state/locking.html).
+
+Die Sperre wird angezeigt, wenn Sie das Blob über das Azure-Portal oder in anderen Azure-Verwaltungstools untersuchen.
 
 ![Azure-Blob mit Sperre](media/terraform-backend/lock.png)
 
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Standardmäßig werden in einem Azure-Blob gespeicherte Daten verschlüsselt, bevor sie in der Speicherinfrastruktur gespeichert werden. Wenn Terraform den Status benötigt, wird dieser über das Back-End abgerufen und in Ihrem Entwicklungssystem im Arbeitsspeicher gespeichert. In dieser Konfiguration wird der Status in Azure Storage geschützt und nicht auf Ihren lokalen Datenträger geschrieben.
+In einem Azure-Blob gespeicherte Daten werden vor dem Speichern verschlüsselt. Bei Bedarf ruft Terraform den Zustand vom Back-End ab und speichert ihn im lokalen Arbeitsspeicher. Bei Verwendung dieses Musters wird der Zustand nie auf Ihren lokalen Datenträger geschrieben.
 
-Weitere Informationen zur Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Dienstverschlüsselung für ruhende Daten][azure-storage-encryption].
+Weitere Informationen zur Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Terraform-Back-End-Konfiguration in der [Dokumentation zum Terraform-Back-End][terraform-backend].
-
-<!-- LINKS - internal -->
-[azure-key-vault]: ../key-vault/quick-create-cli.md
-[azure-storage-encryption]: ../storage/common/storage-service-encryption.md
-
-<!-- LINKS - external -->
-[terraform-azurerm]: https://www.terraform.io/docs/backends/types/azurerm.html
-[terraform-backend]: https://www.terraform.io/docs/backends/
-[terraform-state-lock]: https://www.terraform.io/docs/state/locking.html
+> [!div class="nextstepaction"] 
+> [Weitere Informationen zur Verwendung von Terraform in Azure](/azure/terraform)

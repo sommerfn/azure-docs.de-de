@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ecec18945b53711094307162c4aeab2e0580bd5e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063853"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099703"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -30,6 +30,8 @@ Im folgenden Diagramm ist die Beziehung zwischen den Elementen dargestellt:
 ## <a name="predicates"></a>Prädikate
 
 Mit dem Element **Predicate** wird für den Wert eines Anspruchstyps eine grundlegende Überprüfung definiert und `true` oder `false` zurückgegeben. Die Überprüfung wird mit einem angegebenen **Method**-Element und einer Reihe von **Parameter**-Elementen ausgeführt, die für die Methode relevant sind. So können Sie mit einem „Predicate“-Element beispielsweise überprüfen, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt oder ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Das **UserHelpText**-Element stellt eine Fehlermeldung für Benutzer bereit, wenn die Überprüfung einen Fehler ergibt. Der Wert des **UserHelpText**-Elements kann mithilfe der [Sprachanpassung](localization.md) lokalisiert werden.
+
+Das **Predicates**-Element muss direkt nach dem **ClaimsSchema**-Element im [BuildingBlocks](buildingblocks.md)-Element aufgeführt werden.
 
 Das **Predicates**-Element enthält das folgende Element:
 
@@ -111,6 +113,8 @@ Das folgende Beispiel zeigt eine `IsDateRange`-Methode mit den Parametern `Minim
 ## <a name="predicatevalidations"></a>PredicateValidations
 
 Während mit dem „Predicates“-Element die Überprüfung anhand eines Anspruchstyps definiert wird, werden mit dem **PredicateValidations**-Element mehrere „Predicates“-Elemente zu einer Benutzereingabe-Überprüfung gruppiert, die auf einen Anspruchstyp angewendet werden kann. Jedes **PredicateValidation**-Element enthält mehrere **PredicateGroup**-Elemente, die eine Reihe von **PredicateReference**-Elementen enthalten, die auf ein **Predicate**-Element zeigen. Um die Überprüfung zu bestehen, muss der Wert des Anspruchs alle Tests aller „Predicate“-Elemente in allen **PredicateGroup**-Elementen mit ihren **PredicateReference**-Elementen bestehen.
+
+Das **PredicateValidations**-Element muss direkt nach dem **Predicates**-Element im [BuildingBlocks](buildingblocks.md)-Element aufgeführt werden.
 
 ```XML
 <PredicateValidations>
@@ -194,7 +198,7 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
 - **Lowercase** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Kleinbuchstaben enthält.
 - **Uppercase** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Großbuchstaben enthält.
 - **Number** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Ziffern enthält.
-- **Symbol** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort eines der folgenden Symbole enthält: `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort eines von verschiedenen Symbolzeichen enthält.
 - **PIN** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennwort nur Zahlen enthält.
 - **AllowedAADCharacters** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennwort keine ungültigen Zeichen enthält.
 - **DisallowedWhitespace** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennzeichen mit einem Leerzeichen beginnt oder endet.
@@ -233,7 +237,7 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
   <Predicate Id="Symbol" Method="IncludesCharacters">
     <UserHelpText>a symbol</UserHelpText>
     <Parameters>
-      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\:',?/`~"();!</Parameter>
+      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 

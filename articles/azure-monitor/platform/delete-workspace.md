@@ -1,24 +1,18 @@
 ---
 title: Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Log Analytics-Arbeitsbereich löschen, wenn Sie einen Arbeitsbereich in einem persönlichen Abonnement erstellt haben oder Ihr Arbeitsbereichsmodell neu strukturieren.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/28/2019
+ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299284"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044243"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -60,12 +54,14 @@ Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsof
 
 Wenn Sie über Berechtigungen vom Typ „Mitwirkender“ für das Abonnement und die Ressourcengruppe verfügen, denen der Arbeitsbereich vor dem vorläufigen Löschvorgang zugeordnet war, können Sie den Arbeitsbereich einschließlich der zugehörigen Daten, der Konfiguration und der verbundenen Agents während des Zeitraums des vorläufigen Löschens wiederherstellen. Nach dem Zeitraum des vorläufigen Löschens kann der Arbeitsbereich nicht mehr wiederhergestellt werden und wird zum dauerhaften Löschen zugewiesen. Die Namen von gelöschten Arbeitsbereichen werden während des Zeitraums des vorläufigen Löschens beibehalten und können bei dem Versuch, einen neuen Arbeitsbereich zu erstellen, nicht verwendet werden.  
 
-Sie können einen Arbeitsbereich wiederherstellen, indem Sie den Arbeitsbereich mithilfe der Erstellungsmethoden in [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) oder der [REST-API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) neu erstellen. Dabei müssen diese Eigenschaften mit den Details des gelöschten Arbeitsbereichs gefüllt werden. Dazu gehören:
+Sie können einen Arbeitsbereich wiederherstellen, indem Sie ihn mithilfe einer der folgenden Methoden zum Erstellen von Arbeitsbereichen neu erstellen: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) oder [REST-API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate), sofern die folgenden Eigenschaften mit den Details des gelöschten Arbeitsbereichs gefüllt sind:
 
 * Abonnement-ID
 * Ressourcengruppenname
 * Arbeitsbereichname
 * Region
+
+Der Arbeitsbereich und alle zugehörigen Daten sind nach dem Wiederherstellungsvorgang wieder vorhanden. Lösungen und verknüpfte Dienste wurden dauerhaft aus dem Arbeitsbereich entfernt, als dieser gelöscht wurde, und sollten daher neu konfiguriert werden, um den zuvor konfigurierten Zustand des Arbeitsbereichs wiederherzustellen. Einige Daten können nach der Wiederherstellung des Arbeitsbereichs möglicherweise nicht abgefragt werden, ehe die zugehörigen Lösungen neu installiert und deren Schemas dem Arbeitsbereich hinzugefügt wurden.
 
 > [!NOTE]
 > * Die Wiederherstellung eines Arbeitsbereichs wird im [Azure-Portal](https://portal.azure.com) nicht unterstützt. 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300901"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904908"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Bereitstellen eines Verwaltungstools
 
@@ -103,9 +103,14 @@ Führen Sie die folgenden Schritte aus, um das Tool zu starten:
 1. Wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben (z. B. Apr3UX), und navigieren Sie zu der damit verknüpften URL, z. B <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Melden Sie sich mit Ihren Windows Virtual Desktop-Anmeldeinformationen an.
 3. Wählen Sie bei der Aufforderung zum Auswählen einer Mandantengruppe in der Dropdownliste den Eintrag **Default Tenant Group** (Standardmandantengruppe) aus.
+4. Wenn Sie eine Standardmandantengruppe auswählen, sollte rechts in Ihrem Fenster ein Menü angezeigt werden. Suchen Sie in diesem Menü nach dem Namen Ihrer Mandantengruppe, und wählen Sie sie aus.
 
 > [!NOTE]
 > Wenn Sie eine benutzerdefinierte Mandantengruppe festgelegt haben, geben Sie den Namen manuell ein, anstatt eine Auswahl in der Dropdownliste zu treffen.
+
+## <a name="report-issues"></a>Melden von Problemen
+
+Falls Probleme mit dem Verwaltungstool oder mit anderen Windows Virtual Desktop-Tools auftreten, sollten Sie die Anleitung unter [ARM-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md) befolgen, um diese auf GitHub zu melden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

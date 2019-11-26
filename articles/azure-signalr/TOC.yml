@@ -61,6 +61,8 @@
   items:
     - name: Skalieren
       items:
+        - name: Einzelne Instanz
+          href: signalr-howto-scale-signalr.md
         - name: Mehrere Instanzen
           href: signalr-howto-scale-multi-instances.md
     - name: Schützen

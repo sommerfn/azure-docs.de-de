@@ -4,15 +4,15 @@ description: Ein lokales Gateway ist erforderlich, wenn der Analysis Services-Se
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294942"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146853"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 
@@ -50,7 +50,7 @@ Wenn Sie die Installation für eine Azure Analysis Services-Umgebung durchführe
 
 Das Gateway stellt eine ausgehende Verbindung mit dem Azure Service Bus her. Es kommuniziert über ausgehende Ports: TCP 443 (Standard), 5671, 5672, 9350 bis 9354.  Das Gateway benötigt keine eingehenden Ports.
 
-Sie müssen die IP-Adressen für Ihren Datenbereich möglicherweise in die Whitelist Ihrer Firewall aufnehmen. Sie können die [Liste der IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) (in englischer Sprache) herunterladen. Diese Liste wird wöchentlich aktualisiert. Die IP-Adressen in der Liste der IP-Bereiche des Azure-Rechenzentrums sind in der CIDR-Notation angegeben. Weitere Informationen finden Sie unter [Klassenloses domänenübergreifendes Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Möglicherweise müssen Sie die IP-Adressen für Ihre Datenregion für die Firewall einschließen. Sie können die [Liste der IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) (in englischer Sprache) herunterladen. Diese Liste wird wöchentlich aktualisiert. Die IP-Adressen in der Liste der IP-Bereiche des Azure-Rechenzentrums sind in der CIDR-Notation angegeben. Weitere Informationen finden Sie unter [Klassenloses domänenübergreifendes Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gateway verwendet werden.
 

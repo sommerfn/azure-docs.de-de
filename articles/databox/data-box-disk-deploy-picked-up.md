@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128688"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092079"
 ---
 ::: zone target="chromeless"
 
@@ -133,15 +133,29 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 ### <a name="in-singaporetabin-singapore"></a>[In Singapur](#tab/in-singapore)
 
-1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
+1. Drucken Sie das Adressetikett aus, und bringen Sie es am Paket an. Sollte das Etikett beschädigt oder verloren gegangen sein:
     - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an. Vergewissern Sie sich, dass das Etikett gut sichtbar ist.
 
-2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
-    - Rufen Sie die **SingPost**-Hotline unter **6845 6485** während der Geschäftszeiten an (Montag bis Freitag, 9 bis 17 Uhr).  
-    - Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer (Nachverfolgungsnummer auf dem Rücksendeetikett) an, um eine Abholung zu veranlassen. 
-    - Sie erhalten eine mündliche Bestätigung des Abholplans. 
-    - Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie **SingPost** unter **6845 6485** an, um eine alternative Lösung zu finden. 
+2. Senden Sie zum Anfordern der Abholung eine E-Mail an den SingPost-Kundendienst, indem Sie die folgende Vorlage mit der Nachverfolgungsnummer verwenden. (Sie finden die Nachverfolgungsnummer auf dem Rücksendeetikett, das im Lieferumfang des zugestellten Pakets enthalten ist.)
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > Für Anforderungen, die an einem Werktag eingehen, gilt Folgendes:
+   > - Bei Anforderung vor 15 Uhr erfolgt die Abholung am nächsten Werktag zwischen 9 und 13 Uhr.
+   > - Bei Anforderung nach 15 Uhr erfolgt die Abholung am nächsten Werktag zwischen 14 und 18 Uhr.
+
+   Falls Probleme auftreten, können Sie sich unter adbo@microsoft.com an Data Box Operations Asia wenden. Geben Sie in der Betreffzeile den Auftragsnamen und das aufgetretene Problem an.
+
 3. Übergeben Sie die Box an den Kurier. 
 
 

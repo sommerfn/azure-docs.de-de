@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827607"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052508"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -239,6 +239,13 @@ Für Szenarien, die eine zeitliche Kontrolle erfordern, können Sie die folgende
 
 Weitere Informationen zum Einrichten und Ausführen eines Cron-Auftrags finden Sie im Thema zum [Einrichten eines Cron-Auftrags](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job).
 
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Weshalb ist LLAP in Spark-ESP-Clustern verfügbar?
+LLAP ist in Spark-ESP-Clustern aus Sicherheitsgründen (d. h. Apache Ranger) und nicht aus Leistungsgründen aktiviert. Sie sollten virtuelle Computer mit einer größeren Knoten verwenden, um die Ressourcenverwendung von LLAP zu berücksichtigen (z. B. mindestens D13V2). 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Wie kann ich nach dem Erstellen eines ESP-Clusters zusätzliche AAD-Gruppen hinzufügen?
+Es gibt zwei Möglichkeiten, dies zu erreichen: 1. Sie können den Cluster neu erstellen und die zusätzliche Gruppe bei der Clustererstellung hinzufügen. Wenn Sie die bereichsbezogene Synchronisierung in AAD DS verwenden, stellen Sie sicher, dass Gruppe B in der bereichsbezogenen Synchronisierung enthalten ist.
+2\. Fügen Sie die Gruppe als geschachtelte Untergruppe der vorherigen Gruppe hinzu, die zum Erstellen des ESP-Clusters verwendet wurde. Wenn Sie beispielsweise einen ESP-Cluster mit der Gruppe `A` erstellt haben, können Sie zu einem späteren Zeitpunkt die Gruppe `B` als geschachtelte Untergruppe von `A` hinzufügen. Nach ungefähr einer Stunde wird diese synchronisiert und ist im Cluster automatisch verfügbar. 
+
 ## <a name="storage"></a>Storage
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Kann ich einem vorhandenen HDInsight-Cluster Azure Data Lake Storage Gen2 als zusätzliches Speicherkonto hinzufügen?
@@ -380,3 +387,7 @@ Informationen zu den Integrationsfunktionen für die Streamverarbeitung in Azure
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Gibt es eine Möglichkeit, den Hauptknoten des Clusters dynamisch zu beenden, wenn sich der Cluster eine bestimmte Zeit im Leerlauf befindet?
 
 Dies ist bei HDInsight-Clustern nicht möglich. Für diese Szenarien können Sie Azure Data Factory verwenden.
+
+### <a name="what-compliance-offerings-does-hdinsight-offer"></a>Welche Complianceangebote umfasst HDInsight?
+
+Informationen zur Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und unter [Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754265"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044115"
 ---
 # <a name="create-human-reviews"></a>Erstellen von Überprüfungen durch Personen
 
@@ -56,4 +56,4 @@ Die Funktion für Textüberprüfungen ist der Funktion für Bildüberprüfungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-review.md) oder die [Anleitung zum .NET SDK](../moderation-reviews-quickstart-dotnet.md) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden.
+In diesem Artikel wurde erläutert, wie Sie Überprüfungen über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-review.md) oder den [.NET SDK-Schnellstart](../dotnet-sdk-quickstart.md) an, um zu erfahren, wie Überprüfungen programmgesteuert erstellt werden können.

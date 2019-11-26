@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637752"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023888"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
 
@@ -42,6 +42,15 @@ ms.locfileid: "68637752"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* Verbesserungen hinsichtlich Stabilität und Diagnostizierbarkeit:
+  * Die Erkennung lang andauernder Lesevorgänge des Änderungsfeeds wird nun unterstützt. Wenn es länger dauert, als vom Wert der `ChangeFeedProcessorOptions.ChangeFeedTimeout`-Eigenschaft angegeben, werden die folgenden Schritte ausgeführt:
+    * Der Vorgang zum Lesen des Änderungsfeeds auf der problematischen Partition wird abgebrochen.
+    * Die Änderungsfeedprozessor-Instanz verwirft den Besitz der problematischen Lease. Die verworfene Lease wird während des nächsten Schritts zum Leaseabruf durch denselben oder einen anderen Änderungsfeedprozessor-Instanz ausgewählt. Auf diese Weise wird der Lesevorgang des Änderungsfeeds neu gestartet.
+    * Ein Problem wird an den Integritätsmonitor gemeldet. Der standardmäßige Integritätsmonitor sendet alle gemeldeten Probleme an das Ablaufverfolgungsprotokoll.
+  * Es wurde eine neue öffentliche Eigenschaft hinzugefügt: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Der Standardwert dieser Eigenschaft ist 10 Minuten.
+  * Es wurde ein neuer öffentlicher Enumerationswert hinzugefügt: `Monitoring.MonitoredOperation.ReadChangeFeed`. Wenn der Wert von `HealthMonitoringRecord.Operation` auf `Monitoring.MonitoredOperation.ReadChangeFeed` festgelegt ist, wird angegeben, dass sich das Integritätsproblem auf das Lesen des Änderungsfeeds bezieht.
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * Verbesserte Lastenausgleichsstrategie für ein Szenario, bei dem das Abrufen aller Leases länger dauert als das Leaseablaufintervall, z.B. aufgrund von Netzwerkproblemen:
@@ -170,6 +179,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |28. Oktober 2019 |--- |
 | [2.2.7](#2.2.7) |14. Mai 2019 |--- |
 | [2.2.6](#2.2.6) |29. Januar 2019 |--- |
 | [2.2.5](#2.2.5) |13. Dezember 2018 |--- |

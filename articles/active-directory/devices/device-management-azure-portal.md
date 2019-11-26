@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860893"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200228"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -136,6 +136,7 @@ Sie haben zwei Optionen, um ein Gerät zu aktivieren bzw. zu deaktivieren:
 
 - Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator oder ein Cloudgeräteadministrator in Azure AD sein. 
 - Durch die Aktivierung eines Geräts wird seine erfolgreiche Authentifizierung mit Azure AD verhindert. Dadurch wird wiederum verhindert, dass das Gerät auf Ihre Azure AD-Ressourcen zugreift, die durch eine Gerätezertifizierungsstelle oder mithilfe Ihrer WH4B-Anmeldeinformationen geschützt werden.
+- Durch Deaktivieren des Geräts werden sowohl das PRT (Primary Refresh Token, primäres Aktualisierungstoken) als auch etwaige RT (Refresh Tokens, Aktualisierungstoken) auf dem Gerät widerrufen.
 
 ### <a name="delete-an-azure-ad-device"></a>Löschen eines Azure AD-Geräts
 
@@ -210,7 +211,7 @@ Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spal
 
 Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
 
-- Category (Kategorie)
+- Category
 - Aktivitätsressourcentyp
 - Aktivität
 - Datumsbereich

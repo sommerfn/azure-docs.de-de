@@ -1,6 +1,6 @@
 ---
-title: Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie Zuweisungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) anzeigen, hinzufügen und entfernen.
+title: Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+description: Erfahren Sie, wie Sie Zuweisungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung anzeigen, hinzufügen und entfernen.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392025"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174913"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
 In der Azure AD-Berechtigungsverwaltung können Sie anzeigen, welche Benutzer Zugriffspaketen zugewiesen sind. Außerdem können Sie die jeweiligen Richtlinien und den Status anzeigen. Wenn ein Zugriffspaket eine geeignete Richtlinie enthält, können Sie dem Zugriffspaket auch direkt Benutzer zuweisen. In diesem Artikel wird beschrieben, wie Zuweisungen für Zugriffspakete angezeigt, hinzugefügt und entfernt werden.
 
@@ -70,11 +65,9 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
     ![Zuweisungen: Benutzer einem Zugriffspaket hinzufügen](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Klicken Sie auf **Benutzer hinzufügen**, um die Benutzer auszuwählen, die Sie dem Zugriffspaket zuweisen möchten.
+1. Klicken Sie auf **Benutzer hinzufügen**, um die Benutzer auszuwählen, die Sie diesem Zugriffspaket zuweisen möchten.
 
-1. Wählen Sie in der Liste **Richtlinie auswählen** eine Richtlinie mit der Einstellung [Keine (nur direkte Zuweisungen eines Administrators)](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) aus.
-
-    Enthält das Zugriffspaket keine Richtlinien dieses Typs, können Sie diese hinzufügen. Klicken Sie dazu auf **Neue Richtlinie erstellen**.
+1. Wählen Sie in der Liste **Richtlinie auswählen** eine Richtlinie aus, von der künftige Anforderungen des Benutzers und der Lebenszyklus geregelt und verfolgt werden. Wenn für die ausgewählten Benutzer andere Richtlinieneinstellungen gelten sollen, können Sie auf **Neue Richtlinie erstellen** klicken, um eine neue Richtlinie hinzuzufügen.
 
 1. Legen Sie Datum und Uhrzeit fest, wann die Zuweisung der ausgewählten Benutzer beginnen und enden soll. Wenn Sie kein Enddatum angeben, werden die Lebenszykluseinstellungen der Richtlinie verwendet.
 

@@ -1,6 +1,6 @@
 ---
-title: Neue Microsoft Azure-Supportanfrage – Richtlinien zur Verwendung des Dateiupload-Dienstprogramms | Microsoft Docs
-description: Beschreibt die Richtlinien zur Verwendung des Dateiupload-Dienstprogramms für eine neue Microsoft Azure-Supportanfrage.
+title: Azure-Supportanfrage – Richtlinien für den Dateiupload
+description: In diesem Artikel werden die Richtlinien zur Verwendung der Dateiupload-Option für eine Microsoft Azure-Supportanfrage erläutert.
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -8,22 +8,22 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248688"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936078"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Neue Microsoft Azure Supportanfrage – Richtlinien zur Verwendung des Dienstprogramms für den Dateiupload
-Wenn Sie [eine neue Supportanfrage erstellen](https://portal.azure.com/#create/Microsoft.Support), kann das Dateiupload-Hilfsprogramm Sie dabei unterstützen, auf einfache Weise Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Incident relevant sind.  
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Richtlinien zum Verwenden des Dienstprogramms für den Dateiupload bei einer neuen Microsoft Azure-Supportanfrage
+Wenn Sie [eine neue Supportanfrage erstellen](https://portal.azure.com/#create/Microsoft.Support), kann die Dateiupload-Option Sie dabei unterstützen, auf einfache Weise Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Vorfall relevant sind.  
 
 > [!NOTE]
 > Um Ihre Privatsphäre zu schützen, fügen Sie keine persönlichen Informationen in Ihren Upload ein.
 >
 >
 
-Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwenden:
+Befolgen Sie diese Richtlinien, wenn Sie die Dateiupload-Option verwenden:
 
 * Alle Dateien müssen eine Dateiendung aufweisen, z. B. .docx oder .xlsx. Siehe dazu die Tabelle für die Liste der zulässigen Dateiendungen.
 * Der Dateiname darf nicht länger als 110 Zeichen sein.

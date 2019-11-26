@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245927"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064002"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -26,15 +26,12 @@ Sie können Datenträgerverschlüsselung nur auf virtuelle Computer mit [unterst
 - [Gruppenrichtlinienanforderungen](disk-encryption-overview.md#group-policy-requirements)
 - [Speicheranforderungen für Verschlüsselungsschlüssel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md). 
 >
 > - In allen Fällen sollten Sie [eine Momentaufnahme](snapshot-copy-managed-disk.md) oder eine Sicherung erstellen, bevor Datenträger verschlüsselt werden. Durch Sicherungen wird sichergestellt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt. Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) verwenden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](../../backup/backup-azure-vms-encryption.md). 
 >
 > - Beim Verschlüsseln oder Deaktivieren der Verschlüsselung kann eine VM neu gestartet werden.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Installieren von Tools und Herstellen einer Verbindung mit Azure
 
@@ -244,7 +241,8 @@ Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer 
 Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encryption nicht unterstützt:
 
 - Verschlüsseln von virtuellen Computern der Ebene „Standard“ und von virtuellen Computern, die mithilfe der klassischen Erstellungsmethode für virtuelle Computer erstellt wurden
-- Verschlüsseln virtueller Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
+- Verschlüsseln virtueller Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
+- Verschlüsselung virtueller Computer, die mit Storage Spaces Direct (S2D) konfiguriert wurden, oder von Windows Server-Versionen vor 2016, die mit Windows-Speicherplätzen konfiguriert wurden.
 - Integration mit einem lokalen Schlüsselverwaltungssystem
 - Azure Files (freigegebenes Dateisystem)
 - Network File System (NFS)

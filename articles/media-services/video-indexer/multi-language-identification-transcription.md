@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861969"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968745"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte (Vorschauversion)
 
@@ -86,9 +86,8 @@ Darüber hinaus enthält jede Instanz im Transkriptionsabschnitt die Sprache, in
 * Die Projekterstellung und -bearbeitung ist für mehrsprachige Videos derzeit nicht verfügbar.
 * Benutzerdefinierte Sprachmodelle sind bei Verwendung der mehrsprachigen Erkennung nicht verfügbar.
 * Das Hinzufügen von Schlüsselwörtern wird nicht unterstützt.
-* Die API „update transcript“ wird nicht unterstützt.
 * Beim Exportieren von Untertiteldateien erscheint keine Sprachanzeige.
-
+* Die API zum Aktualisieren von Transkripts unterstützt keine mehrsprachigen Dateien.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

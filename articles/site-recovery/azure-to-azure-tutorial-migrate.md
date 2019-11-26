@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Azure IaaS-VMs in eine andere Azure-Region mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
+title: Verschieben von Azure-VMs in eine andere Region mit Azure Site Recovery
 description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933879"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954103"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 

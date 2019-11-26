@@ -1,19 +1,19 @@
 ---
-title: Ausführen eines Failbacks von in einer sekundären Azure-Region replizierten virtuellen Azure-Computern zur Notfallwiederherstellung mit dem Azure Site Recovery-Dienst
-description: Es wird beschrieben, wie Sie mit dem Azure Site Recovery-Dienst ein Failback für Azure-VMs durchführen.
+title: Failback für Azure-VMs in eine primäre Region mit dem Azure Site Recovery-Dienst.
+description: Es wird beschrieben, wie Sie für Azure-VMs mit dem Azure Site Recovery-Dienst ein Failback in die primäre Region ausführen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814520"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091340"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Failback für Azure-VMs zwischen Azure-Regionen
 
@@ -56,6 +56,9 @@ Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein 
 8. Für den virtuellen Computer wird angezeigt, dass ein Failover und ein Failback ausgeführt wurden.
 
     ![VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+
+> [!NOTE]
+> Für Computer, auf denen mindestens Version 9.28.x.x der Site Recovery-Erweiterung ausgeführt wird, bereinigt das [Updaterollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) für Site Recovery die Computer in der sekundären Notfallwiederherstellungsregion, nachdem das Failback abgeschlossen ist und die VMs wieder geschützt sind. Es ist nicht erforderlich, VMs und NICs in der sekundären Region manuell zu löschen. Wenn Sie die Replikation nach dem Failback vollständig deaktivieren, bereinigt Site Recovery zusätzlich zu den VMs und NICs auch die Datenträger in der Notfallwiederherstellungsregion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

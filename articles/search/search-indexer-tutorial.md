@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793601"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113330"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#-Tutorial: Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Cognitive Search-Indexern
+# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#-Tutorial: Importieren einer Azure SQL-Datenbank unter Verwendung von Azure Cognitive Search-Indexern
 
 Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Cognitive Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 

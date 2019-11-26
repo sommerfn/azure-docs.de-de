@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Durchführen eines Lastenausgleichs für virtuelle Windows-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen eines Load Balancers für eine hoch verfügbare und sichere Anwendung über drei virtuelle Windows-Computer verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fe202712f5e269950b64046453867bd23d18a9ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100223"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067866"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Tutorial: Vornehmen eines Lastausgleichs bei virtuellen Windows-Computern in Azure zum Erstellen einer hochverfügbaren Anwendung mit Azure PowerShell
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:

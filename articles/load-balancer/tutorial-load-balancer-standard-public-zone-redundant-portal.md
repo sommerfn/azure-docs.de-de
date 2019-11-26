@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verfügbarkeitszonenübergreifende Load Balancer-VMs: Azure-Portal'
+title: 'Tutorial: Durchführen eines Lastenausgleichs über Verfügbarkeitszonen hinweg für VMs: Azure-Portal'
 titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Lastenausgleich im Tarif „Standard“ mit einem zonenredundanten Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg durchzuführen.
 services: load-balancer
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273472"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048867"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 

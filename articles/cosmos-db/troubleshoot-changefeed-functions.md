@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772902"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064103"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für Cosmos DB
 
@@ -60,7 +60,7 @@ Dieser Fehler weist darauf hin, dass Ihr aktueller Leases-Container partitionier
 
 Dieses Problem tritt auf, wenn Sie im Azure-Portal beim Untersuchen einer Azure Function, die den Trigger verwendet, die Schaltfläche **Ausführen** auswählen. Aufgrund des Triggers müssen Sie zum Starten nicht „Ausführen“ auswählen, der Start erfolgt automatisch, wenn die Azure-Funktion bereitgestellt wird. Wenn Sie den Protokollstream der Azure-Funktion im Azure-Portal überprüfen möchten, wechseln Sie einfach zu Ihrem überwachten Container, und fügen Sie einige neue Elemente hinzu. Sie stellen fest, dass der Trigger automatisch ausgeführt wird.
 
-### <a name="my-changes-take-too-long-be-received"></a>Der Empfang meiner Änderungen dauert zu lange
+### <a name="my-changes-take-too-long-to-be-received"></a>Der Empfang meiner Änderungen dauert zu lange
 
 Dieses Szenario kann mehrere Ursachen haben, und alle von ihnen sollten überprüft werden:
 
@@ -78,7 +78,7 @@ Wenn Ihre Azure-Funktion die Änderungen empfängt, verarbeitet sie diese häufi
 
 Wenn einige Änderungen am Ziel nicht vorhanden sind, kann dies bedeuten, dass während der Ausführung der Azure-Funktion nach Empfang der Änderungen ein Fehler aufgetreten ist.
 
-In diesem Szenario empfiehlt es sich, im Code und in den Schleifen, die die Änderungen möglicherweise verarbeiten, `try/catch blocks` hinzuzufügen, um einen Fehler für eine bestimmte Teilmenge von Elementen zu erkennen und diese entsprechend zu behandeln (Senden an einen anderen Speicher zur weiterführenden Analyse oder für einen Neuversuch). 
+Gehen Sie in diesem Szenario am besten wie folgt vor: Fügen Sie `try/catch`-Blöcke im Code und innerhalb der Schleifen hinzu, die möglicherweise die Änderungen verarbeiten, um etwaige Fehler für eine bestimmte Teilmenge von Elementen zu erkennen, und behandeln Sie diese entsprechend (senden Sie sie zur weiteren Analyse oder eine erneute Ausführung an einen anderen Speicher). 
 
 > [!NOTE]
 > Der Azure Functions-Trigger für Cosmos DB unternimmt standardmäßig keinen erneuten Versuch für einen Batch von Änderungen, wenn während der Codeausführung ein Ausnahmefehler aufgetreten ist. Das heißt, dass die Änderungen nicht am Ziel eintreffen, weil sie nicht verarbeitet werden.
@@ -103,6 +103,10 @@ Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-c
 Dieser Fehler tritt auf, wenn Ihr Azure Functions-Projekt (oder ein beliebiges Projekt, auf das verwiesen wird) einen manuelle NuGet-Verweis auf das Azure Cosmos DB-SDK mit einer anderen Version als die durch die [Azure Functions Cosmos DB-Erweiterung](./troubleshoot-changefeed-functions.md#dependencies) bereitgestellte Version enthält.
 
 Zum Umgehen dieses Problems entfernen Sie den hinzugefügten manuellen NuGet-Verweis, und lassen Sie den Azure Cosmos DB-SDK-Verweis über das Azure Functions Cosmos DB-Erweiterungspaket auflösen.
+
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Ändern des Abrufintervalls der Azure-Funktion für die erkannten Änderungen
+
+Wie bereits zuvor für [Der Empfang meiner Änderungen dauert zu lange](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received) erläutert, befindet sich die Azure-Funktion für einen konfigurierbaren Zeitraum im Ruhezustand (in der Standardeinstellung für 5 Sekunden), bevor auf neue Änderungen überprüft wird (um einen hohen RU-Verbrauch zu verhindern). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Academy Attendance | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Academy Attendance | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Academy Attendance konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489284a83483bb20353818adf275303b027255ce
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2e3214572042f4a6d6cf5e6e160a4d37a9f2909d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641252"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082126"
 ---
-# <a name="tutorial-integrate-academy-attendance-with-azure-active-directory"></a>Tutorial: Integrieren von Academy Attendance in Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Academy Attendance
 
 In diesem Tutorial erfahren Sie, wie Sie Academy Attendance in Azure Active Directory (Azure AD) integrieren. Die Integration von Academy Attendance in Azure AD ermöglicht Folgendes:
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie kein Abonnement besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige kostenlose Testversion erhalten.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Academy Attendance-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -45,7 +45,10 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Academy Attendance unterstützt **SP-initiiertes** einmaliges Anmelden.
+
+
 * Academy Attendance unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+
 
 ## <a name="adding-academy-attendance-from-the-gallery"></a>Hinzufügen von Academy Attendance aus dem Katalog
 
@@ -58,24 +61,25 @@ Zum Konfigurieren der Integration von Academy Attendance in Azure AD müssen Si
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Academy Attendance** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Academy Attendance** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-academy-attendance"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Academy Attendance
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Academy Attendance mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Academy Attendance eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Academy Attendance müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Academy Attendance](#configure-academy-attendance-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
-5. **[Erstellen eines Academy Attendance-Testbenutzers](#create-academy-attendance-test-user)** , um ein Pendant von B. Simon in Academy Attendance zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Academy Attendance](#configure-academy-attendance-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Academy Attendance-Testbenutzers](#create-academy-attendance-test-user)** , um in Academy Attendance eine Entsprechung von B.Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Academy Attendance** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Academy Attendance** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -90,48 +94,26 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Academy Attendance-Client](mailto:support@yournextconcepts.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Die Academy Attendance-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt, wie die Assertionen konfiguriert werden:
+1. Die Academy Attendance-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Academy Attendance unterstützt zwei Rollen für Benutzer: **Lecturer** (Dozent) und **Kursteilnehmer**. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Lesen Sie [dieses](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) Dokument, in dem erläutert wird, wie benutzerdefinierte Rollen in Azure AD erstellt werden.
 
-1. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
+1. Darüber hinaus wird von der Academy Attendance-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
     | NAME |  Quellattribut|
     | --------- | --------------- |
     | role      | user.assignedroles |
 
-    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
-
-    c. Lassen Sie den **Namespace** leer.
-
-    d. Wählen Sie „Source“ als **Attribut** aus.
-
-    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
-
-    f. Klicken Sie auf **OK**.
-
-    g. Klicken Sie auf **Speichern**.
-
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Metadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
 1. Kopieren Sie im Abschnitt **Academy Attendance einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-### <a name="configure-academy-attendance-sso"></a>Konfigurieren des einmaligen Anmeldens für Academy Attendance
-
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Academy Attendance** müssen Sie die heruntergeladene **Metadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Academy Attendance](mailto:support@yournextconcepts.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -163,11 +145,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+## <a name="configure-academy-attendance-sso"></a>Konfigurieren des einmaligen Anmeldens für Academy Attendance
+
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Academy Attendance** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Academy Attendance](mailto:support@yournextconcepts.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
 ### <a name="create-academy-attendance-test-user"></a>Erstellen eines Academy Attendance-Testbenutzers
 
-In diesem Abschnitt wird in Academy Attendance ein Benutzer namens B. Simon erstellt. Academy Attendance unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Academy Attendance vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Academy Attendance ein Benutzer namens Britta Simon erstellt. Academy Attendance unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Academy Attendance vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -175,9 +161,11 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Academy Attendance“ klicken, sol
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Academy Attendance mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 

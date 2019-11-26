@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258518"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176066"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
 
@@ -226,6 +226,10 @@ Planen Sie die Reihenfolge, in der Sie dem „Meine Apps“-Startfeld Anwendunge
 #### <a name="add-applications-to-the-my-apps-panel"></a>Hinzufügen von Anwendungen zum Bereich „Meine Apps“
 
 Alle Azure AD SSO-fähigen Anwendungen können dem „Meine Apps“-Startprogramm hinzugefügt werden. Andere Anwendungen werden mithilfe der Option „Verknüpftes einmaliges Anmelden“ hinzugefügt. Sie können eine Anwendungskachel konfigurieren, die auf die URL Ihrer vorhandenen Webanwendung verweist. Mit „Verknüpftes einmaliges Anmelden“ können Sie beginnen, Benutzer zum „Meine Apps“-Portal zu leiten, ohne alle Anwendungen nach Azure AD SSO migrieren zu müssen. Sie können schrittweise zu Azure AD SSO-konfigurierten Anwendungen wechseln, ohne die Benutzerfreundlichkeit zu beeinträchtigen.
+
+#### <a name="use-my-apps-workspaces-preview"></a>Verwenden von „Meine Apps“-Arbeitsbereichen (Vorschau)
+
+Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Arbeitsbereichen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, wodurch sie leichter auffindbar sind. So können Sie mit Arbeitsbereichen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Arbeitsbereichen zum Anpassen von Zugriffsbereichen für Benutzer (Vorschau)](access-panel-workspaces.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Planen der Verwendung von „Meine Apps“ oder eines bestehenden Portals
 

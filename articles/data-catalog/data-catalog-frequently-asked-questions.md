@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898715"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152060"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -87,7 +87,7 @@ Die spezifischen Eigenschaften variieren je nach Datenquelle, aber im Allgemeine
 >
 
 > [!NOTE]
-> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Für Datenquellen wie SQL Server Analysis Services, die über eine leistungsstarke **Description**-Eigenschaft verfügen, wird dieser Eigenschaftswert vom Data Catalog-Datenquellen-Registrierungstool extrahiert. Für *lokale* relationale SQL Server-Datenbanken ohne leistungsstarke **Description**-Eigenschaft extrahiert das Data Catalog-Datenquellen-Registrierungstool den Wert aus der erweiterten **ms_description**-Eigenschaft für Objekte und Spalten. Weitere Informationen finden Sie unter [Verwenden von erweiterten Eigenschaften für Datenbankobjekte](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

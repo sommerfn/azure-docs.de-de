@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Sichern von virtuellen Linux-Computern im Azure-Portal | Microsoft-Dokumentation
+title: 'Tutorial: Sichern von virtuellen Linux-Computern im Azure-Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal zum Schützen Ihrer virtuellen Linux-Computer mit Azure Backup verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103536"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034580"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -90,7 +90,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     
 1. Melden Sie sich auf dem lokalen Computer beim [Azure-Portal](https://portal.azure.com/) an.
 6. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
-7. Wählen Sie den virtuellen Computer in der Liste aus.
+7. Wählen Sie die VM in der Liste aus.
 8. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
 9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 10. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.

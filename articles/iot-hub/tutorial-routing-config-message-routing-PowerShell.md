@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe von Azure PowerShell | Microsoft-Dokumentation
-description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe von Azure PowerShell
+title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mit Azure PowerShell
+description: Es wird beschrieben, wie Sie das Nachrichtenrouting für Azure IoT Hub mit Azure PowerShell konfigurieren. Führen Sie je nach den Eigenschaften in der Nachricht entweder die Weiterleitung an ein Speicherkonto oder an eine Service Bus-Warteschlange durch.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535131"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084438"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe von Azure PowerShell
 
@@ -34,13 +34,13 @@ Erstellen Sie zunächst die Ressourcen mithilfe von PowerShell.
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>Erstellen der grundlegenden Ressourcen mithilfe von PowerShell
 
+Kopieren Sie das folgende Skript, fügen Sie es in Cloud Shell ein, und drücken Sie die EINGABETASTE. Daraufhin wird das Skript Zeile für Zeile ausgeführt. Der erste Abschnitt des Skripts erstellt die grundlegenden Ressourcen für dieses Tutorial (einschließlich Speicherkonto, IoT Hub, Service Bus-Namespace und Service Bus-Warteschlange). Kopieren Sie im weiteren Verlauf des Tutorials jeweils die einzelnen Skriptblöcke, und fügen Sie sie zur Ausführung in Cloud Shell ein.
+
 Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Zur Vereinfachung wird an diese Ressourcennamen ein alphanumerischer Zufallswert namens *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen. 
 
 > [!IMPORTANT]
 > Die im Ausgangsskript festgelegten Variablen werden auch vom Routingskript verwendet. Führen Sie daher das gesamte Skript in der gleichen Cloud Shell-Sitzung aus. Wenn Sie eine neue Sitzung öffnen, um das Skript zum Einrichten des Routings auszuführen, verfügen einige der Variablen über keine Werte. 
 >
-
-Kopieren Sie das folgende Skript, fügen Sie es in Cloud Shell ein, und drücken Sie die EINGABETASTE. Daraufhin wird das Skript Zeile für Zeile ausgeführt. Der erste Abschnitt des Skripts erstellt die grundlegenden Ressourcen für dieses Tutorial (einschließlich Speicherkonto, IoT Hub, Service Bus-Namespace und Service Bus-Warteschlange). Kopieren Sie im weiteren Verlauf des Tutorials jeweils die einzelnen Skriptblöcke, und fügen Sie sie zur Ausführung in Cloud Shell ein.
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -140,7 +140,7 @@ Richten Sie zuerst den Endpunkt für das Speicherkonto ein, und erstellen Sie da
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-Folgende Variablen werden festgelegt:
+Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **resourceGroup**: Legen Sie beide Vorkommen dieses Felds auf Ihre Ressourcengruppe fest.
 
@@ -162,7 +162,7 @@ Folgende Variablen werden festgelegt:
 
 **condition**: Die Abfrage, mit der nach den Nachrichten gefiltert wird, die an diesen Endpunkt gesendet wurden. Die Abfragebedingung für die Nachrichten, die an den Speicher weitergeleitet werden, lautet `level="storage"`.
 
-**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Das bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
+**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Dies bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
 
 Kopieren Sie das folgende Skript, und fügen Sie es in Ihr Cloud Shell-Fenster ein:
 
@@ -232,7 +232,7 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Folgende Variablen werden festgelegt:
+Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **endpointName**: Der Name zur Identifizierung des Endpunkts. 
 

@@ -1,5 +1,5 @@
 ---
-title: Konvertieren der Inhalte eines Dienstprinzipalzertifikats in Base64 – Azure HDInsight
+title: Konvertieren von Zertifikatinhalten in Base64 – Azure HDInsight
 description: Konvertieren der Inhalte eines Dienstprinzipalzertifikats in ein Base64-codiertes Zeichenfolgenformat in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 0f9158164ec598682841b217b9954145f8540c6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ad41ef464f592fd09b070ab6f715e9a07fb3cf21
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087431"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044493"
 ---
 # <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>Konvertieren der Inhalte eines Dienstprinzipalzertifikats in ein Base64-codiertes Zeichenfolgenformat in HDInsight
 

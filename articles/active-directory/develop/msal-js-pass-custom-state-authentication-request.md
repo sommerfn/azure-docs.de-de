@@ -1,5 +1,6 @@
 ---
-title: Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen (Microsoft Authentication Library für JavaScript) | Azure
+title: Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen (Microsoft Authentication Library für JavaScript)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie einen benutzerdefinierten state-Parameterwert in einer Authentifizierungsanforderung mithilfe der Microsoft Authentication Library für JavaScript (MSAL.js) übergeben.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 527c1937da8634f7448c82ca8c0331fb5cfb85e3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532748"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150607"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen mithilfe von MSAL.js
 Der *state*-Parameter gemäß OAuth 2.0 ist in einer Authentifizierungsanforderung enthalten und wird auch in der Tokenantwort zurückgegeben, um Angriffe in Form siteübergreifender Anforderungsfälschungen zu verhindern. Die Microsoft Authentication Library für JavaScript (MSAL.js) übergibt standardmäßig einen zufällig generierten eindeutigen *state*-Parameterwert in Authentifizierungsanforderungen.
@@ -51,7 +52,7 @@ Beispiel:
 ```javascript
 let loginRequest = {
     scopes: ["user.read", "user.write"],
-    state: “page_url”
+    state: "page_url"
 }
 
 myMSALObj.loginPopup(loginRequest);

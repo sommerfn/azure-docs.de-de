@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab7c3699abdd5c094b1b14cd53f76023fa8c1ac
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 641f71f6111930b54d0a2bd548f16d3cb0c07189
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309602"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175265"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Web-App für Benutzeranmeldungen – App-Registrierung
 
@@ -76,13 +76,22 @@ Wenn Sie zu diesem Link navigieren, können Sie einen Bootstrap zur Erstellung I
 
 4. Wenn die Seite **Anwendung registrieren** angezeigt wird, geben Sie einen Anzeigenamen für die Anwendung (z. B. „java-webapp“) ein, wählen Sie „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)“ aus, und wählen Sie dann „Web-App/API“ als *Anwendungstyp* aus.
 1. Klicken Sie auf **Registrieren**, um die Anwendung zu registrieren.
-1. Klicken Sie im Menü auf der linken Seite auf **Authentifizierung**, und wählen Sie unter *Umleitungs-URIs* die Option „Web“ aus. Sie müssen zwei verschiedene Umleitungs-URIs eingeben: einen für die Anmeldeseite und einen für die Graph-Benutzerseite. Sie sollten für beide denselben Host und dieselbe Portnummer verwenden, gefolgt von „/msal4jsample/secure/aad“ für die Anmeldeseite und „msal4jsample/graph/users“ für die Benutzerseite.
- Im Beispiel wird standardmäßig Folgendes verwendet: 
+1. Klicken Sie im Menü auf der linken Seite auf **Authentifizierung**, und wählen Sie unter *Umleitungs-URIs* die Option „Web“ aus. Sie müssen zwei verschiedene Umleitungs-URIs eingeben: einen für die Anmeldeseite und einen für die Graph-Seite. Sie sollten für beide denselben Host und dieselbe Portnummer verwenden, gefolgt von „/msal4jsample/secure/aad“ für die Anmeldeseite und „msal4jsample/graph/me“ für die Benutzerinfoseite.
+ Im Beispiel wird standardmäßig Folgendes verwendet:
 
-    - `http://localhost:8080/msal4jsample/secure/aad`. 
-    - `http://localhost:8080/msal4jsample/graph/users`
+    - `http://localhost:8080/msal4jsample/secure/aad`.
+    - `http://localhost:8080/msal4jsample/graph/me`
 
-Klicken Sie auf **Speichern**.
+    Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `http://localhost:8080/msal4jsample/sign_out` fest.
+
+     Klicken Sie auf **Speichern**.
+
+1. Wählen Sie im Menü **Certificates & secrets** (Zertifikate und Geheimnisse) aus, und klicken Sie im Abschnitt **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**:
+
+    - Geben Sie eine Beschreibung für den Schlüssel ein.
+    - Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
+    - Der Schlüsselwert wird angezeigt, wenn Sie **Hinzufügen** auswählen.
+    - Kopieren Sie den Wert des Schlüssels zur späteren Verwendung. Der Schlüsselwert wird nicht erneut angezeigt und kann auch nicht auf andere Weise abgerufen werden. Erfassen Sie ihn daher, sobald er im Azure-Portal angezeigt wird.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -94,8 +103,14 @@ Klicken Sie auf **Speichern**.
 1. Suchen Sie auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID** und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Visual Studio-Konfigurationsdatei für dieses Projekt zu konfigurieren.
 1. Wählen Sie auf der Seite „Übersicht“ der App den Abschnitt **Authentifizierung** aus.
    - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `http://localhost:5000/logout` fest.
-1. Wählen Sie **Speichern** aus.
 
+  Wählen Sie **Speichern** aus.
+1. Wählen Sie im linken Menü die Option **Certificates & secrets** (Zertifikate und Geheimnisse) aus, und klicken Sie im Abschnitt **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**:
+
+      - Geben Sie eine Beschreibung für den Schlüssel ein.
+      - Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
+      - Wenn Sie auf **Hinzufügen** klicken, wird der Schlüsselwert angezeigt.
+      - Kopieren Sie den Wert des Schlüssels. Sie benötigen sie später.
 ---
 
 ## <a name="register-an-app-using-powershell"></a>Registrieren einer App mit PowerShell

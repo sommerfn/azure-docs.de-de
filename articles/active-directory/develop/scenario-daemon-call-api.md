@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596750"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175387"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App
 
 Eine Daemon-App kann eine Web-API aus einer .NET-Daemon-Anwendung oder mehrere vorab genehmigte Web-APIs aufrufen.
 
-## <a name="calling-a-web-api-from-a-net-daemon-application"></a>Aufrufen einer Web-API aus einer .NET-Daemon-Anwendung
+## <a name="calling-a-web-api-daemon-application"></a>Aufrufen einer Daemon-Anwendung für Web-APIs
 
 Gehen Sie wie folgt vor, um eine API unter Verwendung des Tokens aufzurufen:
 
@@ -38,7 +38,7 @@ Gehen Sie wie folgt vor, um eine API unter Verwendung des Tokens aufzurufen:
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```Python
-endpoint = "url to the API" 
+endpoint = "url to the API"
 http_headers = {'Authorization': 'Bearer ' + result['access_token'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'}

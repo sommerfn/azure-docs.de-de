@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121567"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081912"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ePlatform
 
@@ -67,10 +67,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ePlatform 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ePlatform die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für ePlatform](#configure-eplatform-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines ePlatform-Testbenutzers](#create-eplatform-test-user)** , um eine Entsprechung von B. Simon in ePlatform zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    * **[Erstellen eines ePlatform-Testbenutzers](#create-eplatform-test-user)** , um eine Entsprechung von B. Simon in ePlatform zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -84,6 +84,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Im Abschnitt **SAML-Basiskonfiguration** ist die Anwendung vorkonfiguriert und die notwendigen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
+
+1. Die ePlatform-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+
+    ![image](common/default-attributes.png)
+
+1. Darüber hinaus wird von der ePlatform-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+
+    | NAME | Quellattribut |
+    | ---------------| --------------- |
+    | upn | user.userprincipalname |
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
 
@@ -135,7 +145,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **ePlatform** müssen S
 
 In diesem Abschnitt erstellen Sie in ePlatform einen Benutzer namens B. Simon. Wenden Sie sich an das  [Supportteam von ePlatform](https://help.eplatform.co/hc/en-us), um die Benutzer der ePlatform-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 

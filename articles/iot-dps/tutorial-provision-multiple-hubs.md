@@ -1,22 +1,22 @@
 ---
-title: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich mithilfe des Azure IoT Hub Device Provisioning-Diensts | Microsoft-Dokumentation
-description: Automatische Device Provisioning Service-Gerätebereitstellung für IoT Hubs mit Lastausgleich im Azure-Portal
+title: 'Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich mithilfe des Azure IoT Hub Device Provisioning Service'
+description: 'Tutorial: Automatische Device Provisioning Service-Gerätebereitstellung für IoT Hubs mit Lastausgleich im Azure-Portal'
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486014"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112785"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
 
 In diesem Tutorial wird gezeigt, wie Sie mit Device Provisioning Service Geräte für mehrere IoT Hubs mit Lastausgleich bereitstellen. In diesem Tutorial lernen Sie Folgendes:
 

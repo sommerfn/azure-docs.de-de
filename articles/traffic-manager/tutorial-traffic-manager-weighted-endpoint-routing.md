@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte mit Azure Traffic Manager | Microsoft-Dokumentation'
+title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte – Azure Traffic Manager'
 description: In diesem Tutorialartikel erfahren Sie, wie Sie Datenverkehr mithilfe von Traffic Manager an gewichtete Endpunkte weiterleiten.
 services: traffic-manager
 author: asudbring
@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: allensu
-ms.openlocfilehash: f9e2b6f6a45279c52e19a63509c57fb34e739330
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258367"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037914"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager
 
@@ -141,8 +141,8 @@ Erstellen Sie ein Traffic Manager-Profil auf der Grundlage der Routingmethode **
     | ---                     | ---                                                |
     | NAME                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **Gewichtet** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
     |        |   |
 
     ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-weighted-endpoint-routing/create-traffic-manager-profile.png)
@@ -157,7 +157,7 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server („my
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Geben Sie den Azure-Endpunkt ein.                                   |
+    | type                    | Geben Sie den Azure-Endpunkt ein.                                   |
     | NAME           | Geben Sie **myEastUSEndpoint** ein.                                        |
     | Zielressourcentyp           | Wählen Sie **Öffentliche IP-Adresse**.                          |
     | Zielressource          | Wählen Sie eine öffentliche IP-Adresse aus, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen **myIISVMEastUS-ip** aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|

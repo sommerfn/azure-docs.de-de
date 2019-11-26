@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789093"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034545"
 ---
 Beim Entwerfen eines Systems ist es wichtig zu verstehen, welche potenziellen Bedrohungen es für das System gibt. Anschließend müssen beim Entwerfen und Zusammenstellen des Systems die richtigen Abwehrmaßnahmen ergriffen werden. Es ist besonders wichtig, schon zu Beginn des Entwurfsprozesses für das Produkt an die Sicherheit zu denken. Indem ein Verständnis entwickelt wird, wie Angreifer ein System unter Umständen kompromittieren können, wird sichergestellt, dass von Anfang an für geeignete Lösungen gesorgt ist.
 
@@ -116,7 +116,7 @@ Ein Bereichsgateway unterscheidet sich von einem reinen Datenverkehrsrouter dari
 
 ### <a name="the-cloud-gateway-zone"></a>Cloudgateway-Zone
 
-Das Cloudgateway ist ein System, das die Remotekommunikation von und zu Geräten oder Bereichsgateways von mehreren unterschiedlichen Standorten über das öffentliche Netzwerk ermöglicht. Dies erfolgt normalerweise auf Grundlage eines cloudbasierten Systems für die Steuerung und Datenanalyse bzw. eines Partnerverbunds dieser Systeme. In einigen Fällen ist mit einem Cloudgateway der unmittelbare Zugriff von Terminals wie Tablets oder Smartphones auf Geräte für spezielle Zwecke möglich. Im hier beschriebenen Kontext ist mit „Cloud“ ein dediziertes Datenverarbeitungssystem gemeint, das nicht an denselben Standort wie die verbundenen Geräte oder Bereichsgateways gebunden ist. In einer Cloudzone verhindern betriebliche Maßnahmen außerdem den zielgerichteten physischen Zugriff, und sie ist nicht unbedingt für eine Public Cloud-Infrastruktur verfügbar.  
+Ein Cloudgateway ist ein System, das die Remotekommunikation von und zu Geräten oder Bereichsgateways von mehreren unterschiedlichen Standorten über das öffentliche Netzwerk ermöglicht. Dies erfolgt normalerweise auf Grundlage eines cloudbasierten Systems für die Steuerung und Datenanalyse bzw. eines Partnerverbunds dieser Systeme. In einigen Fällen ist mit einem Cloudgateway der unmittelbare Zugriff von Terminals wie Tablets oder Smartphones auf Geräte für spezielle Zwecke möglich. Im hier beschriebenen Kontext ist mit „Cloud“ ein dediziertes Datenverarbeitungssystem gemeint, das nicht an denselben Standort wie die verbundenen Geräte oder Bereichsgateways gebunden ist. In einer Cloudzone verhindern betriebliche Maßnahmen außerdem den zielgerichteten physischen Zugriff, und sie ist nicht unbedingt für eine Public Cloud-Infrastruktur verfügbar.  
 
 Ein Cloudgateway kann auch einem Overlay für die Netzwerkvirtualisierung zugeordnet werden, um das Cloudgateway und alle verbundenen Geräte oder Bereichsgateways gegenüber anderem Netzwerk-Datenverkehr zu isolieren. Das Cloudgateway selbst ist weder ein Gerätesteuerungssystem noch eine Verarbeitungs- oder Speichereinrichtung für Gerätedaten. Diese Einrichtungen sind über Schnittstellen mit dem Cloudgateway verbunden. Die Cloudgateway-Zone enthält das Cloudgateway selbst sowie alle Bereichsgateways und Geräte, die direkt oder indirekt damit verbunden sind. Der Edgebereich der Zone ist ein separater Oberflächenbereich, über den alle externen Parteien kommunizieren.
 

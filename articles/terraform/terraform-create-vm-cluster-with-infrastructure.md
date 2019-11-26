@@ -1,33 +1,32 @@
 ---
-title: Erstellen eines VM-Clusters mit Terraform und HCL
-description: Erstellen Sie mit Terraform und HCL (HashiCorp Configuration Language) einen Cluster mit virtuellen Linux-Computern mit Lastenausgleich in Azure.
-services: terraform
-ms.service: azure
-keywords: Terraform, Devops, virtueller Computer, Netzwerk, Module
+title: 'Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL'
+description: Hier erfahren Sie, wie Sie Terraform und HCL verwenden, um einen Cluster mit virtuellen Linux-Computern mit Lastenausgleich in Azure zu erstellen.
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7fee1518c36407f4e6607cc9204f9615b024f56f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173465"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837718"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Erstellen eines VM-Clusters mit Terraform und HCL
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL
 
-Dieses Tutorial veranschaulicht das Erstellen eines kleinen Computeclusters mithilfe der [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL). Die Konfiguration erstellt einen Lastenausgleich, zwei virtuelle Linux-Computer in einer [Verfügbarkeitsgruppe](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) und alle erforderlichen Netzwerkressourcen.
+In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von [HCL](https://www.terraform.io/docs/configuration/syntax.html) einen kleinen Computecluster erstellen. 
 
-In diesem Tutorial führen Sie Folgendes durch:
+Dabei lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten der Azure-Authentifizierung
 > * Erstellen einer Terraform-Konfigurationsdatei
-> * Initialisieren von Terraform
+> * Verwenden einer Terraform-Konfigurationsdatei, um einen Lastausgleich zu erstellen
+> * Verwenden einer Terraform-Konfigurationsdatei, um zwei virtuelle Linux-Computer in einer Verfügbarkeitsgruppe bereitzustellen
+> * Initialisieren Sie Terraform.
 > * Erstellen eines Terraform-Ausführungsplans
-> * Anwenden des Terraform-Ausführungsplans
+> * Anwenden des Terraform-Ausführungsplans, um die Azure-Ressourcen zu erstellen
 
 ## <a name="1-set-up-azure-authentication"></a>1. Einrichten der Azure-Authentifizierung
 
@@ -53,10 +52,10 @@ In diesem Abschnitt generieren Sie einen Azure-Dienstprinzipal und zwei Terrafor
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
@@ -88,60 +87,60 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -220,7 +219,7 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
 
 ## <a name="3-initialize-terraform"></a>3. Initialisieren von Terraform 
 
-Mit dem Befehl [terraform init](https://www.terraform.io/docs/commands/init.html) wird ein Verzeichnis initialisiert, das die Terraform-Konfigurationsdateien enthält – die Dateien, die Sie in den vorherigen Abschnitten erstellt haben. Es empfiehlt sich, nach dem Schreiben einer neuen Terraform-Konfiguration immer den Befehl `terraform init` auszuführen. 
+Mit dem Befehl [terraform init](https://www.terraform.io/docs/commands/init.html) wird ein Verzeichnis initialisiert, das die Terraform-Konfigurationsdateien enthält – die Dateien, die Sie in den vorherigen Abschnitten erstellt haben. Es empfiehlt sich, nach dem Schreiben einer neuen Terraform-Konfiguration den Befehl `terraform init` auszuführen. 
 
 > [!TIP]
 > Der Befehl `terraform init` ist idempotent, d. h., er kann wiederholt aufgerufen werden und erzeugt immer das gleiche Ergebnis. Wenn Sie in einer Zusammenarbeitsumgebung arbeiten und vermuten, dass die Konfigurationsdateien möglicherweise geändert wurden, ist es deshalb immer ratsam, vor dem Ausführen oder Anwenden eines Plans den Befehl `terraform init` aufzurufen.
@@ -237,23 +236,40 @@ Führen Sie zum Initialisieren von Terraform den folgenden Befehl aus:
 
 Der Befehl [terraform plan](https://www.terraform.io/docs/commands/plan.html) dient zum Erstellen eines Ausführungsplans. Zum Generieren eines Ausführungsplans werden alle `.tf`-Dateien im aktuellen Verzeichnis aggregiert. 
 
-Wenn Sie in einer Zusammenarbeitsumgebung arbeiten, in der die Konfiguration möglicherweise zwischen dem Erstellen und dem Anwenden des Ausführungsplans geändert wurde, sollten Sie mithilfe des [-out-Parameters des Befehls „terraform plan“](https://www.terraform.io/docs/commands/plan.html#out-path) den Ausführungsplan in einer Datei speichern. Wenn Sie hingegen in einer Umgebung ohne weitere Personen arbeiten, können Sie den `-out`-Parameter weglassen.
+Der [Parameter „-out“](https://www.terraform.io/docs/commands/plan.html#out-path) dient dazu, den Ausführungsplan in einer Ausgabedatei zu speichern. Dieses Feature vermeidet Parallelitätsprobleme, wie sie häufig in Umgebungen mit mehreren Entwicklern auftreten. Zu den Problemen, die durch die Ausgabedatei gelöst werden, zählt unter anderem das folgende Szenario:
 
-Falls der Name der Terraform-Variablendatei nicht `terraform.tfvars` lautet und nicht dem Muster `*.auto.tfvars` entspricht, müssen Sie beim Ausführen des Befehls `terraform plan` dessen [-var-file-Parameter](https://www.terraform.io/docs/commands/plan.html#var-file-foo) verwenden, um den Dateinamen anzugeben.
+1. Entwickler 1 erstellt die Konfigurationsdatei.
+1. Entwickler 2 ändert die Konfigurationsdatei.
+1. Entwickler 1 führt die Konfigurationsdatei aus, um sie anzuwenden.
+1. Entwickler 1 erhält unerwartete Ergebnisse und weiß nicht, dass Entwickler 2 die Konfiguration geändert hat.
 
-Beim Ausführen des Befehls `terraform plan` erfolgt eine Aktualisierung, und es wird bestimmt, welche Aktionen erforderlich sind, um den in den Konfigurationsdateien angegebenen gewünschten Zustand zu erreichen.
+Wenn Entwickler 1 eine Ausgabedatei angibt, werden Auswirkungen von Entwickler 2 auf Entwickler 1 verhindert. 
 
-Wenn Sie den Ausführungsplan nicht speichern müssen, führen Sie den folgenden Befehl aus:
+Falls Sie Ihren Ausführungsplan nicht speichern müssen, führen Sie den folgenden Befehl aus:
 
   ```bash
   terraform plan
   ```
 
-Wenn Sie den Ausführungsplan speichern müssen, führen Sie den folgenden Befehl aus (ersetzen Sie den Platzhalter &lt;path> durch den gewünschten Ausgabepfad):
+Falls Sie Ihren Ausführungsplan speichern müssen, führen Sie den folgenden Befehl aus. Ersetzen Sie die Platzhalter durch entsprechende Werte für Ihre Umgebung.
 
   ```bash
   terraform plan -out=<path>
   ```
+
+Ein weiterer hilfreicher Parameter ist [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+
+Standardmäßig wurde von Terraform versucht, Ihre Variablendatei wie folgt zu finden:
+- Datei namens `terraform.tfvars`
+- Datei mit folgendem Benennungsmuster: `*.auto.tfvars`
+
+Für Ihre Variablendatei muss jedoch keine der beiden obigen Konventionen verwendet werden. Geben Sie in diesem Fall den Namen Ihrer Variablendatei mithilfe des Parameters `-var-file` an. Dies wird im folgenden Beispiel veranschaulicht:
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terraform bestimmt die Aktionen, die erforderlich sind, um den in der Konfigurationsdatei angegebenen Zustand zu erreichen.
 
 ![Erstellen eines Terraform-Ausführungsplans](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
@@ -267,7 +283,7 @@ Wenn Sie den letzten Ausführungsplan anwenden möchten, führen Sie den folgend
   terraform apply
   ```
 
-Wenn Sie einen zuvor gespeicherten Ausführungsplan anwenden möchten, führen Sie den folgenden Befehl aus (ersetzen Sie den Platzhalter &lt;path> durch den Pfad zum gespeicherten Ausführungsplan):
+Wenn Sie einen zuvor gespeicherten Ausführungsplan anwenden möchten, führen Sie den folgenden Befehl aus. Ersetzen Sie die Platzhalter durch entsprechende Werte für Ihre Umgebung:
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ Wenn Sie einen zuvor gespeicherten Ausführungsplan anwenden möchten, führen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die Liste der [Azure Terraform-Module](https://registry.terraform.io/modules/Azure) an.
-- Erstellen Sie eine [VM-Skalierungsgruppe mit Terraform](terraform-create-vm-scaleset-network-disks-hcl.md).
+> [!div class="nextstepaction"] 
+> [Tutorial: Erstellen einer Azure-VM-Skalierungsgruppe unter Verwendung von Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

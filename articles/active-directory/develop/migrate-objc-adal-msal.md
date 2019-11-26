@@ -1,6 +1,7 @@
 ---
 let application: MSALPublicClientApplication!
-title: Migrieren von Apps zu MSAL.ObjectiveC | Microsoft Identity Platform
+title: Migrieren von Apps zu MSAL.Objective-C
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft Authentication Library für Objective-C (MSAL für iOS und macOS) und der Azure Active Directory-Authentifizierungsbibliothek für Objective-C (ADAL.ObjC) sowie über die Migration zu MSAL für iOS und macOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcceec31785b3d8ebc6d9566e7d2eba857d792ef
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 8ccf88bcffdf484772f5f3ad35316d2c74fb104e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269376"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175644"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrieren von Anwendungen zu MSAL für iOS und macOS
 
@@ -72,7 +73,7 @@ Bereiche können in MSAL auf zwei Arten bereitgestellt werden:
 
 * Durch eine Liste aller Berechtigungen, die für die App erforderlich sind. Beispiel: 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     In diesem Fall fordert die App die Berechtigungen `directory.read` und `directory.write` an. Der Benutzer wird aufgefordert, in die Erteilung dieser Berechtigungen einzuwilligen, falls er diesen Schritt für die App noch nicht ausgeführt hat. Die Anwendung erhält möglicherweise auch zusätzliche Berechtigungen, in die der Benutzer zuvor eingewilligt hat. Der Benutzer wird nur im Fall von neuen oder noch nicht erteilten Berechtigungen zu einer Einwilligung aufgefordert.
 
@@ -327,7 +328,7 @@ MSAL speichert die Token Ihrer App standardmäßig in der iOS- oder macOS-Keycha
 So aktivieren Sie die Zwischenspeicherung von Token:
 1. Stellen Sie sicher, dass Ihre Anwendung ordnungsgemäß signiert ist.
 2. Rufen Sie Ihr Xcode-Projekt auf, und klicken Sie auf „Settings“ (Einstellungen) und dann auf die Registerkarte **Capabilities** (Funktionen) > **Enable Keychain Sharing** (Keychain-Freigabe aktivieren).
-3. Klicken Sie auf **+** , und geben Sie einen Eintrag für **Keychain Groups** (Schlüsselbundgruppen) an: 3.a Geben Sie für iOS `com.microsoft.adalcache` ein. 3.b Geben Sie für macOS `com.microsoft.identity.universalstorage` ein.
+3. Klicken Sie auf **+** , und geben Sie den folgenden Eintrag für **Keychain Groups** (Schlüsselbundgruppen) an: 3.a Geben Sie für iOS `com.microsoft.adalcache` ein. 3.b Geben Sie für macOS `com.microsoft.identity.universalstorage` ein.
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>Erstellen von MSALPublicClientApplication und Wechseln zu den zugehörigen acquireToken- und acquireTokeSilent-Aufrufen
 
@@ -470,4 +471,4 @@ application.acquireTokenSilent(with: silentParameters) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier erfahren Sie mehr zu [Authentifizierungsflows und Anwendungsszenarios](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835872"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -64,7 +64,7 @@ Um einer Web-App einen benutzerdefinierten DNS-Namen zuzuordnen, muss der [App S
 
 Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
-![„App Services“ auswählen](./media/app-service-web-tutorial-custom-domain/app-services.png)
+![Auswählen von „App Services“](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
 Wählen Sie auf der Seite **App Services** und den Namen Ihrer Azure-App aus.
 
@@ -330,7 +330,7 @@ Das virtuelle Stammverzeichnis `/` am unteren Seitenrand verweist standardmäßi
 
 ![Anpassen des virtuellen Verzeichnisses](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite am Stammpfad (beispielsweise http://contoso.com) zurückgeben.
+Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite unter dem Stammpfad zurückgeben (z. B. `http://contoso.com`).
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

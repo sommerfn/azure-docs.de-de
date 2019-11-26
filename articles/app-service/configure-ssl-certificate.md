@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572154"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907125"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -68,6 +68,10 @@ Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lös
 - Platzhalterzertifikate werden nicht unterstützt.
 - Es unterstützt keine „nackten“ Domänen.
 - Es kann nicht exportiert werden.
+
+> [!NOTE]
+> Das kostenlose Zertifikat wird von DigiCert ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie DigiCert explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue digicert.com`.
+> 
 
 So erstellen Sie ein von App Service verwaltetes Zertifikat:
 
@@ -344,7 +348,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-Die heruntergeladene Datei *appservicecertificate.pfx* ist eine PKCS12-Rohdatendatei, die sowohl das öffentliche als auch das private Zertifikat enthält. Bei jeder Eingabeaufforderung ist für das Importkennwort und die PEM-Passphrase jeweils eine leere Zeichenfolge angegeben.
+Die heruntergeladene Datei *appservicecertificate.pfx* ist eine PKCS12-Rohdatendatei, die sowohl das öffentliche als auch das private Zertifikat enthält. Verwenden Sie an jeder Eingabeaufforderung für das Importkennwort und die PEM-Passphrase eine leere Zeichenfolge.
 
 ### <a name="delete-certificate"></a>Löschen eines Zertifikats 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842714"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023875"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 
@@ -130,6 +130,12 @@ $Vnet= New-AzVirtualNetwork `
 
 Jetzt erstellen Sie eine verwaltete Azure AD DS-Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne an, z.B. *contoso.com*. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
 
+Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
+
+Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden.
+
+Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurationsaufwand an. Die Verteilung der Ressourcen auf Zonen wird von der Azure-Plattform automatisch durchgeführt. Weitere Informationen, z. B. zur regionalen Verfügbarkeit, finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][availability-zones].
+
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
@@ -148,6 +154,8 @@ Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
     * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* Wenn Sie eine von Azure AD DS verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die von Azure AD DS verwaltete Domäne zu beschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
 * [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="complete-powershell-script"></a>Vollständiges PowerShell-Skript
@@ -233,6 +241,8 @@ Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
     * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* Wenn Sie eine von Azure AD DS verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die von Azure AD DS verwaltete Domäne zu beschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
 * [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -258,3 +268,4 @@ Wenn Sie eine Demo der verwalteten Azure AD DS-Domäne anzeigen möchten, könne
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[availability-zones]: ../availability-zones/az-overview.md

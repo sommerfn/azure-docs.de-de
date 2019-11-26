@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 10/23/2019
 ms.author: danlep
-ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6e55b65d58fe6545d8212b4233f2f45261d18ee5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638920"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043880"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -128,7 +128,7 @@ Dieser Schritttyp erstellt ein Containerimage. Der Schritttyp `build` stellt ein
 ### <a name="syntax-build"></a>Syntax: build
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [build]: -t [imageName]:[tag] -f [Dockerfile] [context]
     [property]: [value]
@@ -183,9 +183,9 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 #### <a name="build-image---context-in-subdirectory"></a>Erstellen eines Images – Kontext in einem Unterverzeichnis
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world -f hello-world.dockerfile ./subDirectory
+  - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
 ## <a name="push"></a>push
@@ -197,21 +197,21 @@ Dieser Schritttyp pusht ein oder mehrere erstellte oder erneut gekennzeichnete I
 Der Schritttyp `push` unterstützt eine Sammlung von Images. Die YAML-Sammlungssyntax unterstützt Inlineformate und geschachtelte Formate. Das Pushen eines einzelnen Images wird in der Regel mithilfe von Inlinesyntax dargestellt:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Inline YAML collection syntax
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Verwenden Sie zum Pushen mehrerer Images eine geschachtelte Syntax, um die Lesbarkeit zu verbessern:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Nested YAML collection syntax
   - push:
-    - {{.Run.Registry}}/hello-world:{{.Run.ID}}
-    - {{.Run.Registry}}/hello-world:latest
+    - $Registry/hello-world:$ID
+    - $Registry/hello-world:latest
 ```
 
 ### <a name="properties-push"></a>Eigenschaften: push
@@ -254,7 +254,7 @@ Der Schritttyp `cmd` führt einen Container aus.
 ### <a name="syntax-cmd"></a>Syntax: cmd
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [cmd]: [containerImage]:[tag (optional)] [cmdParameters to the image]
 ```
@@ -330,33 +330,31 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 Die Schritttyp `cmd` verweist anhand des `docker run`-Standardformats auf Images. Für Images ohne vorangestellte Registrierung wird angenommen, dass sie aus „docker.io“ stammen. Das vorherige Beispiel könnte auch wie folgt dargestellt werden:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
 Durch die Verwendung der `docker run`-Standardkonvention für Imageverweise kann `cmd` Images aus einer privaten Registrierung oder aus dem öffentlichen Docker-Hub ausführen. Wenn Sie auf Images in derselben Registrierung verweisen, in der ACR Tasks ausgeführt wird, müssen Sie keine Anmeldeinformationen für die Registrierung angeben.
 
-* Ausführen eines Images aus einer Azure-Containerregistrierung
-
-    Ersetzen Sie `[myregistry]` durch den Namen Ihrer Registrierung:
+* Führen Sie ein Image aus einer Azure-Containerregistrierung aus. Im folgenden Beispiel wird von einer Registrierung mit dem Namen `myregistry` und dem benutzerdefinierten Image `myimage:mytag` ausgegangen.
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-        - cmd: [myregistry].azurecr.io/bash:3.0 echo hello world
+        - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* Generalisieren Sie den Verweis auf die Registrierung mit einer Run-Variablen.
+* Generalisieren Sie den Verweis auf die Registrierung mit einer Run-Variable oder einem Alias.
 
-    Anstatt den Namen Ihrer Registrierung in einer Datei `acr-task.yaml` hartzucodieren, können Sie eine [Run-Variable](#run-variables) verwenden, damit der Name besser portiert werden kann. Die `Run.Registry`-Variable wird zur Laufzeit auf den Namen der Registrierung erweitert, in der die Aufgabe ausgeführt wird.
+    Anstatt den Namen Ihrer Registrierung in der Datei `acr-task.yaml` hartzucodieren, können Sie eine [Run-Variable](#run-variables) oder einen [Alias](#aliases) verwenden, damit der Name besser portiert werden kann. Die `Run.Registry`-Variable oder der `$Registry`-Alias wird zur Laufzeit auf den Namen der Registrierung erweitert, in der die Aufgabe ausgeführt wird.
 
-    Um die vorherige Aufgabe zu generalisieren, damit sie in jeder Azure-Containerregistrierung funktioniert, verweisen Sie im Imagenamen auf die [Run.Registry](#runregistry)-Variable:
+    Um die vorherige Aufgabe zu generalisieren, damit sie in jeder Azure-Containerregistrierung funktioniert, verweisen Sie z. B. im Imagenamen auf die $Registry-Variable:
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-      - cmd: {{.Run.Registry}}/bash:3.0 echo hello world
+      - cmd: $Registry/myimage:mytag
     ```
 
 ## <a name="task-step-properties"></a>Aufgabenschritteigenschaften
@@ -451,21 +449,28 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 ACR Tasks enthält einen Standardsatz von Variablen, die für Aufgabenschritte verfügbar sind, wenn diese ausgeführt werden. Auf diese Variablen kann mithilfe des Formats `{{.Run.VariableName}}` zugegriffen werden, wobei `VariableName` eine der folgenden Variablen ist:
 
 * `Run.ID`
+* `Run.SharedVolume`
 * `Run.Registry`
+* `Run.RegistryName`
 * `Run.Date`
+* `Run.OS`
+* `Run.Architecture`
 * `Run.Commit`
 * `Run.Branch`
+* `Run.TaskName`
+
+Die Variablennamen sind in der Regel selbsterklärend. Details für häufig verwendete Variablen finden Sie nachfolgend. Ab YAML `v1.1.0` können Sie anstelle der meisten Run-Variablen einen abgekürzten vordefinierten [Aufgabenalias](#aliases) verwenden. Anstelle von `{{.Run.Registry}}` können Sie beispielsweise den Alias `$Registry` verwenden.
 
 ### <a name="runid"></a>Run.ID
 
-Jede Ausführung über `az acr run` oder triggerbasierte Ausführung von Aufgaben, die mit `az acr task create` erstellt wurden, besitzt eine eindeutige ID. Die ID stellt die aktuelle Ausführung dar.
+Jede Ausführung über `az acr run` oder triggerbasierte Ausführung von Aufgaben, die mit `az acr task create` erstellt wurden, verfügt über eine eindeutige ID. Die ID stellt die aktuelle Ausführung dar.
 
 Diese Variable wird in der Regel zur eindeutigen Kennzeichnung eines Images verwendet:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-    - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    - build: -t $Registry/hello-world:$ID .
 ```
 
 ### <a name="runregistry"></a>Run.Registry
@@ -473,9 +478,21 @@ steps:
 Der vollqualifizierte Servername der Registrierung. Diese Variable wird in der Regel verwendet, um generisch auf die Registrierung zu verweisen, in der die Aufgabe ausgeführt wird.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+  - build: -t $Registry/hello-world:$ID .
+```
+
+### <a name="runregistryname"></a>Run.RegistryName
+
+Der Name der Containerregistrierung. Wird normalerweise in Aufgabenschritten verwendet, für die kein vollqualifizierter Servername erforderlich ist, z. B. `cmd`-Schritte, mit denen Azure CLI-Befehle in Registrierungen ausgeführt werden.
+
+```yml
+version 1.1.0
+steps:
+# List repositories in registry
+- cmd: az login --identity
+- cmd: az acr repository list --name $RegistryName
 ```
 
 ### <a name="rundate"></a>Run.Date
@@ -490,11 +507,88 @@ Für eine Aufgabe, die durch einen Commit an ein GitHub-Repository ausgelöst wu
 
 Für eine Aufgabe, die durch einen Commit an ein GitHub-Repository ausgelöst wurde, der Branchname.
 
+## <a name="aliases"></a>Aliase
+
+Ab `v1.1.0` unterstützt ACR Tasks Aliase, die für Aufgabenschritte verfügbar sind, wenn diese ausgeführt werden. Aliase ähneln in ihrem Konzept den in Bash und einigen anderen Befehlsshells unterstützten Befehlsverknüpfungen. 
+
+Mit einem Alias können Sie einen Befehl oder eine Befehlsgruppe (einschließlich Optionen und Dateinamen) starten, indem Sie ein einzelnes Wort eingeben.
+
+ACR Tasks unterstützen verschiedene vordefinierte Aliase und auch benutzerdefinierte Aliase, die Sie erstellen.
+
+### <a name="predefined-aliases"></a>Vordefinierte Aliase
+
+Folgende Aufgabenaliase stehen zur Verwendung anstelle von [Run-Variablen](#run-variables) zur Verfügung:
+
+| Alias | Run-Variable |
+| ----- | ------------ |
+| `ID` | `Run.ID` |
+| `SharedVolume` | `Run.SharedVolume` |
+| `Registry` | `Run.Registry` |
+| `RegistryName` | `Run.RegistryName` |
+| `Date` | `Run.Date` |
+| `OS` | `Run.OS` |
+| `Architecture` | `Run.Architecture` |
+| `Commit` | `Run.Commit` |
+| `Branch` | `Run.Branch` |
+
+Stellen Sie in Aufgabenschritten wie im folgenden Beispiel einem Alias die `$`-Anweisung voran:
+
+```yaml
+version: v1.1.0
+steps:
+  - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
+```
+
+### <a name="image-aliases"></a>Imagealiase
+
+Jeder der folgenden Aliase verweist auf ein stabiles Image in Microsoft Container Registry (MCR). Sie können auf jeden dieser Aliase im Abschnitt `cmd` einer Aufgabendatei ohne Verwendung einer Anweisung verweisen.
+
+| Alias | Image |
+| ----- | ----- |
+| `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
+| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
+| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+
+In der folgenden Beispielaufgabe werden mehrere Aliase zum [Bereinigen](container-registry-auto-purge.md) von Imagetags, die älter als 7 Tage sind, im Repository `samples/hello-world` in der Ausführungsregistrierung verwendet:
+
+```yaml
+version: v1.1.0
+steps:
+  - cmd: acr tag list --registry $RegistryName --repository samples/hello-world
+  - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
+```
+
+### <a name="custom-alias"></a>Benutzerdefinierter Alias
+
+Definieren Sie einen benutzerdefinierten Alias in der YAML-Datei, und verwenden Sie ihn wie im folgenden Beispiel gezeigt. Ein Alias darf nur alphanumerische Zeichen enthalten. Als Standardanweisung zum Erweitern eines Alias wird das `$`-Zeichen verwendet.
+
+```yml
+version: v1.1.0
+alias:
+  values:
+    repo: myrepo
+steps:
+  - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
+```
+
+Sie können eine Verknüpfung mit einer lokalen YAML-Datei oder einer YAML-Remotedatei für benutzerdefinierte Aliasdefinitionen herstellen. Im folgenden Beispiel wird eine Verknüpfung mit einer YAML-Datei in Azure Blob Storage hergestellt:
+
+```yml
+version: v1.1.0
+alias:
+  src:  # link to local or remote custom alias files
+    - 'https://link/to/blob/remoteAliases.yml?readSasToken'
+[...]
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Eine Übersicht über mehrstufige Aufgaben finden Sie unter [Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md) (Ausführen von mehrstufigen Build-, Test- und Patchaufgaben in ACR Tasks).
 
 Informationen zu einstufigen Buildaufgaben finden Sie unter [ACR Tasks overview](container-registry-tasks-overview.md) (Übersicht über ACR Tasks).
+
+
 
 <!-- IMAGES -->
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Wiederherstellen virtueller Computer über das Azure-Portal'
+title: 'Azure Backup: Wiederherstellen von VMs über das Azure-Portal'
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal
 ms.reviewer: geg
 author: dcurwin
@@ -9,18 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 759be3691ba44c92033ec71fd031f9c6e47d6cb4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 16017f00282729361a0489214c941e824042060e
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311896"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044163"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
 Dieser Artikel beschreibt, wie Sie Azure VM-Daten aus den Wiederherstellungspunkten wiederherstellen können, die in [Azure Backup](backup-overview.md) Recovery Services-Tresoren gespeichert sind.
-
-
 
 ## <a name="restore-options"></a>Wiederherstellungsoptionen
 
@@ -29,9 +27,8 @@ Azure Backup bietet eine Reihe von Möglichkeiten zum Wiederherstellen einer VM.
 **Wiederherstellungsoptionen** | **Details**
 --- | ---
 **Eine neue VM erstellen** | Sie können schnell eine einfache VM erstellen und können Sie über einen Wiederherstellungspunkt betriebsbereit machen.<br/><br/> Sie können einen Namen für die VM angeben, die Ressourcengruppe und das virtuelle Netzwerk (VNet) auswählen, in dem sie platziert werden soll, und ein Speicherkonto für die wiederhergestellte VM angeben. Die neue VM muss in derselben Region wie die Quell-VM erstellt werden.
-**Datenträger wiederherstellen** | Stellt einen VM-Datenträger wieder her, der dann zum Erstellen einer neuen VM verwendet werden kann.<br/><br/> Azure Backup bietet eine Vorlage, mit der Sie eine VM anpassen und erstellen können. <br/><br> Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen und eine VM zu erstellen.<br/><br/> Die Datenträger werden in das von Ihnen angegebene Speicherkonto kopiert.<br/><br/> Alternativ können Sie den Datenträger an eine vorhandene VM anhängen oder mit PowerShell eine neue VM erstellen.<br/><br/> VM anpassen, Konfigurationseinstellungen hinzufügen möchten, die zum Zeitpunkt der Sicherung nicht vorhanden waren, oder Einstellungen hinzufügen möchten, die mithilfe der Vorlage oder von PowerShell konfiguriert werden müssen.
+**Datenträger wiederherstellen** | Stellt einen VM-Datenträger wieder her, der dann zum Erstellen einer neuen VM verwendet werden kann.<br/><br/> Azure Backup bietet eine Vorlage, mit der Sie eine VM anpassen und erstellen können. <br/><br> Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen und eine VM zu erstellen.<br/><br/> Die Datenträger werden in die von Ihnen angegebene Ressourcengruppe kopiert.<br/><br/> Alternativ können Sie den Datenträger an eine vorhandene VM anhängen oder mit PowerShell eine neue VM erstellen.<br/><br/> VM anpassen, Konfigurationseinstellungen hinzufügen möchten, die zum Zeitpunkt der Sicherung nicht vorhanden waren, oder Einstellungen hinzufügen möchten, die mithilfe der Vorlage oder von PowerShell konfiguriert werden müssen.
 **Vorhandene ersetzen** | Sie können einen Datenträger wiederherstellen und damit einen Datenträger auf der vorhandenen VM ersetzen.<br/><br/> Der aktuelle virtuelle Computer muss jedoch vorhanden sein. Wenn dieser gelöscht wurde, kann diese Option nicht verwendet werden.<br/><br/> Vor dem Ersetzen des Datenträgers erstellt Azure Backup eine Momentaufnahme der vorhandenen VM und speichert sie im von Ihnen Stagingspeicherort. Vorhandene Datenträger, die mit der VM verbunden sind, werden durch den ausgewählten Wiederherstellungspunkt ersetzt.<br/><br/> Die Momentaufnahme wird in den Tresor kopiert und entsprechend der Aufbewahrungsrichtlinie beibehalten. <br/><br/> Die Option „Vorhandene ersetzen“ wird für nicht verschlüsselte verwaltete VMs unterstützt. Für nicht verwaltete Datenträger, [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) oder für virtuelle Computer, die mit [benutzerdefinierten Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.<br/><br/> Wenn der Wiederherstellungspunkt mehr oder weniger Datenträger als die aktuelle VM aufweist, dann spiegelt die Anzahl der Datenträger im Wiederherstellungspunkt nur die VM-Konfiguration wieder.<br/><br/>
-
 
 > [!NOTE]
 > Sie können auch bestimmte Dateien und Ordner auf einer Azure-VM wiederherstellen. [Weitere Informationen](backup-azure-restore-files-from-vm.md)
@@ -47,19 +44,16 @@ Einige Details zu Speicherkonten:
 - **Datenträger ersetzen**: Wenn Sie einen Datenträger auf einem vorhandenen virtuellen Computer ersetzen, erstellt Azure Backup eine Momentaufnahme von diesem Computer, bevor der Datenträger ersetzt wird. Die Momentaufnahme wird im von Ihnen angegebenen Stagingspeicherort (Speicherkonto) gespeichert. Dieses Speicherkonto wird zum vorübergehenden Speichern der Momentaufnahme während des Wiederherstellungsvorgangs verwendet. Wir empfehlen, dass Sie dafür ein neues Konto erstellen, dass später problemlos entfernt werden kann.
 - **Standort des Speicherkontos**: Das Speicherkonto muss sich in derselben Region wie der Tresor befinden. Nur diese Konten werden angezeigt. Wenn es am Standort keine Speicherkonten gibt, müssen Sie ein Konto erstellen.
 - **Storage type** (Speichertyp): Blobspeicher wird nicht unterstützt.
-- **Speicherredundanz**: Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt. Die Informationen zu Replikation und Redundanz für das Konto stehen hinter in Klammern hinter dem Kontonamen. 
+- **Speicherredundanz**: Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt. Die Informationen zu Replikation und Redundanz für das Konto stehen hinter in Klammern hinter dem Kontonamen.
 - **Storage Premium**:
-    - Beim Wiederherstellen von Nicht-Premium-VMs werden Storage Premium-Konten nicht unterstützt.
-    - Beim Wiederherstellen von verwalteten VMs werden Storage Premium-Konten, die mit Netzwerkregeln konfiguriert wurden, nicht unterstützt.
-
+  - Beim Wiederherstellen von Nicht-Premium-VMs werden Storage Premium-Konten nicht unterstützt.
+  - Beim Wiederherstellen von verwalteten VMs werden Storage Premium-Konten, die mit Netzwerkregeln konfiguriert wurden, nicht unterstützt.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
 Stellen Sie zum Wiederherstellen einer VM (bzw. zum Erstellen einer neuen VM) sicher, dass Sie über die richtigen [Berechtigungen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für den Vorgang „VM wiederherstellen“ verfügen.
 
 Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#restore-disks) und anschließend [mithilfe der Vorlage](#use-templates-to-customize-a-restored-vm), die im Rahmen des Wiederherstellungsvorgangs generiert wurde, eine neue VM erstellen.
-
-
 
 ## <a name="select-a-restore-point"></a>Auswählen eines Wiederherstellungspunkts
 
@@ -94,7 +88,6 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von eine
     ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 6. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
-
 
 ## <a name="restore-disks"></a>Wiederherstellen von Datenträgern
 
@@ -135,7 +128,6 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
-
 ## <a name="replace-existing-disks"></a>Ersetzen vorhandener Datenträger
 
 Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie einen vorhandenen VM-Datenträger durch den ausgewählten Wiederherstellungspunkt ersetzen. [Schauen Sie sich alle Wiederherstellungsoptionen an](#restore-options).
@@ -146,7 +138,6 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie einen vo
 
    ![Assistent für die Wiederherstellungskonfiguration – Vorhandene ersetzen](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
-
 ## <a name="restore-vms-with-special-configurations"></a>Wiederherstellen von VMs mit besonderen Konfigurationen
 
 Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wiederherstellen müssen.
@@ -155,7 +146,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 --- | ---
 **Wiederherstellen von VM mit dem Vorteil der Hybridnutzung** | Wenn eine Windows-VM die [Lizenzierung für die Vorteile der Hybridnutzeung (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, stellen Sie die Datenträger wieder her, und erstellen Sie eine neue VM mit der bereitgestellten Vorlage (wobei **Lizenztyp** auf **Windows_Server** festgelegt ist) oder PowerShell.  Diese Einstellung kann auch nach dem Erstellen des virtuellen Computers angewendet werden.
 **Wiederherstellen einer VM während einer Azure-Datencenter-Notfallwiederherstellung** | Wenn der Tresor GRS verwendet und das primäre Rechenzentrum für die VM ausfällt, unterstützt Azure Backup die Wiederherstellung von gesicherten VMs im gekoppelten Rechenzentrum. Sie wählen ein Speicherkonto im gekoppelten Rechenzentrum aus, und stellen es wie gewohnt wieder her. Azure Backup verwendet den Computedienst der gekoppelten Region, um die wiederhergestellte VM zu erstellen. Erfahren Sie mehr über die [Resilienz von Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).
-**Wiederherstellen einer einzelnen Domänencontroller-VM in einer einzelnen Domäne** | Stellen Sie die VM wie jede andere VM wieder her. Beachten Sie Folgendes:<br/><br/> Aus Active Directory-Sicht entspricht die Azure-VM beliebigen anderen VMs.<br/><br/> Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. [Weitere Informationen](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v) zu den Überlegungen zum Sichern und Wiederherstellen virtualisierter Domänencontroller.
+**Wiederherstellen einer einzelnen Domänencontroller-VM in einer einzelnen Domäne** | Stellen Sie die VM wie jede andere VM wieder her. Beachten Sie Folgendes:<br/><br/> Aus Active Directory-Sicht entspricht die Azure-VM beliebigen anderen VMs.<br/><br/> Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) zu den Überlegungen zum Sichern und Wiederherstellen virtualisierter Domänencontroller.
 **Wiederherstellen mehrerer Domänencontroller-VMs in einer einzelnen Domäne** | Wenn andere Domänencontroller in derselben Domäne über das Netzwerk erreicht werden können, kann der Domänencontroller wie ein beliebiger virtueller Computer wiederhergestellt werden. Wenn es sich um den letzten verbleibenden Domänencontroller in der Domäne handelt oder eine Wiederherstellung in einem isolierten Netzwerk erfolgt, muss ein Vorgang zur [Wiederherstellung der Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery) ausgeführt werden.
 **Wiederherstellen mehrerer Domänen in einer Gesamtstruktur** | Wir empfehlen eine [Wiederherstellung der Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Bare-Metal-Wiederherstellung** | Der Hauptunterschied zwischen Azure-VMs und lokalen Hypervisoren ist, dass keine VM-Konsole in Azure verfügbar ist. Eine Konsole ist für bestimmte Szenarien erforderlich, z.B. zur Wiederherstellung mithilfe einer Sicherung vom Typ „Bare-Metal-Recovery“ (BMR). Die VM-Wiederherstellung aus dem Tresor ist jedoch ein vollständiger Ersatz für BMR.
@@ -164,6 +155,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Zonenkonfigurierte angeheftete VMs** | Azure Backup unterstützt die Sicherung und Wiederherstellung von zonenkonfigurierten angehefteten VMs. [Weitere Informationen](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
+
 Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Azure Backup zeigt Benachrichtigungen zum Auftrag im Portal an. Wenn sie nicht angezeigt werden, wählen Sie das Symbol **Benachrichtigungen** und dann **Alle Aufträge anzeigen** aus, um den Status des Wiederherstellungsvorgangs anzuzeigen.
 
 ![Wiederherstellung ausgelöst](./media/backup-azure-arm-restore-vms/restore-notification1.png)
@@ -188,12 +180,12 @@ Nach dem Wiederherstellen einer VM gibt es eine Reihe von Dingen zu beachten:
 - Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
 - Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/reset-password.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Wir empfehlen, bei diesen Verteilungen SSH-Schlüssel zu verwenden, sodass Sie das Kennwort nach der Wiederherstellung nicht zurücksetzen müssen.
-- Wenn Sie nach der Wiederherstellung auf die VM nicht zugreifen können, weil die Beziehung zwischen ihr und einem Domänencontroller getrennt wurde, führen Sie die folgenden Schritte aus, um die VM aufzurufen:
-    - Fügen Sie den Betriebssystem-Datenträger als Datenträger an eine wiederhergestellte VM an.
-    - Wenn der Azure-Agent nicht reagiert, installieren Sie den VM-Agent manuell, indem Sie diesem [Link](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline) folgen.
-    - Aktivieren des Zugriffs auf die serielle Konsole auf der VM, um Befehlszeilenzugriff auf die VM zu ermöglichen
-    
-  ```
+- Wenn Sie nach der Wiederherstellung nicht auf die VM zugreifen können, weil die Beziehung zwischen ihr und einem Domänencontroller getrennt wurde, führen Sie die folgenden Schritte aus, um die VM aufzurufen:
+  - Fügen Sie den Betriebssystem-Datenträger als Datenträger an eine wiederhergestellte VM an.
+  - Wenn der Azure-Agent nicht reagiert, installieren Sie den VM-Agent manuell, indem Sie diesem [Link](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline) folgen.
+  - Aktivieren des Zugriffs auf die serielle Konsole auf der VM, um Befehlszeilenzugriff auf die VM zu ermöglichen
+
+  ```cmd
     bcdedit /store <drive letter>:\boot\bcd /enum
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
@@ -201,11 +193,12 @@ Nach dem Wiederherstellen einer VM gibt es eine Reihe von Dingen zu beachten:
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
-    - Wenn die VM neu erstellt wird, setzen Sie das Konto und Kennwort des lokalen Administrators über das Azure-Portal zurück.
-    - Verwenden des Zugriffs auf die serielle Konsole und CMD, um die VM von der Domäne zu trennen
 
-    ```
-    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+  - Wenn die VM neu erstellt wird, setzen Sie das Konto und Kennwort des lokalen Administrators über das Azure-Portal zurück.
+  - Verwenden des Zugriffs auf die serielle Konsole und CMD, um die VM von der Domäne zu trennen
+
+    ```cmd
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
 - Nachdem die VM getrennt und neu gestartet wurde, können Sie eine RDP-Verbindung mit der VM mit lokalen Administratoranmeldeinformationen erfolgreich herstellen und die VM erfolgreich wieder zur Domäne hinzufügen.

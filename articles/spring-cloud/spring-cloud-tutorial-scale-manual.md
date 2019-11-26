@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607528"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132886"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Tutorial: Skalieren einer Anwendung in Azure Spring Cloud
 
@@ -31,11 +31,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 1. Navigieren Sie zur Seite **Übersicht** von Azure Spring Cloud.
 
+1. Wählen Sie die Ressourcengruppe aus, die Ihren Dienst enthält.
+
 1. Navigieren Sie im Menü auf der linken Seite unter der Überschrift **Einstellungen** zur Registerkarte **Apps**.
 
 1. Wählen Sie die Anwendung aus, die Sie skalieren möchten. In diesem Beispiel wird die Anwendung mit dem Namen „account-service“ skaliert. Dadurch gelangen Sie zur Seite **Übersicht** der Anwendung.
 
-1. Navigieren Sie im Menü auf der linken Seite unter der Überschrift **Einstellungen** zur Registerkarte **Skalieren**. Dort sollte ein Formular mit Zeilen für die einzelnen zuvor erwähnten Skalierungsattribute angezeigt werden.
+1. Navigieren Sie im Menü auf der linken Seite unter der Überschrift **Einstellungen** zur Registerkarte **Skalieren**. Es sollten Optionen für die Skalierungsattribute angezeigt werden. Diese werden im folgenden Abschnitt veranschaulicht.
 
 ## <a name="scale-your-application"></a>Skalieren Ihrer Anwendung
 
@@ -45,9 +47,11 @@ Sie können die Skalierungsattribute ändern. Berücksichtigen Sie Folgendes:
 
 * **Arbeitsspeicher/GB**: Die pro Anwendungsinstanz zulässige maximale Arbeitsspeichermenge beträgt 8 GB.  Die Gesamtmenge des Arbeitsspeichers für eine Anwendung ist der hier festgelegte Wert multipliziert mit der Anzahl von Anwendungsinstanzen.
 
-* **Instanzenanzahl:** In der Dienstebene „Standard“ ist eine Erweiterung auf bis zu 20 Instanzen möglich. Dieser Wert ändert die Anzahl separat ausgeführter Instanzen der Microserviceanwendung.
+* **Anzahl von App-Instanzen**: In der Dienstebene „Standard“ ist eine Erweiterung auf bis zu 20 Instanzen möglich. Dieser Wert ändert die Anzahl separat ausgeführter Instanzen der Microserviceanwendung.
 
 Klicken Sie unbedingt auf die Schaltfläche **Speichern**, um Ihre Skalierungseinstellungen zu übernehmen.
+
+![Skalierungsdienst im Azure-Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Nach wenigen Sekunden werden die von Ihnen vorgenommenen Änderungen auf der Seite **Übersicht** angezeigt. Weitere Details können Sie auf der Registerkarte **Anwendungsinstanzen** einsehen. Für die Skalierung sind weder Codeänderungen noch eine erneute Bereitstellung erforderlich.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Debuggen von Apache Hadoop: Anzeigen von Protokollen und Verstehen von Fehlermeldungen – Azure HDInsight'
+title: 'Debuggen von Apache Hadoop: Protokolle und Fehlermeldungen in Azure HDInsight'
 description: Lernen Sie die Fehlermeldungen kennen, die Sie bei der Administration von HDInsight mit PowerShell erhalten können und Schritte zu deren Behebung.
 ms.reviewer: jasonh
 author: ashishthaps
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2e5cb1676670642121caec71a973374063fe4320
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059218"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044859"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analysieren von Apache Hadoop-Protokollen in Azure HDInsight
 
@@ -73,7 +73,7 @@ Power Query kann über [Microsoft Power Query für Excel](https://www.microsoft.
 5. Klicken Sie im Bereich **Navigator** mit der rechten Maustaste auf die Tabelle „hadoopservicelog“, und wählen Sie **Bearbeiten** aus. Es werden vier Spalten angezeigt. Löschen Sie optional die Spalten **Partition Key**, **Row Key** und **Timestamp**, indem Sie sie auswählen und dann auf dem Menüband auf **Spalten entfernen** klicken.
 6. Klicken Sie auf das Symbol zum Erweitern der Spalte „Inhalt“, um die Spalten auszuwählen, die Sie in die Excel-Tabelle importieren möchten. Für diese Demo wurde TraceLevel und ComponentName ausgewählt: Es bietet einige grundlegende Informationen darüber, bei welchen Komponenten Probleme aufgetreten sind.
    
-    ![HDInsight Hadoop-Protokolle, Spalten auswählen, Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop-Protokolle, Spalten auswählen, Excel")
+    ![HDInsight Hadoop-Protokolle, Auswählen von Spalten für Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop-Protokolle, Auswählen von Spalten für Excel")
 7. Klicken Sie auf **OK** , um die Daten zu importieren.
 8. Wählen Sie die Spalten **TraceLevel**, „Role“ und **ComponentName** aus, und klicken Sie dann auf dem Menüband auf das Steuerelement **Gruppieren nach**.
 9. Klicken Sie im Dialogfeld „Gruppieren nach“ auf **OK** .
@@ -93,21 +93,20 @@ Sie können jetzt Excel zum Filtern und Sortieren verwenden. Es kann ratsam sein
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop-Protokolle, Spalten auswählen, vs](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop-Protokolle, Spalten auswählen, vs")
+    ![HDInsight Hadoop-Protokolle, Auswählen von Spalten](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop-Protokolle, Auswählen von Spalten")
    
     Weitere Informationen zum Erstellen von Filtern finden Sie unter [Erstellen von Filterzeichenfolgen für den Tabellen-Designer](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
 ## <a name="logs-written-to-azure-blob-storage"></a>In Azure Blob Storage geschriebene Protokolle
+
 Die in Azure-Tabellen geschriebenen Protokolle bieten einen ersten Einblick in das, was in einem HDInsight-Cluster passiert. Diese Tabellen bieten jedoch keine Protokolle auf Aufgabenebene, die bei der weiteren Untersuchung auftretender Probleme hilfreich sein können. Um diese nächste Detailebene zu bieten, sind HDInsight-Cluster für das Schreiben von Aufgabenprotokollen in Ihr Blob Storage-Konto für alle Aufträge konfiguriert, die über Templeton übermittelt werden. In der Praxis handelt es sich um Aufträge, die mithilfe von Microsoft Azure PowerShell-Cmdlets oder .NET-APIs für die Auftragsübermittlung übermittelt wurden, und nicht um Aufträge, die über einen RDB-/Befehlszeilenzugriff auf den Cluster übermittelt wurden. 
 
 Informationen zum Anzeigen der Protokolle finden Sie unter [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-
-Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Vereinfachen der Verwaltung von und des Zugriffs auf Benutzerprotokolle in Apache Hadoop YARN](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
-
-
 ## <a name="view-cluster-health-and-job-logs"></a>Anzeigen von Clusterintegritäts- und Auftragsprotokollen
+
 ### <a name="access-the-ambari-ui"></a>Zugreifen auf die Ambari-Benutzeroberfläche
+
 Klicken Sie im Azure-Portal auf den Namen eines HDInsight-Clusters, um den Clusterbereich zu öffnen. Klicken Sie im Clusterbereich auf **Dashboard**.
 
 ![HDInsight: Starten des Cluster-Dashboards](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
@@ -120,7 +119,7 @@ Klicken Sie im Azure-Portal auf den Namen eines HDInsight-Clusters, um den Clust
 
 * **Abrufen des Clusterstatus**. Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Info**. Der aktuelle Clusterstatus enthält Informationen zu den Bereichen insgesamt zugeordneter Arbeitsspeicher, verwendete Kerne, Cluster Resource Manager-Status, Clusterversion usw.
   
-    ![HDInsight: Starten des Cluster-Dashboards (Yarn)](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight: Starten des Cluster-Dashboards (Yarn)")
+    ![HDInsight: Starten des Cluster-Dashboards (YARN)](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight: Starten des Cluster-Dashboards (YARN)")
 * **Abrufen des Knotenstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Knoten**. Hiermit werden alle Knoten im Cluster, die HTTP-Adresse der einzelnen Knoten, die jeweils zugewiesenen Ressourcen usw. aufgeführt.
 * **Überwachen des Auftragsstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie dann auf **Anwendungen**, um alle Aufträge im Cluster aufzulisten. Wenn Sie nur Aufträge in einem bestimmten Zustand betrachten möchten (z.B. neu, übermittelt, ausgeführt usw.), klicken Sie auf den entsprechenden Link unter **Anwendungen**. Sie können außerdem auf den Auftragsnamen klicken, um weitere Informationen zum Auftrag abzurufen, z. B. Ausgabe, Protokolle usw.
 

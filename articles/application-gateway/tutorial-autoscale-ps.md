@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Erstellen einer zonenredundanten Application Gateway-Instanz mit automatischer Skalierung und reservierter IP-Adresse – Azure PowerShell'
+title: 'Tutorial: Verbessern des Zugriffs auf die Webanwendung: Azure Application Gateway'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure PowerShell eine zonenredundante Anwendungsgatewayinstanz mit automatischer Skalierung und einer reservierten IP-Adresse erstellen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947150"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011365"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Tutorial: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Routingmethode für Subnetzdatenverkehr mit dem Azure Traffic Manager
+title: 'Tutorial: Konfigurieren des Routings für Subnetzdatenverkehr – Azure Traffic Manager'
 description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: da2d4816f3f7a99ac2d213d72d7e801cf630e165
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304934"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048809"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Weiterleiten von Datenverkehr an bestimmte Endpunkte mit Traffic Manager basierend auf einem Benutzersubnetz
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
 In diesem Artikel wird das Konfigurieren der Routingmethode für Subnetzdatenverkehr beschrieben. Mit der Datenverkehrsrouting-Methode **Subnetz** können Sie IP-Adressbereiche bestimmten Endpunkten zuordnen. Wenn eine Anforderung von Traffic Manager empfangen wird, wird die Quell-IP der Anforderung überprüft und der damit verbundene Endpunkt zurückgegeben.
 
@@ -156,8 +156,8 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
     | ---                     | ---                                                |
     | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
     | |                              |
     |
 
@@ -173,7 +173,7 @@ Fügen Sie die beiden virtuellen Computer mit den IIS-Servern (*myIISVMEastUS* &
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure-Endpunkt                                   |
+    | type                    | Azure-Endpunkt                                   |
     | NAME           | myInternalWebSiteEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|

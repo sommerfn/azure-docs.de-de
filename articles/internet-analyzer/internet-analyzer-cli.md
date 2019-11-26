@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3ae3c3f66ce7301023217a91cd8c79783f3ef833
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509844"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839523"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Erstellen eines Internet Analyzer-Tests mithilfe der Befehlszeilenschnittstelle (Vorschau)
 
@@ -79,7 +79,7 @@ Die Internet Analyzer-Befehlszeilenschnittstelle macht die folgenden Ressourcent
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Der Befehl oben setzt voraus, dass sowohl www.contoso.com als auch www.microsoft.com das 1 Pixel große Bild ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) unter benutzerdefinierten Pfaden hosten. Wird ein Objektpfad nicht explizit angegeben, verwendet Internet Analyzer standardmäßig `/apc/trans.gif` als Objektpfad. Dort wird das 1 Pixel große Bild von den vorkonfigurierten Endpunkten gehostet. Beachten Sie auch, dass das Schema (HTTPS/HTTP) nicht angegeben werden muss. Internet Analyzer unterstützt nur HTTPS-Endpunkte, daher wird von HTTPS ausgegangen.
+    Beim obigen Befehl wird angenommen, dass sowohl für `www.contoso.com` als auch für `www.microsoft.com` das 1 Pixel große Bild ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) unter benutzerdefinierten Pfaden gehostet wird. Wird ein Objektpfad nicht explizit angegeben, verwendet Internet Analyzer standardmäßig `/apc/trans.gif` als Objektpfad. Dort wird das 1 Pixel große Bild von den vorkonfigurierten Endpunkten gehostet. Beachten Sie auch, dass das Schema (HTTPS/HTTP) nicht angegeben werden muss. Internet Analyzer unterstützt nur HTTPS-Endpunkte, daher wird von HTTPS ausgegangen.
 
 11. Der neue Test sollte im Internet Analyzer-Profil angezeigt werden:
     ```azurecli-interactive

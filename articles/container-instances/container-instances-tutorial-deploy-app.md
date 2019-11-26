@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325628"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846594"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Tutorial: Bereitstellen einer Containeranwendung in Azure Container Instances
 
@@ -37,7 +37,9 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Bereitstellen des Images, da
 
 ### <a name="get-registry-credentials"></a>Abrufen von Registrierungsanmeldeinformationen
 
-Wenn Sie ein Image bereitstellen, das in einer privaten Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie Anmeldeinformationen für den Zugriff auf die Registrierung angeben. Wie in [Authentifizieren per Azure Container Registry über Azure Container Instances](../container-registry/container-registry-auth-aci.md) gezeigt, empfiehlt es sich in vielen Szenarien, einen Azure Active Directory-Dienstprinzipal mit *Pull*-Berechtigungen für Ihre Registrierung zu erstellen und zu konfigurieren. Dieser Artikel enthält Beispielskripts für die Erstellung eines Dienstprinzipals mit den erforderlichen Berechtigungen. Notieren Sie sich die Dienstprinzipal-ID und das dazugehörige Kennwort. Diese Anmeldeinformationen werden beim Bereitstellen des Containers benötigt.
+Wenn Sie ein Image bereitstellen, das in einer privaten Azure-Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie Anmeldeinformationen für den Zugriff auf die Registrierung angeben. 
+
+Eine bewährte Methode für viele Szenarien ist das Erstellen und Konfigurieren eines Azure Active Directory-Dienstprinzipals mit *Pull*-Berechtigungen für Ihre Registrierung. Beispielskripts zum Erstellen eines Dienstprinzipals mit den erforderlichen Berechtigungen finden Sie unter [Authentifizieren per Azure Container Registry über Azure Container Instances](../container-registry/container-registry-auth-aci.md). Notieren Sie sich die *Dienstprinzipal-ID* und das zugehörige *Kennwort*. Sie nutzen diese Anmeldeinformationen zum Zugreifen auf die Registrierung, wenn Sie den Container bereitstellen.
 
 Darüber hinaus benötigen Sie den vollständigen Namen des Anmeldeservers für die Containerregistrierung (ersetzen Sie `<acrName>` durch den Namen Ihrer Registrierung):
 

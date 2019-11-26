@@ -1,6 +1,6 @@
 ---
-title: Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Hier erfahren Sie, wie Sie die Ressourcenrollen für ein vorhandenes Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) ändern.
+title: Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+description: Hier erfahren Sie, wie Sie die Ressourcenrollen für ein vorhandenes Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung ändern.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429813"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174645"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
 Als Zugriffspaket-Manager können Sie die Ressourcen innerhalb eines Zugriffspakets jederzeit ändern, ohne dass Sie Benutzern den Zugriff auf die neuen Ressourcen bereitstellen oder den Zugriff auf die bisherigen Ressourcen entfernen müssen. In diesem Artikel erfahren Sie, wie Sie die Ressourcenrollen für ein vorhandenes Zugriffspaket ändern.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Verschieben von Blob Storage-Daten mit SSIS-Connectors: Team Data Science-Prozess'
-description: Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
+description: Erfahren Sie, wie Sie Daten mithilfe von SQL Server Integration Services Feature Pack für Azure in oder aus Azure Blob Storage verschieben.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fb802905070ab1ddc8af93e501e8e11e262cf4a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429881"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053932"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
 Das [SQL Server Integration Services Feature Pack für Azure](https://msdn.microsoft.com/library/mt146770.aspx) bietet Komponenten zum Herstellen einer Verbindung mit Azure, Übertragen von Daten zwischen Azure und lokalen Datenquellen und Verarbeiten von in Azure gespeicherten Daten.

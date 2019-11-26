@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: jehollan
-ms.openlocfilehash: b581d7c9b5876813e36ebbf41be713b44dd97735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096095"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900071"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions in Kubernetes mit KEDA
 
@@ -51,6 +51,9 @@ func init --docker-only
 
 Um ein Image zu erstellen und Ihre Funktionen in Kubernetes bereitzustellen, führen Sie den folgenden Befehl aus:
 
+> [!NOTE]
+> Die Core Tools nutzen die Docker-Befehlszeilenschnittstelle, um das Image zu erstellen und zu veröffentlichen. Stellen Sie sicher, dass bereits ein Docker installiert und über `docker login` mit Ihrem Konto verbunden ist.
+
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
@@ -58,6 +61,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 > Ersetzen Sie `<name-of-function-deployment>` durch den Namen der Funktions-App.
 
 Dieser Befehl erstellt eine Kubernetes-`Deployment`-Ressource, eine `ScaledObject`-Ressource und `Secrets`, einschließlich aus Ihrer `local.settings.json`-Datei importierten Umgebungsvariablen.
+
+### <a name="deploying-a-function-app-from-a-private-registry"></a>Bereitstellen einer Funktions-App aus einer privaten Registrierung
+
+Der obige Flow funktioniert auch für private Registrierungen.  Wenn Sie Ihr Containerimage aus einer privaten Registrierung abrufen, schließen Sie das `--pull-secret`-Flag ein. Dieses verweist auf den geheimen Kubernetes-Schlüssel, der die Anmeldeinformationen für die private Registrierung beim Ausführen von `func kubernetes deploy` enthält.
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Entfernen einer Funktions-App aus Kubernetes
 

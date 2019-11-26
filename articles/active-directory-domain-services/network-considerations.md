@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315004"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024006"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
@@ -91,8 +91,8 @@ Eine von Azure AD DS verwaltete Domäne erstellt während der Bereitstellung ein
 | Azure-Ressource                          | BESCHREIBUNG |
 |:----------------------------------------|:---|
 | Netzwerkschnittstellenkarte                  | Azure AD DS hostet die verwaltete Domäne auf zwei Domänencontrollern (DCs), die auf Windows Server als virtuelle Azure-Computer ausgeführt werden. Jeder virtuelle Computer verfügt über eine virtuelle Netzwerkschnittstelle, die sich mit Ihrem virtuellen Subnetz verbindet. |
-| Dynamische grundlegende öffentliche IP-Adresse         | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine einfache öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Azure Load Balancer im Tarif „Basic“               | Azure AD DS verwendet einen SKU-Load Balancer im Tarif „Basic“ für die Netzwerkadressübersetzung (NAT) und den Lastenausgleich (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
+| Dynamische öffentliche Standard-IP-Adresse         | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine standardmäßige öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Azure Load Balancer Standard               | Azure AD DS verwendet einen SKU-Load Balancer vom Typ „Standard“ für die Netzwerkadressübersetzung (NAT) und den Lastenausgleich (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
 | Regeln für die Netzwerkadressübersetzung (NAT) | Azure AD DS erstellt und verwendet drei NAT-Regeln auf dem Load Balancer – eine Regel für sicheren HTTP-Datenverkehr und zwei Regeln für sicheres PowerShell-Remoting. |
 | Lastenausgleichsregeln                     | Wenn eine von Azure AD DS verwaltete Domäne für sicheres LDAP am TCP-Port 636 konfiguriert ist, werden drei Regeln erstellt und auf einem Load Balancer verwendet, um den Datenverkehr zu verteilen. |
 
@@ -107,10 +107,10 @@ Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit
 
 | Portnummer | Protocol | `Source`                             | Destination | Aktion | Erforderlich | Zweck |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | ZULASSEN  | Ja      | Synchronisierung mit Ihrem Azure AD-Mandanten |
-| 3389        | TCP      | CorpNetSaw                         | Any         | ZULASSEN  | Ja      | Verwaltung Ihrer Domäne |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | ZULASSEN  | Ja      | Verwaltung Ihrer Domäne |
-| 636         | TCP      | Any                                | Any         | ZULASSEN  | Nein       | Nur aktiviert, wenn Sie sicheres LDAP (LDAPS) konfigurieren |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisierung mit Ihrem Azure AD-Mandanten |
+| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
+| 636         | TCP      | Any                                | Any         | Allow  | Nein       | Nur aktiviert, wenn Sie sicheres LDAP (LDAPS) konfigurieren |
 
 > [!WARNING]
 > Bearbeiten Sie diese Netzwerkressourcen und Konfigurationen nicht manuell. Wenn Sie eine falsch konfigurierte Netzwerksicherheitsgruppe oder eine benutzerdefinierte Routingtabelle mit dem Subnetz verknüpfen, in dem Azure AD DS bereitgestellt wird, können Sie die Möglichkeiten von Microsoft zur Wartung und Verwaltung der Domäne beeinträchtigen. Die Synchronisierung zwischen Ihrem Azure AD-Mandanten und Ihrer von Azure AD DS verwalteten Domäne ist ebenfalls beeinträchtigt.

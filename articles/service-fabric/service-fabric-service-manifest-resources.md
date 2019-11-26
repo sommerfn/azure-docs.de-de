@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170452"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242916"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
@@ -30,6 +30,8 @@ Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabr
 
 > [!WARNING] 
 > Statische Ports sollten sich nicht mit dem im Clustermanifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
+>
+> Mit Version 7.0 werden wir eine **Integritätswarnung** ausgeben, wenn wir feststellen, dass die Nutzung des Anwendungsportbereichs über „HostingConfig::ApplicationPortExhaustThresholdPercentage“ hinausgeht (standardmäßig 80 %).
 >
 
 ```xml

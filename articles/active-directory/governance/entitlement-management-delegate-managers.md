@@ -1,5 +1,5 @@
 ---
-title: Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
+title: Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
 description: Erfahren Sie, wie Sie die Zugriffssteuerung von IT-Administratoren an Zugriffspaket-Manager und Projektmanager delegieren, damit diese den Zugriff selbst verwalten können.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170872"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174355"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung
 
 Um die Erstellung und Verwaltung von Zugriffspaketen in einem Katalog zu delegieren, fügen Sie der Rolle Zugriffspaket-Manager Benutzer hinzu. Zugriffspaket-Manager müssen mit der Notwendigkeit vertraut sein, dass Benutzer Zugriff auf Ressourcen in einem Katalog anfordern müssen. Wenn z. B. für ein Projekt ein Katalog verwendet wird, kann ein Projektleiter ein Zugriffspaket-Manager für diesen Katalog sein.  Zugriffspaket-Manager können einem Katalog keine Ressourcen hinzufügen, aber sie können die Zugriffspakete und -richtlinien in einem Katalog verwalten.  Bei der Delegierung an einen Zugriffspaket-Manager kann diese Person dann für Folgendes verantwortlich sein:
 

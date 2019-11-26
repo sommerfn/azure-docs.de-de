@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 893fba20af12bbbeeab2f0393177cd6f0daa6452
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299432"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034470"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LAMP-Webservers auf einem virtuellen Linux-Computer in Azure
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 514248446798e8c806252707cc5b332a7d1a4f87
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518198"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965170"
 ---
-# <a name="reserved-public-ipv6-address-prefix"></a>Reserviertes Präfix für öffentliche IPv6-Adressen
+# <a name="reserved-public-ipv6-address-prefix-preview"></a>Reserviertes Präfix für öffentliche IPv6-Adressen (Vorschau)
 
 In Azure sind virtuelle Dual-Stack-Netzwerke (IPv4 und IPv6) sowie virtuelle Computer (VMs) standardmäßig sicher, da sie keine Internetkonnektivität haben. Mit öffentlichen IPv6-Adressen, die Sie von Azure erhalten, können Sie Ihren Azure Load Balancer-Instanzen und VMs problemlos IPv6-Internetkonnektivität hinzufügen.
 
@@ -29,6 +29,9 @@ Alle öffentlichen IP-Adressen, die Sie reservieren, sind einer Azure-Region Ihr
 > Achten Sie darauf, dass Sie Ihre öffentlichen IP-Adressen nicht versehentlich löschen. Durch das Löschen einer öffentlichen IP-Adresse wird sie aus Ihrem Abonnement entfernt, und Sie können sie nicht wiederherstellen (auch nicht mithilfe des Azure-Supports).
 
 Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren.  Ähnlich wie einzelne IP-Adressen sind auch reservierte Präfixe einer Azure-Region Ihrer Wahl und Ihrem Azure-Abonnement zugeordnet. Das Reservieren eines vorhersagbaren, zusammenhängenden Bereichs von Adressen bietet viele Verwendungsmöglichkeiten. Beispielsweise können Sie die Aufnahme Ihrer in Azure gehosteten Anwendungen in die IP-*Whitelist* für Ihr Unternehmen und Ihre Kunden erheblich vereinfachen, da Ihre statischen IP-Bereiche problemlos in lokale Firewalls programmiert werden können.  Sie können nach Bedarf einzelne öffentliche IP-Adressen aus Ihrem IP-Präfix erstellen, und wenn Sie diese einzelnen öffentlichen IP-Adressen löschen, werden sie in den reservierten Bereich *zurückgegeben*, sodass Sie sie später wieder verwenden können. Alle IP-Adressen in Ihrem IP-Präfix sind für Ihre ausschließliche Nutzung reserviert, bis Sie Ihr Präfix löschen.
+
+> [!Important]
+> IPv6 für Azure Virtual Network ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6-Präfixgrößen
 Die folgenden Präfixgrößen für öffentliche IP-Adressen sind verfügbar:
@@ -43,7 +46,7 @@ Die Präfixgröße wird als CIDR-Maskengröße (Classless Inter-Domain Routing) 
 Informationen zu den Kosten im Zusammenhang mit der Nutzung von öffentlichen Azure-IP-Adressen – sowohl einzelnen IP-Adressen als auch IP-Bereichen – finden Sie unter [Preise für öffentliche IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
 ## <a name="limitations"></a>Einschränkungen
-IPv6 wird bei öffentlichen IP-Adressen des Typs „Basic“ nur mit dynamischer Zuordnung unterstützt. Das bedeutet, dass sich die IPv6-Adresse ändert, wenn Sie Ihre Anwendung (VMs oder Load Balancer-Instanzen) in Azure löschen und erneut bereitstellen. Nur öffentliche IPv6-Adressen des Typs „Standard“ unterstützt sowohl die dynamische als auch die statische (reservierte) Zuordnung.
+IPv6 wird bei öffentlichen IP-Adressen des Typs „Basic“ nur mit dynamischer Zuordnung unterstützt. Das bedeutet, dass sich die IPv6-Adresse ändert, wenn Sie Ihre Anwendung (VMs oder Load Balancer-Instanzen) in Azure löschen und erneut bereitstellen. Öffentliche IPv6-IP-Adressen des Typs „Standard“ unterstützen lediglich die statische (reservierte) Zuordnung, obwohl interne Load Balancer Standard-Instanzen auch die dynamische Zuordnung innerhalb des Subnetzes unterstützen können, dem sie zugewiesen sind.  
 
 Als bewährte Vorgehensweise wird empfohlen, dass Sie öffentliche IP-Adressen und Load Balancer-Instanzen des Typs „Standard“ für Ihre IPv6-Anwendungen verwenden.
 

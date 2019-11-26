@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529226"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890613"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Tutorial: Entwickeln eines C-IoT Edge-Moduls für Windows-Geräte
 
@@ -134,7 +134,7 @@ Der Standardmodulcode empfängt Nachrichten in einer Eingabewarteschlange und le
       )
       ```
 
-   3. Fügen Sie im Abschnitt **target_link_libraries** der Datei „CMakeLists.txt“ **my_parson** zur Liste der Bibliotheken hinzu.
+   3. Fügen Sie in der Datei „CMakeLists.txt“ im Abschnitt **target_link_libraries** der Liste mit den Bibliotheken den Eintrag `my_parson` hinzu.
 
    4. Speichern Sie die Datei **CMakeLists.txt**.
 
@@ -174,6 +174,14 @@ Der Standardmodulcode empfängt Nachrichten in einer Eingabewarteschlange und le
 4. Suchen Sie die Funktion `InputQueue1Callback`, und ersetzen Sie die gesamte Funktion durch den folgenden Code. Diese Funktion implementiert den Nachrichtenfilter. Wenn eine Nachricht empfangen wird, überprüft er, ob die gemeldete Temperatur den Schwellenwert überschreitet. Falls dies zutrifft, leitet er die Nachricht über seine Ausgabewarteschlange weiter. Andernfalls ignoriert er die Nachricht. 
 
     ```c
+    static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
+    {
+        unsigned char *ret = (unsigned char *)malloc(len + 1);
+        memcpy(ret, buffer, len);
+        ret[len] = '\0';
+        return ret;
+    }
+
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
     {
         IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -183,7 +191,10 @@ Der Standardmodulcode empfängt Nachrichten in einer Eingabewarteschlange und le
         unsigned const char* messageBody;
         size_t contentSize;
 
-        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) != IOTHUB_MESSAGE_OK)
+        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) == IOTHUB_MESSAGE_OK)
+        {
+            messageBody = bytearray_to_str(messageBody, contentSize);
+        } else
         {
             messageBody = "<null>";
         }

@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309393"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990607"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -86,13 +86,13 @@ Führen Sie diese Schritte mit dem Logik-App-Designer aus, wenn Sie ein Beispiel
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und mehrere Aktionen vom Typ **Initialize variable** verwendet. Diese Aktionen sind für die Erstellung von zwei Zeichenfolgenvariablen und einer Integer-Variablen eingerichtet. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Compose“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie die Ausgabe erstellen möchten, einen dieser Schritte aus: 
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Compose“](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -104,11 +104,11 @@ Führen Sie diese Schritte mit dem Logik-App-Designer aus, wenn Sie ein Beispiel
 
    In diesem Beispiel wird beim Klicken in das Feld **Eingaben** die Liste mit den dynamischen Inhalten angezeigt, damit Sie die zuvor erstellten Variablen auswählen können:
 
-   ![Auswählen von zu verfassenden Eingaben](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![Auswählen von zu verwendenden Eingaben für die Aktion „Compose“](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
    Hier ist das fertige Beispiel für die Aktion **Compose** angegeben: 
 
-   ![Fertige Aktion „Compose“](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   ![Fertiges Beispiel für die Aktion „Compose“](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -124,7 +124,7 @@ Sie können sich vergewissern, dass mit der Aktion **Compose** die erwarteten Er
 
    In diesem Beispiel wird die Aktion **Send an email** verwendet. Sie enthält das Feld **Ausgabe** im Text und Betreff der E-Mail:
 
-   ![Feld „Ausgabe“ in der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   ![Felder „Ausgabe“ für die Aktion „Compose“](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
@@ -144,13 +144,13 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und der Aktion **Initialize variable** verwendet. Die Aktion ist auf die Erstellung einer Variablen ausgelegt, deren anfänglicher Wert ein Array mit einigen Eigenschaften und Werten im JSON-Format ist. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie die CSV-Tabelle erstellen möchten, einen dieser Schritte aus: 
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -169,7 +169,7 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    Hier ist die fertige Beispielaktion **Create CSV table** angegeben: 
 
-   ![Fertige Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+   ![Fertiges Beispiel für die Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -209,17 +209,17 @@ Lassen Sie in der Aktion die Spalte **Header** leer. Dereferenzieren Sie für je
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![Ausdruck zum Dereferenzieren der Eigenschaft](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+   ![Dereferenzieren von „Description“ für „Create CSV table“](./media/logic-apps-perform-data-operations/csv-table-expression.png)
 
 1. Wiederholen Sie die obigen Schritte für jede gewünschte Arrayeigenschaft. Ihre Aktion sieht dann wie im folgenden Beispiel aus:
 
-   ![Fertiggestellte Ausdrücke](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+   ![item()-Funktion in „Create CSV table“](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
 
 1. Wechseln Sie zum Auflösen von Ausdrücken in aussagekräftigere Versionen zur Codeansicht und wieder zurück zur Designeransicht, und öffnen Sie dann die reduzierte Aktion erneut:
 
    Die Aktion **CSV-Tabelle erstellen** wird jetzt wie im folgenden Beispiel angezeigt:
 
-   ![Aktion „CSV-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   ![„Create CSV table“ – aufgelöste Ausdrücke, keine Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 #### <a name="work-in-code-view"></a>In der Codeansicht
 
@@ -261,7 +261,7 @@ Legen Sie in der JSON-Definition der Aktion innerhalb des `columns`-Arrays die `
 
    Die Aktion **CSV-Tabelle erstellen** wird jetzt wie in diesem Beispiel angezeigt, und die Ausdrücke wurden in aussagekräftigere Versionen aufgelöst:
 
-   ![Aktion „CSV-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   ![„Create CSV table“ – aufgelöste Ausdrücke und keine Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Weitere Informationen zu dieser Aktion in Ihrer zugrunde liegenden Workflowdefinition finden Sie unter [Aktion „Table“](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -275,7 +275,7 @@ Sie können sich vergewissern, dass mit der Aktion **Create CSV table** die erwa
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **Send an email** verwendet. Sie enthält das Feld **Ausgabe** im Text der E-Mail:
 
-   ![Feld „Ausgabe“ in der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   ![Felder „Ausgabe“ für die Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
@@ -295,13 +295,13 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und der Aktion **Initialize variable** verwendet. Die Aktion ist auf die Erstellung einer Variablen ausgelegt, deren anfänglicher Wert ein Array mit einigen Eigenschaften und Werten im JSON-Format ist. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie eine HTML-Tabelle erstellen möchten, einen dieser Schritte aus:
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -320,7 +320,7 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    Hier ist die fertige Beispielaktion **Create HTML table** angegeben:
 
-   ![Fertige Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+   ![Fertiges Beispiel für „Create HTML table“](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -360,17 +360,17 @@ Lassen Sie in der Aktion die Spalte **Header** leer. Dereferenzieren Sie für je
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![Ausdruck zum Dereferenzieren der Eigenschaft](./media/logic-apps-perform-data-operations/html-table-expression.png)
+   ![Dereferenzieren der Eigenschaft in der Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/html-table-expression.png)
 
 1. Wiederholen Sie die obigen Schritte für jede gewünschte Arrayeigenschaft. Ihre Aktion sieht dann wie im folgenden Beispiel aus:
 
-   ![Fertiggestellte Ausdrücke](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+   ![item()-Funktion in „Create HTML table“](./media/logic-apps-perform-data-operations/finished-html-expression.png)
 
 1. Wechseln Sie zum Auflösen von Ausdrücken in aussagekräftigere Versionen zur Codeansicht und wieder zurück zur Designeransicht, und öffnen Sie dann die reduzierte Aktion erneut:
 
    Die Aktion **HTML-Tabelle erstellen** wird jetzt wie im folgenden Beispiel angezeigt:
 
-   ![Aktion „HTML-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   ![„Create HTML table“ – aufgelöste Ausdrücke, keine Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 #### <a name="work-in-code-view"></a>In der Codeansicht
 
@@ -412,7 +412,7 @@ Legen Sie in der JSON-Definition der Aktion innerhalb des `columns`-Arrays die `
 
    Die Aktion **HTML-Tabelle erstellen** wird jetzt wie in diesem Beispiel angezeigt, und die Ausdrücke wurden in aussagekräftigere Versionen aufgelöst:
 
-   ![Aktion „HTML-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   ![„Create HTML table“ – aufgelöste Ausdrücke und keine Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Weitere Informationen zu dieser Aktion in Ihrer zugrunde liegenden Workflowdefinition finden Sie unter [Aktion „Table“](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -426,8 +426,8 @@ Sie können sich vergewissern, dass mit der Aktion **Create HTML table** die erw
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **Send an email** verwendet. Sie enthält das Feld **Ausgabe** im Text der E-Mail:
 
-   ![Feld „Ausgabe“ in der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
-   
+   ![Felder „Ausgabe“ für „Create HTML table“](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+
    > [!NOTE]
    > Stellen Sie beim Einbinden der Ausgabe der HTML-Tabelle in eine E-Mail-Aktion sicher, dass Sie die Eigenschaft **Ist HTML** in den erweiterten Optionen der E-Mail-Aktion auf **Ja** festlegen. Die HTML-Tabelle wird dann von der E-Mail-Aktion richtig formatiert.
 
@@ -435,7 +435,7 @@ Sie können sich vergewissern, dass mit der Aktion **Create HTML table** die erw
 
    Hier sind die Ergebnisse angegeben, die Sie basierend auf dem verwendeten E-Mail-Connector erhalten:
 
-   ![E-Mail mit den Ergebnissen der Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![E-Mail mit den Ergebnissen von „Create HTML table“](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
@@ -457,13 +457,13 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
    > [!NOTE]
    > In diesem Beispiel wird zwar ein einfaches Integer-Array verwendet, aber diese Aktion ist besonders nützlich für JSON-Objektarrays, bei denen Sie basierend auf den Eigenschaften und Werten der Objekte filtern können.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Filter array“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie das gefilterte Array erstellen möchten, einen dieser Schritte aus: 
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Filter array“](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -480,8 +480,8 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 1. Geben Sie für die Bedingung die zu vergleichenden Arrayelemente an, wählen Sie den Vergleichsoperator aus, und geben Sie den Vergleichswert an.
 
    In diesem Beispiel wird die Funktion `item()` zum Zugreifen auf die einzelnen Elemente im Array verwendet, während mit der Aktion **Filter array** nach Arrayelementen gesucht wird, deren Wert größer als 1 ist:
-   
-   ![Fertige Aktion „Filter array“](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+
+   ![Fertiges Beispiel für die Aktion „Filter array“](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -499,7 +499,7 @@ Sie können sich vergewissern, dass mit der Aktion **Filter array** die erwartet
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **Send an email** verwendet, und die Ausgaben des Ausdrucks **actionBody('Filter_array')** werden in den Text der E-Mail eingebunden:
 
-   ![Aktionsausgaben der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   ![Aktionsausgaben für die Aktion „Filter array“](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
@@ -519,19 +519,19 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und der Aktion **Initialize variable** verwendet. Diese Aktion ist auf die Erstellung einer Variablen ausgelegt, deren anfänglicher Wert ein Array mit einigen Integer-Beispielen ist. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Join“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie die Zeichenfolge aus einem Array erstellen möchten, einen dieser Schritte aus:
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Join“](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
 1. Geben Sie im Suchfeld den Begriff `join` als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Join**
 
-   ![„Join“-Aktion auswählen](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![„Join“-Aktion auswählen](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
 1. Geben Sie im Feld **Von** das Array mit den Elementen an, die Sie als Zeichenfolge verknüpfen möchten.
 
@@ -559,13 +559,13 @@ Sie können sich vergewissern, dass mit der Aktion **Join** die erwarteten Ergeb
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **Send an email** verwendet. Sie enthält das Feld **Ausgabe** im Text der E-Mail:
 
-   ![Feld „Ausgabe“ in der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   ![Felder „Ausgabe“ für die Aktion „Join“](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 
    Hier sind die Ergebnisse angegeben, die Sie basierend auf dem verwendeten E-Mail-Connector erhalten:
 
-   ![E-Mail mit Ergebnissen der Aktion „Join“](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![E-Mail mit Ergebnissen der Aktion „Join“](./media/logic-apps-perform-data-operations/join-send-email-results.png)
 
 <a name="parse-json-action"></a>
 
@@ -579,13 +579,13 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und der Aktion **Initialize variable** verwendet. Die Aktion ist auf die Erstellung einer Variablen ausgelegt, deren anfänglicher Wert ein JSON-Objekt mit Eigenschaften und Werten ist. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Parse JSON“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
 1. Führen Sie einen dieser Schritte in Ihrer Logik-App aus, in der Sie die JSON-Inhalte analysieren möchten:
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Parse JSON“](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -631,13 +631,13 @@ Sie können sich vergewissern, dass mit der Aktion **Parse JSON** die erwarteten
 
    Hier ist die fertige E-Mail-Aktion angegeben:
 
-   ![Fertige E-Mail-Aktion](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![Fertiges Beispiel für die Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus. 
 
    Hier sind die Ergebnisse angegeben, die Sie basierend auf dem verwendeten E-Mail-Connector erhalten:
 
-   ![E-Mail mit Ergebnissen der Aktion „Join“](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![E-Mail mit Ergebnissen der Aktion „Parse JSON“](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
@@ -654,13 +654,13 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel werden das Azure-Portal und eine Logik-App mit einem **Recurrence**-Trigger und der Aktion **Initialize variable** verwendet. Die Aktion ist auf die Erstellung einer Variablen ausgelegt, deren anfänglicher Wert ein Array mit einigen Integer-Beispielen ist. Wenn Sie Ihre Logik-App zu einem späteren Zeitpunkt testen, können Sie Ihre App manuell ausführen, ohne auf das Auslösen des Triggers zu warten.
 
-   ![Starten des Beispiels für die Logik-App](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![Starten der Beispiel-Logik-App für die Aktion „Select“](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
 1. Führen Sie in Ihrer Logik-App, in der Sie das Array erstellen möchten, einen dieser Schritte aus: 
 
    * Zum Hinzufügen einer Aktion unter dem letzten Schritt wählen Sie **Neuer Schritt** aus.
 
-     ![Hinzufügen einer Aktion](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![Auswählen von „Neuer Schritt“ für die Aktion „Select“](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen ( **+** ) angezeigt wird. Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen** aus.
 
@@ -678,11 +678,11 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
    In diesem Beispiel wird „Product_ID“ als Eigenschaftenname angegeben, um die einzelnen Werte im Integer-Array zuzuweisen. Hierfür wird die Funktion `item()` in einem Ausdruck verwendet, mit dem auf die einzelnen Arrays zugegriffen wird. 
 
-   ![Angeben der JSON-Objekteigenschaft und Werte für das zu erstellende Array](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![Angeben der Eigenschaft und der Werte des JSON-Objekts zum Erstellen des Arrays](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
    Hier ist die fertige Aktion angegeben:
 
-   ![Fertige Aktion „Select“](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   ![Fertiges Beispiel für die Aktion „Select“](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -700,7 +700,7 @@ Sie können sich vergewissern, dass mit der Aktion **Select** die erwarteten Erg
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **Send an email** verwendet, und die Ausgaben des Ausdrucks `@actionBody('Select')` werden in den Text der E-Mail eingebunden:
 
-   ![Aktionsausgaben der Aktion „Send an email“](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   ![Aktionsausgaben über die Aktion „Select“](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
 1. Führen Sie Ihre Logik-App jetzt manuell aus. Wählen Sie auf der Symbolleiste des Designers **Ausführen** aus.
 

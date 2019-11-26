@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Verwalten virtueller Windows-Computer in Azure verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101591"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067808"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell
 

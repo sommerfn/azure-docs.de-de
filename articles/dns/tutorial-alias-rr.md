@@ -1,20 +1,21 @@
 ---
-title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags zum Verweisen auf einen Ressourceneintrag in der Zone'
+title: 'Tutorial: Erstellen eines Aliaseintrags zum Verweisen auf einen Ressourceneintrag in einer Zone'
+titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Aliaseintrag konfigurieren, um auf einen Ressourceneintrag in der Zone zu verweisen.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 3b4ee688d6a5606ab6008b459fcf6331c24afaae
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: allensu
+ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091639"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082891"
 ---
-# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Tutorial: Erstellen eines Aliaseintrags zum Verweisen auf einen Zonenressourceneintrag
+# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Tutorial: Erstellen eines Aliaseintrags, um auf einen Zonenressourceneintrag zu verweisen
 
 Aliaseinträge können auf andere Eintragssätze desselben Typs verweisen. So kann beispielsweise ein DNS-CNAME-Eintragssatz ein Alias für einen anderen CNAME-Eintragsatz desselben Typs sein. Dies ist hilfreich, wenn Sie möchten, dass einige Eintragssätze in Bezug auf ihr Verhalten Aliase und andere keine Aliase sind.
 
@@ -30,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie müssen über einen Domänennamen verfügen, den Sie zum Testen in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-Anweisungen zum Hosten der Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
+Eine Anleitung zum Hosten Ihrer Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
 
 ## <a name="create-an-alias-record"></a>Erstellen eines Aliaseintrags
@@ -57,7 +58,7 @@ Erstellen eines Aliaseintrags, der auf einen Ressourceneintrag in der Zone verwe
 ## <a name="test-the-alias-record"></a>Testen des Aliaseintrags
 
 1. Starten Sie Ihr bevorzugtes nslookup-Tool. Eine Möglichkeit besteht darin, zu [https://network-tools.com/nslook](https://network-tools.com/nslook) zu navigieren.
-2. Legen Sie den Abfragetyp für A-Einträge fest, und suchen Sie **test.\<Ihr Domänenname\>**. Die Antwort ist **10.10.10.10**.
+2. Legen Sie den Abfragetyp für A-Einträge fest, und suchen Sie **test.\<Ihr Domänenname\>** . Die Antwort ist **10.10.10.10**.
 3. Ändern Sie im Azure-Portal den A-Eintrag **Server** in **10.11.11.11**.
 4. Warten Sie einige Minuten, und verwenden Sie dann nslookup für den Eintrag **Test**. Die Antwort ist **10.11.11.11**.
 

@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2474f86c0f293b98ab7bc9faec8ff8519a25e96b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309370"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960664"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App
 
@@ -137,15 +137,15 @@ Fügen Sie anschließend `ViewController.swift` vor `viewDidLoad()` den folgende
 let kClientID = "Your_Application_Id_Here"
 
 // Additional variables for Auth and Graph API
-let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
-let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
-let kAuthority = "https://login.microsoftonline.com/common"
+let kGraphURI = "https://graph.microsoft.com/v1.0/me/" // the Microsoft Graph endpoint
+let kScopes: [String] = ["https://graph.microsoft.com/user.read"] // request permission to read the profile of the signed-in user
+let kAuthority = "https://login.microsoftonline.com/common" // this authority allows a personal Microsoft account and a work or school account in any organization’s Azure AD tenant to sign in
 var accessToken = String()
 var applicationContext : MSALPublicClientApplication?
-var webViewParamaters : MSALWebviewParameters?
+var webViewParameters : MSALWebviewParameters?
 ```
 
-Ändern Sie den `kClientID` zugewiesenen Wert in Ihre Anwendungs-ID. Dieser Wert ist Teil der MSAL-Konfigurationsdaten, die Sie am Anfang dieses Tutorials zum Registrieren der Anwendung im Azure-Portal gespeichert haben.
+Oben müssen Sie nur den Wert ändern, der `kClientID` als [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id) zugewiesen werden soll. Dieser Wert ist Teil der MSAL-Konfigurationsdaten, die Sie am Anfang dieses Tutorials zum Registrieren der Anwendung im Azure-Portal gespeichert haben.
 
 ## <a name="for-ios-only-configure-url-schemes"></a>Nur iOS: Konfigurieren von URL-Schemas
 
@@ -322,7 +322,7 @@ Fügen Sie der Klasse `ViewController` nach der Methode `initMSAL` Folgendes hin
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters(parentViewController: self)
+        self.webViewParameters = MSALWebviewParameters(parentViewController: self)
     }
 ```
 
@@ -330,8 +330,8 @@ func initWebViewParams() {
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters()
-        self.webViewParamaters?.webviewType = .wkWebView
+        self.webViewParameters = MSALWebviewParameters()
+        self.webViewParameters?.webviewType = .wkWebView
     }
 ```
 
@@ -425,7 +425,7 @@ Fügen Sie der `ViewController` -Klasse den folgenden Code hinzu.
 func acquireTokenInteractively() {
         
     guard let applicationContext = self.applicationContext else { return }
-    guard let webViewParameters = self.webViewParamaters else { return }
+    guard let webViewParameters = self.webViewParameters else { return }
         
     // #1
     let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: webViewParameters)

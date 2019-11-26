@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial: Erstellen eines Anwendungsgateways als Host für mehrere Websites mit dem Azure-Portal'
+title: 'Tutorial: Hosten mehrerer Websites mit dem Azure-Portal'
+titleSuffix: Azure Application Gateway
 description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498453"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075148"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
@@ -83,7 +84,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ### <a name="backends-tab"></a>Registerkarte „Back-Ends“
 
-Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service sein. In diesem Beispiel erstellen Sie mit Ihrem Anwendungsgateway einen leeren Back-End-Pool und fügen dann Back-End-Ziele zum Back-End-Pool hinzu.
+Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkadapter, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service sein. In diesem Beispiel erstellen Sie mit Ihrem Anwendungsgateway einen leeren Back-End-Pool und fügen dann Back-End-Ziele zum Back-End-Pool hinzu.
 
 1. Wählen Sie auf der Registerkarte **Back-Ends** die Option **+Back-End-Pool hinzufügen** aus.
 
@@ -219,7 +220,7 @@ Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erst
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-1. Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. http://www.contoso.com.
+1. Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. `http://www.contoso.com`.
 
     ![Testen der Contoso-Website im Anwendungsgateway](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

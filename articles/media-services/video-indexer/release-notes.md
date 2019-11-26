@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672657"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968728"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -27,6 +27,12 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Fehlerbehebungen
 * Veraltete Funktionen
+
+## <a name="october-2019"></a>Oktober 2019
+ 
+* Suchen nach animierten Figuren im Katalog
+
+    Wenn Sie animierte Figuren indizieren, können Sie sie jetzt im Videokatalog des Kontos danach suchen. Weitere Informationen finden Sie unter [Erkennung animierter Figuren](animated-characters-recognition.md).
 
 ## <a name="september-2019"></a>September 2019
  

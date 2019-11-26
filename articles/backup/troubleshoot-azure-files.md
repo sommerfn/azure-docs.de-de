@@ -7,18 +7,21 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637581"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091506"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
+
 Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Sicherung von Azure-Dateifreigaben auftreten können.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
+
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Allgemein v1“ und „Allgemein v2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
+
 - Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 - Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
@@ -29,6 +32,7 @@ Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azur
 Die Sicherung für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) steht momentan nur in den Regionen „USA, Mitte“ (CUS), „USA, Osten (EUS), „USA, Osten 2“ (EUS2), „Europa, Norden“ (NE), „Asien, Südosten“ (SEA), „Europa, Westen“ (WE) und „USA, Westen 2“ (WUS2) zur Verfügung.
 
 ## <a name="configuring-backup"></a>Konfigurieren der Sicherung
+
 Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 
 | Fehlermeldungen | Problemumgehung oder Lösungstipps |
@@ -39,7 +43,6 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 | Die Dateifreigaben im ausgewählten Speicherkonto konnten nicht aufgelistet werden oder wurden nicht gefunden. | <ul><li> Vergewissern Sie sich, dass das Speicherkonto in der Ressourcengruppe vorhanden ist und seit der letzten Überprüfung/Registrierung im Tresor nicht gelöscht oder verschoben wurde.<li>Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde. <li>Vergewissern Sie sich, dass das Speicherkonto für die Sicherung von Dateifreigaben unterstützt wird.<li>Überprüfen Sie, ob die Dateifreigabe bereits im gleichen Recovery Services-Tresor geschützt wird.|
 | Bei der Konfiguration der Dateifreigabesicherung (oder der Schutzrichtlinie) tritt ein Fehler auf. | <ul><li>Wiederholen Sie den Vorgang, um zu prüfen, ob das Problem weiterhin besteht. <li> Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde. <li> Wenn Sie mehrere Dateifreigaben auf einmal schützen möchten und für einige der Dateifreigaben ein Fehler auftritt, konfigurieren Sie die Sicherung für die Dateifreigaben, bei denen ein Fehler aufgetreten ist, erneut. |
 | Nach dem Aufheben des Schutzes einer Dateifreigabe kann der Recovery Services-Tresor nicht gelöscht werden. | Öffnen Sie im Azure-Portal Ihren Tresor, klicken Sie auf **Sicherungsinfrastruktur** > **Speicherkonten**, und klicken Sie anschließend auf **Registrierung aufheben**, um das Speicherkonto aus dem Recovery Services-Tresor zu entfernen.|
-
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Fehlermeldungen für nicht erfolgreiche Sicherungs- oder Wiederherstellungsaufträge
 
@@ -59,15 +62,16 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 | Der Wiederherstellungsvorgang war nicht erfolgreich: Beim Ausführen der Wiederherstellungsvorbereitung für mit der Zieldateifreigabe verknüpfte Ressourcen des Dateisynchronisierungsdiensts ist ein Fehler aufgetreten. | Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support. |
 | Mindestens eine Datei konnte nicht erfolgreich wiederhergestellt werden. Weitere Informationen finden Sie in der Liste fehlerhafter Dateien im oben angegebenen Pfad. | <ul> <li> Die Ursachen für Fehler bei der Wiederherstellung werden in einer Datei aufgeführt. (Den Pfad finden Sie in den Auftragsdetails.) Beheben Sie die Ursachen, und wiederholen Sie den Wiederherstellungsvorgang für die Dateien, bei denen ein Fehler aufgetreten ist. <li> Häufige Fehlerursachen beim Wiederherstellen von Dateien: <br/> - Die Dateien, bei denen ein Fehler aufgetreten ist, werden gerade verwendet. <br/> - Das übergeordnete Verzeichnis enthält ein Verzeichnis mit dem gleichen Namen wie die Dateien, bei denen ein Fehler aufgetreten ist. |
 
+## <a name="modify-policy"></a>Ändern der Richtlinie
 
-## <a name="modify-policy"></a>Richtlinie ändern
 | Fehlermeldungen | Problemumgehung oder Lösungstipps |
 | ------------------ | ----------------------------- |
 | Für dieses Element wird derzeit ein anderer Vorgang zum Konfigurieren von Schutzeinstellungen ausgeführt. | Warten Sie, bis die vorhergehende Vorgang zum Ändern der Richtlinie abgeschlossen ist, und versuchen Sie es nach einiger Zeit noch mal.|
 | Für das ausgewählte Element wird derzeit ein anderer Vorgang ausgeführt. | Warten Sie, bis dieser andere Vorgang abgeschlossen ist, und versuchen Sie es nach einiger Zeit noch mal. |
 
+## <a name="next-steps"></a>Nächste Schritte
 
-## <a name="see-also"></a>Siehe auch
 Weitere Informationen zum Sichern von Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
+
 - [Sichern von Azure-Dateifreigaben](backup-azure-files.md)
 - [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)

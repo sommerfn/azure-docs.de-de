@@ -8,25 +8,17 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.date: 11/14/2019
+ms.openlocfilehash: fa6921f8c4309f17cbd63e242a5416e7e81bb6c3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990194"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133611"
 ---
-> [!IMPORTANT]
-> * Das neue Blatt **Azure Active Directory** > **App-Registrierungen** ersetzt Mai 2019 das veraltete Blatt **Azure Active Directory** > **App-Registrierungen (Legacy)** .
-> * App-Registrierungen, die auf dem Legacy-Blatt erstellt oder angezeigt werden, werden automatisch auf dem neuen Blatt angezeigt.
-> * Ausführliche Informationen zur Migration zur neuen Azure-App-Registrierungsumgebung finden Sie im [Schulungshandbuch zu Azure-App-Registrierungen](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) und [Schnellstart zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
-
 1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com/) nacheinander **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 
    [![Registrierung einer neuen Anwendung in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > Der neue App-Registrierungsbereich für Azure Active Directory ermöglicht Ihnen, die angezeigten Apps zu filtern, indem Sie **Anwendungen mit Besitzer** auswählen.
 
     Ihre App wird hier aufgelistet, nachdem Sie sie registriert haben.
 
@@ -47,7 +39,7 @@ ms.locfileid: "72990194"
         * Wählen Sie für Anwendungen, die in einer lokalen Entwicklungsumgebung gehostet werden, **Öffentlicher Client (Mobilgerät und Desktop)** aus. Stellen Sie sicher, dass **Standardclienttyp** auf „Ja“ festgelegt ist.
         * Wählen Sie für in Azure App Service gehostete Einzelseiten-Apps **Web** aus.
 
-    1. Aktivieren Sie den Flow der impliziten Genehmigung, indem Sie **ID-Token** aktivieren.
+    1. Aktivieren Sie den Ablauf für die implizite Genehmigung, indem Sie die Option **Zugriffstoken** oder **ID-Token** aktivieren.
 
    [![Erstellen eines neuen geheimen Clientschlüssels](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 

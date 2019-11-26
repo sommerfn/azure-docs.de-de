@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694718"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943809"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -45,6 +45,12 @@ Zum Hinzufügen einer lokalen Anwendung zu Azure AD benötigen Sie Folgendes:
 Für die Verwendung des Anwendungsproxys benötigen Sie einen Windows-Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird. Sie müssen den Connector für den Anwendungsproxy auf dem Server installieren. Dieser Connectorserver muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen möchten.
 
 Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Windows-Server einsetzen. Für dieses Tutorial reicht ein Windows-Server aus.
+
+> [!IMPORTANT]
+> Bei der Installation des Connectors unter Windows Server 2019 gilt eine HTTP2-Einschränkung. Eine Problemumgehung zur Verwendung des Connectors unter dieser Version besteht darin, den folgenden Registrierungsschlüssel hinzuzufügen und den Server neu zu starten. Beachten Sie, dass es sich hierbei um einen Schlüssel handelt, der für die gesamte Registrierung des Computers gilt. 
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Empfehlungen für den Connectorserver
 
@@ -142,7 +148,7 @@ So überprüfen Sie, ob der Connector ordnungsgemäß installiert und registrier
 1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory** und dann im Abschnitt **Verwalten** die Option **Anwendungsproxy**. Alle Connectors und Connectorgruppen werden auf dieser Seite angezeigt.
 1. Wählen Sie einen Connector aus, um die Details zu überprüfen. Die Connectors sollten standardmäßig erweitert sein. Falls der gewünschte zu überprüfende Connector nicht erweitert ist, können Sie ihn erweitern, um die Details anzuzeigen. Eine aktive grüne Beschriftung gibt an, dass Ihr Connector eine Verbindung mit dem Dienst herstellen kann. Jedoch auch wenn die Beschriftung grün ist, könnte ein Netzwerkproblem immer noch den Nachrichtenempfang des Connectors blockieren.
 
-    ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-connectors/app-proxy-connectors.png)
+    ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
 
 Weitere Hilfe zur Installation eines Connectors finden Sie unter [Problem beim Installieren des Anwendungsproxy-Agent-Connectors](application-proxy-connector-installation-problem.md).
 
@@ -155,7 +161,7 @@ So überprüfen Sie, ob der Connector ordnungsgemäß installiert und registrier
    - Die Konnektivität wird per **Microsoft AAD-Anwendungsproxyconnector** ermöglicht.
    - Die **Aktualisierung des Microsoft AAD-Anwendungsproxyconnectors** ist ein automatischer Aktualisierungsdienst. Der Dienst sucht nach neuen Versionen des Connectors und aktualisiert den Connector bei Bedarf.
 
-     ![Anwendungsproxy-Connectordienste – Screenshot](./media/application-proxy-enable/app_proxy_services.png)
+     ![Anwendungsproxy-Connectordienste – Screenshot](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
 1. Wenn die Dienste nicht den Status **Wird ausgeführt** haben, müssen Sie mit der rechten Maustaste auf jeden Dienst klicken und die Option **Starten** wählen.
 
@@ -164,10 +170,10 @@ So überprüfen Sie, ob der Connector ordnungsgemäß installiert und registrier
 Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind bereit, Azure AD lokale Anwendungen hinzuzufügen.  
 
 1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory**.
-1. Wählen Sie **Unternehmensanwendungen** und dann **Neue Anwendung**.
-1. Wählen Sie **Lokale Anwendung** aus.  
-1. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
+2. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory**.
+3. Wählen Sie **Unternehmensanwendungen** und dann **Neue Anwendung**.
+4. Wählen Sie im Abschnitt **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus.
+5. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
 
     | Feld | BESCHREIBUNG |
     | :---- | :---------- |
@@ -177,7 +183,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
     | **Vorauthentifizierung** | Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten.<br><br>**Azure Active Directory**: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert. Es wird empfohlen, diese Option als Standardwert aktiviert zu lassen, damit Sie Azure AD-Sicherheitsfunktionen wie bedingten Zugriff und Multi-Factor Authentication nutzen können. **Azure Active Directory** ist erforderlich, um die Anwendung mit Microsoft Cloud App Security zu überwachen.<br><br>**Passthrough**: Benutzer müssen sich nicht bei Azure AD authentifizieren, um Zugriff auf die Anwendung zu erhalten. Sie können weiterhin Authentifizierungsanforderungen auf dem Back-End einrichten. |
     | **Connectorgruppe** | Connectors verarbeiten den Remotezugriff auf Ihre Anwendung, und Connectorgruppen helfen Ihnen, Connectors und Apps nach Region, Netzwerk oder Zweck zu organisieren. Wenn Sie noch keine Connectorgruppen erstellt haben, wird Ihre App zu **Standard** zugewiesen.<br><br>Wenn Ihre Anwendung WebSockets verwendet, um eine Verbindung herzustellen, muss die Version aller Connectors in der Gruppe 1.5.612.0 oder höher sein.|
 
-1. Konfigurieren Sie bei Bedarf die Einstellungen unter **Zusätzliche Einstellungen**. Für die meisten Anwendungen sollten Sie diese Einstellungen im Standardzustand belassen. 
+6. Konfigurieren Sie bei Bedarf die Einstellungen unter **Zusätzliche Einstellungen**. Für die meisten Anwendungen sollten Sie diese Einstellungen im Standardzustand belassen. 
 
     | Feld | BESCHREIBUNG |
     | :---- | :---------- |
@@ -188,7 +194,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
     | **URLs in Headern übersetzen** | Behalten Sie für diesen Wert **Ja** bei, wenn Ihre Anwendung den ursprünglichen Hostheader nicht in der Authentifizierungsanforderung erfordert. |
     | **URLs im Hauptteil der Anwendung übersetzen** | Behalten Sie für diesen Wert **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](application-proxy-configure-hard-coded-link-translation.md).<br><br>Legen Sie diesen Wert auf **Ja** fest, wenn Sie diese Anwendung mit Microsoft Cloud App Security (MCAS) überwachen möchten. Weitere Informationen finden Sie unter [Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-1. Wählen Sie **Hinzufügen**.
+7. Wählen Sie **Hinzufügen**.
 
 ## <a name="test-the-application"></a>Testen der Anwendung
 
@@ -201,11 +207,11 @@ Bevor Sie der Anwendung einen Benutzer hinzufügen, stellen Sie sicher, dass das
 So fügen Sie einen Testbenutzer hinzu:
 
 1. Wählen Sie die Option **Unternehmensanwendungen**, und wählen Sie dann die zu testende Anwendung aus.
-1. Wählen Sie **Erste Schritte** und dann **Zuweisen eines Benutzers zu Testzwecken**.
-1. Wählen Sie unter **Benutzer und Gruppen** die Option **Benutzer hinzufügen**.
-1. Wählen Sie unter **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**. Der Abschnitt **Benutzer und Gruppen** wird angezeigt.
-1. Wählen Sie das Konto aus, das Sie hinzufügen möchten.
-1. Wählen Sie die Option **Auswählen** und dann **Zuweisen**.
+2. Wählen Sie **Erste Schritte** und dann **Zuweisen eines Benutzers zu Testzwecken**.
+3. Wählen Sie unter **Benutzer und Gruppen** die Option **Benutzer hinzufügen**.
+4. Wählen Sie unter **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**. Der Abschnitt **Benutzer und Gruppen** wird angezeigt.
+5. Wählen Sie das Konto aus, das Sie hinzufügen möchten.
+6. Wählen Sie die Option **Auswählen** und dann **Zuweisen**.
 
 ### <a name="test-the-sign-on"></a>Testen des Anmeldens
 

@@ -1,26 +1,23 @@
 ---
-title: Terraform mit Bereitstellungsslots für Azure-Anbieter
+title: 'Tutorial: Bereitstellen der Infrastruktur mit Azure-Bereitstellungsslots per Terraform'
 description: Tutorial zur Verwendung von Terraform mit Bereitstellungsslots für Azure-Anbieter
-services: terraform
-ms.service: azure
-keywords: Terraform, DevOps, virtueller Computer, Azure, Bereitstellungsslots
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169829"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838057"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Verwenden von Terraform zur Bereitstellung einer Infrastruktur mit Azure-Bereitstellungsslots
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Tutorial: Bereitstellen der Infrastruktur mit Azure-Bereitstellungsslots per Terraform
 
 Mit [Azure-Bereitstellungsslots](/azure/app-service/deploy-staging-slots) können Sie zwischen verschiedenen Versionen Ihrer App wechseln. Dadurch lassen sich die Auswirkungen fehlerhafter Bereitstellungen minimieren. 
 
-Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslots sowie die Schritte zur Bereitstellung von zwei Apps über GitHub und Azure. Eine App wird in einem Produktionsslot gehostet. Die zweite App wird in einem Stagingslot gehostet. (Die Namen „Produktion“ und „Staging“ sind willkürlich gewählt. Sie können beliebige Namen festlegen, die besser zu Ihrem Szenario passen.) Nach dem Konfigurieren Ihrer Bereitstellungsslots können Sie mithilfe von Terraform nach Bedarf zwischen den beiden Slots wechseln.
+Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslots sowie die Schritte zur Bereitstellung von zwei Apps über GitHub und Azure. Eine App wird in einem Produktionsslot gehostet. Die zweite App wird in einem Stagingslot gehostet. (Die Namen „production“ und „staging“ sind willkürlich gewählt. Sie können beliebige Namen verwenden, die für Ihr Szenario geeignet sind.) Nach dem Konfigurieren Ihrer Bereitstellungsslots verwenden Sie Terraform, um je nach Bedarf zwischen den beiden Slots zu wechseln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,13 +61,11 @@ Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslot
     cd deploy
     ```
 
-1. Erstellen Sie mithilfe des [vi-Editors](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) eine Datei namens `deploy.tf`. Diese Datei enthält die [Terraform-Konfiguration](https://www.terraform.io/docs/configuration/index.html).
+1. Erstellen Sie in Cloud Shell eine Datei namens `deploy.tf`.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. Drücken Sie die I-TASTE, um den Einfügemodus zu starten.
 
 1. Fügen Sie den folgenden Code in den Editor ein:
 
@@ -85,8 +80,8 @@ Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslot
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,27 +90,21 @@ Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslot
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
-
-1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
-
-    ```bash
-    :wq
-    ```
+1. Speichern Sie die Datei ( **&lt;STRG+S**), und beenden Sie den Editor ( **&lt;STRG+Q**).
 
 1. Überprüfen Sie nun den Inhalt der erstellten Datei.
 
@@ -207,7 +196,7 @@ Konfigurieren Sie nach dem Forken des Repositorys mit dem Testprojekt die Bereit
 
 1. Klicken Sie auf der Registerkarte **Bereitstellungsoption** auf **OK**.
 
-Nun haben Sie den Produktionsslot bereitgestellt. Führen Sie zum Bereitstellen des Stagingslots erneut die Schritte dieses Abschnitts aus – allerdings mit folgenden Anpassungen:
+Nun haben Sie den Produktionsslot bereitgestellt. Führen Sie die obigen Schritte zum Bereitstellen des Stagingslots mit den folgenden Änderungen aus:
 
 - Wählen Sie in Schritt 3 die Ressource **slotAppServiceSlotOne** aus.
 
@@ -219,8 +208,6 @@ Nun haben Sie den Produktionsslot bereitgestellt. Führen Sie zum Bereitstellen 
 
 In den vorherigen Abschnitten haben Sie zwei Slots (**slotAppService** und **slotAppServiceSlotOne**) für die Bereitstellung über verschiedene Verzweigungen in GitHub eingerichtet. Sehen wir uns eine Vorschau der Web-Apps an, um sicherzustellen, dass sie erfolgreich bereitgestellt wurden.
 
-Führen Sie die folgenden Schritte zweimal aus: Wählen Sie in Schritt 3 beim ersten Mal **slotAppService** und beim zweiten Mal **slotAppServiceSlotOne** aus.
-
 1. Klicken Sie im Hauptmenü des Azure-Portals auf **Ressourcengruppen**.
 
 1. Klicken Sie auf **slotDemoResourceGroup**.
@@ -231,18 +218,15 @@ Führen Sie die folgenden Schritte zweimal aus: Wählen Sie in Schritt 3 beim er
 
     ![Auswählen von „URL“ auf der Registerkarte „Übersicht“ zum Rendern der App](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Es kann einige Minuten dauern, bis Azure die Site über GitHub erstellt und bereitgestellt hat.
->
->
+1. Je nach ausgewählter App werden die folgenden Ergebnisse angezeigt:
+    - Web-App **slotAppService**: Blaue Seite mit dem Seitentitel **Slot Demo App 1**. 
+    - Web-App **slotAppServiceSlotOne**: Grüne Seite mit dem Seitentitel **Slot Demo App 2**.
 
-Für die Web-App **slotAppService** wird eine blaue Seite mit dem Seitentitel **Slot Demo App 1** angezeigt. Für die Web-App **slotAppServiceSlotOne** wird eine grüne Seite mit dem Seitentitel **Slot Demo App 2** angezeigt.
-
-![Anzeigen einer Vorschau der Apps, um zu testen, ob sie richtig bereitgestellt wurden](./media/terraform-slot-walkthru/app-preview.png)
+    ![Anzeigen einer Vorschau der Apps, um zu testen, ob sie richtig bereitgestellt wurden](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Wechseln zwischen den zwei Bereitstellungsslots
 
-Wenn Sie das Wechseln zwischen den beiden Bereitstellungsslots testen möchten, führen Sie die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, wenn Sie das Wechseln zwischen den beiden Bereitstellungsslots testen möchten:
  
 1. Wechseln Sie zur Browserregisterkarte mit **slotAppService** (die App mit der blauen Seite). 
 
@@ -256,13 +240,11 @@ Wenn Sie das Wechseln zwischen den beiden Bereitstellungsslots testen möchten, 
     cd clouddrive/swap
     ```
 
-1. Erstellen Sie mithilfe des vi-Editors eine Datei namens `swap.tf`.
+1. Erstellen Sie in Cloud Shell eine Datei namens `swap.tf`.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. Drücken Sie die I-TASTE, um den Einfügemodus zu starten.
 
 1. Fügen Sie den folgenden Code in den Editor ein:
 
@@ -278,13 +260,7 @@ Wenn Sie das Wechseln zwischen den beiden Bereitstellungsslots testen möchten, 
     }
     ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
-
-1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
-
-    ```bash
-    :wq
-    ```
+1. Speichern Sie die Datei ( **&lt;STRG+S**), und beenden Sie den Editor ( **&lt;STRG+Q**).
 
 1. Initialisieren Sie Terraform.
 
@@ -304,7 +280,7 @@ Wenn Sie das Wechseln zwischen den beiden Bereitstellungsslots testen möchten, 
     terraform apply
     ```
 
-1. Nachdem die Slots von Terraform gewechselt wurden, kehren Sie zu dem Browser zurück, in dem die Web-App **slotAppService** gerendert wird, und aktualisieren Sie die Seite. 
+1. Wechseln Sie zurück in den Browser, nachdem Terraform die Slots gewechselt hat. Aktualisieren Sie die Seite. 
 
 Mit der Web-App aus dem Stagingslot **slotAppServiceSlotOne** wurde in den Produktionsslot gewechselt, und sie wird nun grün gerendert. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Nach dem Wechsel der App wird wieder die ursprüngliche Konfiguration angezeigt.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"] 
+> [Weitere Informationen zur Verwendung von Terraform in Azure](/azure/terraform)

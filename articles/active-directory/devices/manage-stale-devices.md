@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942897"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175053"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -144,7 +144,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Falls Ihr Verzeichnis eine größere Zahl von Geräten enthält, können Sie den Zeitstempelfilter verwenden, um die Anzahl von zurückgegebenen Geräten einzugrenzen. Rufen Sie wie folgt alle Geräte mit einem Zeitstempel ab, der älter als ein bestimmtes Datum ist, und speichern Sie die zurückgegebenen Daten in einer CSV-Datei: 
+Falls Ihr Verzeichnis eine größere Zahl von Geräten enthält, können Sie den Zeitstempelfilter verwenden, um die Anzahl der zurückgegebenen Geräte einzugrenzen. Rufen Sie wie folgt alle Geräte mit einem Zeitstempel ab, der älter als ein bestimmtes Datum ist, und speichern Sie die zurückgegebenen Daten in einer CSV-Datei: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’

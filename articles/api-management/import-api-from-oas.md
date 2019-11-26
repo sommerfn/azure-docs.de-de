@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b96cfe9813eef9caf1f1f21e43470a23c7032cb1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072122"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108514"
 ---
 # <a name="import-an-openapi-specification"></a>Importieren einer OpenAPI-Spezifikation
 
@@ -43,6 +43,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 
 1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
 2. Wählen Sie in der Liste **Add a new API** (Neue API hinzufügen) die Option **OpenAPI-Spezifikation**.
+
     ![OpenAPI-Spezifikation](./media/import-api-from-oas/oas-api.png)
 3. Nehmen Sie die entsprechenden Einstellungen vor. Sie können alle API-Werte während der Erstellung festlegen. Alternativ dazu können Sie einige Werte später festlegen, indem Sie die Registerkarte **Einstellungen** verwenden. <br/> Wenn Sie die **TAB-TASTE** drücken, werden einige (oder alle) Felder mit den Informationen aus dem angegebenen Back-End-Dienst gefüllt.
 
@@ -63,40 +64,18 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 > [!NOTE]
 > Die Einschränkungen beim API-Import sind [in einem anderen Artikel](api-management-api-import-restrictions.md) dokumentiert.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Testen der neuen API im Azure-Portal
+
+![Testen der API](./media/api-management-get-started/01-import-first-api-01.png)
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.
 
-![Test-API](./media/api-management-get-started/01-import-first-api-01.png)
-
-1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
+1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben (auf der Registerkarte **APIs**).
 2. Wählen Sie die Registerkarte **Testen** aus.
-3. Klicken Sie auf **GetSpeakers**.
-
-    Auf der Seite werden Felder für Abfrageparameter angezeigt, aber in diesem Fall sind keine vorhanden. Die Seite enthält auch Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
+3. Klicken Sie auf **GetSpeakers**. Auf der Seite werden Felder für Abfrageparameter angezeigt (in diesem Fall keine) sowie Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Der Schlüssel wird automatisch eingefügt.
 4. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-## <a name="call-operation"> </a>Aufrufen eines Vorgangs über das Entwicklerportal
-
-Vorgänge können auch im **Entwicklerportal** aufgerufen werden, um APIs zu testen.
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-2. Klicken Sie auf **Entwicklerportal**.
-
-    ![Testen im Entwicklerportal](./media/api-management-get-started/developer-portal.png)
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-3. Wählen Sie die Option **API** aus.
-4. Wählen Sie **Demo Conference API** aus.
-5. Klicken Sie auf **GetSpeakers**.
-
-    Auf der Seite werden Felder für Abfrageparameter angezeigt, aber in diesem Fall sind keine vorhanden. Die Seite enthält auch Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
-6. Wählen Sie **Ausprobieren**.
-7. Klicken Sie auf **Senden**.
-
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

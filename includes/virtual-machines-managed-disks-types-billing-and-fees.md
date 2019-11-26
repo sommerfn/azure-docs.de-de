@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a416d1c6e813be558f034e15576c57efa6073788
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968576"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73412969"
 ---
 **Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/bandwidth/) (Daten, die von den Azure-Datencentern ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
@@ -29,3 +29,7 @@ Virtuelle Azure-Computer können angeben, ob sie mit Ultra-Datenträgern kompati
 > Für [VM-Größen mit eingeschränkter Anzahl der Kerne](../articles/virtual-machines/linux/constrained-vcpu.md) ergibt sich die Reservierungsgebühr anhand der tatsächlichen Anzahl der vCPUs und nicht anhand der eingeschränkten Kerne. Für Standard_E32-8s_v3 basiert die Reservierungsgebühr auf 32 Kernen. 
 
 Preisdetails für Ultra-Datenträger finden Sie auf der [Seite mit der Preisübersicht für Azure-Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="azure-disk-reservation"></a>Azure-Datenträgerreservierung
+
+Die Datenträgerreservierung bietet die Möglichkeit, Datenträgerspeicher ein Jahr im Voraus zu Rabattkonditionen zu erwerben und so die Gesamtkosten zu reduzieren. Beim Erwerb einer Datenträgerreservierung wählen Sie eine bestimmte Datenträger-SKU in einer Zielregion aus, z. B. 10 P30 (1 TiB) Premium-SSDs in der Region USA, Osten 2 für eine Laufzeit von einem Jahr. Die Reservierung folgt einem Modell, das dem für reservierte VM-Instanzen ähnelt. Sie können VM- und Datenträgerreservierungen bündeln, um die Einsparungen zu maximieren. Derzeit bietet die Azure-Datenträgerreservierung einen Ein-Jahres-Verpflichtungsplan für Premium-SSD-SKUs von P30 (1 TiB) bis P80 (32 TiB) in allen Produktregionen. Weitere Informationen zu den Preisen für reservierte Datenträger finden Sie auf der [Seite mit der Preisübersicht für Azure-Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).

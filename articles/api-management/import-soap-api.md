@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073240"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107663"
 ---
 # <a name="import-soap-api"></a>Importieren einer SOAP-API
 
@@ -60,7 +60,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
     * **Unbegrenzt**   
 10. Klicken Sie auf **Erstellen**.
 
-### <a name="test-the-new-apim-api-in-the-administrative-portal"></a>Testen der neuen APIM-API im Verwaltungsportal
+### <a name="test-the-new-api-in-the-administrative-portal"></a>Testen der neuen API im Verwaltungsportal
 
 Vorgänge können direkt aus dem Verwaltungsportal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.  
 
@@ -72,21 +72,6 @@ Vorgänge können direkt aus dem Verwaltungsportal aufgerufen werden. Dies ist e
 1. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
-
-### <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
-
-Vorgänge können auch im **Entwicklerportal** aufgerufen werden, um APIs zu testen. 
-
-1. Wählen Sie die API aus, die Sie im Schritt „Importieren und Veröffentlichen einer Back-End-API“ erstellt haben.
-2. Klicken Sie auf **Entwicklerportal**.
-
-    Die Website „Entwicklerportal“ wird geöffnet.
-3. Wählen Sie die **API** aus, die Sie erstellt haben.
-4. Klicken Sie auf den Vorgang, den Sie testen möchten.
-5. Klicken Sie auf **Ausprobieren**.
-6. Klicken Sie auf **Senden**.
-    
-    Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

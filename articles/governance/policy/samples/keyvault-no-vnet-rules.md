@@ -1,21 +1,18 @@
 ---
 title: 'Beispiel: Schlüsseltresore ohne VNET-Endpunkte'
 description: Diese Beispielrichtliniendefinition überwacht Key Vault-Tresore, um Instanzen VNET-Dienstendpunkte zu ermitteln.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 078a781ca96df421d52179f5e8d25650def8a2f3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255726"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076206"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Beispiel: Key Vault-Tresore mit Instanzen ohne Endpunkte im virtuellen Netzwerk
 
-Diese Richtlinie ermittelt Key Vault-Tresore, die keine Endpunkte im virtuellen Netzwerk aufweisen. Verwenden Sie die Richtlinie, um Ihre Sicherheitsanforderungen zu erzwingen. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte für Azure Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md).
+In diesem Beispiel zur [Integration von Key Vault in Azure Policy](../../../key-vault/azure-policy.md) wird eine Überprüfung auf Schlüsseltresore durchgeführt, die nicht über VNET-Endpunkte verfügen. Verwenden Sie die Richtlinie, um Ihre Sicherheitsanforderungen zu erzwingen. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte für Azure Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md).
 
 Sie können für die Bereitstellung dieser Beispielrichtlinie Folgendes verwenden:
 
@@ -187,4 +184,5 @@ Es gibt mehrere Tools, die für die Interaktion mit der Resource Manager-REST-AP
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sehen Sie sich weitere [Azure Policy-Beispiele](index.md) an.
+- Informieren Sie sich, wie Sie [Azure Key Vault in Azure Policy integrieren](../../../key-vault/azure-policy.md).
 - Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).

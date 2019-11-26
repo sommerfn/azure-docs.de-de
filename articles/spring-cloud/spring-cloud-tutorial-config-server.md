@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 6742e1a5924fdcd1fe00f49ac790209a907d1bac
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646723"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132796"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Tutorial: Einrichten eines Spring Cloud-Konfigurationsservers für Ihren Dienst
 
@@ -95,7 +95,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des privaten Git-Reposit
 | `password`      | `no`     | Das Kennwort, das für den Zugriff auf den `Git`-Repositoryserver verwendet wird, __erforderlich__, wenn der `Git`-Repositoryserver `Http Basic Authentication` unterstützt |
 
 > [!NOTE]
-> Einige `Git`-Repositoryserver wie GitHub unterstützen „personal-token“ oder „access-token“ als Kennwort für `HTTP Basic Authentication`. Sie können diese Art von Token auch hier als Kennwort verwenden. „personal-token“ oder „access-token“ laufen nicht ab. Bei Git-Repositoryservern wie Bitbucket und Azure DevOps läuft das Token jedoch in ein bis zwei Stunden ab. Daher eignet sich diese Option nicht für die Verwendung mit Azure Spring Cloud.
+> Für viele `Git`-Repositoryserver wird die Verwendung von Token anstelle von Kennwörtern für `HTTP Basic Authentication` unterstützt. In einigen Repositorys, z. B. GitHub, können Token unendlich lange aufbewahrt werden. Für bestimmte Git-Repositoryserver, z. B. Azure DevOps, wird aber erzwungen, dass Token innerhalb einiger Stunden ablaufen. Für Repositorys mit erzwungenem Ablauf von Token sollte nicht die tokenbasierte Authentifizierung mit Azure Spring Cloud genutzt werden.
 
 ### <a name="git-repositories-with-pattern"></a>Git-Repositorys mit Muster
 
@@ -127,7 +127,9 @@ Sie haben Ihre Konfigurationsdateien in einem Repository gespeichert und müssen
 
 1. Navigieren Sie zur Seite **Übersicht** von Azure Spring Cloud.
 
-1. Navigieren Sie im Menü auf der linken Seite unter der Überschrift **Einstellungen** zur Registerkarte **Konfigurationsserver**.
+1. Wählen Sie den zu konfigurierenden Dienst aus.
+
+1. Wählen Sie auf der Seite des Diensts im Menü auf der linken Seite unter der Überschrift **Einstellungen** die Registerkarte **Konfigurationsserver** aus.
 
 ![Screenshot des Fensters](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 

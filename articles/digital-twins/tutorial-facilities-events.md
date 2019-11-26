@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erfassen von Ereignissen in einem Azure Digital Twins-Gebäudebereich | Microsoft-Dokumentation'
+title: 'Tutorial: Erfassen von Ereignissen in einem Azure Digital Twins-Gebäudebereich'
 description: In diesem Tutorial erfahren Sie, wie Sie Benachrichtigungen von Ihren Gebäudebereichen empfangen, indem Sie Azure Digital Twins in Logic Apps integrieren.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: 26976956722d77e2dfb8c17734c207b2667c0126
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949179"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129098"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Tutorial: Empfangen von Benachrichtigungen von den Azure Digital Twins-Gebäudebereichen mit Logic Apps
 
@@ -38,7 +38,7 @@ In diesem Tutorial wird vorausgesetzt, dass Sie das Azure Digital Twins-Setup [k
 - Eine aktive Instanz von Azure Digital Twins.
 - Die [C#-Beispiele für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp) (auf den Arbeitscomputer heruntergeladen und extrahiert).
 - [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist.
-- Ein Office 365-Konto zum Senden von Benachrichtigungs-E-Mails.
+- Ein [Office 365](https://products.office.com/home)-Konto zum Senden von Benachrichtigungs-E-Mails.
 
 > [!TIP]
 > Verwenden Sie bei der Bereitstellung einer neuen Instanz einen eindeutigen Namen für die Digital Twins-Instanz.
@@ -63,7 +63,7 @@ Ein [Event Grid-Thema](../event-grid/concepts.md#topics) stellt eine Schnittstel
 
 1. Navigieren Sie in Ihrer Ressourcengruppe zum Event Grid-Thema, wählen Sie **Übersicht** aus, und kopieren Sie den Wert für **Themenendpunkt** in eine temporäre Datei. Diese URL wird im nächsten Abschnitt benötigt. 
 
-1. Wählen Sie **Zugriffsschlüssel**, und kopieren Sie **YOUR_KEY_1** und **YOUR_KEY_2** in eine temporäre Datei. Sie benötigen diese Werte im nächsten Abschnitt, um den Endpunkt zu erstellen.
+1. Wählen Sie **Zugriffsschlüssel**, und kopieren Sie **Schlüssel 1** und **Schlüssel 2** in eine temporäre Datei. Sie benötigen diese Werte im nächsten Abschnitt, um den Endpunkt zu erstellen.
 
     [![Event Grid-Schlüssel](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ Ein [Event Grid-Thema](../event-grid/concepts.md#topics) stellt eine Schnittstel
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Ersetzen Sie den Platzhalter `<Primary connection string for your Event Grid>` durch den Wert von **YOUR_KEY_1**.
+1. Ersetzen Sie den Platzhalter `<Primary connection string for your Event Grid>` durch den Wert von **Schlüssel 1**.
 
-1. Ersetzen Sie den Platzhalter `<Secondary connection string for your Event Grid>` durch den Wert von **YOUR_KEY_2**.
+1. Ersetzen Sie den Platzhalter `<Secondary connection string for your Event Grid>` durch den Wert von **Schlüssel 2**.
 
 1. Ersetzen Sie den Platzhalter für **path** durch den Pfad des Event Grid-Themas. Diesen Pfad erhalten Sie, indem Sie **https://** und die nachgestellten Ressourcenpfade aus der **Themenendpunkt**-URL entfernen. Der Pfad sollte in etwa wie folgt aussehen: *IhrEventGridName.IhrStandort.eventgrid.azure.net*.
 
@@ -178,7 +178,7 @@ Mit dem [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst können 
 
    a. Wählen Sie **Aktion hinzufügen** und dann **Office 365 Outlook** aus.
 
-   b. Wählen Sie in der Liste **Aktionen** die Option **E-Mail senden** aus. Wählen Sie **Anmelden**, und verwenden Sie die Anmeldeinformationen für Ihr E-Mail-Konto. Wählen Sie **Zugriff zulassen** aus, wenn Sie dazu aufgefordert werden.
+   b. Wählen Sie in der Liste **Aktionen** die Option **E-Mail senden (V2)** aus. Wählen Sie **Anmelden**, und verwenden Sie die Anmeldeinformationen für Ihr E-Mail-Konto. Wählen Sie **Zugriff zulassen** aus, wenn Sie dazu aufgefordert werden.
 
    c. Geben Sie im Feld **An** Ihre E-Mail-ID ein, um Benachrichtigungen zu erhalten. Geben Sie im **Betreff** den Text **Digital Twins-Benachrichtigung für schlechte Luftqualität in Gebäudebereich** ein. Wählen Sie dann **TopologyObjectId** in der Liste **Dynamischer Inhalt** für **JSON analysieren** aus.
 

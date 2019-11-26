@@ -1,10 +1,10 @@
 ---
 title: Isolation in der öffentlichen Azure-Cloud | Microsoft-Dokumentation
-description: Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen.
+description: In diesem Artikel erfahren Sie, wie Azure die Isolation gegen bösartige und nicht bösartige Benutzer sicherstellt und Architekten eine Auswahl von Isolationsoptionen bietet.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123053"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159759"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
-##  <a name="introduction"></a>Einführung
-### <a name="overview"></a>Übersicht
-Microsoft hat eine Reihe von Whitepapers, Sicherheitsübersichten, bewährten Methoden und Prüflisten entwickelt, um aktuelle und zukünftige Azure-Kunden dabei zu unterstützen, die verschiedenen sicherheitsbezogenen Funktionen in und um die Azure Platform herum zu verstehen und zu verwenden.
-Die Themen variieren in Bezug auf Umfang und Reichweite und werden regelmäßig aktualisiert. Dieses Dokument ist Teil dieser Serie (im folgenden Abschnitt zusammengefasst).
+Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
 
-### <a name="azure-platform"></a>Azure Platform
-Azure ist eine offene und flexible Clouddienstplattform, die eine sehr breite Palette an Betriebssystemen, Programmiersprachen, Frameworks, Tools, Datenbanken und Geräten unterstützt. Sie haben beispielsweise folgende Möglichkeiten:
-- Ausführen von Linux-Containern mit Docker-Integration
-- Erstellen von Apps mit JavaScript, Python, .NET, PHP, Java und Node.js
-- Erstellen von Back-Ends für iOS-, Android- und Windows-Geräte
-
-Microsoft Azure unterstützt dieselben Technologien, die bereits von Millionen von Entwicklern und IT-Profis zuverlässig eingesetzt werden.
-
-Wenn Sie IT-Ressourcen eines öffentlichen Clouddienstanbieters nutzen oder Daten in die Cloud eines Anbieters migrieren, verlassen Sie sich darauf, dass die jeweilige Organisation Ihre Anwendungen und Daten mit den Diensten und Steuerungsmöglichkeiten schützen kann, die sie zum Verwalten der Sicherheit Ihrer cloudbasierten Ressourcen bereitstellt.
-
-Die Infrastruktur von Azure ist von den Hardwareressourcen bis zu den Anwendungen vollständig auf das gleichzeitige Hosten von Millionen von Kunden ausgelegt und stellt für Unternehmen eine vertrauenswürdige Grundlage zur Erfüllung ihrer Sicherheitsanforderungen dar. Darüber hinaus bietet Azure Ihnen ein breites Spektrum an konfigurierbaren Sicherheitsoptionen, die Sie selbst steuern können, um die Sicherheit an die individuellen Anforderungen Ihrer Bereitstellungen anzupassen. Dieses Dokument unterstützt Sie bei der Erfüllung dieser Anforderungen.
-
-### <a name="abstract"></a>Zusammenfassung
-
-Mit Microsoft Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
-
-In diesem Artikel wird beschrieben, wie Microsoft Azure die Isolation gegenüber böswilligen und unbedenklichen Benutzern ermöglicht, und er dient als Anleitung für die Erstellung von Cloudlösungen, indem für IT-Architekten verschiedene Isolationsoptionen angeboten werden. In diesem Whitepaper liegt der Schwerpunkt auf der Technologie der Azure Platform und auf kundenorientierten Sicherheitssteuerungen. SLAs, Preismodelle und Aspekte von DevOps-Methoden werden nicht behandelt.
+In diesem Artikel wird beschrieben, wie Azure die Isolation gegenüber böswilligen und unbedenklichen Benutzern ermöglicht, und er dient als Anleitung für die Erstellung von Cloudlösungen, indem für IT-Architekten verschiedene Isolationsoptionen angeboten werden.
 
 ## <a name="tenant-level-isolation"></a>Isolation auf Mandantenebene
 Einer der Hauptvorteile des Cloud Computing ist das Konzept der gemeinsamen, allgemeinen Infrastruktur für eine größere Zahl von Kunden, mit dem Kostenersparnisse realisiert werden können. Dieses Konzept wird als Mehrinstanzenfähigkeit bezeichnet. Microsoft arbeitet ständig daran sicherzustellen, dass die mehrinstanzenfähige Architektur von Microsoft Cloud Azure die geltenden Standards in Bezug auf Sicherheit, Vertraulichkeit, Datenschutz, Integrität und Verfügbarkeit unterstützt.
@@ -350,4 +331,3 @@ Microsoft Azure enthält viele verschiedene cloudbasierte Computing-Dienste mit 
 - [Speicherisolation](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Bei Microsoft Azure sind auf Kunden-VMs basierende Computevorgänge von Speichervorgängen getrennt. Diese Trennung ermöglicht eine unabhängige Skalierung der Computevorgänge und Speichervorgänge, sodass die Umsetzung der Mehrinstanzenfähigkeit und Isolation vereinfacht wird. Aus diesem Grund wird Azure Storage auf separater Hardware ohne Netzwerkverbindung mit Azure Compute (außer auf logischer Ebene) ausgeführt. Alle Anforderungen werden je nach Auswahl des Kunden über HTTP oder HTTPS ausgeführt.
-

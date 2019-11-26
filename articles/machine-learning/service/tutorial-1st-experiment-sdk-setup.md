@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582490"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049142"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte in Azu
 
 1. Wählen Sie auf der oberen Leiste eine Notebook-VM aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen. Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
 
-1. Werden keine virtuellen Computer gefunden, wählen Sie **+ Computeressource hinzufügen** aus, um den virtuellen Computer zu erstellen.
+1. Werden keine virtuellen Computer gefunden, wählen Sie **+ VM hinzufügen** aus, um den virtuellen Computer zu erstellen. 
 
     1. Geben Sie beim Erstellen eines virtuellen Computers einen Namen an.  Der Name muss zwischen 2 und 16 Zeichen lang sein. Gültige Zeichen sind Buchstaben, Ziffern und Bindestriche (-), und der Name muss in Ihrem Azure-Abonnement eindeutig sein.
 

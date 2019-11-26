@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwalten von virtuellen Azure-Computern mit der Azure CLI | Microsoft-Dokumentation'
+title: 'Tutorial: Verwalten von virtuellen Azure-Computern per Azure CLI'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Verwalten von virtuellen Azure-Computern nutzen, indem Sie die RBAC sowie Richtlinien, Sperren und Tags verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676501"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034542"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Informationen zur Verwaltung von virtuellen Linux-Computern mit der Azure CLI
 

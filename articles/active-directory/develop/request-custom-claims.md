@@ -1,5 +1,6 @@
 ---
-title: Anfordern benutzerdefinierter Ansprüche mithilfe von MSAL für iOS und macOS | Microsoft Identity Platform
+title: Anfordern benutzerdefinierter Ansprüche mithilfe von MSAL für iOS und macOS
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Ansprüche anfordern.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269364"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802592"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Gewusst wie: Anfordern benutzerdefinierter Ansprüche mithilfe von MSAL für iOS und macOS
 
@@ -135,4 +136,4 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier erfahren Sie mehr zu [Authentifizierungsflows und Anwendungsszenarios](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

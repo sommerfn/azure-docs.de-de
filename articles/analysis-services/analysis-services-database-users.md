@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Datenbankrollen und Benutzer auf einem Analys
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301147"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147010"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -25,14 +25,14 @@ Folgende Rollenberechtigungen stehen zur Verfügung:
 *  **Verarbeiten:** Benutzer können eine Verbindung mit Verarbeitungsvorgängen in der Datenbank herstellen und diese durchführen sowie Daten der Modelldatenbank analysieren.
 *  **Lesen:** Benutzer können über eine Clientanwendung eine Verbindung mit Daten der Modelldatenbank herstellen und diese analysieren.
 
-Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in SQL Server Data Tools (SSDT) Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SQL Server Management Studio (SSMS), [Analysis Services-PowerShell-Cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) oder die [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
+Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in Visual Studio mit Analysis Services-Projekten Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SQL Server Management Studio (SSMS), [Analysis Services-PowerShell-Cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) oder die [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
 
 Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) und die `MailEnabled`-Eigenschaft auf `True` festgelegt sein. Verwenden Sie `obj:groupid@tenantid` beim Angeben einer Gruppe nach E-Mail-Adresse.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>So fügen Sie Rollen und Benutzer in SSDT hinzu oder verwalten diese  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>So fügen Sie Rollen und Benutzer in Visual Studio hinzu oder verwalten diese  
   
-1.  Klicken Sie in SSDT > **Explorer für tabellarische Modelle** mit der rechten Maustaste auf **Rollen**.  
+1.  Klicken Sie im **Explorer für tabellarische Modelle** mit der rechten Maustaste auf **Rollen**.  
   
 2.  Klicken Sie im **Rollen-Manager** auf **Neu**.  
   

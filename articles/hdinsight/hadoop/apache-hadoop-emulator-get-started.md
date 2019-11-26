@@ -1,5 +1,5 @@
 ---
-title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox – Emulator – Azure HDInsight
+title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox, Emulator – Azure HDInsight
 description: 'Um sich mit dem Apache Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
 keywords: hadoop emulator,hadoop sandbox
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066696"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044767"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 

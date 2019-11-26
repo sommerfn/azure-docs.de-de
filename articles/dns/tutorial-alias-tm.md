@@ -1,18 +1,19 @@
 ---
-title: 'Tutorial: Erstellen eines Azure DNS-Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager'
+title: 'Tutorial: Erstellen eines Aliaseintrags zur Unterstützung von Apex-Domänennamen: Traffic Manager'
+titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Alias-Ressourceneintrag für die Verwendung des Apex-Domänennamens mit Traffic Manager konfigurieren.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: allensu
+ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530959"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082251"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
 

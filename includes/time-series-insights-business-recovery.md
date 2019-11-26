@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259097"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990876"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -23,8 +24,8 @@ Zu den zusätzlichen Hochverfügbarkeitsfeatures von Azure (auch für alle Time 
 
 - **Failover**: Azure bietet [Georeplikation und Lastenausgleich](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
 - **Daten-** und **Speicherwiederherstellung**: Azure bietet [mehrere Optionen zum Beibehalten und Wiederherstellen von Daten](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Sitewiederherstellung**: Azure bietet Features für die Sitewiederherstellung über [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
-- **Azure Backup**: [Azure Backup ](https://docs.microsoft.com/azure/backup/backup-architecture) unterstützt sowohl lokale als auch cloudbasierte Sicherungen von virtuellen Azure-Computern.
+- **Azure Site Recovery**: Azure bietet Features für die Sitewiederherstellung über [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) unterstützt sowohl lokale als auch cloudbasierte Sicherungen von Azure-VMs.
 
 Stellen Sie sicher, dass Sie die relevanten Azure-Features aktivieren, um eine globale, regionsübergreifende Hochverfügbarkeit für Ihre Geräte und Benutzer zu gewährleisten.
 
@@ -35,8 +36,8 @@ Stellen Sie sicher, dass Sie die relevanten Azure-Features aktivieren, um eine g
 
 Einige Azure IoT-Dienste enthalten auch integrierte Business Disaster Recovery-Features:
 
-- [Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), einschließlich intraregionaler Redundanz
-- [Event Hub-Richtlinien](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Hochverfügbarkeit und Notfallwiederherstellung von Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), einschließlich intraregionaler Redundanz
+- [Azure Event Hubs-Richtlinien](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Azure-Speicherredundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 Die Integration von Time Series Insights mit den anderen Diensten bietet zusätzliche Möglichkeiten für die Notfallwiederherstellung. Beispielsweise können an Ihren Event Hub gesendete Telemetriedaten in einer Sicherungsdatenbank von Azure Blob Storage gespeichert werden.
@@ -50,13 +51,13 @@ Möglicherweise ist auch eine vollständige Sicherungskopie Ihrer Azure Time Ser
 - Als eine *Failoverinstanz* speziell für Time Series Insights, zu der Daten und Datenverkehr umgeleitet werden
 - Zum Bewahren von Daten und Überwachungsinformationen
 
-Im Allgemeinen ist der beste Weg, eine Time Series Insights-Umgebung zu duplizieren, die Erstellung einer zweiten Time Series Insights-Umgebung in einer Sicherungs-Azure-Region. Ereignisse werden auch von Ihrer primären Ereignisquelle Ereignisse an diese sekundäre Umgebung gesendet. Stellen Sie sicher, dass Sie eine zweite, dedizierte Consumergruppe verwenden. Folgen Sie den Business Disaster Recovery-Richtlinien dieser Quelle, wie es weiter oben beschrieben ist.
+Im Allgemeinen ist der beste Weg, eine Time Series Insights-Umgebung zu duplizieren, die Erstellung einer zweiten Time Series Insights-Umgebung in einer Sicherungs-Azure-Region. Ereignisse werden auch von Ihrer primären Ereignisquelle Ereignisse an diese sekundäre Umgebung gesendet. Stellen Sie sicher, dass Sie eine zweite dedizierte Consumergruppe verwenden. Folgen Sie den Business Disaster Recovery-Richtlinien dieser Quelle, wie es weiter oben beschrieben ist.
 
 So erstellen Sie eine Duplikatumgebung:
 
 1. Erstellen Sie eine Umgebung in einer zweiten Region. Weitere Informationen finden Sie unter [Erstellen einer neuen Time Series Insights-Umgebung über das Azure-Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 1. Erstellen Sie eine zweite dedizierte Consumergruppe für Ihre Ereignisquelle.
-1. Verbinden Sie diese Ereignisquelle mit der neuen Umgebung. Stellen Sie sicher, dass Sie die zweite, dedizierte Consumergruppe festlegen.
+1. Verbinden Sie diese Ereignisquelle mit der neuen Umgebung. Stellen Sie sicher, dass Sie die zweite dedizierte Consumergruppe festlegen.
 1. Machen Sie sich mit der [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)- und [Event Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)-Dokumentation für Time Series Insights vertraut.
 
 Bei Auftreten eines Ereignisses:

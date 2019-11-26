@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509342"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175690"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Gewusst wie: Vorschreiben der Verwendung der MFA für den Zugriff von nicht vertrauenswürdigen Netzwerken mit bedingtem Zugriff   
 
@@ -28,8 +28,8 @@ Dieser Artikel enthält Informationen, die zum Konfigurieren einer Richtlinie f�
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind: 
 
-- Mit den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
-- Mit den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
+- Den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
+- Den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -45,12 +45,12 @@ Mit dem bedingten Zugriff in Azure AD können Sie diese Anforderung mit einer ei
 
 ## <a name="implementation"></a>Implementierung
 
-Die Herausforderung dieses Szenarios besteht darin, *den Zugriff von einem nicht vertrauenswürdigen Netzwerk* in eine Bedingung für den bedingten Zugriff umzuwandeln. In einer Richtlinie für bedingten Zugriff können Sie die [Standortbedingung so konfigurieren](location-condition.md), dass sie Szenarien adressiert, die sich auf Netzwerkadressen beziehen. Die Standortbedingung ermöglicht es Ihnen, benannte Standorte auszuwählen, die logische Gruppierungen von IP-Adressbereichen, Ländern und Regionen sind.  
+Die Herausforderung dieses Szenarios besteht darin, *den Zugriff von einem nicht vertrauenswürdigen Netzwerk* in eine Bedingung für den bedingten Zugriff umzuwandeln. In einer Richtlinie für bedingten Zugriff können Sie die [Standortbedingung](location-condition.md) so konfigurieren, dass sie Szenarien adressiert, die sich auf Netzwerkadressen beziehen. Die Standortbedingung ermöglicht es Ihnen, benannte Standorte auszuwählen, die logische Gruppierungen von IP-Adressbereichen, Ländern und Regionen sind.  
 
-Typischerweise besitzt Ihre Organisation einen oder mehrere Adressbereiche, z.B. 199.30.16.0 bis 199.30.16.24.
+Typischerweise besitzt Ihre Organisation einen oder mehrere Adressbereiche, z. B. 199.30.16.0 bis 199.30.16.15.
 Sie können einen benannten Speicherort wie folgt konfigurieren:
 
-- Festlegen dieses Bereichs (199.30.16.0/24) 
+- Festlegen dieses Bereichs (199.30.16.0/28) 
 - Zuweisen eines beschreibenden Namens wie **Unternehmensnetzwerk** 
 
 Anstatt zu versuchen, alle Standorte zu definieren, die nicht vertrauenswürdig sind, können Sie:

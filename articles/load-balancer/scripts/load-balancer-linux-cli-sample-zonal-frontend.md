@@ -1,12 +1,10 @@
 ---
-title: 'CLI-Beispiel: Lastenausgleich für virtuelle Computer innerhalb einer Zone – Azure | Microsoft-Dokumentation'
+title: 'Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone: Azure CLI'
 description: Dieses Azure CLI-Skriptbeispiel veranschaulicht, wie Sie einen Lastausgleich für den Datenverkehr für virtuelle Computer in einer bestimmten Verfügbarkeitszone vornehmen.
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -16,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273734"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068764"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-Skriptbeispiele: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI-Skriptbeispiele: Durchführen eines Lastenausgleichs für VM-Datenverkehr innerhalb einer bestimmten Verfügbarkeitszone
 
 Dieses Azure CLI-Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer virtueller Ubuntu-Computer in einer Konfiguration mit Hochverfügbarkeit und Lastenausgleich in einer bestimmten Verfügbarkeitszone benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer in einer einzelnen Verfügbarkeitszone, die über eine Azure Load Balancer Standard-Instanz zugänglich sind. 
 

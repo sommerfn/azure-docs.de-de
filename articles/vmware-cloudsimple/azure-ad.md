@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1a5871a052998e9dd32d698c5a89f57064cc7d6b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972929"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987567"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Verwenden von Azure AD als Identitätsanbieter für vCenter in einer privaten CloudSimple-Cloud
 
@@ -99,3 +99,10 @@ Optional können Sie auch andere Azure AD-Features konfigurieren.  Diese sind ni
 3. Melden Sie sich bei Ihrem vCenter in der privaten Cloud an, nachdem die Berechtigungen eskaliert wurden.
 4. Befolgen Sie die Anweisungen unter [Hinzufügen einer Identitätsquelle für vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter), und verwenden Sie dabei die Werte aus dem vorherigen Schritt, um Azure Active Directory als Identitätsquelle einzurichten.
 5. Fügen Sie Benutzer/Gruppen aus Azure AD vCenter-Gruppen hinzu, wie im VMware-Thema [Hinzufügen von Mitgliedern zu einer vCenter-Gruppe für einmaliges Anmelden](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) beschrieben wird.
+
+> [!CAUTION]
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Der Gruppe *Administratoren* dürfen nur Dienstkonten hinzugefügt werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Kennenlernen des Berechtigungsmodells für private Clouds](learn-private-cloud-permissions.md)

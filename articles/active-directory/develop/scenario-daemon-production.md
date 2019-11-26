@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056320"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175392"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)
 
@@ -63,11 +63,10 @@ Im Folgenden finden Sie Links zu weiteren Informationen:
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python befindet sich derzeit in der Public Preview.
-Weitere Informationen finden Sie in den [Beispielen im MSAL Python-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App anhand der Identität einer App](./quickstart-v2-python-daemon.md) durch.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j (MSAL.Java) ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar. Weitere Informationen finden Sie in den [Beispielen im MSAL Java-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+MSAL Java ist derzeit als öffentliche Vorschauversion verfügbar. Weitere Informationen finden Sie in den [MSAL Java-Dev-Beispielen](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

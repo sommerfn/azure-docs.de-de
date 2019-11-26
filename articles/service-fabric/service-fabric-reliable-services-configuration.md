@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723551"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242885"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.
@@ -125,6 +125,7 @@ ReplicatorConfig
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 | SlowApiMonitoringDuration |Sekunden |300 |Legt das Überwachungsintervall für verwaltete API-Aufrufe fest. Beispiel: Vom Benutzer bereitgestellte Sicherungsrückruffunktion. Nach Ablauf des Intervalls wird ein Warnbericht zur Integrität an den Health Manager gesendet. |
 | LogTruncationIntervalSeconds |Sekunden |0 |Konfigurierbares Intervall, in dem bei jedem Replikat eine Protokollkürzung initiiert wird. Mit seiner Hilfe wird sichergestellt, dass das Protokoll auch nach Zeit und nicht nur nach Größe des Protokolls abgeschnitten wird. Diese Einstellung erzwingt auch das endgültige Löschen der gelöschten Einträge im zuverlässigen Wörterbuch. Daher kann es verwendet werden, um sicherzustellen, dass gelöschte Elemente rechtzeitig endgültig gelöscht werden. |
+| EnableStableReads |Boolean |False |Durch Aktivieren stabiler Lesevorgänge werden die Rückgaben sekundärer Replikate auf Werte beschränkt, die durch ein Quorum bestätigt wurden. |
 
 ### <a name="sample-configuration-via-code"></a>Beispielkonfiguration per Code
 ```csharp

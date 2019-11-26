@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973656"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965265"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewallregeln für den Azure Database for MariaDB-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -43,12 +43,15 @@ Um Anwendungen von Azure die Verbindung mit dem Azure Database for MariaDB-Serve
 
 ![Konfigurieren von „Zugriff auf Azure-Dienste erlauben“ im Portal](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Herstellen einer Verbindung über ein VNet
+Wenn Sie von einem VNet aus eine sichere Verbindung mit Ihrem Azure Database for MariaDB-Server herstellen möchten, ziehen Sie die Verwendung von [VNet-Dienstendpunkten](./concepts-data-access-security-vnet.md) in Betracht. 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programmgesteuertes Verwalten von Firewallregeln
 Außer im Azure-Portal können Firewallregeln programmgesteuert mithilfe der Azure CLI verwaltet werden. 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+Siehe auch [Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe der Azure CLI](./howto-manage-firewall-cli.md).
 
-## <a name="troubleshooting-firewall-issues"></a>Beheben von Firewallproblemen
+## <a name="troubleshooting-firewall-issues"></a>Behandeln von Firewallproblemen
 Wenn der Zugriff auf den Microsoft Azure Database for MariaDB-Serverdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
 * **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für den Azure Database for MariaDB-Server werden möglicherweise erst nach fünf Minuten wirksam.
@@ -65,6 +68,5 @@ Wenn der Zugriff auf den Microsoft Azure Database for MariaDB-Serverdienst nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe des Microsoft Azure-Portals](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe der Azure CLI](./howto-manage-firewall-cli.md)
+- [VNET-Dienstendpunkte in Azure Database for MariaDB](./concepts-data-access-security-vnet.md)

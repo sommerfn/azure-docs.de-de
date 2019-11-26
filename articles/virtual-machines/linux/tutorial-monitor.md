@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Überwachen virtueller Linux-Computer in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Überwachen virtueller Linux-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die Leistung und die ermittelten Anwendungskomponenten überwachen, die auf Ihren virtuellen Linux-Computern ausgeführt werden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71679408"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111993"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Linux-Computers in Azure
 
@@ -133,7 +133,7 @@ So aktivieren Sie die Überwachung Ihrer virtuellen Azure-Computer mit Azure Mon
 
 3. Wählen Sie auf der Seite **Insights (Vorschau)** **Jetzt testen** aus.
 
-    ![Aktivieren von Azure Monitor for VMs für eine VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Aktivieren von Azure Monitor for VMs für eine VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. Wenn Sie im selben Abonnement einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Azure Monitor Insights Onboarding** (Onboarding von Azure Monitor Insights) in der Dropdownliste aus.  
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757239"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043949"
 ---
 # <a name="learn-text-moderation-concepts"></a>Lernen von Textmoderationskonzepten
 
@@ -184,4 +184,4 @@ Content Moderator bietet eine [Begriffslisten-API](https://westus.dev.cognitive.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Textmoderation](try-text-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch die [.NET-Schnellstartanleitung für die Textmoderation](text-moderation-quickstart-dotnet.md) an.
+Testen Sie die [API-Konsole für die Textmoderation](try-text-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch den Abschnitt zur Textmoderation im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) an.

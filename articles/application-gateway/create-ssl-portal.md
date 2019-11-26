@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Terminierung – Azure-Portal'
+title: 'Tutorial: Konfigurieren der SSL-Terminierung im Portal: Azure Application Gateway'
 description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway konfigurieren und ein Zertifikat für die SSL-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470038"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012307"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Terminierung mithilfe des Azure-Portals
 

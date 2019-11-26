@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Bereitstellen einer App aus einer georeplizierten Docker-Registrierung in Azure
+title: 'Tutorial: Bereitstellen einer App aus einer georeplizierten Azure-Containerregistrierung'
 description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung in zwei unterschiedlichen Azure-Regionen bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146940"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931411"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 

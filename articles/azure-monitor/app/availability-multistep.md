@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678235"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817389"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -27,45 +27,19 @@ Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe eine
 * Visual Studio 2017 Enterprise oder höher
 * Visual Studio-Tools für Webleistungs- und Auslastungstests
 
-Sie finden die Testingtools im **Visual Studio-Installer** unter **Einzelne Komponenten** > **Debuggen und Testen** > **Tools für Webleistung und Auslastungstests**.
+Sie finden die Testingtools im **Visual Studio-Installer** > **Einzelne Komponenten** > **Debuggen und Testen** > **Tools für Webleistung und Auslastungstests**.
 
 ![Screenshot: Visual Studio-Installer mit aktivierter Option „Individuelle Komponenten“ und einem Kontrollkästchen neben dem Element „Tools für Webleistung und Auslastungstests“](./media/availability-multistep/web-performance-load-testing.png)
 
 > [!NOTE]
 > Für mehrstufige Webtests fallen zusätzliche Kosten an. Weitere Informationen erhalten Sie im [offiziellen Leitfaden für Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Aufzeichnung eines mehrstufigen Webtests
+## <a name="record-a-multi-step-web-test"></a>Aufzeichnung eines mehrstufigen Webtests 
 
-Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio Enterprise auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
+> [!WARNING]
+> Die Verwendung der mehrstufigen Aufzeichnung wird nicht mehr empfohlen. Die Aufzeichnung wurde für statische HTML-Seiten mit grundlegenden Interaktionen entwickelt und bietet keine Funktionalität für moderne Webseiten.
 
-> [!IMPORTANT]
-> * Es ist nicht möglich, in Ihren Tests codierte Funktionen oder Schleifen zu verwenden. Der Test muss vollständig im WEBTEST-Skript enthalten sein. Sie können aber Standard-Plug-Ins nutzen.
-> * In den Webtests mit mehreren Schritten werden nur Zeichen der englischen Sprache unterstützt. Wenn Sie Visual Studio in anderen Sprachen verwenden, aktualisieren Sie die Webtest-Definitionsdatei, sodass nicht-englische Zeichen übersetzt/ausgeschlossen werden.
-
-Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
-
-1. Erstellen Sie ein Webleistungs- und Auslastungstestprojekt. **Datei** > **Neu** > **Projekt** > **Visual C#**  > **Test**
-
-    ![Benutzeroberfläche für ein neues Projekt in Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Öffnen Sie die Datei `.webtest`, und starten Sie die Aufzeichnung.
-
-    ![Benutzeroberfläche für die Aufzeichnung von Tests in Visual Studio](./media/availability-multistep/open-web-test.png)
-
-3. Klicken Sie die Schritte durch, die Ihr Test als Teil der Aufzeichnung simulieren soll.
-
-    ![Benutzeroberfläche der Browseraufzeichnung](./media/availability-multistep/record.png)
-
-4. Bearbeiten Sie den Test:
-
-    * Fügen Sie Validierungen zum Überprüfen der empfangenen Text- und Antwortcodes hinzu.
-    * Entfernen Sie jegliche unnötigen Interaktionen. Sie können auch abhängige Anforderungen von Bildern entfernen oder Websites zur Nachverfolgung hinzufügen, die für Sie nicht relevant sind, weil Sie Ihren Test als Erfolg ansehen.
-    
-    Denken Sie daran, dass Sie nur das Testskript bearbeiten können. Sie können keinen benutzerdefinierten Code hinzufügen oder andere Webtests aufrufen. Fügen Sie keine Schleifen in den Test ein. Sie können standardmäßige Webtest-Plug-Ins verwenden.
-
-5. Führen Sie den Test zur Überprüfung in Visual Studio aus, um sicherzustellen, dass er funktioniert.
-
-    Das Webtest-Ausführungsprogramm öffnet einen Webbrowser und wiederholt die aufgezeichneten Aktionen. Vergewissern Sie sich, dass alles wie erwartet funktioniert.
+Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziellen Dokumentation zu Visual Studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Hochladen des Webtests
 
@@ -96,7 +70,7 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 |**Klassisch** | Die Verwendung von klassischen Warnungen wird für neue Verfügbarkeitstests nicht mehr empfohlen.|
 |**Schwellenwert für den Warnungsspeicherort**|Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Schwellenwert für den Warnungsspeicherort und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten -2, bei einer Mindestanzahl von fünf Teststandorten.**|
 
-## <a name="advanced-configuration"></a>Erweiterte Konfiguration
+## <a name="configuration"></a>Konfiguration
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Einfügen von Zeiten und beliebigen Zahlen in einen Test
 

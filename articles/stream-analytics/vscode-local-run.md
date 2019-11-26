@@ -1,17 +1,17 @@
 ---
-title: Lokales Testen von Azure Stream Analytics-Abfragen mit Visual Studio Code (Vorschau)
+title: Testen von Azure Stream Analytics-Abfragen mit Visual Studio Code
 description: Dieser Artikel beschreibt, wie Abfragen mit den Azure Stream Analytics-Tools für Visual Studio Code lokal getestet werden.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673027"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924971"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Lokales Testen von Stream Analytics-Abfragen mit Visual Studio Code
 

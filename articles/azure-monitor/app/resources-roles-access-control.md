@@ -1,23 +1,18 @@
 ---
 title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft Docs
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/14/2019
+ms.openlocfilehash: cdc534325fd693dd34f2dc25c9953cd40ca96163
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373691"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162312"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -44,7 +39,7 @@ Zunächst einige Definitionen:
 * [**Ressourcengruppe**][group]: Jede Ressource gehört zu einer Gruppe. Eine Gruppe ist eine bequeme Möglichkeit, verwandte Ressourcen insbesondere für die Zugriffssteuerung zu verwalten. Beispielsweise könnten Sie eine Web-App, eine Application Insights-Ressource zur Überwachung der App sowie eine Storage-Ressource zur Aufbewahrung exportierter Daten in eine Ressourcengruppe aufnehmen.
 
 * [**Abonnement**](https://portal.azure.com): Um Application Insights oder sonstige Azure-Ressourcen zu verwenden, müssen Sie ein Azure-Abonnement abschließen. Jede Ressourcengruppe gehört zu einem Azure-Abonnement, in dem Sie Ihr Preispaket und, wenn es sich um ein Abonnement für die Organisation handelt, die Mitglieder und deren Zugriffsberechtigungen auswählen.
-* [**Microsoft-Konto**][account]: Benutzername und Kennwort für Ihre Anmeldung bei Microsoft Azure-Abonnements, XBox Live, „Outlook.com“ und sonstigen Microsoft-Dienste.
+* [**Microsoft-Konto**][account]: Benutzername und Kennwort für Ihre Anmeldung bei Microsoft Azure-Abonnements, XBox Live, „Outlook.com“ und sonstigen Microsoft-Diensten.
 
 ## <a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
 
@@ -59,7 +54,7 @@ Zum Steuern des Zugriffs auf diese Ressourcen empfiehlt es sich daher, folgender
 
 Sie benötigen Eigentümerrechte für das Abonnement oder die Ressourcengruppe.
 
-Der Benutzer muss über ein [Microsoft-Konto][account] oder über Zugriff auf sein [Microsoft-Organisationskonto](../../active-directory/fundamentals/sign-up-organization.md) verfügen. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
+Der Benutzer muss über ein [Microsoft-Konto][account]oder über Zugriff auf sein [Microsoft-Organisationskonto](../../active-directory/fundamentals/sign-up-organization.md) verfügen. Sie können den Zugriff an Einzelpersonen und auch an Benutzergruppen erteilen, die in Azure Active Directory definiert sind.
 
 #### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Navigieren zur Ressourcengruppe oder direkt zur Ressource
 
@@ -81,7 +76,7 @@ Wenn Sie Informationen zu allen integrierten Rollen für die rollenbasierte Zugr
 
 Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (sofern zutreffend).
 
-| Rolle | In der Ressourcengruppe |
+| Role | In der Ressourcengruppe |
 | --- | --- |
 | [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
 | [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen. |
@@ -130,16 +125,16 @@ Da bestimmte Rollen mit Benachrichtigungen und E-Mail-Warnungen verknüpft sein 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Application Insights-Ressource für Besitzer und Mitwirkende
 
 ```powershell
-$resourceGroup = “RGNAME”
-$resourceName = “AppInsightsName”
-$resourceType = “microsoft.insights/components”
+$resourceGroup = "RGNAME"
+$resourceName = "AppInsightsName"
+$resourceType = "microsoft.insights/components"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Ressourcengruppe für Besitzer und Mitwirkende
 
 ```powershell
-$resourceGroup = “RGNAME”
+$resourceGroup = "RGNAME"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 

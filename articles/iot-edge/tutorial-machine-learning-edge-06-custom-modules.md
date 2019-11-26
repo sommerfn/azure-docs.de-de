@@ -1,19 +1,19 @@
 ---
-title: 'Erstellen und Bereitstellen benutzerdefinierter Module: Machine Learning in Azure IoT Edge | Microsoft-Dokumentation'
-description: Erstellen Sie IoT Edge-Module, die Daten von Blattgeräten durch ein Machine Learning-Modell verarbeiten und die Erkenntnisse dann an IoT Hub senden, und stellen Sie sie bereit.
+title: 'Tutorial: Erstellen und Bereitstellen benutzerdefinierter Module: Machine Learning in Azure IoT Edge'
+description: 'Tutorial: Erstellen Sie IoT Edge-Module, die Daten von Blattgeräten durch ein Machine Learning-Modell verarbeiten und die Erkenntnisse dann an IoT Hub senden, und stellen Sie sie bereit.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494002"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106549"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 

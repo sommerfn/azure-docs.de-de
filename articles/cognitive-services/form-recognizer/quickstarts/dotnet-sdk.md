@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Formularerkennungs-Clientbibliothek für .NET | Microsoft-Dokumentation'
-description: Erste Schritte mit der Formularerkennungs-Clientbibliothek für .NET.
+description: Führen Sie erste Schritte mit der Formularerkennungs-Clientbibliothek für .NET aus, um eine Ausgabe von strukturierten Daten zu trainieren, zu extrahieren, zu analysieren und abzurufen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264435"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904604"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Schnellstart: Formularerkennungs-Clientbibliothek für .NET
 
@@ -43,7 +43,7 @@ Führen Sie mit der Formularerkennungs-Clientbibliothek für .NET die folgenden 
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel (`FORM_RECOGNIZER_KEY`).
+Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und den Endpunkt mit dem Namen `FORM_RECOGNIZER_KEY` bzw. `FORM_RECOGNIZER_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
@@ -120,7 +120,6 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 
 Fügen Sie vor dem Definieren von Methoden die folgenden Variablendefinitionen am Anfang der **Program**-Klasse hinzu. Sie müssen einige der Variablen selbst ausfüllen. 
 
-* Den Wert Ihres Dienstendpunkts finden Sie im Azure-Portal im Abschnitt **Übersicht**. 
 * Öffnen Sie zum Abrufen der SAS-URL für Ihre Trainingsdaten den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
 * Wenn Sie ein Beispielformular für die Analyse benötigen, können Sie eine der Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. In diesem Leitfaden werden nur PDF-Formulare verwendet.
 

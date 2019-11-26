@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Beispiel – Kopieren einer Momentaufnahme in ein Speicherkonto in einer anderen Region | Microsoft-Dokumentation
+title: 'Azure CLI-Beispiel: Kopieren einer Momentaufnahme in ein Speicherkonto in einer anderen Region'
 description: Azure CLI-Beispielskript – Exportieren/Kopieren einer Momentaufnahme als VHD in ein Speicherkonto in derselben oder einer anderen Region
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 9a1e0058e440f9cea60361a8b6b64dd4c7ab789b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1e9ba52357703238c35d31823462d9ff3bd04c87
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249572"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040041"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Exportieren/Kopieren einer Momentaufnahme in ein Speicherkonto in einer anderen Region mit der Befehlszeilenschnittstelle
 

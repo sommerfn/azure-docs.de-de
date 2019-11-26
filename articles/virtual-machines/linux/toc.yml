@@ -126,7 +126,7 @@
     - name: Dedizierte Hosts
       href: dedicated-hosts.md
     - name: Wartung und Updates
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Datenträgerspeicher
       items:
         - name: Einführung in verwaltete Datenträger
@@ -298,16 +298,30 @@
               href: ../extensions/agent-linux.md
             - name: Agent-Aktualisierung
               href: update-agent.md
-        - name: Geplante Wartung
-          href: maintenance-notifications.md
         - name: Maßnahmen im Zusammenhang mit der spekulativen Ausführung
           href: mitigate-se.md
-        - name: Geplante Ereignisse
-          href: scheduled-events.md
         - name: Überwachen von Metadaten
           href: instance-metadata-service.md
         - name: Abrufen von Nutzungsmetriken mit REST
           href: metrics-vm-usage-rest.md
+    - name: Plattformwartung
+      items:
+        - name: Wartungsbenachrichtigungen
+          items:
+            - name: Übersicht
+              href: maintenance-notifications.md
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portal
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Wartungssteuerung
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geplante Ereignisse
+          href: scheduled-events.md
     - name: Überwachen virtueller Computer
       items:
         - name: Azure Monitor für VMs

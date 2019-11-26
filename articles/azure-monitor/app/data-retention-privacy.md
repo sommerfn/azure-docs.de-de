@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/22/2019
-ms.openlocfilehash: 62758ef82b074e093e837b2095dd9f27ab31657b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 09/29/2019
+ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678097"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052488"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -24,6 +24,7 @@ Zunächst die kurze Antwort:
 * Sie können Code schreiben, der zusätzliche benutzerdefinierte Telemetriedaten sendet, die Sie bei der Diagnose und Überwachung der Nutzung unterstützen. (Diese Erweiterbarkeit ist ein großartiges Feature von Application Insights.) Der Code kann theoretisch so geschrieben werden, dass versehentlich auch persönliche und andere sensible Daten einbezogen werden. Falls Ihre Anwendung mit solchen Daten arbeitet, müssen Sie sämtlichen Code, den Sie schreiben, einer gründlichen Prüfung unterziehen.
 * Beim Entwickeln und Testen Ihrer App können Sie problemlos überprüfen, was vom SDK gesendet wird. Die Daten erscheinen in den Debugging-Ausgabefenstern von IDE und Browser. 
 * Die Daten werden auf [Microsoft Azure](https://azure.com)-Servern in den USA oder in Europa gespeichert. (Ihre App kann jedoch überall ausgeführt werden.) Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind während der Übertragung und im Ruhezustand verschlüsselt.
+*   Überprüfen Sie die gesammelten Daten, da hierzu möglicherweise Daten zählen, die in einigen Fällen zulässig sind, in anderen hingegen nicht.  Ein gutes Beispiel dafür ist der Gerätename. Der Gerätename eines Servers hat keine datenschutzrelevanten Auswirkungen und ist hilfreich, der Gerätename eines Smartphones oder Laptops kann sich jedoch auf die Privatsphäre beziehen, und er ist möglicherweise weniger hilfreich. Ein SDK, das hauptsächlich auf Server abzielt, würde den Gerätenamen standardmäßig erfassen, und dies müsste sowohl für normale Ereignisse als auch Ausnahmen überschrieben werden.
 
 Im Rest dieses Artikels werden die obigen Antworten näher erläutert. Der Artikel ist in sich geschlossen, sodass Sie ihn auch Kollegen zeigen können, die nicht direkt Ihrem Team angehören.
 
@@ -39,7 +40,6 @@ Die Daten können vom Application Insights-Dienst exportiert werden (etwa in ei
 Application Insights SDKs stehen für eine Reihe von Anwendungstypen zur Verfügung. Hierzu zählen auf eigenen Java EE- oder ASP.NET-Servern oder in Azure gehostete Webdienste, Webclients (also der innerhalb einer Webseite ausgeführte Code), Desktop-Apps und -Dienste sowie Geräte-Apps (etwa für Windows Phone, iOS und Android). Alle diese Anwendungen senden Telemetriedaten an den gleichen Dienst.
 
 ## <a name="what-data-does-it-collect"></a>Welche Daten werden dabei gesammelt?
-### <a name="how-is-the-data-is-collected"></a>Wie werden die Daten gesammelt?
 Es werden drei Datenquellen verwendet:
 
 * Das SDK, das Sie entweder [bei der Entwicklung](../../azure-monitor/app/asp-net.md) oder [zur Laufzeit](../../azure-monitor/app/monitor-performance-live-website-now.md) in Ihre App integrieren. Für die unterschiedlichen Anwendungstypen stehen jeweils unterschiedliche SDKs zur Verfügung. Darunter ist auch ein [SDK für Webseiten](../../azure-monitor/app/javascript.md), das zusammen mit der Seite in den Browser des Endbenutzers geladen wird.
@@ -52,11 +52,11 @@ Es werden drei Datenquellen verwendet:
 ### <a name="what-kinds-of-data-are-collected"></a>Welche Arten von Daten werden gesammelt?
 Die gesammelten Daten lassen sich in folgende Hauptkategorien unterteilen:
 
-* [Webserver-Telemetriedaten](../../azure-monitor/app/asp-net.md) : HTTP-Anforderungen.  URI, Anforderungsverarbeitungsdauer, Antwortcode, Client-IP-Adresse. Sitzungs-ID.
+* [Webserver-Telemetriedaten](../../azure-monitor/app/asp-net.md) : HTTP-Anforderungen.  URI, Anforderungsverarbeitungsdauer, Antwortcode, Client-IP-Adresse. `Session id`.
 * [Webseiten](../../azure-monitor/app/javascript.md) : Seiten-, Benutzer- und Sitzungszähler. Seitenladezeiten. Ausnahmen. AJAX-Aufrufe.
 * Leistungsindikatoren: Arbeitsspeicher-, CPU-, E/A-, Netzwerkauslastung.
 * Client- und Serverkontext: Betriebssystem, Gebietsschema, Gerätetyp, Browser, Bildschirmauflösung.
-* [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) und Abstürze: **Stapelabbilder**, Build-ID, CPU-Typ. 
+* [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) und Abstürze: **Stapelabbilder**, `build id`, CPU-Typ. 
 * [Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md) : Aufrufe an externe Dienste wie etwa REST, SQL und AJAX. URI oder Verbindungszeichenfolge, Dauer, Erfolg, Befehl.
 * [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) : Testdauer und Schritte, Antworten.
 * [Ablaufverfolgungsprotokolle](../../azure-monitor/app/asp-net-trace-logs.md) und [benutzerdefinierte Telemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md) - **alles, was Sie als Code in Ihre Protokolle oder Telemetrie integrieren**.
@@ -84,7 +84,7 @@ Für Daten, die länger als 90 Tage aufbewahrt werden, fallen zusätzliche Gebü
 
 Aggregierte Daten (d.h. Zählungen, Mittelwerte und andere statistischen Daten, die im Metrik-Explorer angezeigt werden) werden im Maß von 1 Minute für 90 Tage aufbewahrt.
 
-[Debugmomentaufnahmen](../../azure-monitor/app/snapshot-debugger.md) werden fünfzehn Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
+[Debugmomentaufnahmen](../../azure-monitor/app/snapshot-debugger.md) werden 15 Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 Die Daten sind für Sie und, wenn Sie über ein Unternehmenskonto verfügen, für die Teammitglieder sichtbar. 
@@ -132,7 +132,7 @@ Wenn ein Kunde dieses Verzeichnis mit bestimmten Sicherheitsanforderungen konfig
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp` wird für die dauerhafte Speicherung von Daten verwendet. Dieser Speicherort kann nicht über das config-Verzeichnis konfiguriert werden, und die Zugriffsberechtigungen für diesen Ordner sind auf einen bestimmten Benutzer mit den erforderlichen Anmeldeinformationen beschränkt. (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
+`C:\Users\username\AppData\Local\Temp` wird für die dauerhafte Speicherung von Daten verwendet. Dieser Speicherort kann nicht über das config-Verzeichnis konfiguriert werden, und die Zugriffsberechtigungen für diesen Ordner sind auf einen bestimmten Benutzer mit den erforderlichen Anmeldeinformationen beschränkt. (Weitere Informationen finden Sie unter [Implementierung](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.Net
 
@@ -167,7 +167,7 @@ Der folgende Codeausschnitt zeigt, wie Sie `ServerTelemetryChannel.StorageFolder
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(Weitere Informationen finden Sie unter [AspNetCore Custom Configuration](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration). )
+(Weitere Informationen finden Sie unter [AspNetCore Custom Configuration](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).)
 
 ### <a name="nodejs"></a>Node.js
 
@@ -183,7 +183,7 @@ Um die Sicherheit von Daten bei der Übertragung an die Application Insights-End
 
 Das [PCI Security Standards Council](https://www.pcisecuritystandards.org/) hat den [30. Juni 2018 als Termin](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) für die Deaktivierung älterer Versionen von TLS/SSL und das Upgrade auf sicherere Protokolle festgelegt. Wenn Azure keine Legacyunterstützung mehr anbietet und Ihre Anwendung/Clients nicht mindestens über TLS 1.2 kommunizieren können, können Sie keine Daten an Application Insights senden. Welche Methode Sie verwenden, um die TLS-Unterstützung Ihrer Anwendung zu testen und zu überprüfen, hängt vom Betriebssystem bzw. von der Plattform sowie von der Sprache bzw. vom Framework ab, die von Ihrer Anwendung verwendet werden.
 
-Wir empfehlen nicht, Ihre Anwendung explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist unbedingt erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind. Es wird empfohlen, gründlich zu überprüfen, ob der Code einer Anwendung Hartcodierungen bestimmter TLS/SSL-Versionen enthält.
+Wir empfehlen nicht, Ihre Anwendung explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind. Es wird empfohlen, gründlich zu überprüfen, ob der Code einer Anwendung Hartcodierungen bestimmter TLS/SSL-Versionen enthält.
 
 ### <a name="platformlanguage-specific-guidance"></a>Plattform-/sprachspezifischer Leitfaden
 
@@ -191,7 +191,7 @@ Wir empfehlen nicht, Ihre Anwendung explizit so einzurichten, dass nur TLS 1.2 v
 | --- | --- | --- |
 | Azure App Services  | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Azure Function-Apps | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
-|.NET | Wird unterstützt, Konfiguration hängt von der Version ab. | Ausführliche Informationen zur Konfiguration für .NET 4.7 und frühere Versionen finden Sie in [diesen Anweisungen](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|.NET | Wird unterstützt, Konfiguration hängt von der Version ab. | Ausführliche Informationen zur Konfiguration für .NET 4.7 und frühere Versionen finden Sie in [diesen Anweisungen](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Statusmonitor | Wird unterstützt, Konfiguration erforderlich | Statusmonitor greift zur Unterstützung von TLS 1.2 auf die [Betriebssystemkonfiguration](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-Konfiguration](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) zurück.
 |Node.js |  Wird in Version 10.5.0 unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Informationen zu anwendungsspezifischen Konfigurationen finden Sie in der [offiziellen Dokumentation zu TLS/SSL bei Node.js](https://nodejs.org/api/tls.html). |
 |Java | Wird unterstützt, JDK-Unterstützung für TLS 1.2 seit [JDK 6 Update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) und [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Bei JDK 8 wird [standardmäßig TLS 1.2 verwendet](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
@@ -212,7 +212,7 @@ openssl version -a
 
 ### <a name="run-a-test-tls-12-transaction-on-linux"></a>Ausführen einer TLS-1.2-Testtransaktion unter Linux
 
-Zum Ausführen eines einfachen vorläufigen Tests, um festzustellen, ob Ihr Linux-System über TLS 1.2 kommunizieren kann, öffnen Sie das Terminal und führen Sie folgenden Befehl aus:
+Zum Ausführen eines vorläufigen Tests, um festzustellen, ob Ihr Linux-System über TLS 1.2 kommunizieren kann, öffnen Sie das Terminal und führen Sie folgenden Befehl aus:
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
@@ -251,9 +251,9 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 | Gesammelte Datenklasse | Umfasst (keine vollständige Liste) |
 | --- | --- |
 | **Properties** |**Alle Daten – bestimmt durch Code** |
-| DeviceContext |ID, IP, Gebietsschema, Gerätemodell, Netzwerk, Netzwerktyp, OEM-Name, Bildschirmauflösung, Rolleninstanz, Rollenname, Gerätetyp |
+| DeviceContext |`Id`, IP, Gebietsschema, Gerätemodell, Netzwerk, Netzwerktyp, OEM-Name, Bildschirmauflösung, Rolleninstanz, Rollenname, Gerätetyp |
 | ClientContext |Betriebssystem, Gebietsschema, Sprache, Netzwerk, Fensterauflösung |
-| Sitzung (Session) |Sitzungs-ID |
+| Sitzung |`session id` |
 | ServerContext |Computername, Gebietsschema, Betriebssystem, Gerät, Benutzersitzung, Benutzerkontext, Vorgang |
 | Inferred |Geolocation anhand IP-Adresse, Zeitstempel, Betriebssystem, Browser |
 | metrics |Metrikname und -wert |
@@ -263,8 +263,8 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 | Ajax |HTTP-Aufrufe von der Webseite an den Server |
 | Requests |URL, Dauer, Antwortcode |
 | Abhängigkeiten |Typ (SQL, HTTP,...), Verbindungszeichenfolge oder URI Sync/Async, Dauer, Erfolg, SQL-Anweisung (mit Statusmonitor) |
-| **Ausnahmen** |Typ, **Meldung**, Aufrufliste, Quelldatei und Zeilennummer, Thread-ID |
-| Crashes |Prozess-ID, übergeordnete Vorgangs-ID, Thread-ID des Absturzes, Anwendungs-Patch, ID, Build, Typ der Ausnahme, Adresse, Ursache; abgeblendete Symbole und Registerkarten, binäre Start- und Endadressen, binärer Name und Pfad, CPU-Typ |
+| **Ausnahmen** |Typ, **Meldung**, Aufrufliste, Quelldatei, Zeilennummer, `thread id` |
+| Crashes |`Process id`, `parent process id`, `crash thread id`; Anwendungspatch, `id`, Build; Typ der Ausnahme, Adresse, Ursache; abgeblendete Symbole und Registerkarten, binäre Start- und Endadressen, binärer Name und Pfad, CPU-Typ |
 | Trace |**Meldung** und Schweregrad |
 | Perf counters |Prozessorzeit, verfügbarer Speicher, Anforderungsrate, Ausnahmerate, private Bytes verarbeiten, E/A-Rate, Anforderungsdauer, Länge der Anforderungswarteschlange |
 | Verfügbarkeit |Webtestantwortcode, Dauer der einzelnen Testschritte, Testname, Zeitstempel, Erfolg, Antwortzeit, Testverzeichnis |

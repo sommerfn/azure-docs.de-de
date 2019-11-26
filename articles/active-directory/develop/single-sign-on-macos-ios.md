@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren von SSO unter macOS und iOS | Microsoft Identity Platform
+title: Konfigurieren von SSO unter macOS und iOS
+titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie Sie einmaliges Anmelden (Single Sign-On, SSO) unter macOS und iOS konfigurieren.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fd944af95f80cf456260beb072c703aab0d15ceb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269348"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175279"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Gewusst wie: Konfigurieren von SSO unter macOS und iOS
 
@@ -209,4 +210,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

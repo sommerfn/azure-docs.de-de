@@ -1,19 +1,19 @@
 ---
-title: Migrieren von lokalen Computern mit Azure Site Recovery zu Azure | Microsoft-Dokumentation
+title: Migrieren von lokalen Computern mit Azure Site Recovery
 description: In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von Azure Site Recovery zu Azure migrieren.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873366"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939619"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -32,8 +32,7 @@ In diesem Tutorial wird veranschaulicht, wie lokale VMs und physische Server in 
 
 
 > [!TIP]
-> Der Azure Migrate-Dienst bietet nun eine Vorschauversion einer neuen Umgebung ohne Agent für die Migration virtueller VMware-Computer zu Azure. [Mehr erfahren](https://aka.ms/migrateVMs-signup)
-
+> Sie können lokale Server jetzt mit dem Azure Migrate-Dienst zu Azure migrieren. [Weitere Informationen](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Vorbereitung
 

@@ -10,18 +10,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072375"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176617"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
 
 Viele APIs unterstützen [OAuth 2.0](https://oauth.net/2/) zum Schützen der API und um sicherzustellen, dass nur autorisierte Benutzer Zugriff erhalten und nur auf die Ressourcen zugreifen können, für die sie berechtigt sind. Um die interaktive Entwicklerkonsole von Azure API Management mit solchen APIs zu verwenden, ermöglicht der Dienst Ihnen das Konfigurieren Ihrer Dienstinstanz für die Zusammenarbeit mit einer OAuth 2.0-aktivierten API.
+
+> [!IMPORTANT]
+> Die OAuth 2.0-Autorisierung ist in der interaktiven Konsole des neuen Entwicklerportals noch nicht verfügbar.
 
 ## <a name="prerequisites"> </a>Voraussetzungen
 
@@ -92,11 +95,11 @@ Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur 
 
     ![OAuth 2.0-Einstellungen](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"></a>Testen der OAuth 2.0-Benutzerauthentifizierung im Entwicklerportal
+## <a name="step3"> </a>Legacy-Entwicklerportal – Testen der OAuth 2.0-Benutzerautorisierung
 
-Nachdem Sie Ihren OAuth 2.0-Autorisierungsserver und Ihre API zu dessen Nutzung konfiguriert haben, können Sie ihn testen, indem Sie zum Entwicklerportal wechseln und eine API aufrufen.  Klicken Sie auf der Seite **Übersicht** der Azure API Management-Instanz im oberen Menü auf **Entwicklerportal**.
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-![Entwicklerportal][api-management-developer-portal-menu]
+Nachdem Sie Ihren OAuth 2.0-Autorisierungsserver und Ihre API zu dessen Nutzung konfiguriert haben, können Sie ihn testen, indem Sie zum Entwicklerportal wechseln und eine API aufrufen. Klicken Sie auf der Seite **Übersicht** der Azure API Management-Instanz im oberen Menü auf **Developer portal (legacy)** (Entwicklerportal (Legacy)).
 
 Klicken Sie im Hauptmenü auf **APIs**, und wählen Sie **Echo API** aus.
 
@@ -128,7 +131,6 @@ Weitere Informationen zur Verwendung von OAuth 2.0 und API Management finden Si
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png
-[api-management-developer-portal-menu]: ./media/api-management-howto-oauth2/api-management-developer-portal-menu.png
 [api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 

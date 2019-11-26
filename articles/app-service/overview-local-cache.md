@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097663"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819669"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -93,7 +93,7 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Ändern der Größeneinstellung im lokalen Cache
-Standardmäßig ist der lokale Cache **300 MB** groß. Dies schließt die Ordner „/site“ und „/siteextensions“ ein, die aus dem Inhaltspeicher kopiert werden, sowie alle lokal erstellten Protokolle und Datenordner. Um dieses Limit zu erhöhen, verwenden Sie die folgende App-Einstellung: `WEBSITE_LOCAL_CACHE_SIZEINMB`. Die Größe kann auf bis zu **2 GB** (2.000 MB) pro App erhöht werden.
+Standardmäßig ist der lokale Cache **1 GB** groß. Dies schließt die Ordner „/site“ und „/siteextensions“ ein, die aus dem Inhaltspeicher kopiert werden, sowie alle lokal erstellten Protokolle und Datenordner. Um dieses Limit zu erhöhen, verwenden Sie die folgende App-Einstellung: `WEBSITE_LOCAL_CACHE_SIZEINMB`. Die Größe kann auf bis zu **2 GB** (2.000 MB) pro App erhöht werden.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Bewährte Methoden für die Verwendung des lokalen Caches von App Service
 Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebungen](../app-service/deploy-staging-slots.md) zu verwenden.
@@ -105,6 +105,7 @@ Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebunge
 * Persistente Einstellungen umfassen einen Namen und gelten dauerhaft für einen Slot. Wenn also der Stagingslot auf den Produktionsslot umgeschaltet wird, erbt dieser die App-Einstellungen für den lokalen Cache. Der neue Produktionsslot wird nach ein paar Minuten mit dem lokalen Cache ausgeführt und im Rahmen der Slotaufwärmung nach dem Wechsel aufgewärmt. Wenn der Slotwechsel abgeschlossen ist, wird Ihr Produktionsslot mit dem lokalen Cache ausgeführt.
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Ist der lokale Cache für meine App geeignet?
 Wenn Ihre App einen zuverlässigen Hochleistungs-Inhaltsspeicher benötigt, den Inhaltsspeicher nicht zum Schreiben von unternehmenskritischen Daten zur Laufzeit nutzt und eine Gesamtgröße von maximal 2 GB erforderlich ist, dann lautet die Antwort: Ja, Ihre Anwendung ist für den lokalen Cache geeignet! Um die Gesamtgröße der Ordner „/site“ und „/siteextensions“ zu ermitteln, können Sie die Siteerweiterung „Azure Web Apps Disk Usage“ verwenden.
 

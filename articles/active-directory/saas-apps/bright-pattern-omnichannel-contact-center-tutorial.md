@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Bright Pattern Omnichannel Contact Center | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Bright Pattern Omnichannel Contact Center | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bright Pattern Omnichannel Contact Center konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 205b1746bac30a015d4efe4bde573be44563e2f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 27cda1f1a797ca0cb8e1b9d1c4cd7498c22ddde5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451711"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081934"
 ---
-# <a name="tutorial-integrate-bright-pattern-omnichannel-contact-center-with-azure-active-directory"></a>Tutorial: Integrieren von Bright Pattern Omnichannel Contact Center in Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Bright Pattern Omnichannel Contact Center
 
 In diesem Tutorial erfahren Sie, wie Sie Bright Pattern Omnichannel Contact Center in Azure Active Directory (Azure AD) integrieren. Bei der Integration von Bright Pattern Omnichannel Contact Center in Azure AD haben Sie folgende Möglichkeiten:
 
@@ -37,15 +37,18 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie kein Abonnement besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige kostenlose Testversion erhalten.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Bright Pattern Omnichannel Contact Center-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
+
+
 * Bright Pattern Omnichannel Contact Center unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Bright Pattern Omnichannel Contact Center unterstützt die **Just-in-Time**-Benutzerbereitstellung
+
 
 ## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Hinzufügen von Bright Pattern Omnichannel Contact Center aus dem Katalog
 
@@ -58,20 +61,21 @@ Um die Integration von Bright Pattern Omnichannel Contact Center in Azure AD zu
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Bright Pattern Omnichannel Contact Center** in das Suchfeld ein.
 1. Wählen Sie **Bright Pattern Omnichannel Contact Center** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Konfigurieren und Testen von einmaligem Anmelden für Azure AD für das Bright Pattern Omnichannel Contact Center
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Bright Pattern Omnichannel Contact Center mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Bright Pattern Omnichannel Contact Center eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Bright Pattern Omnichannel Contact Center müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Bright Pattern Omnichannel Contact Center](#configure-bright-pattern-omnichannel-contact-center-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-5. **[Erstellen eines Bright Pattern Omnichannel Contact Center-Testbenutzers](#create-bright-pattern-omnichannel-contact-center-test-user)** , um eine Entsprechung von B. Simon in Bright Pattern Omnichannel Contact Center zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Bright Pattern Omnichannel Contact Center](#configure-bright-pattern-omnichannel-contact-center-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Bright Pattern Omnichannel Contact Center-Testbenutzers](#create-bright-pattern-omnichannel-contact-center-test-user)** , um eine Entsprechung von B. Simon in Bright Pattern Omnichannel Contact Center zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -81,7 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `<SUBDOMAIN>_sso`
 
@@ -94,11 +98,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Bright Pattern Omnichannel Contact Center-Client](mailto:support@brightpattern.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Die Bright Pattern Omnichannel Contact Center-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+1. Die Bright Pattern Omnichannel Contact Center-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
     ![image](common/edit-attribute.png)
 
-1. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
+1. Darüber hinaus wird von der Bright Pattern Omnichannel Contact Center-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
     | NAME | Namespace  |
     | ---------------| --------------- |
@@ -106,31 +110,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | lastName | user.surname |
     | email | user.mail |
 
-    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
-
-    c. Lassen Sie den **Namespace** leer.
-
-    d. Wählen Sie „Source“ als **Attribut** aus.
-
-    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
-
-    f. Klicken Sie auf **OK**.
-
-    g. Klicken Sie auf **Speichern**.
-
-1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Klicken Sie auf **Herunterladen**, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
-
-   ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
 1. Kopieren Sie im Abschnitt **Bright Pattern Omnichannel Contact Center einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-### <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Konfigurieren des einmaligen Anmeldens für Bright Pattern Omnichannel Contact Center
-
-Zum Konfigurieren des einmaligen Anmeldens für **Bright Pattern Omnichannel Contact Center** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Bright Pattern Omnichannel Contact Center](mailto:support@brightpattern.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -162,18 +148,27 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Konfigurieren des einmaligen Anmeldens für Bright Pattern Omnichannel Contact Center
+
+Zum Konfigurieren des einmaligen Anmeldens für **Bright Pattern Omnichannel Contact Center** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Bright Pattern Omnichannel Contact Center](mailto:support@brightpattern.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
 ### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Erstellen eines Bright Pattern Omnichannel Contact Center-Testbenutzers
 
 In diesem Abschnitt wird in Bright Pattern Omnichannel Contact Center ein Benutzer mit dem Namen B. Simon erstellt. Bright Pattern Omnichannel Contact Center unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Bright Pattern Omnichannel Contact Center vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-Wenn Sie im Zugriffsbereich die Kachel „Bright Pattern Omnichannel Contact Center“ auswählen, sollten Sie automatisch bei der Bright Pattern Omnichannel Contact Center-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+Wenn Sie im Zugriffsbereich auf die Kachel „Bright Pattern Omnichannel Contact Center“ klicken, sollten Sie automatisch bei der Bright Pattern Omnichannel Contact Center-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Testen von Bright Pattern Omnichannel Contact Center mit Azure AD](https://aad.portal.azure.com/)
+

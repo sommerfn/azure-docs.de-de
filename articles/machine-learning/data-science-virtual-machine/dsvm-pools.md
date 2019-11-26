@@ -1,7 +1,7 @@
 ---
 title: Freigegebene Pools
 titleSuffix: Azure Data Science Virtual Machine
-description: Bereitstellen von Pools von DSVM-Instanzen als freigegebene Ressource für ein Team
+description: Erfahren Sie, wie Sie einen freigegebenen Pool von Data Science Virtual Machine-Instanzen (DSVMs) als freigegebene Ressource für ein Team erstellen und bereitstellen.
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2a74df3aaf70270353b10f757cf3a61e8f479d74
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195629"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052995"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Erstellen eines freigegebenen Pools von Data Science Virtual Machine-Instanzen
 

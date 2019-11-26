@@ -12,12 +12,12 @@ ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b2f5567e037c65d7650b3f95a2ee81b93ac987b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 114d1298ec72dc0be23786664bf066fcbb7413f0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085869"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900155"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -50,7 +50,7 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
     - Archetypartefakt-ID: azure-functions-archetype
     - Version: Verwenden Sie die neueste Version **1.22** aus [dem zentralen Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Erstellung eines Maven-Projekts in Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klicken Sie auf **OK** und dann auf **Next** (Weiter), um Werte wie die folgende Momentaufnahme einzugeben (bitte verwenden Sie einen anderen appName als **fabrikam-function-20170920120101928**) und schließlich **Finish** (Fertig stellen).
+1. Klicken Sie auf **OK** und anschließend auf **Weiter**.  Sie müssen Werte für alle Felder eingeben, einschließlich `resourceGroup`, `appName` und `appRegion` (geben Sie einen anderen appName als **fabrikam-function-20170920120101928** an), und wählen Sie abschließend **Fertig stellen** aus.
     ![Erstellung eines Maven-Projekts in Eclipse 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.

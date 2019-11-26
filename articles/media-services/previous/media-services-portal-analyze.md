@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61131756"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881901"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Medienanalyse mithilfe des Azure-Portals 
-> [!NOTE]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
-> 
-> 
+
+> [!IMPORTANT]
+> Überprüfen Sie die [Deaktivierungspläne](media-services-analytics-overview.md#retirement-plans) einiger Medienprozessoren.
 
 ## <a name="overview"></a>Übersicht
 Azure Media Services Media Analytics ist eine Sammlung von Sprach- und Anzeigekomponenten (auf Unternehmensebene zu Compliance, Sicherheit und globaler Reichweite). Daraus können Organisationen und Unternehmen nutzbringende Einblicke in ihre Videodateien erhalten. Eine ausführlichere Übersicht über Azure Media Services Analytics finden Sie in [diesem Thema](media-services-analytics-overview.md). 

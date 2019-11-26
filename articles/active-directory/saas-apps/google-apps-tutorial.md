@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948297"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885374"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit G Suite
 
@@ -250,7 +250,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-g-suite-test-user"></a>Erstellen eines G-Suite-Testbenutzers
 
-In diesem Abschnitt wird in G Suite Software ein Benutzer namens B. Simon erstellt. G Suite unterstützt die automatische Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt keine Aktion an. Wenn ein Benutzer nicht bereits in G Suite-Software vorhanden ist, wird ein neuer Benutzer erstellt, sobald Sie versuchen, auf G Suite-Software zuzugreifen.
+Das Ziel dieses Abschnitts ist die [Erstellung einer Benutzerin in G Suite](https://support.google.com/a/answer/33310?hl=en), die den Namen „B. Simon“ hat. Nach der manuellen Erstellung der Benutzerin in G Suite kann diese sich mit ihren Office 365-Anmeldeinformationen anmelden.
+
+Für G Suite wird auch die automatische Benutzerbereitstellung unterstützt. Zum Konfigurieren der automatischen Benutzerbereitstellung müssen Sie zuerst [G Suite entsprechend konfigurieren](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Stellen Sie sicher, dass Ihr Benutzer bereits in G Suite vorhanden ist, wenn die Bereitstellung in Azure AD vor dem Testen des einmaligen Anmeldens nicht aktiviert wurde.

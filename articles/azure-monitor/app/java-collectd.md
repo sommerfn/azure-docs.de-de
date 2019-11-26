@@ -1,23 +1,18 @@
 ---
 title: Überwachen der Java-Web-App-Leistung unter Linux – Azure | Microsoft-Dokumentation
 description: Erweiterte Überwachung der Anwendungsleistung Ihrer Java-Website mit dem Plug-In „CollectD“ für Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c6e947dfed3169f346f43ab08225056815e8b487
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/14/2019
+ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061198"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176410"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Linux-Leistungsmetriken in Application Insights
 
@@ -37,7 +32,7 @@ Kopieren Sie den Instrumentationsschlüssel, der die Ressource identifiziert.
 Auf Linux-Servercomputern:
 
 1. Installieren Sie [collectd](https://collectd.org/) , Version 5.4.0 oder höher.
-2. Laden Sie das [collectd-Writer-Plug-In für Application Insights](https://aka.ms/aijavasdk)herunter. Beachten Sie die Versionsnummer.
+2. Laden Sie das [collectd-Writer-Plug-In für Application Insights](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)herunter. Beachten Sie die Versionsnummer.
 3. Kopieren Sie die Plug-In-JAR in `/usr/share/collectd/java`.
 4. Bearbeiten Sie `/etc/collectd/collectd.conf`:
    * Stellen Sie sicher, dass [das Java-Plug-In](https://collectd.org/wiki/index.php/Plugin:Java) aktiviert ist.
@@ -91,7 +86,7 @@ Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php
 Starten Sie collectd gemäß dem [Handbuch](https://collectd.org/wiki/index.php/First_steps)neu.
 
 ## <a name="view-the-data-in-application-insights"></a>Anzeigen der Daten in Application Insights
-Öffnen Sie in der Application Insights-Ressource [Metriken, und fügen Sie Diagramme][metrics] hinzu, indem Sie die Metriken auswählen, die aus der benutzerdefinierten Kategorie angezeigt werden sollen.
+Öffnen Sie in der Application Insights-Ressource [Metriken, und fügen Sie Diagramme hinzu][metrics], indem Sie die Metriken auswählen, die aus der benutzerdefinierten Kategorie angezeigt werden sollen.
 
 Standardmäßig werden die Metriken für alle Hostcomputer aggregiert, von denen die Metriken gesammelt wurden. Aktivieren Sie zum Anzeigen der Metriken pro Host auf dem Blatt mit Diagrammdetails "Gruppierung", und wählen Sie dann aus, dass nach "CollectD-Host" gruppiert werden soll.
 
@@ -113,7 +108,7 @@ Trennen Sie Direktiven mit einem Zeilenumbruch.
 ## <a name="problems"></a>Probleme?
 *Daten werden im Portal nicht angezeigt.*
 
-* Öffnen Sie [Search][diagnostic], um zu überprüfen, ob die Rohereignisse angekommen sind. Manchmal dauert es länger, bis sie im Metrik-Explorer angezeigt werden.
+* Öffnen Sie [Search][diagnostic], um zu überprüfen, ob die Rohereignisse empfangen wurden. Manchmal dauert es länger, bis sie im Metrik-Explorer angezeigt werden.
 * Gegebenenfalls müssen Sie [Firewallausnahmen für ausgehende Daten festlegen](../../azure-monitor/app/ip-addresses.md)
 * Aktivieren Sie die Ablaufverfolgung im Application Insights-Plug-In. Fügen Sie diese Zeile in `<Plugin ApplicationInsightsWriter>`hinzu:
   * `SDKLogger true`

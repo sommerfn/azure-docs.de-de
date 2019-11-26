@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516604"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243017"
 ---
 # <a name="service-movement-cost"></a>Kosten von Dienstverschiebungen
 Ein Faktor bei den Überlegungen im Cluster Resource Manager von Service Fabric zu Veränderungen an einem Cluster sind die Kosten, die mit diesen Änderungen verbunden sind. Die „Kosten“ werden dabei gegen die mögliche Verbesserung des Clusters abgewogen. Die Kosten werden berücksichtigt, wenn Dienste zum Lastenausgleich, zur Defragmentierung und aufgrund anderer Anforderungen verschoben werden. Ziel ist es, die Anforderungen auf die am wenigsten störende und kostengünstigste Weise zu erfüllen. 
@@ -76,7 +76,14 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Auswirkungen von Verschiebungskosten
-MoveCost hat vier Stufen: Null, Niedrig, Mittel und Hoch. Diese MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero. Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte. Das Festlegen der Verschiebung auf High stellt *keine* Garantie dafür dar, dass das Replikat an einem Ort verbleibt.
+MoveCost hat fünf Stufen: Zero, Low, Medium, High und VeryHigh. Es gelten die folgenden Regeln:
+
+* MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero und VeryHigh. 
+* Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte.
+* Das Umstellen der Kosten auf High oder VeryHigh bietet *keine* Garantie, dass das Replikat *nie* verschoben wird.
+* Replikate mit Verschiebungskosten von VeryHigh werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann (selbst wenn zum Beheben der Verletzung viele andere Replikate verschoben werden müssen).
+
+
 
 <center>
 
@@ -88,6 +95,9 @@ MoveCost hilft Ihnen dabei, Lösungen zu finden, die insgesamt die geringsten Un
 - Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
 - Die Kosten der Trennung von Clients. Die Verschiebung eines primären Replikats ist normalerweise kostenintensiver als die Verschiebung eines sekundären Replikats.
 - Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Sie erhöhen daher während des Vorgangs die Kosten für das Verschieben dieses Dienstobjekts, um die Wahrscheinlichkeit zu verringern, dass es verschoben wird. Wenn der Vorgang abgeschlossen ist, können Sie die Kosten wieder auf den normalen Wert zurückstufen.
+
+> [!IMPORTANT]
+> Die Nutzung von VeryHigh-Verschiebungskosten sollte sorgfältig erwogen werden, da dabei erheblich die Fähigkeit des Clusterressourcen-Managers beeinträchtigt wird, eine global-optimale Platzierungslösung im Cluster zu ermitteln. Replikate mit Verschiebungskosten von VeryHigh werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann (selbst wenn zum Beheben der Verletzung viele andere Replikate verschoben werden müssen).
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>Aktivieren von Verschiebungskosten in Ihrem Cluster
 Damit die differenzierten MoveCosts berücksichtigt werden können, muss MoveCost in Ihrem Cluster aktiviert werden. Ohne diese Einstellung wird der Standardmodus für das Zählen von Verschiebungen zur Berechnung von MoveCost verwendet. MoveCost-Berichte werden dagegen ignoriert.

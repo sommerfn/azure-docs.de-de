@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304198"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171871"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Gewusst wie: Aktivieren der Kennwortzurücksetzung über den Windows-Anmeldebildschirm
 
@@ -24,30 +24,10 @@ Für Computer, auf denen Windows 7, 8, 8.1 oder 10 ausgeführt wird, können Sie
 
 ![Beispiel für Windows 7- und Windows 10-Anmeldebildschirm mit angezeigtem SSPR-Link](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Allgemeine Voraussetzungen
-
-- Ein Administrator muss die Self-Service-Kennwortzurücksetzung in Azure AD über das Azure-Portal aktivieren.
-- **Benutzer müssen sich für SSPR registrieren, bevor sie diese Funktion verwenden können.**
-- Anforderungen an Netzwerkproxy
-   - Windows 10-Geräte 
-       - Port 443 für `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com`
-       - Windows 10-Geräte unterstützen nur die Proxykonfiguration auf Computerebene.
-   - Geräte mit Windows 7, 8 und 8.1
-       - Port 443 für `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Allgemeine Einschränkungen
 
 - Die Kennwortzurücksetzung wird für Remotedesktop oder über erweiterte Hyper-V-Sitzungen derzeit nicht unterstützt.
-- Das Entsperren von Konten, Benachrichtigungen über mobile Apps und Code mobiler Apps werden nicht unterstützt.
 - Dieses Feature funktioniert nicht für Netzwerke mit 802.1x-Netzwerkauthentifizierung und der Option „Unmittelbar vor der Benutzeranmeldung ausführen“. In Netzwerken mit 802.1x-Netzwerkauthentifizierung empfiehlt es sich, die Computerauthentifizierung zu verwenden, um dieses Feature zu aktivieren.
-
-## <a name="windows-10-password-reset"></a>Windows 10-Kennwortzurücksetzung
-
-### <a name="windows-10-specific-prerequisites"></a>Besondere Voraussetzungen für Windows 10
-
-- Es muss mindestens Windows 10 mit dem Update vom April 2018 (v1803) ausgeführt werden, und die Geräte müssen eine der folgenden Voraussetzungen erfüllen:
-    - In Azure AD eingebunden
-    - Hybrid in Azure AD eingebunden
 - In Hybrid Azure AD eingebundene Computer müssen über eine direkte Netzwerkverbindung mit einem Domänencontroller verfügen, um das neue Kennwort verwenden und zwischengespeicherte Anmeldeinformationen aktualisieren zu können.
 - Wenn Sie ein Image verwenden, stellen Sie vor dem Ausführen von Sysprep sicher, dass der Webcache für den integrierten Administrator vor der Durchführung des CopyProfile-Schritts gelöscht ist. Weitere Informationen zu diesem Schritt finden Sie im Supportartikel [Schlechte Leistung bei Verwendung eines benutzerdefinierten Standardbenutzerprofils](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - Bei den folgenden Einstellungen ist bekannt, dass sie die Möglichkeit zum Verwenden und Zurücksetzen von Kennwörtern auf Windows 10-Geräten beeinträchtigen:
@@ -61,7 +41,21 @@ Für Computer, auf denen Windows 7, 8, 8.1 oder 10 ausgeführt wird, können Sie
 - Die Kombination der folgenden drei Einstellungen kann dazu führen, dass dieses Feature fehlschlägt.
     - Interaktive Anmeldung: Kein STRG+ALT+ENTF erforderlich = Deaktiviert
     - DisableLockScreenAppNotifications = 1 oder „Aktiviert“
-    - IsContentDeliveryPolicyEnforced = 1 oder „True“ 
+    - IsContentDeliveryPolicyEnforced = 1 oder „True“
+
+## <a name="windows-10-password-reset"></a>Windows 10-Kennwortzurücksetzung
+
+### <a name="windows-10-prerequisites"></a>Voraussetzungen für Windows 10
+
+- Ein Administrator muss die Self-Service-Kennwortzurücksetzung in Azure AD über das Azure-Portal aktivieren.
+- **Benutzer müssen sich für SSPR registrieren, bevor sie diese Funktion verwenden können.**
+- Anforderungen an Netzwerkproxy
+   - Windows 10-Geräte 
+       - Port 443 für `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com`
+       - Windows 10-Geräte unterstützen nur die Proxykonfiguration auf Computerebene.
+- Es muss mindestens Windows 10 mit dem Update vom April 2018 (v1803) ausgeführt werden, und die Geräte müssen eine der folgenden Voraussetzungen erfüllen:
+    - In Azure AD eingebunden
+    - Hybrid in Azure AD eingebunden
 
 ### <a name="enable-for-windows-10-using-intune"></a>Aktivieren für Windows 10 mithilfe von Intune
 
@@ -95,7 +89,6 @@ Die Bereitstellung der Konfigurationsänderung zum Aktivieren der Kennwortzurüc
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Behandeln von Problemen bei der Windows 10-Kennwortzurücksetzung
 
 Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
@@ -106,8 +99,13 @@ Wenn Benutzer ihr Kennwort über den Anmeldebildschirm eines Windows 10-Geräts 
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Kennwortzurücksetzung für Windows 7, 8 und 8.1
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Spezielle Voraussetzungen für Windows 7, 8 und 8.1
+### <a name="windows-7-8-and-81-prerequisites"></a>Voraussetzungen für Windows 7, 8 und 8.1
 
+- Ein Administrator muss die Self-Service-Kennwortzurücksetzung in Azure AD über das Azure-Portal aktivieren.
+- **Benutzer müssen sich für SSPR registrieren, bevor sie diese Funktion verwenden können.**
+- Anforderungen an Netzwerkproxy
+   - Geräte mit Windows 7, 8 und 8.1
+       - Port 443 für `passwordreset.microsoftonline.com`
 - Gepatchtes Windows 7- oder Windows 8.1-Betriebssystem.
 - TLS 1.2 wurde gemäß der Anleitung unter [Registrierungseinstellungen für Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) aktiviert.
 - Wenn auf Ihrem Computer mehrere Drittanbieter von Anmeldeinformationen aktiviert sind, sehen Benutzer mehrere Benutzerprofile auf dem Anmeldebildschirm.
@@ -152,7 +150,7 @@ Was ändert sich für den Benutzer, nachdem Sie die Kennwortzurücksetzung für 
 
 Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link **Kennwort zurücksetzen** oder **Kennwort vergessen** angezeigt. Mit diesen Links wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 
-Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
+Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

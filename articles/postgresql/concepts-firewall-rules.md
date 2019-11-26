@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: a48e9e2583afbde584987e5a1ac61da9734058d1
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.date: 10/25/2019
+ms.openlocfilehash: 6b4896d78bcc6e9fc1f5d9cd47e60e3df7eba325
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200137"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965278"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewallregeln in Azure Database for PostgreSQL – Einzelserver
 Die Azure Database for PostgreSQL-Serverfirewall verhindert jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -40,6 +40,9 @@ Um Anwendungen von Azure die Verbindung mit dem Azure Database for PostgreSQL-Se
 
 ![Konfigurieren von „Zugriff auf Azure-Dienste erlauben“ im Portal](media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Herstellen einer Verbindung über ein VNet
+Wenn Sie von einem VNet aus eine sichere Verbindung mit Ihrem Azure Database for PostgreSQL-Server herstellen möchten, ziehen Sie die Verwendung von [VNet-Dienstendpunkten](./concepts-data-access-and-security-vnet.md) in Betracht. 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programmgesteuertes Verwalten von Firewallregeln
 Zusätzlich zum Azure-Portal können Firewallregeln programmgesteuert mithilfe der Azure CLI verwaltet werden.
 Weitere Informationen finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für PostgreSQL mithilfe der Azure CLI](howto-manage-firewall-using-cli.md).
@@ -66,3 +69,4 @@ Wenn der Zugriff auf den Microsoft Azure-Datenbank für PostgreSQL-Serverdienst 
 Artikel zum Erstellen von Firewallregeln auf Serverebene und auf Datenbankebene finden Sie hier:
 * [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](howto-manage-firewall-using-portal.md)
 * [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für PostgreSQL mithilfe der Azure CLI](howto-manage-firewall-using-cli.md)
+- [VNET-Dienstendpunkte in Azure Database for PostgreSQL](./concepts-data-access-and-security-vnet.md)

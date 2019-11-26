@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Sichern eines Linux-Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Schützen eines Linux-Webservers mit SSL-Zertifikaten in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Schützen eines virtuellen Linux-Computers verwenden, auf dem der NGINX-Webserver mit in Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 39ffdbab61e1371c6660fe08c5a59ba1ced16fc8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: dc327abae7210d5432896fe1f0688cc405ddade6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300765"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034331"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Linux-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:

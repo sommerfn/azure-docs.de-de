@@ -1,7 +1,7 @@
 ---
-title: Standpunktanalyse unter Verwendung der Textanalyse-REST-API von Azure Cognitive Services
+title: Ausführen von Standpunktanalysen mit der Textanalyse-REST-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Standpunkte ermitteln.
+description: In diesem Artikel erfahren Sie, wie Sie die Textanalyse-REST-API von Azure Cognitive Services verwenden können, um einen Standpunkt (Stimmung) in Text zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494435"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031461"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
 
@@ -36,7 +36,7 @@ Die Standpunktanalyse wird für das gesamte Dokument durchgeführt, nicht für e
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Öffentliche Vorschau der Standpunktanalyse v3
 
-Die [nächste Version der Standpunktanalyse](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9) ist nun als öffentliche Vorschauversion verfügbar. Sie bietet deutliche Verbesserungen hinsichtlich der Genauigkeit und Details der Textkategorisierung und -bewertung der API.
+Die [nächste Version der Standpunktanalyse](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) ist nun als öffentliche Vorschauversion verfügbar. Sie bietet deutliche Verbesserungen hinsichtlich der Genauigkeit und Details der Textkategorisierung und -bewertung der API.
 
 > [!NOTE]
 > * Anforderungsformat und [Datenlimits](../overview.md#data-limits) der Standpunktanalyse v3 haben sich gegenüber der vorherigen Version nicht geändert.

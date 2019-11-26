@@ -1,6 +1,6 @@
 ---
 title: 'Verschieben von Blob Storage-Daten mit Azure Storage-Explorer: Team Data Science-Prozess'
-description: Verschieben von Daten in und aus Azure Blob Storage mithilfe des Azure Storage-Explorers
+description: Erfahren Sie, wie Sie mit dem Azure Storage-Explorer Daten aus Azure Blob Storage hoch- und herunterladen können.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 880b81c07aeed7359dfe35e1361a20ecb11e27dd
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61430750"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053954"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Verschieben von Daten in und aus Azure Blob Storage mithilfe des Azure Storage-Explorers
 Der Azure Storage-Explorer ist ein kostenloses Tool von Microsoft, das Ihnen das Arbeiten mit Azure Storage-Daten unter Windows, macOS und Linux ermöglicht. Dieses Thema beschreibt Verwendung des Tools zum Hoch- und Herunterladen von Daten aus Azure Blob Storage. Das Tool kann von der Seite [Microsoft Azure Storage-Explorer](https://storageexplorer.com/)heruntergeladen werden.

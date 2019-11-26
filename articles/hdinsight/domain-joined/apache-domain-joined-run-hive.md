@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure
+title: 'Apache Hive-Richtlinien in Apache Ranger: Azure HDInsight'
 description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive in einem Azure HDInsight-Dienst mit dem Enterprise-Sicherheitspaket konfigurieren.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0213fc1a96b38b615cbd8b7b6374a6716b9f840
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e49e2d103fd9c91824c8e8a1603cddddf16366e1
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918188"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044870"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.

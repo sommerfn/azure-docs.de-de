@@ -1,21 +1,21 @@
 ---
-title: Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
+title: Vorbereiten von Azure für die Hyper-V-Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Azure für die Notfallwiederherstellung lokaler virtueller Hyper-V-Computer mit Azure Site Recovery vorbereiten.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814327"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084173"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Vorbereiten von Azure-Ressourcen für die Hyper-V-Notfallwiederherstellung
 
  [Azure Site Recovery](site-recovery-overview.md) unterstützt Business Continuity & Disaster Recovery (BCDR), indem die Verfügbarkeit von Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 

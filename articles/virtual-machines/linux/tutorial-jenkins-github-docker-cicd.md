@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Erstellen einer Entwicklungspipeline in Azure mit Jenkins | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen einer Entwicklungspipeline in Azure mit Jenkins'
 description: Tutorial – In diesem Tutorial erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b755ac015095e537134f1ff5c076c23a432ec91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299407"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034487"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
 

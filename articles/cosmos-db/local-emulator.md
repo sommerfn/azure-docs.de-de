@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997888"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075662"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -416,6 +416,24 @@ Wenn Sie die interaktive Shell nach dem Starten des Emulators schließen, wird d
 Navigieren Sie in Ihrem Browser zu folgender URL, um den Daten-Explorer zu öffnen. Der Emulator-Endpunkt wird in der oben gezeigten Antwortnachricht bereitgestellt.
 
     https://<emulator endpoint provided in response>/_explorer/index.html
+
+Wenn Sie über eine in einem Linux-Docker-Container ausgeführte .NET-Clientanwendung verfügen und den Azure Cosmos-Emulator auf einem Hostcomputer ausführen, kann über den Emulator keine Verbindung mit dem Azure Cosmos-Konto hergestellt werden. Da die App nicht auf dem Hostcomputer ausgeführt wird, kann das Zertifikat, das für den Linux-Container registriert ist, der dem Endpunkt des Emulators entspricht, nicht hinzugefügt werden. 
+
+Zur Umgehung dieses Problems können Sie über Ihre Clientanwendung die SSL-Zertifikatüberprüfung des Servers deaktivieren, indem Sie eine Instanz vom Typ `HttpClientHandler` übergeben, wie im folgenden .NET-Codebeispiel zu sehen. Diese Problemumgehung funktioniert nur bei Verwendung des NuGet-Pakets `Microsoft.Azure.DocumentDB`. Für das NuGet-Paket `Microsoft.Azure.Cosmos` wird sie nicht unterstützt:
+ 
+ ```csharp
+var httpHandler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+};
+ 
+using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+{
+    RunDatabaseDemo(client).GetAwaiter().GetResult();
+}
+```
+
+Zusätzlich zur Deaktivierung der SSL-Zertifikatüberprüfung muss der Emulator mit der Option `/allownetworkaccess` gestartet werden, und der Zugriff auf den Endpunkt des Emulators muss über die Host-IP-Adresse möglich sein (nicht per `host.docker.internal`-DNS).
 
 ## Ausführung unter Mac oder Linux<a id="mac"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Mehrstufige Containeraufgaben – Azure Container Registry Tasks'
+title: 'Tutorial: Mehrstufiger Workflow für Aufgaben – Azure Container Registry Tasks'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch ein mehrstufiger Workflow ausgelöst wird, um Containerimages in der Cloud zu erstellen, auszuführen und zu pushen, wenn Sie Quellcode in einem Git-Repository committen.
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 913f535cb7fa07832a272c1cb9d02ab3e885f52c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: dd7dd6f78087a40de93a5ab47936806076fc562a
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743587"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931444"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen
 

@@ -1,5 +1,6 @@
 ---
-title: Azure AD B2C (Microsoft-Authentifizierungsbibliothek für .NET) | Azure
+title: Azure AD B2C (Microsoft-Authentifizierungsbibliothek für .NET)
+titleSuffix: Microsoft identity platform
 description: Lernen Sie bestimmte Überlegungen zur Verwendung von Azure AD B2C mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) kennen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: twhitney
+ms.date: 10/29/2019
+ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7444ecfd7a59224d0f08390385c508e4ecc40ddd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532716"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175601"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -35,12 +36,13 @@ Diese Seite gilt für MSAL 3.x. Wenn Sie Informationen zu MSAL 2.x suchen, les
 
 ## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Autorität für Azure AD B2C-Mandanten und -Richtlinie
 
-Die zu verwendende Autorität ist `https://login.microsoftonline.com/tfp/{tenant}/{policyName}`. Dabei gilt Folgendes:
+Die zu verwendende Autorität ist `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`. Dabei gilt Folgendes:
 
-- `tenant` ist der Name des Azure AD B2C-Mandanten. 
-- `policyName` ist der Name der Richtlinie (z. B. „b2c_1_susi“ für die Registrierung/Anmeldung), die angewandt werden soll.
+- `azureADB2CHostname` ist der Name des Azure AD B2C-Mandanten einschließlich des Hosts (beispielsweise `{your-tenant-name}.b2clogin.com`),
+- `tenant` ist der vollständige Name des Azure AD B2C-Mandanten (z. B. `{your-tenant-name}.onmicrosoft.com`) oder die GUID für den Mandanten, 
+- `policyName` ist der Name der anzuwendenden Richtlinie bzw. des anzuwendenden Benutzerflows (z. B. „b2c_1_susi“ für Registrieren/Anmelden).
 
-Derzeit wird für Azure AD B2C empfohlen, `b2clogin.com` als Autorität zu verwenden. Beispiel: `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. Weitere Informationen finden Sie in dieser [Dokumentation](/azure/active-directory-b2c/b2clogin).
+Weitere Informationen zu den Azure AD B2C-Autoritäten finden Sie in dieser [Dokumentation](/azure/active-directory-b2c/b2clogin).
 
 ## <a name="instantiating-the-application"></a>Instanziieren der Anwendung
 
@@ -49,12 +51,13 @@ Sie müssen beim Erstellen der Anwendung die Autorität angeben.
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.onmicrosoft.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
 public static string PolicyResetPassword = "b2c_1_reset";
 
-public static string AuthorityBase = $"https://fabrikamb2c.b2clogin.com/tfp/{Tenant}/";
+public static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
 public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
 public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
 public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
@@ -70,14 +73,16 @@ Das Anfordern eines Tokens für eine durch Azure AD B2C geschützte API in eine
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
+AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .WithAccount(GetAccountByPolicy(accounts, policy))
+                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
                                             .ExecuteAsync();
 ```
 
 durch:
 
 - `policy` ist eine der vorherigen Zeichenfolgen (z. B. `PolicySignUpSignIn`).
+- `ParentActivityOrWindow` ist erforderlich für Android (die Aktivität) und optional für andere Plattformen, die die übergeordnete Benutzeroberfläche unterstützen, z. B. Fenster in Windows und UIViewController in iOS. Weitere Informationen finden Sie [hier im Dialogfeld zur Benutzeroberfläche](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)` ist eine Methode, die ein Konto für eine bestimmte Richtlinie findet. Beispiel:
 
   ```csharp
@@ -93,11 +98,11 @@ durch:
   }
   ```
 
-Das Anwenden einer Richtlinie (z. B. um Endbenutzern das Bearbeiten des eigenen Profils oder das Zurücksetzen des eigenen Kennworts zu erlauben) erfolgt derzeit durch einen Aufruf von `AcquireTokenInteractive`. Im Fall dieser beiden Richtlinien verwenden Sie das zurückgegebene Token/Authentifizierungsergebnis nicht.
+Das Anwenden einer Richtlinie bzw. eines Benutzerflows (z. B. um Endbenutzern das Bearbeiten des eigenen Profils oder das Zurücksetzen des eigenen Kennworts zu erlauben) erfolgt derzeit durch einen Aufruf von `AcquireTokenInteractive`. Im Fall dieser beiden Richtlinien verwenden Sie das zurückgegebene Token/Authentifizierungsergebnis nicht.
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>Sonderfall der Richtlinien EditProfile und ResetPassword
 
-Wenn Sie eine Umgebung bereitstellen möchten, in der Ihre Endbenutzer sich mit der Identität eines sozialen Netzwerks anmelden und dann ihr Profil bearbeiten können, sollten Sie die EditProfile-Richtlinie von Azure AD B2C anwenden. Rufen Sie dazu `AcquireTokenInteractive` mit der Autorität für diese Richtlinie auf, und legen Sie die Aufforderung auf `Prompt.NoPrompt` fest, damit den Benutzern kein Dialogfeld zur Kontoauswahl angezeigt wird (da die Benutzer bereits angemeldet sind).
+Wenn Sie eine Umgebung bereitstellen möchten, in der Ihre Endbenutzer sich mit der Identität eines sozialen Netzwerks anmelden und dann ihr Profil bearbeiten können, sollten Sie die EditProfile-Richtlinie von Azure AD B2C anwenden. Rufen Sie dazu `AcquireTokenInteractive` mit der Autorität für diese Richtlinie auf, und legen Sie die Aufforderung auf `Prompt.NoPrompt` fest, damit für den Benutzer kein Dialogfeld zur Kontoauswahl angezeigt wird (da der Benutzer bereits angemeldet ist und über eine aktive Cookie-Sitzung verfügt).
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -124,7 +129,7 @@ Weitere Informationen zum ROPC-Flow finden Sie in dieser [Dokumentation](v2-oaut
 Dieser Flow wird **nicht empfohlen**, da die Abfrage des Kennworts von einem Benutzer durch eine Anwendung nicht sicher ist. Weitere Informationen zu diesem Problem finden Sie in [diesem Artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
 Die Verwendung von Benutzername/Kennwort birgt eine Reihe von Nachteilen und Risiken:
-- Core-Mandanten mit moderner Identität: Kennwörter werden durch Phishing entwendet und wiedergegeben. Dies liegt am Konzept des gemeinsamen geheimen Schlüssels, der abgefangen werden kann. Dies ist inkompatibel mit einem Szenario ohne Kennwort.
+- Grundsätzlich gilt für moderne Identitäten, dass Kennwörter durch Phishing entwendet und wiedergegeben werden können. Dies liegt am Konzept des gemeinsamen geheimen Schlüssels, der abgefangen werden kann. Dies ist inkompatibel mit einem Szenario ohne Kennwort.
 - Benutzer, die eine mehrstufige Authentifizierung (MFA) benötigen, können sich nicht anmelden (da es keine Interaktion gibt).
 - Die Benutzer können einmaliges Anmelden nicht verwenden.
 
@@ -148,13 +153,12 @@ Denken Sie daran, die Autorität mit der ROPC-Richtlinie zu verwenden.
 
 ### <a name="limitations-of-the-ropc-flow"></a>Einschränkungen für den ROPC-Flow
  - Der ROPC-Flow **funktioniert nur für lokale Konten** (die Anmeldung bei Azure AD B2C erfolgt mit E-Mail-Adresse oder Benutzername). Dieser Flow funktioniert nicht bei einem Verbund mit einem von Azure AD B2C unterstützten Identitätsanbieter (Facebook, Google usw.).
- - Derzeit wird **kein ID-Token Azure AD B2C zurückgegeben**, wenn Sie den ROPC-Flow von MSAL implementieren. Dies bedeutet, dass kein Kontoobjekt erstellt werden kann. Aus diesem Grund liegen im Cache kein Konto und kein Benutzer vor. Der AcquireTokenSilent-Flow funktioniert bei diesem Szenario nicht. Allerdings zeigt ROPC keine Benutzeroberfläche an, sodass dies keine Auswirkungen auf die Benutzerfreundlichkeit hat.
 
 ## <a name="google-auth-and-embedded-webview"></a>Google-Authentifizierung und eingebettete Webansicht
 
 Wenn Sie ein Azure AD B2C-Entwickler sind und Google als Identitätsanbieter verwenden, sollten Sie den Systembrowser verwenden, da Google [Authentifizierungen über eingebettete Webansichten](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html) nicht zulässt. Derzeit ist `login.microsoftonline.com` eine vertrauenswürdige Autorität für Google. Die Verwendung dieser Autorität funktioniert bei eingebetteten Webansichten. `b2clogin.com` ist jedoch keine vertrauenswürdige Autorität für Google, sodass sich die Benutzer nicht authentifizieren können.
 
-Wir stellen im Wiki und unter diesem [Problem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) ein Update bereit, wenn dies geändert wurde.
+Wir werden ein Update zu diesem [Problem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) bereitstellen, sobald dies geändert wurde.
 
 ## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Zwischenspeicherung mit Azure AD B2C in MSAL.NET 
 

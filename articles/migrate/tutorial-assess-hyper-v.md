@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ff46ec437de671d5804eeb31a5d1fb0284a8946
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639984"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123519"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -77,7 +77,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
-9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** und anschließend **Weiter** aus.
+9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** >  und anschließend **Weiter** aus.
 10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
 11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
 
@@ -163,7 +163,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
     - **Lizenz**: Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
-    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Sollte die VM einen Proxy verwenden, gehen Sie wie folgt vor:
+    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Falls die VM einen Proxy verwendet, gehen Sie wie folgt vor:
       - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
       - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
       - Es werden nur HTTP-Proxys unterstützt.
@@ -223,7 +223,7 @@ Stellen Sie von der Appliance aus eine Verbindung mit Hyper-V-Hosts oder -Cluste
     - Ein Cluster kann auch dann hinzugefügt werden, wenn Probleme mit bestimmten, in dem Cluster enthaltenen Hosts vorliegen.
 4. Klicken Sie nach der Überprüfung auf **Speichern und Ermittlung starten**, um mit der Ermittlung zu beginnen.
 
-Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Azure-Portal angezeigt werden.
+Daraufhin wird die Ermittlung gestartet. Es dauert ca. 1,5 Minuten pro Host, bis Metadaten von ermittelten Servern im Azure-Portal angezeigt werden. 
 
 ### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
 

@@ -1,33 +1,28 @@
 ---
-title: Verwenden von Näherungsplatzierungsgruppen – Vorschau für Linux-VMs | Microsoft-Dokumentation
+title: Verwenden von Näherungsplatzierungsgruppen für Linux-VMs
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Linux-VMs in Azure.
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385729"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171058"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Vorschau: Bereitstellen von VMs für Näherungsplatzierungsgruppen mit Azure CLI
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit Azure CLI
 
-Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](co-location.md#preview-proximity-placement-groups) bereitstellen.
+Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](co-location.md#proximity-placement-groups) bereitstellen.
 
 Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Computeressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
 
-> [!IMPORTANT]
-> Näherungsplatzierungsgruppen sind zurzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> Näherungsplatzierungsgruppen sind während der Vorschau in den folgenden Regionen nicht verfügbar: **Japan, Osten**, **Australien, Osten** und **Indien, Mitte**.
 
 ## <a name="create-the-proximity-placement-group"></a>Erstellen der Näherungsplatzierungsgruppe
 Erstellen Sie eine Näherungsplatzierungsgruppe mit [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
@@ -52,6 +47,7 @@ az ppg list -o table
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
 Erstellen Sie einen virtuellen Computer innerhalb der Näherungsplatzierungsgruppe mit [new az vm](/cli/azure/vm#az-vm-create).
+
 ```azurecli-interactive
 az vm create \
    -n myVM \

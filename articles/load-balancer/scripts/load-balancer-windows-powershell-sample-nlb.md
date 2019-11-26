@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-Beispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit: Azure'
-titlesuffix: Azure Load Balancer
+title: 'Lastenausgleich für Datenverkehr zu VMs zur Erzielung von Hochverfügbarkeit: Azure PowerShell'
+titleSuffix: Azure Load Balancer
 description: Dieses Azure PowerShell-Skriptbeispiel veranschaulicht, wie Sie zum Ermöglichen der Hochverfügbarkeit einen Lastausgleich für den Datenverkehr zu virtuellen Computern vornehmen.
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273533"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075911"
 ---
 # <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
 

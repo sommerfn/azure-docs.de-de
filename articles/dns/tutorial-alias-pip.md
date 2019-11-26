@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen'
+title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags zum Verweisen auf eine öffentliche Azure-IP-Adresse'
 description: In diesem Tutorial wird gezeigt, wie Sie einen Azure DNS-Aliaseintrag konfigurieren, um auf eine öffentliche Azure-IP-Adresse zu verweisen.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: allensu
+ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536877"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072134"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen 
 

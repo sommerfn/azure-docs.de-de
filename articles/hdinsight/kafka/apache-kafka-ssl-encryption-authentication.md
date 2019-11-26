@@ -1,5 +1,5 @@
 ---
-title: Einrichten von SSL-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight
+title: SSL-Verschlüsselung und -Authentifizierung für Apache Kafka – Azure HDInsight
 description: Einrichten von SSL-Verschlüsselung für die Kommunikation zwischen Kafka-Clients und Kafka-Brokern sowie zwischen Kafka-Brokern. Einrichten von SSL-Authentifizierung von Clients.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431278"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241997"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
 
@@ -78,6 +78,12 @@ Schließen Sie die Brokereinrichtung mit folgenden detaillierten Anweisungen ab:
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
     ```
 
+1. Führen Sie auf dem ZS-Computer den folgenden Befehl aus, um die Dateien „ca-cert“ und „ca-key“ zu erstellen:
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
+    ```
+
 1. Wechseln Sie zum ZS-Computer, und lassen Sie alle empfangenen Anforderungen zur Zertifikatsignierung ausführen:
 
     ```bash
@@ -128,30 +134,18 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
 
     ![Bearbeiten von Kafka-SSL-Konfigurationseigenschaften in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Führen Sie zum Hinzufügen von Konfigurationseigenschaften zur Kafka-Datei `server.properties` die Befehle unten aus, um IP-Adressen anstelle des vollständig qualifizierten Domänennamens (FQDN) anzukündigen.
+1. Fügen Sie unter **Advanced kafka-env** am Ende der Eigenschaft **kafka-env template** die folgenden Zeilen hinzu.
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. Um zu überprüfen, ob die vorherigen Änderungen ordnungsgemäß vorgenommen wurden, können Sie feststellen, ob die folgenden Zeilen in der Kafka-Datei `server.properties` vorhanden sind.
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![Bearbeiten der Eigenschaft „kafka-env template“ in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. Starten Sie alle Kafka-Broker neu.
 1. Starten Sie den Adminclient mit Producer- und Consumer Optionen, um sicherzustellen, dass sowohl Producer als auch Consumer and Port 9093 funktionieren.
