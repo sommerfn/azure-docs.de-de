@@ -371,7 +371,7 @@ Bevor Sie SAP Software Provisioning Manager (SWPM) starten, müssen Sie die IP-A
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di-0 -n 255.255.255.128
 ```
 
-Es wird empfohlen, den SAP NetWeaver-Profilparameter „dbs/hdb/hdb/hdb_use_ident“ zu verwenden, um die Identität festzulegen, mit der der Schlüssel im HDB-Benutzerstore gefunden wird. Sie können diesen Parameter nach der Installation der Datenbankinstanz mit SWPM manuell hinzufügen, oder SWPM folgendermaßen ausführen:
+Es wird empfohlen, den SAP NetWeaver-Profilparameter „dbs/hdb/hdb_use_ident“ zu verwenden, um die Identität festzulegen, mit der der Schlüssel im HDB-Benutzerstore gefunden wird. Sie können diesen Parameter nach der Installation der Datenbankinstanz mit SWPM manuell hinzufügen, oder SWPM folgendermaßen ausführen:
 
 ```bash
 # from https://blogs.sap.com/2015/04/14/sap-hana-client-software-different-ways-to-set-the-connectivity-data/
