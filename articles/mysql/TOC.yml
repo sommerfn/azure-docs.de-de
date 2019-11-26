@@ -79,16 +79,18 @@
           href: concepts-limits.md
     - name: Datenzugriff und Sicherheit
       items:
-        - name: Firewallregeln
-          href: concepts-firewall-rules.md
+        - name: Sicherheitsübersicht
+          href: concepts-security.md
         - name: Konfigurieren von SSL
           href: concepts-ssl-connection-security.md
-        - name: Erweiterter Schutz vor Bedrohungen
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: Virtual Network
-          href: concepts-data-access-and-security-vnet.md
         - name: Verbindungsarchitektur
           href: concepts-connectivity-architecture.md
+        - name: Firewallregeln
+          href: concepts-firewall-rules.md
+        - name: Virtual Network
+          href: concepts-data-access-and-security-vnet.md
+        - name: Erweiterter Schutz vor Bedrohungen
+          href: concepts-data-access-and-security-threat-protection.md
     - name: Geschäftskontinuität
       items:
         - name: Einführung in Geschäftskontinuität

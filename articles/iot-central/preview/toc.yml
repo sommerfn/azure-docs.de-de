@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: Verwalten von Geräten
           href: howto-manage-devices.md
+        - name: Konfigurieren von Regeln
+          href: howto-configure-rules.md
         - name: Analysieren von Gerätedaten
           href: howto-create-analytics.md
         - name: Hinzufügen von Kacheln zu Ihrem Dashboard

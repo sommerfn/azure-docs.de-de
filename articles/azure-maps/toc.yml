@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Anzeigen des Verkehrs
               href: map-show-traffic.md
-            - name: Interaktion mit Mausereignissen
+            - name: Reagieren auf Ereignisse
               href: map-events.md
             - name: Ermöglichen des Zugriffs auf Ihre App
               href: map-accessibility.md
