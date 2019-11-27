@@ -1,20 +1,20 @@
 ---
-title: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein simuliertes X.509-Gerät für Azure IoT Hub mithilfe von C bereitstellen | Microsoft-Dokumentation
+title: 'Schnellstart: In diesem Schnellstart erfahren Sie, wie Sie ein simuliertes X.509-Gerät für Azure IoT Hub mithilfe von C bereitstellen.'
 description: In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service und stellen es bereit.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: dbbdfb9ead31d11c760e6cbb0280ed1c4e5f3b24
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901237"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904763"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten X.509-Geräts mithilfe des Azure IoT C SDK
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585926"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931218"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion, Linux)
 
@@ -57,11 +57,11 @@ Sie finden die _Verbindungszeichenfolge für das Modellrepository Ihres Unterneh
 
 ## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
 
-Für diesen Schnellstart benötigen Sie eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. Wenn Sie noch keinen IoT-Hub haben, finden Sie weiter unten die Schritte, um einen zu erstellen.
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal verwenden, sollte mindestens `az` Version **2.0.75** verwendet werden. Für Azure Cloud Shell wird die neueste Version verwendet. Überprüfen Sie die auf dem Computer installierte Version mit dem Befehl `az --version`.
 
-Fügen Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzu:
+Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 Für die Schritte in diesem Schnellstart ist mindestens Version **0.8.5** der Erweiterung erforderlich. Überprüfen Sie die installierte Version mit dem Befehl `az extension list`, und aktualisieren Sie sie bei Bedarf mit dem Befehl `az extension update`.
 
-Wenn Sie keinen IOT Hub haben, erstellen Sie einen mit den folgenden Befehlen, und ersetzen Sie `{YourIoTHubName}` durch einen eindeutigen Namen Ihrer Wahl. Wenn Sie diese Befehle lokal ausführen, melden Sie sich zunächst mit `az login` bei Ihrem Azure-Abonnement an. Wenn Sie diese Befehle in der Azure Cloud-Shell ausführen, werden Sie automatisch angemeldet:
+Wenn Sie keinen IOT Hub haben, erstellen Sie einen mit den folgenden Befehlen, und ersetzen Sie `<YourIoTHubName>` durch einen eindeutigen Namen Ihrer Wahl. Wenn Sie diese Befehle lokal ausführen, melden Sie sich zunächst mit `az login` bei Ihrem Azure-Abonnement an. Wenn Sie diese Befehle in der Azure Cloud-Shell ausführen, werden Sie automatisch angemeldet:
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ Mit den vorherigen Befehlen werden eine Ressourcengruppe mit dem Namen `pnpquick
 > [!IMPORTANT]
 > Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
 
-Führen Sie den folgenden Befehl aus, um eine Geräteidentität für ein Gerät mit dem Namen `mypnpdevice` in Ihrem IoT-Hub zu erstellen. Ersetzen Sie den `{YourIoTHubName}`-Platzhalter durch den Namen Ihres IoT-Hubs:
+Führen Sie den folgenden Befehl aus, um eine Geräteidentität in Ihrem IoT-Hub zu erstellen. Ersetzen Sie die Platzhalter **YourIoTHubName** und **YourDevice** durch Ihre entsprechenden Namen.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-Führen Sie die folgenden Befehle aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen. Sie benötigen diese Verbindungszeichenfolge später in dieser Schnellstartanleitung:
+Führen Sie die folgenden Befehle aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen.
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>Erstellen des Modells
 
 In dieser Schnellstartanleitung verwenden Sie ein vorhandenes Beispiel für ein Gerätefunktionsmodell und die zugehörigen Schnittstellen.
 
-1. Erstellen Sie ein `pnp_app`-Verzeichnis in Ihrem Basisverzeichnis. Sie verwenden diesen Ordner für die Gerätemodelldateien und den Gerätecode-Stub.
+1. Erstellen Sie das Verzeichnis `pnp_app` auf dem lokalen Laufwerk. Sie verwenden diesen Ordner für die Gerätemodelldateien und den Gerätecode-Stub.
 
     ```bash
     cd ~
@@ -121,16 +121,16 @@ In dieser Schnellstartanleitung verwenden Sie ein vorhandenes Beispiel für ein 
 
 ## <a name="generate-the-c-code-stub"></a>Generieren des C-Code-Stubs
 
-Da Sie jetzt über ein Gerätefunktionsmodell und die zugeordneten Schnittstellen verfügen, können Sie den Gerätecode generieren, mit dem das Modell implementiert wird. Generieren Sie wie folgt den C-Code-Stub in VS Code:
+Da Sie jetzt über ein Gerätefunktionsmodell und die zugeordneten Schnittstellen verfügen, können Sie den Gerätecode generieren, mit dem das Modell implementiert wird. So generieren Sie den C-Codestub in VS Code
 
 1. Verwenden Sie bei geöffnetem Ordner `pnp_app` in VS Code **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen, geben Sie **IoT Plug & Play** ein, und wählen Sie **Generate Device Code Stub** (Gerätecode-Stub generieren) aus.
 
     > [!NOTE]
-    > Wenn Sie das Hilfsprogramm „IoT Plug & Play-Codegenerator“ zum ersten Mal verwenden, dauert der Download einige Sekunden.
+    > Wenn Sie das Hilfsprogramm „IoT Plug & Play-Codegenerator“ zum ersten Mal verwenden, dauert es einige Sekunden, bis alles heruntergeladen und automatisch installiert wurde.
 
-1. Wählen Sie die **SampleDevice.capabilitymodel.json**-Datei aus, um sie für die Generierung des Gerätecode-Stubs zu verwenden.
+1. Wählen Sie die Datei **SampleDevice.capabilitymodel.json** für die Generierung des Gerätecode-Stubs aus.
 
-1. Geben Sie den Projektnamen **sample_device** ein. Dies ist der Name für Ihre Geräteanwendung.
+1. Geben Sie den Projektnamen **sample_device** ein. Dies ist der Name Ihrer Geräteanwendung.
 
 1. Wählen Sie **ANSI C** als Sprache aus.
 
@@ -138,9 +138,9 @@ Da Sie jetzt über ein Gerätefunktionsmodell und die zugeordneten Schnittstelle
 
 1. Wählen Sie **CMake Project on Linux** als Projektvorlage aus.
 
-1. Wählen Sie **Via Source Code** (per Quellcode) als Verfahren für das Einbeziehen des SDK aus.
+1. Wählen Sie **Via Source Code** (per Quellcode) als Verfahren für das Einbeziehen des Geräte-SDK aus.
 
-1. VS Code öffnet ein neues Fenster mit generierten Gerätecode-Stubdateien.
+1. Ein neuer Ordner mit dem Namen **sample_device** wird am selben Speicherort wie die DCM-Datei erstellt. Dort befinden sich die generierten Gerätecodestub-Dateien. VS Code öffnet zum Anzeigen dieser Dateien ein neues Fenster.
     ![Gerätecode](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>Erstellen und Ausführen des Codes
@@ -173,7 +173,7 @@ Sie verwenden den Quellcode des Geräte-SDK, um den generierten Gerätecode-Stub
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. Die Geräteanwendung beginnt mit dem Senden von Daten an IoT Hub.
@@ -195,7 +195,7 @@ Zum Überprüfen des Gerätecodes mithilfe der **az**-CLI müssen Sie die Dateie
     > [!NOTE]
     > Sie benötigen die Verbindungszeichenfolge nur, wenn Sie sich zum ersten Mal am Repository anmelden.
 
-1. Im VS Code-Ausgabefenster und anhand der Benachrichtigung können Sie überprüfen, ob die Veröffentlichung der Dateien erfolgreich war.
+1. Im VS Code-Ausgabefenster und anhand der Benachrichtigung können Sie sich vergewissern, dass die Dateien erfolgreich veröffentlicht wurden.
 
     > [!NOTE]
     > Falls Sie beim Veröffentlichen der Gerätemodelldateien Fehler erhalten, können Sie den Befehl **IoT Plug & Play: Sign out Model Repository** (IoT Plug & Play: Modellrepository abmelden) verwenden, um sich abzumelden, und die Schritte dann erneut ausführen.
@@ -207,13 +207,13 @@ Nach dem Starten des Geräteclientbeispiels können Sie seine Funktion mit der A
 Verwenden Sie den folgenden Befehl, um die Telemetriedaten anzuzeigen, die das Beispielgerät sendet. Möglicherweise müssen Sie ein oder zwei Minuten warten, bevor Telemetriedaten in der Ausgabe aufgeführt werden:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 Verwenden Sie den folgenden Befehl, um alle vom Gerät gesendeten Eigenschaften anzuzeigen:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

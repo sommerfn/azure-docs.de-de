@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft-Dokumentation
+title: Informationen zu Azure VPN Gateway
 description: Hier erfahren Sie, was ein VPN-Gateway ist und wie Sie damit eine Verbindung mit virtuellen Azure-Netzwerken herstellen können. Der Artikel geht unter anderem auf standortübergreifende IPsec/IKE-Site-to-Site- und -VNet-zu-VNet-Lösungen sowie auf Point-to-Site-VPNs ein.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495695"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075442"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
@@ -53,7 +53,10 @@ Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für I
 
 ## <a name="gwsku"></a>Gateway-SKUs
 
-Beim Erstellen eines Gateways des virtuellen Netzwerks geben Sie die gewünschte Gateway-SKU an. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Weitere Informationen zu Gateway-SKUs (einschließlich unterstützter Funktionen, Produktions- und Dev-Test-Workloads sowie Konfigurationsschritte) finden Sie im Artikel „Informationen zu VPN Gateway-Einstellungen“ unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zu Legacy-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)](vpn-gateway-about-skus-legacy.md).
+Beim Erstellen eines Gateways des virtuellen Netzwerks geben Sie die gewünschte Gateway-SKU an. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt.
+
+* Weitere Informationen zu Gateway-SKUs (einschließlich unterstützter Funktionen, Produktions- und Dev-Test-Workloads sowie Konfigurationsschritte) finden Sie im Artikel „Informationen zu VPN Gateway-Einstellungen“ unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* Informationen zu Legacy-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
 
@@ -92,7 +95,6 @@ Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Sit
 Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs herstellen möchten. Wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung.
 
 Im Gegensatz zu S2S-Verbindungen ist für P2S-Verbindungen keine lokale öffentliche IP-Adresse bzw. kein VPN-Gerät erforderlich. P2S-Verbindungen können mit S2S-Verbindungen über das gleiche VPN-Gateway verwendet werden – vorausgesetzt, alle Konfigurationsanforderungen beider Verbindungen sind kompatibel. Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [About Point-to-Site VPN](point-to-site-about.md) (Informationen zu P2S-VPN).
-
 
 ![Beispiel für Point-to-Site-Verbindung per Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

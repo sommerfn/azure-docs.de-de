@@ -1,22 +1,22 @@
 ---
-title: Einrichten der Gerätebereitstellung mit einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+title: 'Schnellstart: Einrichten der Gerätebereitstellung mit einer Azure Resource Manager-Vorlage'
 description: Azure-Schnellstart – Einrichten des Azure IoT Hub Device Provisioning-Diensts mit einer Vorlage
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126476"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903365"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Einrichten des IoT Hub Device Provisioning-Diensts mit einer Azure Resource Manager-Vorlage
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mit einer Azure Resource Manager-Vorlage
 
 Sie können [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwenden, um die Azure-Cloudressourcen programmgesteuert einzurichten, die zum Bereitstellen Ihrer Geräte erforderlich sind. In diesen Schritten wird gezeigt, wie Sie einen IoT Hub und einen neuen IoT Hub Device Provisioning-Dienst erstellen und diese beiden Komponenten mit einer Azure Resource Manager-Vorlage verknüpfen. In diesem Schnellstart wird [die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) verwendet, um die erforderlichen programmgesteuerten Schritte zum Erstellen einer Ressourcengruppe und Bereitstellen der Vorlage auszuführen. Sie können aber auch problemlos das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby oder andere Programmiersprachen nutzen, um diese Schritte auszuführen und Ihre Vorlage bereitzustellen. 
 
@@ -51,7 +51,7 @@ Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
     az account set --subscription {your subscription name or id}
     ```
 
-3. Wenn Sie Azure-Cloudressourcen wie IoT Hubs und Bereitstellungsdienste erstellen, führen Sie dies in einer Ressourcengruppe durch. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe aus][lnk-az-resource-command]:
+3. Wenn Sie Azure-Cloudressourcen wie IoT Hubs und Bereitstellungsdienste erstellen, führen Sie dies in einer Ressourcengruppe durch. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe][lnk-az-resource-command] aus:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -321,7 +321,7 @@ Verwenden Sie die folgenden Azure CLI-Befehle, um Ihre Vorlagen bereitzustellen 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die Azure CLI verwenden, um [eine einzelne Ressource zu löschen][lnk-az-resource-command], z.B. einen IoT Hub oder einen Bereitstellungsdienst, oder um eine Ressourcengruppe und alle dazugehörigen Ressourcen zu löschen.
+Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die Azure CLI verwenden, um [eine einzelne Ressource zu löschen][lnk-az-resource-command], z. B. einen IoT Hub oder einen Bereitstellungsdienst, oder um eine Ressourcengruppe und alle dazugehörigen Ressourcen zu löschen.
 
 Führen Sie den folgenden Befehl aus, um den Bereitstellungsdienst zu löschen:
 

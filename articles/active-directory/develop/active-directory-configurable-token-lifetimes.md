@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473953"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046554"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -53,11 +53,11 @@ Clients nutzen Zugriffstoken, um auf eine geschützte Ressource zuzugreifen. Ein
 
 ### <a name="saml-tokens"></a>SAML-Token
 
-SAML-Token werden in vielen webbasierten SaaS-Anwendungen verwendet und über den SAML2-Protokollendpunkt von Azure Active Directory abgerufen.  Sie werden auch in Anwendungen genutzt, in denen WS-Verbund verwendet wird.    Die Standardlebensdauer des Tokens beträgt 1 Stunde. Für eine Anwendung wird die Lebensdauer des Tokens durch den Wert „NotOnOrAfter“ des <conditions …>-Elements im Token angegeben.  Nach der Lebensdauer des Tokens muss der Client eine neue Authentifizierungsanforderung initiieren, die häufig als Ergebnis des SSO-Sitzungstokens ohne interaktive Anmeldung erfüllt wird.
+SAML-Token werden in vielen webbasierten SaaS-Anwendungen verwendet und über den SAML2-Protokollendpunkt von Azure Active Directory abgerufen. Sie werden auch in Anwendungen genutzt, in denen WS-Verbund verwendet wird. Die Standardlebensdauer des Tokens beträgt 1 Stunde. Für eine Anwendung wird die Lebensdauer des Tokens durch den Wert „NotOnOrAfter“ des `<conditions …>`-Elements im Token angegeben. Nach Ablauf der Lebensdauer des Tokens muss der Client eine neue Authentifizierungsanforderung initiieren, die häufig als Ergebnis des SSO-Sitzungstokens ohne interaktive Anmeldung erfüllt wird.
 
-Der Wert von „NotOnOrAfter“ kann mithilfe des AccessTokenLifetime-Parameters in einer TokenLifetimePolicy geändert werden.  Der Wert wird auf die in der Richtlinie konfigurierte Lebensdauer (sofern vorhanden) zuzüglich eines Zeitversatzfaktors von fünf Minuten festgelegt.
+Der Wert von „NotOnOrAfter“ kann mithilfe des `AccessTokenLifetime`-Parameters in einer `TokenLifetimePolicy` geändert werden. Der Wert wird auf die in der Richtlinie konfigurierte Lebensdauer (sofern vorhanden) zuzüglich eines Zeitversatzfaktors von fünf Minuten festgelegt.
 
-Beachten Sie, dass die im <SubjectConfirmationData>-Element angegebene Antragstellerbestätigung für NotOnOrAfter nicht von der Konfiguration der Tokenlebensdauer betroffen ist. 
+Beachten Sie, dass die im `<SubjectConfirmationData>`-Element angegebene Antragstellerbestätigung für NotOnOrAfter nicht von der Konfiguration der Tokenlebensdauer betroffen ist. 
 
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
 

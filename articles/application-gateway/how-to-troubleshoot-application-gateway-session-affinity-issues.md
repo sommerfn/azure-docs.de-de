@@ -1,18 +1,19 @@
 ---
-title: Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
+title: Behandeln von Problemen mit der Sitzungsaffinität
+titleSuffix: Azure Application Gateway
 description: Dieser Artikel enthält Informationen zur Behebung von Problemen mit der Sitzungsaffinität in Azure Application Gateway.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397841"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047981"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
 

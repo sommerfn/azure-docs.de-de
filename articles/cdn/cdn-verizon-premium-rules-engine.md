@@ -1,5 +1,5 @@
 ---
-title: Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon | Microsoft-Dokumentation
+title: Außerkraftsetzen des HTTP-Verhaltens mithilfe von Azure CDN – Verizon Premium-Regel-Engine
 description: Mit der Regel-Engine können Sie anpassen, wie HTTP-Anforderungen von Azure CDN Premium von Verizon behandelt werden, z. B. Blockieren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern.
 services: cdn
 author: mdgattuso
@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593181"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082952"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon
 

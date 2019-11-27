@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575897"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129084"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -48,6 +48,10 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -134,6 +138,12 @@ Die Konfigurationseinstellung finden Sie in [Event Hub-Trigger und -Bindungen](f
 ## <a name="extensions"></a>Erweiterungen
 
 Eigenschaft, die ein Objekt zurückgibt, das alle die bindungsspezifischen-Einstellungen enthält, z.B. [http](#http) und [eventhub](#eventhub).
+
+## <a name="extensionbundle"></a>extensionBundle 
+
+Mit Erweiterungsbündeln können Sie Ihrer Funktions-App einen kompatiblen Satz mit Functions-Bindungserweiterungen hinzufügen. Weitere Informationen finden Sie unter [Erweiterungsbündel für die lokale Entwicklung](functions-bindings-register.md#extension-bundles).
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 ## <a name="functions"></a>functions
 

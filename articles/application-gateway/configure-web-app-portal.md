@@ -1,18 +1,19 @@
 ---
-title: Verwalten von Datenverkehr von Anwendungen mit mehreren Mandanten wie App Service-Web-Apps mithilfe von Azure Application Gateway – Portal
+title: Verwalten von Datenverkehr zu mehrinstanzenfähigen Apps mithilfe des Portals
+titleSuffix: Azure Application Gateway
 description: In diesem Artikel erfahren Sie, wie Sie Azure App Service-Web-Apps als Mitglied in Back-End-Pools für ein vorhandenes oder neues Anwendungsgateway konfigurieren.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68370427"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075163"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurieren von App Service mit Application Gateway
 

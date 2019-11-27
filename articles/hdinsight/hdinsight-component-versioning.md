@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop-Komponenten und -Versionen – Azure HDInsight
-description: Erfahren Sie mehr zu den Apache Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels.
+description: Lernen Sie die Apache Hadoop-Komponenten und -Versionen in Azure HDInsight kennen.
 keywords: Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/13/2019
+ms.openlocfilehash: a5632f4b7ca264f6fdeb88dc7f7cf843c73ddf54
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984473"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123404"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -22,7 +22,7 @@ Erfahren Sie mehr über die Komponenten und Versionen des [Apache Hadoop](https:
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight
 
-Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Jede ausgewählte Version erstellt eine bestimmte Version der HDP-Distribution und eine Reihe von Komponenten innerhalb dieser Distribution. Ab dem 4. April 2017 ist die in Azure HDInsight derzeit als Standardclusterversion verwendete Version die Version 3.6, die auf HDP 2.6 basiert.
+Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Ab dem 4. April 2017 ist die von Azure HDInsight derzeit als Standardclusterversion verwendete Version die Version 3.6.
 
 Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt: 
 
@@ -64,16 +64,16 @@ In den [HDInsight-Versionshinweisen](hdinsight-release-notes.md) finden Sie zus�
 
 ## <a name="supported-hdinsight-versions"></a>Unterstützte HDInsight-Versionen
 
-In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. HDP-Versionen, die jeder HDInsight-Version entsprechen, werden zusammen mit der Produkt-Releasedaten aufgeführt. Der Ablauf der Unterstützung und die Deaktivierungstermine werden ebenfalls bereitgestellt, wenn sie bekannt sind.
+In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. Der Ablauf der Unterstützung und die Deaktivierungstermine werden ebenfalls bereitgestellt, wenn sie bekannt sind.
 
 ### <a name="available-versions"></a>Verfügbare Versionen
 
 Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDInsight sowie andere Bereitstellungsmethoden wie z.B. PowerShell und .NET SDK.
 
-| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal | 
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 30. Juni 2020 |31. Dezember 2020 |Ja |Ja |
+| HDInsight-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal | 
+| --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 30. Juni 2020 |31. Dezember 2020 |Ja |Ja |
 
 
 > [!NOTE]  

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467249"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007601"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 
@@ -589,7 +589,7 @@ Sie können eine bessere Lernrichtlinie ermitteln, indem Sie basierend auf Ihren
 1. Geben Sie die erforderlichen Daten für den Bewertungsnamen und den Datumsbereich für die Schleifenbewertung ein. Der Datumsbereich sollte nur die Tage enthalten, die für Ihre Bewertung relevant sind. 
     ![Öffnen Sie im Azure-Portal die Seite „Bewertungen“ der Personalisierungsressource. Wählen Sie „Bewertung erstellen“ aus. Geben Sie den Namen und Datumsbereich für die Bewertung ein.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Mit dieser Offlinebewertung soll ermittelt werden, ob für die in dieser Schleife verwendeten Features und Aktionen eine bessere Lernrichtlinie vorhanden ist. Stellen Sie sicher, dass **Optimization policy** (Optimierungsrichtlinie) aktiviert ist, um diese bessere Lernrichtlinie zu ermitteln.
+    Mit dieser Offlinebewertung soll ermittelt werden, ob für die in dieser Schleife verwendeten Features und Aktionen eine bessere Lernrichtlinie vorhanden ist. Stellen Sie sicher, dass die **Ermittlung zur Optimierung** aktiviert ist, um diese bessere Lernrichtlinie zu ermitteln.
 
 1. Wählen Sie **OK** aus, um die Bewertung zu starten. 
 1. Auf der Seite **Bewertungen** werden die neue Bewertung und der aktuelle Status angezeigt. Die Dauer dieser Bewertung hängt davon ab, wie viele Daten Sie nutzen. Nach einigen Minuten können Sie zu dieser Seite zurückkehren, um die Ergebnisse zu prüfen. 

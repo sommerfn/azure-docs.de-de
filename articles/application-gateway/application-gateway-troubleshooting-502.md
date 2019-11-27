@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Fehlern aufgrund eines ungültigen Gateways (502) in Azure Application Gateway
-description: Hier erfahren Sie, wie Sie Application Gateway-Fehler vom Typ 502 behandeln.
+title: Behandeln von Fehlern aufgrund eines ungültigen Gateways – Azure Application Gateway
+description: 'Hier erfahren Sie, wie Sie folgenden Application Gateway-Serverfehler behandeln: 502: Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.'
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/25/2019
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697161"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130470"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 

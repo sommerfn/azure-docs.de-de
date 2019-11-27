@@ -4,15 +4,15 @@ description: Beschreibt für Clientanwendungen und Tools erforderliche Clientbib
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ad7165b1205921ad324525b9f46a22bec5cebaa9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573052"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885312"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Clientbibliotheken zum Herstellen einer Verbindung mit Azure Analysis Services
 
@@ -22,10 +22,10 @@ Damit Clientanwendungen und Tools eine Verbindung mit Analysis Services-Servern 
 
 |Download  |Produktversion  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.10.25    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.10.25       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.2.3.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.2.3.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO und ADOMD (NuGet-Pakete)
 
@@ -33,8 +33,8 @@ Analysis Services Management Objects (AMO) und ADOMD-Clientbibliotheken stehen a
 
 |Paket  | Produktversion  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.2.3.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.2.3.0      |
 
 Die AssemblyVersion für NuGet-Paketassemblys folgt der semantischen Versionierung: HAUPT.NEBEN.PATCH. NuGet-Verweise laden die erwartete Version selbst dann, wenn im GAC eine andere Version (als Ergebnis der MSI-Installation) vorhanden ist. PATCH wird für jedes Release erhöht. AMO- und ADOMD-Versionen werden synchronisiert.
 

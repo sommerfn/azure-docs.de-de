@@ -1,9 +1,9 @@
 ---
-title: 'Tutorial: Abrufen von Daten per Azure AD-Berichterstellungs-API mit Zertifikaten | Microsoft-Dokumentation'
+title: Tutorial für die Azure AD-Berichterstellungs-API mit Zertifikaten | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie die Azure AD-Berichterstellungs-API mit Zertifikatanmeldeinformationen verwenden, um Daten ohne Benutzereingriff aus Verzeichnissen abzurufen.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989481"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014263"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 

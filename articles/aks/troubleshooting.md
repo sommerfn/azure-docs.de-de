@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604725"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012972"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -118,6 +118,7 @@ Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus,
 
 Benennungseinschränkungen werden sowohl von der Azure-Plattform als auch AKS implementiert. Verletzt ein Ressourcenname oder Parameter eine dieser Einschränkungen, wird ein Fehler zurückgegeben, der Sie auffordert, eine andere Eingabe zu machen. Es gelten die folgenden allgemeinen Benennungsrichtlinien:
 
+* Clusternamen müssen zwischen 1 und 63 Zeichen lang sein. Die einzigen zulässigen Zeichen sind Buchstaben, Ziffern, Bindestriche und Unterstriche. Das erste und das letzte Zeichen müssen ein Buchstabe oder eine Zahl sein.
 * Der Name der *MC_* -Ressourcengruppe in AKS ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen.
 * Das *dnsPrefix* muss mit alphanumerischen Werten beginnen und enden. Gültige Zeichen sind alphanumerische Werte und Bindestriche (-). Das *dnsPrefix* darf keine Sonderzeichen wie z.B. einen Punkt (.) enthalten.
 

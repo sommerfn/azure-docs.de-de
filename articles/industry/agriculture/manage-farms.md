@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797319"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128673"
 ---
 # <a name="manage-farms"></a>Verwalten landwirtschaftlicher Betriebe
 
@@ -58,7 +58,7 @@ Auf der Seite mit der Liste landwirtschaftlicher Betriebe wird eine Liste mit de
 Auf der Seite **Farms** (Landwirtschaftliche Betriebe) wird eine Liste mit den erstellten landwirtschaftlichen Betrieben angezeigt.
 
 1.  Wählen Sie einen landwirtschaftlichen Betrieb aus, um ihn anzuzeigen und zu bearbeiten.
-2.  Wählen Sie **Edit Farm** (Landwirtschaftlichen Betrieb bearbeiten) aus, um die Informationen zu bearbeiten. Im Fenster **Farm Details** (Details zum landwirtschaftlichen Betrieb) können Sie die Felder **Name**, **Crops** (Anbauprodukte), **Adresse** und **Farm Boundary** (Grenze des landwirtschaftlichen Betriebs) bearbeiten.
+2.  Wählen Sie **Edit Farm** (Landwirtschaftlichen Betrieb bearbeiten) aus, um die Informationen zu bearbeiten. Im Fenster **Farm Details** (Details zum landwirtschaftlichen Betrieb) können Sie die Felder **Name**, **Crops** (Anbauprodukte) und **Adresse** bearbeiten sowie **Farm Boundary** (Grenze des landwirtschaftlichen Betriebs) definieren.
 
     ![FarmBeats-Projekt](./media/create-farms/edit-farm-1.png)
 

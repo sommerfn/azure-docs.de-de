@@ -10,19 +10,18 @@ ms.topic: overview
 description: Einführung in Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c96115f2eba6f8c8a028251d146ca3f766eba044
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: c87aee26f5f9a4c3f919150a22a8b2f5a7b57352
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305466"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889751"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-Azure Dev Spaces ermöglicht Teams eine schnelle, iterative Kubernetes-Bereitstellung in AKS-Clustern (Azure Kubernetes Service). Sie können in einem freigegebenen AKS-Cluster mit Ihrem Team zusammenarbeiten. Azure Dev Spaces ermöglicht es Ihnen auch, alle Komponenten Ihrer Anwendung in AKS zu testen, ohne Abhängigkeiten zu replizieren oder zu simulieren. Mit minimalem Einrichtungsaufwand für den Entwicklungscomputer können Sie Container direkt in AKS iterativ ausführen und debuggen.
+Azure Dev Spaces bietet eine schnelle, iterative Kubernetes-Entwicklungsumgebung für Teams in AKS-Clustern (Azure Kubernetes Service). Azure Dev Spaces ermöglicht es Ihnen auch, alle Komponenten Ihrer Anwendung mit minimalem Einrichtungsaufwand für Entwicklungscomputer in AKS zu debuggen und zu testen, ohne Abhängigkeiten zu replizieren oder zu simulieren.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
-
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>So vereinfacht Azure Dev Spaces die Kubernetes-Entwicklung
 
@@ -43,7 +42,7 @@ Weitere Informationen zur Funktionsweise von Azure Dev Spaces finden Sie unter [
 
 ## <a name="supported-regions-and-configurations"></a>Unterstützte Regionen und Konfigurationen
 
-Azure Dev Spaces wird nur von AKS-Clustern in den Regionen **USA, Osten**, **USA, Osten 2**, **USA, Mitte**, **USA, Süden-Mitte**, **USA, Westen 2**, **Europa, Norden**, **Europa, Westen**, **Vereinigtes Königreich, Süden**, **Asien, Südosten**, **Australien, Osten**, **Kanada, Mitte** und **Kanada, Osten** unterstützt. Azure Dev Spaces unterstützt die Verwendung der [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder von [Visual Studio Code](https://code.visualstudio.com/download) mit der [Azure Dev Spaces-Erweiterung](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds), die unter Linux, MacOS oder Windows 8 oder höher installiert ist, um Ihre Anwendungen in AKS zu erstellen und auszuführen. [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) unter Windows 8 oder höher wird ebenfalls unterstützt. Um Visual Studio 2019 zu nutzen, benötigen Sie die Workload „Azure-Entwicklung“. Für Visual Studio 2017 benötigen Sie die Workload „Webentwicklung“ sowie die [Visual Studio-Tools für Kubernetes](https://aka.ms/get-vsk8stools).
+Azure Dev Spaces wird nur von AKS-Clustern in den Regionen **USA, Osten**, **USA, Osten 2**, **USA, Mitte**, **USA, Süden-Mitte**, **USA, Westen 2**, **Europa, Norden**, **Europa, Westen**, **Vereinigtes Königreich, Süden**, **Asien, Osten**, **Asien, Südosten**, **Australien, Osten**, **Kanada, Mitte** und **Kanada, Osten** unterstützt. Azure Dev Spaces unterstützt die Verwendung der [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder von [Visual Studio Code](https://code.visualstudio.com/download) mit der [Azure Dev Spaces-Erweiterung](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds), die unter Linux, MacOS oder Windows 8 oder höher installiert ist, um Ihre Anwendungen in AKS zu erstellen und auszuführen. [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) unter Windows 8 oder höher wird ebenfalls unterstützt. Um Visual Studio 2019 zu nutzen, benötigen Sie die Workload „Azure-Entwicklung“. Für Visual Studio 2017 benötigen Sie die Workload „Webentwicklung“ sowie die [Visual Studio-Tools für Kubernetes](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

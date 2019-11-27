@@ -1,18 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI'
+title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags – Azure CLI'
+titleSuffix: Azure DNS
 description: 'Schnellstart: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine schrittweise Anleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI.'
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: b5d842c2d6ff84a0f17c4e8be0bfade018edc48b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 14d47a82ec6b5ec0ede626748216889a6943bfa6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959970"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072160"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines Azure DNS-Eintrags mithilfe der Azure CLI
 

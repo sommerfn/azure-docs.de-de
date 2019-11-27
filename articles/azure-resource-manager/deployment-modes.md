@@ -4,26 +4,30 @@ description: Beschreibt das Festlegen, ob für Azure Resource Manager eine volls
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258962"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953232"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
-Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Bereitstellung entweder um ein inkrementelles Update oder um ein vollständiges Update handelt.  Der Hauptunterschied zwischen diesen beiden Modi besteht darin, wie Resource Manager vorhandene Ressourcen in der Ressourcengruppe behandelt, die nicht in der Vorlage enthalten sind. Der Standardmodus ist inkrementell.
+Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Bereitstellung entweder um ein inkrementelles Update oder um ein vollständiges Update handelt.  Der Unterschied zwischen diesen beiden Modi besteht darin, wie Resource Manager vorhandene Ressourcen in der Ressourcengruppe behandelt, die nicht in der Vorlage enthalten sind. Der Standardmodus ist inkrementell.
 
 In beiden Modi versucht Resource Manager, alle in der Vorlage angegebenen Ressourcen zu erstellen. Wenn die Ressource bereits in der Ressourcengruppe vorhanden ist und ihre Einstellungen unverändert sind, wird für diese Ressource kein Vorgang ausgeführt. Wenn Sie die Eigenschaftswerte für eine Ressource ändern, wird die Ressource mit diesen neuen Werten aktualisiert. Falls Sie versuchen, den Speicherort oder Typ einer vorhandenen Ressource zu aktualisieren, tritt bei der Bereitstellung ein Fehler auf. Stellen Sie stattdessen eine neue Ressource mit dem gewünschten Speicherort oder Typ bereit.
 
 ## <a name="complete-mode"></a>Vollständiger Modus
 
-Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind. Ressourcen, die in der Vorlage angegeben, aber nicht bereitgestellt werden, weil [condition](conditional-resource-deployment.md) als „false“ ausgewertet wird, werden nicht gelöscht.
+Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
+
+Wenn Ihre Vorlage eine Ressource enthält, die nicht bereitgestellt ist, weil die [Bedingung](conditional-resource-deployment.md) nicht erfüllt wird, hängt das Ergebnis davon ab, welche Rest-API-Version Sie zum Bereitstellen der Vorlage verwenden. Wenn Sie eine frühere Version als 2019-05-10 verwenden, wird die Ressource **nicht gelöscht**. Bei Version 2019-05-10 oder höher wird die Ressource **gelöscht**. Die neuesten Versionen von Azure PowerShell und Azure CLI löschen die Ressource.
 
 Wenden Sie den vollständigen Modus mit [Kopierschleifen](resource-group-create-multiple.md) mit Vorsicht an. Alle Ressourcen, die nicht in der Vorlage angegeben sind, werden nach dem Auflösen der Kopierschleife gelöscht.
+
+Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](resource-manager-cross-resource-group-deployment.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
 
 Bei der Verarbeitung von Löschungen im vollständigen Modus gibt es zwischen Ressourcentypen einige Unterschiede. Übergeordnete Ressourcen werden automatisch gelöscht, wenn sie nicht in einer Vorlage enthalten sind, die im vollständigen-Modus bereitgestellt wird. Einige untergeordnete Ressourcen werden nicht automatisch gelöscht, wenn sie nicht in der Vorlage enthalten sind. Diese untergeordneten Ressourcen werden jedoch gelöscht, wenn die übergeordnete Ressource gelöscht wird. 
 

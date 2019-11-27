@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/07/2019
+ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105425"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837933"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -35,7 +35,7 @@ Der erste Schritt beim Erstellen einer Strategie für die Protokollverwaltung ei
 
 ### <a name="cluster-details"></a>Clusterdetails
 
-Die folgenden Clusterdetails sind hilfreich beim Sammeln von Informationen für Ihre Strategie zur Protokollverwaltung. Sammeln Sie diese Informationen für alle HDInsight-Cluster, die Sie für ein bestimmtes Azure-Konto erstellt haben.
+Die folgenden Clusterdetails sind hilfreich beim Sammeln von Informationen für Ihre Strategie zur Protokollverwaltung. Sammeln Sie diese Informationen von allen HDInsight-Clustern, die Sie in einem bestimmten Azure-Konto erstellt haben.
 
 * Clustername
 * Clusterregion und Azure-Verfügbarkeitszone
@@ -45,8 +45,8 @@ Die folgenden Clusterdetails sind hilfreich beim Sammeln von Informationen für 
 Sie können die meisten dieser Informationen der obersten Ebene über das Azure-Portal abrufen.  Alternativ dazu können Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) verwenden, um Informationen zu Ihren HDInsight-Clustern abzurufen:
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 Sie können zum Anzeigen dieser Informationen auch PowerShell nutzen.  Weitere Informationen finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
@@ -75,7 +75,7 @@ Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-So
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
-Mit Apache Ambari wird die Verwaltung, Konfiguration und Überwachung eines HDInsight-Clusters vereinfacht, indem eine Webbenutzeroberfläche und eine REST-API bereitgestellt werden. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Clusterdashboard**, um die Linkseite **Clusterdashboards** zu öffnen.  Wählen Sie als Nächstes den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen.  Sie werden aufgefordert, Ihre Anmeldeinformationen für die Anmeldung am Cluster einzugeben.
+Mit Apache Ambari wird die Verwaltung, Konfiguration und Überwachung eines HDInsight-Clusters vereinfacht, indem eine Webbenutzeroberfläche und eine REST-API bereitgestellt werden. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Clusterdashboard**, um die Linkseite **Clusterdashboards** zu öffnen.  Wählen Sie als Nächstes den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen.  Sie werden aufgefordert, Ihre Anmeldeinformationen für den Cluster einzugeben.
 
 Wählen Sie zum Öffnen einer Liste mit den Dienstansichten im Azure-Portal auf der Seite „HDInsight“ den Bereich **Ambari Views**.  Der Inhalt der Liste variiert in Abhängigkeit davon, welche Bibliotheken Sie installiert haben.  Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen beliebigen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.  Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberfläche enthält Informationen zur Konfiguration und zum Dienstversionsverlauf der Clusterdienste. Wählen Sie zum Navigieren dieses Abschnitts der Ambari-Benutzeroberfläche das Menü **Admin** und dann die Option **Stack and Versions** (Stapel und Versionen).  Wählen Sie die Registerkarte **Versions** (Versionen), um Informationen zur Dienstversion anzuzeigen.
 
@@ -112,7 +112,7 @@ Zusätzlich zu den von HDInsight generierten Kernprotokolldateien generieren auc
 YARN aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Dieses Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung nutzt unter Umständen Hunderte oder Tausende von Containern, aber Protokolle für alle auf einem einzelnen Workerknoten vorhandenen Container werden immer zu einer zentralen Datei zusammengeführt. Es wird nur ein Protokoll pro Workerknoten von Ihrer Anwendung genutzt. Die Protokollaggregation ist für HDInsight-Cluster ab Version 3.0 standardmäßig aktiviert. Aggregierte Protokolle befinden sich im Standardspeicher für den Cluster.
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
 Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem TFile-Binärformat mit Indizierung nach Container geschrieben werden. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
@@ -122,8 +122,8 @@ Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem
 Zur Verwendung der YARN CLI-Tools müssen Sie zuerst über SSH eine Verbindung mit dem HDInsight-Cluster herstellen. Geben Sie die Informationen zu `<applicationId>`, `<user-who-started-the-application>`, `<containerId>` und `<worker-node-address>` an, wenn Sie diese Befehle ausführen. Sie können die Protokolle mit einem der folgenden Befehle als Klartext anzeigen:
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>YARN-ResourceManager-Benutzeroberfläche
@@ -146,7 +146,7 @@ Sie verfügen jetzt über ausreichende Informationen zum Aufstellen einer Protok
 
 Nachdem Sie festgelegt haben, welche Protokolle gelöscht werden können, können Sie die Protokollierungsparameter für viele Hadoop-Dienste anpassen, um Protokolldateien nach einem bestimmten Zeitraum automatisch zu löschen.
 
-Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der ARM-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren**, um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll.
+Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der Resource Manager-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren**, um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll.
 
 ![Azure-Portal – Exportieren des Aktivitätsprotokolls (Vorschau)](./media/hdinsight-log-management/hdi-export-log-files.png)
 

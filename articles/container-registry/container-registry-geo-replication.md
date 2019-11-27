@@ -1,6 +1,6 @@
 ---
 title: Georeplikation einer Azure-Containerregistrierung
-description: Erste Schritte beim Erstellen und Verwalten von Azure-Containerregistrierungen mit Georeplikation.
+description: Erste Schritte zum Erstellen und Verwalten einer Azure-Containerregistrierung mit Georeplikation, die es der Registrierung ermöglicht, mehrere Regionen mit regionale Multimasterreplikaten zu versorgen.
 services: container-registry
 author: stevelas
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: cddd55d3dfc2609b7a32a276e106e152f0868b32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208005"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931648"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -121,7 +121,7 @@ Im vorhergehenden Beispiel hat Contoso zwei Registrierungen zu einer konsolidier
  
 Ein Docker-Client, der ein Image per Push in eine georeplizierte Registrierung überträgt, kann möglicherweise nicht alle Imageebenen und das zugehörige Manifest in eine einzelne replizierte Region übertragen. Dies kann der Fall sein, wenn Azure Traffic Manager Registrierungsanforderungen an die dem Netzwerk nächstgelegene replizierte Registrierung weiterleitet. Wenn sich die Registrierung in der *Nähe* von zwei Replikationsregionen befindet, können Imageebenen und das Manifest an die beiden Standorte verteilt werden, und der Pushvorgang schlägt beim Überprüfen des Manifests fehl. Dieses Problem wird aufgrund der Art verursacht, auf die der DNS-Name der Registrierung auf manchen Linux-Hosts aufgelöst wird. Dieses Problem tritt nicht unter Windows auf, das einen clientseitigen DNS-Cache bereitstellt.
  
-Wenn dieses Problem auftritt, können Sie einen clientseitigen DNS-Cache wie `dnsmasq` auf den Linux-Host anwenden. Dadurch wird sichergestellt, dass der Name der Registrierung konsistent aufgelöst wird. Wenn Sie einen virtuellen Linux-Computer in Azure verwenden, um einen Pushvorgang in eine Registrierung auszuführen, finden Sie unter [DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns) weitere Informationen.
+Wenn dieses Problem auftritt, können Sie einen clientseitigen DNS-Cache wie `dnsmasq` auf den Linux-Host anwenden. Dadurch wird sichergestellt, dass der Name der Registrierung konsistent aufgelöst wird. Wenn Sie einen virtuellen Linux-Computer in Azure verwenden, um einen Pushvorgang in eine Registrierung auszuführen, finden Sie unter [DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/azure-dns.md) weitere Informationen.
 
 Um die DNS-Auflösung beim Pushen von Images auf das nächstgelegene Replikat zu optimieren, konfigurieren Sie eine georeplizierte Registrierung in denselben Azure-Regionen wie die Quelle der Pushvorgänge oder die nächstgelegene Region, wenn Sie außerhalb von Azure arbeiten.
 

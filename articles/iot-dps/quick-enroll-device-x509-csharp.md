@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst per C# | Microsoft-Dokumentation'
+title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst mit C#'
 description: In dieser Schnellstartanleitung werden Gruppenregistrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte per C# in Azure IoT Hub Device Provisioning Service.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035992"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903434"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit C#
 

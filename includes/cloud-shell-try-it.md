@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: c52e626a8f87ed38ce6684f0ef011de6fef9e0af
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71055244"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078716"
 ---
 ## <a name="use-azure-cloud-shell"></a>Verwenden von Azure Cloud Shell
 
-Azure hostet Azure Cloud Shell, eine interaktive Shell-Umgebung, die Sie über Ihren Browser nutzen können. Cloud Shell ermöglicht die Verwendung von `bash` oder `PowerShell`, um mit Azure-Diensten zu arbeiten. Sie können die vorinstallierten Befehle von Cloud Shell verwenden, um den Code in diesem Artikel auszuführen, ohne etwas in Ihrer lokalen Umgebung installieren zu müssen.
+Azure hostet Azure Cloud Shell, eine interaktive Shell-Umgebung, die Sie über Ihren Browser nutzen können. Sie können entweder Bash oder PowerShell mit Cloud Shell verwenden, um mit Azure-Diensten zu arbeiten. Sie können die vorinstallierten Befehle von Cloud Shell verwenden, um den Code in diesem Artikel auszuführen, ohne etwas in Ihrer lokalen Umgebung installieren zu müssen.
 
 Starten von Azure Cloud Shell:
 

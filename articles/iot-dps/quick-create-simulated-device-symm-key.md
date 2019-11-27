@@ -1,20 +1,20 @@
 ---
-title: In dieser Schnellstartanleitung verwenden Sie einen symmetrischen Schlüssel, um ein simuliertes Gerät mithilfe von C für Azure IoT Hub bereitzustellen | Microsoft-Dokumentation
+title: 'Schnellstart: Verwenden eines symmetrischen Schlüssels, um ein simuliertes Gerät mithilfe von C für Azure IoT Hub bereitzustellen'
 description: In dieser Schnellstartanleitung verwenden Sie das C-Geräte-SDK, um ein simuliertes Gerät zu erstellen, das einen symmetrischen Schlüssel mit IoT Hub Device Provisioning Service von Azure verwendet.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 31e71e942d7bd3f7a9739eeb83bd3ed250bb2c61
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909022"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904861"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln
 

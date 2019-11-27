@@ -1,5 +1,5 @@
 ---
-title: Suchen nach einer Adresse mit dem Suchdienst von Azure Maps | Microsoft-Dokumentation
+title: Auffinden einer Adresse mit dem Suchdienst von Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Maps nach einer Adresse suchen.
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914467"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928493"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 

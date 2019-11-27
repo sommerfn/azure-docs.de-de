@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330666"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133181"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken 
 In diesem Artikel erfahren Sie, wie Sie einen Kurs einrichten, der sich auf die forensische Seite des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte. 
 
-In einem Kurs für ethisches Hacken erlernen die Kursteilnehmer moderne Techniken zum Schützen vor Schwachstellen kennen. Jeder Kursteilnehmer erhält einen virtuellen Windows Server-Hostcomputer mit zwei geschachtelten virtuellen Computern: einem virtuellen Computer mit einem **Metaspoiltable**-Image und einem anderen Computer mit einem [Kali Linux](https://www.kali.org/)-Image. Der virtuelle Metasploitable-Computer wird angegriffen, und der virtuelle Kali-Computer stellt die Tools zur Verfügung, die zum Ausführen forensischer Aufgaben erforderlich sind.
+In einem Kurs für ethisches Hacken erlernen die Kursteilnehmer moderne Techniken zum Schützen vor Schwachstellen kennen. Jeder Kursteilnehmer erhält einen virtuellen Windows Server-Hostcomputer mit zwei geschachtelten virtuellen Computern: einem virtuellen Computer mit einem [Metaspoiltable3](https://github.com/rapid7/metasploitable3)-Image und einem anderen Computer mit einem [Kali Linux](https://www.kali.org/)-Image. Der virtuelle Metasploitable-Computer wird angegriffen, und der virtuelle Kali-Computer stellt die Tools zur Verfügung, die zum Ausführen forensischer Aufgaben erforderlich sind.
 
 Dieser Artikel besteht aus zwei Hauptteilen. Im ersten Abschnitt wird erläutert, wie das Kurs-Lab erstellt wird. Im zweiten Abschnitt wird erläutert, wie der Vorlagencomputer mit aktivierter geschachtelter Virtualisierung sowie mit den benötigten Tools und Images erstellt wird. In diesem Fall ein Metasploitable-Image und ein Kali Linux-Image auf einem Computer, auf dem Hyper-V zum Hosten der Images aktiviert ist.
 
@@ -43,6 +43,8 @@ Nachdem der Vorlagencomputer erstellt wurde, starten Sie den Computer, und stell
 1. Richten Sie den Computer für geschachtelte Virtualisierung ein. Hierdurch werden alle geeigneten Windows-Funktionen wie Hyper-V aktiviert und das Netzwerke für die Hyper-V-Images eingerichtet, damit sie miteinander und mit dem Internet kommunizieren können.
 2. Richten Sie das [Kali](https://www.kali.org/) Linux-Image ein. Kali ist eine Linux-Distribution, die Tools für Penetrationstests und Sicherheitsüberwachung umfasst.
 3. Richten Sie das Metasploitable-Image ein. In diesem Beispiel wird das [Metasploitable3](https://github.com/rapid7/metasploitable3)-Image verwendet. Dieses Image wurde vorsätzlich so erstellt, dass es Schwachstellen enthält.
+
+Ein Skript, das die oben beschriebenen Aufgaben automatisiert, finden Sie unter [Lab Services-Skripts für „ethisches Hacken“](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
 
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>Vorbereiten des Vorlagencomputers für geschachtelte Virtualisierung
 Befolgen Sie die Anweisungen in [diesem Artikel](how-to-enable-nested-virtualization-template-vm.md), um ihren virtuellen Vorlagencomputer für geschachtelte Virtualisierung vorzubereiten. 

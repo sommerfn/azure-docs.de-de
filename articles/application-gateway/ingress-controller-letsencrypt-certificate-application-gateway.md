@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795918"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957981"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Verwenden von Zertifikaten mit LetsEncrypt.org in Application Gateway für AKS-Cluster
 
@@ -130,8 +130,12 @@ Führen Sie die nachfolgenden Schritte aus, um [cert-manager](https://docs.cert-
     Nach wenigen Sekunden können Sie über die HTTPS-URL von Application Gateway unter Verwendung des automatisch ausgestellten **Stagingzertifikats** `Lets Encrypt` auf den `guestbook`-Dienst zugreifen.
     Im Browser werden Sie möglicherweise vor einer ungültigen Zertifizierungsstelle gewarnt. Das Stagingzertifikat wird von `CN=Fake LE Intermediate X1` ausgestellt. Dies weist darauf hin, dass das System wie erwartet funktioniert hat und das Produktionszertifikat verwendet werden kann.
 
-4. Produktionszertifikat: Nachdem das Stagingzertifikat erfolgreich eingerichtet wurde, können Sie zu einem ACME-Produktionsserver wechseln:
+4. Produktionszertifikat
+
+    Nachdem das Stagingzertifikat erfolgreich eingerichtet wurde, können Sie zu einem ACME-Produktionsserver wechseln:
     1. Ersetzen Sie die Staginganmerkung in der Eingangsressource durch Folgendes: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Löschen Sie die vorhandene `ClusterIssuer`-Stagingressource, die Sie im vorherigen Schritt erstellt haben, und erstellen Sie eine neue, indem Sie den ACME-Server aus der YAML-Datei oben für die ClusterIssuer-Ressource durch `https://acme-v02.api.letsencrypt.org/directory` ersetzen.
 
-5. Ablauf und Verlängerung des Zertifikats: Vor dem Ablauf des `Lets Encrypt`-Zertifikats wird es mit `cert-manager` im Kubernetes-Geheimnisspeicher automatisch aktualisiert. Dabei wird das in den Eingangsressourcen referenzierte aktualisierte Geheimnis in Application Gateway Ingress Controller angewandt, da es zum Konfigurieren von Application Gateway verwendet wird.
+5. Ablauf und Verlängerung eines Zertifikats
+
+    Vor dem Ablauf des `Lets Encrypt`-Zertifikats wird es mit `cert-manager` im Kubernetes-Geheimnisspeicher automatisch aktualisiert. Dabei wird das in den Eingangsressourcen referenzierte aktualisierte Geheimnis in Application Gateway Ingress Controller angewandt, da es zum Konfigurieren von Application Gateway verwendet wird.

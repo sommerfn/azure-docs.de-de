@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569870"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066032"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
 Dieser Artikel unterstützt Sie beim Verwalten der Einstellungen der Azure Multi-Factor Authentication im Azure-Portal. Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen. Nicht alle Funktionen sind in jeder Version von Azure Multi-Factor Authentication verfügbar.
 
-Sie können vom Azure-Portal aus auf Einstellungen für die Azure Multi-Factor Authentication zugreifen, indem Sie zu **Azure Active Directory** > **MFA** navigieren.
+Sie können vom Azure-Portal aus auf Einstellungen für die Azure Multi-Factor Authentication zugreifen, indem Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** navigieren.
 
 ![Azure-Portal – Einstellungen für Azure AD Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -62,7 +62,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Be
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Benutzer sperren/zulassen**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Benutzer sperren/zulassen**.
 3. Wählen Sie **Hinzufügen** aus, um einen Benutzer zu sperren.
 4. Wählen Sie die **Replikationsgruppe** aus. Geben Sie den Benutzernamen für den gesperrten Benutzer im Format **username\@domain.com** ein. Geben Sie im Feld **Grund** einen Kommentar ein.
 5. Wählen Sie **Hinzufügen** aus, um das Sperren des Benutzers abzuschließen.
@@ -70,7 +70,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Be
 ### <a name="unblock-a-user"></a>Zulassen eines Benutzers
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Benutzer sperren/zulassen**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Benutzer sperren/zulassen**.
 3. Wählen Sie neben dem zu entsperrenden Benutzer in der Spalte **Aktion** die Option **Zulassen** aus.
 4. Geben Sie im Feld **Grund für Entsperren** einen Kommentar ein.
 5. Wählen Sie **Zulassen** aus, um das Entsperren des Benutzers abzuschließen.
@@ -82,7 +82,7 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 ### <a name="turn-on-fraud-alerts"></a>Aktivieren von Betrugswarnungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Betrugswarnung**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Betrugswarnung**.
 3. Legen Sie die Einstellung **Benutzern die Ausgabe von Betrugswarnungen erlauben** auf **Ein** fest.
 4. Wählen Sie **Speichern** aus.
 
@@ -124,7 +124,7 @@ Mit dem Feature für _benutzerdefinierte Sprachnachrichten_ können Sie Ihre eig
 Bevor Sie beginnen, sollten Sie die folgenden Einschränkungen beachten:
 
 * Die unterstützten Dateiformate sind WAV und MP3.
-* Die maximale Dateigröße beträgt 5 MB.
+* Die maximale Dateigröße beträgt 1 MB.
 * Authentifizierungsnachrichten sollten kürzer als 20 Sekunden sein. Bei Nachrichten mit einer Länge von mehr als 20 Sekunden ist die Überprüfung unter Umständen nicht erfolgreich. Der Benutzer reagiert möglicherweise erst dann, wenn die Nachricht zu Ende ist, sodass bei der Überprüfung ein Timeout auftritt.
 
 ### <a name="custom-message-language-behavior"></a>Benutzerdefiniertes Nachrichtensprachenverhalten
@@ -145,7 +145,7 @@ Wenn beispielsweise nur eine benutzerdefinierte Nachricht in der Sprache Deutsch
 ### <a name="set-up-a-custom-message"></a>Einrichten einer benutzerdefinierten Nachricht
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-1. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Einstellungen für Telefonanruf**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Einstellungen für Telefonanruf**.
 1. Wählen Sie **Begrüßung hinzufügen**.
 1. Wählen Sie den Begrüßungstyp aus.
 1. Wählen Sie die Sprache aus.
@@ -184,7 +184,7 @@ Mit dem Feature _Einmalumgehung_ kann sich ein Benutzer ein einziges Mal authent
 ### <a name="create-a-one-time-bypass"></a>Erstellen einer Einmalumgehung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Einmalumgehung**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Einmalumgehung**.
 3. Wählen Sie **Hinzufügen**.
 4. Wählen Sie bei Bedarf die Replikationsgruppe für die Umgehung aus.
 5. Geben Sie den Benutzernamen im Format **username\@domain.com** ein. Geben Sie die Dauer der Umgehung in Sekunden ein. Geben Sie den Grund für die Umgehung ein.
@@ -193,7 +193,7 @@ Mit dem Feature _Einmalumgehung_ kann sich ein Benutzer ein einziges Mal authent
 ### <a name="view-the-one-time-bypass-report"></a>Anzeigen des Berichts für die Einmalumgehung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Einmalumgehung**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Einmalumgehung**.
 
 ## <a name="caching-rules"></a>Cacheregeln
 
@@ -205,7 +205,7 @@ Mit dem Feature _Zwischenspeichern_ können Sie einen Zeitraum festlegen, sodass
 ### <a name="set-up-caching"></a>Einrichten der Zwischenspeicherung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Cacheregeln**.
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Cacheregeln**.
 3. Wählen Sie **Hinzufügen**.
 4. Wählen Sie den **Cachetyp** in der Dropdownliste aus. Geben Sie die maximale **Cacheaufbewahrungsdauer (Sek.)** ein.
 5. Wählen Sie bei Bedarf einen Authentifizierungstyp aus, und geben Sie eine Anwendung an.
@@ -213,9 +213,11 @@ Mit dem Feature _Zwischenspeichern_ können Sie einen Zeitraum festlegen, sodass
 
 ## <a name="mfa-service-settings"></a>MFA-Diensteinstellungen
 
-Einstellungen für App-Kennwörter, vertrauenswürdige IPs, Überprüfungsoptionen und das Speichern von Multi-Factor Authentication für die Azure Multi-Factor Authentication finden Sie in den Diensteinstellungen. Auf die Diensteinstellungen kann über das Azure-Portal zugegriffen werden, indem Sie zu **Azure Active Directory** > **MFA** > **Erste Schritte** > **Konfigurieren** > **Zusätzliche Cloud-basierte MFA-Einstellungen** navigieren.
+Einstellungen für App-Kennwörter, vertrauenswürdige IPs, Überprüfungsoptionen und das Speichern von Multi-Factor Authentication für die Azure Multi-Factor Authentication finden Sie in den Diensteinstellungen. Auf die Diensteinstellungen kann über das Azure-Portal zugegriffen werden, indem Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Erste Schritte** > **Konfigurieren** > **Zusätzliche Cloud-basierte MFA-Einstellungen** navigieren.
 
 ![Diensteinstellung für Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+
+Die vertrauenswürdigen IP-Adressbereiche können privat oder öffentlich sein.
 
 ## <a name="app-passwords"></a>App-Kennwörter
 

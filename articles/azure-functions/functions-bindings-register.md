@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 93ced443a73d5499d8b305770c3c866c26d540f0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40dca0797d75597f4728423eb9d6d071a15d81b9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086464"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129262"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
@@ -37,34 +37,17 @@ In der folgenden Tabelle ist angegeben, wann und wie Sie Bindungen registrieren.
 
 ## <a name="extension-bundles"></a>Erweiterungsbündel für die lokale Entwicklung
 
-Erweiterungsbündel stellen eine Technologie für die lokale Entwicklung für Runtimeversion 2.x dar, mit der Sie Ihrem Funktions-App-Projekt einen kompatiblen Satz mit Functions-Bindungserweiterungen hinzufügen können. Diese Erweiterungspakete werden bei der Bereitstellung in Azure dann in das Bereitstellungspaket eingefügt. Bei den Bündeln werden alle Bindungen, die von Microsoft veröffentlicht werden, über eine Einstellung in der Datei *host.json* verfügbar gemacht. Da in einem Bündel definierte Erweiterungspakete miteinander kompatibel sind, ist dies für die Vermeidung von Konflikten zwischen Paketen hilfreich. Stellen Sie beim lokalen Entwickeln sicher, dass Sie die aktuelle Version der [Azure Functions Core Tools](functions-run-local.md#v2) verwenden.
+Erweiterungsbündeln sind eine Bereitstellungstechnologie, mit der Sie Ihrer Funktions-App einen kompatiblen Satz mit Functions-Bindungserweiterungen hinzufügen können. Ein vordefinierter Satz von Erweiterungen wird beim Erstellen der App hinzugefügt. Da in einem Bündel definierte Erweiterungspakete miteinander kompatibel sind, ist dies für die Vermeidung von Konflikten zwischen Paketen hilfreich. Sie aktivieren Erweiterungsbündel in der Datei „host.json“ des Hosts der App.  
 
-Nutzen Sie Erweiterungsbündel für die gesamte lokale Entwicklung mit Azure Functions Core Tools oder Visual Studio Code.
+Sie können Erweiterungsbündel mit Version 2.x und höheren Versionen der Functions-Runtime verwenden. Stellen Sie beim lokalen Entwickeln sicher, dass Sie die aktuelle Version der [Azure Functions Core Tools](functions-run-local.md#v2) verwenden.
 
-Wenn Sie keine Erweiterungsbündel verwenden, müssen Sie das .NET Core 2.x SDK auf Ihrem lokalen Computer installieren, bevor Sie Bindungserweiterungen installieren. Mit Bündeln wird diese Anforderung für die lokale Entwicklung beseitigt. 
+Nutzen Sie Erweiterungsbündel für die lokale Entwicklung mit Azure Functions Core Tools oder Visual Studio Code sowie bei der Remoteerstellung.
+
+Wenn Sie keine Erweiterungsbündel verwenden, müssen Sie das .NET Core 2.x SDK auf Ihrem lokalen Computer installieren, bevor Sie Bindungserweiterungen installieren. Mit Erweiterungsbündeln wird diese Anforderung für die lokale Entwicklung beseitigt. 
 
 Um die Erweiterungsbündel zu verwenden, aktualisieren Sie die Datei *host.json* so, dass sie den folgenden Eintrag für `extensionBundle` enthält:
-
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
-```
-
-In `extensionBundle` sind die folgenden Eigenschaften verfügbar:
-
-| Eigenschaft | BESCHREIBUNG |
-| -------- | ----------- |
-| **`id`** | Der Namespace für Microsoft Azure Functions-Erweiterungsbündel. |
-| **`version`** | Die Version des zu installierenden Pakets. Die Functions Runtime wählt immer die zulässige Höchstversion aus, die durch den Versionsbereich oder das Intervall definiert ist. Mit dem obigen Versionswert sind alle Bündelversionen von 1.0.0 bis kleiner als 2.0.0 zulässig. Weitere Informationen finden Sie im Abschnitt zur [Intervallnotation zum Angeben von Versionsbereichen](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
-
-Bündelversionen werden erhöht, wenn sich Pakete im Bündel ändern. Zu größeren Versionsänderungen kommt es, wenn Pakete im Bündel um einen Hauptversionswert inkrementiert werden. Dies trifft in der Regel mit einer Änderung der Hauptversion der Functions-Runtime zusammen.  
-
-Der aktuelle Erweiterungssatz, der vom Standardbündel installiert wird, ist in der [Datei „extensions.json“](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) aufgelistet.
+ 
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
@@ -85,7 +68,7 @@ Wenn Sie `Install-Package` verwenden, um auf eine Bindung zu verweisen, müssen 
 ## <a name="vs-code"></a> C#-Klassenbibliothek mit Visual Studio Code
 
 > [!NOTE]
-> Wir empfehlen Ihnen die Verwendung von [Erweiterungsbündeln](#extension-bundles), damit von Functions automatisch ein kompatibler Satz mit Bindungserweiterungspaketen installiert wird.
+> Wir empfehlen Ihnen die Verwendung von [Erweiterungsbündeln](#extension-bundles), damit von Functions automatisch ein kompatibler Satz mit Bindungserweiterungspaketen installiert wird. 
 
 Installieren Sie in **Visual Studio Code** Pakete für eine C#-Klassenbibliothek über die Eingabeaufforderung. Verwenden Sie hierfür den Befehl [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) in der .NET Core-CLI. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Bindung hinzufügen:
 
@@ -95,7 +78,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 Die .NET Core-CLI kann nur für die Entwicklung in Azure Functions 2.x verwendet werden.
 
-Ersetzen Sie `<BINDING_TYPE_NAME>` durch den Namen des Pakets, das im Referenzartikel für die gewünschte Bindung bereitgestellt wird. Den gewünschten Bindungsreferenzartikel finden Sie in der [Liste der unterstützten Bindungen](./functions-triggers-bindings.md#supported-bindings).
+Ersetzen Sie `<BINDING_TYPE_NAME>` durch den Namen des Pakets, das die benötigte Bindung enthält. Den gewünschten Bindungsreferenzartikel finden Sie in der [Liste der unterstützten Bindungen](./functions-triggers-bindings.md#supported-bindings).
 
 Ersetzen Sie `<TARGET_VERSION>` im Beispiel durch eine bestimmte Version des Pakets, z.B. `3.0.0-beta5`. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt. Die Hauptversionen, die Functions Runtime 1.x oder 2.x entsprechen, sind im Referenzartikel für die Bindung angegeben.
 

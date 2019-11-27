@@ -1,23 +1,23 @@
 ---
-title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java | Microsoft-Dokumentation
+title: 'Schnellstart: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java'
 description: 'Azure-Schnellstartanleitung: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDK für IoT Hub Device Provisioning Service. In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/09/2018
+ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 52fbef24e8a1b9fd7e0ade404c23a587c81d6b0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb7df108492d73e79b7f456a4c64063a2c6943de
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105997"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904825"
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Mit diesen Schritten wird veranschaulicht, wie Sie ein X.509-Gerät auf Ihrem Entwicklungscomputer mit Windows-Betriebssystem simulieren und ein Codebeispiel verwenden, um für dieses simulierte Gerät eine Verbindung mit dem Device Provisioning-Dienst und Ihrem IoT Hub herzustellen. 
@@ -73,11 +73,11 @@ Sie verwenden Beispielcode aus dem [Azure IoT SDK für Java](https://github.com/
     java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
     ```
 
-2. Beantworten Sie die Frage _Do you want to input common name_ (Möchten Sie einen allgemeinen Namen eingeben?) mit **N**. Kopieren Sie die Ausgabe von `Client Cert` (von *-----BEGIN CERTIFICATE-----* bis einschließlich *-----END CERTIFICATE-----*) in die Zwischenablage.
+2. Beantworten Sie die Frage _Do you want to input common name_ (Möchten Sie einen allgemeinen Namen eingeben?) mit **N**. Kopieren Sie die Ausgabe von `Client Cert` (von *-----BEGIN CERTIFICATE-----* bis einschließlich *-----END CERTIFICATE-----* ) in die Zwischenablage.
 
    ![Generator für individuelles Zertifikat](./media/java-quick-create-simulated-device-x509/individual.png)
 
-3. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509individual.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei, und schließen Sie den Editor.
+3. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509individual.pem_** , öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei, und schließen Sie den Editor.
 
 4. Beantworten Sie an der Eingabeaufforderung die Frage _Do you want to input Verification Code_ (Möchten Sie einen Prüfcode eingeben?) mit **N**, und lassen Sie die Programmausgabe für später geöffnet. Die Werte `Client Cert` und `Client Cert Private Key` werden später zur Verwendung im nächsten Abschnitt kopiert.
 

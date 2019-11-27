@@ -1,19 +1,18 @@
 ---
 title: Übersicht über die Systemüberwachung für Azure Application Gateway
-description: Weitere Informationen zu den Überwachungsfunktionen in Azure Application Gateway
+description: Azure Application Gateway überwacht die Integrität aller Ressourcen in seinem Back-End-Pool und entfernt automatisch alle als fehlerhaft geltenden Ressourcen aus dem Pool.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135189"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130682"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747086"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073977"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -106,18 +106,18 @@ Aktivieren Sie die Sicherung wie folgt:
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
 
-Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan ausgeführt. Sie können auch eine Ad-hoc-Sicherung ausführen:
+Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan ausgeführt. Sie können auch eine bedarfsgesteuerte Sicherung durchführen:
 
 - Beim ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt.
 - Bei jedem Sicherungsauftrag nach der ersten Sicherung werden inkrementelle Wiederherstellungspunkte erstellt.
 - Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
 
-Zum Ausführen einer Ad-hoc-Sicherung verwenden Sie das Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+Zum Ausführen einer bedarfsgesteuerten Sicherung verwenden Sie das Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 - Mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) geben Sie einen Container im Tresor an, der Ihre Sicherungsdaten enthält.
 - Jede zu sichernde VM wird als gesondertes Element behandelt. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) Informationen zum virtuellen Computer ab.
 
-Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
+Führen Sie eine bedarfsgesteuerte Sicherung wie folgt aus:
 
 1. Geben Sie den Container an, rufen Sie die VM-Informationen ab, und führen Sie die Sicherung aus.
 

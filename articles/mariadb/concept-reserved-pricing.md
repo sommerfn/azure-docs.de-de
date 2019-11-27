@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: e7aa951634dffcafc20f198f85c15f5ac954fe58
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608438"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076868"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for MariaDB-Computeressourcen mit reservierter Kapazität
 
@@ -32,7 +32,7 @@ Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmensk
 
 Die Größe der Reservierung sollte auf der Gesamtmenge der Computeressourcen basieren, die von den bereits vorhandenen oder in Kürze zu erstellenden Datenbankinstanzen innerhalb einer bestimmten Region genutzt werden und die gleiche Leistungsstufe und Hardwaregeneration verwenden.</br>
 
-Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-MariaDB-Datenbank mit 32 virtuellen Kernen sowie zwei arbeitsspeicheroptimierte Gen5-MariaDB-Datenbank mit 16 virtuellen Kernen aus. Sie möchten innerhalb des nächsten Monats einen weiteren universellen Pool für elastische Gen5-Datenbanken mit 32 virtuellen Kernen sowie einen arbeitsspeicheroptimierten Gen5-Datenbankserver mit 16 virtuellen Kernen bereitstellen. Sie wissen außerdem, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für eine universelle Gen5-Einzeldatenbank mit 64 virtuellen Kernen (2 × 32) sowie eine 1-Jahres-Reservierung für eine arbeitsspeicheroptimierte Gen5-Einzeldatenbank mit 48 virtuellen Kernen (2 × 16 + 16).
+Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-MariaDB-Datenbank mit 32 virtuellen Kernen sowie zwei arbeitsspeicheroptimierte Gen5-MariaDB-Datenbank mit 16 virtuellen Kernen aus. Außerdem möchten Sie innerhalb des nächsten Monats einen weiteren universellen Gen5-Datenbankserver mit 32 virtuellen Kernen sowie einen arbeitsspeicheroptimierten Gen5-Datenbankserver mit 16 virtuellen Kernen bereitstellen. Sie wissen außerdem, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für eine universelle Gen5-Einzeldatenbank mit 64 virtuellen Kernen (2 × 32) sowie eine 1-Jahres-Reservierung für eine arbeitsspeicheroptimierte Gen5-Einzeldatenbank mit 48 virtuellen Kernen (2 × 16 + 16).
 
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Reservierte Kapazität für Azure Database for MariaDB kaufen

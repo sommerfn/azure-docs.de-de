@@ -1,22 +1,22 @@
 ---
-title: Einrichten eines Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: 'Schnellstart: Einrichten eines Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle'
 description: 'Azure-Schnellstartanleitung: Einrichten des Azure IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 02/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "60363715"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904701"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Einrichten des IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine IoT Hub-Instanz und eine IoT Hub Device Provisioning Service-Instanz erstellen und die beiden Dienste miteinander verknüpfen. 
 
@@ -137,4 +137,3 @@ In diesem Schnellstart haben Sie einen IoT Hub und eine Instanz des Device Provi
 
 > [!div class="nextstepaction"]
 > [Schnellstart zum Erstellen eines simulierten Geräts](./quick-create-simulated-device.md)
-

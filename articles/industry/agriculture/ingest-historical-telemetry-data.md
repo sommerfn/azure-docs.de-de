@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0ff9e055ecc0c4f58e4b3df0494debbe3f4cd8a4
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797283"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128782"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -50,16 +50,17 @@ Führen Sie die folgenden Schritte aus, um diese Werte zu generieren:
 
     ![FarmBeats-Projekt](./media/for-tutorials/power-shell-two-1.png)
 
-5. Navigieren Sie zu dem Verzeichnis, in das die Dateien hochgeladen wurden (standardmäßig das Basisverzeichnis „/home/<Benutzername>/“).
+5. Navigieren Sie zum Uploadverzeichnis der Dateien.
+
+   >[!NOTE]
+   > Die Datei wird standardmäßig in das Basisverzeichnis „/home/username“ hochgeladen.
 6. Führen Sie das Skript mithilfe des folgenden Befehls aus:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Folgen Sie den Anweisungen auf dem Bildschirm, um die Prozedur abzuschließen.
-
-    Sollten Sie keinen Zugriff auf FarmBeats oder Ihr Azure-Abonnement haben, wenden Sie sich an den FarmBeats-Administrator.
 
 ## <a name="create-devicesensor-metadata"></a>Erstellen von Geräte-/Sensormetadaten
 
@@ -73,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um diese Werte zu generieren:
 - /**Sensor**: Ein physischer Sensor, der Werte erfasst. Ein Sensor ist in der Regel mit einem Gerät mit einer Geräte-ID verbunden.  
 
 
-|        Gerätemodus   |  Vorschläge   |
+|        Gerätemodell   |  Vorschläge   |
 | ------- | -------             |
 |     Type (Node, Gateway)        |          Ein Stern      |
 |          Hersteller            |         Zwei Sterne     |
@@ -95,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um diese Werte zu generieren:
 |       Type (Analog, Digital)          |      Art des Sensors (analog oder digital)       |
 |          Hersteller            |       Der Sensorhersteller     |
 |     ProductCode| Code oder Modellname/-nummer des Produkts. Beispiel: RS-CO2-N01 |
-|       SensorMeasures > Name       | Name des Sensormessung. Es werden nur Kleinbuchstaben unterstützt. Geben Sie bei Messungen mit unterschiedlicher Tiefe die Tiefe an. Beispiel: soil_moisture_15cm. Dieser Name muss mit den Telemetriedaten übereinstimmen.  |
+|       SensorMeasures > Name       | Der Name der Sensormessung. Es werden nur Kleinbuchstaben unterstützt. Geben Sie bei Messungen mit unterschiedlicher Tiefe die Tiefe an. Beispiel: soil_moisture_15cm. Dieser Name muss mit den Telemetriedaten übereinstimmen.  |
 |          SensorMeasures > DataType       |Art der Telemetriedaten. Aktuell wird „double“ unterstützt.|
 |    SensorMeasures > Type    |Art der Messung der Sensortelemetriedaten. Systemdefinierte Typen: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrate, O2, PH, Phosphate, PointInTime, Potassium, Pressure, RainGauge, RelativeHumidity, Salinity, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Informationen zum Hinzufügen weiterer Typen finden Sie unter der API „/ExtendedType“.|
 |        SensorMeasures > Unit              | Einheit der Sensortelemetriedaten. Systemdefinierte Einheiten: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour. Informationen zum Hinzufügen weiterer Einheiten finden Sie unter der API „/ExtendedType“.|
@@ -129,7 +130,9 @@ Der FarmBeats-Datenhub verwendet die Bearerauthentifizierung. Für diese sind fo
 
 Mithilfe der obigen Anmeldeinformationen kann der Aufrufer ein Zugriffstoken anfordern. Dieses muss in den nachfolgenden API-Anforderungen wie folgt im Headerabschnitt gesendet werden:
 
+```
 headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **HTTP-Anforderungsheader**:
 
@@ -163,8 +166,10 @@ Im Anschluss finden Sie die gängigsten Anforderungsheader, die bei einem für d
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Gerät
+
 ```json
 {
   "deviceModelId": "string",
@@ -240,17 +245,15 @@ Sensor
     "additionalProp3": {}
   }
 }
-
 ```
 Die folgende Beispielanforderung dient zum Erstellen eines Geräts (unter Verwendung einer JSON-Eingabe als Nutzlast mit dem Anforderungstext).  
 
-```
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -269,30 +272,28 @@ Die Telemetriedaten müssen zur Verarbeitung an Azure Event Hub gesendet werden.
 Nachdem Sie eine Verbindung als Event Hub-Client eingerichtet haben, können Sie Nachrichten im JSON-Format an den Event Hub senden.  
 Konvertieren Sie das Format der historischen Sensordaten in ein kanonisches, für Azure FarmBeats geeignetes Format. Das kanonische Nachrichtenformat sieht wie folgt aus:  
 
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 Nachdem Sie die entsprechenden Geräte und Sensoren hinzugefügt haben, rufen Sie die Geräte-ID und die Sensor-ID aus der Telemetrienachricht ab, wie im vorherigen Abschnitt beschrieben.
 

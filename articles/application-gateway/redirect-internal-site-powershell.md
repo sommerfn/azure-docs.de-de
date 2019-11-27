@@ -1,23 +1,19 @@
 ---
-title: Erstellen eines Anwendungsgateways mit interner Umleitung – Azure PowerShell | Microsoft-Dokumentation
+title: Interne Umleitung mithilfe von PowerShell
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway erstellen, das internen Webdatenverkehr an den richtigen Back-End-Serverpool umleitet.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 266569494c58ac75371c1a891e9cbffb4c351056
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4e0c7707066028996e360a342db9f8dc0fd87599
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232124"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075113"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell
 
@@ -296,11 +292,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: [http://www.contoso.com](http://www.contoso.com).
+Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: [https://www.contoso.com](https://www.contoso.com).
 
 ![Testen der Contoso-Website im Anwendungsgateway](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Ändern Sie die Adresse in Ihre andere Domäne, z.B. http://www.contoso.org. Danach sollten Sie sehen, dass der Datenverkehr an den Listener für www.contoso.com zurückgeleitet wurde.
+Ändern Sie die Adresse in Ihre andere Domäne, z.B. https://www.contoso.org. Danach sollten Sie sehen, dass der Datenverkehr an den Listener für `www.contoso.com` zurückgeleitet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

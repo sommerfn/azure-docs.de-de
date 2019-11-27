@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault mithilfe von PowerShell | Microsoft-Dokumentation'
-description: ''
+title: 'Schnellstart: Festlegen und Abrufen des Geheimnisses aus Key Vault mithilfe von PowerShell'
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe von PowerShell Geheimnisse in einem Azure-Schlüsseltresor erstellen, daraus abrufen und löschen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5753384d12d31016dff7a33175899835c8bd1fec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2d33d04bfaaccf3e7bcaefc7eec98b04a5ffc2e8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259256"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901458"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell
 
@@ -100,9 +100,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
 - Sehen Sie sich die Referenz zu den [Azure PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault) an.
 - Erfahren Sie mehr über [Schlüssel, Geheimnisse und Zertifikate](about-keys-secrets-and-certificates.md).
-- Sehen Sie sich die [bewährten Methoden zum Verwenden von Key Vault](key-vault-best-practices.md) an.
+- [Bewährte Methoden zum Verwenden von Key Vault](key-vault-best-practices.md)

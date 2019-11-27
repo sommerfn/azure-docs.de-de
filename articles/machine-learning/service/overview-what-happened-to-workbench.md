@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647118"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904415"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -99,8 +99,8 @@ Informationen zur [aktuellen Architektur für Azure Machine Learning](concept-az
 Eine Übersicht über den Dienst finden Sie unter [Was ist Azure Machine Learning?](overview-what-is-azure-ml.md).
 
 Erstellen Sie Ihr erstes Experiment mit Ihrer bevorzugten Methode:
-  + [Verwenden von Python-Notebooks zum Trainieren und Bereitstellen von ML-Modellen](tutorial-1st-experiment-sdk-setup.md)
-  + [Verwenden von R Markdown zum Trainieren und Bereitstellen von ML-Modellen]( tutorial-1st-r-experiment.md) 
-  + [Verwenden von automatisiertem Machine Learning zum Trainieren und Bereitstellen von ML-Modellen](ui-tutorial-automobile-price-train-score.md) 
-  + [Verwenden der Drag & Drop-Funktionen des Designers zum Trainieren und Bereitstellen](tutorial-first-experiment-automated-ml.md) 
-  + [Verwenden der Machine Learning-CLI zum Trainieren und Bereitstellen eines Modells](tutorial-train-deploy-model-cli.md)
+  + [Verwenden von Python-Notebooks](tutorial-1st-experiment-sdk-setup.md)
+  + [Verwenden von R Markdown]( tutorial-1st-r-experiment.md) 
+  + [Verwenden von automatisiertem maschinellen Lernen](ui-tutorial-automobile-price-train-score.md) 
+  + [Verwenden der Drag & Drop-Funktionen des Designers](tutorial-first-experiment-automated-ml.md) 
+  + [Verwenden der ML-Erweiterung für die CLI](tutorial-train-deploy-model-cli.md)

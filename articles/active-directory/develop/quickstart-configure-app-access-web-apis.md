@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473686"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106612"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 
@@ -171,13 +171,40 @@ Fügen Sie Ihrer Webanwendung wie folgt Anmeldeinformationen hinzu:
 Fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client wie folgt hinzu:
 
 1. Wählen Sie auf der Seite **Übersicht** der App die Option **API-Berechtigungen**.
-1. Wählen Sie die Schaltfläche **Berechtigung hinzufügen**.
+1. Wählen Sie im Abschnitt **Konfigurierte Berechtigungen** die Schaltfläche **Berechtigung hinzufügen** aus.
 1. Standardmäßig ermöglicht Ihnen die Ansicht die Auswahl von **Microsoft-APIs**. Wählen Sie den Abschnitt mit den APIs aus, die für Sie interessant sind:
     * **Microsoft-APIs**: Sie können Berechtigungen für Microsoft-APIs auswählen, z.B. Microsoft Graph.
     * **Von meiner Organisation verwendete APIs**: Sie können Berechtigungen für APIs auswählen, die von Ihrer Organisation verfügbar gemacht wurden, oder APIs, für die Ihre Organisation die Integration durchgeführt hat.
     * **Meine APIs**: Sie können Berechtigungen für APIs auswählen, die Sie verfügbar gemacht haben.
 1. Nachdem Sie die APIs ausgewählt haben, wird die Seite **API-Berechtigungen anfordern** angezeigt. Wenn die API sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen verfügbar macht, können Sie auswählen, welche Art von Berechtigung für Ihre Anwendung erforderlich ist.
 1. Wählen Sie abschließend die Option **Berechtigungen hinzufügen**. Sie gelangen zurück auf die Seite **API-Berechtigungen**, auf der die Berechtigungen gespeichert und der Tabelle hinzugefügt wurden.
+
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Grundlegendes zur Benutzeroberfläche für API-Berechtigungen und die Administratoreinwilligung
+
+### <a name="configured-permissions"></a>Konfigurierte Berechtigungen
+
+In diesem Abschnitt werden die Berechtigungen angezeigt, die explizit für das Anwendungsobjekt konfiguriert wurden (die Berechtigungen, die Teil der erforderlichen Ressourcenzugriffsliste der App sind). Sie können dieser Tabelle Berechtigungen hinzufügen oder Berechtigungen daraus entfernen. Als Administrator können Sie in diesem Abschnitt auch eine Administratoreinwilligung für eine Gruppe von Berechtigungen einer API oder für einzelne Berechtigungen erteilen bzw. widerrufen.
+
+### <a name="other-permissions-granted"></a>Weitere gewährte Berechtigungen
+
+Wenn Ihre Anwendung bei einem Mandanten registriert ist, wird ggf. ein zusätzlicher Abschnitt namens **Weitere für „Mandant“ gewährte Berechtigungen** angezeigt. In diesem Abschnitt werden Berechtigungen angezeigt, die für den Mandanten gewährt, aber nicht explizit für das Anwendungsobjekt konfiguriert wurden (etwa dynamisch angeforderte Berechtigungen mit dynamischer Einwilligung). Dieser Abschnitt wird nur angezeigt, wenn mindestens eine entsprechende Berechtigung vorhanden ist.
+
+Sie können eine Gruppe von Berechtigungen einer API oder einzelne Berechtigungen, die in diesem Abschnitt angezeigt werden, dem Abschnitt **Konfigurierte Berechtigungen** hinzufügen. Als Administrator können Sie auch die Administratoreinwilligung für einzelne APIs oder Berechtigungen in diesem Abschnitt widerrufen.
+
+### <a name="admin-consent-button"></a>Schaltfläche „Administratorzustimmung“
+
+Wenn Ihre Anwendung bei einem Mandanten registriert ist, wird die Schaltfläche **Administratorzustimmung für „Mandant“ erteilen** angezeigt. Falls Sie kein Administrator sind oder für die Anwendung keine Berechtigungen konfiguriert wurden, ist diese Schaltfläche deaktiviert.
+Mithilfe dieser Schaltfläche kann ein Administrator problemlos eine Administratoreinwilligung für die Berechtigungen erteilen, die für die Anwendung konfiguriert sind. Nach dem Klicken auf die Schaltfläche „Administratoreinwilligung“ wird ein neues Fenster mit einer Zustimmungsaufforderung und allen konfigurierten Berechtigungen geöffnet.
+
+> [!NOTE]
+> Es dauert etwas, bis Berechtigungen, die für die Anwendung konfiguriert werden, in der Zustimmungsaufforderung erscheinen. Sollten nicht alle konfigurierten Berechtigungen in der Zustimmungsaufforderung angezeigt werden, schließen Sie sie, und starten Sie sie erneut.
+
+Wenn Sie über Berechtigungen verfügen, die gewährt, aber nicht konfiguriert wurden, werden Sie nach dem Klicken auf die Schaltfläche „Administratoreinwilligung“ aufgefordert, zu entscheiden, wie mit diesen Berechtigungen verfahren werden soll. Sie können sie entweder den konfigurierten Berechtigungen hinzufügen oder sie entfernen.
+
+Die Zustimmungsaufforderung bietet zwei Optionen: **Akzeptieren** und **Abbrechen**. Wenn Sie **Akzeptieren** auswählen, wird die Administratoreinwilligung erteilt. Wenn Sie **Abbrechen**auswählen, wird keine Administratoreinwilligung erteilt, und es wird ein Fehler mit dem Hinweis angezeigt, dass die Einwilligung abgelehnt wurde.
+
+> [!NOTE]
+> Nachdem die Administratoreinwilligung erteilt wurde (durch Auswählen von **Akzeptieren** in der Zustimmungsaufforderung), dauert es etwas, bis der Status der Administratoreinwilligung auf der Benutzeroberfläche angezeigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Traffic Manager-Profils für Hochverfügbarkeit von Anwendungen mithilfe des Azure-Portals'
+title: 'Schnellstart: Erstellen eines Profils für hoch verfügbare Anwendungen: Azure-Portal – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um hoch verfügbare Webanwendungen zu entwickeln.
 services: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b6a015c7462f082d5114a51d83cfacb0c550b026
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224666"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032692"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 
@@ -88,7 +88,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
     | NAME | Geben Sie *myPrimaryEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten**. |
-    | Priorität | Wählen Sie **1**. Der gesamte Datenverkehr wird an diesen Endpunkt gesendet, wenn er fehlerfrei ist. |
+    | Priority | Wählen Sie **1**. Der gesamte Datenverkehr wird an diesen Endpunkt gesendet, wenn er fehlerfrei ist. |
 
     ![Screenshot: Ort zum Hinzufügen eines Endpunkts zu Ihrem Traffic Manager-Profil.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
@@ -101,7 +101,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
     | NAME | Geben Sie *myFailoverEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen**. |
-    | Priorität | Wählen Sie **2**. Der gesamte Datenverkehr wird an diesen Failoverendpunkt geleitet, wenn der primäre Endpunkt fehlerhaft ist. |
+    | Priority | Wählen Sie **2**. Der gesamte Datenverkehr wird an diesen Failoverendpunkt geleitet, wenn der primäre Endpunkt fehlerhaft ist. |
 
 7. Klicken Sie auf **OK**.
 

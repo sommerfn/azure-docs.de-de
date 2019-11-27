@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932313"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089543"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -28,7 +28,7 @@ Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Ers
 
 In diesem Artikel wird auch vorausgesetzt, dass Sie über einen SSH-Schlüssel verfügen. Sie können einen SSH-Schlüssel mit [macOS oder Linux][ssh-nix] bzw. [Windows][ssh-windows] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
 
-Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [„Installieren der Azure-Befehlszeilenschnittstelle“][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurieren von auf VM-Skalierungsgruppen basierenden AKS-Clustern für SSH-Zugriff
 
@@ -37,14 +37,16 @@ Suchen Sie nach dem Namen der VM-Skalierungsgruppe Ihres Clusters, und fügen Si
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und anschließend den Befehl [az vmss list][az-vmss-list], um den Namen Ihrer Skalierungsgruppe abzurufen.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
 Im obigen Beispiel wird der Name der Clusterressourcengruppe für *myAKSCluster* in *myResourceGroup* dem Element *CLUSTER_RESOURCE_GROUP* zugewiesen. Im Beispiel wird *CLUSTER_RESOURCE_GROUP* dann verwendet, um den Namen der Skalierungsgruppe aufzulisten und *SCALE_SET_NAME* zuzuweisen.  
 
-> [!NOTE]
-> Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Wenn Sie per SSH eine Verbindung mit einem Windows Server-Knoten herstellen möchten, verwenden Sie die SSH-Schlüssel, die Sie beim Erstellen des AKS-Clusters bereitgestellt haben. Überspringen Sie dann die nächsten Befehle zum Hinzufügen Ihres öffentlichen SSH-Schlüssels. Sie benötigen trotzdem noch die IP-Adresse des Knotens, für den Sie die Problembehandlung durchführen möchten. Sie ist im letzten Befehl dieses Abschnitts angegeben. Alternativ können Sie eine [Verbindung mit Windows Server-Knoten über RDP-Verbindungen (Remotedesktopprotokoll) herstellen][aks-windows-rdp], anstatt über SSH.
+> [!IMPORTANT]
+> Zu diesem Zeitpunkt sollten Sie nur Ihre SSH-Schlüssel für Ihre auf VM-Skalierungsgruppen basierenden AKS-Cluster mithilfe der Azure CLI aktualisieren.
+> 
+> Für Linux-Knoten können SSH-Schlüssel derzeit nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Wenn Sie per SSH eine Verbindung mit einem Windows Server-Knoten herstellen möchten, verwenden Sie die SSH-Schlüssel, die Sie beim Erstellen des AKS-Clusters bereitgestellt haben. Überspringen Sie dann die nächsten Befehle zum Hinzufügen Ihres öffentlichen SSH-Schlüssels. Sie benötigen trotzdem noch die IP-Adresse des Knotens, für den Sie die Problembehandlung durchführen möchten. Sie ist im letzten Befehl dieses Abschnitts angegeben. Alternativ können Sie eine [Verbindung mit Windows Server-Knoten über RDP-Verbindungen (Remotedesktopprotokoll) herstellen][aks-windows-rdp], anstatt über SSH.
 
 Verwenden Sie die Befehle [az vmss extension set][az-vmss-extension-set] und [az vmss update-instances][az-vmss-update-instances], um Ihre SSH-Schlüssel den Knoten in einer VM-Skalierungsgruppe hinzuzufügen.
 
@@ -94,7 +96,7 @@ Suchen Sie nach dem Namen des Linux-Knotens Ihres Clusters, und fügen Sie diese
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und dann den Befehl [az vm list][az-vm-list], um den VM-Namen des Linux-Knotens Ihres Clusters aufzulisten.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 

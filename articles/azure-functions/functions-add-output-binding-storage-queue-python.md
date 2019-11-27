@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329729"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082816"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
@@ -91,7 +91,7 @@ Sie können [die Storage-Warteschlangennachricht erneut untersuchen](#query-the-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Storage-Warteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md). Beispiele für vollständige Funktionsprojekte in Python finden Sie in den [Functions-Beispielen für Python](/samples/browse/?products=azure-functions&languages=python). 
+Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Storage-Warteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md). Beispiele für vollständige Funktionsprojekte in Python finden Sie in den [Functions-Beispielen für Python](/samples/browse/?products=azure-functions&languages=python). Weitere Informationen zu den Preisen finden Sie auf der [Preisseite für Functions](https://azure.microsoft.com/pricing/details/functions/) und im Artikel [Abschätzen der Kosten des Verbrauchstarifs](functions-consumption-costs.md).
 
 Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
 

@@ -1,18 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal'
+title: 'Schnellstart: Erstellen einer DNS-Zone und eines Eintrags: Azure-Portal'
+titleSuffix: Azure DNS
 description: Verwenden Sie diese Schritt-für-Schritt-Schnellstartanleitung, um zu erfahren, wie Sie eine Azure DNS-Zone und den zugehörigen Eintrag mit dem Azure-Portal erstellen.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119070"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082922"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal
 
@@ -88,7 +89,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Beispiel: 
+   Beispiel:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -98,7 +99,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration in **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert. 
+Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

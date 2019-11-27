@@ -1,26 +1,25 @@
 ---
-title: 'Azure Active Directory: Durchsetzen einer Gruppenbenennungsrichtlinie für Office 365-Gruppen | Microsoft-Dokumentation'
+title: Erzwingen von Benennungsrichtlinien in Azure Active Directory | Microsoft-Dokumentation
 description: Einrichten einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013412"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027038"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 

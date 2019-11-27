@@ -1,21 +1,22 @@
 ---
-title: 'Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell | Microsoft-Dokumentation'
+title: 'Schnellstart: Weiterleiten von Webdatenverkehr mit PowerShell'
+titleSuffix: Azure Application Gateway
 description: Es wird beschrieben, wie Sie die Azure PowerShell zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a55f602833cacd27cd82adafd888c67c544564c2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d5b0ebc2d1b64dd4be677c38de30af7f7a954637
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359975"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075107"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway mithilfe von Azure PowerShell
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie mit Azure PowerShell schnell ein Anwendungsgateway erstellen können.  Testen Sie das Anwendungsgateway, nachdem Sie es erstellt haben, um sicherzustellen, dass es richtig funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
 

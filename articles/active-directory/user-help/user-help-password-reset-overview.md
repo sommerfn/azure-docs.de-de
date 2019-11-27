@@ -1,5 +1,5 @@
 ---
-title: 'Übersicht über die Kennwortzurücksetzung für Ihr Geschäfts-, Schul- oder Unikonto: Azure Active Directory | Microsoft-Dokumentation'
+title: 'Übersicht über die Kennwortzurücksetzung für Ihr Geschäfts-, Schul- oder Unikonto: Azure AD'
 description: Hier finden Sie eine Liste mit Links zu Artikeln, in denen erläutert wird, wie Sie sich registrieren und das Kennwort Ihres Geschäfts-, Schul- oder Unikontos zurücksetzen, ohne dass Sie die Unterstützung eines Administrators benötigen.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160606"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028506"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Übersicht über die Kennwortzurücksetzung für Ihr Geschäfts-, Schul- oder Unikonto
 
@@ -34,5 +34,5 @@ Ausführliche Informationen und Anweisungen zum Registrieren Ihres Kontos für d
 
 |Artikel |BESCHREIBUNG |
 |------|------------|
-| [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) – Anweisungen zum Überprüfen Ihrer Authentifizierungsmethoden und zum Registrieren für die Self-Service-Kennwortzurücksetzung, damit Sie Ihr eigenes Kennwort zurücksetzen können|
-| [Zurücksetzen Ihres Kennworts](active-directory-passwords-update-your-own-password.md) – Anweisungen zum Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto|
+| [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) | Anweisungen zum Überprüfen Ihrer Authentifizierungsmethoden und zum Registrieren für die Self-Service-Kennwortzurücksetzung, damit Sie Ihr eigenes Kennwort zurücksetzen können |
+| [Zurücksetzen Ihres Kennworts](active-directory-passwords-update-your-own-password.md) | Anweisungen zum Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto |

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ef9b55dd17a6f1d190282f369ccb8b9386e65d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 34548b623317eff17bcbf5a7749cd411a44bd722
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324273"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73935854"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -108,7 +108,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `hasgroups` | Boolean | Ist immer auf `true` festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Anspruchs `groups` für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client über den Graph die Gruppen des Benutzers bestimmen soll (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
 | `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. Siehe auch den `oid`-Anspruch (der innerhalb eines Mandanten für alle Apps immer gleich bleibt). |
-| `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
+| `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes [Benutzerkonto](/graph/api/resources/user) zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 | `tid` | Zeichenfolge, eine GUID | Stellt den Azure AD-Mandanten dar, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `unique_name` | Zeichenfolge | Ist nur in v1.0-Token vorhanden. Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist. Er sollte daher nur zu Anzeigezwecken verwendet werden. |
 | `uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
@@ -209,7 +209,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 Dieses Metadatendokument:
 
 * Ist ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Speicherort der verschiedenen Endpunkte, die zum Ausführen der OpenID Connect-Authentifizierung erforderlich sind.
-* Enthält einen `jwks_uri`, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln. Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines bestimmten Tokens verwendet wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
+* Enthält einen `jwks_uri`, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Der JSON-Webschlüssel (JWK) unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln.  Das JWK-Format wird in [RFC 7517](https://tools.ietf.org/html/rfc7517) beschrieben.  Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines bestimmten Tokens verwendet wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
 
 > [!NOTE]
 > Der v1.0-Endpunkt gibt beide Ansprüche zurück, `x5t` und `kid`, der v2.0-Endpunkt dagegen antwortet nur mit Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
@@ -264,9 +264,9 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 | [Einmaliges Abmelden](v1-protocols-openid-connect-code.md#single-sign-out) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
 
 > [!NOTE]
-> Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO-Schlüssel oder eine PIN.
+> Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO2-Schlüssel oder eine PIN.
 >
-> Beim primären Aktualisierungstoken in Windows liegt ein bekanntes Problem vor. Wenn das primäre Aktualisierungstoken (Primary Refresh Token, PRT) über ein Kennwort abgerufen wird und der Benutzer sich über Hello anmeldet, ändert sich der Ursprung des PRTs nicht, und es wird widerrufen, wenn der Benutzer sein Kennwort ändert.
+> Primäre Aktualisierungstoken (PRT) unter Windows 10 werden auf Grundlage der Anmeldeinformationen getrennt. Beispielsweise besitzen Windows Hello und Kennwort ihre jeweiligen PRTs, die voneinander isoliert sind. Wenn sich ein Benutzer mit Hello-Anmeldeinformationen (PIN oder Biometrie) anmeldet und dann das Kennwort ändert, wird das zuvor abgerufene kennwortbasierte PRT widerrufen. Bei erneuter Anmeldung mit einem Kennwort wird das alte PRT ungültig und ein neues angefordert.
 >
 > Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  
 

@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72937339"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049092"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Vergleich der Optionen von Azure IoT Central und Azure IoT
 
 In Microsoft Azure IoT Central and Azure IoT stehen verschiedene Optionen für die Erstellung einer IoT-Lösung zur Verfügung. Diese Optionen sind für verschiedene Kundenanforderungen geeignet:
 
-* [Azure IoT Central](overview-iot-central.md) ist eine SaaS-Lösung (Software-as-a-Service) mit einem modellbasierten Ansatz, der Sie bei der Entwicklung von IoT-Lösungen für Unternehmen unterstützt, ohne dass Sie dazu mit der Entwicklung von Cloudlösungen vertraut sein müssen.
+* [Azure IoT Central](overview-iot-central.md) ist eine IoT-Anwendungsplattform mit einem modellbasierten Ansatz, der Sie bei der Entwicklung von IoT-Lösungen für Unternehmen unterstützt, ohne dass Sie dazu mit der Entwicklung von Cloudlösungen vertraut sein müssen.
 
 * [Azure IoT Solution Accelerators](https://docs.microsoft.com/azure/iot-accelerators/) sind eine für Unternehmen konzipierte Sammlung mit [Solution Accelerators](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) auf Basis von Azure-PaaS (Platform-as-a-Service), mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen IoT Solution
 |     | Azure IoT Central | Azure IoT Solution Accelerators |
 | --- | ----------- | --------- |
 | Primäre Nutzung                      | Verkürzen des Zeitraums bis zur Markteinführung für einfach aufgebaute IoT-Lösungen, für die keine eingehende Dienstanpassung erforderlich ist.                                                    | Beschleunigen der Entwicklung einer benutzerdefinierten IoT-Lösung, für die eine maximale Flexibilität erforderlich ist.                                                                                                                             |
-| Zugriff auf zugrunde liegende PaaS-Dienste | SaaS: Da es sich um eine vollständig verwaltete Lösung handelt, werden die zugrunde liegenden Dienste nicht verfügbar gemacht.                                                                                            | Sie haben Zugriff auf die zugrunde liegenden Azure-Dienste, um diese zu verwalten oder je nach Bedarf zu ersetzen.                                                                                                                    |
+| Zugriff auf zugrunde liegende PaaS-Dienste | Da es sich um eine vollständig verwaltete Lösung handelt, werden die zugrunde liegenden Dienste nicht verfügbar gemacht.                                                                                            | Sie haben Zugriff auf die zugrunde liegenden Azure-Dienste, um diese zu verwalten oder je nach Bedarf zu ersetzen.                                                                                                                    |
 | Flexibilität                        | Mittel. Sie können die integrierte browserbasierte Benutzeroberfläche verwenden, um das Lösungsmodell und die Aspekte der Benutzeroberfläche anzupassen. Die Infrastruktur kann nicht angepasst werden, da die unterschiedlichen Komponenten nicht verfügbar gemacht werden. | Hoch. Der Code für die Microservices ist Open-Source-Code, den Sie beliebig ändern können. Außerdem können Sie die Bereitstellungsinfrastruktur anpassen.                                               |
 | Kenntnisstand                        | Niedrig. Sie benötigen Modellierungskenntnisse, um die Lösung anzupassen. Es sind keine Codierungskenntnisse erforderlich.                                                                          | Mittelhoch. Sie benötigen Java- oder .NET-Kenntnisse, um das Back-End der Lösung anzupassen. Sie benötigen JavaScript-Kenntnisse, um die Visualisierung anzupassen.                                                                       |
 | Erste Schritte             | Über Anwendungs- und Gerätevorlagen werden vorgefertigte Modelle bereitgestellt. Die Bereitstellung dauert nur wenige Minuten.                                                                                                  | Vorkonfigurierte Lösungen ermöglichen die Implementierung von häufigen IoT-Szenarien. Die Bereitstellung dauert nur wenige Minuten.                                                                                                                            |

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Integrieren eines Azure-Speicherkontos in Azure CDN | Microsoft-Dokumentation'
+title: 'Schnellstart: Integrieren eines Azure-Speicherkontos in Azure CDN'
 description: Erfahren Sie, wie Azure Content Delivery Network (CDN) für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs aus Azure Storage zwischengespeichert werden.
 services: cdn
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594015"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083074"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure-Speicherkontos in CDN
 In dieser Schnellstartanleitung aktivieren Sie das [Azure Content Delivery Network (CDN)](cdn-overview.md) für die Zwischenspeicherung von Inhalten aus Azure Storage. Azure CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite. Sie können Blobs und statische Inhalte von Compute-Instanzen auf physischen Knoten in den USA, Europa, Asien, Australien und Südamerika zwischenspeichern.

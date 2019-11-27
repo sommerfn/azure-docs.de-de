@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812683"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120113"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -110,6 +110,14 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 >[!IMPORTANT] 
 > Beim Speichern eines neuen Bereichsfilters wird eine neue vollständige Synchronisierung für die Anwendung ausgelöst, bei der alle Benutzer im Quellsystem für den neuen Bereichsfilter neu ausgewertet werden. Wenn ein Benutzer in der Anwendung im Bereitstellungsbereich enthalten war und sich dies ändert, wird sein Konto in der Anwendung deaktiviert (bzw. die Bereitstellung aufgehoben). Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie unter [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md).
 
+
+## <a name="common-scoping-filters"></a>Allgemeine Bereichsfilter
+| Zielattribut| Operator | Wert | BESCHREIBUNG|
+|----|----|----|----|
+|userPrincipalName|REGEX MATCH|.\*@domain.com |Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich im Umfang der Bereitstellung.|
+|userPrincipalName|NOT REGEX MATCH|.\*@domain.com|Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich nicht im Umfang der Bereitstellung.|
+|department|EQUALS|Vertrieb|Alle Benutzer der Vertriebsabteilung befinden sich im Umfang der Bereitstellung.|
+|workerID|REGEX MATCH|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Alle Mitarbeiter mit workerIDs zwischen 1000000 und 2000000 befinden sich im Umfang der Bereitstellung.|
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen](user-provisioning.md)

@@ -12,19 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d8470ad759d983f25f8f68b93d58f89f23eeb578
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015392"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083887"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics auf der Media Services-Plattform 
 
+## <a name="retirement-plans"></a>Deaktivierungspläne
+
+> [!IMPORTANT]
+> Die folgenden Legacy-Medienprozessoren werden 2020 deaktiviert. Weitere Informationen finden Sie in der folgenden Tabelle. 
+
+|Medienprozessorname|Deaktivierungstermin|Zusätzliche Hinweise|
+|---|---|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1\. Januar 2020|Dieser Medienprozessor wird vom [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer 2 zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1\. Oktober 2020|Dieser Medienprozessor wird vom [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+ 
 ## <a name="overview"></a>Übersicht
+
 Immer mehr Organisationen sehen im Video das bevorzugte Medium zum Schulen ihrer Mitarbeiter, Binden ihrer Kunden und Dokumentieren von Geschäftsfunktionen. Cloud Computing bietet eine Möglichkeit zum Speichern und Streamen großer Mediendateien sowie zum Zugreifen auf diese. Wenn die Videothek des Unternehmens jedoch wächst, benötigt sie ein ebenso effektives Verfahren zum Extrahieren von Erkenntnissen aus dem Inhalt. 
 
 Für diesen zunehmenden Bedarf bietet Azure Media Services das Tool Azure Media Analytics an. Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Media Analytics basiert auf den Kernkomponenten der Media Services-Plattform und kann daher die skalierte Medienverarbeitung ab dem ersten Tag bewältigen.

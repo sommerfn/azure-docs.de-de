@@ -1,27 +1,19 @@
 ---
-title: Vorgehensweise zum Konfigurieren der Georeplikation für Azure Cache for Redis | Microsoft-Dokumentation
+title: Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis | Microsoft-Dokumentation
 description: Erfahren Sie, wie Ihre Azure Cache for Redis-Instanzen über geografische Regionen hinweg repliziert werden.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552350"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129419"
 ---
-# <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Konfigurieren der Georeplikation für Azure Cache for Redis
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis
 
 Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Cache for Redis-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache und der andere als sekundärer verknüpfter Cache ausgewählt. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über verschiedene Azure-Regionen hinweg repliziert werden. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif.
 

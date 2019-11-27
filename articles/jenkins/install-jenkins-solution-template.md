@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 531199303f7b00083bcd7139ac00ac36bde5c583
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004082"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837514"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal
 
@@ -33,7 +33,7 @@ Jenkins unterstützt ein Modell, bei dem der Jenkins-Server die Arbeit an einen 
 
 ## <a name="connect-to-jenkins"></a>Herstellen einer Verbindung mit Jenkins
 
-Navigieren Sie in Ihrem Webbrowser zu Ihrem virtuellen Computer (beispielsweise http://jenkins2517454.eastus.cloudapp.azure.com/)). Auf die Jenkins-Konsole kann nicht über eine unsichere HTTP-Verbindung zugegriffen werden. Daher ist auf der Seite beschrieben, wie Sie von Ihrem Computer aus über einen SSH-Tunnel sicher auf die Jenkins-Konsole zugreifen können.
+Navigieren Sie in Ihrem Webbrowser zu Ihrem virtuellen Computer (beispielsweise `http://jenkins2517454.eastus.cloudapp.azure.com/`). Auf die Jenkins-Konsole kann nicht über eine unsichere HTTP-Verbindung zugegriffen werden. Daher ist auf der Seite beschrieben, wie Sie von Ihrem Computer aus über einen SSH-Tunnel sicher auf die Jenkins-Konsole zugreifen können.
 
 ![Entsperren von Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 

@@ -1,26 +1,25 @@
 ---
-title: Merkmale der Interaktion mehrerer Mandanten – Azure Active Directory | Microsoft-Dokumentation
+title: Merkmale der Interaktion mehrerer Mandanten – Azure AD | Microsoft-Dokumentation
 description: Verwalten Ihrer Azure Active Directory-Mandanten, indem Sie Ihre Mandanten als vollständig unabhängige Ressourcen verstehen
 services: active-tenant
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60470071"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026294"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Mandanten
 

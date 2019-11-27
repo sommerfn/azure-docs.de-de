@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 380c67e5aeaba9be60e016f173e4da127e4e5f14
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797383"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128846"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -60,7 +60,7 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
 
     ```azurepowershell-interactive 
 
-    PS> ./generateCredentials.ps1   
+    ./generateCredentials.ps1   
 
     ```
 7. Befolgen Sie die Anweisungen auf dem Bildschirm, um die Werte zu erfassen. (Dies sind die Werte für API-Endpunkt, Mandanten-ID, Client-ID, geheimer Clientschlüssel und EventHub-Verbindungszeichenfolge.)
@@ -86,7 +86,7 @@ Verwenden Sie den folgenden Abschnitt, um die Geräte und Sensoren Ihres landwir
 Derzeit werden für FarmBeats die folgenden Geräte unterstützt:
 
 - **Knoten**: Ein Gerät, an das mindestens ein Sensor angefügt ist.
-- **Gateway**: Ein Gerät, an das mindestens ein Sensor angefügt ist.
+- **Gateway**: Ein Gerät, an das mindestens ein Knoten angefügt ist.
 
 Führen Sie die folgenden Schritte aus:
 

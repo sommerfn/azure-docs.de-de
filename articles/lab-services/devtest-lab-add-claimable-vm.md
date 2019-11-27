@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: fdffa3862f45b99c2c3f2ed41934e09247808ca7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311781"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123703"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Erstellen und Verwalten anforderbarer virtueller Computer in einem Lab in Azure DevTest Labs
 Einen anforderbaren virtuellen Computer fügen Sie einem Lab in ähnlicher Weise hinzu wie [einen virtuellen Standardcomputer](devtest-lab-add-vm.md), d.h. über eine *Basis*, also entweder über ein [benutzerdefiniertes Image](devtest-lab-create-template.md), eine [Formel](devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](devtest-lab-configure-marketplace-images.md). In diesem Tutorial wird erläutert, wie Sie über das Azure-Portal einem Lab in DevTest Labs einen anforderbaren virtuellen Computer hinzufügen. Zudem wird der Vorgang beschrieben, mit dem ein Benutzer den virtuellen Computer anfordert und diesen Anspruch auch wieder aufhebt.
@@ -72,7 +72,7 @@ Ein Benutzer kann mit einem der folgenden Schritte jeden virtuellen Computer aus
   ![Fordern Sie einen beliebigen anforderbaren virtuellen Computer an.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-Nachdem ein Benutzer einen virtuellen Computer angefordert hat, wird dieser in die Liste „My virtual machines“ (Meine virtuellen Computer) des Benutzers verschoben und kann von keinem anderen Benutzer mehr angefordert werden.
+Nachdem ein Benutzer einen virtuellen Computer beansprucht hat, startet DevTest Labs den Computer und verschiebt ihn in die Liste „Meine virtuellen Computer“ des Lab-Benutzers. Dies bedeutet, dass der Lab-Benutzer nun Besitzerberechtigungen für diesen Computer besitzt. Die für diesen Schritt erforderliche Zeit kann je nach Startzeiten und anderen benutzerdefinierten Aktionen, die während des Anspruchsereignisses ausgeführt werden, variieren. Nachdem der Computer beansprucht wurde, ist er nicht mehr im beanspruchbaren Pool verfügbar.  
 
 ## <a name="unclaim-a-vm"></a>Aufgeben der Beanspruchung eines virtuellen Computers
 
@@ -86,7 +86,7 @@ Wenn ein Benutzer mit der Verwendung eines beanspruchten virtuellen Computers fe
 
   ![Aufheben eines Anspruchs auf einen virtuellen Computer über den Verwaltungsbereich einer VM](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-Wenn ein Benutzer den Anspruch auf einen virtuellen Computer aufhebt, hat dieser keine Berechtigungen mehr für diese bestimmte Lab-VM.
+Wenn ein Benutzer den Anspruch für einen virtuellen Computer zurücknimmt, verfügt er nicht mehr über Besitzerberechtigungen für diesen speziellen virtuellen Lab-Computer, und dieser kann von jedem anderen Lab-Benutzer in dem Zustand beansprucht werden, in dem er in den Pool zurückgegeben wurde. 
 
 ### <a name="transferring-the-data-disk"></a>Übertragen des Datenträgers
 Wenn eine abrufbare VM über einen Datenträger verfügt, und ein Benutzer den Anspruch darauf aufhebt, bleibt der Datenträger in der VM erhalten. Wenn ein anderer Benutzer dann Ansprüche auf diese VM erhebt, erhebt er auch Anspruch auf den Datenträger sowie die VM.

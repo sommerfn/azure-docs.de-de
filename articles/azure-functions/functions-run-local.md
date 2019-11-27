@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469070"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082723"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Initialisiert ein C#-Skriptprojekt (.csx). In nachfolgenden Befehlen müssen Sie `--csx` angeben. |
+| **`--csharp`**<br/> **`--dotnet`** | Initialisiert ein [C#-Klassenbibliotheksprojekt (.cs)](functions-dotnet-class-library.md). |
+| **`--csx`** | Initialisiert ein [C#-Skriptprojekt (.csx)](functions-reference-csharp.md). In nachfolgenden Befehlen müssen Sie `--csx` angeben. |
 | **`--docker`** | Erstellt ein Dockerfile für einen Container mithilfe eines Basisimages, das auf dem ausgewählten Wert für `--worker-runtime` basiert. Verwenden Sie diese Option, wenn Sie die Veröffentlichung in einem benutzerdefinierten Linux-Container planen. |
+| **`--docker-only`** |  Fügt einem vorhandenen Projekt eine Dockerfile hinzu. Fordert die Worker-Runtime an, wenn sie nicht angegeben oder in „local.settings.json“ festgelegt wurde. Verwenden Sie diese Option, wenn Sie die Veröffentlichung eines vorhandenen Projekts in einem benutzerdefinierten Linux-Container planen. |
 | **`--force`** | Initialisiert das Projekt, auch wenn es bereits Dateien enthält. Diese Einstellung überschreibt vorhandene Dateien mit dem gleichen Namen. Andere Dateien im Projektordner sind nicht betroffen. |
-| **`--no-source-control -n`** | Verhindert die standardmäßige Erstellung eines Git-Repositorys in Version 1.x. In Version 2.x wird das Git-Repository nicht standardmäßig erstellt. |
+| **`--java`**  | Initialisiert ein [Java-Projekt](functions-reference-java.md). |
+| **`--javascript`**<br/>**`--node`**  | Initialisiert ein [JavaScript-Projekt](functions-reference-node.md). |
+| **`--no-source-control`**<br/>**`-n`** | Verhindert die standardmäßige Erstellung eines Git-Repositorys in Version 1.x. In Version 2.x wird das Git-Repository nicht standardmäßig erstellt. |
+| **`--powershell`**  | Initialisiert ein [PowerShell-Projekt](functions-reference-powershell.md). |
+| **`--python`**  | Initialisiert ein [Python-Projekt](functions-reference-python.md). |
 | **`--source-control`** | Steuert, ob ein Git-Repository erstellt wird. Standardmäßig wird kein Repository erstellt. Im Fall von `true` wird ein Repository erstellt. |
-| **`--worker-runtime`** | Legt die Runtime der Sprache für das Projekt fest. Unterstützte Werte sind `dotnet`, `node` (JavaScript), `java` und `python`. Wird kein Wert festgelegt, werden Sie während der Initialisierung zur Auswahl der Runtime aufgefordert. |
+| **`--typescript`**  | Initialisiert ein [TypeScript-Projekt](functions-reference-node.md#typescript). |
+| **`--worker-runtime`** | Legt die Runtime der Sprache für das Projekt fest. Unterstützte Werte sind: `csharp`, `dotnet`, `java`, `javascript`, `node` (JavaScript), `powershell`, `python` und `typescript`. Wird kein Wert festgelegt, werden Sie während der Initialisierung zur Auswahl der Runtime aufgefordert. |
 
 > [!IMPORTANT]
 > In Version 2.x der Core-Tools werden Funktions-App-Projekte für die .NET-Runtime als [C#-Klassenprojekte](functions-dotnet-class-library.md) (.csproj) erstellt. Diese C#-Projekte, die mit Visual Studio oder Visual Studio Code verwendet werden können, werden während der Tests und beim Veröffentlichen in Azure kompiliert. Wenn Sie stattdessen dieselben C#-Skriptdateien (.csx) erstellen und verwenden möchten, die in Version 1.x und im Portal erstellt wurden, müssen Sie die `--csx`-Parameter beim Erstellen und Bereitstellen von Funktionen einschließen.
@@ -465,11 +472,11 @@ Die folgenden Veröffentlichungsoptionen werden nur in Version 2.x unterstützt:
 | **`--list-included-files`** | Zeigt eine Liste mit Dateien an, die veröffentlicht werden (basierend auf der Datei vom Typ „.funcignore“). |
 | **`--nozip`** | Deaktiviert den Standardmodus `Run-From-Package`. |
 | **`--build-native-deps`** | Überspringt das Generieren des Ordners „.wheels“ beim Veröffentlichen von Python-Funktions-Apps. |
-| **`--build [-b]`** | Führt beim Bereitstellen in einer Linux-Funktions-App eine Buildaktion durch. (Akzeptiert: remote, lokal) |
+| **`--build`**<br/>**`-b`** | Führt beim Bereitstellen in einer Linux-Funktions-App eine Buildaktion durch. Akzeptiert: `remote` und `local`. |
 | **`--additional-packages`** | Liste der zu installierenden Pakete beim Erstellen nativer Abhängigkeiten. Beispiel: `python3-dev libevent-dev`. |
 | **`--force`** | In bestimmten Szenarien wird die Überprüfung vor der Veröffentlichung ignoriert. |
 | **`--csx`** | Veröffentlicht ein C#-Skriptprojekt (.csx). |
-| **`--no-build`** | Überspringt das Erstellen von dotnet-Funktionen. |
+| **`--no-build`** | Keine .NET-Klassenbibliotheksfunktionen erstellen. |
 | **`--dotnet-cli-params`** | Beim Veröffentlichen kompilierter C#-Funktionen (.csproj) rufen die Core Tools „dotnet build --output bin/publish“ auf. Alle daran übergebenen Parameter werden an die Befehlszeile angefügt. |
 
 ### <a name="deployment-custom-container"></a>Bereitstellung (benutzerdefinierter Container)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279886"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73993368"
 ---
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -26,7 +26,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-Server zu erstellen:
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **Azure-Datenbank für PostgreSQL** aus.
-3. Klicken Sie als Bereitstellungsoption auf die Schaltfläche **Erstellen** unter **Hyperscale-Servergruppe (Citus) – VORSCHAU**.
+3. Klicken Sie als Bereitstellungsoption auf die Schaltfläche **Erstellen** unter **Hyperscale-Servergruppe (Citus)** .
 4. Geben Sie im Formular für den neuen Server folgende Informationen an:
    - Ressourcengruppe: Klicken Sie auf den Link **Neue erstellen** unterhalb des Textfelds für dieses Feld. Geben Sie einen Namen ein, z.B. **myresourcegroup**.
    - Servergruppenname: Geben Sie einen eindeutigen Namen für die neue Servergruppe ein, der ebenfalls für eine Serverunterdomäne verwendet wird.
