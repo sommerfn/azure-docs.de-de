@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797231"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927657"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
-Dieser Artikel enthält Informationen zur **Translator**-Komponente von Azure FarmBeats.
+
+Dieser Artikel enthält Informationen zur **Translator**-Komponente von Azure FarmBeats, die die Integration von Sensoren von Partnern ermöglicht.
 
 Mithilfe dieser Komponente können Partner Sensoren entwickeln, die sich in FarmBeats integrieren lassen. Dabei können sie unsere API nutzen und Daten von kundeneigenen Geräten sowie Telemetriedaten an den FarmBeats-Datenhub senden. Die Daten werden mithilfe des FarmBeats-Accelerators visualisiert. Die Daten können für die Datenfusion und für die Entwicklung von Modellen genutzt werden, die auf Machine Learning oder künstlicher Intelligenz basieren.
 
 ## <a name="link-farmbeats-account"></a>Verknüpfen des FarmBeats-Kontos
 
-Nachdem Kunden Geräte/Sensoren erworben und bereitgestellt haben, können sie im Saas-Portal (Software-as-a-Service) des Geräte-Partnerunternehmens auf die Geräte- und Telemetriedaten zugreifen. Geräte-Partnerunternehmen müssen ihren Kunden die Möglichkeit bieten, ihr Konto mit ihrer FarmBeats-Instanz in Azure zu verknüpfen. Die folgenden Anmeldeinformationen müssen vom Kunden/SI angegeben werden:
+Nachdem Kunden Geräte/Sensoren erworben und bereitgestellt haben, können sie im Saas-Portal (Software-as-a-Service) des Geräte-Partnerunternehmens auf die Geräte- und Telemetriedaten zugreifen. Geräte-Partnerunternehmen müssen ihren Kunden die Möglichkeit bieten, ihr Konto mit ihrer FarmBeats-Instanz in Azure zu verknüpfen. Die folgenden Anmeldeinformationen müssen vom Kunden/Systemintegrator angegeben werden:
 
    - Anzeigename (ein optionales Feld, in dem der Benutzer einen Namen für diese Integration angeben kann)
    - API-Endpunkt
@@ -41,18 +42,15 @@ Kunden können die Verknüpfung einer vorhandenen FarmBeats-Integration aufheben
 
 ## <a name="edit-farmbeats-integration"></a>Bearbeiten der FarmBeats-Integration
 
-Der Kunde kann die FarmBeats-Integration bearbeiten. Der Hauptgrund für die Bearbeitung ist, dass sich der geheime Clientschlüssel oder die Verbindungszeichenfolge ändert, weil sie abgelaufen sind. In diesem Fall kann der Kunde nur die folgenden Felder bearbeiten.
+Der Kunde kann die FarmBeats-Integrationseinstellungen bearbeiten, wenn sich der geheime Clientschlüssel oder die Verbindungszeichenfolge ändern. In diesem Fall können Kunden nur die folgenden Felder bearbeiten:
 
    - Anzeigename (falls zutreffend)
    - Geheimer Clientschlüssel (sollte im Format „2x8***********“ oder mit der Funktion zum Ein-/Ausblenden und nicht als Klartext angezeigt werden)
    - Verbindungszeichenfolge (sollte im Format „2x8***********“ oder mit der Funktion zum Ein-/Ausblenden und nicht als Klartext angezeigt werden)
 
-   > [!NOTE]
-   > Die Bearbeitung sollte nicht dazu führen, dass die Erstellung von Metadatenobjekten unterbrochen wird.
-
 ## <a name="view-last-telemetry-sent"></a>Anzeigen der zuletzt gesendeten Telemetriedaten
 
-Sie können den Zeitstempel der zuletzt gesendeten **** Telemetriedaten anzeigen. Dies entspricht dem Zeitpunkt, zu dem die neuesten Telemetriedaten erfolgreich an FarmBeats gesendet wurden.
+Sie können den Zeitstempel der zuletzt gesendeten**Telemetriedaten** anzeigen. Dies entspricht dem Zeitpunkt, zu dem die neuesten Telemetriedaten erfolgreich an FarmBeats gesendet wurden.
 
 ## <a name="translator-development"></a>Translator-Entwicklung
 
@@ -116,7 +114,7 @@ Hier sind die gängigsten Anforderungsheader aufgeführt, die bei einem für den
 --- | ---
 Content-Type | Das Anforderungsformat (Content-Type: application/<format>) für die FarmBeats-Datenhub-API ist JSON. Content-Type: application/json
 Authorization | Gibt das Zugriffstoken an, das zur Autorisierung eines API-Aufrufs erforderlich ist: Bearer <Access-Token>
-Accept | Das Antwortformat. Für FarmBeats-Datenhub-APIs ist das Format: json Accept: application/json.
+Akzeptieren | Das Antwortformat. Für FarmBeats-Datenhub-APIs ist das Format: json Accept: application/json.
 
 **API-Anforderungen**
 
@@ -126,14 +124,14 @@ Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten in den 
 
 Mit der unten angegebenen Beispielanforderung wird die Liste mit den Geräten abgerufen:
 
-```
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 Für die meisten GET-, POST- und PUT-Aufrufe ist ein JSON-Anforderungstext erforderlich.
 
 Die folgende Beispielanforderung dient zum Erstellen eines Geräts (unter Verwendung von JSON-Eingabecode mit dem Anforderungstext).
 
-```
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -156,8 +154,8 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   Hersteller  | Zwei Sterne |
   ProductCode  | Produktcode oder Modellname/-nummer des Geräts. Beispiel: EnviroMonitor#6800 |
   Ports  | Portname und -typ (digital/analog)  |
-  Name  | Der Name zur Identifizierung der Ressource. Beispiel: Modellname/Produktname |
-  Description  | Aussagekräftige Beschreibung des Modells |
+  NAME  | Der Name zur Identifizierung der Ressource. Beispiel: Modellname/Produktname |
+  BESCHREIBUNG  | Aussagekräftige Beschreibung des Modells |
   Properties  | Zusätzliche Eigenschaften des Herstellers |
   **Device** | **Ein physisches Gerät des landwirtschaftlichen Betriebs. Jedes Gerät verfügt über eine eindeutige Geräte-ID.** |
 DeviceModelId  |ID des zugeordneten Gerätemodells |
@@ -165,8 +163,8 @@ HardwareId   |Eindeutige ID für das Gerät (beispielsweise MAC-Adresse)  |
 reportingInterval |Berichtsintervall in Sekunden |
 Location    |Breitengrad (-90 bis +90)/Längengrad (-180 bis +180)/Höhe (in Metern) des Geräts |
 ParentDeviceId | Die ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispiel: Ein mit einem Gateway verbundener Knoten besitzt den parentDeviceID-Wert als Gateway. |
-  Name  | Der Name zur Identifizierung der Ressource.  Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
-  Description  | Eine aussagekräftige Beschreibung  |
+  NAME  | Der Name zur Identifizierung der Ressource.  Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
+  BESCHREIBUNG  | Eine aussagekräftige Beschreibung  |
   Properties  |Zusätzliche Eigenschaften des Herstellers  |
   **Sensormodell** | SensorModel entspricht den Metadaten des Sensors. Hierzu zählen beispielsweise der Hersteller, der Sensortyp (analog oder digital) und die Sensormessung (wie Umgebungstemperatur, Luftdruck usw.). |
   Type (analog, digital)  |Gibt an, ob der Sensor analog oder digital ist.|
@@ -192,7 +190,7 @@ ParentDeviceId | Die ID des übergeordneten Geräts, mit dem dieses Gerät verbu
   description  | Eine aussagekräftige Beschreibung
   properties  | Zusätzliche Eigenschaften des Herstellers
 
- Informationen zu den einzelnen Objekten und ihren Eigenschaften finden Sie unter [Swagger](httpa://aka.ms/FarmBeatsDatahubSwagger).
+ Informationen zu den einzelnen Objekten und ihren Eigenschaften finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
  > Die APIs geben eindeutige IDs für jede erstellte Instanz zurück. Diese ID muss vom Translator für die Geräteverwaltung und die Synchronisierung von Metadaten beibehalten werden.
@@ -243,35 +241,34 @@ write_client.stop()
 
 Die kanonische Nachricht hat das folgende Format:
 
-```
+```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 Alle Schlüsselnamen in den Telemetriedaten im JSON-Format sollten klein geschrieben werden, z. B. „deviceid“, „sensordata“ usw.
 
 Beispiel für eine Telemetrienachricht:
 
 
-```
+```json
 {
   "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
   "timestamp": "2019-06-22T06:55:02.7279559Z",

@@ -72,8 +72,6 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
           href: how-to-enable-nested-virtualization-template-vm.md
-        - name: Erstellen einer Umgebung mit mehreren virtuellen Computern in einer Vorlage für virtuelle Computer
-          href: how-to-enable-multi-vm-environment.md
     - name: Herstellen einer Verbindung mit virtuellen Computern in Classroom-Labs (Kursteilnehmer)
       items:
         - name: Zugreifen auf Classroom-Labs
