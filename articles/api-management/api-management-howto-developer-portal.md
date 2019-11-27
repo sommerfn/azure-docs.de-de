@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796024"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011479"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalte
 
 > [!WARNING]
 > Zurzeit erfolgt das Rollout des neuen Entwicklerportals in die API Management-Dienste.
-> Wenn Ihr Dienst neu erstellt wurde oder es sich um einen Dienst der Entwicklerebene handelt, sollten Sie bereits über die neueste Version verfügen. Andernfalls können Probleme auftreten (z.B. mit der Veröffentlichungsfunktion). Das Featurerollout wird am Montag, den 11. November 2019 abgeschlossen.
+> Wenn Ihr Dienst neu erstellt wurde oder es sich um einen Dienst der Entwicklerebene handelt, sollten Sie bereits über die neueste Version verfügen. Andernfalls können Probleme auftreten (z. B. mit der Veröffentlichungsfunktion). Der Abschluss der Featurebereitstellung ist für den 22. November 2019 geplant.
 >
 > Erfahren Sie, wie Sie von der Vorschauversion zur allgemein verfügbaren Version des neuen Entwicklerportals [migrieren](#preview-to-ga) können.
 

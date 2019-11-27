@@ -1,6 +1,6 @@
 ---
-title: Aktivieren des Diensts „Azure Security Center für IoT“ in IoT Hub | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Dienst „Azure Security Center für IoT“ in Ihrer IoT Hub-Instanz aktivieren.
+title: 'Schnellstart: Aktivieren des Diensts „Azure Security Center für IoT“ in IoT Hub'
+description: In diesem Schnellstart erfahren Sie, wie der Dienst „Azure Security Center für IoT“ in Ihrer IoT Hub-Instanz aktiviert wird.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 641ba4c8d3b0e54132c19a493e1e4bf17bb28e13
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991397"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904110"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Security Center für IoT“ in IoT Hub
 
@@ -81,5 +81,3 @@ Im nächsten Artikel erfahren Sie, wie Sie Ihre Lösung konfigurieren:
 
 > [!div class="nextstepaction"]
 > [Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
-
-

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3bc1bfcf58d622151f0af9c6da693c5533bcf966
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9751435636519100ea13fd850508c99faeb87a92
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721615"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133262"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI
 
@@ -146,7 +146,16 @@ Fragen Sie schließlich die öffentliche IP-Adresse der Anwendung **gateway** ab
 az spring-cloud app show --name gateway | grep url
 ```
 
-Navigieren Sie zu der URL, die mit dem vorherigen Befehl zurückgegeben wurde, um die ausgeführte PiggyMetrics-Anwendung anzuzeigen.
+Navigieren Sie zu der URL, die mit dem vorherigen Befehl zurückgegeben wurde, um die PiggyMetrics-Anwendung auszuführen.
+    ![Screenshot der Ausführung von PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+
+Sie können auch im Azure-Portal navigieren, um die URL zu suchen. 
+1. Navigieren Sie zum Dienst.
+1. Wählen Sie **Apps** aus.
+1. Wählen Sie **Gateway** aus.
+
+    ![Screenshot der Ausführung von PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+1. Die URL finden Sie auf der **Gateway-Übersichtsseite**. ![Screenshot der Ausführung von PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

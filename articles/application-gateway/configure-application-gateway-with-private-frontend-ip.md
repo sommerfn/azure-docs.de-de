@@ -1,18 +1,19 @@
 ---
-title: Konfigurieren von Azure Application Gateway mit einer privaten Front-End-IP-Adresse
+title: Konfigurieren eines Endpunkts für den internen Lastenausgleich
+titleSuffix: Azure Application Gateway
 description: In diesem Artikel erfahren Sie, wie Sie Application Gateway mit einer privaten Front-End-IP-Adresse konfigurieren.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9e3150a5382e4d690ddf66c43bbe51e125509d3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134617"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075218"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurieren einer Application Gateway-Instanz mit einem Endpunkt für den internen Lastenausgleich (Internal Load Balancer, ILB)
 
