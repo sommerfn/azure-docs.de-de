@@ -1,19 +1,15 @@
 ---
 title: Bereitstellen in Azure Kubernetes Service mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
 description: Hier erfahren Sie, wie Sie Bereitstellungen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster ausführen.
-ms.service: jenkins
 keywords: Jenkins, Azure, DevOps, Kubernetes, K8s, AKS, Blau/Grün-Bereitstellung, Continuous Delivery, CD
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882083"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158554"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Bereitstellen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
 

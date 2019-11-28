@@ -1,18 +1,14 @@
 ---
 title: Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 description: Hier erfahren Sie, wie Sie eine per HTTP ausgelöste Java-Funktion mithilfe einer Queue Storage-Ausgabebindung mit Azure Storage verbinden.
-author: ggailey777
-ms.author: glenga
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: c78630af7d09cc911862c8e823c5dfeee9cabbd9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f9c3445efbe14c27cad9de62f5b46f50965e3145
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333402"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231210"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 

@@ -1,22 +1,15 @@
 ---
 title: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio Code
 description: Hier wird beschrieben, wie Sie mit der Azure Functions-Erweiterung in Visual Studio Code eine einfache per HTTP ausgelöste Funktion in Azure erstellen und veröffentlichen.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b89e6d75cd82a65dfbce29b949c4b7d463582bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622056"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230798"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Erstellen Ihrer ersten Funktion mit Visual Studio Code
 

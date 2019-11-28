@@ -1,22 +1,17 @@
 ---
-title: Erstellen einer Funktion mit Azure for Students Starter | Microsoft-Dokumentation
+title: Erstellen einer Funktion mit Azure for Students Starter
 description: Es wird beschrieben, wie Sie unter einem Azure for Students Starter-Abonnement eine Azure-Funktion erstellen.
 Customer intent: As a student, I want to be able to create a HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
-services: functions
-documentationcenter: na
 author: alexkarcher-msft
-manager: ggailey777
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: b4a143f14dc4e443570e8eca9ce6ce9e81b1d783
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b86ea2367a17baa8c57b8d0c0331c0cd3cfbb481
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096638"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227099"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Erstellen einer Funktion mit Azure for Students Starter
 

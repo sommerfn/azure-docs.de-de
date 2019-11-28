@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241354"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327274"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight
 
@@ -180,7 +180,7 @@ Informationen zum Löschen eines Clusters finden Sie unter [Löschen eines HDIns
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie mit [Microsoft Power BI](https://powerbi.microsoft.com/) Daten in einem Apache Spark-Cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) visualisieren. Fahren Sie mit dem nächsten Artikel fort, um festzustellen, wie die Daten, die Sie in Spark registriert haben, in ein BI-Analyse-Tool wie Power BI gezogen werden können.
+In diesem Tutorial haben Sie erfahren, wie Sie mit [Microsoft Power BI](https://powerbi.microsoft.com/) Daten in einem Apache Spark-Cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) visualisieren. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie eine Anwendung für maschinelles Lernen erstellen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verarbeiten von Tweets mit Azure Event Hubs und Spark in HDInsight](apache-spark-eventhub-streaming.md)
+> [Erstellen einer Machine Learning-Anwendung](./apache-spark-ipython-notebook-machine-learning.md)

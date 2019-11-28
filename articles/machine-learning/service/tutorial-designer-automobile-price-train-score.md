@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929661"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228364"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Wenn Sie über einen Azure Machine Learning-Arbeitsbereich mit einer Enterprise 
 
 1. Wählen Sie **Designer** aus.
 
-    ![Screenshot des visuellen Arbeitsbereichs: Vorgehensweise für den Zugriff auf den Designer](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![Screenshot des visuellen Arbeitsbereichs: Vorgehensweise für den Zugriff auf den Designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
 1. Wählen Sie **Easy-to-use prebuilt modules** (Benutzerfreundliche vorgefertigte Module) aus.
 
@@ -69,7 +69,7 @@ Im Designer stehen mehrere Beispieldatasets zur Verfügung, mit denen Sie experi
 
 1. Wählen Sie das Dataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)) aus, und ziehen Sie es auf die Canvas.
 
-   ![Ziehen von Daten in den Experimentbereich](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![Ziehen von Daten in den Experimentbereich](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>Visualisieren der Daten
 
@@ -81,7 +81,7 @@ Sie können die Daten visualisieren, um sich mit dem zu verwendenden Dataset ver
 
 1. Wählen Sie das Diagrammsymbol aus, um die Daten zu visualisieren.
 
-    ![Visualisieren der Daten](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![Visualisieren der Daten](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
 1. Wählen Sie die verschiedenen Spalten im Datenfenster aus, um Informationen zur jeweiligen Spalte zu erhalten.
 
@@ -105,7 +105,7 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas gegen fehlende Daten tun. In d
     > Um einen Datenfluss für Ihre Pipeline zu erstellen, verbinden Sie den Ausgabeport eines Moduls mit dem Eingabeport eines anderen Moduls.
     >
 
-    ![Verbinden von Modulen](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![Verbinden von Modulen](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
 1. Wählen Sie das Modul **Select Columns in Dataset** aus.
 
@@ -119,7 +119,7 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas gegen fehlende Daten tun. In d
 
 1. Wählen Sie rechts unten **Speichern** aus, um die Spaltenauswahl zu schließen.
 
-    ![Ausschließen einer Spalte](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Ausschließen einer Spalte](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
     Der Eigenschaftenbereich zeigt, dass die Spalte **normalized-losses** ausgeschlossen wurde.
 
@@ -144,7 +144,7 @@ Auch nach dem Entfernen der Spalte **normalized-losses** weist Ihr Dataset noch 
 
     Ihre Pipeline sollte nun in etwa wie folgt aussehen:
     
-    ![Select-column](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
 ## <a name="train-a-machine-learning-model"></a>Trainieren eines Machine Learning-Modells
 
@@ -188,7 +188,7 @@ Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. D
 
 1. Verbinden Sie die Trainingsdatenausgabe (linker Port) des Moduls **Split Data** (Daten aufteilen) mit der rechten Eingabe des Moduls **Train Model** (Modell trainieren).
 
-    ![Screenshot der richtigen Konfiguration des Moduls „Train Model“. Das Modul „Linear Regression“ ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ ist mit dem rechten Port von „Train Model“ verbunden.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![Screenshot der richtigen Konfiguration des Moduls „Train Model“. Das Modul „Linear Regression“ ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ ist mit dem rechten Port von „Train Model“ verbunden.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
@@ -200,7 +200,7 @@ Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. D
 
     Ihre Pipeline sollte wie folgt aussehen:
 
-    ![Screenshot: Korrekte Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![Screenshot: Korrekte Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
 ## <a name="evaluate-a-machine-learning-model"></a>Auswerten eines Machine Learning-Modells
 
@@ -216,7 +216,7 @@ Nachdem Sie das Modell mit 70 Prozent der Daten trainiert haben, können Sie un
 
     Die fertige Pipeline sollte in etwa wie folgt aussehen:
 
-    ![Screenshot: Korrekte Konfiguration des der Pipeline](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![Screenshot: Korrekte Konfiguration des der Pipeline](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
 
@@ -232,7 +232,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen.
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
-    ![Screenshot: Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“ (Bewertete Bezeichnungen)](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Screenshot: Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“ (Bewertete Bezeichnungen)](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
 1. Wählen Sie das Modul **Evaluate Model** (Modell auswerten) aus, um dessen Ausgabe anzuzeigen.
 

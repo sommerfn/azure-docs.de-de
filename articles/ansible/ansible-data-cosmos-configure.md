@@ -3,17 +3,13 @@ title: 'Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible'
 description: Es wird beschrieben, wie Sie Ansible zum Erstellen und Konfigurieren einer Azure Cosmos DB-Instanz verwenden.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Cosmos DB, Datenbank
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242072"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156476"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible
 

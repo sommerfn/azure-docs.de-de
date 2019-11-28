@@ -1,19 +1,15 @@
 ---
 title: Skalieren von Jenkins-Bereitstellungen mit Azure-VM-Agents.
 description: Verwenden Sie virtuelle Azure-Computer mit dem Jenkins-Plug-In für Azure-Agents, um Ihren Jenkins-Pipelines zusätzliche Kapazität hinzuzufügen.
-ms.service: jenkins
 keywords: Jenkins, Azure, DevOps, virtueller Computer, Agents
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074664"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158532"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 
@@ -114,7 +110,7 @@ Konfigurieren Sie eine Vorlage zum Definieren eines Azure-VM-Agents. Diese Vorla
 
 ## <a name="configure-agent-operating-system-and-tools"></a>Konfigurieren von Betriebssystem und Tools des Agents
 
-Wählen Sie im Abschnitt **Image Configuration** der Plug-In-Konfiguration die Option **Ubuntu 16.04 LTS** aus. Aktivieren Sie die Kontrollkästchen neben **Install Git (Latest)**, **Install Maven (V3.5.0)** und **Install Docker**, um diese Tools in neu erstellten Agents zu installieren.
+Wählen Sie im Abschnitt **Image Configuration** der Plug-In-Konfiguration die Option **Ubuntu 16.04 LTS** aus. Aktivieren Sie die Kontrollkästchen neben **Install Git (Latest)** , **Install Maven (V3.5.0)** und **Install Docker**, um diese Tools in neu erstellten Agents zu installieren.
 
 ![Konfigurieren von Betriebssystem und Tools für den virtuellen Computer](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 

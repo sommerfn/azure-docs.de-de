@@ -1,20 +1,16 @@
 ---
 title: 'Dauerhafte Entitäten: Azure Functions'
 description: Hier erfahren Sie, was dauerhafte Entitäten sind und wie sie in der Durable Functions-Erweiterung für Azure Functions verwendet werden.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d62281b4ccb522b3a784428bcf0284730f120628
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904026"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232930"
 ---
 # <a name="entity-functions"></a>Entitätsfunktionen
 

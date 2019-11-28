@@ -1,19 +1,15 @@
 ---
 title: Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 description: Hier erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Ihre C#-Klassenbibliotheksfunktionen mithilfe von Visual Studio mit einer Azure Storage-Warteschlange zu verbinden.
-author: ggailey777
-ms.author: glenga
 ms.date: 07/22/2019
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 383401c1486bcbebc39b64d5794f8bdc660d2778
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329639"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227420"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 

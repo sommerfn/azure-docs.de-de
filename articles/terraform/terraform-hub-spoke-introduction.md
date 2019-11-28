@@ -1,17 +1,14 @@
 ---
 title: 'Tutorial: Erstellen einer hybriden Hub-and-Spoke-Netzwerktopologie in Azure mit Terraform'
 description: Das Tutorial veranschaulicht die Erstellung einer vollständigen Referenzarchitektur für ein Hybridnetzwerk in Azure mit Terraform.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969408"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159033"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Tutorial: Erstellen einer hybriden Hub-and-Spoke-Netzwerktopologie in Azure mit Terraform
 

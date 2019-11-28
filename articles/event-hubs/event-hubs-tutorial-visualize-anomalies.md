@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717999"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307346"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Ausführen der App zum Produzieren von Testereignisdaten
 
-Die Event Hubs-[Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) enthalten auch eine [App für die Anomalieerkennung](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector), die Testdaten für Sie produzieren kann. Hiermit wird die Nutzung von Kreditkarten simuliert, indem Kreditkartentransaktionen auf den Event Hub geschrieben werden. Gelegentlich werden auch mehrere Transaktionen für dieselbe Kreditkarte an mehreren Orten geschrieben, damit diese als Anomalien gekennzeichnet werden. Führen Sie diese Schritte aus, um die App auszuführen: 
+Die Event Hubs-[Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) enthalten auch eine [App für die Anomalieerkennung](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector), die Testdaten für Sie produzieren kann. Hiermit wird die Nutzung von Kreditkarten simuliert, indem Kreditkartentransaktionen auf den Event Hub geschrieben werden. Gelegentlich werden auch mehrere Transaktionen für dieselbe Kreditkarte an mehreren Orten geschrieben, damit diese als Anomalien gekennzeichnet werden. Führen Sie diese Schritte aus, um die App auszuführen: 
 
 1. Laden Sie die [Azure Event Hubs-Beispiele](https://github.com/Azure/azure-event-hubs/archive/master.zip) von GitHub herunter, und entzippen Sie sie lokal.
 

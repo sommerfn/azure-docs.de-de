@@ -3,17 +3,13 @@ title: 'Tutorial: Erstellen einer VM oder einer VM-Skalierungsgruppe über die A
 description: Es wird beschrieben, wie Sie Ansible verwenden, um basierend auf einem generalisierten Image in der Shared Image Gallery eine VM oder VM-Skalierungsgruppe zu erstellen.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, virtueller Computer, VM-Skalierungsgruppe, Shared Image Gallery
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808947"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155824"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Tutorial: Erstellen einer VM oder einer VM-Skalierungsgruppe über die Azure Shared Image Gallery mit Ansible
 

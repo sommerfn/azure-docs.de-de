@@ -1,17 +1,14 @@
 ---
 title: 'Tutorial: Bereitstellen der Infrastruktur mit Azure-Bereitstellungsslots per Terraform'
 description: Tutorial zur Verwendung von Terraform mit Bereitstellungsslots für Azure-Anbieter
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838057"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159182"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Tutorial: Bereitstellen der Infrastruktur mit Azure-Bereitstellungsslots per Terraform
 

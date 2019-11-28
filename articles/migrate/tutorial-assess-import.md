@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715509"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158657"
 ---
 # <a name="assess-servers-using-imported-data"></a>Bewerten von Servern mit importierten Daten
 
-> [!NOTE]
-> Falls Sie dieses Feature noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Es wird voraussichtlich im Laufe der nächsten Woche verfügbar.
-
-In diesem Artikel wird beschrieben, wie Sie lokale Server mit der [ Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) bewerten, indem Sie Servermetadaten im CSV-Format importieren. Mit dieser Bewertungsmethode müssen Sie keine Azure Migrate-Appliance einrichten, um eine Bewertung zu erstellen. Dies ist in folgenden Situationen nützlich: 
+In diesem Artikel wird beschrieben, wie Sie lokale Server mit der [ Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) bewerten, indem Sie Servermetadaten im CSV-Format importieren. Mit dieser Bewertungsmethode müssen Sie keine Azure Migrate-Appliance einrichten, um eine Bewertung zu erstellen. Dies ist in folgenden Situationen nützlich:
 
 - Sie möchten schnell eine anfängliche Bewertung erstellen, bevor Sie die Appliance bereitstellen.
 - Sie können die Azure Migrate-Appliance nicht in Ihrer Organisation bereitstellen.
@@ -49,7 +46,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Festlegen von Azure-Berechtigungen für Azure Migrate 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Festlegen von Azure-Berechtigungen für Azure Migrate
 
 Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Azure Migrate-Projekts.
 
@@ -85,7 +82,7 @@ Richten Sie wie folgt ein neues Azure Migrate-Projekt ein:
 
     ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-import/assessment-tool.png)
 
-9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** und anschließend **Weiter** aus.
+9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** >  und anschließend **Weiter** aus.
 10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
 11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
 
@@ -116,7 +113,7 @@ In der folgenden Tabelle sind die Felder zusammengefasst, die ausgefüllt werden
 
 **Feldname** | **Obligatorisch** | **Details**
 --- | --- | ---
-**Servername** | Ja | Wir empfehlen Ihnen, den vollqualifizierten Domänennamen (FQDN) anzugeben. 
+**Servername** | Ja | Wir empfehlen Ihnen, den vollqualifizierten Domänennamen (FQDN) anzugeben.
 **IP-Adresse** | Nein | Serveradresse
 **Number of cores** (Anzahl von Kernen) | Ja | Die Anzahl von Prozessorkernen, die dem Server zugeordnet sind.
 **Memory** | Ja | Gesamter Arbeitsspeicher (MB), der dem Server zugeordnet ist.
@@ -144,7 +141,7 @@ In der folgenden Tabelle sind die Felder zusammengefasst, die ausgefüllt werden
 **Virtual machine manager ID** (ID für Virtual Machine Manager) | Nein | Dies ist die **InstanceUUid** für VMWare vCenter. Für Hyper-V nicht erforderlich.
 **MAC address** (MAC-Adresse)| Nein | MAC-Adresse des Servers
 **BIOS ID** (BIOS-ID) | Nein | BIOS-ID des Servers
-**Custom server ID** (Benutzerdefinierte Server-ID)| Nein | Lokale eindeutige Server-IDs für die lokale Umgebung. <br/> Nützlich zum Nachverfolgen des importierten Servers anhand der lokalen ID. 
+**Custom server ID** (Benutzerdefinierte Server-ID)| Nein | Lokale eindeutige Server-IDs für die lokale Umgebung. <br/> Nützlich zum Nachverfolgen des importierten Servers anhand der lokalen ID.
 **Application 1 name** (Name von Anwendung 1) | Nein | Name der Workloads, die auf dem Server ausgeführt werden.<br/> Sie können Details zu weiteren Apps hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-applications). Sie können maximal fünf Anwendungen hinzufügen.
 **Application 1 type** (Typ von Anwendung 1) | Nein | Typ der Workload, die auf dem Server ausgeführt wird
 **Application 1 version** (Version von Anwendung 1) | Nein | Version der Workload, die auf dem Server ausgeführt wird
@@ -162,7 +159,7 @@ Bei der Bewertung werden bestimmte Betriebssystemnamen erkannt. Alle von Ihnen a
 
 ### <a name="add-multiple-disks"></a>Hinzufügen mehrerer Datenträger
 
-Die Vorlage enthält Standardfelder für den ersten Datenträger.  Sie können ähnliche Spalten für bis zu acht Datenträger hinzufügen. 
+Die Vorlage enthält Standardfelder für den ersten Datenträger.  Sie können ähnliche Spalten für bis zu acht Datenträger hinzufügen.
 
 Fügen Sie beispielsweise diese Spalten hinzu, um alle Felder für einen zweiten Datenträger anzugeben:
 
@@ -192,10 +189,10 @@ Importieren Sie nach dem Hinzufügen der Informationen zur CSV-Vorlage die Serve
 
 1. Navigieren Sie in Azure Migrate zu **Computer ermitteln** und dann zur ausgefüllten Vorlage.
 2. Klicken Sie auf **Importieren**.
-3. Der Importstatus wird angezeigt. 
+3. Der Importstatus wird angezeigt.
     - Falls in der Statusanzeige Warnungen aufgeführt sind, können Sie diese entweder beheben oder ohne Behebung fortfahren.
     - Durch die Verbesserung der Serverinformationen gemäß den Vorschlägen in den Warnungen wird die Genauigkeit der Bewertungen verbessert.
-    - Klicken Sie auf **Download warning details .CSV** (CSV mit Warnungsdetails herunterladen), um Warnungen anzuzeigen und diese zu beheben. Die CSV-Datei mit den hinzugefügten Warnungen wird heruntergeladen. Sie können die Warnungen prüfen und je nach Bedarf beheben. 
+    - Klicken Sie auf **Download warning details .CSV** (CSV mit Warnungsdetails herunterladen), um Warnungen anzuzeigen und diese zu beheben. Die CSV-Datei mit den hinzugefügten Warnungen wird heruntergeladen. Sie können die Warnungen prüfen und je nach Bedarf beheben.
     Falls in der Statusanzeige Fehler aufgeführt werden (Importstatus **Fehler**), müssen Sie diese beheben, bevor Sie den Importvorgang fortsetzen können. Laden Sie hierzu die CSV-Datei herunter, der jetzt die Fehlerdetails hinzugefügt wurden. Überprüfen und beheben Sie die Fehler je nach Bedarf. Laden Sie anschließend die geänderte Datei erneut hoch.
 4. Wenn der Importstatus **Abgeschlossen** lautet, wurden die Serverinformationen importiert.
 
@@ -205,7 +202,7 @@ Importieren Sie nach dem Hinzufügen der Informationen zur CSV-Vorlage die Serve
 
 ## <a name="updating-server-information"></a>Aktualisieren von Serverinformationen
 
-Sie können Serverinformationen aktualisieren, indem Sie die Daten für den Server unter dem gleichen **Servernamen** erneut hochladen. Es ist nicht möglich, das Feld **Servername** zu ändern. 
+Sie können Serverinformationen aktualisieren, indem Sie die Daten für den Server unter dem gleichen **Servernamen** erneut hochladen. Es ist nicht möglich, das Feld **Servername** zu ändern.
 
 Das Löschen von Servern wird derzeit nicht unterstützt.
 
@@ -300,21 +297,21 @@ In dieser Ansicht werden die geschätzten Compute- und Speicherkosten für die A
 
 NAME | NAME
 --- | ---
-**A - H** | 
+**A - H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I - R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I - R** |
 IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S - T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S - T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U - Z** | 
+**U - Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

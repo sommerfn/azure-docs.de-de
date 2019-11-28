@@ -1,23 +1,14 @@
 ---
 title: Erstellen eines Azure Notebooks-Projekts mit benutzerdefinierter Umgebung
 description: Erstellen Sie ein neues Projekt in Azure Notebooks, das mit einem bestimmten Satz installierter Pakete und Startskripts konfiguriert wird.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6ec0d2fae285889a731e9b881ea90f15b96c85f2
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973085"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277494"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung
 

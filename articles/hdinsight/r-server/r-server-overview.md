@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665283"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321672"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
 
@@ -130,7 +130,7 @@ Da die Hauptknoten redundant sind und nicht alle Datenknoten betroffen sind, wer
 
 Der Linux-Edgeknoten auf einem HDInsight-Cluster stellt die Landezone für R-basierte Analysen dar. Neuere Versionen von HDInsight bieten eine Standardinstallation von RStudio Server als browserbasierte IDE auf dem Edgeknoten. Die Verwendung von RStudio Server als IDE für die Entwicklung und Ausführung von R-Skripts kann erheblich produktiver sein als die ausschließliche Verwendung der R-Konsole.
 
-Darüber hinaus können Sie eine Desktop-IDE installieren und sie verwenden, um mithilfe eines Remote-MapReduce- oder Spark-Rechenkontexts auf den Cluster zuzugreifen. Zu den Optionen gehören [R Tools für Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS) von Microsoft, RStudio und das auf Eclipse basierende [StatET](http://www.walware.de/goto/statet) von Walware.
+Darüber hinaus können Sie eine Desktop-IDE installieren und sie verwenden, um mithilfe eines Remote-MapReduce- oder Spark-Rechenkontexts auf den Cluster zuzugreifen. Zu den Optionen gehören [R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) von Microsoft, RStudio und das auf Eclipse basierende [StatET](http://www.walware.de/goto/statet) von Walware.
 
 Außerdem können Sie nach dem Herstellen einer Verbindung über SSH oder PuTTY durch Eingabe von **R** an der Linux-Eingabeaufforderung auf die R-Konsole auf dem Edgeknoten zugreifen. Wenn Sie die Konsolenschnittstelle verwenden, ist es sinnvoll, einen Texteditor für die R-Skriptentwicklung in einem anderen Fenster auszuführen und Abschnitte Ihres Skripts nach Bedarf auszuschneiden und in die R-Konsole einzufügen.
 

@@ -1,19 +1,16 @@
 ---
 title: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen | Microsoft-Dokumentation
 description: Verwenden Sie Resource Manager-Vorlagen mit dem Azure-Bereitstellungs-Manager, um Azure-Ressourcen bereitzustellen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285879"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307019"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
@@ -56,7 +53,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](./resource-group-overview.md).
 * Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
+* Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/scripting/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
 
     ```powershell
     Install-Module -Name Az.DeploymentManager
@@ -189,9 +186,6 @@ Im weiteren Verlauf des Tutorials wird ein Rollout bereitgestellt. Eine benutzer
 
 Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und die Zugriffssteuerung für Ihr Abonnement konfigurieren.
 
-> [!IMPORTANT]
-> Die benutzerseitig zugewiesene verwaltete Identität muss sich am gleichen Standort befinden wie das [Rollout](#create-the-rollout-template). Aktuell können die Bereitstellungs-Manager-Ressourcen ausschließlich in „USA, Mitte“ oder „USA, Osten 2“ erstellt werden. Das gilt auch für das Rollout. Dies gilt jedoch nur für Bereitstellungs-Manager-Ressourcen (etwa Diensttopologie, Dienste, Diensteinheiten, Rollout und Schritte). Ihre Zielressourcen können in jeder unterstützten Azure-Region bereitgestellt werden. In diesem Tutorial werden die Bereitstellungs-Manager-Ressourcen beispielsweise in der Region „USA, Mitte“, die Dienste jedoch in den Regionen „USA, Osten“ und „USA, Westen“ bereitgestellt. Diese Einschränkung wird in der Zukunft aufgehoben.
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Erstellen Sie eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Klicken Sie im linken Menü des Portals auf **Abonnements**, und wählen Sie anschließend Ihr Abonnement aus.
@@ -214,7 +208,7 @@ Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und 
 Die Vorlage enthält folgende Parameter:
 
 * **projectName**: Dieser Name wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung von „jdoe“ lautet der Diensttopologiename beispielsweise „**jdoe**ServiceTopology“.  Die Ressourcennamen werden im Variablenabschnitt dieser Vorlage definiert.
-* **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Ressourcen diesen Standort, wenn nichts anderes angegeben ist. Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
+* **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Ressourcen diesen Standort, wenn nichts anderes angegeben ist.
 * **artifactSourceSASLocation**: Der SAS-URI des Blobcontainers, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 * **templateArtifactRoot**: Der Offsetpfad des Blobcontainers, unter dem die Vorlagen und Parameter gespeichert sind. Standardwert: **templates/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **templateArtifactRoot** und **templateArtifactSourceRelativePath** (oder **parametersArtifactSourceRelativePath**).
 * **targetSubscriptionID**: Die Abonnement-ID, unter der die Bereitstellungs-Manager-Ressourcen bereitgestellt und abgerechnet werden. Verwenden Sie in diesem Tutorial Ihre Abonnement-ID.
@@ -269,7 +263,7 @@ Die Vorlage enthält folgende Parameter:
 ![Tutorial für den Azure-Bereitstellungs-Manager: Parameter der Rolloutvorlage](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
 * **projectName**: Dieser Name wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung von „jdoe“ lautet der Rolloutname beispielsweise „**jdoe**Rollout“.  Die Namen werden im Variablenabschnitt der Vorlage definiert.
-* **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Bereitstellungs-Manager-Ressourcen diesen Standort, wenn nichts anderes angegeben ist. Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
+* **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Bereitstellungs-Manager-Ressourcen diesen Standort, wenn nichts anderes angegeben ist.
 * **artifactSourceSASLocation**: Der SAS-URI des Stammverzeichnisses (Blobcontainer), unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 * **binaryArtifactRoot**:  Der Standardwert lautet **binaries/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **binaryArtifactRoot** und **deployPackageUri** (aus „CreateWebApplicationParameters.json“).  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 * **managedIdentityID**: Die benutzerseitig zugewiesene verwaltete Identität, die die Bereitstellungsaktionen ausführt. Weitere Informationen finden Sie unter [Erstellen der benutzerseitig zugewiesenen verwalteten Identität](#create-the-user-assigned-managed-identity).
@@ -311,7 +305,7 @@ Sie erstellen eine Parameterdatei, die mit der Rolloutvorlage verwendet wird.
 2. Füllen Sie die Parameterwerte aus:
 
     * **projectName**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieser Name dient zur Erstellung eindeutiger Azure-Ressourcennamen.
-    * **azureResourceLocation**: Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
+    * **azureResourceLocation**: Geben Sie einen Azure-Standort an.
     * **artifactSourceSASLocation**: Geben Sie den SAS-URI des Stammverzeichnisses (Blobcontainer) ein, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
     * **binaryArtifactRoot**: Verwenden Sie in diesem Tutorial **binaries/1.0.0.0**, es sei denn, Sie möchten die Ordnerstruktur der Artefakte ändern.
     * **managedIdentityID**: Geben Sie die benutzerseitig zugewiesene verwaltete Identität ein. Weitere Informationen finden Sie unter [Erstellen der benutzerseitig zugewiesenen verwalteten Identität](#create-the-user-assigned-managed-identity). Die Syntax ist:

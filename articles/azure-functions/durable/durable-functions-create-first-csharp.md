@@ -1,21 +1,16 @@
 ---
 title: Erstellen Ihrer ersten dauerhaften Funktion in Azure mit C#
 description: Es wird beschrieben, wie Sie eine dauerhafte Azure-Funktion mit Visual Studio erstellen und veröffentlichen.
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jeconnoc
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615008"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231508"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
