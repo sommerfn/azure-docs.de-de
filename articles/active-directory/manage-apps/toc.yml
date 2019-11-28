@@ -72,8 +72,14 @@
       items:
         - name: Planen einer automatischen Benutzerbereitstellung
           href: plan-auto-user-provisioning.md
+        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
+          href: use-scim-to-provision-users-and-groups.md
         - name: Manuelle und automatische Bereitstellung
           href: application-provisioning-config-how-to.md
+    - name: HR-Cloudbereitstellung
+      items:
+        - name: Planen einer HR-Cloudbenutzerbereitstellung
+          href: plan-cloud-hr-provision.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy
